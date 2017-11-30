@@ -36,6 +36,8 @@ package rs2d.sequence.gradientecho;
 import java.util.*;
 
 import rs2d.commons.log.Log;
+import rs2d.sequence.common.Gradient;
+import rs2d.sequence.common.RFPulse;
 import rs2d.spinlab.data.transformPlugin.TransformPlugin;
 import rs2d.spinlab.hardware.controller.HardwareHandler;
 import rs2d.spinlab.instrument.Instrument;

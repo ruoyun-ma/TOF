@@ -1,4 +1,4 @@
-package rs2d.sequence.gradientecho;
+package rs2d.sequence.common;
 
         import rs2d.spinlab.data.transformPlugin.TransformPlugin;
         import rs2d.spinlab.instrument.Instrument;
@@ -8,7 +8,6 @@ package rs2d.sequence.gradientecho;
         import rs2d.spinlab.instrument.util.GradientMath;
         import rs2d.spinlab.instrument.util.TxMath;
         import rs2d.spinlab.plugins.loaders.LoaderFactory;
-        import rs2d.spinlab.plugins.loaders.PluginLoaderInterface;
         import rs2d.spinlab.sequence.Sequence;
         import rs2d.spinlab.sequence.table.Shape;
         import rs2d.spinlab.sequence.table.Table;
@@ -607,4 +606,4 @@ public class RFPulse {
     }
 
 }
-
+

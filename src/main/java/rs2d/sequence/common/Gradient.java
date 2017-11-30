@@ -1,4 +1,4 @@
-package rs2d.sequence.gradientecho;
+package rs2d.sequence.common;
 
 import rs2d.spinlab.data.transformPlugin.TransformPlugin;
 import rs2d.spinlab.hardware.controller.HardwareHandler;

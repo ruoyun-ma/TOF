@@ -1,4 +1,3 @@
-
 package rs2d.sequence.gradientecho;
 
 // ---------------------------------------------------------------------
@@ -7,9 +6,9 @@ package rs2d.sequence.gradientecho;
 //  
 // ---------------------------------------------------------------------
 // rename GRADIENT_SPOILER_TIME 
-// 25/10/2017   V7.0X
+// 17/11/2017   V7.4
+//      - fovPhase  TX_LENGTH   TX_SHAPE
 // 17/11/2017   V7.3
-
 // 25/10/2017   V7.2
 //		bug and other
 //            KS_CENTER_MODE
@@ -62,7 +61,7 @@ import static rs2d.sequence.gradientecho.GradientEchoSequenceParams.*;
 //
 public class GradientEcho extends SequenceGeneratorAbstract {
 
-    private String sequenceVersion = "Version7.3";
+    private String sequenceVersion = "Version7.4";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -77,6 +76,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
     private int acquisitionMatrixDimension2D;
     private int acquisitionMatrixDimension3D;
     private int acquisitionMatrixDimension4D;
+    private int preScan;
 
     private int userMatrixDimension1D;
     private int userMatrixDimension2D;
@@ -148,8 +148,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
 
         List<String> tx_shape = asList("HARD", "GAUSSIAN", "SINC3", "SINC5");
         //List<String> tx_shape = Arrays.asList("HARD", "GAUSSIAN", "SIN3", "xSINC5");
-        ((TextParam) getParam(TX_SHAPE_90)).setSuggestedValues(tx_shape);
-        ((TextParam) getParam(TX_SHAPE_90)).setRestrictedToSuggested(true);
+        ((TextParam) getParam(TX_SHAPE)).setSuggestedValues(tx_shape);
+        ((TextParam) getParam(TX_SHAPE)).setRestrictedToSuggested(true);
 
         //TRANSFORM PLUGIN
         List<String> list = asList("Sequential4D", "Sequential4DBackAndForth", "EPISequential4D");
@@ -182,7 +182,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         acquisitionMatrixDimension2D = ((NumberParam) getParam(ACQUISITION_MATRIX_DIMENSION_2D)).getValue().intValue();
         acquisitionMatrixDimension3D = ((NumberParam) getParam(ACQUISITION_MATRIX_DIMENSION_3D)).getValue().intValue();
         acquisitionMatrixDimension4D = ((NumberParam) getParam(ACQUISITION_MATRIX_DIMENSION_4D)).getValue().intValue();
-
+        preScan = ((NumberParam) getParam(DUMMY_SCAN)).getValue().intValue();
         userMatrixDimension1D = ((NumberParam) getParam(USER_MATRIX_DIMENSION_1D)).getValue().intValue();
         userMatrixDimension2D = ((NumberParam) getParam(USER_MATRIX_DIMENSION_2D)).getValue().intValue();
         userMatrixDimension3D = ((NumberParam) getParam(USER_MATRIX_DIMENSION_3D)).getValue().intValue();
@@ -199,12 +199,13 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         pixelDimension = ((NumberParam) getParam(RESOLUTION_FREQUENCY)).getValue().doubleValue();
         fov = ((NumberParam) getParam(FIELD_OF_VIEW)).getValue().doubleValue();
         fovPhase = ((NumberParam) getParam(FIELD_OF_VIEW_PHASE)).getValue().doubleValue();
+        System.out.println("fovPhase " + fovPhase + " Init +++++++++++++++++");
         isFovDoubled = ((BooleanParam) getParam(FOV_DOUBLED)).getValue();
         off_center_distance_1D = ((NumberParam) getParam(OFF_CENTER_FIELD_OF_VIEW_1D)).getValue().doubleValue();
         off_center_distance_2D = ((NumberParam) getParam(OFF_CENTER_FIELD_OF_VIEW_2D)).getValue().doubleValue();
         off_center_distance_3D = ((NumberParam) getParam(OFF_CENTER_FIELD_OF_VIEW_3D)).getValue().doubleValue();
 
-        txLength90 = ((NumberParam) getParam(TX_LENGTH_90)).getValue().doubleValue();
+        txLength90 = ((NumberParam) getParam(TX_LENGTH)).getValue().doubleValue();
 
 
         isDynamic = ((BooleanParam) getParam(DYNAMIC_SEQUENCE)).getValue();
@@ -413,7 +414,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         setParamValue(ACQUISITION_MATRIX_DIMENSION_4D, isKSCenterMode ? 1 : acquisitionMatrixDimension4D);
 
         // set the calculated sequence dimensions
-        setSequenceParamValue(Pre_scan, DUMMY_SCAN); // Do the prescan
+        setSequenceParamValue(Pre_scan, preScan); // Do the prescan
         setSequenceParamValue(Nb_point, acquisitionMatrixDimension1D);
         setSequenceParamValue(Nb_1d, NUMBER_OF_AVERAGES);
         setSequenceParamValue(Nb_2d, isKSCenterMode ? 2 : nb_scan_2d);
@@ -505,8 +506,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
     private void prepareFovPhase() {
         fovPhase = (((BooleanParam) getParam(FOV_SQUARE)).getValue()) ? fov : fovPhase;
         fovPhase = fovPhase > fov ? fov : fovPhase;
-        setParamValue(FIELD_OF_VIEW_PHASE, fov);
-
+        setParamValue(FIELD_OF_VIEW_PHASE, fovPhase);
         setParamValue(PHASE_FIELD_OF_VIEW_RATIO, (fovPhase / fov * 100.0));    // FOV ratio for display
         setParamValue(FOV_RATIO_PHASE, Math.round(fovPhase / fov * 100.0));    // FOV ratio for display
     }
@@ -564,7 +564,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         RFPulse pulseTX = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_amp, Tx_phase, Time_tx, Tx_shape, Tx_shape_phase, Tx_freq_offset);
 
         int nb_shape_points = 128;
-        pulseTX.setShape(((String) getParam(TX_SHAPE_90).getValue()), nb_shape_points, "Hamming");
+        pulseTX.setShape(((String) getParam(TX_SHAPE).getValue()), nb_shape_points, "Hamming");
 
         // -----------------------------------------------
         // Calculation RF pulse parameters  2/3 : RF pulse & attenuation
@@ -573,7 +573,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         boolean is_tx_amp_att_auto = ((BooleanParam) getParam(TX_AMP_ATT_AUTO)).getValue();
         if (is_tx_amp_att_auto) {
             if (!pulseTX.setAutoCalibFor180(flip_angle, observeFrequency, (List<Integer>) getParam(TX_ROUTE).getValue(), nucleus)) {
-                getUnreachParamExceptionManager().addParam(TX_LENGTH_90.name(), txLength90, pulseTX.getPulseDuration(), ((NumberParam) getParam(TX_LENGTH_90)).getMaxValue(), "Pulse length too short to reach RF power with this pulse shape");
+                getUnreachParamExceptionManager().addParam(TX_LENGTH.name(), txLength90, pulseTX.getPulseDuration(), ((NumberParam) getParam(TX_LENGTH)).getMaxValue(), "Pulse length too short to reach RF power with this pulse shape");
                 txLength90 = pulseTX.getPulseDuration();
             }
             this.setParamValue(TX_ATT, pulseTX.getAtt());            // display PULSE_ATT
@@ -587,7 +587,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // -----------------------------------------------
         // Calculation RF pulse parameters  3/3: bandwidth
         // -----------------------------------------------
-        double tx_bandwidth_factor_90 = getTx_bandwidth_factor_90(TX_SHAPE_90, TX_BANDWIDTH_FACTOR, TX_BANDWIDTH_FACTOR_3D);
+        double tx_bandwidth_factor_90 = getTx_bandwidth_factor_90(TX_SHAPE, TX_BANDWIDTH_FACTOR, TX_BANDWIDTH_FACTOR_3D);
         double tx_bandwidth_90 = tx_bandwidth_factor_90 / txLength90;
 
         // ---------------------------------------------------------------------
@@ -867,7 +867,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // ------------------------------------------------------------------
         // Total Acquisition Time
         // ------------------------------------------------------------------
-        double total_acquisition_time = time_between_frames * numberOfDynamicAcquisition;
+        double total_acquisition_time = time_between_frames * numberOfDynamicAcquisition + tr * preScan;
         setParamValue(SEQUENCE_TIME, total_acquisition_time);
 
         // -----------------------------------------------

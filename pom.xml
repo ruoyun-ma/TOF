@@ -7,8 +7,8 @@
   <version>GRADIENT_ECHO-git</version>
   <properties>
     <seqdev.update-dependencies>false</seqdev.update-dependencies>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
   <dependencies>

@@ -1612,7 +1612,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.User);
             param.setCategory(Category.Acquisition);
-            param.setValue("Version7.3");
+            param.setValue("Version7.4");
             param.setDefaultValue("");
             return param;
         }
@@ -1971,11 +1971,11 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         }
     },
 
-    TX_LENGTH_90 {
+    TX_LENGTH {
         Param build() {
             NumberParam param = new NumberParam();
-            param.setName("TX_LENGTH_90");
-            param.setDisplayedName("TX_LENGTH_90");
+            param.setName("TX_LENGTH");
+            param.setDisplayedName("TX_LENGTH");
             param.setDescription("length of RF pulse");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Emission);
@@ -2006,11 +2006,11 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         }
     },
 
-    TX_SHAPE_90 {
+    TX_SHAPE {
         Param build() {
             TextParam param = new TextParam();
-            param.setName("TX_SHAPE_90");
-            param.setDisplayedName("TX_SHAPE_90");
+            param.setName("TX_SHAPE");
+            param.setDisplayedName("TX_SHAPE");
             param.setDescription("the shape of the rf pulse");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Emission);

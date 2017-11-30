@@ -2281,7 +2281,7 @@
                 <group>User</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>Version7.3</value>
+                <value>Version7.4</value>
                 <defaultValue></defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
             </value>
@@ -2680,11 +2680,11 @@
             </value>
         </entry>
         <entry>
-            <key>TX_LENGTH_90</key>
+            <key>TX_LENGTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>TX_LENGTH_90</name>
+                <name>TX_LENGTH</name>
                 <description>length of RF pulse</description>
-                <displayedName>TX_LENGTH_90</displayedName>
+                <displayedName>TX_LENGTH</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Emission</group>
@@ -2716,11 +2716,11 @@
             </value>
         </entry>
         <entry>
-            <key>TX_SHAPE_90</key>
+            <key>TX_SHAPE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>TX_SHAPE_90</name>
+                <name>TX_SHAPE</name>
                 <description>the shape of the rf pulse</description>
-                <displayedName>TX_SHAPE_90</displayedName>
+                <displayedName>TX_SHAPE</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Emission</group>

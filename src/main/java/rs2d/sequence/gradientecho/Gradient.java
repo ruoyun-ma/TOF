@@ -407,7 +407,7 @@ public class Gradient {
         if (isKSCentred) {
             gradIndexMaxPhase = 1 / 2.0;// symetric k'space around zero
         } else {
-            gradIndexMaxPhase = 1 / 2.0 + ((steps + 1) % 2) / (2 * ((float) steps - 1));// always go trough k0
+            gradIndexMaxPhase = 1 / 2.0 + ((steps + 1) % 2) / (2.0 * ((float) steps - 1));// always go trough k0
         }
         return gradIndexMaxPhase;
     }
@@ -465,7 +465,7 @@ public class Gradient {
     // ---------------------------------------------------------------
     // ----------------- General Methode----------------------------------------------
     private double getInferiorSpectralWidth(double spectral_width) {
-        return 3906250.0 / (Math.ceil(3906250.0 / spectral_width) - 1);
+        return 3906250.0 / (Math.ceil(3906250.0 / spectral_width) + 1);
     }
 
     private void setSequenceTableValues(Table table, Order order, double... values) {

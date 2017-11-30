@@ -186,12 +186,12 @@ public interface GradientEchoSequenceParams {
     String FreqOffset_tx_prep = "FreqOffset_tx_prep";
 
     /**
-     * Group: Transmit, Order: 1D - FreqOffset (Hz)
+     * Group: Transmit, Order: 4D+Loop - FreqOffset (Hz)
      */
     String Frequency_offset_init = "Frequency_offset_init";
 
     /**
-     * Group: Gradient, Order: 2D - GradAmp (%)
+     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
      */
     String Grad_amp_phase_2D_prep = "Grad_amp_phase_2D_prep";
 
@@ -216,7 +216,7 @@ public interface GradientEchoSequenceParams {
     String Grad_amp_slice = "Grad_amp_slice";
 
     /**
-     * Group: Gradient, Order: 2D - GradAmp (%)
+     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
      */
     String Grad_amp_spoiler_phase = "Grad_amp_spoiler_phase";
 
@@ -316,7 +316,7 @@ public interface GradientEchoSequenceParams {
     String Time_trigger_delay = "Time_trigger_delay";
 
     /**
-     * Group: Delay, Order: 1D - Time (s)
+     * Group: Delay, Order: 4D+Loop - Time (s)
      */
     String Time_tx = "Time_tx";
 

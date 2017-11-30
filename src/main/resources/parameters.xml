@@ -660,18 +660,18 @@
             </value>
         </entry>
         <entry>
-            <key>GRADIENT_SPOILER_APPL_TIME</key>
+            <key>GRADIENT_SPOILER_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>GRADIENT_SPOILER_APPL_TIME</name>
-                <description>Gradient Top time of the crusher/rewinding Gradient</description>
-                <displayedName>GRADIENT_SPOILER_APPL_TIME</displayedName>
+                <name>GRADIENT_SPOILER_TIME</name>
+                <description></description>
+                <displayedName>Gradient spoiler top time</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>3.0E-4</value>
-                <defaultValue>1.3E-4</defaultValue>
+                <value>3.9999999999999996E-4</value>
+                <defaultValue>9.999999999999999E-5</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
                 <minValue>0.0</minValue>
@@ -806,7 +806,7 @@
                 <lockedToDefault>false</lockedToDefault>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>false</defaultValue>
             </value>
         </entry>
@@ -1569,19 +1569,19 @@
             <key>NUMBER_OF_SHOOT_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>NUMBER_OF_SHOOT_3D</name>
-                <description>NUMBER_OF_SHOOT_3D.description</description>
-                <displayedName>NUMBER_OF_SHOOT_3D.name</displayedName>
+                <description>Number of Slice set acquiered sequencially</description>
+                <displayedName>Number of Shoot 3D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
-                <group>Dimension</group>
+                <group>Miscellaneous</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
                 <value>1</value>
-                <defaultValue>4</defaultValue>
+                <defaultValue>1</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
-                <maxValue>65536</maxValue>
+                <maxValue>2147483647</maxValue>
                 <minValue>1</minValue>
-                <numberEnum>Scan</numberEnum>
+                <numberEnum>Integer</numberEnum>
             </value>
         </entry>
         <entry>
@@ -1822,8 +1822,8 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_1D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_1D</name>
-                <description>Location in the R/L direction</description>
-                <displayedName>Location X</displayedName>
+                <description>Offset in Readout Direction</description>
+                <displayedName>Location 1D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
@@ -1841,9 +1841,9 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_2D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_2D</name>
-                <description>Location in the A/P direction</description>
-                <displayedName>Location Y</displayedName>
-                <locked>false</locked>
+                <description>Offset in Phase Encoding Direction</description>
+                <displayedName>Location 2D</displayedName>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
                 <category>Acquisition</category>
@@ -1860,9 +1860,9 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_3D</name>
-                <description>Location in the I/S direction</description>
+                <description>Offset in the slice direction</description>
                 <displayedName>Location Z</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
                 <category>Acquisition</category>
@@ -1901,8 +1901,8 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_X</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_X</name>
-                <description></description>
-                <displayedName>OFF_CENTER_FIELD_OF_VIEW_X</displayedName>
+                <description>Location in the R/L direction</description>
+                <displayedName>Location X</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
@@ -1911,8 +1911,8 @@
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
-                <maxValue>10.0</maxValue>
-                <minValue>-10.0</minValue>
+                <maxValue>1.7976931348623157E308</maxValue>
+                <minValue>-1.7976931348623157E308</minValue>
                 <numberEnum>Location</numberEnum>
             </value>
         </entry>
@@ -1920,8 +1920,8 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_Y</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_Y</name>
-                <description></description>
-                <displayedName>OFF_CENTER_FIELD_OF_VIEW_Y</displayedName>
+                <description>Location in the A/P direction</description>
+                <displayedName>Location Y</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
@@ -1930,8 +1930,8 @@
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
-                <maxValue>10.0</maxValue>
-                <minValue>-10.0</minValue>
+                <maxValue>1.7976931348623157E308</maxValue>
+                <minValue>-1.7976931348623157E308</minValue>
                 <numberEnum>Location</numberEnum>
             </value>
         </entry>
@@ -1939,8 +1939,8 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_Z</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_Z</name>
-                <description></description>
-                <displayedName>OFF_CENTER_FIELD_OF_VIEW_Z</displayedName>
+                <description>Location in the I/S direction</description>
+                <displayedName>Location Z</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
@@ -1949,8 +1949,8 @@
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
-                <maxValue>10.0</maxValue>
-                <minValue>-10.0</minValue>
+                <maxValue>1.7976931348623157E308</maxValue>
+                <minValue>-1.7976931348623157E308</minValue>
                 <numberEnum>Location</numberEnum>
             </value>
         </entry>
@@ -2104,25 +2104,6 @@
                 <value></value>
                 <defaultValue></defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </entry>
-        <entry>
-            <key>PULSE_ATT</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>PULSE_ATT</name>
-                <description>Transmitter attenuation</description>
-                <displayedName>PULSE_ATT</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <group>Emission</group>
-                <category>Acquisition</category>
-                <rolesEnum>User</rolesEnum>
-                <value>21.0</value>
-                <defaultValue>10.0</defaultValue>
-                <restrictedToSuggested>false</restrictedToSuggested>
-                <maxValue>63.0</maxValue>
-                <minValue>10.0</minValue>
-                <numberEnum>TxAtt</numberEnum>
             </value>
         </entry>
         <entry>
@@ -2300,7 +2281,7 @@
                 <group>User</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>VersionXXX</value>
+                <value>Version7.3</value>
                 <defaultValue></defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
             </value>
@@ -2632,6 +2613,25 @@
             </value>
         </entry>
         <entry>
+            <key>TX_ATT</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>TX_ATT</name>
+                <description>Emission attenuation</description>
+                <displayedName>TX_ATT</displayedName>
+                <locked>true</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Emission</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>21.0</value>
+                <defaultValue>36.0</defaultValue>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <maxValue>63.0</maxValue>
+                <minValue>0.0</minValue>
+                <numberEnum>TxAtt</numberEnum>
+            </value>
+        </entry>
+        <entry>
             <key>TX_BANDWIDTH_FACTOR</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>TX_BANDWIDTH_FACTOR</name>
@@ -2702,7 +2702,7 @@
             <key>TX_ROUTE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>TX_ROUTE</name>
-                <description>LogCh-&gt;PhysCh</description>
+                <description></description>
                 <displayedName>TX_ROUTE</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>

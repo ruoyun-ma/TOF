@@ -662,20 +662,20 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         }
     },
 
-    GRADIENT_SPOILER_APPL_TIME {
+    GRADIENT_SPOILER_TIME {
         Param build() {
             NumberParam param = new NumberParam();
-            param.setName("GRADIENT_SPOILER_APPL_TIME");
-            param.setDisplayedName("GRADIENT_SPOILER_APPL_TIME");
-            param.setDescription("Gradient Top time of the crusher/rewinding Gradient");
+            param.setName("GRADIENT_SPOILER_TIME");
+            param.setDisplayedName("Gradient spoiler top time");
+            param.setDescription("");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Delay);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(3.0E-4);
-            param.setDefaultValue(1.3E-4);
+            param.setValue(3.9999999999999996E-4);
+            param.setDefaultValue(9.999999999999999E-5);
             return param;
         }
     },
@@ -757,7 +757,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setDescription("Turn off the PE gradient and acquieres two single scan only");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setCategory(Category.Acquisition);
-            param.setValue(false);
+            param.setValue(true);
             param.setDefaultValue(false);
             return param;
         }
@@ -1038,16 +1038,16 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         Param build() {
             NumberParam param = new NumberParam();
             param.setName("NUMBER_OF_SHOOT_3D");
-            param.setDisplayedName("NUMBER_OF_SHOOT_3D.name");
-            param.setDescription("NUMBER_OF_SHOOT_3D.description");
+            param.setDisplayedName("Number of Shoot 3D");
+            param.setDescription("Number of Slice set acquiered sequencially");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
-            param.setGroup(EnumGroup.Dimension);
+            param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
-            param.setNumberEnum(NumberEnum.Scan);
+            param.setNumberEnum(NumberEnum.Integer);
             param.setMinValue(1);
-            param.setMaxValue(65536);
+            param.setMaxValue(2147483647);
             param.setValue(1);
-            param.setDefaultValue(4);
+            param.setDefaultValue(1);
             return param;
         }
     },
@@ -1091,8 +1091,8 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         Param build() {
             NumberParam param = new NumberParam();
             param.setName("OFF_CENTER_FIELD_OF_VIEW_1D");
-            param.setDisplayedName("Location X");
-            param.setDescription("Location in the R/L direction");
+            param.setDisplayedName("Location 1D");
+            param.setDescription("Offset in Readout Direction");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
@@ -1109,8 +1109,9 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         Param build() {
             NumberParam param = new NumberParam();
             param.setName("OFF_CENTER_FIELD_OF_VIEW_2D");
-            param.setDisplayedName("Location Y");
-            param.setDescription("Location in the A/P direction");
+            param.setDisplayedName("Location 2D");
+            param.setDescription("Offset in Phase Encoding Direction");
+            param.setLocked(true);
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
@@ -1128,7 +1129,8 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             NumberParam param = new NumberParam();
             param.setName("OFF_CENTER_FIELD_OF_VIEW_3D");
             param.setDisplayedName("Location Z");
-            param.setDescription("Location in the I/S direction");
+            param.setDescription("Offset in the slice direction");
+            param.setLocked(true);
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
@@ -1163,14 +1165,14 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         Param build() {
             NumberParam param = new NumberParam();
             param.setName("OFF_CENTER_FIELD_OF_VIEW_X");
-            param.setDisplayedName("OFF_CENTER_FIELD_OF_VIEW_X");
-            param.setDescription("");
+            param.setDisplayedName("Location X");
+            param.setDescription("Location in the R/L direction");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Location);
-            param.setMinValue(-10.0);
-            param.setMaxValue(10.0);
+            param.setMinValue(-1.7976931348623157E308);
+            param.setMaxValue(1.7976931348623157E308);
             param.setValue(0.0);
             param.setDefaultValue(0.0);
             return param;
@@ -1181,14 +1183,14 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         Param build() {
             NumberParam param = new NumberParam();
             param.setName("OFF_CENTER_FIELD_OF_VIEW_Y");
-            param.setDisplayedName("OFF_CENTER_FIELD_OF_VIEW_Y");
-            param.setDescription("");
+            param.setDisplayedName("Location Y");
+            param.setDescription("Location in the A/P direction");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Location);
-            param.setMinValue(-10.0);
-            param.setMaxValue(10.0);
+            param.setMinValue(-1.7976931348623157E308);
+            param.setMaxValue(1.7976931348623157E308);
             param.setValue(0.0);
             param.setDefaultValue(0.0);
             return param;
@@ -1199,14 +1201,14 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         Param build() {
             NumberParam param = new NumberParam();
             param.setName("OFF_CENTER_FIELD_OF_VIEW_Z");
-            param.setDisplayedName("OFF_CENTER_FIELD_OF_VIEW_Z");
-            param.setDescription("");
+            param.setDisplayedName("Location Z");
+            param.setDescription("Location in the I/S direction");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Location);
-            param.setMinValue(-10.0);
-            param.setMaxValue(10.0);
+            param.setMinValue(-1.7976931348623157E308);
+            param.setMaxValue(1.7976931348623157E308);
             param.setValue(0.0);
             param.setDefaultValue(0.0);
             return param;
@@ -1430,24 +1432,6 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         }
     },
 
-    PULSE_ATT {
-        Param build() {
-            NumberParam param = new NumberParam();
-            param.setName("PULSE_ATT");
-            param.setDisplayedName("PULSE_ATT");
-            param.setDescription("Transmitter attenuation");
-            param.setRoles(new RoleEnum[] {RoleEnum.User});
-            param.setGroup(EnumGroup.Emission);
-            param.setCategory(Category.Acquisition);
-            param.setNumberEnum(NumberEnum.TxAtt);
-            param.setMinValue(10.0);
-            param.setMaxValue(63.0);
-            param.setValue(21.0);
-            param.setDefaultValue(10.0);
-            return param;
-        }
-    },
-
     RECEIVER_COUNT {
         Param build() {
             NumberParam param = new NumberParam();
@@ -1628,7 +1612,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.User);
             param.setCategory(Category.Acquisition);
-            param.setValue("VersionXXX");
+            param.setValue("Version7.3");
             param.setDefaultValue("");
             return param;
         }
@@ -1932,6 +1916,25 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         }
     },
 
+    TX_ATT {
+        Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("TX_ATT");
+            param.setDisplayedName("TX_ATT");
+            param.setDescription("Emission attenuation");
+            param.setLocked(true);
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Emission);
+            param.setCategory(Category.Acquisition);
+            param.setNumberEnum(NumberEnum.TxAtt);
+            param.setMinValue(0.0);
+            param.setMaxValue(63.0);
+            param.setValue(21.0);
+            param.setDefaultValue(36.0);
+            return param;
+        }
+    },
+
     TX_BANDWIDTH_FACTOR {
         Param build() {
             ListNumberParam param = new ListNumberParam();
@@ -1991,7 +1994,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             ListNumberParam param = new ListNumberParam();
             param.setName("TX_ROUTE");
             param.setDisplayedName("TX_ROUTE");
-            param.setDescription("LogCh->PhysCh");
+            param.setDescription("");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);

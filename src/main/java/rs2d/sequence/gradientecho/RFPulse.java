@@ -305,7 +305,7 @@ public class RFPulse {
         double instrument_power = (flipAngle < 135 ? pulse.getHardPulse90().y : pulse.getHardPulse180().y) / power_factor;
         powerPulse = instrument_power * Math.pow(instrument_length / pulseDuration, 2) * Math.pow(flipAngle / (flipAngle < 135 ? 90 : 180), 2);
         if (powerPulse > pulse.getMaxRfPowerPulsed()) {  // TX LENGTH 90 MIN
-            pulseDuration = Math.ceil(instrument_length / Math.sqrt(pulse.getMaxRfPowerPulsed() / (instrument_power * Math.pow(flipAngle / (flipAngle < 135 ? 90 : 180), 2))));
+            pulseDuration = Math.ceil(instrument_length / Math.sqrt(pulse.getMaxRfPowerPulsed() / (instrument_power * Math.pow(flipAngle / (flipAngle < 135 ? 90 : 180), 2)))*10e5)/10e5;
             setSequenceTableSingleValue(timeTable, pulseDuration);
             powerPulse = instrument_power * Math.pow(instrument_length / pulseDuration, 2) * Math.pow(flipAngle / (flipAngle < 135 ? 90 : 180), 2);
             test_change_time = false;
@@ -396,10 +396,10 @@ public class RFPulse {
      * @param abs     true if you want the absolute values and false otherwise
      */
     private void setShapeTableValuesFromSincGen(Table table, int nbpoint, int nblobe, double amp, Boolean abs, String window) throws Exception {
-        String name = "Sinus Cardinal with Apodisation";
-        TableGeneratorInterface gen = loadTableGenerator(name);
-        if (gen == null) {
-            throw new IllegalStateException("Table generator not found: " + name);
+        TableGeneratorInterface gen;
+        gen = LoaderFactory.getTableGeneratorPluginLoader().getPluginByName("Sinus Cardinal with Apodisation");
+         if (gen == null) {
+            throw new IllegalStateException("Table generator not found: Sinus Cardinal with Apodisation" );
         }
         table.setGenerator(gen);
         gen.getParams().get(0).setValue(nbpoint);
@@ -407,6 +407,7 @@ public class RFPulse {
         gen.getParams().get(2).setValue(amp);
         gen.getParams().get(3).setValue(abs);//abs
         gen.getParams().get(4).setValue(window);//abs
+        table.setGenerator(gen);
         gen.generate();
     }
 
@@ -420,31 +421,22 @@ public class RFPulse {
      * @param abs     true if you want the absolute values and false otherwise
      */
     private void setShapeTableValuesFromGaussGen(Table table, int nbpoint, double width, double amp, Boolean abs) throws Exception {
-        TableGeneratorInterface gen = null;
-        gen = loadTableGenerator("Gaussian");
+        TableGeneratorInterface gen;
+        gen = LoaderFactory.getTableGeneratorPluginLoader().getPluginByName("Gaussian");
+        if (gen == null) {
+            throw new IllegalStateException("Table generator not found: Gaussian" );
+        }
+        table.setGenerator(gen);
         gen.getParams().get(0).setValue(nbpoint);
         gen.getParams().get(1).setValue(width);
         gen.getParams().get(2).setValue(amp);
         gen.getParams().get(3).setValue(abs);//abs
 
-        table.setGenerator(gen);
-        if (gen == null) {
-            table.clear();
-            table.setFirst(100);
-        } else {
-            gen.generate();
-        }
-    }
-
-    private TableGeneratorInterface loadTableGenerator(String generatorName) throws Exception {
-        TableGeneratorInterface gen = null;
-        PluginLoaderInterface loader = LoaderFactory.getTableGeneratorPluginLoader();
-        if (loader.containsPlugin(generatorName)) {
-            gen = (TableGeneratorInterface) loader.getPluginByName(generatorName);
-        }
-        return gen;
+        gen.generate();
 
     }
+
+
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //                  Offset Fequency

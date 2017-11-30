@@ -1726,7 +1726,7 @@
                 <lockedToDefault>false</lockedToDefault>
                 <group>Dimension</group>
                 <rolesEnum>User</rolesEnum>
-                <value>50</value>
+                <value>2</value>
                 <defaultValue>1</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>65536</maxValue>
@@ -5945,7 +5945,7 @@
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
                 <rolesEnum>User</rolesEnum>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>true</defaultValue>
             </value>
         </Entry>
@@ -7601,7 +7601,7 @@
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
                 <rolesEnum>User</rolesEnum>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>true</defaultValue>
             </value>
         </Entry>
@@ -9752,7 +9752,7 @@
                 <name>Time_tx</name>
                 <description></description>
                 <numberEnum>Time</numberEnum>
-                <order>One</order>
+                <order>FourLoop</order>
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>3</address>
@@ -9766,7 +9766,7 @@
                 <name>Frequency_offset_init</name>
                 <description></description>
                 <numberEnum>FrequencyOffset</numberEnum>
-                <order>One</order>
+                <order>FourLoop</order>
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>0</address>
@@ -10433,7 +10433,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>4</address>
-                <list>3.0E-4</list>
+                <list>3.9999999999999996E-4</list>
             </value>
         </Entry>
         <Entry>
@@ -10731,60 +10731,11 @@
                 <name>Grad_amp_phase_2D_prep</name>
                 <description></description>
                 <numberEnum>GradAmp</numberEnum>
-                <order>Two</order>
+                <order>FourLoop</order>
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>-10.941981499789476</list>
-                <list>-10.504302239618543</list>
-                <list>-10.066622979447612</list>
-                <list>-9.62894371927668</list>
-                <list>-9.191264459105748</list>
-                <list>-8.753585198934815</list>
-                <list>-8.315905938763883</list>
-                <list>-7.8782266785929504</list>
-                <list>-7.440547418422019</list>
-                <list>-7.002868158251086</list>
-                <list>-6.565188898080154</list>
-                <list>-6.127509637909222</list>
-                <list>-5.689830377738291</list>
-                <list>-5.252151117567359</list>
-                <list>-4.814471857396426</list>
-                <list>-4.376792597225494</list>
-                <list>-3.939113337054562</list>
-                <list>-3.50143407688363</list>
-                <list>-3.063754816712698</list>
-                <list>-2.6260755565417657</list>
-                <list>-2.1883962963708328</list>
-                <list>-1.7507170361999016</list>
-                <list>-1.3130377760289687</list>
-                <list>-0.8753585158580375</list>
-                <list>-0.4376792556871063</list>
-                <list>4.48382664330893E-9</list>
-                <list>0.4376792646547578</list>
-                <list>0.8753585248256925</list>
-                <list>1.3130377849966237</list>
-                <list>1.7507170451675567</list>
-                <list>2.188396305338488</list>
-                <list>2.626075565509421</list>
-                <list>3.063754825680352</list>
-                <list>3.501434085851283</list>
-                <list>3.939113346022216</list>
-                <list>4.376792606193147</list>
-                <list>4.81447186636408</list>
-                <list>5.252151126535013</list>
-                <list>5.689830386705944</list>
-                <list>6.127509646876879</list>
-                <list>6.56518890704781</list>
-                <list>7.002868167218741</list>
-                <list>7.440547427389673</list>
-                <list>7.878226687560604</list>
-                <list>8.315905947731538</list>
-                <list>8.75358520790247</list>
-                <list>9.1912644680734</list>
-                <list>9.628943728244332</list>
-                <list>10.066622988415263</list>
-                <list>10.504302248586198</list>
+                <list>0.0</list>
             </value>
         </Entry>
         <Entry>
@@ -11027,7 +10978,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>-14.354571065447654</list>
+                <list>-11.632383890681902</list>
             </value>
         </Entry>
         <Entry>
@@ -11102,60 +11053,11 @@
                 <name>Grad_amp_spoiler_phase</name>
                 <description></description>
                 <numberEnum>GradAmp</numberEnum>
-                <order>Two</order>
+                <order>FourLoop</order>
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>256</address>
-                <list>10.941981499789476</list>
-                <list>10.504302239618543</list>
-                <list>10.066622979447612</list>
-                <list>9.62894371927668</list>
-                <list>9.191264459105748</list>
-                <list>8.753585198934815</list>
-                <list>8.315905938763883</list>
-                <list>7.8782266785929504</list>
-                <list>7.440547418422019</list>
-                <list>7.002868158251086</list>
-                <list>6.565188898080154</list>
-                <list>6.127509637909222</list>
-                <list>5.689830377738291</list>
-                <list>5.252151117567359</list>
-                <list>4.814471857396426</list>
-                <list>4.376792597225494</list>
-                <list>3.939113337054562</list>
-                <list>3.50143407688363</list>
-                <list>3.063754816712698</list>
-                <list>2.6260755565417657</list>
-                <list>2.1883962963708328</list>
-                <list>1.7507170361999016</list>
-                <list>1.3130377760289687</list>
-                <list>0.8753585158580375</list>
-                <list>0.4376792556871063</list>
-                <list>-4.48382664330893E-9</list>
-                <list>-0.43767926465475776</list>
-                <list>-0.8753585248256925</list>
-                <list>-1.3130377849966237</list>
-                <list>-1.7507170451675567</list>
-                <list>-2.188396305338488</list>
-                <list>-2.626075565509421</list>
-                <list>-3.063754825680352</list>
-                <list>-3.501434085851283</list>
-                <list>-3.939113346022216</list>
-                <list>-4.376792606193147</list>
-                <list>-4.81447186636408</list>
-                <list>-5.252151126535013</list>
-                <list>-5.689830386705944</list>
-                <list>-6.127509646876879</list>
-                <list>-6.56518890704781</list>
-                <list>-7.002868167218741</list>
-                <list>-7.440547427389673</list>
-                <list>-7.878226687560604</list>
-                <list>-8.315905947731538</list>
-                <list>-8.75358520790247</list>
-                <list>-9.1912644680734</list>
-                <list>-9.628943728244332</list>
-                <list>-10.066622988415263</list>
-                <list>-10.504302248586198</list>
+                <list>0.0</list>
             </value>
         </Entry>
         <Entry>
@@ -11219,7 +11121,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>1</address>
-                <list>-3.321894955596653</list>
+                <list>-0.7955434940059156</list>
             </value>
         </Entry>
         <Entry>
@@ -11317,7 +11219,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>8</address>
-                <list>9.701619999999988E-4</list>
+                <list>8.701619999999988E-4</list>
             </value>
         </Entry>
         <Entry>

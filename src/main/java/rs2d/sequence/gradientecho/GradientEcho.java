@@ -6,13 +6,15 @@ package rs2d.sequence.gradientecho;
 //                 GRADIENT_ECHO_dev PSD 
 //  
 // ---------------------------------------------------------------------
-//
+// rename GRADIENT_SPOILER_TIME 
 // 25/10/2017   V7.0X
+// 17/11/2017   V7.3
+
 // 25/10/2017   V7.2
 //		bug and other
 //            KS_CENTER_MODE
 // 30/09/2017    V7.1
-//			Replacement with Gradient and RF-Pulse Class
+//			Replacement with Gradient and RF Pulse Class
 // 			OffCenterFOV
 // 			bug       delay2_min = ...se_time "+" getTim ... Echo) "+" getT...;
 //
@@ -34,6 +36,7 @@ package rs2d.sequence.gradientecho;
 
 import java.util.*;
 
+import rs2d.commons.log.Log;
 import rs2d.spinlab.data.transformPlugin.TransformPlugin;
 import rs2d.spinlab.hardware.controller.HardwareHandler;
 import rs2d.spinlab.instrument.Instrument;
@@ -47,6 +50,7 @@ import rs2d.spinlab.tools.table.Order;
 import rs2d.spinlab.tools.utility.GradientAxe;
 import rs2d.spinlab.tools.utility.Nucleus;
 
+import static java.util.Arrays.asList;
 import static rs2d.sequence.gradientecho.GradientEchoParams.*;
 
 import static rs2d.sequence.gradientecho.GradientEchoSequenceParams.*;
@@ -58,6 +62,7 @@ import static rs2d.sequence.gradientecho.GradientEchoSequenceParams.*;
 //
 public class GradientEcho extends SequenceGeneratorAbstract {
 
+    private String sequenceVersion = "Version7.3";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -141,21 +146,13 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         getParam(DIGITAL_FILTER_SHIFT).setDefaultValue(Instrument.instance().getDevices().getCameleon().getAcquDeadPointCount());
         getParam(DIGITAL_FILTER_REMOVED).setDefaultValue(Instrument.instance().getDevices().getCameleon().isRemoveAcquDeadPoint());
 
-        List<String> tx_shape = new ArrayList<String>();
-        tx_shape.add("HARD");
-        tx_shape.add("GAUSSIAN");
-        tx_shape.add("SINC3");
-        tx_shape.add("SINC5");
-
+        List<String> tx_shape = asList("HARD", "GAUSSIAN", "SINC3", "SINC5");
         //List<String> tx_shape = Arrays.asList("HARD", "GAUSSIAN", "SIN3", "xSINC5");
         ((TextParam) getParam(TX_SHAPE_90)).setSuggestedValues(tx_shape);
         ((TextParam) getParam(TX_SHAPE_90)).setRestrictedToSuggested(true);
 
         //TRANSFORM PLUGIN
-        List<String> list = new ArrayList<String>();
-        list.add("Sequential4D");
-        list.add("Sequential4DBackAndForth");
-        list.add("EPISequential4D");
+        List<String> list = asList("Sequential4D", "Sequential4DBackAndForth", "EPISequential4D");
         ((TextParam) this.getParamFromName(MriDefaultParams.TRANSFORM_PLUGIN.name())).setSuggestedValues(list);
         ((TextParam) this.getParamFromName(MriDefaultParams.TRANSFORM_PLUGIN.name())).setRestrictedToSuggested(true);
 
@@ -249,12 +246,9 @@ public class GradientEcho extends SequenceGeneratorAbstract {
     //
     // --------------------------------------------------------------------------------------------------------------------------------------------
     private void beforeRouting() throws Exception {
-        setParamValue(SEQUENCE_VERSION, "VersionXXX");
+        Log.debug(getClass(), "------------ BEFORE ROUTING -------------");
+        setParamValue(SEQUENCE_VERSION, sequenceVersion);
         setParamValue(MODALITY, "MRI");
-        boolean b_comment = false; // Show the comments
-        if (b_comment) {
-            System.out.println("------------ BEFORE ROUTING -------------");
-        }
 
         // -----------------------------------------------
         // RX parameters : nucleus, RX gain & frequencies
@@ -414,7 +408,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // -----------------------------------------------        // set the calculated acquisition matrix
 
         setParamValue(ACQUISITION_MATRIX_DIMENSION_1D, acquisitionMatrixDimension1D);
-        setParamValue(ACQUISITION_MATRIX_DIMENSION_2D, isKSCenterMode ? 2 : acquisitionMatrixDimension2D);
+        setParamValue(ACQUISITION_MATRIX_DIMENSION_2D, acquisitionMatrixDimension2D);
         setParamValue(ACQUISITION_MATRIX_DIMENSION_3D, isKSCenterMode && !isMultiplanar ? 1 : acquisitionMatrixDimension3D);
         setParamValue(ACQUISITION_MATRIX_DIMENSION_4D, isKSCenterMode ? 1 : acquisitionMatrixDimension4D);
 
@@ -476,19 +470,21 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         if (!isEnableSlice && (isMultiplanar || (!isMultiplanar && !isEnablePhase3D))) {
             off_center_distance_3D = 0;
         }
-
-        setParamValue(OFF_CENTER_FIELD_OF_VIEW_3D, off_center_distance_3D);
-        setParamValue(OFF_CENTER_FIELD_OF_VIEW_2D, off_center_distance_2D);
-        setParamValue(OFF_CENTER_FIELD_OF_VIEW_1D, off_center_distance_1D);
-
         boolean is_read_phase_inverted = ((BooleanParam) getParam(SWITCH_READ_PHASE)).getValue();
         if (is_read_phase_inverted) {
             setSequenceParamValue(Gradient_axe_phase, GradientAxe.R);
             setSequenceParamValue(Gradient_axe_read, GradientAxe.P);
+            double off_center_distance_tmp = off_center_distance_2D;
+            off_center_distance_2D = off_center_distance_1D;
+            off_center_distance_1D = off_center_distance_tmp;
         } else {
             setSequenceParamValue(Gradient_axe_phase, GradientAxe.P);
             setSequenceParamValue(Gradient_axe_read, GradientAxe.R);
         }
+        setParamValue(OFF_CENTER_FIELD_OF_VIEW_3D, off_center_distance_3D);
+        setParamValue(OFF_CENTER_FIELD_OF_VIEW_2D, off_center_distance_2D);
+        setParamValue(OFF_CENTER_FIELD_OF_VIEW_1D, off_center_distance_1D);
+
         // -----------------------------------------------
         // activate gradient rotation matrix
         // -----------------------------------------------
@@ -564,7 +560,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // -----------------------------------------------
         // Calculation RF pulse parameters  1/3 : Shape
         // -----------------------------------------------
-        setSequenceTableFirstValue(Time_tx, txLength90);
+        setSequenceTableSingleValue(Time_tx, txLength90);
         RFPulse pulseTX = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_amp, Tx_phase, Time_tx, Tx_shape, Tx_shape_phase, Tx_freq_offset);
 
         int nb_shape_points = 128;
@@ -580,11 +576,11 @@ public class GradientEcho extends SequenceGeneratorAbstract {
                 getUnreachParamExceptionManager().addParam(TX_LENGTH_90.name(), txLength90, pulseTX.getPulseDuration(), ((NumberParam) getParam(TX_LENGTH_90)).getMaxValue(), "Pulse length too short to reach RF power with this pulse shape");
                 txLength90 = pulseTX.getPulseDuration();
             }
-            this.setParamValue(PULSE_ATT, pulseTX.getAtt());            // display PULSE_ATT
+            this.setParamValue(TX_ATT, pulseTX.getAtt());            // display PULSE_ATT
             this.setParamValue(TX_AMP_90, pulseTX.getAmp90());     // display 90° amplitude
             this.setParamValue(TX_AMP_180, pulseTX.getAmp180());   // display 180° amplitude
         } else {
-            pulseTX.setAtt(((NumberParam) getParam(PULSE_ATT)));
+            pulseTX.setAtt(((NumberParam) getParam(TX_ATT)));
             pulseTX.setAmp(((NumberParam) getParam(TX_AMP_90)));
         }
 
@@ -663,7 +659,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         double grad_area_sequence_max = 100 * (grad_phase_application_time + grad_shape_rise_time);
         double grad_area_max = Math.max(gradReadPrep.getTotalArea(), Math.max(gradSliceRefPhase3D.getTotalArea(), gradPhase2D.getTotalArea()));            // calculate the maximum gradient aera between SLICE REFOC & READ PREPHASING
         if (grad_area_max > grad_area_sequence_max) {
-            double grad_phase_application_time_min = ceilToSubDecimal(grad_area_max / 100.0 - grad_shape_rise_time, 5);
+            double grad_phase_application_time_min = ceilToSubDecimal(grad_area_max / 100.0 - grad_shape_rise_time, 6);
             getUnreachParamExceptionManager().addParam(GRADIENT_PHASE_APPLICATION_TIME.name(), grad_phase_application_time, grad_phase_application_time_min, ((NumberParam) getParam(GRADIENT_PHASE_APPLICATION_TIME)).getMaxValue(), "Gradient application pulseDuration too short to reach this pixel dimension");
             grad_phase_application_time = grad_phase_application_time_min;
             setSequenceTableSingleValue(Time_grad_phase_top, grad_phase_application_time);
@@ -680,13 +676,6 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING
         // --------------------------------------------------------------------------------------------------------------------------------------------
 
-        // ------------------------------------------
-        // delays for FIR
-        // ------------------------------------------
-        boolean is_FIR = Instrument.instance().getDevices().getCameleon().isRemoveAcquDeadPoint();
-        double lo_FIR_dead_point = is_FIR ? Instrument.instance().getDevices().getCameleon().getAcquDeadPointCount() : 0;
-        double min_FIR_delay = (lo_FIR_dead_point + 2) / spectralWidth;
-        double min_FIR_4pts_delay = 4 / spectralWidth;
 
         // ------------------------------------------
         // delays for sequence instructions
@@ -713,6 +702,13 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         double delay1 = te - time1;
         setSequenceTableSingleValue(Time_TE_delay1, delay1);
 
+        // ------------------------------------------
+        // delays for FIR
+        // ------------------------------------------
+        boolean is_FIR = Instrument.instance().getDevices().getCameleon().isRemoveAcquDeadPoint();
+        double lo_FIR_dead_point = is_FIR ? Instrument.instance().getDevices().getCameleon().getAcquDeadPointCount() : 0;
+        double min_FIR_delay = (lo_FIR_dead_point + 2) / spectralWidth;
+        double min_FIR_4pts_delay = 4 / spectralWidth;
         // ------------------------------------------
         // calculate delays adapted to correct spacing in case of ETL & search for incoherence
         // ------------------------------------------
@@ -741,9 +737,9 @@ public class GradientEcho extends SequenceGeneratorAbstract {
 
         // timing : grad_phase_application_time must be < grad_spoiler_application_time if rewinding
         //  boolean is_grad_rewinding = ((BooleanParam) getParam(GRADIENT_ENABLE_REWINDING)).getValue();// get slice refocussing ratio
-        double grad_spoiler_application_time = ((NumberParam) getParam(GRADIENT_SPOILER_APPL_TIME)).getValue().doubleValue();
+        double grad_spoiler_application_time = ((NumberParam) getParam(GRADIENT_SPOILER_TIME)).getValue().doubleValue();
         if (is_grad_rewinding && grad_phase_application_time > grad_spoiler_application_time) {
-            getUnreachParamExceptionManager().addParam(GRADIENT_SPOILER_APPL_TIME.name(), grad_spoiler_application_time, grad_phase_application_time, ((NumberParam) getParam(GRADIENT_SPOILER_APPL_TIME)).getMaxValue(), "Gradient Spoiler top pulseDuration must be longer than Phase Application Time");
+            getUnreachParamExceptionManager().addParam(GRADIENT_SPOILER_TIME.name(), grad_spoiler_application_time, grad_phase_application_time, ((NumberParam) getParam(GRADIENT_SPOILER_TIME)).getMaxValue(), "Gradient Spoiler top pulseDuration must be longer than Phase Application Time");
             grad_spoiler_application_time = grad_phase_application_time;
         }
         setSequenceTableSingleValue(Time_grad_spoiler_top, grad_spoiler_application_time);
@@ -878,7 +874,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // Phase Reset
         // -----------------------------------------------
         setSequenceParamValue(Phase_reset, PHASE_RESET);
-        setSequenceTableFirstValue(Frequency_offset_init, 0.0);// PSD should start with a zero offset frequency pulse
+        // ----------- init Freq offset---------------------
+        setSequenceTableSingleValue(Frequency_offset_init, 0.0);// PSD should start with a zero offset frequency pulse
 
         // ------------------------------------------------------------------
         //calculate TX FREQUENCY offsets tables for slice positionning
@@ -1060,9 +1057,9 @@ public class GradientEcho extends SequenceGeneratorAbstract {
     }
 
 
-    private Table setSequenceTableSingleValue(String tableName, double... values) {
+    private void setSequenceTableSingleValue(String tableName, double... values) {
         // uses Order.One because there are no tables in this dimension: compilation issue
-        return setSequenceTableValues(tableName, Order.FourLoop, values);
+        setSequenceTableValues(tableName, Order.FourLoop, values);
     }
 
     private Table setSequenceTableValues(String tableName, Order order, double... values) {
@@ -1175,10 +1172,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         return time;
     }
 
-    public ArrayList<RoleEnum> getPluginAccess() {
-        ArrayList<RoleEnum> roleEnums = new ArrayList<RoleEnum>();
-        roleEnums.add(RoleEnum.User);
-        return roleEnums;
+    public List<RoleEnum> getPluginAccess() {
+        return Collections.singletonList(RoleEnum.User);
     }
 
     //<editor-fold defaultstate="collapsed" desc="Generated Code (RS2D)">

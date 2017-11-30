@@ -360,7 +360,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.01377</value>
+                <value>0.00381</value>
                 <defaultValue>0.005</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -790,6 +790,20 @@
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>false</value>
+                <defaultValue>false</defaultValue>
+            </value>
+        </entry>
+        <entry>
+            <key>KS_CENTER_MODE</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>KS_CENTER_MODE</name>
+                <description>Turn off the PE gradient and acquieres two single scan only</description>
+                <displayedName>KS_CENTER_MODE</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
                 <value>false</value>
@@ -2043,6 +2057,21 @@
             </value>
         </entry>
         <entry>
+            <key>PHASE_RESET</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>PHASE_RESET</name>
+                <description></description>
+                <displayedName>PHASE_RESET</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Emission</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>false</value>
+                <defaultValue>false</defaultValue>
+            </value>
+        </entry>
+        <entry>
             <key>PREPHASING_READ_GRADIENT_RATIO</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>PREPHASING_READ_GRADIENT_RATIO</name>
@@ -2145,7 +2174,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.556</value>
+                <value>0.202</value>
                 <defaultValue>0.2</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -2252,7 +2281,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>27.9</value>
+                <value>10.2</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -2271,7 +2300,7 @@
                 <group>User</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>Version7.1</value>
+                <value>VersionXXX</value>
                 <defaultValue></defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
             </value>
@@ -2286,7 +2315,7 @@
                 <lockedToDefault>false</lockedToDefault>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>GE_2D_AX_64x50x20</value>
+                <value>GE_2DAXI_64x50x20</value>
                 <defaultValue></defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
             </value>

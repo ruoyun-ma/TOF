@@ -60,12 +60,12 @@ public interface GradientEchoSequenceParams {
     /**
      * Group: Gradient, Type: EnumParam
      */
-    String GradientAxePhase = "GradientAxePhase";
+    String Gradient_axe_phase = "Gradient_axe_phase";
 
     /**
      * Group: Gradient, Type: EnumParam
      */
-    String GradientAxeRead = "GradientAxeRead";
+    String Gradient_axe_read = "Gradient_axe_read";
 
     /**
      * Group: Reception, Type: NumberParam - Frequency (Hz)
@@ -115,7 +115,7 @@ public interface GradientEchoSequenceParams {
     /**
      * Group: Dimension, Type: NumberParam - Scan
      */
-    String PS = "PS";
+    String Pre_scan = "Pre_scan";
 
     /**
      * Group: Reception, Type: NumberParam - RxGain (dB)
@@ -145,7 +145,7 @@ public interface GradientEchoSequenceParams {
     /**
      * Group: Miscellaneous, Type: TextParam
      */
-    String TxNucleus = "TxNucleus";
+    String Tx_nucleus = "Tx_nucleus";
 
 
     //-- public tables
@@ -186,14 +186,19 @@ public interface GradientEchoSequenceParams {
     String FreqOffset_tx_prep = "FreqOffset_tx_prep";
 
     /**
+     * Group: Transmit, Order: 1D - FreqOffset (Hz)
+     */
+    String Frequency_offset_init = "Frequency_offset_init";
+
+    /**
      * Group: Gradient, Order: 2D - GradAmp (%)
      */
-    String Grad_amp_phase_2D = "Grad_amp_phase_2D";
+    String Grad_amp_phase_2D_prep = "Grad_amp_phase_2D_prep";
 
     /**
      * Group: Gradient, Order: 4D+Loop - GradAmp (%)
      */
-    String Grad_amp_phase_3D = "Grad_amp_phase_3D";
+    String Grad_amp_phase_3D_prep = "Grad_amp_phase_3D_prep";
 
     /**
      * Group: Gradient, Order: 4D+Loop - GradAmp (%)
@@ -228,12 +233,12 @@ public interface GradientEchoSequenceParams {
     /**
      * Group: Gradient, Order: 1D - GradShape (%)
      */
-    String Grad_shape_down = "Grad_shape_down";
+    String Grad_shape_rise_down = "Grad_shape_rise_down";
 
     /**
      * Group: Gradient, Order: 1D - GradShape (%)
      */
-    String Grad_shape_up = "Grad_shape_up";
+    String Grad_shape_rise_up = "Grad_shape_rise_up";
 
     /**
      * Group: Reception, Order: 4D+LoopB - FreqOffset (Hz)
@@ -248,7 +253,7 @@ public interface GradientEchoSequenceParams {
     /**
      * Group: Delay, Order: 4D+Loop - Time (s)
      */
-    String Time_btw_dyn_frames_delay = "Time_btw_dyn_frames_delay";
+    String Time_btw_dyn_frames = "Time_btw_dyn_frames";
 
     /**
      * Group: Delay, Order: 4D+Loop - Time (s)
@@ -276,7 +281,7 @@ public interface GradientEchoSequenceParams {
     String Time_last_delay = "Time_last_delay";
 
     /**
-     * Group: Delay, Order: 1D - Time (s)
+     * Group: Delay, Order: 4D+Loop - Time (s)
      */
     String Time_min_instruction = "Time_min_instruction";
 
@@ -301,7 +306,7 @@ public interface GradientEchoSequenceParams {
     String Time_TE_delay2 = "Time_TE_delay2";
 
     /**
-     * Group: Delay, Order: 1D - Time (s)
+     * Group: Delay, Order: 4D - Time (s)
      */
     String Time_TR_delay = "Time_TR_delay";
 

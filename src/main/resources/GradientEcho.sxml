@@ -611,7 +611,7 @@
         <Entry>
             <count>1</count>
             <key>key58</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="timeElement" timeKey="key19" triggerKey="key222" nameKey="key220" enabledKey="key221"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="timeElement" timeKey="key53" triggerKey="key222" nameKey="key220" enabledKey="key221"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -698,7 +698,7 @@
         <Entry>
             <count>1</count>
             <key>key75</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="loElement" offsetKey="key34" phaseKey="key36" shapePhaseKey="key37" nameKey="key272" enabledKey="key273">
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="loElement" offsetKey="key5" phaseKey="key36" shapePhaseKey="key37" nameKey="key272" enabledKey="key273">
                 <phaseModEnabled>false</phaseModEnabled>
             </value>
         </Entry>
@@ -842,7 +842,7 @@
         <Entry>
             <count>1</count>
             <key>key103</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="timeElement" timeKey="key55" triggerKey="key354" nameKey="key352" enabledKey="key353"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="timeElement" timeKey="key53" triggerKey="key354" nameKey="key352" enabledKey="key353"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -1236,7 +1236,7 @@
             <count>1</count>
             <key>key0</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>TxNucleus</name>
+                <name>Tx_nucleus</name>
                 <description>The nucleus used for the first sequence channel</description>
                 <displayedName>Nucleus 1</displayedName>
                 <locked>true</locked>
@@ -1412,7 +1412,7 @@
             <count>1</count>
             <key>key3</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>PS</name>
+                <name>Pre_scan</name>
                 <description>PreScan</description>
                 <displayedName>PS</displayedName>
                 <locked>true</locked>
@@ -5613,7 +5613,7 @@
             <count>1</count>
             <key>key287</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
-                <name>GradientAxePhase</name>
+                <name>Gradient_axe_phase</name>
                 <displayedName>GradientAxePhase</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -5642,7 +5642,7 @@
             <count>1</count>
             <key>key289</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
-                <name>GradientAxeRead</name>
+                <name>Gradient_axe_read</name>
                 <displayedName>GradientAxeRead</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -9760,30 +9760,31 @@
             </value>
         </Entry>
         <Entry>
-            <count>1</count>
+            <count>2</count>
             <key>key5</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
-                <name>FreqOffset</name>
+                <name>Frequency_offset_init</name>
                 <description></description>
                 <numberEnum>FrequencyOffset</numberEnum>
                 <order>One</order>
-                <locked>false</locked>
+                <group>Emission</group>
+                <locked>true</locked>
                 <address>0</address>
-                <list>0</list>
+                <list>0.0</list>
             </value>
         </Entry>
         <Entry>
             <count>1</count>
             <key>key6</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
-                <name>Time_btw_dyn_frames_delay</name>
+                <name>Time_btw_dyn_frames</name>
                 <description></description>
                 <numberEnum>Time</numberEnum>
                 <order>FourLoop</order>
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>9</address>
-                <list>1.0E-5</list>
+                <list>5.0E-6</list>
             </value>
         </Entry>
         <Entry>
@@ -9811,7 +9812,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>9</address>
-                <list>1.0E-5</list>
+                <list>5.0E-6</list>
             </value>
         </Entry>
         <Entry>
@@ -10195,19 +10196,6 @@
         </Entry>
         <Entry>
             <count>1</count>
-            <key>key19</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
-                <name>Time11</name>
-                <description></description>
-                <numberEnum>Time</numberEnum>
-                <order>One</order>
-                <locked>false</locked>
-                <address>1</address>
-                <list>9.999999999999999E-6</list>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
             <key>key20</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
                 <name>Time_TE_delay1</name>
@@ -10217,7 +10205,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>5</address>
-                <list>1.4095999999998166E-5</list>
+                <list>4.909599999999934E-5</list>
             </value>
         </Entry>
         <Entry>
@@ -10231,7 +10219,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>1.0E-5</list>
+                <list>5.0E-6</list>
             </value>
         </Entry>
         <Entry>
@@ -10245,7 +10233,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>1.0E-5</list>
+                <list>5.0E-6</list>
             </value>
         </Entry>
         <Entry>
@@ -10266,7 +10254,7 @@
             <count>8</count>
             <key>key24</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="shape">
-                <name>Grad_shape_up</name>
+                <name>Grad_shape_rise_up</name>
                 <description></description>
                 <numberEnum>GradShape</numberEnum>
                 <order>One</order>
@@ -10452,7 +10440,7 @@
             <count>8</count>
             <key>key28</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="shape">
-                <name>Grad_shape_down</name>
+                <name>Grad_shape_rise_down</name>
                 <description></description>
                 <numberEnum>GradShape</numberEnum>
                 <order>One</order>
@@ -10598,7 +10586,7 @@
             <count>3</count>
             <key>key29</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
-                <name>Grad_amp_phase_3D</name>
+                <name>Grad_amp_phase_3D_prep</name>
                 <description></description>
                 <numberEnum>GradAmp</numberEnum>
                 <order>FourLoop</order>
@@ -10656,19 +10644,6 @@
                 <order>One</order>
                 <locked>false</locked>
                 <address>-1</address>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key34</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
-                <name>FreqOffset0</name>
-                <description></description>
-                <numberEnum>FrequencyOffset</numberEnum>
-                <order>One</order>
-                <locked>false</locked>
-                <address>0</address>
-                <list>0</list>
             </value>
         </Entry>
         <Entry>
@@ -10753,7 +10728,7 @@
             <count>3</count>
             <key>key41</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
-                <name>Grad_amp_phase_2D</name>
+                <name>Grad_amp_phase_2D_prep</name>
                 <description></description>
                 <numberEnum>GradAmp</numberEnum>
                 <order>Two</order>
@@ -10977,17 +10952,17 @@
             </value>
         </Entry>
         <Entry>
-            <count>2</count>
+            <count>4</count>
             <key>key53</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
                 <name>Time_min_instruction</name>
                 <description></description>
                 <numberEnum>Time</numberEnum>
-                <order>One</order>
+                <order>FourLoop</order>
                 <group>Delay</group>
-                <locked>false</locked>
+                <locked>true</locked>
                 <address>0</address>
-                <list>0.01</list>
+                <list>5.0E-6</list>
             </value>
         </Entry>
         <Entry>
@@ -11001,20 +10976,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>7</address>
-                <list>2.1948800000000005E-4</list>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key55</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
-                <name>Time17</name>
-                <description></description>
-                <numberEnum>Time</numberEnum>
-                <order>One</order>
-                <locked>false</locked>
-                <address>0</address>
-                <list>1.0E-5</list>
+                <list>0.0015471840000000005</list>
             </value>
         </Entry>
         <Entry>
@@ -11351,11 +11313,11 @@
                 <name>Time_TR_delay</name>
                 <description></description>
                 <numberEnum>Time</numberEnum>
-                <order>One</order>
+                <order>Four</order>
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>8</address>
-                <list>3.2108000000007364E-5</list>
+                <list>9.701619999999988E-4</list>
             </value>
         </Entry>
         <Entry>
@@ -11420,7 +11382,7 @@
                 <group>Reception</group>
                 <locked>false</locked>
                 <address>0</address>
-                <list>0</list>
+                <list>0.0</list>
             </value>
         </Entry>
         <Entry>

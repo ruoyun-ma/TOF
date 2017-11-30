@@ -1,5 +1,6 @@
 package rs2d.sequence.gradientecho;
 
+import rs2d.spinlab.data.transformPlugin.TransformPlugin;
 import rs2d.spinlab.hardware.controller.HardwareHandler;
 import rs2d.spinlab.instrument.util.GradientMath;
 import rs2d.spinlab.sequence.Sequence;
@@ -7,7 +8,12 @@ import rs2d.spinlab.sequence.table.Shape;
 import rs2d.spinlab.sequence.table.Table;
 import rs2d.spinlab.sequence.table.Utility;
 import rs2d.spinlab.tools.table.Order;
-
+/**
+ * Class Gradient
+ * V2.1- 2017-10-24 JR
+ *
+ *
+ */
 public class Gradient {
     private Table amplitudeTable = null;
     private Table flatTimeTable = null;
@@ -19,26 +25,29 @@ public class Gradient {
     private double amplitude = Double.NaN;
     private double staticArea = Double.NaN;
 
-    private double[] amplitudeArray;
+    private double[] amplitudeArray  = null;
     private double maxAreaPE = Double.NaN;
 
     private int steps = -1;
     private Order order = Order.FourLoop;
+
     private double grad_shape_rise_time = Double.NaN;
     private double equivalentTime = Double.NaN;
+
+    // Slc
     private double sliceThicknessExcitation = Double.NaN;
+    private double txBandwidth = Double.NaN;
+
+    // RO
     private double spectralWidth = Double.NaN;
-    private double fov = Double.NaN;
-    private double spoilerExcess = Double.NaN;
-    private boolean isKSCentred = false;
 
-
+    // PE
     private boolean bPhaseEncoding = false;
-    //prepareEquivalentTime()
-    // preparePhaseEncoding()
+    private double fovPhase = Double.NaN;
+    private boolean isKSCentred = false;
+    private double spoilerExcess = Double.NaN;
 
     private boolean bRefocalizeGradient = false;
-//
 
 
     private static double gMax = GradientMath.getMaxGradientStrength();
@@ -51,7 +60,7 @@ public class Gradient {
         rampTimeUpTable = rampTimeUpTab;
         rampTimeDownTable = rampTimeDownTab;
         gMax = GradientMath.getMaxGradientStrength();
-        computeShapeRiseTime(rampTimeUpTable, rampTimeDownTable);
+        computeShapeRiseTime();
         prepareEquivalentTime();
     }
 
@@ -84,11 +93,12 @@ public class Gradient {
             return amplitude;
         }
     }
+
     public double getAmplitude_mTpm() {
         if (Double.isNaN(amplitude)) {
             return 0.0;
         } else {
-            return amplitude * gMax/100.0;
+            return amplitude * gMax / 100.0;
         }
     }
 
@@ -103,10 +113,10 @@ public class Gradient {
     public double getSliceThickness() {
         return sliceThicknessExcitation;
     }
+
     public double getSpoilerExcess() {
         return spoilerExcess;
     }
-
 
 
     public int getSteps() {
@@ -118,6 +128,11 @@ public class Gradient {
     }
 
     public double getEquivalentTime() {
+        return equivalentTime;
+    }
+
+    public double getGradShapeRiseTime() {
+        computeShapeRiseTime();
         return equivalentTime;
     }
 
@@ -152,7 +167,7 @@ public class Gradient {
     }
 
     /**
-     *  write the prepared amplitude into the Sequence_parameter
+     * write the prepared amplitude into the Sequence_parameter
      */
     public void applyAmplitude() {
         double offset = 0.0;
@@ -177,7 +192,7 @@ public class Gradient {
     }
 
     /**
-     *  Check if the statid and dynamic gradient do not exceed the gradient max:
+     * Check if the statid and dynamic gradient do not exceed the gradient max:
      */
     public double[] checkGradientMax() {
         double gradMax = 0;
@@ -194,28 +209,38 @@ public class Gradient {
         } else {
             gradMax = Math.max(gradMax, Math.abs(+offset));
         }
-        if (( gradMax >100.0) || (gradMin< - 100.0)) {
-            System.out.println("Warning - Gradient Min and  Max: "+gradMax+ " "+ gradMin);
+        if ((gradMax > 100.0) || (gradMin < -100.0)) {
+            System.out.println("Warning - Gradient Min and  Max: " + gradMax + " " + gradMin);
         }
         double[] gradMaxMin = new double[2];
-        gradMaxMin[0]= gradMax;
-        gradMaxMin[1]= gradMin;
-        return ( gradMaxMin) ;
+        gradMaxMin[0] = gradMax;
+        gradMaxMin[1] = gradMin;
+        return (gradMaxMin);
     }
 
-
-    private double computeShapeRiseTime(Table rampTimeUpTab, Table rampTimeDownTab) {
+    /**
+     * Calculate equivalent shape rise time from rampTime ans shapes
+     * equivalent time for rectangular gradient with same Area and amplitude
+     *
+     * @return grad_shape_rise_time :
+     */
+    private double computeShapeRiseTime() {
         double grad_shape_rise_factor_up = Utility.voltageFillingFactor(shapeUpTable);
         double grad_shape_rise_factor_down = Utility.voltageFillingFactor(shapeDownTable);
-        double grad_up_rise_time = rampTimeUpTab.get(0).doubleValue();
-        double grad_down_rise_time = rampTimeDownTab.get(0).doubleValue();
+        double grad_up_rise_time = rampTimeUpTable.get(0).doubleValue();
+        double grad_down_rise_time = rampTimeDownTable.get(0).doubleValue();
         grad_shape_rise_time = grad_shape_rise_factor_up * grad_up_rise_time + grad_shape_rise_factor_down * grad_down_rise_time;
         return grad_shape_rise_time;
     }
 
+    /**
+     * Calculate equivalentTime of a rectangular gradient with same Area and amplitude
+     *
+     * @return equivalentTime :
+     */
     public double prepareEquivalentTime() {
         if (grad_shape_rise_time == Double.NaN) {
-            computeShapeRiseTime(rampTimeUpTable, rampTimeDownTable);
+            computeShapeRiseTime();
         }
         equivalentTime = (flatTimeTable.get(0).doubleValue() + grad_shape_rise_time);
         return equivalentTime;
@@ -231,7 +256,7 @@ public class Gradient {
         calculateStaticAmplitude();
     }
 
-     public void rePrepare() {
+    public void rePrepare() {
         prepareEquivalentTime();
         if (bPhaseEncoding)
             preparePhaseEncoding();
@@ -244,8 +269,14 @@ public class Gradient {
     //     RO             Readout  methodes             RO
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-
-    public boolean prepareReadoutGradient(double spectralWidth, double fov)throws Exception {
+    /**
+     * calculate readout Gradient Amplitude
+     *
+     * @param spectralWidth
+     * @param fov
+     * @return testSpectralWidth : false if the Spectralwidth need to be nicreased(call getSpectralWidth() )
+     */
+    public boolean calculateReadoutGradient(double spectralWidth, double fov)  throws Exception{
         boolean testSpectralWidth = true;
         this.spectralWidth = spectralWidth;
         amplitude = spectralWidth / ((GradientMath.GAMMA) * fov) * 100.0 / gMax;                 // amplitude in T/m
@@ -258,17 +289,30 @@ public class Gradient {
         return testSpectralWidth;
     }
 
-    public double solveSpectralWidthMax(double fov)throws Exception {
-        double sw = getInferiorSpectralWidth(gMax * GradientMath.GAMMA * fov);
-        sw = HardwareHandler.getInstance().getSequenceHandler().getCompiler().getNearestSW(sw);
-        return sw;
+    /**
+     * calculate spectral width max for a given FOV
+     *
+     * @param fov
+     * @return sw
+     */
+    public double solveSpectralWidthMax(double fov) throws Exception {
+        double spectralWidth = getInferiorSpectralWidth(gMax * GradientMath.GAMMA * fov);
+        spectralWidth = 3906250.0 / (Math.ceil(3906250.0 / spectralWidth) + 1); // to get the nearest SW bellow the limit
+        spectralWidth = HardwareHandler.getInstance().getSequenceHandler().getCompiler().getNearestSW(spectralWidth);
+        return spectralWidth;
     }
 
     public double getSpectralWidth() {
         return spectralWidth;
     }
 
-    public void setReadoutEchoPlanarAmplitude(int ETL, Order tableorder) {
+    /**
+     * set READOUT gradient Amplitude ETL values with back and forth(+/-) sign
+     *
+     * @param ETL : number of gradient values
+     * @param tableorder
+     */
+    public void applyReadoutEchoPlanarAmplitude(int ETL, Order tableorder) {
         order = tableorder;
         if (!Double.isNaN(amplitude)) {
             steps = ETL;
@@ -284,7 +328,12 @@ public class Gradient {
         }
         applyAmplitude();
     }
+    /**
+     * calculate READOUT refocusing gradient Amplitude handeling ETL
+     *
+     * @param grad : Readout Gradient
 
+     */
     public void refocalizeReadoutGradient(Gradient grad, double ratio) {
         int rOSteps = grad.getSteps();
         if (rOSteps > 0) {
@@ -301,6 +350,7 @@ public class Gradient {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     public boolean prepareSliceSelection(double tx_bandwidth, double slice_thickness_excitation) {
         boolean testSliceThickness = true;
+        txBandwidth = tx_bandwidth;
         this.sliceThicknessExcitation = slice_thickness_excitation;
         amplitude = (tx_bandwidth / ((GradientMath.GAMMA) * sliceThicknessExcitation)) * 100.0 / gMax;                 // amplitude in T/m
         if (amplitude > 100.0) {
@@ -312,6 +362,10 @@ public class Gradient {
         return testSliceThickness;
     }
 
+    public void applyAmplitude(double sliceThickness) {
+        prepareSliceSelection(txBandwidth, sliceThickness);
+        applyAmplitude();
+    }
 
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -319,15 +373,15 @@ public class Gradient {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     public void preparePhaseEncoding() {
-        preparePhaseEncoding(steps, fov, isKSCentred);
+        preparePhaseEncoding(steps, fovPhase, isKSCentred);
     }
 
-    public void preparePhaseEncoding(int matrixDimension, double fovDim, boolean isKSCentred) {
+    public void preparePhaseEncoding(int matrixDimension, double fovDimPE, boolean isKSCentred) {
         bPhaseEncoding = true;
         steps = matrixDimension;
-        fov = fovDim;
+        fovPhase = fovDimPE;
         this.isKSCentred = isKSCentred;
-        double grad_total_area_phase = prepPhaseGradTotalArea(steps, fov);
+        double grad_total_area_phase = prepPhaseGradTotalArea(steps, fovPhase);
         double grad_index_max_phase = prepPhaseGradIndexMax(this.isKSCentred);
         double grad_total_amp_phase = grad_total_area_phase / equivalentTime;
         amplitudeArray = new double[steps];
@@ -371,8 +425,23 @@ public class Gradient {
         return amplitudeArray;
     }
 
+    public void reoderPhaseEncoding(TransformPlugin plugin, int echoTrainLength, int acquisitionMatrixDimension2D, int acquisitionMatrixDimension1D) {
+        double loopNumber, indexNew;
+        if( amplitudeArray != null) {
+            double[] newTable = new double[acquisitionMatrixDimension2D];
+            for (int j = 0; j < acquisitionMatrixDimension2D; j++) {
+                int[] indexScan = plugin.invTransf(0, j, 0, 0);
+                loopNumber = indexScan[0] / acquisitionMatrixDimension1D; // Echo-block number: ETL-loop index
+                indexNew = indexScan[1] * echoTrainLength + loopNumber;    // indexScan[1]: index de Nb 2D
+                newTable[(int) indexNew] = amplitudeArray[j];
+            }
+            amplitudeArray = newTable;
+        }
+    }
+
+
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    //     PE             Spoiler             PE
+    //                  Spoiler
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     public boolean addSpoiler(double gradAmplitude) {
@@ -384,7 +453,7 @@ public class Gradient {
         }
         calculateStaticArea();
         double[] gradMaxMin = checkGradientMax();
-        if (gradMaxMin[0] > 100.0 ) {
+        if (gradMaxMin[0] > 100.0) {
             amplitude = 100.0;
             spoilerExcess = gradMaxMin[0] - 100.0;
             testSpoilerSupThan100 = false;
@@ -408,4 +477,4 @@ public class Gradient {
         }
     }
 
-}
+}

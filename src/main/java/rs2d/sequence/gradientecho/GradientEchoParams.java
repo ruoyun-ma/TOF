@@ -357,7 +357,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.01377);
+            param.setValue(0.00381);
             param.setDefaultValue(0.005);
             return param;
         }
@@ -742,6 +742,20 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setDescription("Allow keyhole: test the max amp of the phase encoding gradient for partial = 100%");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Scan);
+            param.setCategory(Category.Acquisition);
+            param.setValue(false);
+            param.setDefaultValue(false);
+            return param;
+        }
+    },
+
+    KS_CENTER_MODE {
+        Param build() {
+            BooleanParam param = new BooleanParam();
+            param.setName("KS_CENTER_MODE");
+            param.setDisplayedName("KS_CENTER_MODE");
+            param.setDescription("Turn off the PE gradient and acquieres two single scan only");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setCategory(Category.Acquisition);
             param.setValue(false);
             param.setDefaultValue(false);
@@ -1368,6 +1382,21 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         }
     },
 
+    PHASE_RESET {
+        Param build() {
+            BooleanParam param = new BooleanParam();
+            param.setName("PHASE_RESET");
+            param.setDisplayedName("PHASE_RESET");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Emission);
+            param.setCategory(Category.Acquisition);
+            param.setValue(false);
+            param.setDefaultValue(false);
+            return param;
+        }
+    },
+
     PREPHASING_READ_GRADIENT_RATIO {
         Param build() {
             NumberParam param = new NumberParam();
@@ -1467,7 +1496,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.556);
+            param.setValue(0.202);
             param.setDefaultValue(0.2);
             return param;
         }
@@ -1550,7 +1579,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setDescription("");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setCategory(Category.Acquisition);
-            param.setValue("GE_2D_AX_64x50x20");
+            param.setValue("GE_2DAXI_64x50x20");
             param.setDefaultValue("");
             return param;
         }
@@ -1584,7 +1613,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(27.9);
+            param.setValue(10.2);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -1599,7 +1628,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.User);
             param.setCategory(Category.Acquisition);
-            param.setValue("Version7.1");
+            param.setValue("VersionXXX");
             param.setDefaultValue("");
             return param;
         }

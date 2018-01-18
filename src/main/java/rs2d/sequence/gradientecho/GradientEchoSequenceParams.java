@@ -8,6 +8,11 @@ public interface GradientEchoSequenceParams {
     //-- public params
 
     /**
+     * Group: Delay, Type: TextParam
+     */
+    String Ext_trig_source = "Ext_trig_source";
+
+    /**
      * Group: Gradient, Type: BooleanParam
      */
     String Grad_enable_phase_2D = "Grad_enable_phase_2D";
@@ -191,7 +196,7 @@ public interface GradientEchoSequenceParams {
     String Frequency_offset_init = "Frequency_offset_init";
 
     /**
-     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
+     * Group: Gradient, Order: 2D - GradAmp (%)
      */
     String Grad_amp_phase_2D_prep = "Grad_amp_phase_2D_prep";
 
@@ -216,7 +221,7 @@ public interface GradientEchoSequenceParams {
     String Grad_amp_slice = "Grad_amp_slice";
 
     /**
-     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
+     * Group: Gradient, Order: 2D - GradAmp (%)
      */
     String Grad_amp_spoiler_phase = "Grad_amp_spoiler_phase";
 

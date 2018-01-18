@@ -6,7 +6,7 @@
   <artifactId>gradient-echo</artifactId>
   <version>GRADIENT_ECHO-git</version>
   <properties>
-    <seqdev.update-dependencies>false</seqdev.update-dependencies>
+    <seqdev.update-dependencies>true</seqdev.update-dependencies>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -15,12 +15,12 @@
     <dependency>
       <groupId>rs2d</groupId>
       <artifactId>spinlab</artifactId>
-      <version>1.213</version>
+      <version>1.213.2</version>
     </dependency>
     <dependency>
       <groupId>rs2d</groupId>
       <artifactId>rs2d-commons</artifactId>
-      <version>1.213</version>
+      <version>1.213.2</version>
     </dependency>
   </dependencies>
   <build>

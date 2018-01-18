@@ -8,11 +8,10 @@ import rs2d.spinlab.sequence.table.Shape;
 import rs2d.spinlab.sequence.table.Table;
 import rs2d.spinlab.sequence.table.Utility;
 import rs2d.spinlab.tools.table.Order;
+
 /**
  * Class Gradient
  * V2.1- 2017-10-24 JR
- *
- *
  */
 public class Gradient {
     private Table amplitudeTable = null;
@@ -25,7 +24,7 @@ public class Gradient {
     private double amplitude = Double.NaN;
     private double staticArea = Double.NaN;
 
-    private double[] amplitudeArray  = null;
+    private double[] amplitudeArray = null;
     private double maxAreaPE = Double.NaN;
 
     private int steps = -1;
@@ -166,6 +165,22 @@ public class Gradient {
         return amplitude;
     }
 
+    public void setAmplitude(double... values) {
+        if (values.length == 1){
+            amplitude = values[0];
+        }else{
+            amplitudeArray = new double[values.length];
+            int i =0;
+            for (double value : values) {
+                System.out.println(i +" "+value);
+                amplitudeArray[i] = value;
+                i+=1;
+            }
+            steps = i;
+        }
+    }
+
+
     /**
      * write the prepared amplitude into the Sequence_parameter
      */
@@ -256,6 +271,25 @@ public class Gradient {
         calculateStaticAmplitude();
     }
 
+    public boolean refocalizeGradientWithAmplitude(Gradient grad, double ratio, double amplitude) {
+        if (grad_shape_rise_time == Double.NaN) {
+            computeShapeRiseTime();
+        }
+        staticArea = -grad.getStaticArea() * ratio;
+        boolean test_Amplitude = true;
+        equivalentTime = staticArea / amplitude;
+        double topTime = equivalentTime - grad_shape_rise_time;
+        if (topTime < 0.000004) {
+            topTime = 0.000004;
+            flatTimeTable.set(0, topTime);
+            prepareEquivalentTime();
+            calculateStaticAmplitude();
+            test_Amplitude = false;
+        }
+        flatTimeTable.set(0, topTime);
+        return test_Amplitude;
+    }
+
     public void rePrepare() {
         prepareEquivalentTime();
         if (bPhaseEncoding)
@@ -276,7 +310,7 @@ public class Gradient {
      * @param fov
      * @return testSpectralWidth : false if the Spectralwidth need to be nicreased(call getSpectralWidth() )
      */
-    public boolean calculateReadoutGradient(double spectralWidth, double fov)  throws Exception{
+    public boolean calculateReadoutGradient(double spectralWidth, double fov) throws Exception {
         boolean testSpectralWidth = true;
         this.spectralWidth = spectralWidth;
         amplitude = spectralWidth / ((GradientMath.GAMMA) * fov) * 100.0 / gMax;                 // amplitude in T/m
@@ -296,8 +330,11 @@ public class Gradient {
      * @return sw
      */
     public double solveSpectralWidthMax(double fov) throws Exception {
-        double spectralWidth = getInferiorSpectralWidth(gMax * GradientMath.GAMMA * fov);
-        spectralWidth = 3906250.0 / (Math.ceil(3906250.0 / spectralWidth) + 1); // to get the nearest SW bellow the limit
+        double spectralWidth_init = (gMax * GradientMath.GAMMA * fov);
+        double spectralWidth = spectralWidth_init;
+        while (HardwareHandler.getInstance().getSequenceHandler().getCompiler().getNearestSW(spectralWidth) >= spectralWidth_init) {
+            spectralWidth = getInferiorSpectralWidth(spectralWidth);
+        }
         spectralWidth = HardwareHandler.getInstance().getSequenceHandler().getCompiler().getNearestSW(spectralWidth);
         return spectralWidth;
     }
@@ -309,7 +346,7 @@ public class Gradient {
     /**
      * set READOUT gradient Amplitude ETL values with back and forth(+/-) sign
      *
-     * @param ETL : number of gradient values
+     * @param ETL        : number of gradient values
      * @param tableorder
      */
     public void applyReadoutEchoPlanarAmplitude(int ETL, Order tableorder) {
@@ -328,11 +365,11 @@ public class Gradient {
         }
         applyAmplitude();
     }
+
     /**
      * calculate READOUT refocusing gradient Amplitude handeling ETL
      *
      * @param grad : Readout Gradient
-
      */
     public void refocalizeReadoutGradient(Gradient grad, double ratio) {
         int rOSteps = grad.getSteps();
@@ -354,8 +391,8 @@ public class Gradient {
         this.sliceThicknessExcitation = slice_thickness_excitation;
         amplitude = (tx_bandwidth / ((GradientMath.GAMMA) * sliceThicknessExcitation)) * 100.0 / gMax;                 // amplitude in T/m
         if (amplitude > 100.0) {
-            sliceThicknessExcitation = (tx_bandwidth / ((GradientMath.GAMMA) * gMax));
-            amplitude = 100;
+            sliceThicknessExcitation = ceilToSubDecimal(tx_bandwidth / ((GradientMath.GAMMA) * gMax), 6);
+            amplitude = (tx_bandwidth / ((GradientMath.GAMMA) * sliceThicknessExcitation)) * 100.0 / gMax;                 // amplitude in T/m
             testSliceThickness = false;
         }
         calculateStaticArea();
@@ -427,7 +464,7 @@ public class Gradient {
 
     public void reoderPhaseEncoding(TransformPlugin plugin, int echoTrainLength, int acquisitionMatrixDimension2D, int acquisitionMatrixDimension1D) {
         double loopNumber, indexNew;
-        if( amplitudeArray != null) {
+        if (amplitudeArray != null) {
             double[] newTable = new double[acquisitionMatrixDimension2D];
             for (int j = 0; j < acquisitionMatrixDimension2D; j++) {
                 int[] indexScan = plugin.invTransf(0, j, 0, 0);
@@ -466,6 +503,10 @@ public class Gradient {
     // ----------------- General Methode----------------------------------------------
     private double getInferiorSpectralWidth(double spectral_width) {
         return 3906250.0 / (Math.ceil(3906250.0 / spectral_width) + 1);
+    }
+
+    private double ceilToSubDecimal(double numberToBeRounded, double Order) {
+        return Math.ceil(numberToBeRounded * Math.pow(10, Order)) / Math.pow(10, Order);
     }
 
     private void setSequenceTableValues(Table table, Order order, double... values) {

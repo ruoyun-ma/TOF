@@ -100,6 +100,21 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         }
     },
 
+    ACQUISITION_MODE {
+        Param build() {
+            ListTextParam param = new ListTextParam();
+            param.setName("ACQUISITION_MODE");
+            param.setDisplayedName("ACQUISITION_MODE");
+            param.setLocked(true);
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Miscellaneous);
+            param.setCategory(Category.Acquisition);
+            param.setValue(asList("COMPLEX", "REAL", "REAL", "REAL"));
+            param.setDefaultValue(asList("COMPLEX", "REAL", "REAL", "REAL"));
+            return param;
+        }
+    },
+
     ACQUISITION_TIME_OFFSET {
         Param build() {
             ListNumberParam param = new ListNumberParam();
@@ -204,6 +219,21 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setMaxValue(3.0E9);
             param.setValue(0.0);
             param.setDefaultValue(0.0);
+            return param;
+        }
+    },
+
+    DATA_REPRESENTATION {
+        Param build() {
+            ListTextParam param = new ListTextParam();
+            param.setName("DATA_REPRESENTATION");
+            param.setDisplayedName("DATA_REPRESENTATION");
+            param.setLocked(true);
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Dimension);
+            param.setCategory(Category.Miscellaneous);
+            param.setValue(asList("COMPLEX", "REAL", "REAL", "REAL"));
+            param.setDefaultValue(asList("COMPLEX", "REAL", "REAL", "REAL"));
             return param;
         }
     },
@@ -680,6 +710,107 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         }
     },
 
+    HARDWARE_A0 {
+        Param build() {
+            ListNumberParam param = new ListNumberParam();
+            param.setName("HARDWARE_A0");
+            param.setDisplayedName("nparam");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setCategory(Category.Acquisition);
+            param.setMinValue(-2.147483648E9);
+            param.setMaxValue(2.147483647E9);
+            param.setNumberEnum(NumberEnum.PERCENT);
+            param.setValue(asList(0.0, 0.0, 0.0));
+            return param;
+        }
+    },
+
+    HARDWARE_DC {
+        Param build() {
+            ListNumberParam param = new ListNumberParam();
+            param.setName("HARDWARE_DC");
+            param.setDisplayedName("nparam");
+            param.setDescription("");
+            param.setLocked(true);
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setCategory(Category.Acquisition);
+            param.setMinValue(-2.147483648E9);
+            param.setMaxValue(2.147483647E9);
+            param.setNumberEnum(NumberEnum.PERCENT);
+            param.setValue(asList(0.0, 0.0, 0.0, 0.0));
+            return param;
+        }
+    },
+
+    HARDWARE_PREEMPHASIS_A {
+        Param build() {
+            ListNumberParam param = new ListNumberParam();
+            param.setName("HARDWARE_PREEMPHASIS_A");
+            param.setDisplayedName("nparam");
+            param.setDescription("");
+            param.setLocked(true);
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Emission);
+            param.setCategory(Category.Acquisition);
+            param.setMinValue(-2.147483648E9);
+            param.setMaxValue(2.147483647E9);
+            param.setNumberEnum(NumberEnum.PERCENT);
+            param.setValue(asList(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0));
+            return param;
+        }
+    },
+
+    HARDWARE_PREEMPHASIS_T {
+        Param build() {
+            ListNumberParam param = new ListNumberParam();
+            param.setName("HARDWARE_PREEMPHASIS_T");
+            param.setDisplayedName("nparam");
+            param.setDescription("");
+            param.setLocked(true);
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Emission);
+            param.setCategory(Category.Acquisition);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.0E9);
+            param.setNumberEnum(NumberEnum.Time);
+            param.setValue(asList(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0));
+            return param;
+        }
+    },
+
+    HARDWARE_SHIM {
+        Param build() {
+            ListNumberParam param = new ListNumberParam();
+            param.setName("HARDWARE_SHIM");
+            param.setDisplayedName("nparam");
+            param.setDescription("");
+            param.setLocked(true);
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setCategory(Category.Acquisition);
+            param.setMinValue(-2.147483648E9);
+            param.setMaxValue(2.147483647E9);
+            param.setNumberEnum(NumberEnum.PERCENT);
+            param.setValue(asList(0.0));
+            return param;
+        }
+    },
+
+    HARDWARE_SHIM_LABEL {
+        Param build() {
+            TextParam param = new TextParam();
+            param.setName("HARDWARE_SHIM_LABEL");
+            param.setDisplayedName("tparam");
+            param.setDescription("");
+            param.setLocked(true);
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setCategory(Category.Acquisition);
+            param.setValue("NotConnected");
+            param.setDefaultValue("");
+            return param;
+        }
+    },
+
     IMAGE_ORIENTATION_SUBJECT {
         Param build() {
             ListNumberParam param = new ListNumberParam();
@@ -757,7 +888,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setDescription("Turn off the PE gradient and acquieres two single scan only");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setCategory(Category.Acquisition);
-            param.setValue(true);
+            param.setValue(false);
             param.setDefaultValue(false);
             return param;
         }
@@ -1829,6 +1960,23 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setValue("Sequential4D");
             param.setDefaultValue("Sequential4D");
             param.setSuggestedValues(asList("Sequential4D", "Sequential4DBackAndForth", "EPISequential4D"));
+            return param;
+        }
+    },
+
+    TRIGGER_CHANEL {
+        Param build() {
+            TextParam param = new TextParam();
+            param.setName("TRIGGER_CHANEL");
+            param.setDisplayedName("Trigger Channel");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Delay);
+            param.setCategory(Category.Acquisition);
+            param.setValue("Ext1_XOR_Ext2");
+            param.setDefaultValue("Ext1_XOR_Ext2");
+            param.setSuggestedValues(asList("Ext1", "Ext2", "Ext1_AND_Ext2", "Ext1_XOR_Ext2"));
+            param.setRestrictedToSuggested(true);
             return param;
         }
     },

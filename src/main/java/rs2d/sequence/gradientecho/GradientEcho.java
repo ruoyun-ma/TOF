@@ -38,10 +38,13 @@ import java.util.*;
 import rs2d.commons.log.Log;
 import rs2d.sequence.common.Gradient;
 import rs2d.sequence.common.RFPulse;
+import rs2d.sequence.common.HardwareShim;
+import rs2d.sequence.common.HardwarePreemphasis;
 import rs2d.spinlab.data.transformPlugin.TransformPlugin;
 import rs2d.spinlab.hardware.controller.HardwareHandler;
 import rs2d.spinlab.instrument.Instrument;
 import rs2d.spinlab.instrument.util.GradientMath;
+import rs2d.spinlab.sequence.SequenceTool;
 import rs2d.spinlab.sequence.element.TimeElement;
 import rs2d.spinlab.tools.role.*;
 import rs2d.spinlab.sequence.table.*;
@@ -63,7 +66,7 @@ import static rs2d.sequence.gradientecho.GradientEchoSequenceParams.*;
 //
 public class GradientEcho extends SequenceGeneratorAbstract {
 
-    private String sequenceVersion = "Version7.4";
+    private String sequenceVersion = "Version7.6";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -157,7 +160,14 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         List<String> list = asList("Sequential4D", "Sequential4DBackAndForth", "EPISequential4D");
         ((TextParam) this.getParamFromName(MriDefaultParams.TRANSFORM_PLUGIN.name())).setSuggestedValues(list);
         ((TextParam) this.getParamFromName(MriDefaultParams.TRANSFORM_PLUGIN.name())).setRestrictedToSuggested(true);
-
+        List<String> extTrigSource = asList(
+                SequenceTool.ExtTrigSource.Ext1.name(),
+                SequenceTool.ExtTrigSource.Ext2.name(),
+                SequenceTool.ExtTrigSource.Ext1_AND_Ext2.name(),
+                SequenceTool.ExtTrigSource.Ext1_XOR_Ext2.name());
+        //List<String> tx_shape = Arrays.asList("HARD", "GAUSSIAN", "SIN3", "xSINC5");
+        ((TextParam) getParam(TRIGGER_CHANEL)).setSuggestedValues(extTrigSource);
+        ((TextParam) getParam(TRIGGER_CHANEL)).setRestrictedToSuggested(true);
     }
 
     // ==============================
@@ -492,6 +502,17 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // activate gradient rotation matrix
         // -----------------------------------------------
         appliedGradientRotation();
+
+        HardwarePreemphasis hardwarePreemphasis = new HardwarePreemphasis();
+        setParamValue(HARDWARE_PREEMPHASIS_A, hardwarePreemphasis.getAmplitude());
+        setParamValue(HARDWARE_PREEMPHASIS_T, hardwarePreemphasis.getTime());
+        setParamValue(HARDWARE_DC, hardwarePreemphasis.getDC());
+        setParamValue(HARDWARE_A0, hardwarePreemphasis.getA0());
+
+        HardwareShim hardwareShim = new HardwareShim();
+        setParamValue(HARDWARE_SHIM, hardwareShim.getValue());
+        setParamValue(HARDWARE_SHIM_LABEL, hardwareShim.getLabel());
+
     }
 
     private int floorEven(double value) {
@@ -798,6 +819,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
                 time_external_trigger_delay_max = Math.max(time_external_trigger_delay_max, time_external_trigger_delay);
             }
         }
+
+        setSequenceParamValue(Ext_trig_source, TRIGGER_CHANEL);
 
         // ---------------------------------------------------------------
         // calculate TR , Time_last_delay  Time_TR_delay & search for incoherence
@@ -1141,37 +1164,6 @@ public class GradientEcho extends SequenceGeneratorAbstract {
             }
         } while (exit);
         return new_divisor;
-    }
-
-    /**
-     * Calculate the pulseDuration during 2 including events correspnding to the index
-     *
-     * @param indexFirstEvent The index of the first pulseDuration event
-     * @param indexLastEvent  The index of the last pulseDuration event
-     * @return The total pulseDuration between the 2 events (including)
-     */
-    public double getTimeBetweenEvents(int indexFirstEvent, int indexLastEvent) {
-        double time = 0;
-        for (int i = indexFirstEvent; i < indexLastEvent + 1; i++) {
-            time += ((TimeElement) getSequence().getTimeChannel().get(i)).getTime().getFirst().doubleValue();
-        }
-        return time;
-    }
-
-    /**
-     * Substract the pulseDuration value of the event corresponding to the "index"
-     * parameter from the parameter "pulseDuration"
-     *
-     * @param time       pulseDuration duration to be modified
-     * @param indexEvent The index of the pulseDuration event to be substract to the
-     *                   value of the parameter pulseDuration
-     * @return The calculated pulseDuration
-     */
-    public double removeTimeForEvents(double time, int... indexEvent) {
-        for (int i = 0; i < indexEvent.length; i++) {
-            time -= ((TimeElement) getSequence().getTimeChannel().get(indexEvent[i])).getTime().getFirst().doubleValue();
-        }
-        return time;
     }
 
     public List<RoleEnum> getPluginAccess() {

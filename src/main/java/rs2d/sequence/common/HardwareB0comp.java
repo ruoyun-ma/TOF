@@ -15,9 +15,11 @@ public class HardwareB0comp {
         status = false;
         if (gradientHandler.isAvailable() && gradientHandler.isConnected()) {
             try {
-                amp = gradientHandler.getB0compAmp().getValue().doubleValue();
+                // available after V1.214
+            /*  amp = gradientHandler.getB0compAmp().getValue().doubleValue();
                 phase = gradientHandler.getB0compPhase().getValue().doubleValue();
                 status = gradientHandler.isB0compEnabled();
+*/
             } catch (Exception e) {
                 System.out.println(" B0-Compensation not supported by this ");
             }

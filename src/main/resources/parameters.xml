@@ -97,6 +97,26 @@
             </value>
         </entry>
         <entry>
+            <key>ACQUISITION_MODE</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listTextParam">
+                <name>ACQUISITION_MODE</name>
+                <displayedName>ACQUISITION_MODE</displayedName>
+                <locked>true</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Miscellaneous</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>COMPLEX</value>
+                <value>REAL</value>
+                <value>REAL</value>
+                <value>REAL</value>
+                <defaultValue>COMPLEX</defaultValue>
+                <defaultValue>REAL</defaultValue>
+                <defaultValue>REAL</defaultValue>
+                <defaultValue>REAL</defaultValue>
+            </value>
+        </entry>
+        <entry>
             <key>ACQUISITION_TIME_OFFSET</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>ACQUISITION_TIME_OFFSET</name>
@@ -207,6 +227,26 @@
                 <maxValue>3.0E9</maxValue>
                 <minValue>0.0</minValue>
                 <numberEnum>Frequency</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>DATA_REPRESENTATION</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listTextParam">
+                <name>DATA_REPRESENTATION</name>
+                <displayedName>DATA_REPRESENTATION</displayedName>
+                <locked>true</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Dimension</group>
+                <category>Miscellaneous</category>
+                <rolesEnum>User</rolesEnum>
+                <value>COMPLEX</value>
+                <value>REAL</value>
+                <value>REAL</value>
+                <value>REAL</value>
+                <defaultValue>COMPLEX</defaultValue>
+                <defaultValue>REAL</defaultValue>
+                <defaultValue>REAL</defaultValue>
+                <defaultValue>REAL</defaultValue>
             </value>
         </entry>
         <entry>
@@ -698,6 +738,142 @@
             </value>
         </entry>
         <entry>
+            <key>HARDWARE_A0</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
+                <name>HARDWARE_A0</name>
+                <description></description>
+                <displayedName>nparam</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <maxValue>2.147483647E9</maxValue>
+                <minValue>-2.147483648E9</minValue>
+                <numberEnum>PERCENT</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>HARDWARE_DC</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
+                <name>HARDWARE_DC</name>
+                <description></description>
+                <displayedName>nparam</displayedName>
+                <locked>true</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <maxValue>2.147483647E9</maxValue>
+                <minValue>-2.147483648E9</minValue>
+                <numberEnum>PERCENT</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>HARDWARE_PREEMPHASIS_A</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
+                <name>HARDWARE_PREEMPHASIS_A</name>
+                <description></description>
+                <displayedName>nparam</displayedName>
+                <locked>true</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Emission</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <maxValue>2.147483647E9</maxValue>
+                <minValue>-2.147483648E9</minValue>
+                <numberEnum>PERCENT</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>HARDWARE_PREEMPHASIS_T</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
+                <name>HARDWARE_PREEMPHASIS_T</name>
+                <description></description>
+                <displayedName>nparam</displayedName>
+                <locked>true</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Emission</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <maxValue>1.0E9</maxValue>
+                <minValue>0.0</minValue>
+                <numberEnum>Time</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>HARDWARE_SHIM</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
+                <name>HARDWARE_SHIM</name>
+                <description></description>
+                <displayedName>nparam</displayedName>
+                <locked>true</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>0.0</value>
+                <maxValue>2.147483647E9</maxValue>
+                <minValue>-2.147483648E9</minValue>
+                <numberEnum>PERCENT</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>HARDWARE_SHIM_LABEL</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>HARDWARE_SHIM_LABEL</name>
+                <description></description>
+                <displayedName>tparam</displayedName>
+                <locked>true</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>NotConnected</value>
+                <defaultValue></defaultValue>
+                <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </entry>
+        <entry>
             <key>IMAGE_ORIENTATION_SUBJECT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>IMAGE_ORIENTATION_SUBJECT</name>
@@ -806,7 +982,7 @@
                 <lockedToDefault>false</lockedToDefault>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
             </value>
         </entry>
@@ -2281,7 +2457,7 @@
                 <group>User</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>Version7.4</value>
+                <value>Version7.6</value>
                 <defaultValue></defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
             </value>
@@ -2525,6 +2701,26 @@
                 <suggestedValues>Sequential4DBackAndForth</suggestedValues>
                 <suggestedValues>EPISequential4D</suggestedValues>
                 <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </entry>
+        <entry>
+            <key>TRIGGER_CHANEL</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>TRIGGER_CHANEL</name>
+                <description></description>
+                <displayedName>Trigger Channel</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Delay</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>Ext1_XOR_Ext2</value>
+                <defaultValue>Ext1_XOR_Ext2</defaultValue>
+                <suggestedValues>Ext1</suggestedValues>
+                <suggestedValues>Ext2</suggestedValues>
+                <suggestedValues>Ext1_AND_Ext2</suggestedValues>
+                <suggestedValues>Ext1_XOR_Ext2</suggestedValues>
+                <restrictedToSuggested>true</restrictedToSuggested>
             </value>
         </entry>
         <entry>

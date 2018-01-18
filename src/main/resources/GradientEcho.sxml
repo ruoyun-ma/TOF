@@ -1726,7 +1726,7 @@
                 <lockedToDefault>false</lockedToDefault>
                 <group>Dimension</group>
                 <rolesEnum>User</rolesEnum>
-                <value>2</value>
+                <value>50</value>
                 <defaultValue>1</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>65536</maxValue>
@@ -5945,7 +5945,7 @@
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
                 <rolesEnum>User</rolesEnum>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>true</defaultValue>
             </value>
         </Entry>
@@ -7560,13 +7560,14 @@
             <count>1</count>
             <key>key421</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>ExtTrigSource</name>
+                <name>Ext_trig_source</name>
                 <description>Source of external trigger</description>
                 <displayedName>ExtTrigSource</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
+                <group>Delay</group>
                 <rolesEnum>User</rolesEnum>
-                <value>Ext1</value>
+                <value>Ext1_XOR_Ext2</value>
                 <defaultValue>Ext1</defaultValue>
                 <suggestedValues>Ext1</suggestedValues>
                 <suggestedValues>Ext2</suggestedValues>
@@ -7601,7 +7602,7 @@
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
                 <rolesEnum>User</rolesEnum>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>true</defaultValue>
             </value>
         </Entry>
@@ -10169,6 +10170,19 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>key16</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key17</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
                 <name>Time_grad_phase_top</name>
@@ -10191,6 +10205,19 @@
                 <order>One</order>
                 <locked>false</locked>
                 <address>0</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>key19</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att1</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
                 <list>0</list>
             </value>
         </Entry>
@@ -10247,7 +10274,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>10.099513876732068</list>
+                <list>10.099365924237633</list>
             </value>
         </Entry>
         <Entry>
@@ -10593,7 +10620,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>1</address>
-                <list>-13.321894955596653</list>
+                <list>-13.321699796937201</list>
             </value>
         </Entry>
         <Entry>
@@ -10647,6 +10674,19 @@
             </value>
         </Entry>
         <Entry>
+            <count>1</count>
+            <key>key34</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att2</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
             <count>3</count>
             <key>key35</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
@@ -10657,7 +10697,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>-14.354571065447654</list>
+                <list>-14.354360778633694</list>
             </value>
         </Entry>
         <Entry>
@@ -10731,11 +10771,60 @@
                 <name>Grad_amp_phase_2D_prep</name>
                 <description></description>
                 <numberEnum>GradAmp</numberEnum>
-                <order>FourLoop</order>
+                <order>Two</order>
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
+                <list>-10.941821210077228</list>
+                <list>-10.504148361674138</list>
+                <list>-10.06647551327105</list>
+                <list>-9.62880266486796</list>
+                <list>-9.191129816464871</list>
+                <list>-8.753456968061782</list>
+                <list>-8.315784119658693</list>
+                <list>-7.878111271255603</list>
+                <list>-7.440438422852514</list>
+                <list>-7.002765574449426</list>
+                <list>-6.565092726046337</list>
+                <list>-6.127419877643248</list>
+                <list>-5.689747029240158</list>
+                <list>-5.252074180837069</list>
+                <list>-4.81440133243398</list>
+                <list>-4.376728484030892</list>
+                <list>-3.9390556356278017</list>
+                <list>-3.5013827872247125</list>
+                <list>-3.0637099388216242</list>
+                <list>-2.626037090418535</list>
+                <list>-2.188364242015446</list>
+                <list>-1.7506913936123567</list>
+                <list>-1.3130185452092675</list>
+                <list>-0.8753456968061784</list>
+                <list>-0.4376728484030892</list>
                 <list>0.0</list>
+                <list>0.4376728484030892</list>
+                <list>0.8753456968061784</list>
+                <list>1.3130185452092675</list>
+                <list>1.7506913936123567</list>
+                <list>2.188364242015444</list>
+                <list>2.626037090418535</list>
+                <list>3.0637099388216242</list>
+                <list>3.5013827872247116</list>
+                <list>3.9390556356278026</list>
+                <list>4.376728484030892</list>
+                <list>4.814401332433979</list>
+                <list>5.252074180837068</list>
+                <list>5.6897470292401575</list>
+                <list>6.127419877643247</list>
+                <list>6.565092726046336</list>
+                <list>7.002765574449425</list>
+                <list>7.440438422852514</list>
+                <list>7.878111271255603</list>
+                <list>8.315784119658693</list>
+                <list>8.753456968061782</list>
+                <list>9.191129816464871</list>
+                <list>9.62880266486796</list>
+                <list>10.06647551327105</list>
+                <list>10.504148361674135</list>
             </value>
         </Entry>
         <Entry>
@@ -10815,7 +10904,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>1</address>
-                <list>2.3415969896120985</list>
+                <list>2.3415626864644614</list>
             </value>
         </Entry>
         <Entry>
@@ -10932,6 +11021,19 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>key55</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att3</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key56</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
                 <name>TxAmp1</name>
@@ -10978,7 +11080,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>-11.632383890681902</list>
+                <list>-11.632213482458905</list>
             </value>
         </Entry>
         <Entry>
@@ -11053,11 +11155,60 @@
                 <name>Grad_amp_spoiler_phase</name>
                 <description></description>
                 <numberEnum>GradAmp</numberEnum>
-                <order>FourLoop</order>
+                <order>Two</order>
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>256</address>
+                <list>8.866824665015137</list>
+                <list>8.512151678414533</list>
+                <list>8.157478691813926</list>
+                <list>7.802805705213321</list>
+                <list>7.448132718612716</list>
+                <list>7.09345973201211</list>
+                <list>6.738786745411504</list>
+                <list>6.384113758810899</list>
+                <list>6.029440772210294</list>
+                <list>5.6747677856096885</list>
+                <list>5.320094799009083</list>
+                <list>4.9654218124084775</list>
+                <list>4.610748825807872</list>
+                <list>4.256075839207266</list>
+                <list>3.9014028526066604</list>
+                <list>3.5467298660060558</list>
+                <list>3.1920568794054494</list>
+                <list>2.8373838928048443</list>
+                <list>2.482710906204239</list>
+                <list>2.128037919603633</list>
+                <list>1.7733649330030279</list>
+                <list>1.4186919464024224</list>
+                <list>1.0640189598018166</list>
+                <list>0.7093459732012112</list>
+                <list>0.3546729866006056</list>
                 <list>0.0</list>
+                <list>-0.3546729866006056</list>
+                <list>-0.7093459732012112</list>
+                <list>-1.0640189598018166</list>
+                <list>-1.4186919464024224</list>
+                <list>-1.7733649330030263</list>
+                <list>-2.128037919603633</list>
+                <list>-2.482710906204239</list>
+                <list>-2.8373838928048434</list>
+                <list>-3.1920568794054502</list>
+                <list>-3.5467298660060558</list>
+                <list>-3.9014028526066604</list>
+                <list>-4.2560758392072655</list>
+                <list>-4.610748825807871</list>
+                <list>-4.965421812408477</list>
+                <list>-5.320094799009082</list>
+                <list>-5.6747677856096885</list>
+                <list>-6.029440772210294</list>
+                <list>-6.384113758810899</list>
+                <list>-6.738786745411504</list>
+                <list>-7.09345973201211</list>
+                <list>-7.448132718612716</list>
+                <list>-7.802805705213321</list>
+                <list>-8.157478691813926</list>
+                <list>-8.51215167841453</list>
             </value>
         </Entry>
         <Entry>
@@ -11070,6 +11221,19 @@
                 <order>One</order>
                 <locked>false</locked>
                 <address>-1</address>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>key67</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att4</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
             </value>
         </Entry>
         <Entry>
@@ -11121,7 +11285,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>1</address>
-                <list>-0.7955434940059156</list>
+                <list>-0.7953853450486275</list>
             </value>
         </Entry>
         <Entry>
@@ -11339,6 +11503,19 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>key87</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att5</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key88</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
                 <name>Phase19</name>
@@ -11360,6 +11537,19 @@
                 <order>One</order>
                 <locked>false</locked>
                 <address>-1</address>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>key90</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att6</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
             </value>
         </Entry>
         <Entry>
@@ -11414,6 +11604,19 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>key95</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att7</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key96</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
                 <name>Phase112</name>
@@ -11460,6 +11663,19 @@
                 <order>One</order>
                 <locked>false</locked>
                 <address>-1</address>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>key100</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att8</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
             </value>
         </Entry>
         <Entry>
@@ -11514,6 +11730,19 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>key105</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att9</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key106</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
                 <name>Phase114</name>
@@ -11564,6 +11793,19 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>key110</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att10</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key111</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
                 <name>Phase115</name>
@@ -11610,6 +11852,123 @@
                 <order>One</order>
                 <locked>false</locked>
                 <address>-1</address>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>key115</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att11</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>key116</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att12</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>key117</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att13</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>key118</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att14</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>key119</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att15</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>key120</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att16</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>key121</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att17</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>key122</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att18</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>key123</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>att19</name>
+                <description></description>
+                <numberEnum>TxAtt</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
             </value>
         </Entry>
     </tables>

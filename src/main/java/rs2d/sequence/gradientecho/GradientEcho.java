@@ -310,7 +310,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         setParamValue(SPECTRAL_WIDTH_PER_PIXEL, spectralWidthPerPixel);
         setParamValue(SPECTRAL_WIDTH, spectralWidthUP);
         observation_time = acquisitionMatrixDimension1D / spectralWidth;
-        setParamValue(ACQUISITION_TIME_PER_SCAN, observation_time);   // display observation pulseDuration
+        setParamValue(ACQUISITION_TIME_PER_SCAN, observation_time);   // display observation time
 
         // -----------------------------------------------
         // 2nd D managment
@@ -396,7 +396,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // 4D managment:  Dynamic, MultiEcho, External triggering, Multi Echo
         // -----------------------------------------------
 
-        // Avoid multi trigger pulseDuration when  Multi echo or dynamic
+        // Avoid multi trigger time when  Multi echo or dynamic
         if (numberOfTrigger != 1 && (echoTrainLength != 1 || isDynamic)) {
             double tmp = triggerTime.getValue().get(0).doubleValue();
             triggerTime.getValue().clear();
@@ -563,7 +563,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         setSequenceParamValue(Grad_enable_spoiler_read, (isEnableRead && (is_grad_rewinding) || (is_grad_spoiler && (grad_amp_spoiler_sl_ph_re.getValue().get(2).doubleValue() != 0))));
 
         // -----------------------------------------------
-        // calculate gradient equivalent rise pulseDuration
+        // calculate gradient equivalent rise time
         // -----------------------------------------------
         double grad_rise_time = ((NumberParam) getParam(GRADIENT_RISE_TIME)).getValue().doubleValue();
         double min_rise_time_factor = ((NumberParam) getParam(MIN_RISE_TIME_FACTOR)).getValue().doubleValue();
@@ -571,14 +571,14 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         double min_rise_time_sinus = GradientMath.getShortestRiseTime(100.0) * Math.PI / 2 * 100 / min_rise_time_factor;
         if (grad_rise_time < min_rise_time_sinus) {
             double new_grad_rise_time = ceilToSubDecimal(min_rise_time_sinus, 5);
-            getUnreachParamExceptionManager().addParam(GRADIENT_RISE_TIME.name(), grad_rise_time, new_grad_rise_time, ((NumberParam) getParam(GRADIENT_RISE_TIME)).getMaxValue(), "Gradient ramp pulseDuration too short ");
+            getUnreachParamExceptionManager().addParam(GRADIENT_RISE_TIME.name(), grad_rise_time, new_grad_rise_time, ((NumberParam) getParam(GRADIENT_RISE_TIME)).getMaxValue(), "Gradient ramp time too short ");
             grad_rise_time = new_grad_rise_time;
         }
         setSequenceTableSingleValue(Time_grad_ramp, grad_rise_time);
 
         double grad_shape_rise_factor_up = Utility.voltageFillingFactor((Shape) getSequence().getPublicTable(Grad_shape_rise_up));
         double grad_shape_rise_factor_down = Utility.voltageFillingFactor((Shape) getSequence().getPublicTable(Grad_shape_rise_down));
-        double grad_shape_rise_time = grad_shape_rise_factor_up * grad_rise_time + grad_shape_rise_factor_down * grad_rise_time;        // shape dependant equivalent rise pulseDuration
+        double grad_shape_rise_time = grad_shape_rise_factor_up * grad_rise_time + grad_shape_rise_factor_down * grad_rise_time;        // shape dependant equivalent rise time
 
         // -----------------------------------------------
         // Calculation RF pulse parameters  1/3 : Shape
@@ -678,12 +678,12 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         }
 
 
-        // Check if enougth pulseDuration for 2D_PHASE, 3D_PHASE SLICE_REF or READ_PREP
+        // Check if enougth time for 2D_PHASE, 3D_PHASE SLICE_REF or READ_PREP
         double grad_area_sequence_max = 100 * (grad_phase_application_time + grad_shape_rise_time);
         double grad_area_max = Math.max(gradReadPrep.getTotalArea(), Math.max(gradSliceRefPhase3D.getTotalArea(), gradPhase2D.getTotalArea()));            // calculate the maximum gradient aera between SLICE REFOC & READ PREPHASING
         if (grad_area_max > grad_area_sequence_max) {
             double grad_phase_application_time_min = ceilToSubDecimal(grad_area_max / 100.0 - grad_shape_rise_time, 6);
-            getUnreachParamExceptionManager().addParam(GRADIENT_PHASE_APPLICATION_TIME.name(), grad_phase_application_time, grad_phase_application_time_min, ((NumberParam) getParam(GRADIENT_PHASE_APPLICATION_TIME)).getMaxValue(), "Gradient application pulseDuration too short to reach this pixel dimension");
+            getUnreachParamExceptionManager().addParam(GRADIENT_PHASE_APPLICATION_TIME.name(), grad_phase_application_time, grad_phase_application_time_min, ((NumberParam) getParam(GRADIENT_PHASE_APPLICATION_TIME)).getMaxValue(), "Gradient application time too short to reach this pixel dimension");
             grad_phase_application_time = grad_phase_application_time_min;
             setSequenceTableSingleValue(Time_grad_phase_top, grad_phase_application_time);
             gradPhase2D.rePrepare();
@@ -721,7 +721,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
             te = te_min;//
         }
 
-        // set calculated the pulseDuration delays to get the proper TE
+        // set calculated the time delays to get the proper TE
         double delay1 = te - time1;
         setSequenceTableSingleValue(Time_TE_delay1, delay1);
 
@@ -740,8 +740,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         double delay2_min = Math.max(min_FIR_4pts_delay - (grad_rise_time), minInstructionDelay);
         delay2_min = Math.max(delay2_min, min_FIR_delay - (2 * grad_rise_time + getTimeBetweenEvents(Events.LoopStartEcho, Events.LoopStartEcho) + getTimeBetweenEvents(Events.LoopEndEcho, Events.LoopEndEcho)));
         if (echoTrainLength > 1) {
-            double time2 = getTimeBetweenEvents(Events.LoopStartEcho, Events.LoopEndEcho); // Actual EchoLoop pulseDuration
-            time2 = removeTimeForEvents(time2, Events.Delay2); // Actual EchoLoop pulseDuration without Delay2
+            double time2 = getTimeBetweenEvents(Events.LoopStartEcho, Events.LoopEndEcho); // Actual EchoLoop time
+            time2 = removeTimeForEvents(time2, Events.Delay2); // Actual EchoLoop time without Delay2
             double echo_spacing_min = time2 + delay2_min;
             if (echo_spacing < echo_spacing_min) {
                 echo_spacing_min = ceilToSubDecimal(echo_spacing_min, 5);
@@ -762,7 +762,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         //  boolean is_grad_rewinding = ((BooleanParam) getParam(GRADIENT_ENABLE_REWINDING)).getValue();// get slice refocussing ratio
         double grad_spoiler_application_time = ((NumberParam) getParam(GRADIENT_SPOILER_TIME)).getValue().doubleValue();
         if (is_grad_rewinding && grad_phase_application_time > grad_spoiler_application_time) {
-            getUnreachParamExceptionManager().addParam(GRADIENT_SPOILER_TIME.name(), grad_spoiler_application_time, grad_phase_application_time, ((NumberParam) getParam(GRADIENT_SPOILER_TIME)).getMaxValue(), "Gradient Spoiler top pulseDuration must be longer than Phase Application Time");
+            getUnreachParamExceptionManager().addParam(GRADIENT_SPOILER_TIME.name(), grad_spoiler_application_time, grad_phase_application_time, ((NumberParam) getParam(GRADIENT_SPOILER_TIME)).getMaxValue(), "Gradient Spoiler top time must be longer than Phase Application Time");
             grad_spoiler_application_time = grad_phase_application_time;
         }
         setSequenceTableSingleValue(Time_grad_spoiler_top, grad_spoiler_application_time);
@@ -832,7 +832,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         double delay_before_echo_loop = getTimeBetweenEvents(Events.LoopMultiPlanarStart, Events.LoopStartEcho - 1);
         double delay_echo_loop = getTimeBetweenEvents(Events.LoopStartEcho, Events.LoopEndEcho);
         double delay_spoiler = getTimeBetweenEvents(Events.LoopEndEcho + 1, Events.LoopMultiPlanarEnd - 2);// grad_phase_application_time + grad_rise_time * 2;
-        double min_flush_delay = min_time_per_acq_point * acquisitionMatrixDimension1D * echoTrainLength * slices_acquired_in_single_scan * 2;   // minimal pulseDuration to flush Chameleon buffer (this pulseDuration is doubled to avoid hidden delays);
+        double min_flush_delay = min_time_per_acq_point * acquisitionMatrixDimension1D * echoTrainLength * slices_acquired_in_single_scan * 2;   // minimal time to flush Chameleon buffer (this time is doubled to avoid hidden delays);
         min_flush_delay = Math.max(CameleonVersion105 ? min_flush_delay : 0, minInstructionDelay);
 
         double time_seq_to_end_spoiler = (delay_before_multi_planar_loop + (delay_before_echo_loop + (echoTrainLength * delay_echo_loop) + delay_spoiler) * slices_acquired_in_single_scan);
@@ -865,7 +865,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
 
         //----------------------------------------------------------------------
         // DYNAMIC SEQUENCE
-        // Calculate frame acquisition pulseDuration
+        // Calculate frame acquisition time
         // Calculate delay between 4D acquisition
         //----------------------------------------------------------------------
         int number_of_averages = ((NumberParam) getParam(NUMBER_OF_AVERAGES)).getValue().intValue();
@@ -883,7 +883,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
                 time_between_frames = time_between_frames_min;
                 setParamValue(DYN_TIME_BTW_FRAMES, time_between_frames_min);
             } else if (time_between_frames < (time_between_frames_min)) {
-                this.getUnreachParamExceptionManager().addParam(DYN_TIME_BTW_FRAMES.name(), time_between_frames, time_between_frames_min, ((NumberParam) getParam(DYN_TIME_BTW_FRAMES)).getMaxValue(), "Minimum frame acquisition pulseDuration ");
+                this.getUnreachParamExceptionManager().addParam(DYN_TIME_BTW_FRAMES.name(), time_between_frames, time_between_frames_min, ((NumberParam) getParam(DYN_TIME_BTW_FRAMES)).getMaxValue(), "Minimum frame acquisition time ");
                 time_between_frames = time_between_frames_min;
             }
             interval_between_frames_delay = Math.max(time_between_frames - frame_acquisition_time, min_flush_delay);

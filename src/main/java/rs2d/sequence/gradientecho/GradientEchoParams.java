@@ -1743,7 +1743,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.User);
             param.setCategory(Category.Acquisition);
-            param.setValue("Version7.4");
+            param.setValue("Version7.6");
             param.setDefaultValue("");
             return param;
         }

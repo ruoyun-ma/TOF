@@ -604,7 +604,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
             this.setParamValue(TX_AMP_180, pulseTX.getAmp180());   // display 180° amplitude
         } else {
             pulseTX.setAtt(((NumberParam) getParam(TX_ATT)));
-            pulseTX.setAmp(((NumberParam) getParam(TX_AMP_90)));
+            pulseTX.setAmp(((NumberParam) getParam(TX_AMP_90)).getValue().doubleValue()* flip_angle / 90);
         }
 
         // -----------------------------------------------

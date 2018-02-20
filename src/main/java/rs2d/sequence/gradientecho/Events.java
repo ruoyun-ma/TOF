@@ -20,13 +20,13 @@ public interface Events {
 
         int LoopStartEcho = 11;
         int Acq = 13;
-        int Delay2 = 15;
-        int LoopEndEcho = 16;
+        int Delay2 = 18;
+        int LoopEndEcho = 19;
 
-        int Delay3 = 20;
-        int LoopMultiPlanarEnd = 21;
+        int Delay3 = 23;
+        int LoopMultiPlanarEnd = 24;
 
-        int Loop4D = 23;
+        int Loop4D = 26;
 
-        int End = 24;
+        int End = 27;
 }

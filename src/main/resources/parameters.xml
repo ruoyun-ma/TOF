@@ -88,7 +88,7 @@
                 <group>Scan</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>1</value>
+                <value>5</value>
                 <defaultValue>1</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>65536</maxValue>
@@ -128,6 +128,10 @@
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
                 <value>0.0</value>
+                <value>0.004</value>
+                <value>0.008</value>
+                <value>0.011</value>
+                <value>0.015</value>
                 <defaultValue>0.0</defaultValue>
                 <maxValue>1.0E9</maxValue>
                 <minValue>0.0</minValue>
@@ -381,7 +385,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.0</value>
+                <value>0.00727</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -419,12 +423,179 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>1</value>
+                <value>5</value>
                 <defaultValue>1</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>65536</maxValue>
                 <minValue>0</minValue>
                 <numberEnum>Scan</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>FATSAT_BANDWIDTH</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>FATSAT_BANDWIDTH</name>
+                <description></description>
+                <displayedName>FATSAT_BANDWIDTH</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Emission</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>180.0</value>
+                <defaultValue>250.0</defaultValue>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <maxValue>2000.0</maxValue>
+                <minValue>0.0</minValue>
+                <numberEnum>FrequencyOffset</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>FATSAT_FLIP_ANGLE</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>FATSAT_FLIP_ANGLE</name>
+                <description></description>
+                <displayedName>FATSAT_FLIP_ANGLE</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Emission</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>0.0</value>
+                <defaultValue>90.0</defaultValue>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <maxValue>360.0</maxValue>
+                <minValue>0.0</minValue>
+                <numberEnum>Angle</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>FATSAT_GRAD_APP_TIME</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>FATSAT_GRAD_APP_TIME</name>
+                <description></description>
+                <displayedName>FATSAT_GRAD_APP_TIME</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Delay</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>1.0E-5</value>
+                <defaultValue>0.001</defaultValue>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <maxValue>1.0E9</maxValue>
+                <minValue>0.0</minValue>
+                <numberEnum>Time</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>FATSAT_OFFSET_FREQ</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>FATSAT_OFFSET_FREQ</name>
+                <description></description>
+                <displayedName>FATSAT_OFFSET_FREQ</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Emission</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>-440.0</value>
+                <defaultValue>-440.0</defaultValue>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <maxValue>1500.0</maxValue>
+                <minValue>-1500.0</minValue>
+                <numberEnum>FrequencyOffset</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>FATSAT_TX_AMP_90</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>FATSAT_TX_AMP_90</name>
+                <description></description>
+                <displayedName>FATSAT_TX_AMP_90</displayedName>
+                <locked>true</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Emission</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>0.0</value>
+                <defaultValue>0.0</defaultValue>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <maxValue>100.0</maxValue>
+                <minValue>0.0</minValue>
+                <numberEnum>TxAmp</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>FATSAT_TX_LENGTH</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>FATSAT_TX_LENGTH</name>
+                <description></description>
+                <displayedName>FATSAT_TX_LENGTH</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Emission</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>0.007500000000000001</value>
+                <defaultValue>0.0</defaultValue>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <maxValue>1.0E9</maxValue>
+                <minValue>0.0</minValue>
+                <numberEnum>Time</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>FATSAT_TX_SHAPE</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>FATSAT_TX_SHAPE</name>
+                <description></description>
+                <displayedName>FATSAT_TX_SHAPE</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Emission</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>GAUSSIAN</value>
+                <defaultValue>HARD</defaultValue>
+                <suggestedValues>HARD</suggestedValues>
+                <suggestedValues>GAUSSIAN</suggestedValues>
+                <suggestedValues>SINC3</suggestedValues>
+                <suggestedValues>SINC5</suggestedValues>
+                <suggestedValues>SLR_8_5152</suggestedValues>
+                <suggestedValues>SLR_4_2576</suggestedValues>
+                <suggestedValues>RAMP</suggestedValues>
+                <restrictedToSuggested>true</restrictedToSuggested>
+            </value>
+        </entry>
+        <entry>
+            <key>FAT_SATURATION_ENABLED</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>FAT_SATURATION_ENABLED</name>
+                <description></description>
+                <displayedName>FAT_SATURATION_ENABLED</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Miscellaneous</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>false</value>
+                <defaultValue>false</defaultValue>
+            </value>
+        </entry>
+        <entry>
+            <key>FAT_WATER_SEP_2DMRSI</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>FAT_WATER_SEP_2DMRSI</name>
+                <description>Checkbox parameter for running fat-water separation plugin</description>
+                <displayedName>FAT_WATER_SEP_2DMRSI</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Miscellaneous</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>false</value>
+                <defaultValue>false</defaultValue>
             </value>
         </entry>
         <entry>
@@ -438,7 +609,7 @@
                 <group>Dimension</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.04</value>
+                <value>0.02</value>
                 <defaultValue>0.6</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.7976931348623157E308</maxValue>
@@ -457,7 +628,7 @@
                 <group>Dimension</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.057999999999999996</value>
+                <value>0.02</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0</maxValue>
@@ -476,7 +647,7 @@
                 <group>Dimension</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.04</value>
+                <value>0.02</value>
                 <defaultValue>0.08</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>10.0</maxValue>
@@ -501,6 +672,21 @@
                 <maxValue>360.0</maxValue>
                 <minValue>-360.0</minValue>
                 <numberEnum>Angle</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>FLYBACK</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>FLYBACK</name>
+                <description>Aquisition in the same direction in k space, fly back after every k space line</description>
+                <displayedName>FLYBACK</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Scan</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>true</value>
+                <defaultValue>false</defaultValue>
             </value>
         </entry>
         <entry>
@@ -529,7 +715,7 @@
                 <group>Dimension</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.04</value>
+                <value>0.02</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.7976931348623157E308</maxValue>
@@ -657,8 +843,27 @@
                 <group>Gradient</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
+            </value>
+        </entry>
+        <entry>
+            <key>GRADIENT_FLYBACK_TIME</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>GRADIENT_FLYBACK_TIME</name>
+                <description></description>
+                <displayedName>GRADIENT_FLYBACK_TIME</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Delay</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>1.9999999999999998E-4</value>
+                <defaultValue>4.9999999999999996E-6</defaultValue>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <maxValue>1.0E9</maxValue>
+                <minValue>4.9999999999999996E-6</minValue>
+                <numberEnum>Time</numberEnum>
             </value>
         </entry>
         <entry>
@@ -958,6 +1163,23 @@
             </value>
         </entry>
         <entry>
+            <key>KSPACE_FILLING</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>KSPACE_FILLING</name>
+                <description></description>
+                <displayedName>KSPACE_FILLING</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>Centric</value>
+                <defaultValue>Linear</defaultValue>
+                <suggestedValues>Linear</suggestedValues>
+                <suggestedValues>Centric</suggestedValues>
+                <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </entry>
+        <entry>
             <key>KS_CENTERED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>KS_CENTERED</name>
@@ -1108,7 +1330,7 @@
                 <group>Miscellaneous</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value></value>
+                <value>TE</value>
                 <defaultValue></defaultValue>
                 <suggestedValues>TE</suggestedValues>
                 <suggestedValues>TI</suggestedValues>
@@ -1127,6 +1349,11 @@
                 <group>Miscellaneous</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
+                <value>3.81</value>
+                <value>11.08</value>
+                <value>18.35</value>
+                <value>25.62</value>
+                <value>32.89</value>
                 <maxValue>1.7976931348623157E308</maxValue>
                 <minValue>-1.7976931348623157E308</minValue>
                 <numberEnum>Double</numberEnum>
@@ -2331,7 +2558,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.202</value>
+                <value>0.775</value>
                 <defaultValue>0.2</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -2350,7 +2577,7 @@
                 <group>Dimension</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>6.25E-4</value>
+                <value>3.125E-4</value>
                 <defaultValue>5.0E-4</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>0.01</maxValue>
@@ -2369,7 +2596,7 @@
                 <group>Dimension</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>8.0E-4</value>
+                <value>4.0E-4</value>
                 <defaultValue>5.0E-4</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>0.01</maxValue>
@@ -2438,7 +2665,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>10.2</value>
+                <value>38.8</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -2472,7 +2699,7 @@
                 <lockedToDefault>false</lockedToDefault>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>GE_2DAXI_64x50x20</value>
+                <value>GE_2DAXI_64x50x20x5_ETL=5</value>
                 <defaultValue></defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
             </value>
@@ -2557,7 +2784,7 @@
                 <group>Dimension</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.002</value>
+                <value>0.0</value>
                 <defaultValue>5.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.7976931348623157E308</maxValue>
@@ -2695,11 +2922,12 @@
                 <group>Scan</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>Sequential4D</value>
+                <value>Centric4D</value>
                 <defaultValue>Sequential4D</defaultValue>
                 <suggestedValues>Sequential4D</suggestedValues>
                 <suggestedValues>Sequential4DBackAndForth</suggestedValues>
                 <suggestedValues>EPISequential4D</suggestedValues>
+                <suggestedValues>Centric4D</suggestedValues>
                 <restrictedToSuggested>false</restrictedToSuggested>
             </value>
         </entry>

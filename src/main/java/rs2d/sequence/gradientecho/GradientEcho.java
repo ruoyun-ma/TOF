@@ -5,6 +5,7 @@ package rs2d.sequence.gradientecho;
 //                 GRADIENT_ECHO_dev PSD 
 //  
 // ---------------------------------------------------------------------
+// test Commit
 // rename GRADIENT_SPOILER_TIME 
 // 17/11/2017   V7.4
 //      - fovPhase  TX_LENGTH   TX_SHAPE
@@ -116,6 +117,10 @@ public class GradientEcho extends SequenceGeneratorAbstract {
     private ListNumberParam triggerTime;
     private int numberOfTrigger;
 
+    boolean is_flyback;
+    String kspace_filling;
+
+
     private boolean is_rf_spoiling;
 
     private boolean isKSCenterMode;
@@ -157,7 +162,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         ((TextParam) getParam(TX_SHAPE)).setRestrictedToSuggested(true);
 
         //TRANSFORM PLUGIN
-        List<String> list = asList("Sequential4D", "Sequential4DBackAndForth", "EPISequential4D");
+        List<String> list = asList("Sequential4D", "Sequential4DBackAndForth", "EPISequential4D", "Centric4D");
         ((TextParam) this.getParamFromName(MriDefaultParams.TRANSFORM_PLUGIN.name())).setSuggestedValues(list);
         ((TextParam) this.getParamFromName(MriDefaultParams.TRANSFORM_PLUGIN.name())).setRestrictedToSuggested(true);
         List<String> extTrigSource = asList(
@@ -211,7 +216,6 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         pixelDimension = ((NumberParam) getParam(RESOLUTION_FREQUENCY)).getValue().doubleValue();
         fov = ((NumberParam) getParam(FIELD_OF_VIEW)).getValue().doubleValue();
         fovPhase = ((NumberParam) getParam(FIELD_OF_VIEW_PHASE)).getValue().doubleValue();
-        System.out.println("fovPhase " + fovPhase + " Init +++++++++++++++++");
         isFovDoubled = ((BooleanParam) getParam(FOV_DOUBLED)).getValue();
         off_center_distance_1D = ((NumberParam) getParam(OFF_CENTER_FIELD_OF_VIEW_1D)).getValue().doubleValue();
         off_center_distance_2D = ((NumberParam) getParam(OFF_CENTER_FIELD_OF_VIEW_2D)).getValue().doubleValue();
@@ -228,6 +232,9 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         triggerTime = (ListNumberParam) getParam(TRIGGER_TIME);
         numberOfTrigger = isTrigger ? triggerTime.getValue().size() : 1;
         isTrigger = isTrigger && (numberOfTrigger > 1);
+
+        is_flyback = (((BooleanParam) getParam(FLYBACK)).getValue());
+        kspace_filling = ((String) getParam(KSPACE_FILLING).getValue());
 
         is_rf_spoiling = ((BooleanParam) getParam(RF_SPOILING)).getValue();
 
@@ -411,10 +418,26 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         //Dynamic and multi echo are filled into the 4th Dimension 
         if (echoTrainLength == 1) {
             setParamValue(ECHO_SPACING, 0);
-            setParamValue(TRANSFORM_PLUGIN, "Sequential4D");
-        } else {
-            setParamValue(TRANSFORM_PLUGIN, "Sequential4DBackAndForth");
+//            setParamValue(TRANSFORM_PLUGIN, "Sequential4D");
+        } //else {
+//            setParamValue(TRANSFORM_PLUGIN, "Sequential4DBackAndForth");
+//        }
+
+        switch (kspace_filling) {
+            case "Linear":
+                setParamValue(TRANSFORM_PLUGIN, "Sequential4DBackAndForth");
+                if (is_flyback) {
+                    setParamValue(TRANSFORM_PLUGIN, "Sequential4D");
+                }
+                break;
+            case "Centric":
+                setParamValue(TRANSFORM_PLUGIN, "Centric4D");
+                break;
+            default:
+                setParamValue(KSPACE_FILLING, "Linear");
+                break;
         }
+
 
         // -----------------------------------------------
         // set the ACQUISITION_MATRIX and Nb XD
@@ -562,6 +585,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         setSequenceParamValue(Grad_enable_spoiler_phase, (isEnablePhase && (is_grad_rewinding) || (is_grad_spoiler && (grad_amp_spoiler_sl_ph_re.getValue().get(1).doubleValue() != 0))));
         setSequenceParamValue(Grad_enable_spoiler_read, (isEnableRead && (is_grad_rewinding) || (is_grad_spoiler && (grad_amp_spoiler_sl_ph_re.getValue().get(2).doubleValue() != 0))));
 
+        setSequenceParamValue(Grad_enable_flyback, is_flyback); //todo flyback
+
         // -----------------------------------------------
         // calculate gradient equivalent rise time
         // -----------------------------------------------
@@ -604,7 +629,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
             this.setParamValue(TX_AMP_180, pulseTX.getAmp180());   // display 180° amplitude
         } else {
             pulseTX.setAtt(((NumberParam) getParam(TX_ATT)));
-            pulseTX.setAmp(((NumberParam) getParam(TX_AMP_90)).getValue().doubleValue()* flip_angle / 90);
+            pulseTX.setAmp(((NumberParam) getParam(TX_AMP_90)).getValue().doubleValue() * flip_angle / 90);
         }
 
         // -----------------------------------------------
@@ -645,7 +670,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
             }
             spectralWidth = spectral_width_max;
         }
-        gradReadout.applyReadoutEchoPlanarAmplitude(echoTrainLength, Order.Loop);
+        gradReadout.applyReadoutEchoPlanarAmplitude(is_flyback ? 1 : echoTrainLength, Order.Loop);
         setSequenceParamValue(Spectral_width, spectralWidth);
 
         // -------------------------------------------------------------------------------------------------
@@ -654,11 +679,12 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         double grad_phase_application_time = ((NumberParam) getParam(GRADIENT_PHASE_APPLICATION_TIME)).getValue().doubleValue();
         boolean is_k_s_centred = ((BooleanParam) getParam(KS_CENTERED)).getValue();  // symetrique around 0 or go through k0
         setSequenceTableSingleValue(Time_grad_phase_top, grad_phase_application_time);
+        double readGradientRation = ((NumberParam) getParam(PREPHASING_READ_GRADIENT_RATIO)).getValue().doubleValue();
 
         // pre-calculate READ_prephasing max area
         Gradient gradReadPrep = Gradient.createGradient(getSequence(), Grad_amp_read_prep, Time_grad_phase_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
         if (isEnableRead)
-            gradReadPrep.refocalizeGradient(gradReadout, ((NumberParam) getParam(PREPHASING_READ_GRADIENT_RATIO)).getValue().doubleValue());
+            gradReadPrep.refocalizeGradient(gradReadout, readGradientRation);
 
         // pre-calculate SLICE_refocusing  &  PHASE_3D
         double grad_ratio_slice_refoc = isEnableSlice ? ((NumberParam) getParam(SLICE_REFOCUSING_GRADIENT_RATIO)).getValue().doubleValue() : 0.0;   // get slice refocussing ratio
@@ -669,18 +695,20 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         boolean is_keyhole_allowed = ((BooleanParam) getParam(KEYHOLE_ALLOWED)).getValue();
         if (!isMultiplanar && isEnablePhase3D) {
             gradSliceRefPhase3D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension3D : acquisitionMatrixDimension3D, acquisitionMatrixDimension3D, slice_thickness_excitation, is_k_s_centred);
+            gradSliceRefPhase3D.reoderPhaseEncoding3D(plugin,  acquisitionMatrixDimension3D);
         }
 
         // pre-calculate PHASE_2D
         Gradient gradPhase2D = Gradient.createGradient(getSequence(), Grad_amp_phase_2D_prep, Time_grad_phase_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
         if (isEnablePhase) {
             gradPhase2D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension2D : acquisitionMatrixDimension2D, acquisitionMatrixDimension2D, fovPhase, is_k_s_centred);
+            gradPhase2D.reoderPhaseEncoding(plugin, 1, acquisitionMatrixDimension2D, acquisitionMatrixDimension1D);
         }
 
 
         // Check if enougth time for 2D_PHASE, 3D_PHASE SLICE_REF or READ_PREP
         double grad_area_sequence_max = 100 * (grad_phase_application_time + grad_shape_rise_time);
-        double grad_area_max = Math.max(gradReadPrep.getTotalArea(), Math.max(gradSliceRefPhase3D.getTotalArea(), gradPhase2D.getTotalArea()));            // calculate the maximum gradient aera between SLICE REFOC & READ PREPHASING
+        double grad_area_max = Math.max(gradReadPrep.getTotalAbsArea(), Math.max(gradSliceRefPhase3D.getTotalAbsArea(), gradPhase2D.getTotalAbsArea()));            // calculate the maximum gradient aera between SLICE REFOC & READ PREPHASING
         if (grad_area_max > grad_area_sequence_max) {
             double grad_phase_application_time_min = ceilToSubDecimal(grad_area_max / 100.0 - grad_shape_rise_time, 6);
             getUnreachParamExceptionManager().addParam(GRADIENT_PHASE_APPLICATION_TIME.name(), grad_phase_application_time, grad_phase_application_time_min, ((NumberParam) getParam(GRADIENT_PHASE_APPLICATION_TIME)).getMaxValue(), "Gradient application time too short to reach this pixel dimension");
@@ -694,6 +722,27 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         gradPhase2D.applyAmplitude(Order.Two);
         gradReadPrep.applyAmplitude();
 
+        // -------------------------------------------------------------------------------------------------
+        // Flyback init and gradient calculation
+        // -------------------------------------------------------------------------------------------------
+        double time_flyback = ((NumberParam) getParam(GRADIENT_FLYBACK_TIME)).getValue().doubleValue();
+        setSequenceTableSingleValue(Time_flyback, is_flyback ? time_flyback : minInstructionDelay);
+        setSequenceTableSingleValue(Time_flyback_ramp, is_flyback ? grad_rise_time : minInstructionDelay);
+
+        Gradient gradReadoutFlyback = Gradient.createGradient(getSequence(), Grad_amp_flyback, Time_flyback, Grad_shape_rise_up, Grad_shape_rise_down, Time_flyback_ramp);
+        if (is_flyback) {
+            gradReadoutFlyback.refocalizeGradient(gradReadout, 1);
+            grad_area_max = gradReadoutFlyback.getTotalAbsArea();
+            grad_area_sequence_max = 100 * (time_flyback + grad_shape_rise_time);
+            if (grad_area_max > grad_area_sequence_max) {
+                double grad_time_flyback_min = ceilToSubDecimal(grad_area_max / 100.0 - grad_shape_rise_time, 5);
+                time_flyback = grad_time_flyback_min;
+                setParamValue(GRADIENT_FLYBACK_TIME, time_flyback);
+                setSequenceTableSingleValue(Time_flyback, time_flyback);
+                gradReadoutFlyback.rePrepare();
+            }
+            gradReadoutFlyback.applyAmplitude();
+        }
 
         // --------------------------------------------------------------------------------------------------------------------------------------------
         // TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING
@@ -780,7 +829,10 @@ public class GradientEcho extends SequenceGeneratorAbstract {
             if (isEnablePhase)
                 gradPhaseSpoiler.refocalizePhaseEncodingGradient(gradPhase2D);
             if (isEnableRead)
-                gradReadSpoiler.refocalizeReadoutGradient(gradReadout, 1 - ((NumberParam) getParam(PREPHASING_READ_GRADIENT_RATIO)).getValue().doubleValue());
+                if (is_flyback)
+                    gradReadSpoiler.refocalizeReadoutGradient(gradReadoutFlyback, readGradientRation);
+                else
+                    gradReadSpoiler.refocalizeReadoutGradient(gradReadout, 1 - (readGradientRation));
         }
         // Spoiler :
         //    ListNumberParam grad_amp_spoiler_sl_ph_re = (ListNumberParam) getParam(GRAD_AMP_SPOILER_SL_PH_RE);

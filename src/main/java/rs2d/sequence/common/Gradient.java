@@ -146,6 +146,10 @@ public class Gradient {
         return totalArea;
     }
 
+    public double getTotalAbsArea() {
+        return Math.abs(getTotalArea());
+    }
+
     public double calculateStaticArea() {
         if (Double.isNaN(equivalentTime)) {
             prepareEquivalentTime();
@@ -166,15 +170,15 @@ public class Gradient {
     }
 
     public void setAmplitude(double... values) {
-        if (values.length == 1){
+        if (values.length == 1) {
             amplitude = values[0];
-        }else{
+        } else {
             amplitudeArray = new double[values.length];
-            int i =0;
+            int i = 0;
             for (double value : values) {
-                System.out.println(i +" "+value);
+                System.out.println(i + " " + value);
                 amplitudeArray[i] = value;
-                i+=1;
+                i += 1;
             }
             steps = i;
         }
@@ -466,8 +470,18 @@ public class Gradient {
         double loopNumber, indexNew;
         if (amplitudeArray != null) {
             double[] newTable = new double[acquisitionMatrixDimension2D];
+
+            System.out.println("----- " + plugin.getName());
+            int[] tmp = Centric(acquisitionMatrixDimension2D);
+
+
             for (int j = 0; j < acquisitionMatrixDimension2D; j++) {
                 int[] indexScan = plugin.invTransf(0, j, 0, 0);
+                //              System.out.println(j + " :  " +indexScan[0] + " " +indexScan[1]+ "        " +  plugin.transf(0, j, 0, 0)[0]+ " " +  plugin.transf(0, j, 0, 0)[1]);
+                if ("Centric4D".equalsIgnoreCase(plugin.getName())) {
+                    indexScan[1] = tmp[j];
+//                    System.out.println(j + " :  " + indexScan[1]);
+                }
                 loopNumber = indexScan[0] / acquisitionMatrixDimension1D; // Echo-block number: ETL-loop index
                 indexNew = indexScan[1] * echoTrainLength + loopNumber;    // indexScan[1]: index de Nb 2D
                 newTable[(int) indexNew] = amplitudeArray[j];
@@ -476,7 +490,52 @@ public class Gradient {
         }
     }
 
+    public void reoderPhaseEncoding3D(TransformPlugin plugin, int acquisitionMatrixDimension3D) {
+        double  indexNew;
+        if (amplitudeArray != null) {
+            double[] newTable = new double[acquisitionMatrixDimension3D];
 
+            System.out.println("----- " + plugin.getName());
+            int[] tmp = Centric(acquisitionMatrixDimension3D);
+
+
+            for (int k = 0; k < acquisitionMatrixDimension3D; k++) {
+                int[] indexScan = plugin.invTransf(0, 0, k, 0);
+                //              System.out.println(j + " :  " +indexScan[0] + " " +indexScan[1]+ "        " +  plugin.transf(0, j, 0, 0)[0]+ " " +  plugin.transf(0, j, 0, 0)[1]);
+                if ("Centric4D".equalsIgnoreCase(plugin.getName())) {
+                    indexScan[2] = tmp[k];
+//                    System.out.println(j + " :  " + indexScan[1]);
+                }
+                indexNew = indexScan[2] ;    // indexScan[1]: index de Nb 2D
+                newTable[(int) indexNew] = amplitudeArray[k];
+            }
+            amplitudeArray = newTable;
+        }
+    }
+
+
+    public int[] Centric(int acquisition_matrix_dimension_3D) {
+        int[] k_index = new int[acquisition_matrix_dimension_3D];
+        int[] tmpInv = new int[acquisition_matrix_dimension_3D];
+
+        k_index[0] = 0;
+        for (int i = 1; i < acquisition_matrix_dimension_3D; i++) {
+            if (k_index[i - 1] == 0) {
+                k_index[i] = 1;
+            } else if (k_index[i - 1] > 0) {
+                k_index[i] = -1 * k_index[i - 1];
+            } else if (k_index[i - 1] < 0) {
+                k_index[i] = -1 * (k_index[i - 1] - 1);
+            }
+        }
+        for (int i = 0; i < acquisition_matrix_dimension_3D; i++) {
+            k_index[i] = k_index[i] + (acquisition_matrix_dimension_3D / 2 - 1);
+        }
+        for (int i = 0; i < acquisition_matrix_dimension_3D; i++) {
+            tmpInv[k_index[i]] = i;
+        }
+        return tmpInv;
+    }
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //                  Spoiler
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -15,6 +15,11 @@ public interface GradientEchoSequenceParams {
     /**
      * Group: Gradient, Type: BooleanParam
      */
+    String Grad_enable_flyback = "Grad_enable_flyback";
+
+    /**
+     * Group: Gradient, Type: BooleanParam
+     */
     String Grad_enable_phase_2D = "Grad_enable_phase_2D";
 
     /**
@@ -196,6 +201,11 @@ public interface GradientEchoSequenceParams {
     String Frequency_offset_init = "Frequency_offset_init";
 
     /**
+     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
+     */
+    String Grad_amp_flyback = "Grad_amp_flyback";
+
+    /**
      * Group: Gradient, Order: 2D - GradAmp (%)
      */
     String Grad_amp_phase_2D_prep = "Grad_amp_phase_2D_prep";
@@ -264,6 +274,16 @@ public interface GradientEchoSequenceParams {
      * Group: Delay, Order: 4D+Loop - Time (s)
      */
     String Time_flush_delay = "Time_flush_delay";
+
+    /**
+     * Group: Delay, Order: 4D+Loop - Time (s)
+     */
+    String Time_flyback = "Time_flyback";
+
+    /**
+     * Group: Delay, Order: 4D+Loop - Time (s)
+     */
+    String Time_flyback_ramp = "Time_flyback_ramp";
 
     /**
      * Group: Delay, Order: 4D+Loop - Time (s)

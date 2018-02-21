@@ -8,6 +8,11 @@ public interface GradientEchoSequenceParams {
     //-- public params
 
     /**
+     * Group: Gradient, Type: BooleanParam
+     */
+    String Enable_fatsat = "Enable_fatsat";
+
+    /**
      * Group: Delay, Type: TextParam
      */
     String Ext_trig_source = "Ext_trig_source";
@@ -163,6 +168,21 @@ public interface GradientEchoSequenceParams {
     /**
      * Group: Transmit, Order: 4D+LoopB - FreqOffset (Hz)
      */
+    String Freq_offset_tx_fatsat = "Freq_offset_tx_fatsat";
+
+    /**
+     * Group: Transmit, Order: 4D+LoopB - FreqOffset (Hz)
+     */
+    String Freq_offset_tx_fatsat_comp = "Freq_offset_tx_fatsat_comp";
+
+    /**
+     * Group: Transmit, Order: 4D+LoopB - FreqOffset (Hz)
+     */
+    String Freq_offset_tx_fatsat_prep = "Freq_offset_tx_fatsat_prep";
+
+    /**
+     * Group: Transmit, Order: 4D+LoopB - FreqOffset (Hz)
+     */
     String FreqOffset_RFSpoiling = "FreqOffset_RFSpoiling";
 
     /**
@@ -199,6 +219,21 @@ public interface GradientEchoSequenceParams {
      * Group: Transmit, Order: 4D+Loop - FreqOffset (Hz)
      */
     String Frequency_offset_init = "Frequency_offset_init";
+
+    /**
+     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
+     */
+    String Grad_amp_fatsat_phase = "Grad_amp_fatsat_phase";
+
+    /**
+     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
+     */
+    String Grad_amp_fatsat_read = "Grad_amp_fatsat_read";
+
+    /**
+     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
+     */
+    String Grad_amp_fatsat_slice = "Grad_amp_fatsat_slice";
 
     /**
      * Group: Gradient, Order: 4D+Loop - GradAmp (%)
@@ -266,9 +301,24 @@ public interface GradientEchoSequenceParams {
     String Rx_phase = "Rx_phase";
 
     /**
+     * Group: Transmit, Order: 4D - Bit
+     */
+    String SmartTTL_FatSat = "SmartTTL_FatSat";
+
+    /**
+     * Group: Delay, Order: 1D - Time (s)
+     */
+    String Time_before_fatsat_pulse = "Time_before_fatsat_pulse";
+
+    /**
      * Group: Delay, Order: 4D+Loop - Time (s)
      */
     String Time_btw_dyn_frames = "Time_btw_dyn_frames";
+
+    /**
+     * Group: Delay, Order: 1D - Time (s)
+     */
+    String Time_flow = "Time_flow";
 
     /**
      * Group: Delay, Order: 4D+Loop - Time (s)
@@ -283,7 +333,7 @@ public interface GradientEchoSequenceParams {
     /**
      * Group: Delay, Order: 4D+Loop - Time (s)
      */
-    String Time_flyback_ramp = "Time_flyback_ramp";
+    String Time_grad_fatsat = "Time_grad_fatsat";
 
     /**
      * Group: Delay, Order: 4D+Loop - Time (s)
@@ -294,6 +344,16 @@ public interface GradientEchoSequenceParams {
      * Group: Delay, Order: 4D+Loop - Time (s)
      */
     String Time_grad_ramp = "Time_grad_ramp";
+
+    /**
+     * Group: Delay, Order: 4D+Loop - Time (s)
+     */
+    String Time_grad_ramp_fatsat = "Time_grad_ramp_fatsat";
+
+    /**
+     * Group: Delay, Order: 4D+Loop - Time (s)
+     */
+    String Time_grad_ramp_flyback = "Time_grad_ramp_flyback";
 
     /**
      * Group: Delay, Order: 4D+Loop - Time (s)
@@ -346,9 +406,19 @@ public interface GradientEchoSequenceParams {
     String Time_tx = "Time_tx";
 
     /**
+     * Group: Delay, Order: 4D+Loop - Time (s)
+     */
+    String Time_tx_fatsat = "Time_tx_fatsat";
+
+    /**
      * Group: Transmit, Order: 4D+Loop - TxAmp (%)
      */
     String Tx_amp = "Tx_amp";
+
+    /**
+     * Group: Transmit, Order: 4D+Loop - TxAmp (%)
+     */
+    String Tx_amp_fatsat = "Tx_amp_fatsat";
 
     /**
      * Group: Transmit, Order: 3D+Loop - FreqOffset (Hz)
@@ -361,13 +431,28 @@ public interface GradientEchoSequenceParams {
     String Tx_phase = "Tx_phase";
 
     /**
+     * Group: Transmit, Order: 4D+Loop - Phase (°)
+     */
+    String Tx_phase_fatsat = "Tx_phase_fatsat";
+
+    /**
      * Group: Transmit, Order: 1D - TxShape (%)
      */
     String Tx_shape = "Tx_shape";
 
     /**
+     * Group: Transmit, Order: 1D - TxShape (%)
+     */
+    String Tx_shape_fatsat = "Tx_shape_fatsat";
+
+    /**
      * Group: Transmit, Order: 1D - Phase (°)
      */
     String Tx_shape_phase = "Tx_shape_phase";
+
+    /**
+     * Group: Transmit, Order: 1D - Phase (°)
+     */
+    String Tx_shape_phase_fatsat = "Tx_shape_phase_fatsat";
 
 }

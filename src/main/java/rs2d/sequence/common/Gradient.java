@@ -45,8 +45,9 @@ public class Gradient {
     private double fovPhase = Double.NaN;
     private boolean isKSCentred = false;
     private double spoilerExcess = Double.NaN;
+    private double minTopTime = Double.NaN;
 
-    private boolean bRefocalizeGradient = false;
+    private boolean bStaticGradient = false;
 
 
     private static double gMax = GradientMath.getMaxGradientStrength();
@@ -116,7 +117,9 @@ public class Gradient {
     public double getSpoilerExcess() {
         return spoilerExcess;
     }
-
+    public double getMinTopTime() {
+        return minTopTime;
+    }
 
     public int getSteps() {
         return steps;
@@ -261,6 +264,7 @@ public class Gradient {
         if (grad_shape_rise_time == Double.NaN) {
             computeShapeRiseTime();
         }
+        minTopTime = flatTimeTable.get(0).doubleValue();
         equivalentTime = (flatTimeTable.get(0).doubleValue() + grad_shape_rise_time);
         return equivalentTime;
     }
@@ -270,7 +274,7 @@ public class Gradient {
     }
 
     public void refocalizeGradient(Gradient grad, double ratio) {
-        bRefocalizeGradient = true;
+        bStaticGradient = true;
         staticArea = -grad.getStaticArea() * ratio;
         calculateStaticAmplitude();
     }
@@ -283,14 +287,16 @@ public class Gradient {
         boolean test_Amplitude = true;
         equivalentTime = staticArea / amplitude;
         double topTime = equivalentTime - grad_shape_rise_time;
-        if (topTime < 0.000004) {
+        if (topTime < 0.000004) { // <
             topTime = 0.000004;
-            flatTimeTable.set(0, topTime);
-            prepareEquivalentTime();
-            calculateStaticAmplitude();
+//            flatTimeTable.set(0, topTime);
+//            prepareEquivalentTime();
+//            calculateStaticAmplitude();
             test_Amplitude = false;
         }
         flatTimeTable.set(0, topTime);
+        prepareEquivalentTime();
+        calculateStaticAmplitude();
         return test_Amplitude;
     }
 
@@ -298,8 +304,8 @@ public class Gradient {
         prepareEquivalentTime();
         if (bPhaseEncoding)
             preparePhaseEncoding();
-        if (bRefocalizeGradient)
-            refocalizeGradient();
+        if (bStaticGradient)
+            calculateStaticAmplitude();
 
     }
 
@@ -542,6 +548,7 @@ public class Gradient {
 
     public boolean addSpoiler(double gradAmplitude) {
         boolean testSpoilerSupThan100 = true;
+        bStaticGradient = true;
         if (Double.isNaN(amplitude)) {
             amplitude = gradAmplitude;
         } else {
@@ -549,12 +556,20 @@ public class Gradient {
         }
         calculateStaticArea();
         double[] gradMaxMin = checkGradientMax();
+        System.out.println(amplitudeTable.getName()+" : "+ gradMaxMin[0]);
         if (gradMaxMin[0] > 100.0) {
             amplitude = 100.0;
             spoilerExcess = gradMaxMin[0] - 100.0;
+            minTopTime = ceilToSubDecimal((gradMaxMin[0] * equivalentTime - grad_shape_rise_time * 100.0) / 100.0,5);
             testSpoilerSupThan100 = false;
         }
         return (testSpoilerSupThan100);
+    }
+    public boolean addSpoiler(double pixel_dimension, double factor ) {
+        bStaticGradient = true;
+        double grad_area_spoiler = factor / ((GradientMath.GAMMA ) * pixel_dimension);//GradientMath.GAMMA: gamma/2pi értéke Hz/T-ban
+        double grad_amp_spoiler = (grad_area_spoiler / equivalentTime )/ gMax * 100.0;//
+        return (addSpoiler( grad_amp_spoiler));
     }
 
 

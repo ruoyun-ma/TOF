@@ -67,7 +67,7 @@ import static rs2d.sequence.gradientecho.GradientEchoSequenceParams.*;
 //
 public class GradientEcho extends SequenceGeneratorAbstract {
 
-    private String sequenceVersion = "Version7.6";
+    private String sequenceVersion = "Version8.0a";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -120,6 +120,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
     boolean is_flyback;
     String kspace_filling;
 
+    boolean is_fatsat_enabled;
 
     private boolean is_rf_spoiling;
 
@@ -160,6 +161,14 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         //List<String> tx_shape = Arrays.asList("HARD", "GAUSSIAN", "SIN3", "xSINC5");
         ((TextParam) getParam(TX_SHAPE)).setSuggestedValues(tx_shape);
         ((TextParam) getParam(TX_SHAPE)).setRestrictedToSuggested(true);
+
+//        ((TextParam) getParamFromName(SATBAND_TX_SHAPE")).setSuggestedValues(tx_shape);
+//        ((TextParam) getParamFromName(SATBAND_TX_SHAPE")).setRestrictedToSuggested(true);
+        ((TextParam) getParam(FATSAT_TX_SHAPE)).setSuggestedValues(tx_shape);
+        ((TextParam) getParam(FATSAT_TX_SHAPE)).setRestrictedToSuggested(true);
+//        ((TextParam) getParamFromName("TOF2D_SB_TX_SHAPE")).setSuggestedValues(tx_shape);
+//        ((TextParam) getParamFromName("TOF2D_SB_TX_SHAPE")).setRestrictedToSuggested(true);
+
 
         //TRANSFORM PLUGIN
         List<String> list = asList("Sequential4D", "Sequential4DBackAndForth", "EPISequential4D", "Centric4D");
@@ -235,6 +244,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
 
         is_flyback = (((BooleanParam) getParam(FLYBACK)).getValue());
         kspace_filling = ((String) getParam(KSPACE_FILLING).getValue());
+
+        is_fatsat_enabled = (((BooleanParam) getParam(FAT_SATURATION_ENABLED)).getValue());
 
         is_rf_spoiling = ((BooleanParam) getParam(RF_SPOILING)).getValue();
 
@@ -585,7 +596,9 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         setSequenceParamValue(Grad_enable_spoiler_phase, (isEnablePhase && (is_grad_rewinding) || (is_grad_spoiler && (grad_amp_spoiler_sl_ph_re.getValue().get(1).doubleValue() != 0))));
         setSequenceParamValue(Grad_enable_spoiler_read, (isEnableRead && (is_grad_rewinding) || (is_grad_spoiler && (grad_amp_spoiler_sl_ph_re.getValue().get(2).doubleValue() != 0))));
 
-        setSequenceParamValue(Grad_enable_flyback, is_flyback); //todo flyback
+        setSequenceParamValue(Grad_enable_flyback, is_flyback);
+
+        setSequenceParamValue(Enable_fatsat, is_flyback);
 
         // -----------------------------------------------
         // calculate gradient equivalent rise time
@@ -614,24 +627,57 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         int nb_shape_points = 128;
         pulseTX.setShape(((String) getParam(TX_SHAPE).getValue()), nb_shape_points, "Hamming");
 
+
+        double tx_bandwidth_90_fs = ((NumberParam) getParam(FATSAT_BANDWIDTH)).getValue().doubleValue();
+        double tx_bandwidth_factor_90_fs = getTx_bandwidth_factor_90(FATSAT_TX_SHAPE, TX_BANDWIDTH_FACTOR, TX_BANDWIDTH_FACTOR_3D);
+        double tx_length_90_fs = is_fatsat_enabled ? tx_bandwidth_factor_90_fs / tx_bandwidth_90_fs : minInstructionDelay;
+        setSequenceTableSingleValue(Time_tx_fatsat, tx_length_90_fs);
+        setParamValue(FATSAT_TX_LENGTH, tx_length_90_fs);
+
+        RFPulse pulseTXFatSat = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_amp_fatsat, Tx_phase_fatsat, Time_tx_fatsat, Tx_shape_fatsat, Tx_shape_phase_fatsat, Freq_offset_tx_fatsat);
+        pulseTXFatSat.setShape(((String) getParam(TX_SHAPE).getValue()), nb_shape_points, "Hamming");
+
         // -----------------------------------------------
         // Calculation RF pulse parameters  2/3 : RF pulse & attenuation
         // -----------------------------------------------
         double flip_angle = ((NumberParam) getParam(FLIP_ANGLE)).getValue().doubleValue();
         boolean is_tx_amp_att_auto = ((BooleanParam) getParam(TX_AMP_ATT_AUTO)).getValue();
+        double tx_frequency_offset_90_fs = ((NumberParam) getParam(FATSAT_OFFSET_FREQ)).getValue().doubleValue();
         if (is_tx_amp_att_auto) {
-            if (!pulseTX.setAutoCalibFor180(flip_angle, observeFrequency, (List<Integer>) getParam(TX_ROUTE).getValue(), nucleus)) {
+//            if (!pulseTX.setAutoCalibFor180(flip_angle, observeFrequency, (List<Integer>) getParam(TX_ROUTE).getValue(), nucleus)) {
+//                getUnreachParamExceptionManager().addParam(TX_LENGTH.name(), txLength90, pulseTX.getPulseDuration(), ((NumberParam) getParam(TX_LENGTH)).getMaxValue(), "Pulse length too short to reach RF power with this pulse shape");
+//                txLength90 = pulseTX.getPulseDuration();
+//            }
+            if (!pulseTX.checkPower(flip_angle, observeFrequency, nucleus)) {
                 getUnreachParamExceptionManager().addParam(TX_LENGTH.name(), txLength90, pulseTX.getPulseDuration(), ((NumberParam) getParam(TX_LENGTH)).getMaxValue(), "Pulse length too short to reach RF power with this pulse shape");
                 txLength90 = pulseTX.getPulseDuration();
             }
+
+            if (!pulseTXFatSat.checkPower(is_fatsat_enabled ? flip_angle : 0.0, observeFrequency + tx_frequency_offset_90_fs, nucleus)) {
+                tx_length_90_fs = pulseTXFatSat.getPulseDuration();
+                System.out.println(" tx_length_90_fs: " + tx_length_90_fs);
+//                getUnreachParamExceptionManager().addParam(TX_LENGTH.name(), txLength90, pulseTXFatSat.getPulseDuration(), ((NumberParam) getParam(TX_LENGTH)).getMaxValue(), "Pulse length too short to reach RF power with this pulse shape");
+            }
+            RFPulse pulseMaxPower = pulseTX.getPower() > pulseTXFatSat.getPower() ? pulseTX : pulseTXFatSat;
+            pulseMaxPower.prepAtt(80, (List<Integer>) getParam(TX_ROUTE).getValue());
+
+            pulseTX.prepTxAmp((List<Integer>) getParam(TX_ROUTE).getValue());
+            pulseTXFatSat.prepTxAmp((List<Integer>) getParam(TX_ROUTE).getValue());
+
             this.setParamValue(TX_ATT, pulseTX.getAtt());            // display PULSE_ATT
             this.setParamValue(TX_AMP_90, pulseTX.getAmp90());     // display 90° amplitude
             this.setParamValue(TX_AMP_180, pulseTX.getAmp180());   // display 180° amplitude
+
+            this.setParamValue(FATSAT_TX_AMP_90, pulseTXFatSat.getAmp90());
+
         } else {
             pulseTX.setAtt(((NumberParam) getParam(TX_ATT)));
             pulseTX.setAmp(((NumberParam) getParam(TX_AMP_90)).getValue().doubleValue() * flip_angle / 90);
+
+            pulseTX.setAmp(((NumberParam) getParam(FATSAT_TX_AMP_90)).getValue().doubleValue());
         }
 
+        this.setParamValue(FATSAT_FLIP_ANGLE, is_fatsat_enabled ? 90 : 0);
         // -----------------------------------------------
         // Calculation RF pulse parameters  3/3: bandwidth
         // -----------------------------------------------
@@ -695,7 +741,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         boolean is_keyhole_allowed = ((BooleanParam) getParam(KEYHOLE_ALLOWED)).getValue();
         if (!isMultiplanar && isEnablePhase3D) {
             gradSliceRefPhase3D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension3D : acquisitionMatrixDimension3D, acquisitionMatrixDimension3D, slice_thickness_excitation, is_k_s_centred);
-            gradSliceRefPhase3D.reoderPhaseEncoding3D(plugin,  acquisitionMatrixDimension3D);
+            gradSliceRefPhase3D.reoderPhaseEncoding3D(plugin, acquisitionMatrixDimension3D);
         }
 
         // pre-calculate PHASE_2D
@@ -727,9 +773,9 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // -------------------------------------------------------------------------------------------------
         double time_flyback = ((NumberParam) getParam(GRADIENT_FLYBACK_TIME)).getValue().doubleValue();
         setSequenceTableSingleValue(Time_flyback, is_flyback ? time_flyback : minInstructionDelay);
-        setSequenceTableSingleValue(Time_flyback_ramp, is_flyback ? grad_rise_time : minInstructionDelay);
+        setSequenceTableSingleValue(Time_grad_ramp_flyback, is_flyback ? grad_rise_time : minInstructionDelay);
 
-        Gradient gradReadoutFlyback = Gradient.createGradient(getSequence(), Grad_amp_flyback, Time_flyback, Grad_shape_rise_up, Grad_shape_rise_down, Time_flyback_ramp);
+        Gradient gradReadoutFlyback = Gradient.createGradient(getSequence(), Grad_amp_flyback, Time_flyback, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flyback);
         if (is_flyback) {
             gradReadoutFlyback.refocalizeGradient(gradReadout, 1);
             grad_area_max = gradReadoutFlyback.getTotalAbsArea();
@@ -803,6 +849,61 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         }
         setSequenceTableSingleValue(Time_TE_delay2, delay2);
 
+        //--------------------------------------------------------------------------------------
+        //  External triggering
+        //--------------------------------------------------------------------------------------
+        getSequence().getPublicParam(Synchro_trigger).setValue(isTrigger ? TimeElement.Trigger.External : TimeElement.Trigger.Timer);
+        getSequence().getPublicParam(Synchro_trigger).setLocked(true);
+        double time_external_trigger_delay_max = minInstructionDelay;
+
+        Table triggerdelay = setSequenceTableValues(Time_trigger_delay, Order.Four);
+        if ((!isTrigger)) {
+            triggerdelay.add(minInstructionDelay);
+        } else {
+            for (int i = 0; i < numberOfTrigger; i++) {
+                double time_external_trigger_delay = roundToDecimal(triggerTime.getValue().get(i).doubleValue(), 7);
+                time_external_trigger_delay = time_external_trigger_delay < minInstructionDelay ? minInstructionDelay : time_external_trigger_delay;
+                triggerdelay.add(time_external_trigger_delay);
+                time_external_trigger_delay_max = Math.max(time_external_trigger_delay_max, time_external_trigger_delay);
+            }
+        }
+
+        setSequenceParamValue(Ext_trig_source, TRIGGER_CHANEL);
+
+        //--------------------------------------------------------------------------------------
+        //  Fat-Sat gradient
+        //--------------------------------------------------------------------------------------
+
+        double grad_fatsat_application_time = ((NumberParam) getParam(FATSAT_GRAD_APP_TIME)).getValue().doubleValue();
+        setSequenceTableFirstValue(Time_grad_fatsat, is_fatsat_enabled ? grad_fatsat_application_time : minInstructionDelay);
+        setSequenceTableFirstValue(Time_grad_ramp_fatsat, is_fatsat_enabled ? grad_rise_time : minInstructionDelay);
+
+        Gradient gradFatsatRead = Gradient.createGradient(getSequence(), Grad_amp_fatsat_read, Time_grad_fatsat, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_fatsat);
+        Gradient gradFatsatPhase = Gradient.createGradient(getSequence(), Grad_amp_fatsat_phase, Time_grad_fatsat, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_fatsat);
+        Gradient gradFatsatSlice = Gradient.createGradient(getSequence(), Grad_amp_fatsat_slice, Time_grad_fatsat, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_fatsat);
+
+
+        if (is_fatsat_enabled) {
+            double pixel_dimension_ph = ((NumberParam) getParamFromName("RESOLUTION_PHASE")).getValue().doubleValue();
+            double pixel_dimension_sl = ((NumberParam) getParamFromName("RESOLUTION_SLICE")).getValue().doubleValue();
+            boolean test_grad =  gradFatsatRead.addSpoiler(pixelDimension, 2);
+            test_grad = gradFatsatPhase.addSpoiler(pixel_dimension_ph, 2) && test_grad;
+            test_grad = gradFatsatSlice.addSpoiler(pixel_dimension_sl, 2) && test_grad;
+//
+            if ( !test_grad ) {
+                double min_fatsat_application_time = Math.max(gradFatsatRead.getMinTopTime(), Math.max(gradFatsatPhase.getMinTopTime(), gradFatsatSlice.getMinTopTime()));
+                this.getUnreachParamExceptionManager().addParam(FATSAT_GRAD_APP_TIME.name(), grad_fatsat_application_time, min_fatsat_application_time, ((NumberParam) getParam(FATSAT_GRAD_APP_TIME)).getMaxValue(), "FATSAT_GRAD_APP_TIME too short to get correct Spoiling");
+                grad_fatsat_application_time = min_fatsat_application_time;
+                setSequenceTableSingleValue(Time_grad_fatsat, grad_fatsat_application_time);
+                gradFatsatRead.rePrepare();
+                gradFatsatPhase.rePrepare();
+                gradFatsatSlice.rePrepare();
+            }
+        }
+        gradFatsatRead.applyAmplitude();
+        gradFatsatPhase.applyAmplitude();
+        gradFatsatSlice.applyAmplitude();
+
         // -------------------------------------------------------------------------------------------------
         // calculate Phase 2D, 3D and Read REWINDING - SPOILER area, check Grad_Spoil < GMAX
         // -------------------------------------------------------------------------------------------------
@@ -853,26 +954,6 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         gradSliceSpoiler.applyAmplitude();
         gradReadSpoiler.applyAmplitude(Order.Three);
 
-        //--------------------------------------------------------------------------------------
-        //  External triggering
-        //--------------------------------------------------------------------------------------
-        getSequence().getPublicParam(Synchro_trigger).setValue(isTrigger ? TimeElement.Trigger.External : TimeElement.Trigger.Timer);
-        getSequence().getPublicParam(Synchro_trigger).setLocked(true);
-        double time_external_trigger_delay_max = minInstructionDelay;
-
-        Table triggerdelay = setSequenceTableValues(Time_trigger_delay, Order.Four);
-        if ((!isTrigger)) {
-            triggerdelay.add(minInstructionDelay);
-        } else {
-            for (int i = 0; i < numberOfTrigger; i++) {
-                double time_external_trigger_delay = roundToDecimal(triggerTime.getValue().get(i).doubleValue(), 7);
-                time_external_trigger_delay = time_external_trigger_delay < minInstructionDelay ? minInstructionDelay : time_external_trigger_delay;
-                triggerdelay.add(time_external_trigger_delay);
-                time_external_trigger_delay_max = Math.max(time_external_trigger_delay_max, time_external_trigger_delay);
-            }
-        }
-
-        setSequenceParamValue(Ext_trig_source, TRIGGER_CHANEL);
 
         // ---------------------------------------------------------------
         // calculate TR , Time_last_delay  Time_TR_delay & search for incoherence
@@ -977,7 +1058,23 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         RFPulse pulseTXComp = RFPulse.createRFPulse(getSequence(), Time_grad_ramp, FreqOffset_tx_comp);
         pulseTXComp.setCompensationFrequencyOffset(pulseTX, grad_ratio_slice_refoc);
 
-        setSequenceTableSingleValue(Tx_phase, 0);
+
+        // ------------------------------------------------------------------
+        //calculate TX FREQUENCY FATSAT and compensation
+        // ------------------------------------------------------------------
+
+        pulseTXFatSat.setFrequencyOffset(is_fatsat_enabled ? tx_frequency_offset_90_fs : 0.0);
+        pulseTXFatSat.setFrequencyOffset(tx_frequency_offset_90_fs);
+
+        setSequenceTableFirstValue(Time_before_fatsat_pulse, minInstructionDelay);
+        RFPulse pulseTXFatSatPrep = RFPulse.createRFPulse(getSequence(), Time_before_fatsat_pulse, Freq_offset_tx_fatsat_prep);
+        pulseTXFatSatPrep.setCompensationFrequencyOffset(pulseTXFatSat, 0.5);
+        RFPulse pulseTXFatSatComp = RFPulse.createRFPulse(getSequence(), Time_grad_ramp_fatsat, Freq_offset_tx_fatsat_comp);
+        pulseTXFatSatComp.setCompensationFrequencyOffset(pulseTXFatSat, 0.5);
+
+
+        Table smartTTL_FatSat_table = setSequenceTableValues(SmartTTL_FatSat, Order.Four);
+        smartTTL_FatSat_table.add(0);
 
         //----------------------------------------------------------------------
         // OFF CENTER FIELD OF VIEW 1D
@@ -1108,6 +1205,12 @@ public class GradientEcho extends SequenceGeneratorAbstract {
                 tx_bandwidth_factor_90 = tx_bandwith_factor_table.getValue().get(2).doubleValue();
             } else if ("SINC5".equalsIgnoreCase((String) getParam(tx_shape).getValue())) {
                 tx_bandwidth_factor_90 = tx_bandwith_factor_table.getValue().get(3).doubleValue();
+            } else if ("RAMP".equalsIgnoreCase((String) getParam(tx_shape).getValue())) {
+                tx_bandwidth_factor_90 = tx_bandwith_factor_table.getValue().get(3).doubleValue();
+            } else if ("SLR_8_5152".equalsIgnoreCase((String) getParam(tx_shape).getValue())) {
+                tx_bandwidth_factor_90 = tx_bandwith_factor_table.getValue().get(4).doubleValue();
+            } else if ("SLR_4_2576".equalsIgnoreCase((String) getParam(tx_shape).getValue())) {
+                tx_bandwidth_factor_90 = tx_bandwith_factor_table.getValue().get(5).doubleValue();
             } else {
                 tx_bandwidth_factor_90 = tx_bandwith_factor_table.getValue().get(0).doubleValue();
             }
@@ -1118,6 +1221,12 @@ public class GradientEcho extends SequenceGeneratorAbstract {
                 tx_bandwidth_factor_90 = tx_bandwith_factor_3D_table.getValue().get(2).doubleValue();
             } else if ("SINC5".equalsIgnoreCase((String) getParam(tx_shape).getValue())) {
                 tx_bandwidth_factor_90 = tx_bandwith_factor_3D_table.getValue().get(3).doubleValue();
+            } else if ("RAMP".equalsIgnoreCase((String) getParam(tx_shape).getValue())) {
+                tx_bandwidth_factor_90 = tx_bandwith_factor_3D_table.getValue().get(3).doubleValue();
+            } else if ("SLR_8_5152".equalsIgnoreCase((String) getParam(tx_shape).getValue())) {
+                tx_bandwidth_factor_90 = tx_bandwith_factor_3D_table.getValue().get(4).doubleValue();
+            } else if ("SLR_4_2576".equalsIgnoreCase((String) getParam(tx_shape).getValue())) {
+                tx_bandwidth_factor_90 = tx_bandwith_factor_3D_table.getValue().get(5).doubleValue();
             } else {
                 tx_bandwidth_factor_90 = tx_bandwith_factor_3D_table.getValue().get(0).doubleValue();
             }

@@ -1088,10 +1088,10 @@ public class GradientEcho extends SequenceGeneratorAbstract {
             double ttl_periode;
             int sliceRep_ttl;
             int secondDim;
-            if (tr > fatSat_repetition_Time) {
+           /* if (tr > fatSat_repetition_Time) {  //   this case is not necessary as merged with higher order will give a better roundning
                 secondDim = 1;
                 smartTTL_FatSat_table.setOrder(Order.Loop);
-            } else if (number_of_averages > 1) {
+            } else*/ if (number_of_averages > 1) {
                 secondDim = number_of_averages;
                 smartTTL_FatSat_table.setOrder(Order.OneLoop);
             } else {
@@ -1106,6 +1106,12 @@ public class GradientEcho extends SequenceGeneratorAbstract {
                 smartTTL_FatSat_table.add(0);
             }
             setParamValue(FATSAT_PERIODE_EFF, ttl_periode);
+//            System.out.println(slice_time);
+//            System.out.println(tr * secondDim);
+//            System.out.println("  / "+ fatSat_repetition_Time);
+//            System.out.println(slice_time);
+//            System.out.println(nb_ttl);
+//            System.out.println(ttl_periode);
         } else {
             smartTTL_FatSat_table.add(0);
         }

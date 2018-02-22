@@ -2311,7 +2311,7 @@
                 <lockedToDefault>false</lockedToDefault>
                 <group>Dimension</group>
                 <rolesEnum>User</rolesEnum>
-                <value>2</value>
+                <value>1</value>
                 <defaultValue>1</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>65536</maxValue>
@@ -5463,7 +5463,7 @@
                 <lockedToDefault>false</lockedToDefault>
                 <group>Dimension</group>
                 <rolesEnum>User</rolesEnum>
-                <value>0</value>
+                <value>19</value>
                 <defaultValue>0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>65536</maxValue>
@@ -14124,11 +14124,30 @@
                 <name>Tx_freq_offset</name>
                 <description></description>
                 <numberEnum>FrequencyOffset</numberEnum>
-                <order>Three</order>
+                <order>ThreeLoop</order>
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>6</address>
-                <list>0.0</list>
+                <list>12824.999999999998</list>
+                <list>10124.999999999998</list>
+                <list>7424.999999999999</list>
+                <list>4725.0</list>
+                <list>2025.0</list>
+                <list>-675.0</list>
+                <list>-3374.999999999998</list>
+                <list>-6074.999999999998</list>
+                <list>-8774.999999999998</list>
+                <list>-11474.999999999998</list>
+                <list>11474.999999999998</list>
+                <list>8775.0</list>
+                <list>6074.999999999999</list>
+                <list>3375.0</list>
+                <list>675.0</list>
+                <list>-2024.9999999999982</list>
+                <list>-4724.999999999998</list>
+                <list>-7424.999999999998</list>
+                <list>-10124.999999999998</list>
+                <list>-12824.999999999998</list>
             </value>
         </Entry>
         <Entry>
@@ -15234,11 +15253,30 @@
                 <name>FreqOffset_tx_comp</name>
                 <description></description>
                 <numberEnum>FrequencyOffset</numberEnum>
-                <order>Three</order>
+                <order>ThreeLoop</order>
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-0.0</list>
+                <list>-4124.999999999996</list>
+                <list>-624.9999999999911</list>
+                <list>-7124.999999999995</list>
+                <list>-3625.000000000003</list>
+                <list>-124.99999999999957</list>
+                <list>3375.0000000000005</list>
+                <list>6874.999999999992</list>
+                <list>374.99999999999204</list>
+                <list>3874.999999999993</list>
+                <list>7374.99999999999</list>
+                <list>-7374.99999999999</list>
+                <list>-3875.0000000000023</list>
+                <list>-374.9999999999965</list>
+                <list>-6875.000000000001</list>
+                <list>-3375.0000000000005</list>
+                <list>124.99999999999069</list>
+                <list>3624.9999999999895</list>
+                <list>7124.999999999991</list>
+                <list>624.9999999999911</list>
+                <list>4124.999999999996</list>
             </value>
         </Entry>
         <Entry>
@@ -15558,11 +15596,30 @@
                 <name>FreqOffset_tx_prep</name>
                 <description></description>
                 <numberEnum>FrequencyOffset</numberEnum>
-                <order>Three</order>
+                <order>ThreeLoop</order>
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-0.0</list>
+                <list>-4124.999999999996</list>
+                <list>-624.9999999999911</list>
+                <list>-7124.999999999995</list>
+                <list>-3625.000000000003</list>
+                <list>-124.99999999999957</list>
+                <list>3375.0000000000005</list>
+                <list>6874.999999999992</list>
+                <list>374.99999999999204</list>
+                <list>3874.999999999993</list>
+                <list>7374.99999999999</list>
+                <list>-7374.99999999999</list>
+                <list>-3875.0000000000023</list>
+                <list>-374.9999999999965</list>
+                <list>-6875.000000000001</list>
+                <list>-3375.0000000000005</list>
+                <list>124.99999999999069</list>
+                <list>3624.9999999999895</list>
+                <list>7124.999999999991</list>
+                <list>624.9999999999911</list>
+                <list>4124.999999999996</list>
             </value>
         </Entry>
         <Entry>
@@ -15627,7 +15684,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>8</address>
-                <list>2.919119999999964E-4</list>
+                <list>2.5162000000000245E-5</list>
             </value>
         </Entry>
         <Entry>
@@ -17080,11 +17137,13 @@
                 <name>SmartTTL_FatSat</name>
                 <description></description>
                 <numberEnum>Bit</numberEnum>
-                <order>OneLoop</order>
+                <order>TwoLoop</order>
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>-1</address>
                 <list>1</list>
+                <list>0</list>
+                <list>0</list>
                 <list>0</list>
             </value>
         </Entry>

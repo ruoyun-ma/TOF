@@ -69,7 +69,7 @@
                 <group>Scan</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>1</value>
+                <value>20</value>
                 <defaultValue>1</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>65536</maxValue>
@@ -514,7 +514,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.05</value>
+                <value>0.07</value>
                 <defaultValue>0.05</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -533,7 +533,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.02993</value>
+                <value>0.05879300000000001</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -659,7 +659,7 @@
                 <group>Dimension</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.001</value>
+                <value>0.02</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0</maxValue>
@@ -1967,7 +1967,7 @@
                 <group>Scan</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>2</value>
+                <value>1</value>
                 <defaultValue>1</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>65536</maxValue>
@@ -1986,7 +1986,7 @@
                 <group>Scan</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>1</value>
+                <value>20</value>
                 <defaultValue>0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>65536</maxValue>
@@ -2584,7 +2584,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.015</value>
+                <value>0.294</value>
                 <defaultValue>0.2</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -2691,7 +2691,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>1.6</value>
+                <value>14.8</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -2725,7 +2725,7 @@
                 <lockedToDefault>false</lockedToDefault>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>GE_2DAXI_64x50x1</value>
+                <value>GE_2DAXI_64x50x20</value>
                 <defaultValue></defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
             </value>
@@ -3234,7 +3234,7 @@
                 <group>User</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>1</value>
+                <value>20</value>
                 <defaultValue>1</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>65536</maxValue>

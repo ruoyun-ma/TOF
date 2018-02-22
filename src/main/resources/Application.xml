@@ -222,7 +222,7 @@
                     <group>Scan</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>20</value>
+                    <value>1</value>
                     <defaultValue>1</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>65536</maxValue>
@@ -241,7 +241,7 @@
                     <group>Scan</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>5</value>
+                    <value>1</value>
                     <defaultValue>1</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>65536</maxValue>
@@ -281,10 +281,6 @@
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
                     <value>0.0</value>
-                    <value>0.11</value>
-                    <value>0.219</value>
-                    <value>0.329</value>
-                    <value>0.439</value>
                     <defaultValue>0.0</defaultValue>
                     <maxValue>1.0E9</maxValue>
                     <minValue>0.0</minValue>
@@ -538,7 +534,7 @@
                     <group>Delay</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>0.10573</value>
+                    <value>0.0</value>
                     <defaultValue>0.0</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>1.0E9</maxValue>
@@ -557,7 +553,7 @@
                     <group>Delay</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>0.1097</value>
+                    <value>0.00378</value>
                     <defaultValue>0.005</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>1.0E9</maxValue>
@@ -576,11 +572,11 @@
                     <group>Delay</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>5</value>
+                    <value>1</value>
                     <defaultValue>1</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>65536</maxValue>
-                    <minValue>0</minValue>
+                    <minValue>1</minValue>
                     <numberEnum>Scan</numberEnum>
                 </value>
             </entry>
@@ -633,7 +629,7 @@
                     <group>Delay</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>9.999999999999999E-5</value>
+                    <value>3.6E-4</value>
                     <defaultValue>0.001</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>1.0E9</maxValue>
@@ -658,6 +654,44 @@
                     <maxValue>1500.0</maxValue>
                     <minValue>-1500.0</minValue>
                     <numberEnum>FrequencyOffset</numberEnum>
+                </value>
+            </entry>
+            <entry>
+                <key>FATSAT_PERIODE</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>FATSAT_PERIODE</name>
+                    <description></description>
+                    <displayedName>FATSAT_PERIODE</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <group>Delay</group>
+                    <category>Acquisition</category>
+                    <rolesEnum>User</rolesEnum>
+                    <value>0.05</value>
+                    <defaultValue>0.05</defaultValue>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <maxValue>1.0E9</maxValue>
+                    <minValue>0.0</minValue>
+                    <numberEnum>Time</numberEnum>
+                </value>
+            </entry>
+            <entry>
+                <key>FATSAT_PERIODE_EFF</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>FATSAT_PERIODE_EFF</name>
+                    <description></description>
+                    <displayedName>FATSAT_PERIODE_EFF</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <group>Delay</group>
+                    <category>Acquisition</category>
+                    <rolesEnum>User</rolesEnum>
+                    <value>0.044895</value>
+                    <defaultValue>0.0</defaultValue>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <maxValue>1.0E9</maxValue>
+                    <minValue>0.0</minValue>
+                    <numberEnum>Time</numberEnum>
                 </value>
             </entry>
             <entry>
@@ -778,7 +812,7 @@
                     <group>Dimension</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>0.02</value>
+                    <value>0.001</value>
                     <defaultValue>0.0</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>1.0</maxValue>
@@ -1480,7 +1514,7 @@
                     <group>Miscellaneous</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>TE</value>
+                    <value></value>
                     <defaultValue></defaultValue>
                     <suggestedValues>TE</suggestedValues>
                     <suggestedValues>TI</suggestedValues>
@@ -1499,11 +1533,6 @@
                     <group>Miscellaneous</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>109.7</value>
-                    <value>215.43</value>
-                    <value>321.16</value>
-                    <value>426.89</value>
-                    <value>532.62</value>
                     <maxValue>1.7976931348623157E308</maxValue>
                     <minValue>-1.7976931348623157E308</minValue>
                     <numberEnum>Double</numberEnum>
@@ -2091,7 +2120,7 @@
                     <group>Scan</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>1</value>
+                    <value>2</value>
                     <defaultValue>1</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>65536</maxValue>
@@ -2110,7 +2139,7 @@
                     <group>Scan</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>20</value>
+                    <value>1</value>
                     <defaultValue>0</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>65536</maxValue>
@@ -2708,7 +2737,7 @@
                     <group>Delay</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>10.677</value>
+                    <value>0.015</value>
                     <defaultValue>0.2</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>1.0E9</maxValue>
@@ -2815,7 +2844,7 @@
                     <group>Delay</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>533.9</value>
+                    <value>0.8</value>
                     <defaultValue>0.0</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>1.0E9</maxValue>
@@ -2849,7 +2878,7 @@
                     <lockedToDefault>false</lockedToDefault>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>GE_2DAXI_64x50x20x5_ETL=5</value>
+                    <value>GE_2DAXI_64x50x1</value>
                     <defaultValue></defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                 </value>
@@ -3358,7 +3387,7 @@
                     <group>User</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>20</value>
+                    <value>1</value>
                     <defaultValue>1</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>65536</maxValue>

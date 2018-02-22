@@ -886,11 +886,11 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         if (is_fatsat_enabled) {
             double pixel_dimension_ph = ((NumberParam) getParamFromName("RESOLUTION_PHASE")).getValue().doubleValue();
             double pixel_dimension_sl = ((NumberParam) getParamFromName("RESOLUTION_SLICE")).getValue().doubleValue();
-            boolean test_grad =  gradFatsatRead.addSpoiler(pixelDimension, 2);
+            boolean test_grad = gradFatsatRead.addSpoiler(pixelDimension, 2);
             test_grad = gradFatsatPhase.addSpoiler(pixel_dimension_ph, 2) && test_grad;
             test_grad = gradFatsatSlice.addSpoiler(pixel_dimension_sl, 2) && test_grad;
 //
-            if ( !test_grad ) {
+            if (!test_grad) {
                 double min_fatsat_application_time = Math.max(gradFatsatRead.getMinTopTime(), Math.max(gradFatsatPhase.getMinTopTime(), gradFatsatSlice.getMinTopTime()));
                 this.getUnreachParamExceptionManager().addParam(FATSAT_GRAD_APP_TIME.name(), grad_fatsat_application_time, min_fatsat_application_time, ((NumberParam) getParam(FATSAT_GRAD_APP_TIME)).getMaxValue(), "FATSAT_GRAD_APP_TIME too short to get correct Spoiling");
                 grad_fatsat_application_time = min_fatsat_application_time;
@@ -984,17 +984,20 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         double tr_delay;
         Table time_tr_delay = setSequenceTableValues(Time_TR_delay, Order.Four);
         if (numberOfTrigger != 1) {
+
             for (int i = 0; i < numberOfTrigger; i++) {
                 double tmp_time_seq_to_end_spoiler = time_seq_to_end_spoiler - time_external_trigger_delay_max + triggerdelay.get(i).doubleValue();
-                tr_delay = (tr - (tmp_time_seq_to_end_spoiler - +last_delay + min_flush_delay)) / slices_acquired_in_single_scan - minInstructionDelay;
+                tr_delay = (tr - (tmp_time_seq_to_end_spoiler + last_delay + min_flush_delay)) / slices_acquired_in_single_scan - minInstructionDelay;
                 time_tr_delay.add(tr_delay);
             }
         } else {
             tr_delay = (tr - (time_seq_to_end_spoiler + last_delay + min_flush_delay)) / slices_acquired_in_single_scan - minInstructionDelay;
+            tr_delay = (tr - last_delay - min_flush_delay - time_seq_to_end_spoiler) / slices_acquired_in_single_scan - minInstructionDelay;
             time_tr_delay.add(tr_delay);
         }
         setSequenceTableSingleValue(Time_last_delay, last_delay);
         setSequenceTableSingleValue(Time_flush_delay, min_flush_delay);
+
 
         //----------------------------------------------------------------------
         // DYNAMIC SEQUENCE
@@ -1073,8 +1076,39 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         pulseTXFatSatComp.setCompensationFrequencyOffset(pulseTXFatSat, 0.5);
 
 
+        // ------------------------------------------------------------------
+        //  blanking smartTTL_FatSat_table
+        // ------------------------------------------------------------------
+
         Table smartTTL_FatSat_table = setSequenceTableValues(SmartTTL_FatSat, Order.Four);
-        smartTTL_FatSat_table.add(0);
+        if (is_fatsat_enabled) {
+            double slice_time = (delay_before_echo_loop + (echoTrainLength * delay_echo_loop)
+                    + getTimeBetweenEvents(Events.LoopEndEcho + 1, Events.LoopMultiPlanarEnd));
+            double fatSat_repetition_Time = ((NumberParam) getParam(FATSAT_PERIODE)).getValue().doubleValue();
+            double ttl_periode;
+            int sliceRep_ttl;
+            int secondDim;
+            if (tr > fatSat_repetition_Time) {
+                secondDim = 1;
+                smartTTL_FatSat_table.setOrder(Order.Loop);
+            } else if (number_of_averages > 1) {
+                secondDim = number_of_averages;
+                smartTTL_FatSat_table.setOrder(Order.OneLoop);
+            } else {
+                secondDim = acquisitionMatrixDimension2D;
+                smartTTL_FatSat_table.setOrder(Order.TwoLoop);
+            }
+            int nb_ttl = Math.max(1, (int) Math.round(tr * secondDim / fatSat_repetition_Time));
+            sliceRep_ttl = Math.max(1, (int) Math.floor(slices_acquired_in_single_scan * secondDim / nb_ttl));
+            ttl_periode = sliceRep_ttl * slice_time;
+            smartTTL_FatSat_table.add(1);
+            for (int i = 0; i < sliceRep_ttl - 1; i++) {
+                smartTTL_FatSat_table.add(0);
+            }
+            setParamValue(FATSAT_PERIODE_EFF, ttl_periode);
+        } else {
+            smartTTL_FatSat_table.add(0);
+        }
 
         //----------------------------------------------------------------------
         // OFF CENTER FIELD OF VIEW 1D

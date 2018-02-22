@@ -179,7 +179,7 @@ public class Gradient {
             amplitudeArray = new double[values.length];
             int i = 0;
             for (double value : values) {
-                System.out.println(i + " " + value);
+                //System.out.println(i + " " + value);
                 amplitudeArray[i] = value;
                 i += 1;
             }
@@ -556,7 +556,7 @@ public class Gradient {
         }
         calculateStaticArea();
         double[] gradMaxMin = checkGradientMax();
-        System.out.println(amplitudeTable.getName()+" : "+ gradMaxMin[0]);
+
         if (gradMaxMin[0] > 100.0) {
             amplitude = 100.0;
             spoilerExcess = gradMaxMin[0] - 100.0;

@@ -76,7 +76,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(65536);
-            param.setValue(20);
+            param.setValue(1);
             param.setDefaultValue(1);
             return param;
         }
@@ -94,7 +94,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(65536);
-            param.setValue(5);
+            param.setValue(1);
             param.setDefaultValue(1);
             return param;
         }
@@ -127,7 +127,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
             param.setNumberEnum(NumberEnum.Time);
-            param.setValue(asList(0.0, 0.11, 0.219, 0.329, 0.439));
+            param.setValue(asList(0.0));
             param.setDefaultValue(asList(0.0));
             return param;
         }
@@ -369,7 +369,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.10573);
+            param.setValue(0.0);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -387,7 +387,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.1097);
+            param.setValue(0.00378);
             param.setDefaultValue(0.005);
             return param;
         }
@@ -403,9 +403,9 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setGroup(EnumGroup.Delay);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Scan);
-            param.setMinValue(0);
+            param.setMinValue(1);
             param.setMaxValue(65536);
-            param.setValue(5);
+            param.setValue(1);
             param.setDefaultValue(1);
             return param;
         }
@@ -489,7 +489,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(9.999999999999999E-5);
+            param.setValue(3.6E-4);
             param.setDefaultValue(0.001);
             return param;
         }
@@ -509,6 +509,42 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setMaxValue(1500.0);
             param.setValue(-440.0);
             param.setDefaultValue(-440.0);
+            return param;
+        }
+    },
+
+    FATSAT_PERIODE {
+        Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("FATSAT_PERIODE");
+            param.setDisplayedName("FATSAT_PERIODE");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Delay);
+            param.setCategory(Category.Acquisition);
+            param.setNumberEnum(NumberEnum.Time);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.0E9);
+            param.setValue(0.05);
+            param.setDefaultValue(0.05);
+            return param;
+        }
+    },
+
+    FATSAT_PERIODE_EFF {
+        Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("FATSAT_PERIODE_EFF");
+            param.setDisplayedName("FATSAT_PERIODE_EFF");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Delay);
+            param.setCategory(Category.Acquisition);
+            param.setNumberEnum(NumberEnum.Time);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.0E9);
+            param.setValue(0.044895);
+            param.setDefaultValue(0.0);
             return param;
         }
     },
@@ -596,7 +632,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Length);
             param.setMinValue(0.0);
             param.setMaxValue(1.0);
-            param.setValue(0.02);
+            param.setValue(0.001);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -1241,7 +1277,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
-            param.setValue("TE");
+            param.setValue("");
             param.setDefaultValue("");
             param.setSuggestedValues(asList("TE", "TI", "TRIGGER DELAY"));
             return param;
@@ -1260,7 +1296,6 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setMinValue(-1.7976931348623157E308);
             param.setMaxValue(1.7976931348623157E308);
             param.setNumberEnum(NumberEnum.Double);
-            param.setValue(asList(109.7, 215.43, 321.16, 426.89, 532.62));
             return param;
         }
     },
@@ -1345,7 +1380,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(65536);
-            param.setValue(1);
+            param.setValue(2);
             param.setDefaultValue(1);
             return param;
         }
@@ -1363,7 +1398,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(65536);
-            param.setValue(20);
+            param.setValue(1);
             param.setDefaultValue(0);
             return param;
         }
@@ -1815,7 +1850,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(10.677);
+            param.setValue(0.015);
             param.setDefaultValue(0.2);
             return param;
         }
@@ -1898,7 +1933,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setDescription("");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setCategory(Category.Acquisition);
-            param.setValue("GE_2DAXI_64x50x20x5_ETL=5");
+            param.setValue("GE_2DAXI_64x50x1");
             param.setDefaultValue("");
             return param;
         }
@@ -1932,7 +1967,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(533.9);
+            param.setValue(0.8);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2422,7 +2457,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(1);
             param.setMaxValue(65536);
-            param.setValue(20);
+            param.setValue(1);
             param.setDefaultValue(1);
             return param;
         }

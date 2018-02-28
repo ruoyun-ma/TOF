@@ -457,7 +457,7 @@
                 <group>Emission</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>90.0</value>
+                <value>0.0</value>
                 <defaultValue>90.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>360.0</maxValue>
@@ -533,7 +533,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.05879300000000001</value>
+                <value>0.06207235200000001</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -552,7 +552,7 @@
                 <group>Emission</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>56.159040971376655</value>
+                <value>100.0</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>100.0</maxValue>
@@ -571,7 +571,7 @@
                 <group>Emission</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.0045000000000000005</value>
+                <value>5.0E-6</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -610,7 +610,7 @@
                 <group>Miscellaneous</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
             </value>
         </entry>
@@ -2536,6 +2536,19 @@
             </value>
         </entry>
         <entry>
+            <key>PROBES</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listTextParam">
+                <name>PROBES</name>
+                <description>The probes used for the acquisition</description>
+                <displayedName>Probes</displayedName>
+                <locked>true</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Miscellaneous</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+            </value>
+        </entry>
+        <entry>
             <key>RECEIVER_COUNT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RECEIVER_COUNT</name>
@@ -2584,7 +2597,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.294</value>
+                <value>0.311</value>
                 <defaultValue>0.2</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -2665,6 +2678,124 @@
             </value>
         </entry>
         <entry>
+            <key>SATBAND_DISTANCE_FROM_FOV</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>SATBAND_DISTANCE_FROM_FOV</name>
+                <description></description>
+                <displayedName>SATBAND_DISTANCE_FROM_FOV</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Dimension</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>0.01</value>
+                <defaultValue>0.0</defaultValue>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <maxValue>0.1</maxValue>
+                <minValue>-0.1</minValue>
+                <numberEnum>Location</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>SATBAND_ENABLED</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>SATBAND_ENABLED</name>
+                <description></description>
+                <displayedName>SATBAND_ENABLED</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Miscellaneous</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>false</value>
+                <defaultValue>false</defaultValue>
+            </value>
+        </entry>
+        <entry>
+            <key>SATBAND_GRAD_AMP_SPOILER</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>SATBAND_GRAD_AMP_SPOILER</name>
+                <description>Amplitude of the spoiler gradient after saturation pulse</description>
+                <displayedName>SATBAND_GRAD_AMP_SPOILER</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Gradient</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>40.0</value>
+                <defaultValue>40.0</defaultValue>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <maxValue>100.0</maxValue>
+                <minValue>30.0</minValue>
+                <numberEnum>PERCENT</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>SATBAND_ORIENTATION</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>SATBAND_ORIENTATION</name>
+                <description></description>
+                <displayedName>SATBAND_ORIENTATION</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Dimension</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>ALL</value>
+                <defaultValue>CRANIAL</defaultValue>
+                <suggestedValues>CRANIAL</suggestedValues>
+                <suggestedValues>CAUDAL</suggestedValues>
+                <suggestedValues>RIGHT</suggestedValues>
+                <suggestedValues>LEFT</suggestedValues>
+                <suggestedValues>ANTERIOR</suggestedValues>
+                <suggestedValues>POSTERIOR</suggestedValues>
+                <suggestedValues>CRANIAL AND CAUDAL</suggestedValues>
+                <suggestedValues>RIGHT AND LEFT</suggestedValues>
+                <suggestedValues>ANTERIOR AND POSTERIOR</suggestedValues>
+                <suggestedValues>ALL</suggestedValues>
+                <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </entry>
+        <entry>
+            <key>SATBAND_THICKNESS</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>SATBAND_THICKNESS</name>
+                <description></description>
+                <displayedName>SATBAND_THICKNESS</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Dimension</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>0.02</value>
+                <defaultValue>0.01</defaultValue>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <maxValue>0.1</maxValue>
+                <minValue>0.001</minValue>
+                <numberEnum>Length</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>SATBAND_TX_SHAPE</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>SATBAND_TX_SHAPE</name>
+                <description></description>
+                <displayedName>SATBAND_TX_SHAPE</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Emission</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>GAUSSIAN</value>
+                <defaultValue>HARD</defaultValue>
+                <suggestedValues>HARD</suggestedValues>
+                <suggestedValues>GAUSSIAN</suggestedValues>
+                <suggestedValues>SINC3</suggestedValues>
+                <suggestedValues>SINC5</suggestedValues>
+                <restrictedToSuggested>true</restrictedToSuggested>
+            </value>
+        </entry>
+        <entry>
             <key>SEQUENCE_NAME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQUENCE_NAME</name>
@@ -2691,7 +2822,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>14.8</value>
+                <value>15.6</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -2710,7 +2841,7 @@
                 <group>User</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>Version8.0a</value>
+                <value>Version8.0d</value>
                 <defaultValue></defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
             </value>

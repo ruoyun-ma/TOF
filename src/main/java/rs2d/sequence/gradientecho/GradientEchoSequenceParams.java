@@ -13,6 +13,11 @@ public interface GradientEchoSequenceParams {
     String Enable_fatsat = "Enable_fatsat";
 
     /**
+     * Group: Gradient, Type: BooleanParam
+     */
+    String Enable_sb = "Enable_sb";
+
+    /**
      * Group: Delay, Type: TextParam
      */
     String Ext_trig_source = "Ext_trig_source";
@@ -123,6 +128,11 @@ public interface GradientEchoSequenceParams {
     String Nb_point = "Nb_point";
 
     /**
+     * Group: Dimension, Type: NumberParam - Integer
+     */
+    String Nb_sb_loop = "Nb_sb_loop";
+
+    /**
      * Group: Transmit, Type: BooleanParam
      */
     String Phase_reset = "Phase_reset";
@@ -181,6 +191,21 @@ public interface GradientEchoSequenceParams {
     String Freq_offset_tx_fatsat_prep = "Freq_offset_tx_fatsat_prep";
 
     /**
+     * Group: Transmit, Order: 4D+Loop - FreqOffset (Hz)
+     */
+    String Freq_offset_tx_sb = "Freq_offset_tx_sb";
+
+    /**
+     * Group: Transmit, Order: 4D+Loop - FreqOffset (Hz)
+     */
+    String Freq_offset_tx_sb_comp = "Freq_offset_tx_sb_comp";
+
+    /**
+     * Group: Transmit, Order: 4D+Loop - FreqOffset (Hz)
+     */
+    String Freq_offset_tx_sb_prep = "Freq_offset_tx_sb_prep";
+
+    /**
      * Group: Transmit, Order: 4D+LoopB - FreqOffset (Hz)
      */
     String FreqOffset_RFSpoiling = "FreqOffset_RFSpoiling";
@@ -206,12 +231,12 @@ public interface GradientEchoSequenceParams {
     String FreqOffset_rx_prep = "FreqOffset_rx_prep";
 
     /**
-     * Group: Transmit, Order: 3D - FreqOffset (Hz)
+     * Group: Transmit, Order: 3D+Loop - FreqOffset (Hz)
      */
     String FreqOffset_tx_comp = "FreqOffset_tx_comp";
 
     /**
-     * Group: Transmit, Order: 3D - FreqOffset (Hz)
+     * Group: Transmit, Order: 3D+Loop - FreqOffset (Hz)
      */
     String FreqOffset_tx_prep = "FreqOffset_tx_prep";
 
@@ -263,6 +288,36 @@ public interface GradientEchoSequenceParams {
     /**
      * Group: Gradient, Order: 4D+Loop - GradAmp (%)
      */
+    String Grad_amp_sb_phase = "Grad_amp_sb_phase";
+
+    /**
+     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
+     */
+    String Grad_amp_sb_phase_spoiler = "Grad_amp_sb_phase_spoiler";
+
+    /**
+     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
+     */
+    String Grad_amp_sb_read = "Grad_amp_sb_read";
+
+    /**
+     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
+     */
+    String Grad_amp_sb_read_spoiler = "Grad_amp_sb_read_spoiler";
+
+    /**
+     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
+     */
+    String Grad_amp_sb_slice = "Grad_amp_sb_slice";
+
+    /**
+     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
+     */
+    String Grad_amp_sb_slice_spoiler = "Grad_amp_sb_slice_spoiler";
+
+    /**
+     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
+     */
     String Grad_amp_slice = "Grad_amp_slice";
 
     /**
@@ -301,7 +356,7 @@ public interface GradientEchoSequenceParams {
     String Rx_phase = "Rx_phase";
 
     /**
-     * Group: Transmit, Order: 2D+Loop - Bit
+     * Group: Transmit, Order: 4D - Bit
      */
     String SmartTTL_FatSat = "SmartTTL_FatSat";
 
@@ -354,6 +409,16 @@ public interface GradientEchoSequenceParams {
      * Group: Delay, Order: 4D+Loop - Time (s)
      */
     String Time_grad_ramp_flyback = "Time_grad_ramp_flyback";
+
+    /**
+     * Group: Delay, Order: 1D - Time (s)
+     */
+    String Time_grad_ramp_sb = "Time_grad_ramp_sb";
+
+    /**
+     * Group: Delay, Order: 1D - Time (s)
+     */
+    String Time_grad_sb = "Time_grad_sb";
 
     /**
      * Group: Delay, Order: 4D+Loop - Time (s)
@@ -411,6 +476,11 @@ public interface GradientEchoSequenceParams {
     String Time_tx_fatsat = "Time_tx_fatsat";
 
     /**
+     * Group: Delay, Order: 4D+Loop - Time (s)
+     */
+    String Time_tx_sb = "Time_tx_sb";
+
+    /**
      * Group: Transmit, Order: 4D+Loop - TxAmp (%)
      */
     String Tx_amp = "Tx_amp";
@@ -421,7 +491,12 @@ public interface GradientEchoSequenceParams {
     String Tx_amp_fatsat = "Tx_amp_fatsat";
 
     /**
-     * Group: Transmit, Order: 3D - FreqOffset (Hz)
+     * Group: Transmit, Order: 4D+Loop - TxAmp (%)
+     */
+    String Tx_amp_sb = "Tx_amp_sb";
+
+    /**
+     * Group: Transmit, Order: 3D+Loop - FreqOffset (Hz)
      */
     String Tx_freq_offset = "Tx_freq_offset";
 
@@ -434,6 +509,11 @@ public interface GradientEchoSequenceParams {
      * Group: Transmit, Order: 4D+Loop - Phase (°)
      */
     String Tx_phase_fatsat = "Tx_phase_fatsat";
+
+    /**
+     * Group: Transmit, Order: 4D+Loop - Phase (°)
+     */
+    String Tx_phase_sb = "Tx_phase_sb";
 
     /**
      * Group: Transmit, Order: 1D - TxShape (%)
@@ -454,5 +534,15 @@ public interface GradientEchoSequenceParams {
      * Group: Transmit, Order: 1D - Phase (°)
      */
     String Tx_shape_phase_fatsat = "Tx_shape_phase_fatsat";
+
+    /**
+     * Group: Transmit, Order: 1D - Phase (°)
+     */
+    String Tx_shape_phase_sb = "Tx_shape_phase_sb";
+
+    /**
+     * Group: Transmit, Order: 1D - TxShape (%)
+     */
+    String Tx_shape_sb = "Tx_shape_sb";
 
 }

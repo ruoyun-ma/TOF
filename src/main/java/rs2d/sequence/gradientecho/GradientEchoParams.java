@@ -76,7 +76,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(65536);
-            param.setValue(1);
+            param.setValue(20);
             param.setDefaultValue(1);
             return param;
         }
@@ -420,7 +420,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
-            param.setValue(true);
+            param.setValue(false);
             param.setDefaultValue(false);
             return param;
         }
@@ -471,7 +471,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Angle);
             param.setMinValue(0.0);
             param.setMaxValue(360.0);
-            param.setValue(90.0);
+            param.setValue(0.0);
             param.setDefaultValue(90.0);
             return param;
         }
@@ -543,7 +543,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.05986);
+            param.setValue(0.06207235200000001);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -561,7 +561,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAmp);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(56.159040971376655);
+            param.setValue(100.0);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -579,7 +579,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.0045000000000000005);
+            param.setValue(5.0E-6);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -632,7 +632,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Length);
             param.setMinValue(0.0);
             param.setMaxValue(1.0);
-            param.setValue(0.001);
+            param.setValue(0.02);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -1398,7 +1398,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(65536);
-            param.setValue(1);
+            param.setValue(20);
             param.setDefaultValue(0);
             return param;
         }
@@ -1802,6 +1802,20 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         }
     },
 
+    PROBES {
+        Param build() {
+            ListTextParam param = new ListTextParam();
+            param.setName("PROBES");
+            param.setDisplayedName("Probes");
+            param.setDescription("The probes used for the acquisition");
+            param.setLocked(true);
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Miscellaneous);
+            param.setCategory(Category.Acquisition);
+            return param;
+        }
+    },
+
     RECEIVER_COUNT {
         Param build() {
             NumberParam param = new NumberParam();
@@ -1850,7 +1864,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.015);
+            param.setValue(0.311);
             param.setDefaultValue(0.2);
             return param;
         }
@@ -1925,6 +1939,108 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         }
     },
 
+    SATBAND_DISTANCE_FROM_FOV {
+        Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("SATBAND_DISTANCE_FROM_FOV");
+            param.setDisplayedName("SATBAND_DISTANCE_FROM_FOV");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Dimension);
+            param.setCategory(Category.Acquisition);
+            param.setNumberEnum(NumberEnum.Location);
+            param.setMinValue(-0.1);
+            param.setMaxValue(0.1);
+            param.setValue(0.01);
+            param.setDefaultValue(0.0);
+            return param;
+        }
+    },
+
+    SATBAND_ENABLED {
+        Param build() {
+            BooleanParam param = new BooleanParam();
+            param.setName("SATBAND_ENABLED");
+            param.setDisplayedName("SATBAND_ENABLED");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Miscellaneous);
+            param.setCategory(Category.Acquisition);
+            param.setValue(false);
+            param.setDefaultValue(false);
+            return param;
+        }
+    },
+
+    SATBAND_GRAD_AMP_SPOILER {
+        Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("SATBAND_GRAD_AMP_SPOILER");
+            param.setDisplayedName("SATBAND_GRAD_AMP_SPOILER");
+            param.setDescription("Amplitude of the spoiler gradient after saturation pulse");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Gradient);
+            param.setCategory(Category.Acquisition);
+            param.setNumberEnum(NumberEnum.PERCENT);
+            param.setMinValue(30.0);
+            param.setMaxValue(100.0);
+            param.setValue(40.0);
+            param.setDefaultValue(40.0);
+            return param;
+        }
+    },
+
+    SATBAND_ORIENTATION {
+        Param build() {
+            TextParam param = new TextParam();
+            param.setName("SATBAND_ORIENTATION");
+            param.setDisplayedName("SATBAND_ORIENTATION");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Dimension);
+            param.setCategory(Category.Acquisition);
+            param.setValue("ALL");
+            param.setDefaultValue("CRANIAL");
+            param.setSuggestedValues(asList("CRANIAL", "CAUDAL", "RIGHT", "LEFT", "ANTERIOR", "POSTERIOR", "CRANIAL AND CAUDAL", "RIGHT AND LEFT", "ANTERIOR AND POSTERIOR", "ALL"));
+            return param;
+        }
+    },
+
+    SATBAND_THICKNESS {
+        Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("SATBAND_THICKNESS");
+            param.setDisplayedName("SATBAND_THICKNESS");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Dimension);
+            param.setCategory(Category.Acquisition);
+            param.setNumberEnum(NumberEnum.Length);
+            param.setMinValue(0.001);
+            param.setMaxValue(0.1);
+            param.setValue(0.02);
+            param.setDefaultValue(0.01);
+            return param;
+        }
+    },
+
+    SATBAND_TX_SHAPE {
+        Param build() {
+            TextParam param = new TextParam();
+            param.setName("SATBAND_TX_SHAPE");
+            param.setDisplayedName("SATBAND_TX_SHAPE");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Emission);
+            param.setCategory(Category.Acquisition);
+            param.setValue("GAUSSIAN");
+            param.setDefaultValue("HARD");
+            param.setSuggestedValues(asList("HARD", "GAUSSIAN", "SINC3", "SINC5"));
+            param.setRestrictedToSuggested(true);
+            return param;
+        }
+    },
+
     SEQ_DESCRIPTION {
         Param build() {
             TextParam param = new TextParam();
@@ -1933,7 +2049,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setDescription("");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setCategory(Category.Acquisition);
-            param.setValue("GE_2DAXI_64x50x1");
+            param.setValue("GE_2DAXI_64x50x20");
             param.setDefaultValue("");
             return param;
         }
@@ -1967,7 +2083,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.8);
+            param.setValue(15.6);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -1982,7 +2098,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.User);
             param.setCategory(Category.Acquisition);
-            param.setValue("Version8.0a");
+            param.setValue("Version8.0d");
             param.setDefaultValue("");
             return param;
         }

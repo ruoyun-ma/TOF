@@ -585,7 +585,7 @@ public class RFPulse {
     public void prepareOffsetFreqMultiSlice(Gradient gradSlice, int nbSlice, double spacing_between_slice, double offCenterDistance3D) {
         numberOfFreqOffset = nbSlice;
         double grad_amp_slice_mTpm = gradSlice.getAmplitude_mTpm();
-        double frequencyCenter3D90 = -grad_amp_slice_mTpm * offCenterDistance3D * (GradientMath.GAMMA);
+        double frequencyCenter3D90 = calculateOffsetFreq(grad_amp_slice_mTpm, offCenterDistance3D);
 
         double multi_planar_fov = (numberOfFreqOffset - 1) * (spacing_between_slice + gradSlice.getSliceThickness());
         double multiPlanarFreqOffset = multi_planar_fov * grad_amp_slice_mTpm * (GradientMath.GAMMA);
@@ -629,6 +629,10 @@ public class RFPulse {
 
     }
 
+    public double calculateOffsetFreq(double grad_amp_mTpm, double offCenterDistance) {
+        return (-grad_amp_mTpm * offCenterDistance * (GradientMath.GAMMA));
+    }
+
     public void setFrequencyOffset(Order order) {
         FrequencyOffsetOrder = order;
         setFrequencyOffset();
@@ -641,6 +645,25 @@ public class RFPulse {
         txFrequencyOffsetTable[0] = value;
         numberOfFreqOffset = 1;
         setFrequencyOffset();
+    }
+
+    public void addFrequencyOffset(double... values) {
+        int tmpnumberOfFreqOffset = numberOfFreqOffset;
+        if (numberOfFreqOffset != -1) {
+            double[] tmpTable = txFrequencyOffsetTable.clone();
+            txFrequencyOffsetTable = new double[numberOfFreqOffset + values.length];
+            for (int i = 0; i < tmpTable.length; i++) {
+                txFrequencyOffsetTable[i] = tmpTable[i];
+            }
+            numberOfFreqOffset = numberOfFreqOffset + values.length;
+        } else {
+            numberOfFreqOffset = values.length;
+            txFrequencyOffsetTable = new double[numberOfFreqOffset];
+        }
+
+        for (int i = 0; i < values.length; i++) {
+            txFrequencyOffsetTable[txFrequencyOffsetTable.length - values.length + i] = values[i];
+        }
     }
 
     public void setFrequencyOffset() {

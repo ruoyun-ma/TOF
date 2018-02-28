@@ -15,18 +15,22 @@ public interface Events {
 
         int LoopMultiPlanarStart = 3;
 
-        int P90 = 11;
-        int Delay1 = 16;
+        int LoopSatBandStart = 4;
+        int LoopSatBandEnd = 12;
 
-        int LoopStartEcho = 17;
-        int Acq = 19;
-        int Delay2 = 24;
-        int LoopEndEcho = 25;
+
+        int P90 = 21;
+        int Delay1 = 26;
+
+        int LoopStartEcho = 27;
+        int Acq = 29;
+        int Delay2 = 34;
+        int LoopEndEcho = 35;
 
         int Delay3 = 29;
         int LoopMultiPlanarEnd = 30;
 
-        int Loop4D = 32;
+        int Loop4D = 42;
 
-        int End = 33;
+        int End = 43;
 }

@@ -67,7 +67,7 @@ import static rs2d.sequence.gradientecho.GradientEchoSequenceParams.*;
 //
 public class GradientEcho extends SequenceGeneratorAbstract {
 
-    private String sequenceVersion = "Version8.0d";
+    private String sequenceVersion = "Version8.0e";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -123,6 +123,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
 
     boolean is_flyback;
     String kspace_filling;
+
+    boolean is_flowcomp;
 
     boolean is_fatsat_enabled;
 
@@ -252,6 +254,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
 
         is_flyback = (((BooleanParam) getParam(FLYBACK)).getValue());
         kspace_filling = ((String) getParam(KSPACE_FILLING).getValue());
+
+        is_flowcomp = (((BooleanParam) getParam(FLOW_COMPENSATION)).getValue());
 
         is_fatsat_enabled = (((BooleanParam) getParam(FAT_SATURATION_ENABLED)).getValue());
 
@@ -624,6 +628,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         setSequenceParamValue(Grad_enable_spoiler_slice, (((!isMultiplanar && is_grad_rewinding && isEnablePhase3D) || (is_grad_rewinding && isEnableSlice) || (is_grad_spoiler && (grad_amp_spoiler_sl_ph_re.getValue().get(0).doubleValue() != 0)))));
         setSequenceParamValue(Grad_enable_spoiler_phase, (isEnablePhase && (is_grad_rewinding) || (is_grad_spoiler && (grad_amp_spoiler_sl_ph_re.getValue().get(1).doubleValue() != 0))));
         setSequenceParamValue(Grad_enable_spoiler_read, (isEnableRead && (is_grad_rewinding) || (is_grad_spoiler && (grad_amp_spoiler_sl_ph_re.getValue().get(2).doubleValue() != 0))));
+        setSequenceParamValue(Grad_enable_flowcomp, is_flowcomp);
 
         setSequenceParamValue(Grad_enable_flyback, is_flyback);
 
@@ -776,31 +781,58 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // calculate READ_PREP  & SLICE_REF/PHASE_3D  &  PHASE_2D
         // -------------------------------------------------------------------------------------------------
         double grad_phase_application_time = ((NumberParam) getParam(GRADIENT_PHASE_APPLICATION_TIME)).getValue().doubleValue();
-        boolean is_k_s_centred = ((BooleanParam) getParam(KS_CENTERED)).getValue();  // symetrique around 0 or go through k0
         setSequenceTableSingleValue(Time_grad_phase_top, grad_phase_application_time);
-        double readGradientRation = ((NumberParam) getParam(PREPHASING_READ_GRADIENT_RATIO)).getValue().doubleValue();
+        double readGradientRatio = ((NumberParam) getParam(PREPHASING_READ_GRADIENT_RATIO)).getValue().doubleValue();
+
+        double flowcomp_dur = ((NumberParam) getParam(FLOWCOMP_DURATION)).getValue().doubleValue();
+        setSequenceTableSingleValue(Time_grad_ramp_flowcomp, is_flowcomp ? grad_rise_time : minInstructionDelay);
+        setSequenceTableSingleValue(Time_grad_top_flowcomp, is_flowcomp ? flowcomp_dur : minInstructionDelay);
+
+
+        boolean is_k_s_centred = ((BooleanParam) getParam(KS_CENTERED)).getValue();  // symetrique around 0 or go through k0
+
 
         // pre-calculate READ_prephasing max area
         Gradient gradReadPrep = Gradient.createGradient(getSequence(), Grad_amp_read_prep, Time_grad_phase_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
-        if (isEnableRead)
-            gradReadPrep.refocalizeGradient(gradReadout, readGradientRation);
+        Gradient gradReadPrepFlowComp = Gradient.createGradient(getSequence(), Grad_amp_read_prep_flowcomp, Time_grad_top_flowcomp, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flowcomp);
+        if (isEnableRead) {
+            if (is_flowcomp) {
+                gradReadPrep.refocalizeGradient(gradReadout, readGradientRatio);
+            } else {
+                gradReadPrep.refocalizeGradientWithFlowComp(gradReadout, readGradientRatio, gradReadPrepFlowComp);
+            }
+        }
 
         // pre-calculate SLICE_refocusing  &  PHASE_3D
         double grad_ratio_slice_refoc = isEnableSlice ? ((NumberParam) getParam(SLICE_REFOCUSING_GRADIENT_RATIO)).getValue().doubleValue() : 0.0;   // get slice refocussing ratio
         Gradient gradSliceRefPhase3D = Gradient.createGradient(getSequence(), Grad_amp_phase_3D_prep, Time_grad_phase_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
+        Gradient gradSliceRefPhase3DFlowComp = Gradient.createGradient(getSequence(), Grad_amp_phase_3D_prep_flowcomp, Time_grad_top_flowcomp, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flowcomp);
         if (isEnableSlice) {
-            gradSliceRefPhase3D.refocalizeGradient(gradSlice, grad_ratio_slice_refoc);
+            if (is_flowcomp) {
+                gradSliceRefPhase3D.refocalizeGradient(gradSlice, grad_ratio_slice_refoc);
+            } else {
+                gradSliceRefPhase3D.refocalizeGradientWithFlowComp(gradSlice, grad_ratio_slice_refoc, gradSliceRefPhase3DFlowComp);
+            }
         }
         boolean is_keyhole_allowed = ((BooleanParam) getParam(KEYHOLE_ALLOWED)).getValue();
         if (!isMultiplanar && isEnablePhase3D) {
-            gradSliceRefPhase3D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension3D : acquisitionMatrixDimension3D, acquisitionMatrixDimension3D, slice_thickness_excitation, is_k_s_centred);
+            if (is_flowcomp) {
+                gradSliceRefPhase3D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension3D : acquisitionMatrixDimension3D, acquisitionMatrixDimension3D, slice_thickness_excitation, is_k_s_centred);
+            } else {
+                gradSliceRefPhase3D.preparePhaseEncodingForCheckWithFlowComp(is_keyhole_allowed ? userMatrixDimension3D : acquisitionMatrixDimension3D, acquisitionMatrixDimension3D, slice_thickness_excitation, is_k_s_centred, gradSliceRefPhase3DFlowComp);
+            }
             gradSliceRefPhase3D.reoderPhaseEncoding3D(plugin, acquisitionMatrixDimension3D);
         }
 
         // pre-calculate PHASE_2D
         Gradient gradPhase2D = Gradient.createGradient(getSequence(), Grad_amp_phase_2D_prep, Time_grad_phase_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
+        Gradient gradPhase2DFlowComp = Gradient.createGradient(getSequence(), Grad_amp_phase_2D_prep_flowcomp, Time_grad_top_flowcomp, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flowcomp);
         if (isEnablePhase) {
-            gradPhase2D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension2D : acquisitionMatrixDimension2D, acquisitionMatrixDimension2D, fovPhase, is_k_s_centred);
+            if (is_flowcomp) {
+                gradPhase2D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension2D : acquisitionMatrixDimension2D, acquisitionMatrixDimension2D, fovPhase, is_k_s_centred);
+            } else {
+                gradPhase2D.preparePhaseEncodingForCheckWithFlowComp(is_keyhole_allowed ? userMatrixDimension2D : acquisitionMatrixDimension2D, acquisitionMatrixDimension2D, fovPhase, is_k_s_centred, gradPhase2DFlowComp);
+            }
             gradPhase2D.reoderPhaseEncoding(plugin, 1, acquisitionMatrixDimension2D, acquisitionMatrixDimension1D);
         }
 
@@ -820,6 +852,14 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         gradSliceRefPhase3D.applyAmplitude(Order.Three);
         gradPhase2D.applyAmplitude(Order.Two);
         gradReadPrep.applyAmplitude();
+
+        if (is_flowcomp) {
+            gradSliceRefPhase3DFlowComp.applyAmplitude(Order.Three);
+            gradPhase2DFlowComp.applyAmplitude(Order.Two);
+            gradReadPrepFlowComp.applyAmplitude();
+        }
+
+
 
         // -------------------------------------------------------------------------------------------------
         // Flyback init and gradient calculation
@@ -1124,9 +1164,9 @@ public class GradientEcho extends SequenceGeneratorAbstract {
                 gradPhaseSpoiler.refocalizePhaseEncodingGradient(gradPhase2D);
             if (isEnableRead)
                 if (is_flyback)
-                    gradReadSpoiler.refocalizeReadoutGradient(gradReadoutFlyback, readGradientRation);
+                    gradReadSpoiler.refocalizeReadoutGradient(gradReadoutFlyback, readGradientRatio);
                 else
-                    gradReadSpoiler.refocalizeReadoutGradient(gradReadout, 1 - (readGradientRation));
+                    gradReadSpoiler.refocalizeReadoutGradient(gradReadout, 1 - (readGradientRatio));
         }
         // Spoiler :
         //    ListNumberParam grad_amp_spoiler_sl_ph_re = (ListNumberParam) getParam(GRAD_AMP_SPOILER_SL_PH_RE);

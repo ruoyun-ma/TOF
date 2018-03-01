@@ -706,6 +706,39 @@
             </value>
         </entry>
         <entry>
+            <key>FLOWCOMP_DURATION</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>FLOWCOMP_DURATION</name>
+                <description></description>
+                <displayedName>FLOWCOMP_DURATION</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>7.0E-4</value>
+                <defaultValue>5.0E-4</defaultValue>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <maxValue>1.0E9</maxValue>
+                <minValue>0.0</minValue>
+                <numberEnum>Time</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>FLOW_COMPENSATION</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>FLOW_COMPENSATION</name>
+                <description>Use flow compensation</description>
+                <displayedName>Flow compensation</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Miscellaneous</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>false</value>
+                <defaultValue>false</defaultValue>
+            </value>
+        </entry>
+        <entry>
             <key>FLYBACK</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>FLYBACK</name>
@@ -2841,7 +2874,7 @@
                 <group>User</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>Version8.0d</value>
+                <value>Version8.0e</value>
                 <defaultValue></defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
             </value>

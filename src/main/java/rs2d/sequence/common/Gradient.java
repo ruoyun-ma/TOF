@@ -49,6 +49,7 @@ public class Gradient {
 
     private boolean bStaticGradient = false;
 
+    private Gradient gradFlowComp = null;
 
     private static double gMax = GradientMath.getMaxGradientStrength();
 
@@ -117,6 +118,7 @@ public class Gradient {
     public double getSpoilerExcess() {
         return spoilerExcess;
     }
+
     public double getMinTopTime() {
         return minTopTime;
     }
@@ -274,6 +276,17 @@ public class Gradient {
     }
 
     public void refocalizeGradient(Gradient grad, double ratio) {
+        bStaticGradient = true;
+        staticArea = -grad.getStaticArea() * ratio;
+        calculateStaticAmplitude();
+    }
+
+    public void refocalizeGradientWithFlowComp(Gradient grad, double ratio, Gradient gradflowcomp ) {
+        gradFlowComp = gradflowcomp;
+        // to modify , flow Comp
+        //to do: modify the calculation and prepare as well gradFlowComp Gradient
+
+
         bStaticGradient = true;
         staticArea = -grad.getStaticArea() * ratio;
         calculateStaticAmplitude();
@@ -445,6 +458,19 @@ public class Gradient {
         preparePhaseEncoding(matrixDimension, fovDim, isKSCentred);
     }
 
+
+    public void preparePhaseEncodingForCheckWithFlowComp(int matrixDimensionForCheck, int matrixDimension, double fovDim, boolean isKSCentred, Gradient gradflowcomp) {
+        gradFlowComp = gradflowcomp;
+   // to modify , flow Comp
+        //to do: modify the calculation and prepare as well gradFlowComp Gradient
+
+        double grad_total_area_phase = prepPhaseGradTotalArea(matrixDimensionForCheck, fovDim);
+        double grad_index_max_phase = prepPhaseGradIndexMax(isKSCentred);
+        maxAreaPE = grad_index_max_phase * grad_total_area_phase;
+
+        preparePhaseEncoding(matrixDimension, fovDim, isKSCentred);
+    }
+
     public double prepPhaseGradTotalArea(int matrixDimension, double fovPhase) {
         return ((matrixDimension - 1) / ((GradientMath.GAMMA) * fovPhase)) * 100.0 / gMax;
     }
@@ -473,6 +499,10 @@ public class Gradient {
     }
 
     public void reoderPhaseEncoding(TransformPlugin plugin, int echoTrainLength, int acquisitionMatrixDimension2D, int acquisitionMatrixDimension1D) {
+        // flow Comp
+        if (gradFlowComp != null) {
+            gradFlowComp.reoderPhaseEncoding( plugin, echoTrainLength, acquisitionMatrixDimension2D, acquisitionMatrixDimension1D);
+
         double loopNumber, indexNew;
         if (amplitudeArray != null) {
             double[] newTable = new double[acquisitionMatrixDimension2D];
@@ -497,7 +527,12 @@ public class Gradient {
     }
 
     public void reoderPhaseEncoding3D(TransformPlugin plugin, int acquisitionMatrixDimension3D) {
-        double  indexNew;
+        // to modify , flow Comp
+        if (gradFlowComp != null) {
+            gradFlowComp.reoderPhaseEncoding3D( plugin, acquisitionMatrixDimension3D);
+
+
+        double indexNew;
         if (amplitudeArray != null) {
             double[] newTable = new double[acquisitionMatrixDimension3D];
 
@@ -512,7 +547,7 @@ public class Gradient {
                     indexScan[2] = tmp[k];
 //                    System.out.println(j + " :  " + indexScan[1]);
                 }
-                indexNew = indexScan[2] ;    // indexScan[1]: index de Nb 2D
+                indexNew = indexScan[2];    // indexScan[1]: index de Nb 2D
                 newTable[(int) indexNew] = amplitudeArray[k];
             }
             amplitudeArray = newTable;
@@ -560,18 +595,60 @@ public class Gradient {
         if (gradMaxMin[0] > 100.0) {
             amplitude = 100.0;
             spoilerExcess = gradMaxMin[0] - 100.0;
-            minTopTime = ceilToSubDecimal((gradMaxMin[0] * equivalentTime - grad_shape_rise_time * 100.0) / 100.0,5);
+            minTopTime = ceilToSubDecimal((gradMaxMin[0] * equivalentTime - grad_shape_rise_time * 100.0) / 100.0, 5);
             testSpoilerSupThan100 = false;
         }
         return (testSpoilerSupThan100);
     }
-    public boolean addSpoiler(double pixel_dimension, double factor ) {
+
+    public boolean addSpoiler(double pixel_dimension, double factor) {
         bStaticGradient = true;
-        double grad_area_spoiler = factor / ((GradientMath.GAMMA ) * pixel_dimension);//GradientMath.GAMMA: gamma/2pi értéke Hz/T-ban
-        double grad_amp_spoiler = (grad_area_spoiler / equivalentTime )/ gMax * 100.0;//
-        return (addSpoiler( grad_amp_spoiler));
+        double grad_area_spoiler = factor / ((GradientMath.GAMMA) * pixel_dimension);//GradientMath.GAMMA: gamma/2pi értéke Hz/T-ban
+        double grad_amp_spoiler = (grad_area_spoiler / equivalentTime) / gMax * 100.0;//
+        return (addSpoiler(grad_amp_spoiler));
     }
 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    //                  Flow Compensation
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    public double getMoment(double t, String type, int order) {
+        double rise_time_up = rampTimeUpTable.get(0).doubleValue();
+        double rise_time_down = rampTimeDownTable.get(0).doubleValue();
+        double plato = flatTimeTable.get(0).doubleValue();
+        double amp = amplitude;
+        if (order == 0) {
+
+            if (type == "slice") {
+                t = 0;
+                double moment0 = amp * (2 * (rise_time_up + rise_time_down) / Math.PI + plato) / 2;
+                return moment0;
+            } else if (type == "read") {
+                double moment0 = amp * (2 * (rise_time_up + rise_time_down) / Math.PI + plato) / 2;
+                return moment0;
+            } else {
+                double moment0 = amp * (2 * (rise_time_up + rise_time_down) / Math.PI + plato);
+                return moment0;
+            }
+
+        } else if (type == "slice") {
+            t = 0;
+            double moment0 = amp * (2 * (rise_time_up + rise_time_down) / Math.PI + plato) / 2;
+            double moment1 = 1 / 8 * amp * plato * plato + amp * (rise_time_up + rise_time_down) / 2 * (Math.PI * plato + (Math.PI - 2.0) * (rise_time_up + rise_time_down) ) / Math.PI / Math.PI;
+            double moment1_all = moment1 + t * moment0;
+            return moment1_all;
+        } else if (type == "read") {
+            double moment0 = amp * (2 * (rise_time_up + rise_time_down) / Math.PI + plato) / 2;
+           double moment1 = 1 / 2 * amp * ((rise_time_up + rise_time_down) / 2 * plato + plato * plato) + amp * (rise_time_up + rise_time_down) * (rise_time_up + rise_time_down)  / Math.PI / Math.PI;
+            double moment1_all = moment1 + t * moment0;
+            return moment1_all;
+        } else {
+            double moment0 = amp * (2 * (rise_time_up + rise_time_down) / Math.PI + plato);
+            double moment1 = amp * (plato + (rise_time_up + rise_time_down)) * ((rise_time_up + rise_time_down) / Math.PI + plato / 2);
+            double moment1_all = moment1 + t * moment0;
+            return moment1_all;
+        }
+    }
 
     // ---------------------------------------------------------------
     // ----------------- General Methode----------------------------------------------

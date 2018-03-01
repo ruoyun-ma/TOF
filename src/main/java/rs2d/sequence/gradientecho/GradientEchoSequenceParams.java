@@ -25,6 +25,11 @@ public interface GradientEchoSequenceParams {
     /**
      * Group: Gradient, Type: BooleanParam
      */
+    String Grad_enable_flowcomp = "Grad_enable_flowcomp";
+
+    /**
+     * Group: Gradient, Type: BooleanParam
+     */
     String Grad_enable_flyback = "Grad_enable_flyback";
 
     /**
@@ -273,12 +278,27 @@ public interface GradientEchoSequenceParams {
     /**
      * Group: Gradient, Order: 4D+Loop - GradAmp (%)
      */
+    String Grad_amp_phase_2D_prep_flowcomp = "Grad_amp_phase_2D_prep_flowcomp";
+
+    /**
+     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
+     */
     String Grad_amp_phase_3D_prep = "Grad_amp_phase_3D_prep";
 
     /**
      * Group: Gradient, Order: 4D+Loop - GradAmp (%)
      */
+    String Grad_amp_phase_3D_prep_flowcomp = "Grad_amp_phase_3D_prep_flowcomp";
+
+    /**
+     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
+     */
     String Grad_amp_read_prep = "Grad_amp_read_prep";
+
+    /**
+     * Group: Gradient, Order: 4D+Loop - GradAmp (%)
+     */
+    String Grad_amp_read_prep_flowcomp = "Grad_amp_read_prep_flowcomp";
 
     /**
      * Group: Gradient, Order: Loop - GradAmp (%)
@@ -408,6 +428,11 @@ public interface GradientEchoSequenceParams {
     /**
      * Group: Delay, Order: 4D+Loop - Time (s)
      */
+    String Time_grad_ramp_flowcomp = "Time_grad_ramp_flowcomp";
+
+    /**
+     * Group: Delay, Order: 4D+Loop - Time (s)
+     */
     String Time_grad_ramp_flyback = "Time_grad_ramp_flyback";
 
     /**
@@ -424,6 +449,11 @@ public interface GradientEchoSequenceParams {
      * Group: Delay, Order: 4D+Loop - Time (s)
      */
     String Time_grad_spoiler_top = "Time_grad_spoiler_top";
+
+    /**
+     * Group: Delay, Order: 4D+Loop - Time (s)
+     */
+    String Time_grad_top_flowcomp = "Time_grad_top_flowcomp";
 
     /**
      * Group: Delay, Order: 4D+Loop - Time (s)

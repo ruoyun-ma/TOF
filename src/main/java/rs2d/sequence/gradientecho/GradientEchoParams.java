@@ -674,6 +674,38 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         }
     },
 
+    FLOW_COMPENSATION {
+        Param build() {
+            BooleanParam param = new BooleanParam();
+            param.setName("FLOW_COMPENSATION");
+            param.setDisplayedName("Flow compensation");
+            param.setDescription("Use flow compensation");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Miscellaneous);
+            param.setCategory(Category.Acquisition);
+            param.setValue(false);
+            param.setDefaultValue(false);
+            return param;
+        }
+    },
+
+    FLOWCOMP_DURATION {
+        Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("FLOWCOMP_DURATION");
+            param.setDisplayedName("FLOWCOMP_DURATION");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setCategory(Category.Acquisition);
+            param.setNumberEnum(NumberEnum.Time);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.0E9);
+            param.setValue(7.0E-4);
+            param.setDefaultValue(5.0E-4);
+            return param;
+        }
+    },
+
     FLYBACK {
         Param build() {
             BooleanParam param = new BooleanParam();

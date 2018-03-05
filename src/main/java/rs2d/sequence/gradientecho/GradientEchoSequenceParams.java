@@ -236,12 +236,12 @@ public interface GradientEchoSequenceParams {
     String FreqOffset_rx_prep = "FreqOffset_rx_prep";
 
     /**
-     * Group: Transmit, Order: 3D+Loop - FreqOffset (Hz)
+     * Group: Transmit, Order: 3D - FreqOffset (Hz)
      */
     String FreqOffset_tx_comp = "FreqOffset_tx_comp";
 
     /**
-     * Group: Transmit, Order: 3D+Loop - FreqOffset (Hz)
+     * Group: Transmit, Order: 3D - FreqOffset (Hz)
      */
     String FreqOffset_tx_prep = "FreqOffset_tx_prep";
 
@@ -381,7 +381,7 @@ public interface GradientEchoSequenceParams {
     String SmartTTL_FatSat = "SmartTTL_FatSat";
 
     /**
-     * Group: Delay, Order: 1D - Time (s)
+     * Group: Delay, Order: 4D+Loop - Time (s)
      */
     String Time_before_fatsat_pulse = "Time_before_fatsat_pulse";
 
@@ -391,7 +391,7 @@ public interface GradientEchoSequenceParams {
     String Time_btw_dyn_frames = "Time_btw_dyn_frames";
 
     /**
-     * Group: Delay, Order: 1D - Time (s)
+     * Group: Delay, Order: 4D+Loop - Time (s)
      */
     String Time_flow = "Time_flow";
 
@@ -436,12 +436,12 @@ public interface GradientEchoSequenceParams {
     String Time_grad_ramp_flyback = "Time_grad_ramp_flyback";
 
     /**
-     * Group: Delay, Order: 1D - Time (s)
+     * Group: Delay, Order: 4D+Loop - Time (s)
      */
     String Time_grad_ramp_sb = "Time_grad_ramp_sb";
 
     /**
-     * Group: Delay, Order: 1D - Time (s)
+     * Group: Delay, Order: 4D+Loop - Time (s)
      */
     String Time_grad_sb = "Time_grad_sb";
 
@@ -526,7 +526,7 @@ public interface GradientEchoSequenceParams {
     String Tx_amp_sb = "Tx_amp_sb";
 
     /**
-     * Group: Transmit, Order: 3D+Loop - FreqOffset (Hz)
+     * Group: Transmit, Order: 3D - FreqOffset (Hz)
      */
     String Tx_freq_offset = "Tx_freq_offset";
 

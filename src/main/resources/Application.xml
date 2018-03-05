@@ -902,7 +902,7 @@
                     <group>Scan</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>true</value>
+                    <value>false</value>
                     <defaultValue>false</defaultValue>
                 </value>
             </entry>
@@ -2172,7 +2172,7 @@
                     <group>Scan</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>20</value>
+                    <value>1</value>
                     <defaultValue>0</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>65536</maxValue>
@@ -2191,7 +2191,7 @@
                     <group>Miscellaneous</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>1</value>
+                    <value>20</value>
                     <defaultValue>1</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>2147483647</maxValue>
@@ -2606,6 +2606,20 @@
                 </value>
             </entry>
             <entry>
+                <key>PARTIAL_OVERSAMPLING</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                    <name>PARTIAL_OVERSAMPLING</name>
+                    <description></description>
+                    <displayedName>PARTIAL_OVERSAMPLING</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <category>Acquisition</category>
+                    <rolesEnum>User</rolesEnum>
+                    <value>false</value>
+                    <defaultValue>true</defaultValue>
+                </value>
+            </entry>
+            <entry>
                 <key>PHASE_0</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                     <name>PHASE_0</name>
@@ -2943,6 +2957,25 @@
                 </value>
             </entry>
             <entry>
+                <key>SATBAND_T1</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>SATBAND_T1</name>
+                    <description></description>
+                    <displayedName>SATBAND_T1</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <group>Miscellaneous</group>
+                    <category>Acquisition</category>
+                    <rolesEnum>User</rolesEnum>
+                    <value>500.0</value>
+                    <defaultValue>500.0</defaultValue>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <maxValue>1.0E9</maxValue>
+                    <minValue>0.0</minValue>
+                    <numberEnum>Millis</numberEnum>
+                </value>
+            </entry>
+            <entry>
                 <key>SATBAND_THICKNESS</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SATBAND_THICKNESS</name>
@@ -3008,7 +3041,7 @@
                     <group>Delay</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>15.6</value>
+                    <value>311.1</value>
                     <defaultValue>0.0</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>1.0E9</maxValue>
@@ -3027,7 +3060,7 @@
                     <group>User</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>Version8.0d</value>
+                    <value>Version8.0f</value>
                     <defaultValue></defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                 </value>
@@ -3252,6 +3285,136 @@
                     <rolesEnum>User</rolesEnum>
                     <value>false</value>
                     <defaultValue>false</defaultValue>
+                </value>
+            </entry>
+            <entry>
+                <key>TOF2D_ENABLED</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                    <name>TOF2D_ENABLED</name>
+                    <description></description>
+                    <displayedName>TOF2D_ENABLED</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <group>Miscellaneous</group>
+                    <category>Acquisition</category>
+                    <rolesEnum>User</rolesEnum>
+                    <value>false</value>
+                    <defaultValue>false</defaultValue>
+                </value>
+            </entry>
+            <entry>
+                <key>TOF2D_FLOW_VELOCITY</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>TOF2D_FLOW_VELOCITY</name>
+                    <description></description>
+                    <displayedName>TOF2D_FLOW_VELOCITY</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <category>Acquisition</category>
+                    <rolesEnum>User</rolesEnum>
+                    <value>0.12</value>
+                    <defaultValue>0.3</defaultValue>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <maxValue>1.7976931348623157E308</maxValue>
+                    <minValue>-1.7976931348623157E308</minValue>
+                    <numberEnum>Double</numberEnum>
+                </value>
+            </entry>
+            <entry>
+                <key>TOF2D_SB_DISTANCE_FROM_SLICE</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>TOF2D_SB_DISTANCE_FROM_SLICE</name>
+                    <description></description>
+                    <displayedName>TOF2D_SB_DISTANCE_FROM_SLICE</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <group>Dimension</group>
+                    <category>Acquisition</category>
+                    <rolesEnum>User</rolesEnum>
+                    <value>0.005</value>
+                    <defaultValue>0.002</defaultValue>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <maxValue>1.7976931348623157E308</maxValue>
+                    <minValue>-1.7976931348623157E308</minValue>
+                    <numberEnum>Location</numberEnum>
+                </value>
+            </entry>
+            <entry>
+                <key>TOF2D_SB_GRAMP_SP</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>TOF2D_SB_GRAMP_SP</name>
+                    <description>Spoiler gradient</description>
+                    <displayedName>TOF2D_SB_GRAMP_SP</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <group>Gradient</group>
+                    <category>Acquisition</category>
+                    <rolesEnum>User</rolesEnum>
+                    <value>40.0</value>
+                    <defaultValue>40.0</defaultValue>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <maxValue>100.0</maxValue>
+                    <minValue>0.0</minValue>
+                    <numberEnum>PERCENT</numberEnum>
+                </value>
+            </entry>
+            <entry>
+                <key>TOF2D_SB_POSITION</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                    <name>TOF2D_SB_POSITION</name>
+                    <description>Saturation band position</description>
+                    <displayedName>TOF2D_SB_POSITION</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <group>Dimension</group>
+                    <category>Acquisition</category>
+                    <rolesEnum>User</rolesEnum>
+                    <value>ABOVE THE SLICE</value>
+                    <defaultValue>BELOW THE SLICE</defaultValue>
+                    <suggestedValues>ABOVE THE SLICE</suggestedValues>
+                    <suggestedValues>BELOW THE SLICE</suggestedValues>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                </value>
+            </entry>
+            <entry>
+                <key>TOF2D_SB_THICKNESS</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>TOF2D_SB_THICKNESS</name>
+                    <description></description>
+                    <displayedName>TOF2D_SB_THICKNESS</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <group>Dimension</group>
+                    <category>Acquisition</category>
+                    <rolesEnum>User</rolesEnum>
+                    <value>0.015</value>
+                    <defaultValue>0.01</defaultValue>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <maxValue>1.7976931348623157E308</maxValue>
+                    <minValue>0.0</minValue>
+                    <numberEnum>Length</numberEnum>
+                </value>
+            </entry>
+            <entry>
+                <key>TOF2D_SB_TX_SHAPE</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                    <name>TOF2D_SB_TX_SHAPE</name>
+                    <description></description>
+                    <displayedName>TOF2D_SB_TX_SHAPE</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <category>Acquisition</category>
+                    <rolesEnum>User</rolesEnum>
+                    <value>SINC5</value>
+                    <defaultValue>HARD</defaultValue>
+                    <suggestedValues>HARD</suggestedValues>
+                    <suggestedValues>GAUSSIAN</suggestedValues>
+                    <suggestedValues>SINC3</suggestedValues>
+                    <suggestedValues>SINC5</suggestedValues>
+                    <suggestedValues>SLR_8_5152</suggestedValues>
+                    <suggestedValues>SLR_4_2576</suggestedValues>
+                    <suggestedValues>RAMP</suggestedValues>
+                    <restrictedToSuggested>false</restrictedToSuggested>
                 </value>
             </entry>
             <entry>

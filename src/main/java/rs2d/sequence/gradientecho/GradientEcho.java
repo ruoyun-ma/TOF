@@ -67,7 +67,7 @@ import static rs2d.sequence.gradientecho.GradientEchoSequenceParams.*;
 //
 public class GradientEcho extends SequenceGeneratorAbstract {
 
-    private String sequenceVersion = "Version8.0e";
+    private String sequenceVersion = "Version8.0f";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -88,6 +88,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
     private int userMatrixDimension1D;
     private int userMatrixDimension2D;
     private int userMatrixDimension3D;
+    private boolean is_partial_oversampling;
 
     private int nb_scan_1d;
     private int nb_scan_2d;
@@ -129,6 +130,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
     boolean is_fatsat_enabled;
 
     boolean is_satband_enabled;
+    boolean is_tof_enabled;
 
     private boolean is_rf_spoiling;
 
@@ -222,6 +224,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         userMatrixDimension1D = ((NumberParam) getParam(USER_MATRIX_DIMENSION_1D)).getValue().intValue();
         userMatrixDimension2D = ((NumberParam) getParam(USER_MATRIX_DIMENSION_2D)).getValue().intValue();
         userMatrixDimension3D = ((NumberParam) getParam(USER_MATRIX_DIMENSION_3D)).getValue().intValue();
+        is_partial_oversampling = (((BooleanParam) getParam(PARTIAL_OVERSAMPLING)).getValue());
 
         echoTrainLength = ((NumberParam) getParam(ECHO_TRAIN_LENGTH)).getValue().intValue();
 
@@ -260,7 +263,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         is_fatsat_enabled = (((BooleanParam) getParam(FAT_SATURATION_ENABLED)).getValue());
 
         is_satband_enabled = (((BooleanParam) getParam(SATBAND_ENABLED)).getValue());
-
+        is_tof_enabled = (((BooleanParam) getParam(TOF2D_ENABLED)).getValue());
         is_rf_spoiling = ((BooleanParam) getParam(RF_SPOILING)).getValue();
 
         isKSCenterMode = ((BooleanParam) getParam(KS_CENTER_MODE)).getValue();
@@ -369,10 +372,22 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // -----------------------------------------------
         // 3D managment 1/2: matrix & scan
         // ------------------------------------------------
+
+        is_tof_enabled = !isMultiplanar ? false : is_tof_enabled; // TOF not allowed in 3D
+        setParamValue(TOF2D_ENABLED, is_tof_enabled);
+
+        is_satband_enabled = is_tof_enabled ? false : is_satband_enabled;
+        this.setParamValue(SATBAND_ENABLED, is_satband_enabled);
+
         // MATRIX
-        double partial_slice;
+
+        boolean is_partial_oversampling = (((BooleanParam) getParam(PARTIAL_OVERSAMPLING)).getValue());
+        is_partial_oversampling = (isMultiplanar || userMatrixDimension3D < 8)? false : is_partial_oversampling;
+        setParamValue(PARTIAL_OVERSAMPLING, is_partial_oversampling );
+
         // 3D ZERO FILLING
-        if (isMultiplanar) {
+        double partial_slice;
+        if (isMultiplanar || is_partial_oversampling) {
             setParamValue(USER_PARTIAL_SLICE, 100);
             partial_slice = 100;
         } else {
@@ -380,6 +395,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         }
         double zero_filling_3D = (100 - partial_slice) / 100f;
         setParamValue(USER_ZERO_FILLING_3D, (100 - partial_slice));
+
 
         //Calculate the number of k-space lines acquired in the 3rd Dimension : acquisitionMatrixDimension3D
         if (!isMultiplanar) {
@@ -395,11 +411,17 @@ public class GradientEcho extends SequenceGeneratorAbstract {
             acquisitionMatrixDimension3D = userMatrixDimension3D;
         }
 
+
         int nb_of_shoot_3d = ((NumberParam) getParam(NUMBER_OF_SHOOT_3D)).getValue().intValue();
-        nb_of_shoot_3d = isMultiplanar ? getInferiorDivisorToGetModulusZero(nb_of_shoot_3d, userMatrixDimension3D) : 0;
+        nb_of_shoot_3d = isMultiplanar ? getInferiorDivisorToGetModulusZero(nb_of_shoot_3d, acquisitionMatrixDimension3D) : 0;
+        nb_of_shoot_3d = is_tof_enabled ? acquisitionMatrixDimension3D : nb_of_shoot_3d; // TOF does not allow interleaved slice within the TR
+
         int nb_interleaved_excitation = isMultiplanar ? (int) Math.ceil((acquisitionMatrixDimension3D / nb_of_shoot_3d)) : 1;
         setParamValue(NUMBER_OF_SHOOT_3D, nb_of_shoot_3d);
         setParamValue(NUMBER_OF_INTERLEAVED_SLICE, isMultiplanar ? nb_interleaved_excitation : 0);
+
+        acquisitionMatrixDimension3D = is_partial_oversampling ? (int) Math.round(acquisitionMatrixDimension3D / 0.8 / 2) * 2 : acquisitionMatrixDimension3D;
+        userMatrixDimension3D = is_partial_oversampling ? (int) Math.round(userMatrixDimension3D / 0.8 / 2) * 2 : userMatrixDimension3D;
 
         nb_scan_3d = isMultiplanar ? nb_of_shoot_3d : acquisitionMatrixDimension3D;
 
@@ -464,10 +486,9 @@ public class GradientEcho extends SequenceGeneratorAbstract {
                 setParamValue(KSPACE_FILLING, "Linear");
                 break;
         }
-
-
         int[] position_sli_ph_rea = satBandPrep(SATBAND_ORIENTATION.name(), ORIENTATION.name(), IMAGE_ORIENTATION_SUBJECT.name());
-        nb_satband = is_satband_enabled ? (int) Arrays.stream(position_sli_ph_rea).filter(item -> item == 1).count() : 0;
+        nb_satband = is_satband_enabled ? (int) Arrays.stream(position_sli_ph_rea).filter(item -> item == 1).count() : 1;
+        nb_satband = is_tof_enabled ? 1 : nb_satband;
 
         // -----------------------------------------------
         // set the ACQUISITION_MATRIX and Nb XD
@@ -635,6 +656,10 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         setSequenceParamValue(Enable_fatsat, is_fatsat_enabled);
         setSequenceParamValue(Enable_sb, is_satband_enabled);
 
+        // ------------------------------------------
+        // delays for sequence instructions
+        // ------------------------------------------
+        setSequenceTableSingleValue(Time_min_instruction, minInstructionDelay);
 
         // -----------------------------------------------
         // calculate gradient equivalent rise time
@@ -655,36 +680,65 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         double grad_shape_rise_time = grad_shape_rise_factor_up * grad_rise_time + grad_shape_rise_factor_down * grad_rise_time;        // shape dependant equivalent rise time
 
         // -----------------------------------------------
-        // Calculation RF pulse parameters  1/3 : Shape
+        // Calculation RF pulse parameters  1/3 : Create and prepare pulses and set Shape
         // -----------------------------------------------
+
+        // GE RF pulse
         setSequenceTableSingleValue(Time_tx, txLength90);
         RFPulse pulseTX = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_amp, Tx_phase, Time_tx, Tx_shape, Tx_shape_phase, Tx_freq_offset);
 
-        int nb_shape_points = 128;
-        pulseTX.setShape(((String) getParam(TX_SHAPE).getValue()), nb_shape_points, "Hamming");
-
-
+        // Fat SAT RF pulse
         double tx_bandwidth_90_fs = ((NumberParam) getParam(FATSAT_BANDWIDTH)).getValue().doubleValue();
         double tx_bandwidth_factor_90_fs = getTx_bandwidth_factor(FATSAT_TX_SHAPE, TX_BANDWIDTH_FACTOR, TX_BANDWIDTH_FACTOR_3D);
         double tx_length_90_fs = is_fatsat_enabled ? tx_bandwidth_factor_90_fs / tx_bandwidth_90_fs : minInstructionDelay;
-        setSequenceTableSingleValue(Time_tx_fatsat, tx_length_90_fs);
         setParamValue(FATSAT_TX_LENGTH, tx_length_90_fs);
-
+        setSequenceTableSingleValue(Time_tx_fatsat, tx_length_90_fs);
+        //
+        double grad_fatsat_application_time = ((NumberParam) getParam(FATSAT_GRAD_APP_TIME)).getValue().doubleValue();
+        setSequenceTableSingleValue(Time_grad_fatsat, is_fatsat_enabled ? grad_fatsat_application_time : minInstructionDelay);
+        //
+        setSequenceTableSingleValue(Time_before_fatsat_pulse, minInstructionDelay);
+        setSequenceTableSingleValue(Time_grad_ramp_fatsat, is_fatsat_enabled ? grad_rise_time : minInstructionDelay);
+        //
         RFPulse pulseTXFatSat = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_amp_fatsat, Tx_phase_fatsat, Time_tx_fatsat, Tx_shape_fatsat, Tx_shape_phase_fatsat, Freq_offset_tx_fatsat);
-        pulseTXFatSat.setShape(((String) getParam(FATSAT_TX_SHAPE).getValue()), nb_shape_points, "Hamming");
 
 
-        double tx_length_sb = is_satband_enabled ? txLength90 : minInstructionDelay;
+        // SAT Band or TOF RF pulse
+        setSequenceTableSingleValue(Time_grad_ramp_sb, is_satband_enabled || is_tof_enabled ? grad_rise_time : minInstructionDelay);
+        setSequenceTableSingleValue(Time_grad_sb, is_satband_enabled || is_tof_enabled ? 0.0005 : minInstructionDelay);
+        double tx_length_sb = is_satband_enabled || is_tof_enabled ? txLength90 : minInstructionDelay;
         setSequenceTableSingleValue(Time_tx_sb, tx_length_sb);
-
-        RFPulse pulseTXSatBand = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_amp_sb, Tx_phase_sb, Time_tx_sb, Tx_shape_sb, Tx_shape_phase_sb, Freq_offset_tx_sb);
-        pulseTXSatBand.setShape(((String) getParam(SATBAND_TX_SHAPE).getValue()), nb_shape_points, "Hamming");
+        //
+        RFPulse pulseTXSatBandTOF = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_amp_sb, Tx_phase_sb, Time_tx_sb, Tx_shape_sb, Tx_shape_phase_sb, Freq_offset_tx_sb);
+        //
+        // Correction of the 90 water saturation RF angle according to the water T1 relaxation.
+        // double time_tau_sat = 0.0 / 1000.0; // TODO
+        double flip_angle = ((NumberParam) getParam(FLIP_ANGLE)).getValue().doubleValue();
+        flip_angle = is_tof_enabled && pulseTXSatBandTOF.isSlr() ? 90 : flip_angle;
+        setParamValue(FLIP_ANGLE, flip_angle);
+        double flip_angle_satband = 0;
+        if (is_satband_enabled || is_tof_enabled) {
+            flip_angle_satband = 90;
+            double time_tau_sat = getTimeBetweenEvents(Events.FatSatPulse, Events.P90); /////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //
+            double time_t1_satband = ((NumberParam) getParam(SATBAND_T1)).getValue().doubleValue();
+            double t1_relax_time_sat = time_t1_satband / 1000.0;   // T1_tissue = 500ms
+            //
+            double flip_90_sat = flip_angle == 90 ? Math.acos((1 - Math.exp(time_tau_sat / t1_relax_time_sat)) / (1 - Math.exp((time_tau_sat - tr) / t1_relax_time_sat))) : Math.acos(1 - Math.exp(time_tau_sat / t1_relax_time_sat));
+            double flip_90_sat_degree = Math.toDegrees((is_tof_enabled ? 1.5 : 1) * flip_90_sat);
+            flip_angle_satband = pulseTXSatBandTOF.isSlr() ? 90 : flip_90_sat_degree;  //ha slr,akkor legyen 90,különben szar a szeletprofil!
+        }
+        //
+        // Calculation RF pulse parameters  1/3 : Shape
+        int nb_shape_points = 128;
+        pulseTX.setShape(((String) getParam(TX_SHAPE).getValue()), nb_shape_points, "Hamming");
+        pulseTXFatSat.setShape(((String) getParam(FATSAT_TX_SHAPE).getValue()), nb_shape_points, "Hamming");
+        pulseTXSatBandTOF.setShape(((String) getParam(is_satband_enabled ? SATBAND_TX_SHAPE : TOF2D_SB_TX_SHAPE).getValue()), nb_shape_points, "Hamming");
 
 
         // -----------------------------------------------
         // Calculation RF pulse parameters  2/3 : RF pulse & attenuation
         // -----------------------------------------------
-        double flip_angle = ((NumberParam) getParam(FLIP_ANGLE)).getValue().doubleValue();
         boolean is_tx_amp_att_auto = ((BooleanParam) getParam(TX_AMP_ATT_AUTO)).getValue();
         double tx_frequency_offset_90_fs = ((NumberParam) getParam(FATSAT_OFFSET_FREQ)).getValue().doubleValue();
         if (is_tx_amp_att_auto) {
@@ -705,19 +759,20 @@ public class GradientEcho extends SequenceGeneratorAbstract {
 
 //                getUnreachParamExceptionManager().addParam(TX_LENGTH.name(), txLength90, pulseTXFatSat.getPulseDuration(), ((NumberParam) getParam(TX_LENGTH)).getMaxValue(), "Pulse length too short to reach RF power with this pulse shape");
             }
-            if (!pulseTXSatBand.checkPower(is_satband_enabled ? 90.0 : 0.0, observeFrequency + tx_frequency_offset_90_fs, nucleus)) {
+
+            if (!pulseTXSatBandTOF.checkPower(flip_angle_satband, observeFrequency + tx_frequency_offset_90_fs, nucleus)) {
 //                double tx_length_sb = pulseTXSatBand.getPulseDuration();
 //                getUnreachParamExceptionManager().addParam(TX_LENGTH.name(), txLength90, pulseTXFatSat.getPulseDuration(), ((NumberParam) getParam(TX_LENGTH)).getMaxValue(), "Pulse length too short to reach RF power with this pulse shape");
-                setSequenceTableSingleValue(Time_tx_sb, pulseTXSatBand.getPulseDuration());
+                setSequenceTableSingleValue(Time_tx_sb, pulseTXSatBandTOF.getPulseDuration());
             }
             RFPulse pulseMaxPower = pulseTX.getPower() > pulseTXFatSat.getPower() ? pulseTX : pulseTXFatSat;
-            pulseMaxPower = pulseMaxPower.getPower() > pulseTXSatBand.getPower() ? pulseMaxPower : pulseTXSatBand;
+            pulseMaxPower = pulseMaxPower.getPower() > pulseTXSatBandTOF.getPower() ? pulseMaxPower : pulseTXSatBandTOF;
 
             pulseMaxPower.prepAtt(80, (List<Integer>) getParam(TX_ROUTE).getValue());
 
             pulseTX.prepTxAmp((List<Integer>) getParam(TX_ROUTE).getValue());
             pulseTXFatSat.prepTxAmp((List<Integer>) getParam(TX_ROUTE).getValue());
-            pulseTXSatBand.prepTxAmp((List<Integer>) getParam(TX_ROUTE).getValue());
+            pulseTXSatBandTOF.prepTxAmp((List<Integer>) getParam(TX_ROUTE).getValue());
 
             this.setParamValue(TX_ATT, pulseTX.getAtt());            // display PULSE_ATT
             this.setParamValue(TX_AMP_90, pulseTX.getAmp90());     // display 90° amplitude
@@ -745,6 +800,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // ---------------------------------------------------------------------
         // calculate SLICE gradient amplitudes for RF pulses
         // ---------------------------------------------------------------------
+
+
         double slice_thickness_excitation = (isMultiplanar ? sliceThickness : (sliceThickness * userMatrixDimension3D));
 
         Gradient gradSlice = Gradient.createGradient(getSequence(), Grad_amp_slice, Time_tx, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
@@ -860,7 +917,6 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         }
 
 
-
         // -------------------------------------------------------------------------------------------------
         // Flyback init and gradient calculation
         // -------------------------------------------------------------------------------------------------
@@ -888,10 +944,6 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // --------------------------------------------------------------------------------------------------------------------------------------------
 
 
-        // ------------------------------------------
-        // delays for sequence instructions
-        // ------------------------------------------
-        setSequenceTableSingleValue(Time_min_instruction, minInstructionDelay);
         // ------------------------------------------
         // calculate delays adapted to current TE & search for incoherence
         // ------------------------------------------
@@ -925,8 +977,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // ------------------------------------------
         double echo_spacing = ((NumberParam) getParam(ECHO_SPACING)).getValue().doubleValue();
         double delay2;
-        double delay2_min = Math.max(min_FIR_4pts_delay - (grad_rise_time), minInstructionDelay);
-        delay2_min = Math.max(delay2_min, min_FIR_delay - (2 * grad_rise_time + getTimeBetweenEvents(Events.LoopStartEcho, Events.LoopStartEcho) + getTimeBetweenEvents(Events.LoopEndEcho, Events.LoopEndEcho)));
+        double delay2_min = Math.max(min_FIR_4pts_delay - (3 * grad_rise_time + time_flyback), minInstructionDelay);
+        delay2_min = Math.max(delay2_min, min_FIR_delay - (4 * grad_rise_time  + time_flyback + getTimeBetweenEvents(Events.LoopStartEcho, Events.LoopStartEcho) + getTimeBetweenEvents(Events.LoopEndEcho, Events.LoopEndEcho)));
         if (echoTrainLength > 1) {
             double time2 = getTimeBetweenEvents(Events.LoopStartEcho, Events.LoopEndEcho); // Actual EchoLoop time
             time2 = removeTimeForEvents(time2, Events.Delay2); // Actual EchoLoop time without Delay2
@@ -964,178 +1016,23 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         setSequenceParamValue(Ext_trig_source, TRIGGER_CHANEL);
 
         //--------------------------------------------------------------------------------------
-        //  Sat-Band gradient
+        //  Sat-Band timing
         //--------------------------------------------------------------------------------------
-
-        setSequenceTableFirstValue(Time_grad_ramp_sb, is_satband_enabled ? grad_rise_time : minInstructionDelay);
-        setSequenceTableFirstValue(Time_grad_sb, is_satband_enabled ? 0.0005 : minInstructionDelay);
-
-        double satband_thickness = ((NumberParam) getParam(SATBAND_THICKNESS)).getValue().doubleValue();
-        double satband_distance_from_fov = ((NumberParam) getParam(SATBAND_DISTANCE_FROM_FOV)).getValue().doubleValue();
-
-
-        Gradient gradSatBandSlice = Gradient.createGradient(getSequence(), Grad_amp_sb_slice, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
-        Gradient gradSatBandPhase = Gradient.createGradient(getSequence(), Grad_amp_sb_phase, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
-        Gradient gradSatBandRead = Gradient.createGradient(getSequence(), Grad_amp_sb_read, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
-
-        Gradient gradSatBandSpoilerSlice = Gradient.createGradient(getSequence(), Grad_amp_sb_slice_spoiler, Time_grad_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
-        Gradient gradSatBandSpoilerPhase = Gradient.createGradient(getSequence(), Grad_amp_sb_phase_spoiler, Time_grad_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
-        Gradient gradSatBandSpoilerRead = Gradient.createGradient(getSequence(), Grad_amp_sb_read_spoiler, Time_grad_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
-
-        if (is_satband_enabled) {
-            Gradient gradSB = Gradient.createGradient(getSequence(), Grad_amp_sb_read, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
-            if (!gradSB.prepareSliceSelection(tx_bandwidth_sb, satband_thickness)) {
-                double satband_thickness_mod = gradSB.getSliceThickness();
-                getUnreachParamExceptionManager().addParam(SATBAND_THICKNESS.name(), satband_thickness, satband_thickness_mod, ((NumberParam) getParam(SATBAND_THICKNESS)).getMaxValue(), "Pulse length too short to reach this slice thickness");
-                satband_thickness = satband_thickness_mod;
-            }
-            double grad_amp_satband = gradSB.getAmplitude();
-            double grad_amp_satband_mTpm = gradSB.getAmplitude_mTpm();
-
-            int[] position_sli_ph_rea = satBandPrep(SATBAND_ORIENTATION.name(), ORIENTATION.name(), IMAGE_ORIENTATION_SUBJECT.name());
-
-            double grad_amp_sat_spoiler = ((NumberParam) getParam(SATBAND_GRAD_AMP_SPOILER)).getValue().doubleValue();
-            double[] gradAmpSBSliceTable = new double[nb_satband];
-            double[] gradAmpSBPhaseTable = new double[nb_satband];
-            double[] gradAmpSBReadTable = new double[nb_satband];
-            double[] gradAmpSBSliceSpoilerTable = new double[nb_satband];
-            double[] gradAmpSBPhaseSpoilerTable = new double[nb_satband];
-            double[] gradAmpSBReadSpoilerTable = new double[nb_satband];
-            double[] offsetFreqSBTable = new double[nb_satband];
-            int n = 0;
-            if (position_sli_ph_rea[0] == 1) {
-                gradAmpSBSliceTable[n] = grad_amp_satband;
-                gradAmpSBPhaseTable[n] = 0;
-                gradAmpSBReadTable[n] = 0;
-                gradAmpSBSliceSpoilerTable[n] = 0;
-                gradAmpSBPhaseSpoilerTable[n] = grad_amp_sat_spoiler;
-                gradAmpSBReadSpoilerTable[n] = grad_amp_sat_spoiler;
-                double off_center_pos = off_center_distance_3D + fov3d / 2.0 + satband_distance_from_fov + satband_thickness / 2.0;
-                offsetFreqSBTable[n] = pulseTXSatBand.calculateOffsetFreq(grad_amp_satband_mTpm, off_center_pos);
-                n += 1;
-            }
-
-            if (position_sli_ph_rea[1] == 1) {
-                gradAmpSBSliceTable[n] = grad_amp_satband;
-                gradAmpSBPhaseTable[n] = 0;
-                gradAmpSBReadTable[n] = 0;
-                gradAmpSBSliceSpoilerTable[n] = 0;
-                gradAmpSBPhaseSpoilerTable[n] = grad_amp_sat_spoiler;
-                gradAmpSBReadSpoilerTable[n] = grad_amp_sat_spoiler;
-                double off_center_neg = off_center_distance_3D - (fov3d / 2.0 + satband_distance_from_fov + satband_thickness / 2.0);
-                offsetFreqSBTable[n] = pulseTXSatBand.calculateOffsetFreq(grad_amp_satband_mTpm, off_center_neg);
-
-
-                n += 1;
-            }
-
-            if (position_sli_ph_rea[2] == 1) {
-                gradAmpSBSliceTable[n] = 0;
-                gradAmpSBPhaseTable[n] = grad_amp_satband;
-                gradAmpSBReadTable[n] = 0;
-                gradAmpSBSliceSpoilerTable[n] = grad_amp_sat_spoiler;
-                gradAmpSBPhaseSpoilerTable[n] = 0;
-                gradAmpSBReadSpoilerTable[n] = grad_amp_sat_spoiler;
-                double off_center_pos = off_center_distance_2D + (fovPhase / 2.0 + satband_distance_from_fov + satband_thickness / 2.0);
-                offsetFreqSBTable[n] = pulseTXSatBand.calculateOffsetFreq(grad_amp_satband_mTpm, off_center_pos);
-                n += 1;
-            }
-
-            if (position_sli_ph_rea[3] == 1) {
-                gradAmpSBSliceTable[n] = 0;
-                gradAmpSBPhaseTable[n] = grad_amp_satband;
-                gradAmpSBReadTable[n] = 0;
-                gradAmpSBSliceSpoilerTable[n] = grad_amp_sat_spoiler;
-                gradAmpSBPhaseSpoilerTable[n] = 0;
-                gradAmpSBReadSpoilerTable[n] = grad_amp_sat_spoiler;
-                double off_center_neg = off_center_distance_2D - (fovPhase / 2.0 + satband_distance_from_fov + satband_thickness / 2.0);
-                offsetFreqSBTable[n] = pulseTXSatBand.calculateOffsetFreq(grad_amp_satband_mTpm, off_center_neg);
-                n += 1;
-            }
-
-            if (position_sli_ph_rea[4] == 1) {
-                gradAmpSBSliceTable[n] = 0;
-                gradAmpSBPhaseTable[n] = 0;
-                gradAmpSBReadTable[n] = grad_amp_satband;
-                gradAmpSBSliceSpoilerTable[n] = grad_amp_sat_spoiler;
-                gradAmpSBPhaseSpoilerTable[n] = grad_amp_sat_spoiler;
-                gradAmpSBReadSpoilerTable[n] = 0;
-                double off_center_pos = off_center_distance_1D + (fov / 2.0 + satband_distance_from_fov + satband_thickness / 2.0);
-                offsetFreqSBTable[n] = pulseTXSatBand.calculateOffsetFreq(grad_amp_satband_mTpm, off_center_pos);
-                n += 1;
-            }
-            if (position_sli_ph_rea[5] == 1) {
-                gradAmpSBSliceTable[n] = 0;
-                gradAmpSBPhaseTable[n] = 0;
-                gradAmpSBReadTable[n] = grad_amp_satband;
-                gradAmpSBSliceSpoilerTable[n] = grad_amp_sat_spoiler;
-                gradAmpSBPhaseSpoilerTable[n] = grad_amp_sat_spoiler;
-                gradAmpSBReadSpoilerTable[n] = 0;
-                double off_center_neg = off_center_distance_1D - (fov / 2.0 + satband_distance_from_fov + satband_thickness / 2.0);
-                offsetFreqSBTable[n] = pulseTXSatBand.calculateOffsetFreq(grad_amp_satband_mTpm, off_center_neg);
-                n += 1;
-            }
-            gradSatBandSlice.setAmplitude(gradAmpSBSliceTable);
-            gradSatBandPhase.setAmplitude(gradAmpSBPhaseTable);
-            gradSatBandRead.setAmplitude(gradAmpSBReadTable);
-            gradSatBandSpoilerSlice.setAmplitude(gradAmpSBSliceSpoilerTable);
-            gradSatBandSpoilerPhase.setAmplitude(gradAmpSBPhaseSpoilerTable);
-            gradSatBandSpoilerRead.setAmplitude(gradAmpSBReadSpoilerTable);
-            pulseTXSatBand.addFrequencyOffset(offsetFreqSBTable);
+        double sat_flow_time_corr = minInstructionDelay;
+        if (is_tof_enabled) {
+            double satband_distance_from_slice = ((NumberParam) getParam(TOF2D_SB_DISTANCE_FROM_SLICE)).getValue().doubleValue();
+            double sat_flow_dist = satband_distance_from_slice + slice_thickness_excitation;
+            double sat_flow_velocity = ((NumberParam) getParam(TOF2D_FLOW_VELOCITY)).getValue().doubleValue();
+            double sat_flow_time = sat_flow_dist / sat_flow_velocity;
+            double time = getTimeBetweenEvents(Events.LoopSatBandEnd - 1, Events.P90 - 3) + getTimeBetweenEvents(Events.P90 - 2, Events.Acq);//(real index - 1) in the argument instead of real index
+//                System.out.println("time" + time);
+//                System.out.println("sat_flow_time" + sat_flow_time);
+            sat_flow_time_corr = sat_flow_time - time;
+            sat_flow_time_corr = (sat_flow_time_corr < 0) ? 0.0001 : sat_flow_time_corr;
+//                System.out.println("sat_flow_time_corr" + sat_flow_time_corr);
         }
-        gradSatBandSlice.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
-        gradSatBandPhase.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
-        gradSatBandRead.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
-        gradSatBandSpoilerSlice.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
-        gradSatBandSpoilerPhase.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
-        gradSatBandSpoilerRead.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
+        setSequenceTableSingleValue(Time_flow, sat_flow_time_corr);
 
-        pulseTXSatBand.setFrequencyOffset(is_satband_enabled ? Order.LoopB : Order.FourLoop);
-
-
-        RFPulse pulseTXSatBandPrep = RFPulse.createRFPulse(getSequence(), Time_grad_ramp_sb, Freq_offset_tx_sb_prep);
-        pulseTXSatBandPrep.setCompensationFrequencyOffset(pulseTXSatBand, 0.5);
-        RFPulse pulseTXSatBandComp = RFPulse.createRFPulse(getSequence(), Time_grad_ramp_sb, Freq_offset_tx_sb_comp);
-        pulseTXSatBandComp.setCompensationFrequencyOffset(pulseTXSatBand, 0.5);
-
-        //--------------------------------------------------------------------------------------
-        //  Fat-Sat gradient
-        //--------------------------------------------------------------------------------------
-
-
-        double grad_fatsat_application_time = ((NumberParam) getParam(FATSAT_GRAD_APP_TIME)).getValue().doubleValue();
-
-        setSequenceTableFirstValue(Time_grad_fatsat, is_fatsat_enabled ? grad_fatsat_application_time : minInstructionDelay);
-
-        setSequenceTableFirstValue(Time_grad_ramp_fatsat, is_fatsat_enabled ? grad_rise_time : minInstructionDelay);
-
-        Gradient gradFatsatRead = Gradient.createGradient(getSequence(), Grad_amp_fatsat_read, Time_grad_fatsat, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_fatsat);
-        Gradient gradFatsatPhase = Gradient.createGradient(getSequence(), Grad_amp_fatsat_phase, Time_grad_fatsat, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_fatsat);
-        Gradient gradFatsatSlice = Gradient.createGradient(getSequence(), Grad_amp_fatsat_slice, Time_grad_fatsat, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_fatsat);
-
-
-        if (is_fatsat_enabled)
-
-        {
-            double pixel_dimension_ph = ((NumberParam) getParam(RESOLUTION_PHASE)).getValue().doubleValue();
-            double pixel_dimension_sl = ((NumberParam) getParam(RESOLUTION_SLICE)).getValue().doubleValue();
-            boolean test_grad = gradFatsatRead.addSpoiler(pixelDimension, 2);
-            test_grad = gradFatsatPhase.addSpoiler(pixel_dimension_ph, 2) && test_grad;
-            test_grad = gradFatsatSlice.addSpoiler(pixel_dimension_sl, 2) && test_grad;
-//
-            if (!test_grad) {
-                double min_fatsat_application_time = Math.max(gradFatsatRead.getMinTopTime(), Math.max(gradFatsatPhase.getMinTopTime(), gradFatsatSlice.getMinTopTime()));
-                this.getUnreachParamExceptionManager().addParam(FATSAT_GRAD_APP_TIME.name(), grad_fatsat_application_time, min_fatsat_application_time, ((NumberParam) getParam(FATSAT_GRAD_APP_TIME)).getMaxValue(), "FATSAT_GRAD_APP_TIME too short to get correct Spoiling");
-                grad_fatsat_application_time = min_fatsat_application_time;
-                setSequenceTableSingleValue(Time_grad_fatsat, grad_fatsat_application_time);
-                gradFatsatRead.rePrepare();
-                gradFatsatPhase.rePrepare();
-                gradFatsatSlice.rePrepare();
-            }
-        }
-        gradFatsatRead.applyAmplitude();
-        gradFatsatPhase.applyAmplitude();
-        gradFatsatSlice.applyAmplitude();
 
         // -------------------------------------------------------------------------------------------------
         // calculate Phase 2D, 3D and Read REWINDING - SPOILER area, check Grad_Spoil < GMAX
@@ -1292,6 +1189,188 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         RFPulse pulseTXComp = RFPulse.createRFPulse(getSequence(), Time_grad_ramp, FreqOffset_tx_comp);
         pulseTXComp.setCompensationFrequencyOffset(pulseTX, grad_ratio_slice_refoc);
 
+        //--------------------------------------------------------------------------------------
+        //  SAT-BAND & TOF gradient
+        //--------------------------------------------------------------------------------------
+
+        double satband_tof_thickness = ((NumberParam) getParam(is_satband_enabled ? SATBAND_THICKNESS : TOF2D_SB_THICKNESS)).getValue().doubleValue();
+
+        double satband_distance_from_fov = ((NumberParam) getParam(SATBAND_DISTANCE_FROM_FOV)).getValue().doubleValue();
+
+        Gradient gradSatBandSlice = Gradient.createGradient(getSequence(), Grad_amp_sb_slice, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
+        Gradient gradSatBandPhase = Gradient.createGradient(getSequence(), Grad_amp_sb_phase, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
+        Gradient gradSatBandRead = Gradient.createGradient(getSequence(), Grad_amp_sb_read, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
+
+        Gradient gradSatBandSpoilerSlice = Gradient.createGradient(getSequence(), Grad_amp_sb_slice_spoiler, Time_grad_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
+        Gradient gradSatBandSpoilerPhase = Gradient.createGradient(getSequence(), Grad_amp_sb_phase_spoiler, Time_grad_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
+        Gradient gradSatBandSpoilerRead = Gradient.createGradient(getSequence(), Grad_amp_sb_read_spoiler, Time_grad_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
+
+        if (is_satband_enabled || is_tof_enabled) {
+            Gradient gradSB = Gradient.createGradient(getSequence(), Grad_amp_sb_read, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
+            if (!gradSB.prepareSliceSelection(tx_bandwidth_sb, satband_tof_thickness)) {
+                double satband_thickness_mod = gradSB.getSliceThickness();
+                getUnreachParamExceptionManager().addParam((is_satband_enabled ? SATBAND_THICKNESS : TOF2D_SB_THICKNESS).name(), satband_tof_thickness, satband_thickness_mod, ((NumberParam) getParam(is_satband_enabled ? SATBAND_THICKNESS : TOF2D_SB_THICKNESS)).getMaxValue(), "Pulse length too short to reach this satband slice thickness");
+                satband_tof_thickness = satband_thickness_mod;
+            }
+            double grad_amp_satband = gradSB.getAmplitude();
+            double grad_amp_satband_mTpm = gradSB.getAmplitude_mTpm();
+
+            double grad_amp_sat_spoiler = ((NumberParam) getParam(is_satband_enabled ? SATBAND_GRAD_AMP_SPOILER : TOF2D_SB_GRAMP_SP)).getValue().doubleValue();
+
+            double[] gradAmpSBSliceTable = new double[is_satband_enabled ? nb_satband : 1];
+            double[] gradAmpSBPhaseTable = new double[is_satband_enabled ? nb_satband : 1];
+            double[] gradAmpSBReadTable = new double[is_satband_enabled ? nb_satband : 1];
+            double[] gradAmpSBSliceSpoilerTable = new double[is_satband_enabled ? nb_satband : 1];
+            double[] gradAmpSBPhaseSpoilerTable = new double[is_satband_enabled ? nb_satband : 1];
+            double[] gradAmpSBReadSpoilerTable = new double[is_satband_enabled ? nb_satband : 1];
+            double[] offsetFreqSBTable = new double[is_satband_enabled ? nb_satband : nb_planar_excitation];
+            if (is_satband_enabled) {
+                int[] position_sli_ph_rea = satBandPrep(SATBAND_ORIENTATION.name(), ORIENTATION.name(), IMAGE_ORIENTATION_SUBJECT.name());
+                int n = 0;
+                if (position_sli_ph_rea[0] == 1) {
+                    gradAmpSBSliceTable[n] = grad_amp_satband;
+                    gradAmpSBPhaseTable[n] = 0;
+                    gradAmpSBReadTable[n] = 0;
+                    gradAmpSBSliceSpoilerTable[n] = 0;
+                    gradAmpSBPhaseSpoilerTable[n] = grad_amp_sat_spoiler;
+                    gradAmpSBReadSpoilerTable[n] = grad_amp_sat_spoiler;
+                    double off_center_pos = off_center_distance_3D + fov3d / 2.0 + satband_distance_from_fov + satband_tof_thickness / 2.0;
+                    offsetFreqSBTable[n] = pulseTXSatBandTOF.calculateOffsetFreq(grad_amp_satband_mTpm, off_center_pos);
+                    n += 1;
+                }
+                if (position_sli_ph_rea[1] == 1) {
+                    gradAmpSBSliceTable[n] = grad_amp_satband;
+                    gradAmpSBPhaseTable[n] = 0;
+                    gradAmpSBReadTable[n] = 0;
+                    gradAmpSBSliceSpoilerTable[n] = 0;
+                    gradAmpSBPhaseSpoilerTable[n] = grad_amp_sat_spoiler;
+                    gradAmpSBReadSpoilerTable[n] = grad_amp_sat_spoiler;
+                    double off_center_neg = off_center_distance_3D - (fov3d / 2.0 + satband_distance_from_fov + satband_tof_thickness / 2.0);
+                    offsetFreqSBTable[n] = pulseTXSatBandTOF.calculateOffsetFreq(grad_amp_satband_mTpm, off_center_neg);
+                    n += 1;
+                }
+                if (position_sli_ph_rea[2] == 1) {
+                    gradAmpSBSliceTable[n] = 0;
+                    gradAmpSBPhaseTable[n] = grad_amp_satband;
+                    gradAmpSBReadTable[n] = 0;
+                    gradAmpSBSliceSpoilerTable[n] = grad_amp_sat_spoiler;
+                    gradAmpSBPhaseSpoilerTable[n] = 0;
+                    gradAmpSBReadSpoilerTable[n] = grad_amp_sat_spoiler;
+                    double off_center_pos = off_center_distance_2D + (fovPhase / 2.0 + satband_distance_from_fov + satband_tof_thickness / 2.0);
+                    offsetFreqSBTable[n] = pulseTXSatBandTOF.calculateOffsetFreq(grad_amp_satband_mTpm, off_center_pos);
+                    n += 1;
+                }
+                if (position_sli_ph_rea[3] == 1) {
+                    gradAmpSBSliceTable[n] = 0;
+                    gradAmpSBPhaseTable[n] = grad_amp_satband;
+                    gradAmpSBReadTable[n] = 0;
+                    gradAmpSBSliceSpoilerTable[n] = grad_amp_sat_spoiler;
+                    gradAmpSBPhaseSpoilerTable[n] = 0;
+                    gradAmpSBReadSpoilerTable[n] = grad_amp_sat_spoiler;
+                    double off_center_neg = off_center_distance_2D - (fovPhase / 2.0 + satband_distance_from_fov + satband_tof_thickness / 2.0);
+                    offsetFreqSBTable[n] = pulseTXSatBandTOF.calculateOffsetFreq(grad_amp_satband_mTpm, off_center_neg);
+                    n += 1;
+                }
+                if (position_sli_ph_rea[4] == 1) {
+                    gradAmpSBSliceTable[n] = 0;
+                    gradAmpSBPhaseTable[n] = 0;
+                    gradAmpSBReadTable[n] = grad_amp_satband;
+                    gradAmpSBSliceSpoilerTable[n] = grad_amp_sat_spoiler;
+                    gradAmpSBPhaseSpoilerTable[n] = grad_amp_sat_spoiler;
+                    gradAmpSBReadSpoilerTable[n] = 0;
+                    double off_center_pos = off_center_distance_1D + (fov / 2.0 + satband_distance_from_fov + satband_tof_thickness / 2.0);
+                    offsetFreqSBTable[n] = pulseTXSatBandTOF.calculateOffsetFreq(grad_amp_satband_mTpm, off_center_pos);
+                    n += 1;
+                }
+                if (position_sli_ph_rea[5] == 1) {
+                    gradAmpSBSliceTable[n] = 0;
+                    gradAmpSBPhaseTable[n] = 0;
+                    gradAmpSBReadTable[n] = grad_amp_satband;
+                    gradAmpSBSliceSpoilerTable[n] = grad_amp_sat_spoiler;
+                    gradAmpSBPhaseSpoilerTable[n] = grad_amp_sat_spoiler;
+                    gradAmpSBReadSpoilerTable[n] = 0;
+                    double off_center_neg = off_center_distance_1D - (fov / 2.0 + satband_distance_from_fov + satband_tof_thickness / 2.0);
+                    offsetFreqSBTable[n] = pulseTXSatBandTOF.calculateOffsetFreq(grad_amp_satband_mTpm, off_center_neg);
+                    n += 1;
+                }
+            } else if (is_tof_enabled) {
+                double satband_distance_from_slice = ((NumberParam) getParam(TOF2D_SB_DISTANCE_FROM_SLICE)).getValue().doubleValue();
+
+                double off_center_slice_pos = satband_distance_from_slice + satband_tof_thickness / 2.0; // sat band cranial from voxel
+                double off_center_slice_neg = -off_center_slice_pos;  // caudal
+                double off_center_slice = 0;
+                if ("BELOW THE SLICE".equalsIgnoreCase((String) getParam(TOF2D_SB_POSITION).getValue())) {
+                    off_center_slice = off_center_slice_neg;
+                } else if ("ABOVE THE SLICE".equalsIgnoreCase((String) getParam(TOF2D_SB_POSITION).getValue())) {
+                    off_center_slice = off_center_slice_pos;
+                }
+                double frequency_offset_sat_slice = -grad_amp_satband_mTpm * off_center_slice * (GradientMath.GAMMA / nucleus.getRatio());
+
+                for (int k = 0; k < nb_planar_excitation; k++) {
+                    offsetFreqSBTable[k] = (pulseTX.getFrequencyOffset(k) * grad_amp_satband_mTpm / gradSlice.getAmplitude_mTpm()) + frequency_offset_sat_slice;
+                    System.out.println("frequency_offset_tof2d[k]  " + offsetFreqSBTable[k]);
+                }
+                gradAmpSBSliceTable[0] = grad_amp_satband;
+                gradAmpSBPhaseTable[0] = 0;
+                gradAmpSBReadTable[0] = 0;
+                gradAmpSBSliceSpoilerTable[0] = 0;
+                gradAmpSBPhaseSpoilerTable[0] = grad_amp_sat_spoiler;
+                gradAmpSBReadSpoilerTable[0] = grad_amp_sat_spoiler;
+
+
+            }
+            gradSatBandSlice.setAmplitude(gradAmpSBSliceTable);
+            gradSatBandPhase.setAmplitude(gradAmpSBPhaseTable);
+            gradSatBandRead.setAmplitude(gradAmpSBReadTable);
+            gradSatBandSpoilerSlice.setAmplitude(gradAmpSBSliceSpoilerTable);
+            gradSatBandSpoilerPhase.setAmplitude(gradAmpSBPhaseSpoilerTable);
+            gradSatBandSpoilerRead.setAmplitude(gradAmpSBReadSpoilerTable);
+            pulseTXSatBandTOF.addFrequencyOffset(offsetFreqSBTable);
+
+        }
+        gradSatBandSlice.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
+        gradSatBandPhase.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
+        gradSatBandRead.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
+        gradSatBandSpoilerSlice.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
+        gradSatBandSpoilerPhase.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
+        gradSatBandSpoilerRead.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
+
+        pulseTXSatBandTOF.setFrequencyOffset(is_satband_enabled ? Order.LoopB : is_tof_enabled ? Order.Three : Order.FourLoop);
+
+        RFPulse pulseTXSatBandPrep = RFPulse.createRFPulse(getSequence(), Time_grad_ramp_sb, Freq_offset_tx_sb_prep);
+        pulseTXSatBandPrep.setCompensationFrequencyOffset(pulseTXSatBandTOF, 0.5);
+        RFPulse pulseTXSatBandComp = RFPulse.createRFPulse(getSequence(), Time_grad_ramp_sb, Freq_offset_tx_sb_comp);
+        pulseTXSatBandComp.setCompensationFrequencyOffset(pulseTXSatBandTOF, 0.5);
+
+
+        //--------------------------------------------------------------------------------------
+        //  Fat-Sat gradient
+        //--------------------------------------------------------------------------------------
+
+        Gradient gradFatsatRead = Gradient.createGradient(getSequence(), Grad_amp_fatsat_read, Time_grad_fatsat, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_fatsat);
+        Gradient gradFatsatPhase = Gradient.createGradient(getSequence(), Grad_amp_fatsat_phase, Time_grad_fatsat, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_fatsat);
+        Gradient gradFatsatSlice = Gradient.createGradient(getSequence(), Grad_amp_fatsat_slice, Time_grad_fatsat, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_fatsat);
+
+        if (is_fatsat_enabled) {
+            double pixel_dimension_ph = ((NumberParam) getParam(RESOLUTION_PHASE)).getValue().doubleValue();
+            double pixel_dimension_sl = ((NumberParam) getParam(RESOLUTION_SLICE)).getValue().doubleValue();
+            boolean test_grad = gradFatsatRead.addSpoiler(pixelDimension, 2);
+            test_grad = gradFatsatPhase.addSpoiler(pixel_dimension_ph, 2) && test_grad;
+            test_grad = gradFatsatSlice.addSpoiler(pixel_dimension_sl, 2) && test_grad;
+//
+            if (!test_grad) {
+                double min_fatsat_application_time = Math.max(gradFatsatRead.getMinTopTime(), Math.max(gradFatsatPhase.getMinTopTime(), gradFatsatSlice.getMinTopTime()));
+                this.getUnreachParamExceptionManager().addParam(FATSAT_GRAD_APP_TIME.name(), grad_fatsat_application_time, min_fatsat_application_time, ((NumberParam) getParam(FATSAT_GRAD_APP_TIME)).getMaxValue(), "FATSAT_GRAD_APP_TIME too short to get correct Spoiling");
+                grad_fatsat_application_time = min_fatsat_application_time;
+                setSequenceTableSingleValue(Time_grad_fatsat, grad_fatsat_application_time);
+                gradFatsatRead.rePrepare();
+                gradFatsatPhase.rePrepare();
+                gradFatsatSlice.rePrepare();
+            }
+        }
+        gradFatsatRead.applyAmplitude();
+        gradFatsatPhase.applyAmplitude();
+        gradFatsatSlice.applyAmplitude();
 
         // ------------------------------------------------------------------
         //calculate TX FREQUENCY FATSAT and compensation
@@ -1300,7 +1379,6 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         pulseTXFatSat.setFrequencyOffset(is_fatsat_enabled ? tx_frequency_offset_90_fs : 0.0);
         pulseTXFatSat.setFrequencyOffset(tx_frequency_offset_90_fs);
 
-        setSequenceTableFirstValue(Time_before_fatsat_pulse, minInstructionDelay);
 
         RFPulse pulseTXFatSatPrep = RFPulse.createRFPulse(getSequence(), Time_before_fatsat_pulse, Freq_offset_tx_fatsat_prep);
         pulseTXFatSatPrep.setCompensationFrequencyOffset(pulseTXFatSat, 0.5);
@@ -1313,9 +1391,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // ------------------------------------------------------------------
 
         Table smartTTL_FatSat_table = setSequenceTableValues(SmartTTL_FatSat, Order.Four);
-        if (is_fatsat_enabled)
-
-        {
+        if (is_fatsat_enabled) {
             double slice_time = (delay_before_echo_loop + (echoTrainLength * delay_echo_loop)
                     + getTimeBetweenEvents(Events.LoopEndEcho + 1, Events.LoopMultiPlanarEnd));
             double fatSat_repetition_Time = ((NumberParam) getParam(FATSAT_PERIODE)).getValue().doubleValue();
@@ -1347,9 +1423,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
 //            System.out.println(slice_time);
 //            System.out.println(nb_ttl);
 //            System.out.println(ttl_periode);
-        } else
-
-        {
+        } else {
             smartTTL_FatSat_table.add(0);
         }
 
@@ -1559,12 +1633,10 @@ public class GradientEcho extends SequenceGeneratorAbstract {
             dir_ind[2][0] = dir_ind[2][0] / norm_vector_sl;
             dir_ind[2][1] = dir_ind[2][1] / norm_vector_sl;
             dir_ind[2][2] = dir_ind[2][2] / norm_vector_sl;
-
             for (i = 0; i < 3; i++) {
                 for (j = 0; j < 3; j++) {
                     System.out.println("dir_ind[" + i + "][" + j + "]" + dir_ind[i][j]);
                 }
-
             }
 
             // System.out.println(" direction index and dir ind:  "+direction_index[2]+" "+dir_ind[0][2]);
@@ -1618,7 +1690,6 @@ public class GradientEcho extends SequenceGeneratorAbstract {
             anatomy_vector[5] = cranial;
 
             boolean sum;
-
             for (i = 0; i < 6; i++) {
                 sum = false;
                 for (j = 0; j < 6; j++) {
@@ -1630,7 +1701,6 @@ public class GradientEcho extends SequenceGeneratorAbstract {
 
             }
             position_sli_ph_rea[4] = local_vector[0] ? 1 : 0;
-
             position_sli_ph_rea[2] = local_vector[1] ? 1 : 0;
             position_sli_ph_rea[0] = local_vector[2] ? 1 : 0;
             position_sli_ph_rea[5] = local_vector[3] ? 1 : 0;
@@ -1640,23 +1710,17 @@ public class GradientEcho extends SequenceGeneratorAbstract {
             // System.out.println("read+ "+position_sli_ph_rea[4]+" phase+ "+position_sli_ph_rea[2]+" slice+ "+position_sli_ph_rea[0]);
             // System.out.println("read- "+position_sli_ph_rea[5]+" phase- "+position_sli_ph_rea[3]+" slice- "+position_sli_ph_rea[1]);
         }
-
         boolean is_switch = ((BooleanParam) getParam(SWITCH_READ_PHASE)).getValue();
-
-
         boolean phase_pos_temp = position_sli_ph_rea[2] == 1;
         boolean phase_neg_temp = position_sli_ph_rea[3] == 1;
         boolean read_pos_temp = position_sli_ph_rea[4] == 1;
         boolean read_neg_temp = position_sli_ph_rea[5] == 1;
-
         if (is_switch) {
             position_sli_ph_rea[2] = read_pos_temp ? 1 : 0;
             position_sli_ph_rea[3] = read_neg_temp ? 1 : 0;
             position_sli_ph_rea[4] = phase_pos_temp ? 1 : 0;
             position_sli_ph_rea[5] = phase_neg_temp ? 1 : 0;
         }
-
-
         return position_sli_ph_rea;
     }
     // --------------------------------------------------------------------------------------------------------------------------------------------

@@ -16,7 +16,10 @@ public interface Events {
         int LoopMultiPlanarStart = 3;
 
         int LoopSatBandStart = 4;
+        int SatBandpulse = 6;
         int LoopSatBandEnd = 12;
+
+        int FatSatPulse = 14;
 
 
         int P90 = 21;

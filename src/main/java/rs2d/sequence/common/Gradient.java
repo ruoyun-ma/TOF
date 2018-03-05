@@ -501,8 +501,8 @@ public class Gradient {
     public void reoderPhaseEncoding(TransformPlugin plugin, int echoTrainLength, int acquisitionMatrixDimension2D, int acquisitionMatrixDimension1D) {
         // flow Comp
         if (gradFlowComp != null) {
-            gradFlowComp.reoderPhaseEncoding( plugin, echoTrainLength, acquisitionMatrixDimension2D, acquisitionMatrixDimension1D);
-
+            gradFlowComp.reoderPhaseEncoding(plugin, echoTrainLength, acquisitionMatrixDimension2D, acquisitionMatrixDimension1D);
+        }
         double loopNumber, indexNew;
         if (amplitudeArray != null) {
             double[] newTable = new double[acquisitionMatrixDimension2D];
@@ -529,8 +529,8 @@ public class Gradient {
     public void reoderPhaseEncoding3D(TransformPlugin plugin, int acquisitionMatrixDimension3D) {
         // to modify , flow Comp
         if (gradFlowComp != null) {
-            gradFlowComp.reoderPhaseEncoding3D( plugin, acquisitionMatrixDimension3D);
-
+            gradFlowComp.reoderPhaseEncoding3D(plugin, acquisitionMatrixDimension3D);
+        }
 
         double indexNew;
         if (amplitudeArray != null) {
@@ -538,8 +538,6 @@ public class Gradient {
 
             System.out.println("----- " + plugin.getName());
             int[] tmp = Centric(acquisitionMatrixDimension3D);
-
-
             for (int k = 0; k < acquisitionMatrixDimension3D; k++) {
                 int[] indexScan = plugin.invTransf(0, 0, k, 0);
                 //              System.out.println(j + " :  " +indexScan[0] + " " +indexScan[1]+ "        " +  plugin.transf(0, j, 0, 0)[0]+ " " +  plugin.transf(0, j, 0, 0)[1]);

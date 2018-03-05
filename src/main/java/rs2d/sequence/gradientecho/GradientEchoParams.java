@@ -715,7 +715,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Scan);
             param.setCategory(Category.Acquisition);
-            param.setValue(true);
+            param.setValue(false);
             param.setDefaultValue(false);
             return param;
         }
@@ -1430,7 +1430,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(65536);
-            param.setValue(20);
+            param.setValue(1);
             param.setDefaultValue(0);
             return param;
         }
@@ -1448,7 +1448,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Integer);
             param.setMinValue(1);
             param.setMaxValue(2147483647);
-            param.setValue(1);
+            param.setValue(20);
             param.setDefaultValue(1);
             return param;
         }
@@ -1717,6 +1717,20 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setCategory(Category.Acquisition);
             param.setValue("");
             param.setDefaultValue("PULSE_LENGTH");
+            return param;
+        }
+    },
+
+    PARTIAL_OVERSAMPLING {
+        Param build() {
+            BooleanParam param = new BooleanParam();
+            param.setName("PARTIAL_OVERSAMPLING");
+            param.setDisplayedName("PARTIAL_OVERSAMPLING");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setCategory(Category.Acquisition);
+            param.setValue(false);
+            param.setDefaultValue(true);
             return param;
         }
     },
@@ -2038,6 +2052,24 @@ public enum GradientEchoParams implements GeneratorParamEnum {
         }
     },
 
+    SATBAND_T1 {
+        Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("SATBAND_T1");
+            param.setDisplayedName("SATBAND_T1");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Miscellaneous);
+            param.setCategory(Category.Acquisition);
+            param.setNumberEnum(NumberEnum.Millis);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.0E9);
+            param.setValue(500.0);
+            param.setDefaultValue(500.0);
+            return param;
+        }
+    },
+
     SATBAND_THICKNESS {
         Param build() {
             NumberParam param = new NumberParam();
@@ -2115,7 +2147,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(15.6);
+            param.setValue(311.1);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2130,7 +2162,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.User);
             param.setCategory(Category.Acquisition);
-            param.setValue("Version8.0d");
+            param.setValue("Version8.0f");
             param.setDefaultValue("");
             return param;
         }
@@ -2331,6 +2363,123 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setCategory(Category.Acquisition);
             param.setValue(false);
             param.setDefaultValue(false);
+            return param;
+        }
+    },
+
+    TOF2D_ENABLED {
+        Param build() {
+            BooleanParam param = new BooleanParam();
+            param.setName("TOF2D_ENABLED");
+            param.setDisplayedName("TOF2D_ENABLED");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Miscellaneous);
+            param.setCategory(Category.Acquisition);
+            param.setValue(false);
+            param.setDefaultValue(false);
+            return param;
+        }
+    },
+
+    TOF2D_FLOW_VELOCITY {
+        Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("TOF2D_FLOW_VELOCITY");
+            param.setDisplayedName("TOF2D_FLOW_VELOCITY");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setCategory(Category.Acquisition);
+            param.setNumberEnum(NumberEnum.Double);
+            param.setMinValue(-1.7976931348623157E308);
+            param.setMaxValue(1.7976931348623157E308);
+            param.setValue(0.12);
+            param.setDefaultValue(0.3);
+            return param;
+        }
+    },
+
+    TOF2D_SB_DISTANCE_FROM_SLICE {
+        Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("TOF2D_SB_DISTANCE_FROM_SLICE");
+            param.setDisplayedName("TOF2D_SB_DISTANCE_FROM_SLICE");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Dimension);
+            param.setCategory(Category.Acquisition);
+            param.setNumberEnum(NumberEnum.Location);
+            param.setMinValue(-1.7976931348623157E308);
+            param.setMaxValue(1.7976931348623157E308);
+            param.setValue(0.005);
+            param.setDefaultValue(0.002);
+            return param;
+        }
+    },
+
+    TOF2D_SB_GRAMP_SP {
+        Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("TOF2D_SB_GRAMP_SP");
+            param.setDisplayedName("TOF2D_SB_GRAMP_SP");
+            param.setDescription("Spoiler gradient");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Gradient);
+            param.setCategory(Category.Acquisition);
+            param.setNumberEnum(NumberEnum.PERCENT);
+            param.setMinValue(0.0);
+            param.setMaxValue(100.0);
+            param.setValue(40.0);
+            param.setDefaultValue(40.0);
+            return param;
+        }
+    },
+
+    TOF2D_SB_POSITION {
+        Param build() {
+            TextParam param = new TextParam();
+            param.setName("TOF2D_SB_POSITION");
+            param.setDisplayedName("TOF2D_SB_POSITION");
+            param.setDescription("Saturation band position");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Dimension);
+            param.setCategory(Category.Acquisition);
+            param.setValue("ABOVE THE SLICE");
+            param.setDefaultValue("BELOW THE SLICE");
+            param.setSuggestedValues(asList("ABOVE THE SLICE", "BELOW THE SLICE"));
+            return param;
+        }
+    },
+
+    TOF2D_SB_THICKNESS {
+        Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("TOF2D_SB_THICKNESS");
+            param.setDisplayedName("TOF2D_SB_THICKNESS");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setGroup(EnumGroup.Dimension);
+            param.setCategory(Category.Acquisition);
+            param.setNumberEnum(NumberEnum.Length);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.7976931348623157E308);
+            param.setValue(0.015);
+            param.setDefaultValue(0.01);
+            return param;
+        }
+    },
+
+    TOF2D_SB_TX_SHAPE {
+        Param build() {
+            TextParam param = new TextParam();
+            param.setName("TOF2D_SB_TX_SHAPE");
+            param.setDisplayedName("TOF2D_SB_TX_SHAPE");
+            param.setDescription("");
+            param.setRoles(new RoleEnum[] {RoleEnum.User});
+            param.setCategory(Category.Acquisition);
+            param.setValue("SINC5");
+            param.setDefaultValue("HARD");
+            param.setSuggestedValues(asList("HARD", "GAUSSIAN", "SINC3", "SINC5", "SLR_8_5152", "SLR_4_2576", "RAMP"));
             return param;
         }
     },

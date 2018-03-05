@@ -236,12 +236,12 @@ public interface GradientEchoSequenceParams {
     String FreqOffset_rx_prep = "FreqOffset_rx_prep";
 
     /**
-     * Group: Transmit, Order: 3D - FreqOffset (Hz)
+     * Group: Transmit, Order: 3D+Loop - FreqOffset (Hz)
      */
     String FreqOffset_tx_comp = "FreqOffset_tx_comp";
 
     /**
-     * Group: Transmit, Order: 3D - FreqOffset (Hz)
+     * Group: Transmit, Order: 3D+Loop - FreqOffset (Hz)
      */
     String FreqOffset_tx_prep = "FreqOffset_tx_prep";
 
@@ -301,7 +301,7 @@ public interface GradientEchoSequenceParams {
     String Grad_amp_read_prep_flowcomp = "Grad_amp_read_prep_flowcomp";
 
     /**
-     * Group: Gradient, Order: Loop - GradAmp (%)
+     * Group: Gradient, Order: LoopB - GradAmp (%)
      */
     String Grad_amp_read_read = "Grad_amp_read_read";
 
@@ -526,7 +526,7 @@ public interface GradientEchoSequenceParams {
     String Tx_amp_sb = "Tx_amp_sb";
 
     /**
-     * Group: Transmit, Order: 3D - FreqOffset (Hz)
+     * Group: Transmit, Order: 3D+Loop - FreqOffset (Hz)
      */
     String Tx_freq_offset = "Tx_freq_offset";
 

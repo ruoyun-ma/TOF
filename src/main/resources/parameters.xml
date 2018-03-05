@@ -400,7 +400,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.00378</value>
+                <value>0.00381</value>
                 <defaultValue>0.005</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -640,7 +640,7 @@
                 <group>Dimension</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.02</value>
+                <value>0.04</value>
                 <defaultValue>0.6</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.7976931348623157E308</maxValue>
@@ -659,7 +659,7 @@
                 <group>Dimension</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.02</value>
+                <value>0.057999999999999996</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0</maxValue>
@@ -678,7 +678,7 @@
                 <group>Dimension</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.02</value>
+                <value>0.04</value>
                 <defaultValue>0.08</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>10.0</maxValue>
@@ -779,7 +779,7 @@
                 <group>Dimension</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.02</value>
+                <value>0.04</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.7976931348623157E308</maxValue>
@@ -907,7 +907,7 @@
                 <group>Gradient</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>false</defaultValue>
             </value>
         </entry>
@@ -1190,6 +1190,58 @@
                 <maxValue>1.7976931348623157E308</maxValue>
                 <minValue>-1.7976931348623157E308</minValue>
                 <numberEnum>Location</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>INTERLEAVED_ECHO_TRAIN</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>INTERLEAVED_ECHO_TRAIN</name>
+                <description>multiple ETL in interleaved mode</description>
+                <displayedName>INTERLEAVED_ECHO_TRAIN</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Scan</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>false</value>
+                <defaultValue>false</defaultValue>
+            </value>
+        </entry>
+        <entry>
+            <key>INTERLEAVED_EFF_ECHO_SPACING</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>INTERLEAVED_EFF_ECHO_SPACING</name>
+                <description>Effective echo spacing of interleaved echo trains</description>
+                <displayedName>INTERLEAVED_EFF_ECHO_SPACING</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Delay</group>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>9.589760000000001E-4</value>
+                <defaultValue>8.0E-4</defaultValue>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <maxValue>1.0E9</maxValue>
+                <minValue>0.0</minValue>
+                <numberEnum>Time</numberEnum>
+            </value>
+        </entry>
+        <entry>
+            <key>INTERLEAVED_NUM_OF_ECHO_TRAIN</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>INTERLEAVED_NUM_OF_ECHO_TRAIN</name>
+                <description>Number of interleaved echo train</description>
+                <displayedName>INTERLEAVED_NUM_OF_ECHO_TRAIN</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <category>Acquisition</category>
+                <rolesEnum>User</rolesEnum>
+                <value>4</value>
+                <defaultValue>1</defaultValue>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <maxValue>65535</maxValue>
+                <minValue>1</minValue>
+                <numberEnum>UnsignedShort</numberEnum>
             </value>
         </entry>
         <entry>
@@ -2019,7 +2071,7 @@
                 <group>Scan</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>1</value>
+                <value>20</value>
                 <defaultValue>0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>65536</maxValue>
@@ -2038,7 +2090,7 @@
                 <group>Miscellaneous</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>20</value>
+                <value>1</value>
                 <defaultValue>1</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>2147483647</maxValue>
@@ -2305,7 +2357,7 @@
                 <name>OFF_CENTER_FIELD_OF_VIEW_2D</name>
                 <description>Offset in Phase Encoding Direction</description>
                 <displayedName>Location 2D</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
                 <category>Acquisition</category>
@@ -2324,7 +2376,7 @@
                 <name>OFF_CENTER_FIELD_OF_VIEW_3D</name>
                 <description>Offset in the slice direction</description>
                 <displayedName>Location Z</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
                 <category>Acquisition</category>
@@ -2644,7 +2696,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.311</value>
+                <value>0.202</value>
                 <defaultValue>0.2</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -2663,7 +2715,7 @@
                 <group>Dimension</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>3.125E-4</value>
+                <value>6.25E-4</value>
                 <defaultValue>5.0E-4</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>0.01</maxValue>
@@ -2682,7 +2734,7 @@
                 <group>Dimension</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>4.0E-4</value>
+                <value>8.0E-4</value>
                 <defaultValue>5.0E-4</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>0.01</maxValue>
@@ -2888,7 +2940,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>311.1</value>
+                <value>10.2</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -2907,7 +2959,7 @@
                 <group>User</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>Version8.0f</value>
+                <value>Version8.0g</value>
                 <defaultValue></defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
             </value>
@@ -3007,7 +3059,7 @@
                 <group>Dimension</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.0</value>
+                <value>0.002</value>
                 <defaultValue>5.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.7976931348623157E308</maxValue>

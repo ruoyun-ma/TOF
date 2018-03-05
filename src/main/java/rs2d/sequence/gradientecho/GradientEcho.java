@@ -67,7 +67,7 @@ import static rs2d.sequence.gradientecho.GradientEchoSequenceParams.*;
 //
 public class GradientEcho extends SequenceGeneratorAbstract {
 
-    private String sequenceVersion = "Version8.0f";
+    private String sequenceVersion = "Version8.0g";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -89,13 +89,16 @@ public class GradientEcho extends SequenceGeneratorAbstract {
     private int userMatrixDimension2D;
     private int userMatrixDimension3D;
     private boolean is_partial_oversampling;
+    private boolean is_keyhole_allowed;
 
     private int nb_scan_1d;
     private int nb_scan_2d;
     private int nb_scan_3d;
     private int nb_scan_4d;
+
     private int echoTrainLength;
-    private int nb_satband;
+    private double echo_spacing;
+
 
     private double spectralWidth;
     private boolean isSW;
@@ -117,6 +120,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
 
     private boolean isDynamic;
     private int numberOfDynamicAcquisition;
+    private boolean isDynamicMinTime;
+
 
     private boolean isTrigger;
     private ListNumberParam triggerTime;
@@ -129,8 +134,12 @@ public class GradientEcho extends SequenceGeneratorAbstract {
 
     boolean is_fatsat_enabled;
 
+    private int nb_satband;
     boolean is_satband_enabled;
     boolean is_tof_enabled;
+
+    boolean is_interleaved_echo_train;
+    private int numberOfnumInterleavedEchoTrain;
 
     private boolean is_rf_spoiling;
 
@@ -167,7 +176,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         getParam(DIGITAL_FILTER_SHIFT).setDefaultValue(Instrument.instance().getDevices().getCameleon().getAcquDeadPointCount());
         getParam(DIGITAL_FILTER_REMOVED).setDefaultValue(Instrument.instance().getDevices().getCameleon().isRemoveAcquDeadPoint());
 
-        List<String> tx_shape = asList("HARD", "GAUSSIAN", "SINC3", "SINC5");
+        List<String> tx_shape = asList("HARD", "GAUSSIAN", "SINC3", "SINC5","SLR_8_5152","SLR_4_2576");
         //List<String> tx_shape = Arrays.asList("HARD", "GAUSSIAN", "SIN3", "xSINC5");
         ((TextParam) getParam(TX_SHAPE)).setSuggestedValues(tx_shape);
         ((TextParam) getParam(TX_SHAPE)).setRestrictedToSuggested(true);
@@ -225,8 +234,10 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         userMatrixDimension2D = ((NumberParam) getParam(USER_MATRIX_DIMENSION_2D)).getValue().intValue();
         userMatrixDimension3D = ((NumberParam) getParam(USER_MATRIX_DIMENSION_3D)).getValue().intValue();
         is_partial_oversampling = (((BooleanParam) getParam(PARTIAL_OVERSAMPLING)).getValue());
+        is_keyhole_allowed = ((BooleanParam) getParam(KEYHOLE_ALLOWED)).getValue();
 
         echoTrainLength = ((NumberParam) getParam(ECHO_TRAIN_LENGTH)).getValue().intValue();
+        echo_spacing = ((NumberParam) getParam(ECHO_SPACING)).getValue().doubleValue();
 
         spectralWidth = ((NumberParam) getParam(SPECTRAL_WIDTH)).getValue().doubleValue();            // get user defined spectral width
         isSW = (((BooleanParam) getParam(SPECTRAL_WIDTH_OPT)).getValue());
@@ -249,6 +260,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         isDynamic = ((BooleanParam) getParam(DYNAMIC_SEQUENCE)).getValue();
         numberOfDynamicAcquisition = isDynamic ? ((NumberParam) getParam(DYN_NUMBER_OF_ACQUISITION)).getValue().intValue() : 1;
         isDynamic = isDynamic && (numberOfDynamicAcquisition > 1);
+        isDynamicMinTime = ((BooleanParam) getParam(DYNAMIC_MIN_TIME)).getValue();
 
         isTrigger = (((BooleanParam) getParam(TRIGGER_EXTERNAL)).getValue());
         triggerTime = (ListNumberParam) getParam(TRIGGER_TIME);
@@ -265,6 +277,10 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         is_satband_enabled = (((BooleanParam) getParam(SATBAND_ENABLED)).getValue());
         is_tof_enabled = (((BooleanParam) getParam(TOF2D_ENABLED)).getValue());
         is_rf_spoiling = ((BooleanParam) getParam(RF_SPOILING)).getValue();
+
+        is_interleaved_echo_train = ((BooleanParam) getParam(INTERLEAVED_ECHO_TRAIN)).getValue();
+        numberOfnumInterleavedEchoTrain = ((NumberParam) getParam(INTERLEAVED_NUM_OF_ECHO_TRAIN)).getValue().intValue();
+
 
         isKSCenterMode = ((BooleanParam) getParam(KS_CENTER_MODE)).getValue();
 
@@ -382,8 +398,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // MATRIX
 
         boolean is_partial_oversampling = (((BooleanParam) getParam(PARTIAL_OVERSAMPLING)).getValue());
-        is_partial_oversampling = (isMultiplanar || userMatrixDimension3D < 8)? false : is_partial_oversampling;
-        setParamValue(PARTIAL_OVERSAMPLING, is_partial_oversampling );
+        is_partial_oversampling = (isMultiplanar || userMatrixDimension3D < 8) ? false : is_partial_oversampling;
+        setParamValue(PARTIAL_OVERSAMPLING, is_partial_oversampling);
 
         // 3D ZERO FILLING
         double partial_slice;
@@ -413,7 +429,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
 
 
         int nb_of_shoot_3d = ((NumberParam) getParam(NUMBER_OF_SHOOT_3D)).getValue().intValue();
-        nb_of_shoot_3d = isMultiplanar ? getInferiorDivisorToGetModulusZero(nb_of_shoot_3d, acquisitionMatrixDimension3D) : 0;
+        nb_of_shoot_3d = isMultiplanar ? getInferiorDivisorToGetModulusZero(nb_of_shoot_3d, acquisitionMatrixDimension3D) : acquisitionMatrixDimension3D;
         nb_of_shoot_3d = is_tof_enabled ? acquisitionMatrixDimension3D : nb_of_shoot_3d; // TOF does not allow interleaved slice within the TR
 
         int nb_interleaved_excitation = isMultiplanar ? (int) Math.ceil((acquisitionMatrixDimension3D / nb_of_shoot_3d)) : 1;
@@ -452,25 +468,55 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // 4D managment:  Dynamic, MultiEcho, External triggering, Multi Echo
         // -----------------------------------------------
 
+        // keyhole_allowed only available when dynamic
+
+        is_keyhole_allowed = !isDynamic ? false : is_keyhole_allowed;
+        setParamValue(KEYHOLE_ALLOWED, is_keyhole_allowed);
+
+        // ETL only available when not kewholed
+        is_interleaved_echo_train = is_keyhole_allowed ? false : is_interleaved_echo_train;
+        setParamValue(INTERLEAVED_ECHO_TRAIN, is_interleaved_echo_train);
+
+        echoTrainLength = is_keyhole_allowed ? 1 : echoTrainLength;
+        setParamValue(ECHO_TRAIN_LENGTH, echoTrainLength);
+
+        if (is_interleaved_echo_train) { //TODO interleaved echo train
+            isDynamic = true;
+            setParamValue(DYNAMIC_SEQUENCE, isDynamic);
+
+            isDynamicMinTime = true;
+            setParamValue(DYNAMIC_MIN_TIME, isDynamicMinTime);
+
+            numberOfDynamicAcquisition = numberOfnumInterleavedEchoTrain;
+            setParamValue(DYN_NUMBER_OF_ACQUISITION, numberOfDynamicAcquisition);
+
+            kspace_filling = "Linear";
+            setParamValue(KSPACE_FILLING, kspace_filling);
+            //setParamValue("KEYHOLE_ALLOWED", false);
+        }
+
+        if (echoTrainLength == 1) {
+            echo_spacing = 0;
+            setParamValue(ECHO_SPACING, echo_spacing);
+            is_flyback = false;
+            setParamValue(FLYBACK, is_flyback);
+        } else {
+            kspace_filling = "Linear";
+            setParamValue(KSPACE_FILLING, kspace_filling);
+        }
+
         // Avoid multi trigger time when  Multi echo or dynamic
-        if (numberOfTrigger != 1 && (echoTrainLength != 1 || isDynamic)) {
+        if (numberOfTrigger != 1 && (this.echoTrainLength != 1 || isDynamic)) {
             double tmp = triggerTime.getValue().get(0).doubleValue();
             triggerTime.getValue().clear();
             triggerTime.getValue().add(tmp);
             numberOfTrigger = 1;
         }
 
+        //Dynamic and multi echo are filled into the 4th Dimension
         nb_scan_4d = numberOfTrigger * numberOfDynamicAcquisition;
-        acquisitionMatrixDimension4D = nb_scan_4d * echoTrainLength;
+        acquisitionMatrixDimension4D = nb_scan_4d * this.echoTrainLength;
         setParamValue(USER_MATRIX_DIMENSION_4D, nb_scan_4d);
-
-        //Dynamic and multi echo are filled into the 4th Dimension 
-        if (echoTrainLength == 1) {
-            setParamValue(ECHO_SPACING, 0);
-//            setParamValue(TRANSFORM_PLUGIN, "Sequential4D");
-        } //else {
-//            setParamValue(TRANSFORM_PLUGIN, "Sequential4DBackAndForth");
-//        }
 
         switch (kspace_filling) {
             case "Linear":
@@ -483,7 +529,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
                 setParamValue(TRANSFORM_PLUGIN, "Centric4D");
                 break;
             default:
-                setParamValue(KSPACE_FILLING, "Linear");
+                kspace_filling = "Linear";
+                setParamValue(KSPACE_FILLING, kspace_filling);
                 break;
         }
         int[] position_sli_ph_rea = satBandPrep(SATBAND_ORIENTATION.name(), ORIENTATION.name(), IMAGE_ORIENTATION_SUBJECT.name());
@@ -514,7 +561,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         setSequenceParamValue(Nb_3d, nb_scan_3d);
         setSequenceParamValue(Nb_4d, nb_scan_4d);
         // set the calculated Loop dimensions
-        setSequenceParamValue(Nb_echo, echoTrainLength - 1);
+        setSequenceParamValue(Nb_echo, this.echoTrainLength - 1);
         setSequenceParamValue(Nb_interveaved_slice, nb_interleaved_excitation - 1);
         setSequenceParamValue(Nb_sb_loop, nb_satband - 1);
 
@@ -537,8 +584,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         }
         seqDescription = seqDescription.concat(seqMatrixDescription);
 
-        if (echoTrainLength != 1) {
-            seqDescription = seqDescription.concat("_ETL=" + String.valueOf(echoTrainLength));
+        if (this.echoTrainLength != 1) {
+            seqDescription = seqDescription.concat("_ETL=" + String.valueOf(this.echoTrainLength));
         }
         if (isTrigger && numberOfTrigger != 1) {
             seqDescription = seqDescription.concat("_TRIG=" + String.valueOf(numberOfTrigger));
@@ -571,6 +618,12 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         if (!isEnableSlice && (isMultiplanar || (!isMultiplanar && !isEnablePhase3D))) {
             off_center_distance_3D = 0;
         }
+
+        setParamValue(OFF_CENTER_FIELD_OF_VIEW_X, roundToDecimal(getOff_center_distance_X_Y_Z(1, off_center_distance_1D, off_center_distance_2D, off_center_distance_3D), 5));
+        setParamValue(OFF_CENTER_FIELD_OF_VIEW_Y, roundToDecimal(getOff_center_distance_X_Y_Z(2, off_center_distance_1D, off_center_distance_2D, off_center_distance_3D), 5));
+        setParamValue(OFF_CENTER_FIELD_OF_VIEW_Z, roundToDecimal(getOff_center_distance_X_Y_Z(3, off_center_distance_1D, off_center_distance_2D, off_center_distance_3D), 5));
+
+
         boolean is_read_phase_inverted = ((BooleanParam) getParam(SWITCH_READ_PHASE)).getValue();
         if (is_read_phase_inverted) {
             setSequenceParamValue(Gradient_axe_phase, GradientAxe.R);
@@ -831,7 +884,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
             }
             spectralWidth = spectral_width_max;
         }
-        gradReadout.applyReadoutEchoPlanarAmplitude(is_flyback ? 1 : echoTrainLength, Order.Loop);
+        gradReadout.applyReadoutEchoPlanarAmplitude(is_flyback ? 1 : echoTrainLength, Order.LoopB);
+
         setSequenceParamValue(Spectral_width, spectralWidth);
 
         // -------------------------------------------------------------------------------------------------
@@ -871,7 +925,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
                 gradSliceRefPhase3D.refocalizeGradientWithFlowComp(gradSlice, grad_ratio_slice_refoc, gradSliceRefPhase3DFlowComp);
             }
         }
-        boolean is_keyhole_allowed = ((BooleanParam) getParam(KEYHOLE_ALLOWED)).getValue();
+
         if (!isMultiplanar && isEnablePhase3D) {
             if (is_flowcomp) {
                 gradSliceRefPhase3D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension3D : acquisitionMatrixDimension3D, acquisitionMatrixDimension3D, slice_thickness_excitation, is_k_s_centred);
@@ -963,7 +1017,22 @@ public class GradientEcho extends SequenceGeneratorAbstract {
 
         // set calculated the time delays to get the proper TE
         double delay1 = te - time1;
-        setSequenceTableSingleValue(Time_TE_delay1, delay1);
+
+        double effectiveEchoSpacing = ((NumberParam) getParam(INTERLEAVED_EFF_ECHO_SPACING)).getValue().doubleValue();
+        Table time_TE_delay1 = setSequenceTableValues(Time_TE_delay1, is_interleaved_echo_train ? Order.Four : Order.FourLoop);
+        if (is_interleaved_echo_train) {
+            if (echoTrainLength != 1) {
+                echo_spacing = effectiveEchoSpacing * numberOfnumInterleavedEchoTrain;
+                setParamValue(ECHO_SPACING, echo_spacing);
+            }
+
+            for (int ind4D = 0; ind4D < numberOfnumInterleavedEchoTrain; ind4D++) {
+                time_TE_delay1.add(delay1 + ind4D * effectiveEchoSpacing);
+            }
+
+        } else {
+            time_TE_delay1.add(delay1);
+        }
 
         // ------------------------------------------
         // delays for FIR
@@ -975,18 +1044,24 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // ------------------------------------------
         // calculate delays adapted to correct spacing in case of ETL & search for incoherence
         // ------------------------------------------
-        double echo_spacing = ((NumberParam) getParam(ECHO_SPACING)).getValue().doubleValue();
         double delay2;
         double delay2_min = Math.max(min_FIR_4pts_delay - (3 * grad_rise_time + time_flyback), minInstructionDelay);
-        delay2_min = Math.max(delay2_min, min_FIR_delay - (4 * grad_rise_time  + time_flyback + getTimeBetweenEvents(Events.LoopStartEcho, Events.LoopStartEcho) + getTimeBetweenEvents(Events.LoopEndEcho, Events.LoopEndEcho)));
+        delay2_min = Math.max(delay2_min, min_FIR_delay - (4 * grad_rise_time + time_flyback + getTimeBetweenEvents(Events.LoopStartEcho, Events.LoopStartEcho) + getTimeBetweenEvents(Events.LoopEndEcho, Events.LoopEndEcho)));
         if (echoTrainLength > 1) {
             double time2 = getTimeBetweenEvents(Events.LoopStartEcho, Events.LoopEndEcho); // Actual EchoLoop time
             time2 = removeTimeForEvents(time2, Events.Delay2); // Actual EchoLoop time without Delay2
             double echo_spacing_min = time2 + delay2_min;
             if (echo_spacing < echo_spacing_min) {
-                echo_spacing_min = ceilToSubDecimal(echo_spacing_min, 5);
-                getUnreachParamExceptionManager().addParam(ECHO_SPACING.name(), echo_spacing, echo_spacing_min, ((NumberParam) getParam(ECHO_SPACING)).getMaxValue(), "Echo spacing too short for the User Mx1D and SW");
-                echo_spacing = echo_spacing_min;
+                if (is_interleaved_echo_train) {
+                    double effectiveEchoSpacingMin = echo_spacing_min / numberOfnumInterleavedEchoTrain;
+                    getUnreachParamExceptionManager().addParam("INTERLEAVED_EFF_ECHO_SPACING", effectiveEchoSpacing, effectiveEchoSpacingMin, ((NumberParam) getParamFromName("INTERLEAVED_EFF_ECHO_SPACING")).getMaxValue(), "Effective echo spacing too short for interleaved mode.");
+                    effectiveEchoSpacing = effectiveEchoSpacingMin;
+//                    setParamValue("INTERLEAVED_EFF_ECHO_SPACING", effectiveEchoSpacing);
+                } else {
+                    echo_spacing_min = ceilToSubDecimal(echo_spacing_min, 5);
+                    getUnreachParamExceptionManager().addParam(ECHO_SPACING.name(), echo_spacing, echo_spacing_min, ((NumberParam) getParam(ECHO_SPACING)).getMaxValue(), "Echo spacing too short for the User Mx1D and SW");
+                    echo_spacing = echo_spacing_min;
+                }
             }
             delay2 = echo_spacing - time2;
         } else {
@@ -1082,7 +1157,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         }
         gradPhaseSpoiler.applyAmplitude();
         gradSliceSpoiler.applyAmplitude();
-        gradReadSpoiler.applyAmplitude(Order.Three);
+        gradReadSpoiler.applyAmplitude();
 
 
         // ---------------------------------------------------------------
@@ -1133,17 +1208,16 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // Calculate delay between 4D acquisition
         //----------------------------------------------------------------------
 
-        boolean is_dynamic_min_time = ((BooleanParam) getParam(DYNAMIC_MIN_TIME)).getValue();
 
         double frame_acquisition_time = nb_scan_1d * nb_scan_3d * nb_scan_2d * tr;
         double time_between_frames_min = ceilToSubDecimal(frame_acquisition_time + minInstructionDelay + min_flush_delay, 1);
         double time_between_frames = time_between_frames_min;
         double interval_between_frames_delay = min_flush_delay;
 
-        if (isDynamic) {
+        if (isDynamic && (acquisitionMatrixDimension4D > 1)) {
             //Dynamic Sequence
             time_between_frames = ((NumberParam) getParam(DYN_TIME_BTW_FRAMES)).getValue().doubleValue();
-            if (is_dynamic_min_time) {
+            if (isDynamicMinTime) {
                 time_between_frames = time_between_frames_min;
                 setParamValue(DYN_TIME_BTW_FRAMES, time_between_frames_min);
             } else if (time_between_frames < (time_between_frames_min)) {
@@ -1836,6 +1910,43 @@ public class GradientEcho extends SequenceGeneratorAbstract {
                 break;
             case 3:
                 off_center_distance = off_center_distance_X * direction_index[6] / norm_vector_slice + off_center_distance_Y * direction_index[7] / norm_vector_slice + off_center_distance_Z * direction_index[8] / norm_vector_slice;
+                break;
+            default:
+                off_center_distance = 0;
+                break;
+        }
+        return off_center_distance;
+    }
+
+
+    private double getOff_center_distance_X_Y_Z(int dim, double off_center_distance_1D, double off_center_distance_2D, double off_center_distance_3D) {
+        ListNumberParam image_orientation = (ListNumberParam) getParam(IMAGE_ORIENTATION_SUBJECT);
+        double[] direction_index = new double[9];
+        direction_index[0] = image_orientation.getValue().get(0).doubleValue();
+        direction_index[1] = image_orientation.getValue().get(1).doubleValue();
+        direction_index[2] = image_orientation.getValue().get(2).doubleValue();
+        direction_index[3] = image_orientation.getValue().get(3).doubleValue();
+        direction_index[4] = image_orientation.getValue().get(4).doubleValue();
+        direction_index[5] = image_orientation.getValue().get(5).doubleValue();
+        direction_index[6] = direction_index[1] * direction_index[5] - direction_index[2] * direction_index[4];
+        direction_index[7] = direction_index[2] * direction_index[3] - direction_index[0] * direction_index[5];
+        direction_index[8] = direction_index[0] * direction_index[4] - direction_index[1] * direction_index[3];
+
+        double norm_vector_read = Math.sqrt(Math.pow(direction_index[0], 2) + Math.pow(direction_index[1], 2) + Math.pow(direction_index[2], 2));
+        double norm_vector_phase = Math.sqrt(Math.pow(direction_index[3], 2) + Math.pow(direction_index[4], 2) + Math.pow(direction_index[5], 2));
+        double norm_vector_slice = Math.sqrt(Math.pow(direction_index[6], 2) + Math.pow(direction_index[7], 2) + Math.pow(direction_index[8], 2));
+
+        //Offset according to READ PHASE and SLICE
+        double off_center_distance;
+        switch (dim) {
+            case 1:
+                off_center_distance = off_center_distance_1D * direction_index[0] / norm_vector_read + off_center_distance_2D * direction_index[3] / norm_vector_phase + off_center_distance_3D * direction_index[6] / norm_vector_slice;
+                break;
+            case 2:
+                off_center_distance = off_center_distance_1D * direction_index[1] / norm_vector_read + off_center_distance_2D * direction_index[4] / norm_vector_phase + off_center_distance_3D * direction_index[7] / norm_vector_slice;
+                break;
+            case 3:
+                off_center_distance = off_center_distance_1D * direction_index[2] / norm_vector_read + off_center_distance_2D * direction_index[5] / norm_vector_phase + off_center_distance_3D * direction_index[8] / norm_vector_slice;
                 break;
             default:
                 off_center_distance = 0;

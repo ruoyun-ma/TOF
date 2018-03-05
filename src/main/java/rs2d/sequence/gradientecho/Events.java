@@ -23,17 +23,17 @@ public interface Events {
 
 
         int P90 = 21;
-        int Delay1 = 26;
+        int Delay1 = 29;
 
-        int LoopStartEcho = 27;
-        int Acq = 29;
-        int Delay2 = 34;
-        int LoopEndEcho = 35;
+        int LoopStartEcho = 30;
+        int Acq = 32;
+        int Delay2 = 37;
+        int LoopEndEcho = 38;
 
-        int Delay3 = 29;
-        int LoopMultiPlanarEnd = 30;
+        int Delay3 = 42;
+        int LoopMultiPlanarEnd = 43;
 
-        int Loop4D = 42;
+        int Loop4D = 45;
 
-        int End = 43;
+        int End = 46;
 }

@@ -749,6 +749,8 @@
                     <suggestedValues>GAUSSIAN</suggestedValues>
                     <suggestedValues>SINC3</suggestedValues>
                     <suggestedValues>SINC5</suggestedValues>
+                    <suggestedValues>SLR_8_5152</suggestedValues>
+                    <suggestedValues>SLR_4_2576</suggestedValues>
                     <restrictedToSuggested>true</restrictedToSuggested>
                 </value>
             </entry>
@@ -3063,6 +3065,8 @@
                     <suggestedValues>GAUSSIAN</suggestedValues>
                     <suggestedValues>SINC3</suggestedValues>
                     <suggestedValues>SINC5</suggestedValues>
+                    <suggestedValues>SLR_8_5152</suggestedValues>
+                    <suggestedValues>SLR_4_2576</suggestedValues>
                     <restrictedToSuggested>true</restrictedToSuggested>
                 </value>
             </entry>
@@ -3112,7 +3116,7 @@
                     <group>User</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>Version8.0g</value>
+                    <value>Version7.4</value>
                     <defaultValue></defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                 </value>
@@ -3480,7 +3484,7 @@
                     <group>Scan</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>Centric4D</value>
+                    <value>Sequential4D</value>
                     <defaultValue>Sequential4D</defaultValue>
                     <suggestedValues>Sequential4D</suggestedValues>
                     <suggestedValues>Sequential4DBackAndForth</suggestedValues>
@@ -3553,7 +3557,7 @@
                     <group>Emission</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>100.0</value>
+                    <value>80.14368241132927</value>
                     <defaultValue>0.0</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>100.0</maxValue>
@@ -3571,7 +3575,7 @@
                     <lockedToDefault>false</lockedToDefault>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>100.0</value>
+                    <value>40.052483358517755</value>
                     <defaultValue>0.0</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>100.0</maxValue>
@@ -3605,7 +3609,7 @@
                     <group>Emission</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>37.0</value>
+                    <value>21.0</value>
                     <defaultValue>36.0</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>63.0</maxValue>
@@ -3714,6 +3718,8 @@
                     <suggestedValues>GAUSSIAN</suggestedValues>
                     <suggestedValues>SINC3</suggestedValues>
                     <suggestedValues>SINC5</suggestedValues>
+                    <suggestedValues>SLR_8_5152</suggestedValues>
+                    <suggestedValues>SLR_4_2576</suggestedValues>
                     <restrictedToSuggested>false</restrictedToSuggested>
                 </value>
             </entry>

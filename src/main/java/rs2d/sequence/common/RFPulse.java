@@ -586,8 +586,8 @@ public class RFPulse {
         numberOfFreqOffset = nbSlice;
         double grad_amp_slice_mTpm = gradSlice.getAmplitude_mTpm();
         double frequencyCenter3D90 = calculateOffsetFreq(grad_amp_slice_mTpm, offCenterDistance3D);
-
-        double multi_planar_fov = (numberOfFreqOffset - 1) * (spacing_between_slice + gradSlice.getSliceThickness());
+        double slice_thickness = Double.isNaN(gradSlice.getSliceThickness())? 0 : gradSlice.getSliceThickness();
+        double multi_planar_fov = (numberOfFreqOffset - 1) * (spacing_between_slice + slice_thickness);
         double multiPlanarFreqOffset = multi_planar_fov * grad_amp_slice_mTpm * (GradientMath.GAMMA);
         txFrequencyOffsetTable = new double[numberOfFreqOffset];
         for (int i = 0; i < numberOfFreqOffset; i++) {
@@ -670,7 +670,7 @@ public class RFPulse {
         setSequenceTableValues(FrequencyOffsetTable, FrequencyOffsetOrder);
         if (numberOfFreqOffset != -1) {
             for (int k = 0; k < numberOfFreqOffset; k++) {
-                FrequencyOffsetTable.add(txFrequencyOffsetTable[k]);
+              FrequencyOffsetTable.add(txFrequencyOffsetTable[k]);
             }
         } else {
             FrequencyOffsetTable.add(0);

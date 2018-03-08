@@ -596,6 +596,8 @@
                 <suggestedValues>GAUSSIAN</suggestedValues>
                 <suggestedValues>SINC3</suggestedValues>
                 <suggestedValues>SINC5</suggestedValues>
+                <suggestedValues>SLR_8_5152</suggestedValues>
+                <suggestedValues>SLR_4_2576</suggestedValues>
                 <restrictedToSuggested>true</restrictedToSuggested>
             </value>
         </entry>
@@ -2910,6 +2912,8 @@
                 <suggestedValues>GAUSSIAN</suggestedValues>
                 <suggestedValues>SINC3</suggestedValues>
                 <suggestedValues>SINC5</suggestedValues>
+                <suggestedValues>SLR_8_5152</suggestedValues>
+                <suggestedValues>SLR_4_2576</suggestedValues>
                 <restrictedToSuggested>true</restrictedToSuggested>
             </value>
         </entry>
@@ -3561,6 +3565,8 @@
                 <suggestedValues>GAUSSIAN</suggestedValues>
                 <suggestedValues>SINC3</suggestedValues>
                 <suggestedValues>SINC5</suggestedValues>
+                <suggestedValues>SLR_8_5152</suggestedValues>
+                <suggestedValues>SLR_4_2576</suggestedValues>
                 <restrictedToSuggested>false</restrictedToSuggested>
             </value>
         </entry>

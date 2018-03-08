@@ -7,20 +7,20 @@
   <version>GRADIENT_ECHO-git</version>
   <properties>
     <seqdev.update-dependencies>true</seqdev.update-dependencies>
-    <maven.compiler.source>1.8</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
   <dependencies>
     <dependency>
       <groupId>rs2d</groupId>
       <artifactId>spinlab</artifactId>
-      <version>1.214.4</version>
+      <version>1.214.5</version>
     </dependency>
     <dependency>
       <groupId>rs2d</groupId>
       <artifactId>rs2d-commons</artifactId>
-      <version>1.214.4</version>
+      <version>1.214.5</version>
     </dependency>
   </dependencies>
   <build>

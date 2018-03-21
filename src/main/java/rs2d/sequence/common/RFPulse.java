@@ -23,7 +23,7 @@ import java.util.List;
 
 /**
  * Class RFPulse
- * V2.1- 2017-10-24 JR
+ * V2.1- 2018-03-20b JR
  */
 public class RFPulse {
     private Table amplitudeTable = null;
@@ -236,7 +236,7 @@ public class RFPulse {
         double power_180 = instrument_power_180 * Math.pow(instrument_length_180 / pulseDuration, 2);
 
         if (power_180 > pulse.getMaxRfPowerPulsed()) {  // TX LENGTH 90 MIN
-            pulseDuration = Math.ceil(instrument_length_180 / Math.sqrt(pulse.getMaxRfPowerPulsed() / instrument_power_180) * 10000) / 10000.0;
+            pulseDuration = ceilToSubDecimal(instrument_length_180 / Math.sqrt(pulse.getMaxRfPowerPulsed() / instrument_power_180), 6);
             setSequenceTableSingleValue(timeTable, pulseDuration);
             power_180 = instrument_power_180 * Math.pow(instrument_length_180 / pulseDuration, 2);
             test_change_time = false;
@@ -327,9 +327,8 @@ public class RFPulse {
         double instrument_length = flipAngle < 135 ? pulse.getHardPulse90().x : pulse.getHardPulse180().x;
         double instrument_power = (flipAngle < 135 ? pulse.getHardPulse90().y : pulse.getHardPulse180().y) / power_factor;
         powerPulse = instrument_power * Math.pow(instrument_length / pulseDuration, 2) * Math.pow(flipAngle / (flipAngle < 135 ? 90 : 180), 2);
-
         if (powerPulse > pulse.getMaxRfPowerPulsed()) {  // TX LENGTH 90 MIN
-            pulseDuration = Math.ceil(instrument_length / Math.sqrt(pulse.getMaxRfPowerPulsed() / (instrument_power * Math.pow(flipAngle / (flipAngle < 135 ? 90 : 180), 2))));
+            pulseDuration = ceilToSubDecimal(instrument_length / Math.sqrt(pulse.getMaxRfPowerPulsed() / (instrument_power * Math.pow(flipAngle / (flipAngle < 135 ? 90 : 180), 2))), 6);
             setSequenceTableSingleValue(timeTable, pulseDuration);
             powerPulse = instrument_power * Math.pow(instrument_length / pulseDuration, 2) * Math.pow(flipAngle / (flipAngle < 135 ? 90 : 180), 2);
             test_change_time = false;
@@ -369,6 +368,27 @@ public class RFPulse {
         tx_amp180 = attParamTxAmp180(txCh);
         tx_amp = (flipAngle < 135 ? tx_amp90 : tx_amp180) * flipAngle / (flipAngle < 135 ? 90 : 180);
         setSequenceTableSingleValue(amplitudeTable, tx_amp);
+        return tx_amp;
+    }
+
+    /**
+     * prepare and set txAmp according to txAtt , flipAngle
+     *
+     * @param txRoute
+     * @return tx_amp
+     */
+    public double prepTxAmpMultiFA(List<Integer> txRoute, double[] FA_list, Order order) {
+        if (txAtt == -1) {
+            txAtt = ((NumberParam) attParam).getValue().intValue();
+        }
+        InstrumentTxChannel txCh = Instrument.instance().getTxChannels().get(txRoute.get(0));
+        tx_amp90 = calculateTxAmp90(txCh);
+        tx_amp180 = attParamTxAmp180(txCh);
+        setSequenceTableValues(amplitudeTable, order);
+        for (int i = 0; i < FA_list.length; i++) {
+            tx_amp = (FA_list[i] < 135 ? tx_amp90 : tx_amp180) * FA_list[i] / (FA_list[i] < 135 ? 90 : 180);
+            amplitudeTable.add(tx_amp);
+        }
         return tx_amp;
     }
 
@@ -586,7 +606,7 @@ public class RFPulse {
         numberOfFreqOffset = nbSlice;
         double grad_amp_slice_mTpm = gradSlice.getAmplitude_mTpm();
         double frequencyCenter3D90 = calculateOffsetFreq(grad_amp_slice_mTpm, offCenterDistance3D);
-        double slice_thickness = Double.isNaN(gradSlice.getSliceThickness())? 0 : gradSlice.getSliceThickness();
+        double slice_thickness = Double.isNaN(gradSlice.getSliceThickness()) ? 0 : gradSlice.getSliceThickness();
         double multi_planar_fov = (numberOfFreqOffset - 1) * (spacing_between_slice + slice_thickness);
         double multiPlanarFreqOffset = multi_planar_fov * grad_amp_slice_mTpm * (GradientMath.GAMMA);
         txFrequencyOffsetTable = new double[numberOfFreqOffset];
@@ -670,11 +690,26 @@ public class RFPulse {
         setSequenceTableValues(FrequencyOffsetTable, FrequencyOffsetOrder);
         if (numberOfFreqOffset != -1) {
             for (int k = 0; k < numberOfFreqOffset; k++) {
-              FrequencyOffsetTable.add(txFrequencyOffsetTable[k]);
+                FrequencyOffsetTable.add(txFrequencyOffsetTable[k]);
             }
         } else {
             FrequencyOffsetTable.add(0);
         }
+    }
+
+    public void setFrequencyOffset(double... value) {
+        numberOfFreqOffset = value.length;
+        txFrequencyOffsetTable = new double[numberOfFreqOffset];
+        for (int k = 0; k < numberOfFreqOffset; k++) {
+            txFrequencyOffsetTable[k] = value[k];
+        }
+        setFrequencyOffset();
+    }
+
+    public void setFrequencyOffset(Order order, double... value) {
+        setFrequencyOffset(value);
+        setFrequencyOffset(order);
+        System.out.println(txFrequencyOffsetTable[0]);
     }
 
     public double getFrequencyOffset(int k) {
@@ -770,4 +805,7 @@ public class RFPulse {
         }
     }
 
+    private double ceilToSubDecimal(double numberToBeRounded, double Order) {
+        return Math.ceil(numberToBeRounded * Math.pow(10, Order)) / Math.pow(10, Order);
+    }
 }

@@ -3116,7 +3116,7 @@
                     <group>User</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>Version7.4</value>
+                    <value>Version8.0g</value>
                     <defaultValue></defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                 </value>
@@ -3484,7 +3484,7 @@
                     <group>Scan</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>Sequential4D</value>
+                    <value>Centric4D</value>
                     <defaultValue>Sequential4D</defaultValue>
                     <suggestedValues>Sequential4D</suggestedValues>
                     <suggestedValues>Sequential4DBackAndForth</suggestedValues>
@@ -3557,7 +3557,7 @@
                     <group>Emission</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>80.14368241132927</value>
+                    <value>100.0</value>
                     <defaultValue>0.0</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>100.0</maxValue>
@@ -3575,7 +3575,7 @@
                     <lockedToDefault>false</lockedToDefault>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>40.052483358517755</value>
+                    <value>100.0</value>
                     <defaultValue>0.0</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>100.0</maxValue>
@@ -3604,12 +3604,12 @@
                     <name>TX_ATT</name>
                     <description>Emission attenuation</description>
                     <displayedName>TX_ATT</displayedName>
-                    <locked>true</locked>
+                    <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <group>Emission</group>
                     <category>Acquisition</category>
                     <rolesEnum>User</rolesEnum>
-                    <value>21.0</value>
+                    <value>37.0</value>
                     <defaultValue>36.0</defaultValue>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <maxValue>63.0</maxValue>

@@ -11,7 +11,7 @@ import rs2d.spinlab.tools.table.Order;
 
 /**
  * Class Gradient
- * V2.1- 2017-10-24 JR
+ * V2.1- 2018-03-20b JR
  */
 public class Gradient {
     private Table amplitudeTable = null;
@@ -44,9 +44,12 @@ public class Gradient {
     private boolean bPhaseEncoding = false;
     private double fovPhase = Double.NaN;
     private boolean isKSCentred = false;
+
+    private double k0pos = Double.NaN;
     private double spoilerExcess = Double.NaN;
     private double minTopTime = Double.NaN;
 
+    private boolean bRefocalizeGradient = false;
     private boolean bStaticGradient = false;
 
     private Gradient gradFlowComp = null;
@@ -111,6 +114,14 @@ public class Gradient {
         }
     }
 
+    public double getAmplitudeArray_mTpm(int pos) {
+        if (amplitudeArray == null || pos >= steps) {
+            return Double.NaN;
+        } else {
+            return amplitudeArray[pos] * gMax / 100.0;
+        }
+    }
+
     public double getSliceThickness() {
         return sliceThicknessExcitation;
     }
@@ -129,6 +140,10 @@ public class Gradient {
 
     public Order getOrder() {
         return order;
+    }
+
+    public double getK0pos() {
+        return k0pos;
     }
 
     public double getEquivalentTime() {
@@ -187,6 +202,11 @@ public class Gradient {
             }
             steps = i;
         }
+    }
+
+    public void setAmplitude(Order order, double... values) {
+        setAmplitude(values);
+        applyAmplitude(order);
     }
 
 
@@ -281,7 +301,7 @@ public class Gradient {
         calculateStaticAmplitude();
     }
 
-    public void refocalizeGradientWithFlowComp(Gradient grad, double ratio, Gradient gradflowcomp ) {
+    public void refocalizeGradientWithFlowComp(Gradient grad, double ratio, Gradient gradflowcomp) {
         gradFlowComp = gradflowcomp;
         // to modify , flow Comp
         //to do: modify the calculation and prepare as well gradFlowComp Gradient
@@ -300,7 +320,7 @@ public class Gradient {
         boolean test_Amplitude = true;
         equivalentTime = staticArea / amplitude;
         double topTime = equivalentTime - grad_shape_rise_time;
-        if (topTime < 0.000004) { // <
+        if (topTime < 0.000004) {
             topTime = 0.000004;
 //            flatTimeTable.set(0, topTime);
 //            prepareEquivalentTime();
@@ -405,6 +425,23 @@ public class Gradient {
         calculateStaticAmplitude();
     }
 
+    /*
+    * calculate READOUT refocusing
+    *
+    * @param grad : Readout Gradient
+    * @param ratio : ratio to compensate
+    */
+    public void refocalizeReadoutGradients(Gradient grad, double ratio) {
+        steps = grad.getSteps();
+        amplitudeArray = new double[steps];
+        for (int i = 0; i < steps; i++) {
+            // flatTimeTable.get(0).doubleValue() + grad_shape_rise_time
+            amplitudeArray[i] = -grad.getAmplitudeArray(i) * grad.getEquivalentTime() / this.getEquivalentTime() * ratio;
+        }
+
+        order = grad.getOrder();
+    }
+
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //     Slc             Slice Selection             Slc
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -461,7 +498,7 @@ public class Gradient {
 
     public void preparePhaseEncodingForCheckWithFlowComp(int matrixDimensionForCheck, int matrixDimension, double fovDim, boolean isKSCentred, Gradient gradflowcomp) {
         gradFlowComp = gradflowcomp;
-   // to modify , flow Comp
+        // to modify , flow Comp
         //to do: modify the calculation and prepare as well gradFlowComp Gradient
 
         double grad_total_area_phase = prepPhaseGradTotalArea(matrixDimensionForCheck, fovDim);
@@ -482,6 +519,7 @@ public class Gradient {
         } else {
             gradIndexMaxPhase = 1 / 2.0 + ((steps + 1) % 2) / (2.0 * ((float) steps - 1));// always go trough k0
         }
+        k0pos = gradIndexMaxPhase * steps;
         return gradIndexMaxPhase;
     }
 
@@ -589,7 +627,6 @@ public class Gradient {
         }
         calculateStaticArea();
         double[] gradMaxMin = checkGradientMax();
-
         if (gradMaxMin[0] > 100.0) {
             amplitude = 100.0;
             spoilerExcess = gradMaxMin[0] - 100.0;
@@ -632,12 +669,12 @@ public class Gradient {
         } else if (type == "slice") {
             t = 0;
             double moment0 = amp * (2 * (rise_time_up + rise_time_down) / Math.PI + plato) / 2;
-            double moment1 = 1 / 8 * amp * plato * plato + amp * (rise_time_up + rise_time_down) / 2 * (Math.PI * plato + (Math.PI - 2.0) * (rise_time_up + rise_time_down) ) / Math.PI / Math.PI;
+            double moment1 = 1 / 8 * amp * plato * plato + amp * (rise_time_up + rise_time_down) / 2 * (Math.PI * plato + (Math.PI - 2.0) * (rise_time_up + rise_time_down)) / Math.PI / Math.PI;
             double moment1_all = moment1 + t * moment0;
             return moment1_all;
         } else if (type == "read") {
             double moment0 = amp * (2 * (rise_time_up + rise_time_down) / Math.PI + plato) / 2;
-           double moment1 = 1 / 2 * amp * ((rise_time_up + rise_time_down) / 2 * plato + plato * plato) + amp * (rise_time_up + rise_time_down) * (rise_time_up + rise_time_down)  / Math.PI / Math.PI;
+            double moment1 = 1 / 2 * amp * ((rise_time_up + rise_time_down) / 2 * plato + plato * plato) + amp * (rise_time_up + rise_time_down) * (rise_time_up + rise_time_down) / Math.PI / Math.PI;
             double moment1_all = moment1 + t * moment0;
             return moment1_all;
         } else {

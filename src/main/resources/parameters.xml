@@ -2963,7 +2963,7 @@
                 <group>User</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>Version8.0g</value>
+                <value>Version8.0f</value>
                 <defaultValue></defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
             </value>
@@ -3451,7 +3451,7 @@
                 <name>TX_ATT</name>
                 <description>Emission attenuation</description>
                 <displayedName>TX_ATT</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Emission</group>
                 <category>Acquisition</category>

@@ -145,7 +145,7 @@
                 <group>Reception</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>0.005111808000000001</value>
+                <value>0.005111821086261981</value>
                 <defaultValue>1.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E9</maxValue>
@@ -1013,7 +1013,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>HARDWARE_A0</name>
                 <description></description>
-                <displayedName>nparam</displayedName>
+                <displayedName>HARDWARE_A0</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <category>Acquisition</category>
@@ -1031,7 +1031,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>HARDWARE_DC</name>
                 <description></description>
-                <displayedName>nparam</displayedName>
+                <displayedName>HARDWARE_DC</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <category>Acquisition</category>
@@ -1050,7 +1050,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>HARDWARE_PREEMPHASIS_A</name>
                 <description></description>
-                <displayedName>nparam</displayedName>
+                <displayedName>HARDWARE_PREEMPHASIS_A</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Emission</group>
@@ -1084,7 +1084,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>HARDWARE_PREEMPHASIS_T</name>
                 <description></description>
-                <displayedName>nparam</displayedName>
+                <displayedName>HARDWARE_PREEMPHASIS_T</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Emission</group>
@@ -1118,7 +1118,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>HARDWARE_SHIM</name>
                 <description></description>
-                <displayedName>nparam</displayedName>
+                <displayedName>HARDWARE_SHIM</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <category>Acquisition</category>
@@ -1134,7 +1134,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>HARDWARE_SHIM_LABEL</name>
                 <description></description>
-                <displayedName>tparam</displayedName>
+                <displayedName>HARDWARE_SHIM_LABEL</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <category>Acquisition</category>
@@ -2377,7 +2377,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_3D</name>
                 <description>Offset in the slice direction</description>
-                <displayedName>Location Z</displayedName>
+                <displayedName>Location 3D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
@@ -3082,7 +3082,7 @@
                 <group>Reception</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>12520.032051282049</value>
+                <value>12520.0</value>
                 <defaultValue>12500.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E8</maxValue>
@@ -3116,7 +3116,7 @@
                 <group>Delay</group>
                 <category>Acquisition</category>
                 <rolesEnum>User</rolesEnum>
-                <value>195.62550080128202</value>
+                <value>195.625</value>
                 <defaultValue>0.0</defaultValue>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <maxValue>1.0E8</maxValue>
@@ -3417,7 +3417,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP_90</name>
                 <description>Amplitude of the transmitter</description>
-                <displayedName>TX_AMP</displayedName>
+                <displayedName>TX_AMP_90</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <category>Acquisition</category>

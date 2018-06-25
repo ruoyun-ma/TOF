@@ -4,23 +4,24 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>rs2d-sequence</groupId>
   <artifactId>gradient-echo</artifactId>
-  <version>GRADIENT_ECHO-git</version>
+  <version>master</version>
   <properties>
-    <seqdev.update-dependencies>true</seqdev.update-dependencies>
     <maven.compiler.source>1.8</maven.compiler.source>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <seqdev.update-dependencies>true</seqdev.update-dependencies>
+    <seqdev.use-branch-as-version>true</seqdev.use-branch-as-version>
   </properties>
   <dependencies>
     <dependency>
       <groupId>rs2d</groupId>
       <artifactId>spinlab</artifactId>
-      <version>1.214.5</version>
+      <version>1.216</version>
     </dependency>
     <dependency>
       <groupId>rs2d</groupId>
       <artifactId>rs2d-commons</artifactId>
-      <version>1.214.5</version>
+      <version>1.216</version>
     </dependency>
   </dependencies>
   <build>

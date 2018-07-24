@@ -67,7 +67,7 @@ import static rs2d.sequence.gradientecho.GradientEchoSequenceParams.*;
 //
 public class GradientEcho extends SequenceGeneratorAbstract {
 
-    private String sequenceVersion = "Version8.0f";
+    private String sequenceVersion = "Version8.0h";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -265,7 +265,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         isTrigger = (((BooleanParam) getParam(TRIGGER_EXTERNAL)).getValue());
         triggerTime = (ListNumberParam) getParam(TRIGGER_TIME);
         numberOfTrigger = isTrigger ? triggerTime.getValue().size() : 1;
-        isTrigger = isTrigger && (numberOfTrigger > 1);
+        isTrigger = isTrigger && (numberOfTrigger > 0);
 
         is_flyback = (((BooleanParam) getParam(FLYBACK)).getValue());
         kspace_filling = ((String) getParam(KSPACE_FILLING).getValue());
@@ -1072,6 +1072,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         //--------------------------------------------------------------------------------------
         //  External triggering
         //--------------------------------------------------------------------------------------
+
         getSequence().getPublicParam(Synchro_trigger).setValue(isTrigger ? TimeElement.Trigger.External : TimeElement.Trigger.Timer);
         getSequence().getPublicParam(Synchro_trigger).setLocked(true);
         double time_external_trigger_delay_max = minInstructionDelay;

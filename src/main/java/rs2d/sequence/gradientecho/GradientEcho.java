@@ -67,7 +67,7 @@ import static rs2d.sequence.gradientecho.GradientEchoSequenceParams.*;
 //
 public class GradientEcho extends SequenceGeneratorAbstract {
 
-    private String sequenceVersion = "Version8.0h";
+    private String sequenceVersion = "Version8.0i";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -506,7 +506,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         }
 
         // Avoid multi trigger time when  Multi echo or dynamic
-        if (numberOfTrigger != 1 && (this.echoTrainLength != 1 || isDynamic)) {
+        if (numberOfTrigger != 1 && ( isDynamic)) {
             double tmp = triggerTime.getValue().get(0).doubleValue();
             triggerTime.getValue().clear();
             triggerTime.getValue().add(tmp);

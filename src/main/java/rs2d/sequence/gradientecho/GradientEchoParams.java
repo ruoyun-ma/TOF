@@ -454,7 +454,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.FrequencyOffset);
             param.setMinValue(0.0);
             param.setMaxValue(2000.0);
-            param.setValue(300.0);
+            param.setValue(180.0);
             param.setDefaultValue(250.0);
             return param;
         }
@@ -490,7 +490,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(3.6E-4);
+            param.setValue(1.0E-5);
             param.setDefaultValue(0.001);
             return param;
         }
@@ -1131,7 +1131,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(9.589760000000001E-4);
+            param.setValue(8.0E-4);
             param.setDefaultValue(8.0E-4);
             return param;
         }
@@ -1224,7 +1224,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setDescription("");
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setCategory(Category.Acquisition);
-            param.setValue("Centric");
+            param.setValue("Linear");
             param.setDefaultValue("Linear");
             param.setSuggestedValues(asList("Linear", "Centric"));
             return param;
@@ -1907,6 +1907,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
+            param.setValue(asList("Mouse Body Coil"));
             return param;
         }
     },
@@ -2046,7 +2047,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Location);
             param.setMinValue(-0.1);
             param.setMaxValue(0.1);
-            param.setValue(0.01);
+            param.setValue(0.003);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2094,7 +2095,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
-            param.setValue("ALL");
+            param.setValue("CRANIAL");
             param.setDefaultValue("CRANIAL");
             param.setSuggestedValues(asList("CRANIAL", "CAUDAL", "RIGHT", "LEFT", "ANTERIOR", "POSTERIOR", "CRANIAL AND CAUDAL", "RIGHT AND LEFT", "ANTERIOR AND POSTERIOR", "ALL"));
             return param;
@@ -2131,7 +2132,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Length);
             param.setMinValue(0.001);
             param.setMaxValue(0.1);
-            param.setValue(0.02);
+            param.setValue(0.01);
             param.setDefaultValue(0.01);
             return param;
         }
@@ -2146,7 +2147,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
-            param.setValue("GAUSSIAN");
+            param.setValue("HARD");
             param.setDefaultValue("HARD");
             param.setSuggestedValues(asList("HARD", "GAUSSIAN", "SINC3", "SINC5", "SLR_8_5152", "SLR_4_2576"));
             param.setRestrictedToSuggested(true);
@@ -2211,7 +2212,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.User);
             param.setCategory(Category.Acquisition);
-            param.setValue("Version8.0f");
+            param.setValue("Version8.0i");
             param.setDefaultValue("");
             return param;
         }
@@ -2542,7 +2543,7 @@ public enum GradientEchoParams implements GeneratorParamEnum {
             param.setRoles(new RoleEnum[] {RoleEnum.User});
             param.setGroup(EnumGroup.Scan);
             param.setCategory(Category.Acquisition);
-            param.setValue("Centric4D");
+            param.setValue("Sequential4DBackAndForth");
             param.setDefaultValue("Sequential4D");
             param.setSuggestedValues(asList("Sequential4D", "Sequential4DBackAndForth", "EPISequential4D", "Centric4D"));
             return param;

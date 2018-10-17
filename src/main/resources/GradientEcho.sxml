@@ -2590,8 +2590,6 @@
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>true</restrictedToSuggested>
                 <suggestedValues>Other</suggestedValues>
-                <suggestedValues>Y</suggestedValues>
-                <suggestedValues>X</suggestedValues>
                 <suggestedValues>3H</suggestedValues>
                 <suggestedValues>1H</suggestedValues>
                 <suggestedValues>19F</suggestedValues>
@@ -2618,6 +2616,7 @@
                 <suggestedValues>27Al</suggestedValues>
                 <suggestedValues>13C</suggestedValues>
                 <suggestedValues>79Br</suggestedValues>
+                <suggestedValues>X</suggestedValues>
                 <suggestedValues>151Eu</suggestedValues>
                 <suggestedValues>55Mn</suggestedValues>
                 <suggestedValues>93Nb</suggestedValues>
@@ -2642,6 +2641,7 @@
                 <suggestedValues>199Hg</suggestedValues>
                 <suggestedValues>171Yb</suggestedValues>
                 <suggestedValues>75As</suggestedValues>
+                <suggestedValues>Y</suggestedValues>
                 <suggestedValues>209Bi</suggestedValues>
                 <suggestedValues>2H</suggestedValues>
                 <suggestedValues>6Li</suggestedValues>
@@ -19271,7 +19271,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>5</address>
-                <list>3.4089456869009806E-5</list>
+                <list>3.408945686900937E-5</list>
             </value>
         </Entry>
         <Entry>
@@ -20055,7 +20055,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>7</address>
-                <list>0.0011471884984025561</list>
+                <list>0.001532188498402556</list>
             </value>
         </Entry>
         <Entry>
@@ -20422,7 +20422,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>8</address>
-                <list>0.0012101509584664543</list>
+                <list>0.013775150958466455</list>
             </value>
         </Entry>
         <Entry>
@@ -21193,7 +21193,7 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>-16.533890643600664</list>
+                <list>-37.47962699777109</list>
             </value>
         </Entry>
         <Entry>

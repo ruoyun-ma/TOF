@@ -67,7 +67,7 @@ import static rs2d.sequence.gradientecho.GradientEchoSequenceParams.*;
 //
 public class GradientEcho extends SequenceGeneratorAbstract {
 
-    private String sequenceVersion = "Version8.0i";
+    private String sequenceVersion = "Version8.0j";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -974,9 +974,11 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // -------------------------------------------------------------------------------------------------
         // Flyback init and gradient calculation
         // -------------------------------------------------------------------------------------------------
-        double time_flyback = ((NumberParam) getParam(GRADIENT_FLYBACK_TIME)).getValue().doubleValue();
-        setSequenceTableSingleValue(Time_flyback, is_flyback ? time_flyback : minInstructionDelay);
-        setSequenceTableSingleValue(Time_grad_ramp_flyback, is_flyback ? grad_rise_time : minInstructionDelay);
+        double time_flyback = is_flyback ? ((NumberParam) getParam(GRADIENT_FLYBACK_TIME)).getValue().doubleValue(): minInstructionDelay;
+        setSequenceTableSingleValue(Time_flyback, time_flyback);
+        
+        double time_flyback_ramp = is_flyback ? grad_rise_time : minInstructionDelay;
+        setSequenceTableSingleValue(Time_grad_ramp_flyback, time_flyback_ramp);
 
         Gradient gradReadoutFlyback = Gradient.createGradient(getSequence(), Grad_amp_flyback, Time_flyback, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flyback);
         if (is_flyback) {
@@ -1045,8 +1047,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // calculate delays adapted to correct spacing in case of ETL & search for incoherence
         // ------------------------------------------
         double delay2;
-        double delay2_min = Math.max(min_FIR_4pts_delay - (3 * grad_rise_time + time_flyback), minInstructionDelay);
-        delay2_min = Math.max(delay2_min, min_FIR_delay - (4 * grad_rise_time + time_flyback + getTimeBetweenEvents(Events.LoopStartEcho, Events.LoopStartEcho) + getTimeBetweenEvents(Events.LoopEndEcho, Events.LoopEndEcho)));
+        double delay2_min = Math.max(min_FIR_4pts_delay - ( grad_rise_time + 2 * time_flyback_ramp + time_flyback), minInstructionDelay);
+        delay2_min = Math.max(delay2_min, min_FIR_delay - (2 * grad_rise_time + 2 * time_flyback_ramp + time_flyback + getTimeBetweenEvents(Events.LoopStartEcho, Events.LoopStartEcho) + getTimeBetweenEvents(Events.LoopEndEcho, Events.LoopEndEcho)));
         if (echoTrainLength > 1) {
             double time2 = getTimeBetweenEvents(Events.LoopStartEcho, Events.LoopEndEcho); // Actual EchoLoop time
             time2 = removeTimeForEvents(time2, Events.Delay2); // Actual EchoLoop time without Delay2

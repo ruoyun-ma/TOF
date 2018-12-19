@@ -758,11 +758,30 @@ public class RFPulse {
      * @param off_center_distance : off_center_distance to be compensated
      */
     public void setFrequencyOffsetReadout(Gradient grad, double off_center_distance) {
+
+        // if directly called for one single gradient
         numberOfFreqOffset = 1;
         double grad_amp_read_read_mTpm = grad.getAmplitude_mTpm();// amplitude in T/m
         txFrequencyOffsetTable = new double[numberOfFreqOffset];
         txFrequencyOffsetTable[0] = -grad_amp_read_read_mTpm * off_center_distance * (GradientMath.GAMMA);
         setSequenceTableValues(FrequencyOffsetTable, FrequencyOffsetOrder, txFrequencyOffsetTable[0]);
+    }
+
+    public void setFrequencyOffsetReadoutEchoPlanar(Gradient grad, double off_center_distance, int ETL, Order tableorder) {
+        numberOfFreqOffset = ETL;
+        FrequencyOffsetOrder = tableorder;
+        double grad_amp_read_read_mTpm = grad.getAmplitude_mTpm();// amplitude in T/m
+        System.out.println("numberOfFreqOffset "+numberOfFreqOffset);
+        txFrequencyOffsetTable = new double[numberOfFreqOffset];
+        for (int i = 0; i < numberOfFreqOffset; i++) {
+            if (i % 2 == 0) {
+                txFrequencyOffsetTable[i] = -grad_amp_read_read_mTpm * off_center_distance * (GradientMath.GAMMA);
+            } else {
+                txFrequencyOffsetTable[i] = grad_amp_read_read_mTpm * off_center_distance * (GradientMath.GAMMA);
+            }
+        }
+        setSequenceTableValues(FrequencyOffsetTable, FrequencyOffsetOrder, txFrequencyOffsetTable);
+
     }
 
     /**

@@ -176,7 +176,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         getParam(DIGITAL_FILTER_SHIFT).setDefaultValue(Instrument.instance().getDevices().getCameleon().getAcquDeadPointCount());
         getParam(DIGITAL_FILTER_REMOVED).setDefaultValue(Instrument.instance().getDevices().getCameleon().isRemoveAcquDeadPoint());
 
-        List<String> tx_shape = asList("HARD", "GAUSSIAN", "SINC3", "SINC5","SLR_8_5152","SLR_4_2576");
+        List<String> tx_shape = asList("HARD", "GAUSSIAN", "SINC3", "SINC5", "SLR_8_5152", "SLR_4_2576");
         //List<String> tx_shape = Arrays.asList("HARD", "GAUSSIAN", "SIN3", "xSINC5");
         ((TextParam) getParam(TX_SHAPE)).setSuggestedValues(tx_shape);
         ((TextParam) getParam(TX_SHAPE)).setRestrictedToSuggested(true);
@@ -506,7 +506,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         }
 
         // Avoid multi trigger time when  Multi echo or dynamic
-        if (numberOfTrigger != 1 && ( isDynamic)) {
+        if (numberOfTrigger != 1 && (isDynamic)) {
             double tmp = triggerTime.getValue().get(0).doubleValue();
             triggerTime.getValue().clear();
             triggerTime.getValue().add(tmp);
@@ -884,6 +884,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
             }
             spectralWidth = spectral_width_max;
         }
+
         gradReadout.applyReadoutEchoPlanarAmplitude(is_flyback ? 1 : echoTrainLength, Order.LoopB);
 
         setSequenceParamValue(Spectral_width, spectralWidth);
@@ -974,9 +975,9 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // -------------------------------------------------------------------------------------------------
         // Flyback init and gradient calculation
         // -------------------------------------------------------------------------------------------------
-        double time_flyback = is_flyback ? ((NumberParam) getParam(GRADIENT_FLYBACK_TIME)).getValue().doubleValue(): minInstructionDelay;
+        double time_flyback = is_flyback ? ((NumberParam) getParam(GRADIENT_FLYBACK_TIME)).getValue().doubleValue() : minInstructionDelay;
         setSequenceTableSingleValue(Time_flyback, time_flyback);
-        
+
         double time_flyback_ramp = is_flyback ? grad_rise_time : minInstructionDelay;
         setSequenceTableSingleValue(Time_grad_ramp_flyback, time_flyback_ramp);
 
@@ -1047,7 +1048,7 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // calculate delays adapted to correct spacing in case of ETL & search for incoherence
         // ------------------------------------------
         double delay2;
-        double delay2_min = Math.max(min_FIR_4pts_delay - ( grad_rise_time + 2 * time_flyback_ramp + time_flyback), minInstructionDelay);
+        double delay2_min = Math.max(min_FIR_4pts_delay - (grad_rise_time + 2 * time_flyback_ramp + time_flyback), minInstructionDelay);
         delay2_min = Math.max(delay2_min, min_FIR_delay - (2 * grad_rise_time + 2 * time_flyback_ramp + time_flyback + getTimeBetweenEvents(Events.LoopStartEcho, Events.LoopStartEcho) + getTimeBetweenEvents(Events.LoopEndEcho, Events.LoopEndEcho)));
         if (echoTrainLength > 1) {
             double time2 = getTimeBetweenEvents(Events.LoopStartEcho, Events.LoopEndEcho); // Actual EchoLoop time
@@ -1509,7 +1510,8 @@ public class GradientEcho extends SequenceGeneratorAbstract {
         // modify RX FREQUENCY OFFSET
         //----------------------------------------------------------------------
         RFPulse pulseRX = RFPulse.createRFPulse(getSequence(), Time_rx, Rx_freq_offset, Rx_phase);
-        pulseRX.setFrequencyOffsetReadout(gradReadout, off_center_distance_1D);
+//        pulseRX.setFrequencyOffsetReadout(gradReadout, off_center_distance_1D);
+        pulseRX.setFrequencyOffsetReadoutEchoPlanar(gradReadout, off_center_distance_1D, is_flyback ? 1 : echoTrainLength, Order.LoopB);
 
         //fill the OFF_CENTER_FIELD_OF_VIEW_EFF User Parameter
         ArrayList<Number> off_center_distanceList = new ArrayList<>();

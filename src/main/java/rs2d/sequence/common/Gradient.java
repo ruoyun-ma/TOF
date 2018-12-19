@@ -102,7 +102,11 @@ public class Gradient {
         if (Double.isNaN(amplitude)) {
             return 0.0;
         } else {
-            return amplitude * gMax / 100.0;
+            double amp = amplitude;
+            if (amplitude == 0.0 & amplitudeArray != null) {
+                amp = amplitudeArray[0];
+            }
+            return amp * gMax / 100.0;
         }
     }
 
@@ -363,6 +367,7 @@ public class Gradient {
             testSpectralWidth = false;
         }
         calculateStaticArea();
+
         return testSpectralWidth;
     }
 

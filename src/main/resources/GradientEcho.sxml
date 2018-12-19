@@ -2590,6 +2590,8 @@
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>true</restrictedToSuggested>
                 <suggestedValues>Other</suggestedValues>
+                <suggestedValues>Y</suggestedValues>
+                <suggestedValues>X</suggestedValues>
                 <suggestedValues>3H</suggestedValues>
                 <suggestedValues>1H</suggestedValues>
                 <suggestedValues>19F</suggestedValues>
@@ -2616,7 +2618,6 @@
                 <suggestedValues>27Al</suggestedValues>
                 <suggestedValues>13C</suggestedValues>
                 <suggestedValues>79Br</suggestedValues>
-                <suggestedValues>X</suggestedValues>
                 <suggestedValues>151Eu</suggestedValues>
                 <suggestedValues>55Mn</suggestedValues>
                 <suggestedValues>93Nb</suggestedValues>
@@ -2641,7 +2642,6 @@
                 <suggestedValues>199Hg</suggestedValues>
                 <suggestedValues>171Yb</suggestedValues>
                 <suggestedValues>75As</suggestedValues>
-                <suggestedValues>Y</suggestedValues>
                 <suggestedValues>209Bi</suggestedValues>
                 <suggestedValues>2H</suggestedValues>
                 <suggestedValues>6Li</suggestedValues>
@@ -19174,7 +19174,7 @@
                 <name>Rx_freq_offset</name>
                 <description></description>
                 <numberEnum>FrequencyOffset</numberEnum>
-                <order>FourLoopB</order>
+                <order>LoopB</order>
                 <group>Reception</group>
                 <locked>true</locked>
                 <address>11</address>
@@ -19873,7 +19873,7 @@
                 <name>FreqOffset_rx_prep</name>
                 <description></description>
                 <numberEnum>FrequencyOffset</numberEnum>
-                <order>FourLoopB</order>
+                <order>LoopB</order>
                 <group>Reception</group>
                 <locked>true</locked>
                 <address>10</address>
@@ -20422,7 +20422,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>8</address>
-                <list>0.013775150958466455</list>
+                <list>8.251509584664552E-4</list>
             </value>
         </Entry>
         <Entry>
@@ -20444,7 +20444,7 @@
                 <name>FreqOffset_rx_comp</name>
                 <description></description>
                 <numberEnum>FrequencyOffset</numberEnum>
-                <order>FourLoopB</order>
+                <order>LoopB</order>
                 <group>Reception</group>
                 <locked>true</locked>
                 <address>10</address>

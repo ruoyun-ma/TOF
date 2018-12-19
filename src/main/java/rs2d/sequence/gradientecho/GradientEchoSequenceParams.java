@@ -226,12 +226,12 @@ public interface GradientEchoSequenceParams {
     String FreqOffset_rx_3Dprep = "FreqOffset_rx_3Dprep";
 
     /**
-     * Group: Reception, Order: 4D+LoopB - FreqOffset (Hz)
+     * Group: Reception, Order: LoopB - FreqOffset (Hz)
      */
     String FreqOffset_rx_comp = "FreqOffset_rx_comp";
 
     /**
-     * Group: Reception, Order: 4D+LoopB - FreqOffset (Hz)
+     * Group: Reception, Order: LoopB - FreqOffset (Hz)
      */
     String FreqOffset_rx_prep = "FreqOffset_rx_prep";
 
@@ -366,7 +366,7 @@ public interface GradientEchoSequenceParams {
     String Grad_shape_rise_up = "Grad_shape_rise_up";
 
     /**
-     * Group: Reception, Order: 4D+LoopB - FreqOffset (Hz)
+     * Group: Reception, Order: LoopB - FreqOffset (Hz)
      */
     String Rx_freq_offset = "Rx_freq_offset";
 

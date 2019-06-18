@@ -2587,7 +2587,7 @@
                 <defaultValue>1H</defaultValue>
                 <description>The nucleus used for the first sequence channel</description>
                 <displayedName>Nucleus 1</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>true</restrictedToSuggested>
                 <suggestedValues>Y</suggestedValues>
@@ -2725,7 +2725,7 @@
                 <value>2.051E7</value>
                 <defaultValue>1.0</defaultValue>
                 <displayedName>IF</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Frequency</numberEnum>
@@ -2760,7 +2760,7 @@
                 <defaultValue>0</defaultValue>
                 <description>PreScan</description>
                 <displayedName>PS</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Scan</numberEnum>
@@ -3000,7 +3000,7 @@
                 <value>1</value>
                 <defaultValue>1</defaultValue>
                 <displayedName>Nb 1D</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Scan</numberEnum>
@@ -3049,7 +3049,7 @@
                 <value>50</value>
                 <defaultValue>1</defaultValue>
                 <displayedName>Nb 2D</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Scan</numberEnum>
@@ -3098,7 +3098,7 @@
                 <value>1</value>
                 <defaultValue>1</defaultValue>
                 <displayedName>Nb 3D</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Scan</numberEnum>
@@ -3147,7 +3147,7 @@
                 <value>1</value>
                 <defaultValue>1</defaultValue>
                 <displayedName>Nb 4D</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Scan</numberEnum>
@@ -3264,7 +3264,7 @@
                 <value>15.0</value>
                 <defaultValue>1.0</defaultValue>
                 <displayedName>Rx Gain</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>RxGain</numberEnum>
@@ -3348,7 +3348,7 @@
                 <value>1.2818100000000001E8</value>
                 <defaultValue>6.35E7</defaultValue>
                 <displayedName>Frequency0</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Frequency</numberEnum>
@@ -3440,7 +3440,7 @@
                 <value>12520.0</value>
                 <defaultValue>12500.0</defaultValue>
                 <displayedName>SW0</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>SW</numberEnum>
@@ -4214,7 +4214,7 @@
                 <defaultValue>false</defaultValue>
                 <description>State of the element</description>
                 <displayedName>state10</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Emission</group>
             </value>
@@ -5213,7 +5213,7 @@
                 <value>64</value>
                 <defaultValue>128</defaultValue>
                 <displayedName>Nb Point</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>AcquPoint</numberEnum>
@@ -5295,7 +5295,7 @@
                 <value>0</value>
                 <defaultValue>0</defaultValue>
                 <displayedName>Datafield</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Integer</numberEnum>
@@ -5938,7 +5938,7 @@
                 <value>19</value>
                 <defaultValue>0</defaultValue>
                 <displayedName>Datafield</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Integer</numberEnum>
@@ -6676,7 +6676,7 @@
                 <value xsi:type="gradientAxe">P</value>
                 <defaultValue xsi:type="gradientAxe">R</defaultValue>
                 <displayedName>GradientAxePhase</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
             </value>
@@ -6703,7 +6703,7 @@
                 <value xsi:type="gradientAxe">R</value>
                 <defaultValue xsi:type="gradientAxe">R</defaultValue>
                 <displayedName>GradientAxeRead</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
             </value>
@@ -6731,7 +6731,7 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Grad_enable_slice</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
             </value>
@@ -6814,7 +6814,7 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Grad_enable_phase_3D</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
             </value>
@@ -6897,7 +6897,7 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Grad_enable_read</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
             </value>
@@ -6980,7 +6980,7 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Grad_enable_phase_2D</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
             </value>
@@ -8432,7 +8432,7 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Grad_enable_spoiler_read</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
             </value>
@@ -8490,7 +8490,7 @@
                 <defaultValue>Ext1</defaultValue>
                 <description>Source of external trigger</description>
                 <displayedName>ExtTrigSource</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>true</restrictedToSuggested>
                 <suggestedValues>Ext1</suggestedValues>
@@ -8523,7 +8523,7 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Grad_enable_spoiler_phase</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
             </value>
@@ -8616,7 +8616,7 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Grad_enable_spoiler_slice</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
             </value>
@@ -11214,7 +11214,7 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Grad_enable_flyback</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
             </value>
@@ -13659,7 +13659,7 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Enable_fatsat</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
             </value>
@@ -15667,7 +15667,7 @@
                 <value>0</value>
                 <defaultValue>0</defaultValue>
                 <displayedName>Nb_sb_loop</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Integer</numberEnum>
@@ -16750,7 +16750,7 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Enable_sb</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
             </value>
@@ -17524,7 +17524,7 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Grad_enable_flowcomp</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
             </value>
@@ -18553,7 +18553,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>1</address>
-                <list>-13.321894955596651</list>
+                <list>-46.74327643331489</list>
             </value>
         </Entry>
         <Entry>
@@ -18630,7 +18630,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>-14.354570172430721</list>
+                <list>-0.0</list>
             </value>
         </Entry>
         <Entry>
@@ -19218,7 +19218,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>1</address>
-                <list>-0.7955434940059156</list>
+                <list>-0.8105064798278949</list>
             </value>
         </Entry>
         <Entry>

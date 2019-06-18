@@ -1,5 +1,6 @@
 package rs2d.sequence.common;
 
+import rs2d.sequence.gradientecho.S;
 import rs2d.spinlab.data.transformPlugin.TransformPlugin;
 import rs2d.spinlab.hardware.devices.DeviceManager;
 import rs2d.spinlab.instrument.util.GradientMath;
@@ -70,12 +71,12 @@ public class Gradient {
         init();
     }
 
-    public static Gradient createGradient(Sequence sequence, String amplitudeTab, String flat_TimeTab, String shapeUpTab, String shapeDownTab, String rampTimeTab) {
+    public static Gradient createGradient(Sequence sequence, S amplitudeTab, S flat_TimeTab, S shapeUpTab, S shapeDownTab, S rampTimeTab) {
         return new Gradient(sequence.getPublicTable(amplitudeTab), sequence.getPublicTable(flat_TimeTab), (Shape) sequence.getPublicTable(shapeUpTab),
                 (Shape) sequence.getPublicTable(shapeDownTab), sequence.getPublicTable(rampTimeTab), sequence.getPublicTable(rampTimeTab));
     }
 
-    public static Gradient createGradient(Sequence sequence, String amplitudeTab, String flat_TimeTab, String shapeUpTab, String shapeDownTab, String rampTimeUpTab, String rampTimeDownTab) {
+    public static Gradient createGradient(Sequence sequence, S amplitudeTab, S flat_TimeTab, S shapeUpTab, S shapeDownTab, S rampTimeUpTab, S rampTimeDownTab) {
         return new Gradient(sequence.getPublicTable(amplitudeTab), sequence.getPublicTable(flat_TimeTab), (Shape) sequence.getPublicTable(shapeUpTab),
                 (Shape) sequence.getPublicTable(shapeDownTab), sequence.getPublicTable(rampTimeUpTab), sequence.getPublicTable(rampTimeDownTab));
     }

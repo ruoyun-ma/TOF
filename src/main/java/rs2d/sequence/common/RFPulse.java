@@ -1,5 +1,6 @@
 package rs2d.sequence.common;
 
+import rs2d.sequence.gradientecho.S;
 import rs2d.spinlab.data.transformPlugin.TransformPlugin;
 import rs2d.spinlab.instrument.Instrument;
 import rs2d.spinlab.instrument.InstrumentTxChannel;
@@ -92,17 +93,17 @@ public class RFPulse {
     }
 
 
-    public static RFPulse createRFPulse(Sequence sequence, String txAttParam, String amplitudeTab, String txPhaseTab,
-                                        String timeTab, String shape, String shapePhaseShape, String offsetTab) {
+    public static RFPulse createRFPulse(Sequence sequence, S txAttParam, S amplitudeTab, S txPhaseTab,
+                                        S timeTab, S shape, S shapePhaseShape, S offsetTab) {
         return new RFPulse(sequence.getPublicParam(txAttParam), sequence.getPublicTable(amplitudeTab), sequence.getPublicTable(txPhaseTab),
                 sequence.getPublicTable(timeTab), (Shape) sequence.getPublicTable(shape), (Shape) sequence.getPublicTable(shapePhaseShape), sequence.getPublicTable(offsetTab));
     }
 
-    public static RFPulse createRFPulse(Sequence sequence, String timeTab, String offsetTab) {
+    public static RFPulse createRFPulse(Sequence sequence, S timeTab, S offsetTab) {
         return new RFPulse(sequence.getPublicTable(timeTab), sequence.getPublicTable(offsetTab));
     }
 
-    public static RFPulse createRFPulse(Sequence sequence, String timeTab, String offsetTab, String txPhaseTab) {
+    public static RFPulse createRFPulse(Sequence sequence, S timeTab, S offsetTab, S txPhaseTab) {
         return new RFPulse(sequence.getPublicTable(timeTab), sequence.getPublicTable(offsetTab), sequence.getPublicTable(txPhaseTab));
     }
 

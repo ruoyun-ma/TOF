@@ -69,7 +69,7 @@ import static rs2d.sequence.gradientecho.S.*;
 //
 public class GradientEcho extends BaseSequenceGenerator {
 
-    private String sequenceVersion = "Version9.0";
+    private String sequenceVersion = "Version9.0Cam4";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -1484,7 +1484,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         //  blanking smartTTL_FatSat_table
         // ------------------------------------------------------------------
 
-        Table smartTTL_FatSat_table = setSequenceTableValues(SmartTTL_FatSat, Order.Four);
+        /*Table smartTTL_FatSat_table = setSequenceTableValues(SmartTTL_FatSat, Order.Four);
         if (is_fatsat_enabled) {
             double slice_time = (delay_before_echo_loop + (echoTrainLength * delay_echo_loop)
                     + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopEndEcho + 1, Events.LoopMultiPlanarEnd));
@@ -1495,7 +1495,7 @@ public class GradientEcho extends BaseSequenceGenerator {
            /* if (tr > fatSat_repetition_Time) {  //   this case is not necessary as merged with higher order will give a better roundning
                 secondDim = 1;
                 smartTTL_FatSat_table.setOrder(Order.Loop);
-            } else*/
+            } else
             if (number_of_averages > 1) {
                 secondDim = number_of_averages;
                 smartTTL_FatSat_table.setOrder(Order.OneLoop);
@@ -1520,7 +1520,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         } else {
             smartTTL_FatSat_table.add(0);
         }
-
+*/
         //----------------------------------------------------------------------
         // OFF CENTER FIELD OF VIEW 1D
         // modify RX FREQUENCY OFFSET
@@ -2012,7 +2012,7 @@ public class GradientEcho extends BaseSequenceGenerator {
     }
 
     public String getVersion() {
-        return "master";
+        return "MasterCam4NoTTL";
     }
     //</editor-fold>
 }

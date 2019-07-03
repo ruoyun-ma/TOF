@@ -84,7 +84,6 @@ public enum S implements GeneratorSequenceParamEnum {
     Grad_shape_rise_up("Grad_shape_rise_up"),
     Rx_freq_offset("Rx_freq_offset"),
     Rx_phase("Rx_phase"),
-    SmartTTL_FatSat("SmartTTL_FatSat"),
     Time_before_fatsat_pulse("Time_before_fatsat_pulse"),
     Time_btw_dyn_frames("Time_btw_dyn_frames"),
     Time_flow("Time_flow"),

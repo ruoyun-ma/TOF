@@ -272,7 +272,7 @@
                 <key>ACQUISITION_TIME_PER_SCAN</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_TIME_PER_SCAN</name>
-                    <value>0.005111821086261981</value>
+                    <value>0.005111808</value>
                     <defaultValue>1.0</defaultValue>
                     <description>The acquisition time per scan  ( SPECTRAL_WIDTH )</description>
                     <displayedName>Acq Time</displayedName>
@@ -3082,7 +3082,7 @@
                 <key>SPECTRAL_WIDTH</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SPECTRAL_WIDTH</name>
-                    <value>12520.0</value>
+                    <value>12520.03205128205</value>
                     <defaultValue>12500.0</defaultValue>
                     <description>The spectral width of the reception ( SW BW, bandwidth )</description>
                     <displayedName>SW</displayedName>
@@ -3114,7 +3114,7 @@
                 <key>SPECTRAL_WIDTH_PER_PIXEL</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SPECTRAL_WIDTH_PER_PIXEL</name>
-                    <value>195.625</value>
+                    <value>195.62550080128204</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Spectral Width per pixel in Hz / Pix</description>
                     <displayedName>SPECTRAL_WIDTH_PER_PIXEL</displayedName>

@@ -42,6 +42,7 @@ import rs2d.sequence.common.RFPulse;
 import rs2d.sequence.common.HardwareShim;
 import rs2d.sequence.common.HardwarePreemphasis;
 import rs2d.spinlab.data.transformPlugin.TransformPlugin;
+import rs2d.spinlab.hardware.devices.DeviceManager;
 import rs2d.spinlab.instrument.Instrument;
 import rs2d.spinlab.instrument.util.GradientMath;
 import rs2d.spinlab.sequence.SequenceTool;
@@ -359,7 +360,8 @@ public class GradientEcho extends BaseSequenceGenerator {
         spectralWidth = isFovDoubled ? (spectralWidth * 2) : spectralWidth;
         spectralWidth = isSW ? spectralWidth : spectralWidthPerPixel * acquisitionMatrixDimension1D;
 
-        spectralWidth = Hardware.getNearestSpectralWidth(spectralWidth);      // get real spectral width from Chameleon
+//        spectralWidth = Hardware.getNearestSpectralWidth(spectralWidth);      // get real spectral width from Chameleon
+        spectralWidth = getNearestSW(spectralWidth);      //  to be replaced by above when correctly implemented for Cam4 05/07/2019
         double spectralWidthUP = isFovDoubled ? (spectralWidth / 2) : spectralWidth;
         spectralWidthPerPixel = spectralWidth / acquisitionMatrixDimension1D;
         getParam(SPECTRAL_WIDTH_PER_PIXEL).setValue(spectralWidthPerPixel);
@@ -911,11 +913,15 @@ public class GradientEcho extends BaseSequenceGenerator {
         Gradient gradReadPrep = Gradient.createGradient(getSequence(), Grad_amp_read_prep,  Time_grad_phase_top, Grad_shape_rise_up,  Grad_shape_rise_down, Time_grad_ramp);
         Gradient gradReadPrepFlowComp = Gradient.createGradient(getSequence(), Grad_amp_read_prep_flowcomp,  Time_grad_top_flowcomp, Grad_shape_rise_up,  Grad_shape_rise_down, Time_grad_ramp_flowcomp);
         if (isEnableRead) {
-            if (is_flowcomp) {
+            if (!is_flowcomp) {
                 gradReadPrep.refocalizeGradient(gradReadout, readGradientRatio);
             } else {
                 gradReadPrep.refocalizeGradientWithFlowComp(gradReadout, readGradientRatio, gradReadPrepFlowComp);
             }
+            System.out.println("  gradReadout "+ gradReadout.getAmplitude());
+            System.out.println("  gradReadout 0  "+ gradReadout.getAmplitudeArray(0));
+            System.out.println("  gradReadPrep "+ gradReadPrep.getAmplitude());
+            System.out.println("  gradReadPrep 0  "+ gradReadPrep.getAmplitudeArray(0));
         }
 
         // pre-calculate SLICE_refocusing  &  PHASE_3D
@@ -923,7 +929,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         Gradient gradSliceRefPhase3D = Gradient.createGradient(getSequence(), Grad_amp_phase_3D_prep,  Time_grad_phase_top, Grad_shape_rise_up,  Grad_shape_rise_down, Time_grad_ramp);
         Gradient gradSliceRefPhase3DFlowComp = Gradient.createGradient(getSequence(), Grad_amp_phase_3D_prep_flowcomp,  Time_grad_top_flowcomp, Grad_shape_rise_up,  Grad_shape_rise_down, Time_grad_ramp_flowcomp);
         if (isEnableSlice) {
-            if (is_flowcomp) {
+            if (!is_flowcomp) {
                 gradSliceRefPhase3D.refocalizeGradient(gradSlice, grad_ratio_slice_refoc);
             } else {
                 gradSliceRefPhase3D.refocalizeGradientWithFlowComp(gradSlice, grad_ratio_slice_refoc, gradSliceRefPhase3DFlowComp);
@@ -931,7 +937,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         }
 
         if (!isMultiplanar && isEnablePhase3D) {
-            if (is_flowcomp) {
+            if (!is_flowcomp) {
                 gradSliceRefPhase3D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension3D : acquisitionMatrixDimension3D, acquisitionMatrixDimension3D, slice_thickness_excitation, is_k_s_centred);
             } else {
                 gradSliceRefPhase3D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension3D : acquisitionMatrixDimension3D, acquisitionMatrixDimension3D, slice_thickness_excitation, is_k_s_centred);
@@ -949,7 +955,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         Gradient gradPhase2D = Gradient.createGradient(getSequence(), Grad_amp_phase_2D_prep,  Time_grad_phase_top, Grad_shape_rise_up,  Grad_shape_rise_down, Time_grad_ramp);
         Gradient gradPhase2DFlowComp = Gradient.createGradient(getSequence(), Grad_amp_phase_2D_prep_flowcomp,  Time_grad_top_flowcomp, Grad_shape_rise_up,  Grad_shape_rise_down, Time_grad_ramp_flowcomp);
         if (isEnablePhase) {
-            if (is_flowcomp) {
+            if (!is_flowcomp) {
                 gradPhase2D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension2D : acquisitionMatrixDimension2D, acquisitionMatrixDimension2D, fovPhase, is_k_s_centred);
             } else {
                 gradPhase2D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension2D : acquisitionMatrixDimension2D, acquisitionMatrixDimension2D, fovPhase, is_k_s_centred);
@@ -979,6 +985,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         }
         gradSliceRefPhase3D.applyAmplitude(Order.Three);
         gradPhase2D.applyAmplitude(Order.Two);
+
         gradReadPrep.applyAmplitude();
 
         if (is_flowcomp) {
@@ -1972,6 +1979,23 @@ public class GradientEcho extends BaseSequenceGenerator {
         }
         return off_center_distance;
     }
+
+    public double getNearestSW(double spectralWidth) throws Exception {
+        double SysClock = DeviceManager.getInstance().getCompilerLoader().getCompiler().getSequenceCompiler().getSystemClk();
+//        double SWmax = DeviceManager.getInstance().getCompilerLoader().getCompiler().getSequenceCompiler().getMaxSW()) // better when not rounded in Hz;
+        // Hardware.getSequenceCompiler() //future version
+        double decimationRef, SWmax;
+        if (SysClock == 78125000) { /* Cameleon 4 */
+            decimationRef = 8;
+            SWmax = SysClock / 2 / decimationRef;
+        } else {/* Cameleon 3 */
+            decimationRef = 1;
+            SWmax = SysClock / 32 / decimationRef;
+        }
+        double decim = (Math.round(SWmax * decimationRef / spectralWidth) );
+        return (SWmax * decimationRef) / (decim);
+    }
+
 
 
     /**

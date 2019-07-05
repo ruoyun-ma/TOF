@@ -12,6 +12,7 @@ import rs2d.spinlab.tools.table.Order;
 
 /**
  * Class Gradient
+ * V2.5- getNearestSW Sup Inf for Cam4
  * V2.4- 2019-06-06 JR from TOF Flow compensation
  * V2.3- 2019-06-06 JR from DW EPI
  * V2.2- 2018-12-19 JR
@@ -347,7 +348,11 @@ public class Gradient {
     public void refocalizeGradient(Gradient grad, double ratio) {
         bStaticGradient = true;
         double amp;
-        amp = grad.getAmplitude();
+          if (grad.getSteps() > 1)
+            amp = grad.getAmplitudeArray(0);
+        else {
+            amp = !Double.isNaN(grad.getAmplitude()) ? grad.getAmplitude() : grad.getAmplitudeArray(0);
+        }
         double gradArea = (grad.getEquivalentTimeBlock(3)[0] + grad.getEquivalentTimeFlat(grad.flatTimeTable, ratio)[0]) * amp;
         staticArea = -gradArea;
         calculateStaticAmplitude();
@@ -494,11 +499,11 @@ public class Gradient {
     public double solveSpectralWidthMax(double fov) throws Exception {
         double spectralWidth_init = (gMax * GradientMath.GAMMA * fov);
         double spectralWidth = spectralWidth_init;
-        while (DeviceManager.getInstance().getCompilerLoader().getCompiler().getSequenceCompiler().getNearestSW(spectralWidth) >= spectralWidth_init) {
+        while (getNearestSW(spectralWidth) >= spectralWidth_init) {
             // Hardware.getSequenceCompiler() //future version
-            spectralWidth = getInferiorSpectralWidth(spectralWidth);
+            spectralWidth = getInferiorSW(spectralWidth);
         }
-        spectralWidth = DeviceManager.getInstance().getCompilerLoader().getCompiler().getSequenceCompiler().getNearestSW(spectralWidth);
+        spectralWidth = getNearestSW(spectralWidth);
         // Hardware.getSequenceCompiler() //future version
         return spectralWidth;
     }
@@ -515,7 +520,7 @@ public class Gradient {
      */
     public void applyReadoutEchoPlanarAmplitude(int ETL, Order tableorder) {
         order = tableorder;
-        if (!Double.isNaN(amplitude)) {
+        if (!Double.isNaN(amplitude) && ETL > 1) {
             steps = ETL;
             amplitudeArray = new double[steps];
             for (int i = 0; i < steps; i++) {
@@ -668,9 +673,7 @@ public class Gradient {
         gradflowcomp.setMaxArea_PE(maxAreaPE2);
         preparePhaseEncoding(matrixDimension, fovDim, isKSCentred, ratioA1);
         gradflowcomp.preparePhaseEncoding(matrixDimension, fovDim, isKSCentred, ratioA2);
-
-
-    }
+     }
 
     public void preparePhaseEncodingForCheckWithFlowComp(int matrixDimensionForCheck, int matrixDimension, double fovDim, boolean isKSCentred, Gradient gradflowcomp, double delta, double ratioMomentum) {
         gradFlowComp = gradflowcomp;
@@ -694,7 +697,7 @@ public class Gradient {
         double maxAreaPE2 = maxArea_PE * ratioA2;
         gradflowcomp.setMaxArea_PE(maxAreaPE2);
         preparePhaseEncoding(matrixDimension, fovDim, isKSCentred, ratioA1);
-       gradflowcomp.preparePhaseEncoding(matrixDimension, fovDim, isKSCentred, ratioA2);
+        gradflowcomp.preparePhaseEncoding(matrixDimension, fovDim, isKSCentred, ratioA2);
     }
 
     public double prepPhaseGradTotalArea(int matrixDimension, double fovPhase) {
@@ -740,6 +743,7 @@ public class Gradient {
         }
         return amplitudeArray;
     }
+
     public double[] refocalizePhaseEncodingGradientSEEPI(Gradient grad, Gradient gradBlip, int echoTrainLength) {
         steps = grad.getSteps();
         if (steps > 0) {
@@ -749,9 +753,7 @@ public class Gradient {
                 amplitudeArray[i] = -(-grad.getAmplitudeArray(i) * grad.getEquivalentTime()
                         + gradBlip.getAmplitude() * gradBlip.getEquivalentTime() * echoTrainLength) / equivalentTime;
             }
-            System.out.println("gradBlip.getAmplitude()  " + gradBlip.getAmplitude());
-            System.out.println("gradBlip.getEquivalentTime()  " + gradBlip.getEquivalentTime());
-        }
+         }
         return amplitudeArray;
     }
 
@@ -841,6 +843,7 @@ public class Gradient {
         }
         return tmpInv;
     }
+
     // add dummu scan for the PE gradient
     public void addDummy(int dummyScan) {
         if (steps > 0) {
@@ -1152,13 +1155,56 @@ public class Gradient {
 
     // ---------------------------------------------------------------
     // ----------------- General Methode----------------------------------------------
-    private double getInferiorSpectralWidth(double spectral_width)throws Exception {
-        double  SWmin = DeviceManager.getInstance().getCompilerLoader().getCompiler().getSequenceCompiler().getMaxSW();
-        double SWmax = Math.round(DeviceManager.getInstance().getCompilerLoader().getCompiler().getSequenceCompiler().getMaxSW());
+
+    public double getInferiorSW(double spectralWidth) throws Exception {
+        double SysClock = DeviceManager.getInstance().getCompilerLoader().getCompiler().getSequenceCompiler().getSystemClk();
+//        double SWmax = DeviceManager.getInstance().getCompilerLoader().getCompiler().getSequenceCompiler().getMaxSW()) // better when not rounded in Hz;
         // Hardware.getSequenceCompiler() //future version
-//        return 3906250.0 / (Math.ceil(3906250.0 / spectral_width) + 1);
-        return SWmax / (Math.ceil(SWmax / spectral_width) + 1);
+        double decimationRef, SWmax;
+        if (SysClock == 78125000) { /* Cameleon 4 */
+            decimationRef = 8;
+            SWmax = SysClock / 2 / decimationRef;
+        } else {/* Cameleon 3 */
+            decimationRef = 1;
+            SWmax = SysClock / 32 / decimationRef;
+        }
+        double decim = (Math.floor(SWmax * decimationRef / spectralWidth) + 1);
+        return (SWmax * decimationRef) / (decim);
     }
+
+    public double getNearestSW(double spectralWidth) throws Exception {
+        double SysClock = DeviceManager.getInstance().getCompilerLoader().getCompiler().getSequenceCompiler().getSystemClk();
+//        double SWmax = DeviceManager.getInstance().getCompilerLoader().getCompiler().getSequenceCompiler().getMaxSW()) // better when not rounded in Hz;
+        // Hardware.getSequenceCompiler() //future version
+        double decimationRef, SWmax;
+        if (SysClock == 78125000) { /* Cameleon 4 */
+            decimationRef = 8;
+            SWmax = SysClock / 2 / decimationRef;
+        } else {/* Cameleon 3 */
+            decimationRef = 1;
+            SWmax = SysClock / 32 / decimationRef;
+        }
+        double decim = (Math.round(SWmax * decimationRef / spectralWidth) );
+        return (SWmax * decimationRef) / (decim);
+    }
+
+    public double getSuperiorSW(double spectralWidth) throws Exception {
+        double SysClock = DeviceManager.getInstance().getCompilerLoader().getCompiler().getSequenceCompiler().getSystemClk();
+        //        double SWmax = DeviceManager.getInstance().getCompilerLoader().getCompiler().getSequenceCompiler().getMaxSW()) // better when not rounded in Hz;
+        // Hardware.getSequenceCompiler() //future version
+        double decimationRef, SWmax;
+        if (SysClock == 78125000) { /* Cameleon 4 */
+            decimationRef = 8;
+            SWmax = SysClock / 2 / decimationRef;
+        } else {/* Cameleon 3 */
+            decimationRef = 1;
+            SWmax = SysClock / 32 / decimationRef;
+        }
+        double decim = (Math.ceil(SWmax * decimationRef / spectralWidth)-1 );
+        return (SWmax * decimationRef) / (decim);
+
+    }
+
 
     private double ceilToSubDecimal(double numberToBeRounded, double Order) {
         return Math.ceil(numberToBeRounded * Math.pow(10, Order)) / Math.pow(10, Order);

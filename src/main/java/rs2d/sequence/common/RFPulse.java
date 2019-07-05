@@ -24,6 +24,7 @@ import java.util.List;
 
 /**
  * Class RFPulse
+ * V2.5- getNearestSW Sup Inf for Cam4
  * V2.3- 2019-06-06 JR
  * V2.2- 2018-12-19 JR
  * V2.1- 2017-10-24 JR

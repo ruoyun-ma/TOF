@@ -3148,7 +3148,7 @@
             <key>key46</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Spectral_width</name>
-                <value>12560.0</value>
+                <value>12520.0</value>
                 <defaultValue>12500.0</defaultValue>
                 <displayedName>SW0</displayedName>
                 <locked>false</locked>
@@ -5645,10 +5645,10 @@
             <count>1</count>
             <key>key232</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>Nb_interveaved_slice</name>
+                <name>Nb_interleaved_slice</name>
                 <value>19</value>
                 <defaultValue>0</defaultValue>
-                <displayedName>Datafield</displayedName>
+                <displayedName>Nb_interleaved_slice</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -16111,7 +16111,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>6</address>
-                <list>0.005111808</list>
+                <list>0.005111821086261981</list>
             </value>
         </Entry>
         <Entry>
@@ -16536,7 +16536,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>5</address>
-                <list>3.409599999999995E-5</list>
+                <list>3.408945686900937E-5</list>
             </value>
         </Entry>
         <Entry>
@@ -16991,7 +16991,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>-14.358852126670717</list>
+                <list>-14.358851222694268</list>
             </value>
         </Entry>
         <Entry>
@@ -17198,7 +17198,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>1</address>
-                <list>2.341596989612099</list>
+                <list>2.3415909951238056</list>
             </value>
         </Entry>
         <Entry>
@@ -17310,7 +17310,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>7</address>
-                <list>0.001532184</list>
+                <list>0.001532188498402556</list>
             </value>
         </Entry>
         <Entry>
@@ -17374,7 +17374,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>-11.632383890681902</list>
+                <list>-11.63238316701585</list>
             </value>
         </Entry>
         <Entry>
@@ -17677,7 +17677,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>8</address>
-                <list>0.013775162000000002</list>
+                <list>8.251509584664552E-4</list>
             </value>
         </Entry>
         <Entry>

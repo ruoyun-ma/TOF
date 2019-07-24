@@ -34,7 +34,7 @@ public enum S implements GeneratorSequenceParamEnum {
     Nb_3d("Nb_3d"),
     Nb_4d("Nb_4d"),
     Nb_echo("Nb_echo"),
-    Nb_interveaved_slice("Nb_interveaved_slice"),
+    Nb_interleaved_slice("Nb_interleaved_slice"),
     Nb_point("Nb_point"),
     Nb_sb_loop("Nb_sb_loop"),
     Phase_reset("Phase_reset"),

@@ -73,13 +73,13 @@ public class Gradient {
     }
 
     public static Gradient createGradient(Sequence sequence, S amplitudeTab, S flat_TimeTab, S shapeUpTab, S shapeDownTab, S rampTimeTab) {
-        return new Gradient(sequence.getPublicTable(amplitudeTab), sequence.getPublicTable(flat_TimeTab), (Shape) sequence.getPublicTable(shapeUpTab),
-                (Shape) sequence.getPublicTable(shapeDownTab), sequence.getPublicTable(rampTimeTab), sequence.getPublicTable(rampTimeTab));
+        return new Gradient(sequence.getPublicTable(amplitudeTab.toString()), sequence.getTable(flat_TimeTab.toString()), (Shape) sequence.getTable(shapeUpTab.toString()),
+                (Shape) sequence.getPublicTable(shapeDownTab.toString()), sequence.getTable(rampTimeTab.toString()), sequence.getTable(rampTimeTab.toString()));
     }
 
     public static Gradient createGradient(Sequence sequence, S amplitudeTab, S flat_TimeTab, S shapeUpTab, S shapeDownTab, S rampTimeUpTab, S rampTimeDownTab) {
-        return new Gradient(sequence.getPublicTable(amplitudeTab), sequence.getPublicTable(flat_TimeTab), (Shape) sequence.getPublicTable(shapeUpTab),
-                (Shape) sequence.getPublicTable(shapeDownTab), sequence.getPublicTable(rampTimeUpTab), sequence.getPublicTable(rampTimeDownTab));
+        return new Gradient(sequence.getPublicTable(amplitudeTab.toString()), sequence.getTable(flat_TimeTab.toString()), (Shape) sequence.getTable(shapeUpTab.toString()),
+                (Shape) sequence.getPublicTable(shapeDownTab.toString()), sequence.getTable(rampTimeUpTab.toString()), sequence.getTable(rampTimeDownTab.toString()));
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -348,7 +348,7 @@ public class Gradient {
     public void refocalizeGradient(Gradient grad, double ratio) {
         bStaticGradient = true;
         double amp;
-          if (grad.getSteps() > 1)
+        if (grad.getSteps() > 1)
             amp = grad.getAmplitudeArray(0);
         else {
             amp = !Double.isNaN(grad.getAmplitude()) ? grad.getAmplitude() : grad.getAmplitudeArray(0);
@@ -673,7 +673,7 @@ public class Gradient {
         gradflowcomp.setMaxArea_PE(maxAreaPE2);
         preparePhaseEncoding(matrixDimension, fovDim, isKSCentred, ratioA1);
         gradflowcomp.preparePhaseEncoding(matrixDimension, fovDim, isKSCentred, ratioA2);
-     }
+    }
 
     public void preparePhaseEncodingForCheckWithFlowComp(int matrixDimensionForCheck, int matrixDimension, double fovDim, boolean isKSCentred, Gradient gradflowcomp, double delta, double ratioMomentum) {
         gradFlowComp = gradflowcomp;
@@ -753,7 +753,7 @@ public class Gradient {
                 amplitudeArray[i] = -(-grad.getAmplitudeArray(i) * grad.getEquivalentTime()
                         + gradBlip.getAmplitude() * gradBlip.getEquivalentTime() * echoTrainLength) / equivalentTime;
             }
-         }
+        }
         return amplitudeArray;
     }
 
@@ -1184,7 +1184,7 @@ public class Gradient {
             decimationRef = 1;
             SWmax = SysClock / 32 / decimationRef;
         }
-        double decim = (Math.round(SWmax * decimationRef / spectralWidth) );
+        double decim = (Math.round(SWmax * decimationRef / spectralWidth));
         return (SWmax * decimationRef) / (decim);
     }
 
@@ -1200,7 +1200,7 @@ public class Gradient {
             decimationRef = 1;
             SWmax = SysClock / 32 / decimationRef;
         }
-        double decim = (Math.ceil(SWmax * decimationRef / spectralWidth)-1 );
+        double decim = (Math.ceil(SWmax * decimationRef / spectralWidth) - 1);
         return (SWmax * decimationRef) / (decim);
 
     }

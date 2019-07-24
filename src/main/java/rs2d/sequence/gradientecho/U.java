@@ -138,7 +138,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.005111808);
+            param.setValue(0.005111821086261981);
             param.setDefaultValue(1.0);
             return param;
         }
@@ -1845,7 +1845,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.461);
+            param.setValue(0.202);
             param.setDefaultValue(0.2);
             return param;
         }
@@ -2055,7 +2055,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(23.1);
+            param.setValue(10.2);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2082,7 +2082,7 @@ public enum U implements GeneratorParamEnum {
             param.setDisplayedName("SEQ_DESCRIPTION");
             param.setDescription("");
             param.setCategory(Category.Acquisition);
-            param.setValue("GE_2DAXI_64x50x20");
+            param.setValue("GE_2D_AXI_64x50x20");
             param.setDefaultValue("");
             return param;
         }
@@ -2179,7 +2179,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.SW);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E8);
-            param.setValue(12520.03205128205);
+            param.setValue(12520.0);
             param.setDefaultValue(12500.0);
             return param;
         }
@@ -2210,7 +2210,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.SW);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E8);
-            param.setValue(195.62550080128204);
+            param.setValue(195.625);
             param.setDefaultValue(0.0);
             return param;
         }

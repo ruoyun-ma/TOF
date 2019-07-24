@@ -96,16 +96,16 @@ public class RFPulse {
 
     public static RFPulse createRFPulse(Sequence sequence, S txAttParam, S amplitudeTab, S txPhaseTab,
                                         S timeTab, S shape, S shapePhaseShape, S offsetTab) {
-        return new RFPulse(sequence.getPublicParam(txAttParam), sequence.getPublicTable(amplitudeTab), sequence.getPublicTable(txPhaseTab),
-                sequence.getPublicTable(timeTab), (Shape) sequence.getPublicTable(shape), (Shape) sequence.getPublicTable(shapePhaseShape), sequence.getPublicTable(offsetTab));
+        return new RFPulse(sequence.getPublicParam(txAttParam.toString()), sequence.getTable(amplitudeTab.toString()), sequence.getTable(txPhaseTab.toString()),
+                sequence.getPublicTable(timeTab.toString()), (Shape) sequence.getTable(shape.toString()), (Shape) sequence.getTable(shapePhaseShape.toString()), sequence.getTable(offsetTab.toString()));
     }
 
     public static RFPulse createRFPulse(Sequence sequence, S timeTab, S offsetTab) {
-        return new RFPulse(sequence.getPublicTable(timeTab), sequence.getPublicTable(offsetTab));
+        return new RFPulse(sequence.getPublicTable(timeTab.toString()), sequence.getTable(offsetTab.toString()));
     }
 
     public static RFPulse createRFPulse(Sequence sequence, S timeTab, S offsetTab, S txPhaseTab) {
-        return new RFPulse(sequence.getPublicTable(timeTab), sequence.getPublicTable(offsetTab), sequence.getPublicTable(txPhaseTab));
+        return new RFPulse(sequence.getPublicTable(timeTab.toString()), sequence.getTable(offsetTab.toString()), sequence.getTable(txPhaseTab.toString()));
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

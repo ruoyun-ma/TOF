@@ -222,7 +222,7 @@ public class GradientEcho extends BaseSequenceGenerator {
     }
 
     private void initUserParam() {
-        isMultiplanar = (getBoolean(MULTI_PLANAR_EXCITATION));
+        isMultiplanar = getBoolean(MULTI_PLANAR_EXCITATION);
 
 //        acquisitionMatrixDimension1D = getInt(ACQUISITION_MATRIX_DIMENSION_1D);
         acquisitionMatrixDimension2D = getInt(ACQUISITION_MATRIX_DIMENSION_2D);
@@ -234,14 +234,14 @@ public class GradientEcho extends BaseSequenceGenerator {
         userMatrixDimension1D = getInt(USER_MATRIX_DIMENSION_1D);
         userMatrixDimension2D = getInt(USER_MATRIX_DIMENSION_2D);
         userMatrixDimension3D = getInt(USER_MATRIX_DIMENSION_3D);
-        is_partial_oversampling = (getBoolean(PARTIAL_OVERSAMPLING));
+        is_partial_oversampling = getBoolean(PARTIAL_OVERSAMPLING);
         is_keyhole_allowed = getBoolean(KEYHOLE_ALLOWED);
 
         echoTrainLength = getInt(ECHO_TRAIN_LENGTH);
         echo_spacing = getDouble(ECHO_SPACING);
 
         spectralWidth = getDouble(SPECTRAL_WIDTH);            // get user defined spectral width
-        isSW = (getBoolean(SPECTRAL_WIDTH_OPT));
+        isSW = getBoolean(SPECTRAL_WIDTH_OPT);
         tr = getDouble(REPETITION_TIME);
         te = getDouble(ECHO_TIME);
 
@@ -263,20 +263,20 @@ public class GradientEcho extends BaseSequenceGenerator {
         isDynamic = isDynamic && (numberOfDynamicAcquisition > 1);
         isDynamicMinTime = getBoolean(DYNAMIC_MIN_TIME);
 
-        isTrigger = (getBoolean(TRIGGER_EXTERNAL));
+        isTrigger = getBoolean(TRIGGER_EXTERNAL);
         triggerTime = getListDouble(TRIGGER_TIME);
         numberOfTrigger = isTrigger ? triggerTime.size() : 1;
         isTrigger = isTrigger && (numberOfTrigger > 0);
 
-        is_flyback = (getBoolean(FLYBACK));
+        is_flyback = getBoolean(FLYBACK);
         kspace_filling = getText(KSPACE_FILLING);
 
-        is_flowcomp = (getBoolean(FLOW_COMPENSATION));
+        is_flowcomp = getBoolean(FLOW_COMPENSATION);
 
-        is_fatsat_enabled = (getBoolean(FAT_SATURATION_ENABLED));
+        is_fatsat_enabled = getBoolean(FAT_SATURATION_ENABLED);
 
-        is_satband_enabled = (getBoolean(SATBAND_ENABLED));
-        is_tof_enabled = (getBoolean(TOF2D_ENABLED));
+        is_satband_enabled = getBoolean(SATBAND_ENABLED);
+        is_tof_enabled = getBoolean(TOF2D_ENABLED);
         is_rf_spoiling = getBoolean(RF_SPOILING);
 
         is_interleaved_echo_train = getBoolean(INTERLEAVED_ECHO_TRAIN);
@@ -398,7 +398,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         this.getParam(SATBAND_ENABLED).setValue(is_satband_enabled);
 
         // MATRIX
-        boolean is_partial_oversampling = (getBoolean(PARTIAL_OVERSAMPLING));
+        boolean is_partial_oversampling = getBoolean(PARTIAL_OVERSAMPLING);
         is_partial_oversampling = (isMultiplanar || userMatrixDimension3D < 8) ? false : is_partial_oversampling;
         getParam(PARTIAL_OVERSAMPLING).setValue(is_partial_oversampling);
 
@@ -1641,7 +1641,6 @@ public class GradientEcho extends BaseSequenceGenerator {
     // *********************************************************************************************************************************************
 
 
-
     private int[] satBandPrep(U satbandOrientation, U orientation, U imageOrientationSubject) {
 
         int[] position_sli_ph_rea = new int[6];
@@ -1746,7 +1745,7 @@ public class GradientEcho extends BaseSequenceGenerator {
                 }
             }
 
-              // System.out.println(" direction index and dir ind:  "+direction_index[2]+" "+dir_ind[0][2]);
+            // System.out.println(" direction index and dir ind:  "+direction_index[2]+" "+dir_ind[0][2]);
             int[] max_vector = new int[3];
 
             // read, phase and slice vector which component has the largest value

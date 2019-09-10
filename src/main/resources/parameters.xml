@@ -149,7 +149,7 @@
             <key>BASE_FREQ_1</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>BASE_FREQ_1</name>
-                <value>1.2818100000000001E8</value>
+                <value>1.27552944E8</value>
                 <defaultValue>1.27552944E8</defaultValue>
                 <description>The base frequency of the first sequence channel</description>
                 <displayedName>Base Freq 1</displayedName>
@@ -956,9 +956,9 @@
             <key>HARDWARE_A0</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>HARDWARE_A0</name>
-                <value>0.0</value>
-                <value>0.0</value>
-                <value>0.0</value>
+                <value>27.69</value>
+                <value>28.58</value>
+                <value>22.43</value>
                 <description></description>
                 <displayedName>HARDWARE_A0</displayedName>
                 <locked>false</locked>
@@ -973,9 +973,9 @@
             <key>HARDWARE_DC</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>HARDWARE_DC</name>
-                <value>0.0</value>
-                <value>0.0</value>
-                <value>0.0</value>
+                <value>-0.174</value>
+                <value>0.2686</value>
+                <value>-0.1862</value>
                 <value>0.0</value>
                 <description></description>
                 <displayedName>HARDWARE_DC</displayedName>
@@ -1024,15 +1024,15 @@
             <key>HARDWARE_PREEMPHASIS_T</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>HARDWARE_PREEMPHASIS_T</name>
-                <value>0.0</value>
-                <value>0.0</value>
-                <value>0.0</value>
-                <value>0.0</value>
-                <value>0.0</value>
-                <value>0.0</value>
-                <value>0.0</value>
-                <value>0.0</value>
-                <value>0.0</value>
+                <value>0.02</value>
+                <value>0.02</value>
+                <value>0.02</value>
+                <value>0.02</value>
+                <value>0.02</value>
+                <value>0.02</value>
+                <value>0.02</value>
+                <value>0.02</value>
+                <value>0.02</value>
                 <value>0.0</value>
                 <value>0.0</value>
                 <value>0.0</value>
@@ -1058,6 +1058,14 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>HARDWARE_SHIM</name>
                 <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
+                <value>0.0</value>
                 <description></description>
                 <displayedName>HARDWARE_SHIM</displayedName>
                 <locked>true</locked>
@@ -1072,7 +1080,7 @@
             <key>HARDWARE_SHIM_LABEL</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>HARDWARE_SHIM_LABEL</name>
-                <value>NotConnected</value>
+                <value>YZ XY XZ X2-Y2 Z0 Z2 X Y Z</value>
                 <defaultValue></defaultValue>
                 <description></description>
                 <displayedName>HARDWARE_SHIM_LABEL</displayedName>
@@ -2016,7 +2024,7 @@
             <key>OBSERVED_FREQUENCY</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OBSERVED_FREQUENCY</name>
-                <value>1.2818100000000001E8</value>
+                <value>1.27552944E8</value>
                 <defaultValue>6.3E7</defaultValue>
                 <description>The frequency of the acquisition</description>
                 <displayedName>Observed frequency</displayedName>

@@ -7,6 +7,11 @@ import rs2d.spinlab.hardware.devices.DeviceManager;
 
 import java.util.ArrayList;
 
+//import rs2d.sequence.common.HardwareShim;
+//         HardwareShim hardwareShim = new HardwareShim();
+//         setParamValue(HARDWARE_SHIM, hardwareShim.getValue());
+//         setParamValue(HARDWARE_SHIM_LABEL, hardwareShim.getLabel());
+
 public class HardwareShim {
     private ArrayList<Number> shim = new ArrayList<>();
     private String shimText = new String();

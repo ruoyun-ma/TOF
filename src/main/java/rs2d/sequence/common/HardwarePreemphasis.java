@@ -11,14 +11,11 @@ add
 
 
     import rs2d.sequence.common.HardwarePreemphasis;
-
-
         HardwarePreemphasis hardwarePreemphasis = new HardwarePreemphasis();
         setParamValue(HARDWARE_PREEMPHASIS_A, hardwarePreemphasis.getAmplitude());
         setParamValue(HARDWARE_PREEMPHASIS_T, hardwarePreemphasis.getTime());
         setParamValue(HARDWARE_DC, hardwarePreemphasis.getDC());
         setParamValue(HARDWARE_A0, hardwarePreemphasis.getA0());
-
         */
 
 public class HardwarePreemphasis {
@@ -40,7 +37,7 @@ public class HardwarePreemphasis {
         while (A0.size() < 3) {
             A0.add(0);
         }
-        if (DeviceManager.getInstance().getGradientHandler().isPresent()){
+        if (DeviceManager.getInstance().getGradientHandler().isPresent()) {
             GradientHandler gradientHandler = DeviceManager.getInstance().getGradientHandler().get();
             if (gradientHandler.isAvailable() && gradientHandler.isConnected()) {
                 for (String param : gradientHandler.getAll()) {

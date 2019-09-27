@@ -1,6 +1,6 @@
 package rs2d.sequence.common;
 
-import rs2d.sequence.gradientecho.S;
+
 import rs2d.spinlab.data.transformPlugin.TransformPlugin;
 import rs2d.spinlab.hardware.devices.DeviceManager;
 import rs2d.spinlab.instrument.util.GradientMath;
@@ -8,10 +8,12 @@ import rs2d.spinlab.sequence.Sequence;
 import rs2d.spinlab.sequence.table.Shape;
 import rs2d.spinlab.sequence.table.Table;
 import rs2d.spinlab.sequence.table.Utility;
+import rs2d.spinlab.sequenceGenerator.GeneratorSequenceParamEnum;
 import rs2d.spinlab.tools.table.Order;
 
 /**
  * Class Gradient
+ * V2.6 constructor with generatorSequenceParam .name() V2019.06
  * V2.5- getNearestSW Sup Inf for Cam4
  * V2.4- 2019-06-06 JR from TOF Flow compensation
  * V2.3- 2019-06-06 JR from DW EPI
@@ -72,14 +74,14 @@ public class Gradient {
         init();
     }
 
-    public static Gradient createGradient(Sequence sequence, S amplitudeTab, S flat_TimeTab, S shapeUpTab, S shapeDownTab, S rampTimeTab) {
-        return new Gradient(sequence.getPublicTable(amplitudeTab.toString()), sequence.getTable(flat_TimeTab.toString()), (Shape) sequence.getTable(shapeUpTab.toString()),
-                (Shape) sequence.getPublicTable(shapeDownTab.toString()), sequence.getTable(rampTimeTab.toString()), sequence.getTable(rampTimeTab.toString()));
+    public static Gradient createGradient(Sequence sequence, GeneratorSequenceParamEnum amplitudeTab, GeneratorSequenceParamEnum flat_TimeTab, GeneratorSequenceParamEnum shapeUpTab, GeneratorSequenceParamEnum shapeDownTab, GeneratorSequenceParamEnum rampTimeTab) {
+        return new Gradient(sequence.getPublicTable(amplitudeTab.name()), sequence.getTable(flat_TimeTab.name()), (Shape) sequence.getTable(shapeUpTab.name()),
+                (Shape) sequence.getPublicTable(shapeDownTab.name()), sequence.getTable(rampTimeTab.name()), sequence.getTable(rampTimeTab.name()));
     }
 
-    public static Gradient createGradient(Sequence sequence, S amplitudeTab, S flat_TimeTab, S shapeUpTab, S shapeDownTab, S rampTimeUpTab, S rampTimeDownTab) {
-        return new Gradient(sequence.getPublicTable(amplitudeTab.toString()), sequence.getTable(flat_TimeTab.toString()), (Shape) sequence.getTable(shapeUpTab.toString()),
-                (Shape) sequence.getPublicTable(shapeDownTab.toString()), sequence.getTable(rampTimeUpTab.toString()), sequence.getTable(rampTimeDownTab.toString()));
+    public static Gradient createGradient(Sequence sequence, GeneratorSequenceParamEnum amplitudeTab, GeneratorSequenceParamEnum flat_TimeTab, GeneratorSequenceParamEnum shapeUpTab, GeneratorSequenceParamEnum shapeDownTab, GeneratorSequenceParamEnum rampTimeUpTab, GeneratorSequenceParamEnum rampTimeDownTab) {
+        return new Gradient(sequence.getPublicTable(amplitudeTab.name()), sequence.getTable(flat_TimeTab.name()), (Shape) sequence.getTable(shapeUpTab.name()),
+                (Shape) sequence.getPublicTable(shapeDownTab.name()), sequence.getTable(rampTimeUpTab.name()), sequence.getTable(rampTimeDownTab.name()));
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -333,7 +335,7 @@ public class Gradient {
      * @return equivalentTime :
      */
     public double prepareEquivalentTime() {
-        if (grad_shape_rise_time == Double.NaN) {
+        if (Double.isNaN(grad_shape_rise_time)) {
             computeShapeRiseTime();
         }
         minTopTime = flatTimeTable.get(0).doubleValue();
@@ -356,6 +358,13 @@ public class Gradient {
         double gradArea = (grad.getEquivalentTimeBlock(3)[0] + grad.getEquivalentTimeFlat(grad.flatTimeTable, ratio)[0]) * amp;
         staticArea = -gradArea;
         calculateStaticAmplitude();
+        if (!Double.isNaN(grad.getAmplitudeArray(0))) {
+            amplitudeArray = new double[grad.getSteps()];
+            for (int i = 0; i < grad.getSteps(); i++) {
+                amplitudeArray[i] = -grad.getAmplitudeArray(i);
+            }
+            steps = grad.getSteps();
+        }
     }
 
     public void refocalizeGradientWithFlowComp(Gradient grad, double ratioTime, Gradient gradflowcomp) {

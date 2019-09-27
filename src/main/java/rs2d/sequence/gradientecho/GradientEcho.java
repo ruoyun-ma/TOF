@@ -259,7 +259,7 @@ public class GradientEcho extends BaseSequenceGenerator {
 
 
         isDynamic = getBoolean(DYNAMIC_SEQUENCE);
-        numberOfDynamicAcquisition = isDynamic ? ((NumberParam) getParam(DYN_NUMBER_OF_ACQUISITION)).getValue().intValue() : 1;
+        numberOfDynamicAcquisition = isDynamic ? getInt(DYN_NUMBER_OF_ACQUISITION) : 1;
         isDynamic = isDynamic && (numberOfDynamicAcquisition > 1);
         isDynamicMinTime = getBoolean(DYNAMIC_MIN_TIME);
 
@@ -709,7 +709,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         // ------------------------------------------
         // delays for sequence instructions
         // ------------------------------------------
-        setSequenceTableSingleValue(Time_min_instruction, minInstructionDelay);
+        set(Time_min_instruction, minInstructionDelay);
 
         // -----------------------------------------------
         // calculate gradient equivalent rise time
@@ -723,7 +723,7 @@ public class GradientEcho extends BaseSequenceGenerator {
             notifyOutOfRangeParam(GRADIENT_RISE_TIME, new_grad_rise_time, ((NumberParam) getParam(GRADIENT_RISE_TIME)).getMaxValue(), "Gradient ramp time too short ");
             grad_rise_time = new_grad_rise_time;
         }
-        setSequenceTableSingleValue(Time_grad_ramp, grad_rise_time);
+        set(Time_grad_ramp, grad_rise_time);
 
         double grad_shape_rise_factor_up = Utility.voltageFillingFactor(getSequenceTable(Grad_shape_rise_up));
         double grad_shape_rise_factor_down = Utility.voltageFillingFactor(getSequenceTable(Grad_shape_rise_down));
@@ -734,7 +734,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         // -----------------------------------------------
 
         // GE RF pulse
-        setSequenceTableSingleValue(Time_tx, txLength90);
+        set(Time_tx, txLength90);
         RFPulse pulseTX = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_amp, Tx_phase, Time_tx, Tx_shape, Tx_shape_phase, Tx_freq_offset);
 
         // Fat SAT RF pulse
@@ -742,21 +742,21 @@ public class GradientEcho extends BaseSequenceGenerator {
         double tx_bandwidth_factor_90_fs = getTx_bandwidth_factor(FATSAT_TX_SHAPE, TX_BANDWIDTH_FACTOR, TX_BANDWIDTH_FACTOR_3D);
         double tx_length_90_fs = is_fatsat_enabled ? tx_bandwidth_factor_90_fs / tx_bandwidth_90_fs : minInstructionDelay;
         getParam(FATSAT_TX_LENGTH).setValue(tx_length_90_fs);
-        setSequenceTableSingleValue(Time_tx_fatsat, tx_length_90_fs);
+        set(Time_tx_fatsat, tx_length_90_fs);
         //
         double grad_fatsat_application_time = getDouble(FATSAT_GRAD_APP_TIME);
-        setSequenceTableSingleValue(Time_grad_fatsat, is_fatsat_enabled ? grad_fatsat_application_time : minInstructionDelay);
+        set(Time_grad_fatsat, is_fatsat_enabled ? grad_fatsat_application_time : minInstructionDelay);
         //
-        setSequenceTableSingleValue(Time_before_fatsat_pulse, minInstructionDelay);
-        setSequenceTableSingleValue(Time_grad_ramp_fatsat, is_fatsat_enabled ? grad_rise_time : minInstructionDelay);
+        set(Time_before_fatsat_pulse, minInstructionDelay);
+        set(Time_grad_ramp_fatsat, is_fatsat_enabled ? grad_rise_time : minInstructionDelay);
         //
         RFPulse pulseTXFatSat = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_amp_fatsat, Tx_phase_fatsat, Time_tx_fatsat, Tx_shape_fatsat, Tx_shape_phase_fatsat, Freq_offset_tx_fatsat);
 
         // SAT Band or TOF RF pulse
-        setSequenceTableSingleValue(Time_grad_ramp_sb, is_satband_enabled || is_tof_enabled ? grad_rise_time : minInstructionDelay);
-        setSequenceTableSingleValue(Time_grad_sb, is_satband_enabled || is_tof_enabled ? 0.0005 : minInstructionDelay);
+        set(Time_grad_ramp_sb, is_satband_enabled || is_tof_enabled ? grad_rise_time : minInstructionDelay);
+        set(Time_grad_sb, is_satband_enabled || is_tof_enabled ? 0.0005 : minInstructionDelay);
         double tx_length_sb = is_satband_enabled || is_tof_enabled ? txLength90 : minInstructionDelay;
-        setSequenceTableSingleValue(Time_tx_sb, tx_length_sb);
+        set(Time_tx_sb, tx_length_sb);
         //
         RFPulse pulseTXSatBandTOF = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_amp_sb, Tx_phase_sb, Time_tx_sb, Tx_shape_sb, Tx_shape_phase_sb, Freq_offset_tx_sb);
         //
@@ -804,7 +804,7 @@ public class GradientEcho extends BaseSequenceGenerator {
             if (!pulseTXFatSat.checkPower(is_fatsat_enabled ? 90.0 : 0.0, observeFrequency + tx_frequency_offset_90_fs, nucleus)) {
                 tx_length_90_fs = pulseTXFatSat.getPulseDuration();
                 System.out.println(" tx_length_90_fs: " + tx_length_90_fs);
-                setSequenceTableSingleValue(Time_tx_fatsat, tx_length_90_fs);
+                set(Time_tx_fatsat, tx_length_90_fs);
                 getParam(FATSAT_TX_LENGTH).setValue(tx_length_90_fs);
 //                notifyOutOfRangeParam(TX_LENGTH, pulseTXFatSat.getPulseDuration(), ((NumberParam) getParam(TX_LENGTH)).getMaxValue(), "Pulse length too short to reach RF power with this pulse shape");
             }
@@ -812,7 +812,7 @@ public class GradientEcho extends BaseSequenceGenerator {
             if (!pulseTXSatBandTOF.checkPower(flip_angle_satband, observeFrequency + tx_frequency_offset_90_fs, nucleus)) {
 //                double tx_length_sb = pulseTXSatBand.getPulseDuration();
 //                notifyOutOfRangeParam(TX_LENGTH, pulseTXFatSat.getPulseDuration(), ((NumberParam) getParam(TX_LENGTH)).getMaxValue(), "Pulse length too short to reach RF power with this pulse shape");
-                setSequenceTableSingleValue(Time_tx_sb, pulseTXSatBandTOF.getPulseDuration());
+                set(Time_tx_sb, pulseTXSatBandTOF.getPulseDuration());
             }
             RFPulse pulseMaxPower = pulseTX.getPower() > pulseTXFatSat.getPower() ? pulseTX : pulseTXFatSat;
             pulseMaxPower = pulseMaxPower.getPower() > pulseTXSatBandTOF.getPower() ? pulseMaxPower : pulseTXSatBandTOF;
@@ -862,7 +862,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         // -----------------------------------------------
         // calculate ADC observation time
         // -----------------------------------------------
-        setSequenceTableSingleValue(Time_rx, observation_time);
+        set(Time_rx, observation_time);
 
         // -----------------------------------------------
         // calculate READ gradient amplitude
@@ -884,12 +884,12 @@ public class GradientEcho extends BaseSequenceGenerator {
         // calculate READ_PREP  & SLICE_REF/PHASE_3D  &  PHASE_2D
         // -------------------------------------------------------------------------------------------------
         double grad_phase_application_time = getDouble(GRADIENT_PHASE_APPLICATION_TIME);
-        setSequenceTableSingleValue(Time_grad_phase_top, grad_phase_application_time);
+        set(Time_grad_phase_top, grad_phase_application_time);
         double readGradientRatio = getDouble(PREPHASING_READ_GRADIENT_RATIO);
 
         double flowcomp_dur = getDouble(FLOWCOMP_DURATION);
-        setSequenceTableSingleValue(Time_grad_ramp_flowcomp, is_flowcomp ? grad_rise_time : minInstructionDelay);
-        setSequenceTableSingleValue(Time_grad_top_flowcomp, is_flowcomp ? flowcomp_dur : minInstructionDelay);
+        set(Time_grad_ramp_flowcomp, is_flowcomp ? grad_rise_time : minInstructionDelay);
+        set(Time_grad_top_flowcomp, is_flowcomp ? flowcomp_dur : minInstructionDelay);
 
         boolean is_k_s_centred = getBoolean(KS_CENTERED);  // symetrique around 0 or go through k0
 
@@ -959,7 +959,7 @@ public class GradientEcho extends BaseSequenceGenerator {
             double grad_phase_application_time_min = ceilToSubDecimal(grad_area_max / 100.0 - grad_shape_rise_time, 6);
             notifyOutOfRangeParam(GRADIENT_PHASE_APPLICATION_TIME, grad_phase_application_time_min, ((NumberParam) getParam(GRADIENT_PHASE_APPLICATION_TIME)).getMaxValue(), "Gradient application time too short to reach this pixel dimension");
             grad_phase_application_time = grad_phase_application_time_min;
-            setSequenceTableSingleValue(Time_grad_phase_top, grad_phase_application_time);
+            set(Time_grad_phase_top, grad_phase_application_time);
             gradPhase2D.rePrepare();
             gradSliceRefPhase3D.rePrepare();
             gradReadPrep.rePrepare();
@@ -979,10 +979,10 @@ public class GradientEcho extends BaseSequenceGenerator {
         // Flyback init and gradient calculation
         // -------------------------------------------------------------------------------------------------
         double time_flyback = is_flyback ? getDouble(GRADIENT_FLYBACK_TIME) : minInstructionDelay;
-        setSequenceTableSingleValue(Time_flyback, time_flyback);
+        set(Time_flyback, time_flyback);
 
         double time_flyback_ramp = is_flyback ? grad_rise_time : minInstructionDelay;
-        setSequenceTableSingleValue(Time_grad_ramp_flyback, time_flyback_ramp);
+        set(Time_grad_ramp_flyback, time_flyback_ramp);
 
         Gradient gradReadoutFlyback = Gradient.createGradient(getSequence(), Grad_amp_flyback, Time_flyback, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flyback);
         if (is_flyback) {
@@ -993,7 +993,7 @@ public class GradientEcho extends BaseSequenceGenerator {
                 double grad_time_flyback_min = ceilToSubDecimal(grad_area_max / 100.0 - grad_shape_rise_time, 5);
                 time_flyback = grad_time_flyback_min;
                 getParam(GRADIENT_FLYBACK_TIME).setValue(time_flyback);
-                setSequenceTableSingleValue(Time_flyback, time_flyback);
+                set(Time_flyback, time_flyback);
                 gradReadoutFlyback.rePrepare();
             }
             gradReadoutFlyback.applyAmplitude();
@@ -1060,7 +1060,7 @@ public class GradientEcho extends BaseSequenceGenerator {
             if (echo_spacing < echo_spacing_min) {
                 if (is_interleaved_echo_train) {
                     double effectiveEchoSpacingMin = echo_spacing_min / numberOfnumInterleavedEchoTrain;
-                    getUnreachParamExceptionManager().addParam("INTERLEAVED_EFF_ECHO_SPACING", effectiveEchoSpacing, effectiveEchoSpacingMin, ((NumberParam) getParam(INTERLEAVED_EFF_ECHO_SPACING)).getMaxValue(), "Effective echo spacing too short for interleaved mode.");
+                    notifyOutOfRangeParam(INTERLEAVED_EFF_ECHO_SPACING, effectiveEchoSpacingMin, ((NumberParam) getParam(INTERLEAVED_EFF_ECHO_SPACING)).getMaxValue(), "Effective echo spacing too short for interleaved mode.");
 //                    effectiveEchoSpacing = effectiveEchoSpacingMin;
 //                    getParam("INTERLEAVED_EFF_ECHO_SPACING").setValue( effectiveEchoSpacing);
                 } else {
@@ -1073,7 +1073,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         } else {
             delay2 = delay2_min;
         }
-        setSequenceTableSingleValue(Time_TE_delay2, delay2);
+        set(Time_TE_delay2, delay2);
 
         //--------------------------------------------------------------------------------------
         //  External triggering
@@ -1111,7 +1111,7 @@ public class GradientEcho extends BaseSequenceGenerator {
             sat_flow_time_corr = (sat_flow_time_corr < 0) ? 0.0001 : sat_flow_time_corr;
 //                System.out.println("sat_flow_time_corr" + sat_flow_time_corr);
         }
-        setSequenceTableSingleValue(Time_flow, sat_flow_time_corr);
+        set(Time_flow, sat_flow_time_corr);
 
 
         // -------------------------------------------------------------------------------------------------
@@ -1125,7 +1125,7 @@ public class GradientEcho extends BaseSequenceGenerator {
             notifyOutOfRangeParam(GRADIENT_SPOILER_TIME, grad_phase_application_time, ((NumberParam) getParam(GRADIENT_SPOILER_TIME)).getMaxValue(), "Gradient Spoiler top time must be longer than Phase Application Time");
             grad_spoiler_application_time = grad_phase_application_time;
         }
-        setSequenceTableSingleValue(Time_grad_spoiler_top, grad_spoiler_application_time);
+        set(Time_grad_spoiler_top, grad_spoiler_application_time);
 
         Gradient gradSliceSpoiler = Gradient.createGradient(getSequence(), Grad_amp_spoiler_slice, Time_grad_spoiler_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
         Gradient gradPhaseSpoiler = Gradient.createGradient(getSequence(), Grad_amp_spoiler_phase, Time_grad_spoiler_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
@@ -1203,8 +1203,8 @@ public class GradientEcho extends BaseSequenceGenerator {
             tr_delay = (tr - (time_seq_to_end_spoiler + last_delay + min_flush_delay)) / slices_acquired_in_single_scan - minInstructionDelay;
             time_tr_delay.add(tr_delay);
         }
-        setSequenceTableSingleValue(Time_last_delay, last_delay);
-        setSequenceTableSingleValue(Time_flush_delay, min_flush_delay);
+        set(Time_last_delay, last_delay);
+        set(Time_flush_delay, min_flush_delay);
 
         //----------------------------------------------------------------------
         // DYNAMIC SEQUENCE
@@ -1229,7 +1229,7 @@ public class GradientEcho extends BaseSequenceGenerator {
             }
             interval_between_frames_delay = Math.max(time_between_frames - frame_acquisition_time, min_flush_delay);
         }
-        setSequenceTableSingleValue(Time_btw_dyn_frames, interval_between_frames_delay);
+        set(Time_btw_dyn_frames, interval_between_frames_delay);
         // ------------------------------------------------------------------
         // Total Acquisition Time
         // ------------------------------------------------------------------
@@ -1242,7 +1242,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         set(Phase_reset, PHASE_RESET);
 
         // ----------- init Freq offset---------------------
-        setSequenceTableSingleValue(Frequency_offset_init, 0.0);// PSD should start with a zero offset frequency pulse
+        set(Frequency_offset_init, 0.0);// PSD should start with a zero offset frequency pulse
 
         // ------------------------------------------------------------------
         //calculate TX FREQUENCY offsets tables for slice positionning
@@ -1440,7 +1440,7 @@ public class GradientEcho extends BaseSequenceGenerator {
                 double min_fatsat_application_time = Math.max(gradFatsatRead.getMinTopTime(), Math.max(gradFatsatPhase.getMinTopTime(), gradFatsatSlice.getMinTopTime()));
                 notifyOutOfRangeParam(FATSAT_GRAD_APP_TIME, min_fatsat_application_time, ((NumberParam) getParam(FATSAT_GRAD_APP_TIME)).getMaxValue(), "FATSAT_GRAD_APP_TIME too short to get correct Spoiling");
                 grad_fatsat_application_time = min_fatsat_application_time;
-                setSequenceTableSingleValue(Time_grad_fatsat, grad_fatsat_application_time);
+                set(Time_grad_fatsat, grad_fatsat_application_time);
                 gradFatsatRead.rePrepare();
                 gradFatsatPhase.rePrepare();
                 gradFatsatSlice.rePrepare();
@@ -1544,7 +1544,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         // ----------------------------------------------------------------------------------------------
         // modify RX PHASE TABLE to handle OFF CENTER FOV 2D in both cases or PHASE CYCLING
         // ----------------------------------------------------------------------------------------------
-        setSequenceTableSingleValue(Rx_phase, 0);
+        set(Rx_phase, 0);
 
         //--------------------------------------------------------------------------------------
         //Export DICOM
@@ -1878,11 +1878,6 @@ public class GradientEcho extends BaseSequenceGenerator {
 
     private double roundToDecimal(double numberToBeRounded, double order) {
         return Math.round(numberToBeRounded * Math.pow(10, order)) / Math.pow(10, order);
-    }
-
-    private void setSequenceTableSingleValue(S tableName, double... values) {
-        // uses Order.One because there are no tables in this dimension: compilation issue
-        setSequenceTableValues(tableName, Order.FourLoop, values);
     }
 
     private Table setSequenceTableValues(S tableName, Order order, double... values) {

@@ -631,7 +631,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Angle);
             param.setMinValue(-360.0);
             param.setMaxValue(360.0);
-            param.setValue(30.0);
+            param.setValue(90.0);
             param.setDefaultValue(5.0);
             return param;
         }
@@ -2474,7 +2474,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAmp);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(100.0);
+            param.setValue(80.1785101319833);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2505,7 +2505,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAtt);
             param.setMinValue(0.0);
             param.setMaxValue(63.0);
-            param.setValue(49.0);
+            param.setValue(39.0);
             param.setDefaultValue(36.0);
             return param;
         }

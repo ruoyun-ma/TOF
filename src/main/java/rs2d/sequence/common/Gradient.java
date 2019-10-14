@@ -1,6 +1,8 @@
 package rs2d.sequence.common;
 
 
+import static rs2d.sequence.gradientecho.U.*;
+
 import rs2d.spinlab.data.transformPlugin.TransformPlugin;
 import rs2d.spinlab.hardware.devices.DeviceManager;
 import rs2d.spinlab.instrument.util.GradientMath;
@@ -10,6 +12,8 @@ import rs2d.spinlab.sequence.table.Table;
 import rs2d.spinlab.sequence.table.Utility;
 import rs2d.spinlab.sequenceGenerator.GeneratorSequenceParamEnum;
 import rs2d.spinlab.tools.table.Order;
+
+import java.util.ArrayList;
 
 /**
  * Class Gradient
@@ -804,6 +808,31 @@ public class Gradient {
             }
         }
 
+    }
+
+
+
+    //    Extract traj ordering from traj list
+    public void reoderPhaseEncodingTraj2D(ArrayList<Integer> traj) {
+        double[] newTable = new double[traj.size() / 2];
+        System.out.println("traj.size() " + traj.size());
+        for (int j = 0; j < traj.size() / 2; j++) {
+            newTable[j] = amplitudeArray[traj.get(j * 2).intValue()];
+        }
+        amplitudeArray = newTable;
+        steps = traj.size() / 2;
+
+    }
+
+    //    Extract traj ordering from traj list
+    public void reoderPhaseEncodingTraj3D(ArrayList<Integer> traj) {
+        double[] newTable = new double[traj.size() / 2];
+        System.out.println("traj.size() " + traj.size());
+        for (int j = 0; j < traj.size() / 2; j++) {
+            newTable[j] = amplitudeArray[traj.get(j * 2 + 1).intValue()];
+        }
+        amplitudeArray = newTable;
+        steps = traj.size() / 2;
     }
 
 

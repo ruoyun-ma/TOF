@@ -101,6 +101,8 @@ public class GradientEcho extends BaseSequenceGenerator {
     private int nb_scan_4d;
     private int nbOfInterleavedSlice;
 
+    ArrayList<Integer> zTraj = new ArrayList<>();
+    int nbPE;
     private int echoTrainLength;
     private double echo_spacing;
 
@@ -206,6 +208,13 @@ public class GradientEcho extends BaseSequenceGenerator {
                 SequenceTool.ExtTrigSource.Ext1_AND_Ext2.name(),
                 SequenceTool.ExtTrigSource.Ext1_XOR_Ext2.name()));
         triggerChanel.setRestrictedToSuggested(true);
+
+        // KSPACE_FILLING
+        TextParam ksFilling = getParam(KSPACE_FILLING);
+        ksFilling.setSuggestedValues(asList("Linear", "Centric", "3DElliptic"));
+        ksFilling.setRestrictedToSuggested(true);
+
+
     }
 
     // ==============================
@@ -441,15 +450,37 @@ public class GradientEcho extends BaseSequenceGenerator {
         acqMatrixDimension3D = is_partial_oversampling ? (int) Math.round(acqMatrixDimension3D / 0.8 / 2) * 2 : acqMatrixDimension3D;
         userMatrixDimension3D = is_partial_oversampling ? (int) Math.round(userMatrixDimension3D / 0.8 / 2) * 2 : userMatrixDimension3D;
 
+        // -----------------------------------------------
+        // 2D 3D managment 2/2: Manage PE trajectory and update  dimension
+        // -----------------------------------------------
+        boolean is_k_s_centred = getBoolean(KS_CENTERED);  // symetrique around 0 or go through k0
         if (!isMultiplanar) {
-            nb_scan_2d = acqMatrixDimension2D;
-            nb_scan_3d = acqMatrixDimension3D;
+            zTraj = trajEllipticTableBuilder(acqMatrixDimension2D, acqMatrixDimension3D, is_k_s_centred);
+
+            System.out.println("zTraj.size() " + zTraj.size());
+//        split the PE in 2D 3D with 200 < 2D < 500
+            int[] nb2D_3D_Dummy = getNbScans2D3DForUpdateDimension(200, 500, zTraj);
+            nb_scan_2d = nb2D_3D_Dummy[0];
+            nb_scan_3d = nb2D_3D_Dummy[1];
+            acquisitionMatrixDimension2D = nb2D_3D_Dummy[0];
+            acquisitionMatrixDimension3D = nb2D_3D_Dummy[1];
+
+            System.out.println("zTraj.size() " + zTraj.size());
+            System.out.println("nbPE " + nbPE);
         } else {
             nb_scan_2d = acqMatrixDimension2D;
             nb_scan_3d = nb_of_shoot_3d;
+
+            acquisitionMatrixDimension2D = acqMatrixDimension2D;
+            acquisitionMatrixDimension3D = acqMatrixDimension3D;
         }
-        acquisitionMatrixDimension2D = acqMatrixDimension2D;
-        acquisitionMatrixDimension3D = acqMatrixDimension3D;
+        ArrayList<Integer> zTrajMatrix = new ArrayList<>();
+        zTrajMatrix.add(acquisitionMatrixDimension1D);
+        zTrajMatrix.add(acqMatrixDimension2D);
+        zTrajMatrix.add(acqMatrixDimension3D);
+        zTrajMatrix.add(acquisitionMatrixDimension4D);
+        getParam(Z_TRAJ_MATRIX).setValue(zTrajMatrix);
+        getParam(Z_TRAJ_POSITION).setValue(zTraj);
 
         // -----------------------------------------------
         // 3D managment 2/2: dimension, FOV...
@@ -536,6 +567,13 @@ public class GradientEcho extends BaseSequenceGenerator {
                 break;
             case "Centric":
                 getParam(TRANSFORM_PLUGIN).setValue("Centric4D");
+                break;
+            case "3DElliptic":
+                if (isMultiplanar) {
+                    kspace_filling = "Linear";
+                    getParam(KSPACE_FILLING).setValue(kspace_filling);
+                    break;
+                }
                 break;
             default:
                 kspace_filling = "Linear";
@@ -663,6 +701,48 @@ public class GradientEcho extends BaseSequenceGenerator {
         HardwareShim hardwareShim = new HardwareShim();
         getParam(HARDWARE_SHIM).setValue(hardwareShim.getValue());
         getParam(HARDWARE_SHIM_LABEL).setValue(hardwareShim.getLabel());
+    }
+
+    /**
+     * Split the traj table into 2D and 3D scans, according to memory limitation,
+     * NTraj + dummy = 2D * 3D
+     * will find the 2D, 3D couple that generates the least number of dummies
+     * the Dummy are added at the end of traj
+     * note: 2048 Gradient table split in 2 x 1024 when updatedim == true
+     *
+     * @param limMin2D min number of nb_2D
+     * @param limMax2D max number of nb_2D
+     * @param traj     table with indices in
+     * @return int[3] = nb_2D ,nb_3D, nd_dummy
+     */
+    private int[] getNbScans2D3DForUpdateDimension(int limMin2D, int limMax2D, ArrayList<Integer> traj) {
+        int[] nb2D_3D_Dummy = new int[3];
+        nbPE = traj.size() / 2;
+        if (nbPE > 2 * limMax2D) {   //  << Todo exact number of gradient left
+            int tmp22 = limMax2D;
+            int newNbPE = 0;
+            for (int i = limMin2D; i < limMax2D; i++) {
+                int tmpAdditionnalDummy = (int) Math.ceil(nbPE * 1f / (i)) * i - nbPE;
+                //  System.out.println(i+"  "+ tmpAdditionnalDummy+"   "+(int) Math.ceil(totalAcquisitionSpoke * 1f / (i)) * i+"   "+(int) Math.ceil(totalAcquisitionSpoke * 1f / (i)) * i);
+                if (tmpAdditionnalDummy <= tmp22) {
+                    tmp22 = tmpAdditionnalDummy;
+                    newNbPE = (int) Math.ceil(nbPE * 1f / (i)) * i;
+                    nb2D_3D_Dummy[0] = i;
+                }
+            }
+            nb2D_3D_Dummy[2] = newNbPE - nbPE;
+            nbPE = newNbPE;
+            nb2D_3D_Dummy[1] = newNbPE / nb2D_3D_Dummy[0];
+            for (int i = 0; i < nb2D_3D_Dummy[2]; i++) {
+                System.out.println(" Add  additionnalDummy " + nb2D_3D_Dummy[2]);
+                traj.add(traj.get(traj.size() - 1));
+                traj.add(traj.get(traj.size() - 1));
+            }
+        } else {
+            nb2D_3D_Dummy[0] = nbPE;
+            nb2D_3D_Dummy[1] = 1;
+        }
+        return nb2D_3D_Dummy;
     }
 
     private int floorEven(double value) {
@@ -945,7 +1025,15 @@ public class GradientEcho extends BaseSequenceGenerator {
 //                delta = to do calculate the time from the PE to the Echo
 //               gradSliceRefPhase3D.preparePhaseEncodingForCheckWithFlowComp(is_keyhole_allowed ? userMatrixDimension3D : acqMatrixDimension3D, acqMatrixDimension3D, slice_thickness_excitation, is_k_s_centred, gradSliceRefPhase3DFlowComp);
             }
-            gradSliceRefPhase3D.reoderPhaseEncoding3D(plugin, acqMatrixDimension3D);
+            if (kspace_filling.compareTo("3DElliptic") == 0) {
+                System.out.println("gradSliceRefPhase3D "+gradSliceRefPhase3D.getAmplitudeArray(0));
+                gradSliceRefPhase3D.reoderPhaseEncodingTraj3D(zTraj);
+                System.out.println("gradSliceRefPhase3D "+gradSliceRefPhase3D.getAmplitudeArray(0));
+            } else {
+                System.out.println("gradSliceRefPhase3D "+gradSliceRefPhase3D.getAmplitudeArray(0));
+                gradSliceRefPhase3D.reoderPhaseEncoding3D(plugin, acqMatrixDimension3D);
+                System.out.println("gradSliceRefPhase3D "+gradSliceRefPhase3D.getAmplitudeArray(0));
+            }
         }
 
         // pre-calculate PHASE_2D
@@ -962,7 +1050,11 @@ public class GradientEcho extends BaseSequenceGenerator {
 //                delta = to do calculate the time from the PE to the Echo
 //                gradPhase2D.preparePhaseEncodingForCheckWithFlowComp(is_keyhole_allowed ? userMatrixDimension2D : acqMatrixDimension2D, acqMatrixDimension2D, fovPhase, is_k_s_centred, gradPhase2DFlowComp, delta);
             }
-            gradPhase2D.reoderPhaseEncoding(plugin, 1, acqMatrixDimension2D, acquisitionMatrixDimension1D);
+            if (kspace_filling.compareTo("3DElliptic") == 0) {
+                gradPhase2D.reoderPhaseEncodingTraj2D(zTraj);
+            } else {
+                gradPhase2D.reoderPhaseEncoding(plugin, 1, acquisitionMatrixDimension2D, acquisitionMatrixDimension1D);
+            }
         }
 
         // Check if enougth time for 2D_PHASE, 3D_PHASE SLICE_REF or READ_PREP
@@ -977,7 +1069,13 @@ public class GradientEcho extends BaseSequenceGenerator {
             gradSliceRefPhase3D.rePrepare();
             gradReadPrep.rePrepare();
         }
-        gradSliceRefPhase3D.applyAmplitude(Order.Three);
+
+        if (kspace_filling.compareTo("3DElliptic") == 0) {
+            gradSliceRefPhase3D.applyAmplitude(Order.Two);
+        }else{
+            gradSliceRefPhase3D.applyAmplitude(Order.Three);
+        }
+
         gradPhase2D.applyAmplitude(Order.Two);
 
         gradReadPrep.applyAmplitude();
@@ -2006,6 +2104,40 @@ public class GradientEcho extends BaseSequenceGenerator {
         } while (exit);
         return new_divisor;
     }
+
+
+    /**
+     * From 2D x 3D matrix, return the indices of the scaned PE within elliptic: corner not scans
+     *
+     * @param matrixDimension2D : 2D dimension
+     * @param matrixDimension3D : 2D dimension
+     * @param isKSCentred       : true : symetric k'space around zero; false: always go trough k0
+     * @return matrix with coordinate of the sampled points: [k2D0, k3D0,     k2D1, k3D1,     k2D2, k3D2,     k2D3, k3D3    ..... ]
+     */
+    public ArrayList<Integer> trajEllipticTableBuilder(int matrixDimension2D, int matrixDimension3D, boolean isKSCentred) {
+        double Center2D, Center3D;
+        if (isKSCentred) {
+            Center2D = 1 / 2.0;// symetric k'space around zero
+            Center3D = 1 / 2.0;// symetric k'space around zero
+        } else {
+            Center2D = 1 / 2.0 + ((matrixDimension2D + 1) % 2) / (2.0 * ((float) matrixDimension2D - 1));// always go trough k0
+            Center3D = 1 / 2.0 + ((matrixDimension3D + 1) % 2) / (2.0 * ((float) matrixDimension3D - 1));// always go trough k0
+        }
+        Center2D *= matrixDimension2D;
+        Center3D *= matrixDimension3D;
+
+        ArrayList<Integer> position = new ArrayList<>();
+        for (int j = 0; j < matrixDimension2D; j++) {
+            for (int k = 0; k < matrixDimension3D; k++) {
+                if (Math.pow((j - Center2D) / Center2D, 2) + Math.pow((k - Center3D) / Center3D, 2) < 1.0) {
+                    position.add(j);
+                    position.add(k);
+                }
+            }
+        }
+        return position;
+    }
+
 
     public List<RoleEnum> getPluginAccess() {
         return Collections.singletonList(RoleEnum.User);

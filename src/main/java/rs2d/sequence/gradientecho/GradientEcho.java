@@ -2008,7 +2008,7 @@ public class GradientEcho extends BaseSequenceGenerator {
     }
 
     public String getVersion() {
-        return "MasterCam4NoTTL";
+        return "3DfreeTrajectory";
     }
     //</editor-fold>
 }

@@ -3271,7 +3271,7 @@
             <key>TX_AMP_90</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP_90</name>
-                <value>80.1785101319833</value>
+                <value>87.90189832345271</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Amplitude of the transmitter</description>
                 <displayedName>TX_AMP_90</displayedName>
@@ -3302,7 +3302,7 @@
             <key>TX_ATT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_ATT</name>
-                <value>39.0</value>
+                <value>49.0</value>
                 <defaultValue>36.0</defaultValue>
                 <description>Emission attenuation</description>
                 <displayedName>TX_ATT</displayedName>

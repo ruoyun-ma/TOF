@@ -45,6 +45,7 @@ public enum S implements GeneratorSequenceParamEnum {
     Tx_att("Tx_att"),
     Tx_frequency("Tx_frequency"),
     Tx_nucleus("Tx_nucleus"),
+    Update_dimension("Update_dimension"),
     Freq_offset_tx_fatsat("Freq_offset_tx_fatsat"),
     Freq_offset_tx_fatsat_comp("Freq_offset_tx_fatsat_comp"),
     Freq_offset_tx_fatsat_prep("Freq_offset_tx_fatsat_prep"),

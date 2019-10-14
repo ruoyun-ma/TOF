@@ -567,6 +567,8 @@ public class GradientEcho extends BaseSequenceGenerator {
         set(Nb_1d, nb_scan_1d);
         set(Nb_2d, nb_scan_2d);
         set(Nb_3d, nb_scan_3d);
+        set(Update_dimension, (!isMultiplanar & nb_scan_3d > 1) ? SequenceTool.UpdateDimensionEnum.ThreeD.getText() : SequenceTool.UpdateDimensionEnum.Disable.getText());
+
         set(Nb_4d, nb_scan_4d);
         // set the calculated Loop dimensions
         set(Nb_echo, echoTrainLength - 1);

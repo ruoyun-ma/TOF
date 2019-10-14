@@ -79,8 +79,12 @@ public class GradientEcho extends BaseSequenceGenerator {
     private boolean isMultiplanar;
 
     private int acquisitionMatrixDimension1D;
-    private int acquisitionMatrixDimension2D;
-    private int acquisitionMatrixDimension3D;
+    private int acqMatrixDimension2D; // length of the sampled k-space in 2D direction
+    private int acqMatrixDimension3D; // length of the sampled k-space in 3D direction
+ 
+    private int acquisitionMatrixDimension2D; // for dataset dimension
+    private int acquisitionMatrixDimension3D; // for dataset dimension
+
     private int acquisitionMatrixDimension4D;
     private int preScan;
 
@@ -225,8 +229,8 @@ public class GradientEcho extends BaseSequenceGenerator {
         isMultiplanar = getBoolean(MULTI_PLANAR_EXCITATION);
 
 //        acquisitionMatrixDimension1D = getInt(ACQUISITION_MATRIX_DIMENSION_1D);
-        acquisitionMatrixDimension2D = getInt(ACQUISITION_MATRIX_DIMENSION_2D);
-        acquisitionMatrixDimension3D = getInt(ACQUISITION_MATRIX_DIMENSION_3D);
+        acqMatrixDimension2D = getInt(ACQUISITION_MATRIX_DIMENSION_2D);
+        acqMatrixDimension3D = getInt(ACQUISITION_MATRIX_DIMENSION_3D);
         acquisitionMatrixDimension4D = getInt(ACQUISITION_MATRIX_DIMENSION_4D);
         preScan = getInt(DUMMY_SCAN);
 
@@ -379,13 +383,12 @@ public class GradientEcho extends BaseSequenceGenerator {
         double zero_filling_2D = (100 - partial_phase) / 100f;
         getParam(USER_ZERO_FILLING_2D).setValue((100 - partial_phase));
 
-        acquisitionMatrixDimension2D = floorEven((1 - zero_filling_2D) * userMatrixDimension2D);
-        acquisitionMatrixDimension2D = (acquisitionMatrixDimension2D < 4) && isEnablePhase ? 4 : acquisitionMatrixDimension2D;
+        acqMatrixDimension2D = floorEven((1 - zero_filling_2D) * userMatrixDimension2D);
+        acqMatrixDimension2D = (acqMatrixDimension2D < 4) && isEnablePhase ? 4 : acqMatrixDimension2D;
 
         // Pixel dimension calculation
-        double pixelDimensionPhase = fovPhase / acquisitionMatrixDimension2D;
+        double pixelDimensionPhase = fovPhase / acqMatrixDimension2D;
         getParam(RESOLUTION_PHASE).setValue(pixelDimensionPhase); // phase true resolution for display
-        nb_scan_2d = acquisitionMatrixDimension2D;
 
         // -----------------------------------------------
         // 3D managment 1/2: matrix & scan
@@ -413,32 +416,40 @@ public class GradientEcho extends BaseSequenceGenerator {
         double zero_filling_3D = (100 - partial_slice) / 100f;
         getParam(USER_ZERO_FILLING_3D).setValue((100 - partial_slice));
 
-        //Calculate the number of k-space lines acquired in the 3rd Dimension : acquisitionMatrixDimension3D
+        //Calculate the number of k-space lines acquired in the 3rd Dimension : acqMatrixDimension3D
         if (!isMultiplanar) {
-            acquisitionMatrixDimension3D = floorEven((1 - zero_filling_3D) * userMatrixDimension3D);
-            acquisitionMatrixDimension3D = (acquisitionMatrixDimension3D < 4) && isEnablePhase3D ? 4 : acquisitionMatrixDimension3D;
-            userMatrixDimension3D = userMatrixDimension3D < acquisitionMatrixDimension3D ? acquisitionMatrixDimension3D : userMatrixDimension3D;
+            acqMatrixDimension3D = floorEven((1 - zero_filling_3D) * userMatrixDimension3D);
+            acqMatrixDimension3D = (acqMatrixDimension3D < 4) && isEnablePhase3D ? 4 : acqMatrixDimension3D;
+            userMatrixDimension3D = userMatrixDimension3D < acqMatrixDimension3D ? acqMatrixDimension3D : userMatrixDimension3D;
             getParam(USER_MATRIX_DIMENSION_3D).setValue(userMatrixDimension3D);
         } else {
             if ((userMatrixDimension3D * 3 + ((is_rf_spoiling) ? 1 : 0) + 3 + 1) >= offset_channel_memory) {
                 userMatrixDimension3D = ((int) Math.floor((offset_channel_memory - 4 - ((is_rf_spoiling) ? 1 : 0)) / 3.0));
                 getParam(USER_MATRIX_DIMENSION_3D).setValue(userMatrixDimension3D);
             }
-            acquisitionMatrixDimension3D = userMatrixDimension3D;
+            acqMatrixDimension3D = userMatrixDimension3D;
         }
 
         int nb_of_shoot_3d = getInt(NUMBER_OF_SHOOT_3D);
-        nb_of_shoot_3d = isMultiplanar ? getInferiorDivisorToGetModulusZero(nb_of_shoot_3d, acquisitionMatrixDimension3D) : acquisitionMatrixDimension3D;
-        nb_of_shoot_3d = is_tof_enabled ? acquisitionMatrixDimension3D : nb_of_shoot_3d; // TOF does not allow interleaved slice within the TR
+        nb_of_shoot_3d = isMultiplanar ? getInferiorDivisorToGetModulusZero(nb_of_shoot_3d, acqMatrixDimension3D) : acqMatrixDimension3D;
+        nb_of_shoot_3d = is_tof_enabled ? acqMatrixDimension3D : nb_of_shoot_3d; // TOF does not allow interleaved slice within the TR
 
-        nbOfInterleavedSlice = isMultiplanar ? (int) Math.ceil((acquisitionMatrixDimension3D / (double) nb_of_shoot_3d)) : 1;
+        nbOfInterleavedSlice = isMultiplanar ? (int) Math.ceil((acqMatrixDimension3D / (double) nb_of_shoot_3d)) : 1;
         getParam(NUMBER_OF_SHOOT_3D).setValue(nb_of_shoot_3d);
         getParam(NUMBER_OF_INTERLEAVED_SLICE).setValue(isMultiplanar ? nbOfInterleavedSlice : 0);
 
-        acquisitionMatrixDimension3D = is_partial_oversampling ? (int) Math.round(acquisitionMatrixDimension3D / 0.8 / 2) * 2 : acquisitionMatrixDimension3D;
+        acqMatrixDimension3D = is_partial_oversampling ? (int) Math.round(acqMatrixDimension3D / 0.8 / 2) * 2 : acqMatrixDimension3D;
         userMatrixDimension3D = is_partial_oversampling ? (int) Math.round(userMatrixDimension3D / 0.8 / 2) * 2 : userMatrixDimension3D;
 
-        nb_scan_3d = isMultiplanar ? nb_of_shoot_3d : acquisitionMatrixDimension3D;
+        if (!isMultiplanar) {
+            nb_scan_2d = acqMatrixDimension2D;
+            nb_scan_3d = acqMatrixDimension3D;
+        } else {
+            nb_scan_2d = acqMatrixDimension2D;
+            nb_scan_3d = nb_of_shoot_3d;
+        }
+        acquisitionMatrixDimension2D = acqMatrixDimension2D;
+        acquisitionMatrixDimension3D = acqMatrixDimension3D;
 
         // -----------------------------------------------
         // 3D managment 2/2: dimension, FOV...
@@ -459,7 +470,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         if (isMultiplanar) {
             pixel_dimension_3D = sliceThickness;
         } else {
-            pixel_dimension_3D = sliceThickness * userMatrixDimension3D / acquisitionMatrixDimension3D; //true resolution
+            pixel_dimension_3D = sliceThickness * userMatrixDimension3D / acqMatrixDimension3D; //true resolution
         }
         getParam(RESOLUTION_SLICE).setValue(pixel_dimension_3D); // phase true resolution for display
 
@@ -575,7 +586,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         seqDescription += orientation.substring(0, 3);
 
         String seqMatrixDescription = "_";
-        seqMatrixDescription += userMatrixDimension1D + "x" + acquisitionMatrixDimension2D + "x" + acquisitionMatrixDimension3D;
+        seqMatrixDescription += userMatrixDimension1D + "x" + acqMatrixDimension2D + "x" + acqMatrixDimension3D;
         if (acquisitionMatrixDimension4D != 1) {
             seqMatrixDescription += "x" + acquisitionMatrixDimension4D;
         }
@@ -922,17 +933,17 @@ public class GradientEcho extends BaseSequenceGenerator {
 
         if (!isMultiplanar && isEnablePhase3D) {
             if (!is_flowcomp) {
-                gradSliceRefPhase3D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension3D : acquisitionMatrixDimension3D, acquisitionMatrixDimension3D, slice_thickness_excitation, is_k_s_centred);
+                gradSliceRefPhase3D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension3D : acqMatrixDimension3D, acqMatrixDimension3D, slice_thickness_excitation, is_k_s_centred);
             } else {
-                gradSliceRefPhase3D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension3D : acquisitionMatrixDimension3D, acquisitionMatrixDimension3D, slice_thickness_excitation, is_k_s_centred);
+                gradSliceRefPhase3D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension3D : acqMatrixDimension3D, acqMatrixDimension3D, slice_thickness_excitation, is_k_s_centred);
                 System.out.println("flow comp not suported");
                 Log.info(getClass(), " flow comp not suported ");
 
 //                double delta;
 //                delta = to do calculate the time from the PE to the Echo
-//               gradSliceRefPhase3D.preparePhaseEncodingForCheckWithFlowComp(is_keyhole_allowed ? userMatrixDimension3D : acquisitionMatrixDimension3D, acquisitionMatrixDimension3D, slice_thickness_excitation, is_k_s_centred, gradSliceRefPhase3DFlowComp);
+//               gradSliceRefPhase3D.preparePhaseEncodingForCheckWithFlowComp(is_keyhole_allowed ? userMatrixDimension3D : acqMatrixDimension3D, acqMatrixDimension3D, slice_thickness_excitation, is_k_s_centred, gradSliceRefPhase3DFlowComp);
             }
-            gradSliceRefPhase3D.reoderPhaseEncoding3D(plugin, acquisitionMatrixDimension3D);
+            gradSliceRefPhase3D.reoderPhaseEncoding3D(plugin, acqMatrixDimension3D);
         }
 
         // pre-calculate PHASE_2D
@@ -940,16 +951,16 @@ public class GradientEcho extends BaseSequenceGenerator {
         Gradient gradPhase2DFlowComp = Gradient.createGradient(getSequence(), Grad_amp_phase_2D_prep_flowcomp, Time_grad_top_flowcomp, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flowcomp);
         if (isEnablePhase) {
             if (!is_flowcomp) {
-                gradPhase2D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension2D : acquisitionMatrixDimension2D, acquisitionMatrixDimension2D, fovPhase, is_k_s_centred);
+                gradPhase2D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension2D : acqMatrixDimension2D, acqMatrixDimension2D, fovPhase, is_k_s_centred);
             } else {
-                gradPhase2D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension2D : acquisitionMatrixDimension2D, acquisitionMatrixDimension2D, fovPhase, is_k_s_centred);
+                gradPhase2D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension2D : acqMatrixDimension2D, acqMatrixDimension2D, fovPhase, is_k_s_centred);
                 System.out.println("flow comp not suported");
                 Log.info(getClass(), " flow comp not suported ");
                 //                double delta;
 //                delta = to do calculate the time from the PE to the Echo
-//                gradPhase2D.preparePhaseEncodingForCheckWithFlowComp(is_keyhole_allowed ? userMatrixDimension2D : acquisitionMatrixDimension2D, acquisitionMatrixDimension2D, fovPhase, is_k_s_centred, gradPhase2DFlowComp, delta);
+//                gradPhase2D.preparePhaseEncodingForCheckWithFlowComp(is_keyhole_allowed ? userMatrixDimension2D : acqMatrixDimension2D, acqMatrixDimension2D, fovPhase, is_k_s_centred, gradPhase2DFlowComp, delta);
             }
-            gradPhase2D.reoderPhaseEncoding(plugin, 1, acquisitionMatrixDimension2D, acquisitionMatrixDimension1D);
+            gradPhase2D.reoderPhaseEncoding(plugin, 1, acqMatrixDimension2D, acquisitionMatrixDimension1D);
         }
 
         // Check if enougth time for 2D_PHASE, 3D_PHASE SLICE_REF or READ_PREP
@@ -1168,7 +1179,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         // ---------------------------------------------------------------
         // calculate TR , Time_last_delay  Time_TR_delay & search for incoherence
         // ---------------------------------------------------------------
-        int nb_planar_excitation = (isMultiplanar ? acquisitionMatrixDimension3D : 1);
+        int nb_planar_excitation = (isMultiplanar ? acqMatrixDimension3D : 1);
         int slices_acquired_in_single_scan = (nb_planar_excitation > 1) ? (nbOfInterleavedSlice) : 1;
         double delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start, Events.TriggerDelay - 1) + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay + 1, Events.LoopMultiPlanarStart - 1) + time_external_trigger_delay_max;
         double delay_sat_band = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandStart, Events.LoopSatBandStart) * nb_satband;
@@ -1484,7 +1495,7 @@ public class GradientEcho extends BaseSequenceGenerator {
                 secondDim = number_of_averages;
                 smartTTL_FatSat_table.setOrder(Order.OneLoop);
             } else {
-                secondDim = acquisitionMatrixDimension2D;
+                secondDim = acqMatrixDimension2D;
                 smartTTL_FatSat_table.setOrder(Order.TwoLoop);
             }
             int nb_ttl = Math.max(1, (int) Math.round(tr * secondDim / fatSat_repetition_Time));

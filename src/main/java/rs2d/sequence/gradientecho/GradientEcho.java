@@ -67,7 +67,7 @@ import static rs2d.sequence.gradientecho.U.*;
 //
 public class GradientEcho extends BaseSequenceGenerator {
 
-    private String sequenceVersion = "Version9.1Cam4";
+    private String sequenceVersion = "Version9.3Cam4";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -641,12 +641,12 @@ public class GradientEcho extends BaseSequenceGenerator {
         // -----------------------------------------------
         GradientRotation.setSequenceGradientRotation(this);
 
-        HardwarePreemphasis hardwarePreemphasis = new HardwarePreemphasis();
+      /*  HardwarePreemphasis hardwarePreemphasis = new HardwarePreemphasis();
         getParam(HARDWARE_PREEMPHASIS_A).setValue(hardwarePreemphasis.getAmplitude());
         getParam(HARDWARE_PREEMPHASIS_T).setValue(hardwarePreemphasis.getTime());
         getParam(HARDWARE_DC).setValue(hardwarePreemphasis.getDC());
         getParam(HARDWARE_A0).setValue(hardwarePreemphasis.getA0());
-
+*/
         HardwareShim hardwareShim = new HardwareShim();
         getParam(HARDWARE_SHIM).setValue(hardwareShim.getValue());
         getParam(HARDWARE_SHIM_LABEL).setValue(hardwareShim.getLabel());

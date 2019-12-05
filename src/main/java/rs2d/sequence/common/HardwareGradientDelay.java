@@ -16,8 +16,11 @@ public class HardwareGradientDelay {
         gradientDelay = Instrument.instance().getGradDelay();
     }
 
+    public double getGradientRxTxDelay() {
+        return (rxTxDelay - gradientDelay);
+    }
     public double getGradientDelay() {
-        return gradientDelay;
+        return (rxTxDelay - gradientDelay);
     }
     public double getRxTxDelay() {
         return rxTxDelay;

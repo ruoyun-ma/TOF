@@ -631,7 +631,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Angle);
             param.setMinValue(-360.0);
             param.setMaxValue(360.0);
-            param.setValue(90.0);
+            param.setValue(30.0);
             param.setDefaultValue(5.0);
             return param;
         }
@@ -987,7 +987,7 @@ public enum U implements GeneratorParamEnum {
             param.setMinValue(-2.147483648E9);
             param.setMaxValue(2.147483647E9);
             param.setNumberEnum(NumberEnum.PERCENT);
-            param.setValue(asListNumber(0.0));
+            param.setValue(asListNumber(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0));
             return param;
         }
     },
@@ -1000,7 +1000,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("");
             param.setLocked(true);
             param.setCategory(Category.Acquisition);
-            param.setValue("NotConnected");
+            param.setValue("YZ XY XZ X2-Y2 Z0 Z2 X Y Z");
             param.setDefaultValue("");
             return param;
         }
@@ -2491,7 +2491,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAmp);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(80.182804556382);
+            param.setValue(100.0);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2522,7 +2522,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAtt);
             param.setMinValue(0.0);
             param.setMaxValue(63.0);
-            param.setValue(33.0);
+            param.setValue(43.0);
             param.setDefaultValue(36.0);
             return param;
         }

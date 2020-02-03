@@ -1,39 +1,60 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package rs2d.sequence.gradientecho;
 
-/**
- *
- * @author jrivoire
- */
-public interface Events {
-        int Start = 0;
-        int TriggerDelay = 1;
+import rs2d.spinlab.sequence.Sequence;
+import rs2d.spinlab.sequence.element.TimeElement;
 
-        int LoopMultiPlanarStart = 3;
-
-        int LoopSatBandStart = 4;
-        int SatBandpulse = 6;
-        int LoopSatBandEnd = 12;
-
-        int FatSatPulse = 14;
+public enum Events {
 
 
-        int P90 = 21;
-        int Delay1 = 29;
+         Start (0, "Time1"),
+         TriggerDelay (1, S.Time_trigger_delay.name()),
 
-        int LoopStartEcho = 30;
-        int Acq = 32;
-        int Delay2 = 37;
-        int LoopEndEcho = 38;
+         LoopMultiPlanarStart (3, S.Time_min_instruction.name()),
 
-        int Delay3 = 42;
-        int LoopMultiPlanarEnd = 43;
+         LoopSatBandStart (4, S.Time_min_instruction.name()),
+         SatBandpulse (6, S.Time_tx_sb.name()),
+         LoopSatBandEnd (12, S.Time_min_instruction.name()),
 
-        int Loop4D = 45;
+         FatSatPulse (15, S.Time_tx_fatsat.name()),
 
-        int End = 46;
+
+         P90 (21, S.Time_tx.name()),
+         Delay1 (29, S.Time_TE_delay1.name()),
+
+         LoopStartEcho (30, S.Time_min_instruction.name()),
+         Acq (32, S.Time_rx.name()),
+         Delay2 (37, S.Time_TE_delay2.name()),
+         LoopEndEcho (38, S.Time_min_instruction.name()),
+
+         Delay3 (42, S.Time_TR_delay.name()),
+         LoopMultiPlanarEnd (43, S.Time_min_instruction.name()),
+
+         Loop4D (45, S.Time_flush_delay.name()),
+         End (46, S.Time_btw_dyn_frames.name());
+
+        public final int ID;
+        public final String shortcutName;
+
+        Events(int id, String sname) {
+                this.shortcutName = sname;
+                ID = id;
+        }
+
+        static boolean  checkEventShortcut(Sequence sequence)throws Exception{
+                Events[] interfaceFields = Events.values();
+                for (Events f : interfaceFields) {
+
+                        if ( !f.shortcutName.equals(((TimeElement) sequence.getTimeChannel().get(f.ID)).getTime().getName()) ){
+
+                                String message = "PSD Event Error\n" +
+                                        " Shortcut of time ID#" + f.ID + " is not " + f.shortcutName+ "   but is "+((TimeElement) sequence.getTimeChannel().get(f.ID)).getTime().getName()
+                                        + " \n Check PSD Events and Events-Class";
+                                System.out.println(message);
+                                throw new Exception( message);
+                        }
+                }
+                return false;
+        }
+
+
 }

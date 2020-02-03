@@ -3073,7 +3073,7 @@
             <key>key41</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Tx_att</name>
-                <value>33.0</value>
+                <value>43.0</value>
                 <defaultValue>30.0</defaultValue>
                 <displayedName>TxAtt0</displayedName>
                 <locked>false</locked>
@@ -3117,16 +3117,17 @@
             <count>1</count>
             <key>key44</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>TxAtt1</name>
-                <value>0.0</value>
+                <name>LO_att</name>
+                <value>30.0</value>
                 <defaultValue>0.0</defaultValue>
-                <displayedName>TxAtt1</displayedName>
+                <displayedName>LO_att</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>TxAtt</numberEnum>
                 <minValue>0.0</minValue>
                 <maxValue>63.0</maxValue>
+                <group>Reception</group>
             </value>
         </Entry>
         <Entry>
@@ -16198,7 +16199,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>80.182804556382</list>
+                <list>84.52009719276471</list>
             </value>
         </Entry>
         <Entry>

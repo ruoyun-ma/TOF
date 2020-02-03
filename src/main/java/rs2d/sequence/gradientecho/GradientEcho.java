@@ -40,11 +40,12 @@ import rs2d.spinlab.instrument.Instrument;
 import rs2d.spinlab.instrument.util.GradientMath;
 import rs2d.spinlab.sequence.SequenceTool;
 import rs2d.spinlab.sequence.element.TimeElement;
+import rs2d.spinlab.sequence.table.Table;
+import rs2d.spinlab.sequence.table.Utility;
 import rs2d.spinlab.sequenceGenerator.BaseSequenceGenerator;
 import rs2d.spinlab.sequenceGenerator.util.GradientRotation;
 import rs2d.spinlab.sequenceGenerator.util.Hardware;
 import rs2d.spinlab.sequenceGenerator.util.TimeEvents;
-import rs2d.spinlab.sequence.table.*;
 import rs2d.spinlab.tools.param.*;
 import rs2d.spinlab.tools.role.RoleEnum;
 import rs2d.spinlab.tools.table.Order;
@@ -768,7 +769,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         double flip_angle_satband = 0;
         if (is_satband_enabled || is_tof_enabled) {
             flip_angle_satband = 90;
-            double time_tau_sat = TimeEvents.getTimeBetweenEvents(getSequence(), Events.FatSatPulse, Events.P90); /////////////////////////////////////////////////////////////////////////////////////////////////////////
+            double time_tau_sat = TimeEvents.getTimeBetweenEvents(getSequence(), Events.FatSatPulse.ID, Events.P90.ID); /////////////////////////////////////////////////////////////////////////////////////////////////////////
             //
             double time_t1_satband = getDouble(SATBAND_T1);
             double t1_relax_time_sat = time_t1_satband / 1000.0;   // T1_tissue = 500ms
@@ -865,6 +866,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         // calculate ADC observation time
         // -----------------------------------------------
         set(Time_rx, observation_time);
+        set(LO_att, Instrument.instance().getLoAttenuation());
 
         // -----------------------------------------------
         // calculate READ gradient amplitude
@@ -1004,14 +1006,15 @@ public class GradientEcho extends BaseSequenceGenerator {
         // --------------------------------------------------------------------------------------------------------------------------------------------
         // TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING --- TIMING
         // --------------------------------------------------------------------------------------------------------------------------------------------
+        Events.checkEventShortcut(getSequence());
 
         // ------------------------------------------
         // calculate delays adapted to current TE & search for incoherence
         // ------------------------------------------
         // calculate actual delays between Rf-pulses and ADC
-        double time1 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.P90 + 1, Events.Acq - 1);
+        double time1 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.P90.ID + 1, Events.Acq.ID - 1);
         time1 = time1 + txLength90 / 2 + observation_time / 2;// Actual_TE
-        time1 -= TimeEvents.getTimeForEvents(getSequence(), Events.Delay1); // Actual_TE without delay1
+        time1 -= TimeEvents.getTimeForEvents(getSequence(), Events.Delay1.ID); // Actual_TE without delay1
 
         // get minimal TE value & search for incoherence
         double max_time = ceilToSubDecimal(time1, 5);
@@ -1054,10 +1057,10 @@ public class GradientEcho extends BaseSequenceGenerator {
         // ------------------------------------------
         double delay2;
         double delay2_min = Math.max(min_FIR_4pts_delay - (grad_rise_time + 2 * time_flyback_ramp + time_flyback), minInstructionDelay);
-        delay2_min = Math.max(delay2_min, min_FIR_delay - (2 * grad_rise_time + 2 * time_flyback_ramp + time_flyback + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho, Events.LoopStartEcho) + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopEndEcho, Events.LoopEndEcho)));
+        delay2_min = Math.max(delay2_min, min_FIR_delay - (2 * grad_rise_time + 2 * time_flyback_ramp + time_flyback + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho.ID, Events.LoopStartEcho.ID) + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopEndEcho.ID, Events.LoopEndEcho.ID)));
         if (echoTrainLength > 1) {
-            double time2 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho, Events.LoopEndEcho); // Actual EchoLoop time
-            time2 -= TimeEvents.getTimeForEvents(getSequence(), Events.Delay2); // Actual EchoLoop time without Delay2
+            double time2 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho.ID, Events.LoopEndEcho.ID); // Actual EchoLoop time
+            time2 -= TimeEvents.getTimeForEvents(getSequence(), Events.Delay2.ID); // Actual EchoLoop time without Delay2
             double echo_spacing_min = time2 + delay2_min;
             if (echo_spacing < echo_spacing_min) {
                 if (is_interleaved_echo_train) {
@@ -1106,7 +1109,7 @@ public class GradientEcho extends BaseSequenceGenerator {
             double sat_flow_dist = satband_distance_from_slice + slice_thickness_excitation;
             double sat_flow_velocity = getDouble(TOF2D_FLOW_VELOCITY);
             double sat_flow_time = sat_flow_dist / sat_flow_velocity;
-            double time = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd - 1, Events.P90 - 3) + TimeEvents.getTimeBetweenEvents(getSequence(), Events.P90 - 2, Events.Acq);//(real index - 1) in the argument instead of real index
+            double time = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID - 1, Events.P90.ID - 3) + TimeEvents.getTimeBetweenEvents(getSequence(), Events.P90.ID - 2, Events.Acq.ID);//(real index - 1) in the argument instead of real index
 //                System.out.println("time" + time);
 //                System.out.println("sat_flow_time" + sat_flow_time);
             sat_flow_time_corr = sat_flow_time - time;
@@ -1172,11 +1175,11 @@ public class GradientEcho extends BaseSequenceGenerator {
         // ---------------------------------------------------------------
         int nb_planar_excitation = (isMultiplanar ? acquisitionMatrixDimension3D : 1);
         int slices_acquired_in_single_scan = (nb_planar_excitation > 1) ? (nbOfInterleavedSlice) : 1;
-        double delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start, Events.TriggerDelay - 1) + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay + 1, Events.LoopMultiPlanarStart - 1) + time_external_trigger_delay_max;
-        double delay_sat_band = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandStart, Events.LoopSatBandStart) * nb_satband;
-        double delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStart, Events.LoopSatBandStart - 1) + delay_sat_band + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd + 1, Events.LoopStartEcho - 1);
-        double delay_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho, Events.LoopEndEcho);
-        double delay_spoiler = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopEndEcho + 1, Events.LoopMultiPlanarEnd - 2);// grad_phase_application_time + grad_rise_time * 2;
+        double delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1) + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopMultiPlanarStart.ID - 1) + time_external_trigger_delay_max;
+        double delay_sat_band = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandStart.ID, Events.LoopSatBandStart.ID) * nb_satband;
+        double delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStart.ID, Events.LoopSatBandStart.ID - 1) + delay_sat_band + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID + 1, Events.LoopStartEcho.ID - 1);
+        double delay_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho.ID, Events.LoopEndEcho.ID);
+        double delay_spoiler = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopEndEcho.ID + 1, Events.LoopMultiPlanarEnd.ID - 2);// grad_phase_application_time + grad_rise_time * 2;
         double min_flush_delay = min_time_per_acq_point * acquisitionMatrixDimension1D * echoTrainLength * slices_acquired_in_single_scan * 2;   // minimal time to flush Chameleon buffer (this time is doubled to avoid hidden delays);
         min_flush_delay = Math.max(CameleonVersion105 ? min_flush_delay : 0, minInstructionDelay);
 
@@ -1455,10 +1458,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         // ------------------------------------------------------------------
         //calculate TX FREQUENCY FATSAT and compensation
         // ------------------------------------------------------------------
-
         pulseTXFatSat.setFrequencyOffset(is_fatsat_enabled ? tx_frequency_offset_90_fs : 0.0);
-        pulseTXFatSat.setFrequencyOffset(tx_frequency_offset_90_fs);
-
 
         RFPulse pulseTXFatSatPrep = RFPulse.createRFPulse(getSequence(), Time_before_fatsat_pulse, Freq_offset_tx_fatsat_prep);
         pulseTXFatSatPrep.setCompensationFrequencyOffset(pulseTXFatSat, 0.5);
@@ -1473,7 +1473,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         /*Table smartTTL_FatSat_table = setSequenceTableValues(SmartTTL_FatSat, Order.Four);
         if (is_fatsat_enabled) {
             double slice_time = (delay_before_echo_loop + (echoTrainLength * delay_echo_loop)
-                    + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopEndEcho + 1, Events.LoopMultiPlanarEnd));
+                    + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopEndEcho.ID + 1, Events.LoopMultiPlanarEnd.ID));
             double fatSat_repetition_Time = getDouble(FATSAT_PERIODE);
             double ttl_periode;
             int sliceRep_ttl;
@@ -1526,8 +1526,8 @@ public class GradientEcho extends BaseSequenceGenerator {
         //----------------------------------------------------------------------
         // modify RX FREQUENCY Prep and comp
         //----------------------------------------------------------------------
-        double timeADC1 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Acq - 1, Events.Acq - 1) + observation_time / 2.0;
-        double timeADC2 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Acq + 1, Events.Acq + 2) + observation_time / 2.0;
+        double timeADC1 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Acq.ID - 1, Events.Acq.ID - 1) + observation_time / 2.0;
+        double timeADC2 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Acq.ID + 1, Events.Acq.ID + 2) + observation_time / 2.0;
 
         RFPulse pulseRXPrep = RFPulse.createRFPulse(getSequence(), Time_min_instruction, FreqOffset_rx_prep);
         pulseRXPrep.setCompensationFrequencyOffsetWithTime(pulseRX, timeADC1);
@@ -1624,7 +1624,7 @@ public class GradientEcho extends BaseSequenceGenerator {
             System.out.println((((NumberParam) getSequenceParam(Nb_interleaved_slice)).getValue().intValue()));
             System.out.println("");
 
-            for (int i = 0; i < Events.End; i++) {
+            for (int i = 0; i < Events.End.ID; i++) {
                 System.out.println((((TimeElement) getSequence().getTimeChannel().get(i)).getTime().getFirst().doubleValue() * 1000000));
             }
         }

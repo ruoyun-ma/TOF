@@ -409,7 +409,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_BANDWIDTH</name>
                 <value>180.0</value>
-                <defaultValue>250.0</defaultValue>
+                <defaultValue>1053.5</defaultValue>
                 <description></description>
                 <displayedName>FATSAT_BANDWIDTH</displayedName>
                 <locked>false</locked>
@@ -463,7 +463,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_OFFSET_FREQ</name>
                 <value>-440.0</value>
-                <defaultValue>-440.0</defaultValue>
+                <defaultValue>1053.5</defaultValue>
                 <description></description>
                 <displayedName>FATSAT_OFFSET_FREQ</displayedName>
                 <locked>false</locked>
@@ -2731,13 +2731,13 @@
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <suggestedValues>CRANIAL</suggestedValues>
                 <suggestedValues>CAUDAL</suggestedValues>
-                <suggestedValues>RIGHT</suggestedValues>
-                <suggestedValues>LEFT</suggestedValues>
+                <suggestedValues>CRANIAL AND CAUDAL</suggestedValues>
                 <suggestedValues>ANTERIOR</suggestedValues>
                 <suggestedValues>POSTERIOR</suggestedValues>
-                <suggestedValues>CRANIAL AND CAUDAL</suggestedValues>
-                <suggestedValues>RIGHT AND LEFT</suggestedValues>
                 <suggestedValues>ANTERIOR AND POSTERIOR</suggestedValues>
+                <suggestedValues>RIGHT</suggestedValues>
+                <suggestedValues>LEFT</suggestedValues>
+                <suggestedValues>RIGHT AND LEFT</suggestedValues>
                 <suggestedValues>ALL</suggestedValues>
                 <group>Dimension</group>
                 <category>Acquisition</category>
@@ -2855,7 +2855,7 @@
             <key>SEQUENCE_VERSION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQUENCE_VERSION</name>
-                <value>Version9.3Cam4</value>
+                <value>Version9.4Cam4</value>
                 <defaultValue></defaultValue>
                 <description></description>
                 <displayedName>SEQUENCE_VERSION</displayedName>

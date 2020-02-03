@@ -401,7 +401,7 @@ public enum U implements GeneratorParamEnum {
             param.setMinValue(0.0);
             param.setMaxValue(2000.0);
             param.setValue(180.0);
-            param.setDefaultValue(250.0);
+            param.setDefaultValue(1053.5);
             return param;
         }
     },
@@ -452,7 +452,7 @@ public enum U implements GeneratorParamEnum {
             param.setMinValue(-1500.0);
             param.setMaxValue(1500.0);
             param.setValue(-440.0);
-            param.setDefaultValue(-440.0);
+            param.setDefaultValue(1053.5);
             return param;
         }
     },
@@ -1974,7 +1974,7 @@ public enum U implements GeneratorParamEnum {
             param.setCategory(Category.Acquisition);
             param.setValue("CRANIAL");
             param.setDefaultValue("CRANIAL");
-            param.setSuggestedValues(asList("CRANIAL", "CAUDAL", "RIGHT", "LEFT", "ANTERIOR", "POSTERIOR", "CRANIAL AND CAUDAL", "RIGHT AND LEFT", "ANTERIOR AND POSTERIOR", "ALL"));
+            param.setSuggestedValues(asList("CRANIAL", "CAUDAL", "CRANIAL AND CAUDAL", "ANTERIOR", "POSTERIOR", "ANTERIOR AND POSTERIOR", "RIGHT", "LEFT", "RIGHT AND LEFT", "ALL"));
             return param;
         }
     },
@@ -2086,7 +2086,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("");
             param.setGroup(EnumGroup.User);
             param.setCategory(Category.Acquisition);
-            param.setValue("Version9.3Cam4");
+            param.setValue("Version9.4Cam4");
             param.setDefaultValue("");
             return param;
         }

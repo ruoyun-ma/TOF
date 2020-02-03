@@ -987,7 +987,7 @@ public enum U implements GeneratorParamEnum {
             param.setMinValue(-2.147483648E9);
             param.setMaxValue(2.147483647E9);
             param.setNumberEnum(NumberEnum.PERCENT);
-            param.setValue(asListNumber(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0));
+            param.setValue(asListNumber(0.0));
             return param;
         }
     },
@@ -1000,7 +1000,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("");
             param.setLocked(true);
             param.setCategory(Category.Acquisition);
-            param.setValue("YZ XY XZ X2-Y2 Z0 Z2 X Y Z");
+            param.setValue("NotConnected");
             param.setDefaultValue("");
             return param;
         }
@@ -1428,7 +1428,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Frequency);
             param.setMinValue(0.0);
             param.setMaxValue(3.0E9);
-            param.setValue(3.0E8);
+            param.setValue(3.00001E8);
             param.setDefaultValue(6.3E7);
             return param;
         }
@@ -2013,6 +2013,23 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
+    SATBAND_TX_AMP("SATBAND_TX_AMP") {
+        public Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("SATBAND_TX_AMP");
+            param.setDisplayedName("SATBAND_TX_AMP");
+            param.setDescription("");
+            param.setGroup(EnumGroup.Emission);
+            param.setCategory(Category.Acquisition);
+            param.setNumberEnum(NumberEnum.TxAmp);
+            param.setMinValue(0.0);
+            param.setMaxValue(100.0);
+            param.setValue(100.0);
+            param.setDefaultValue(0.0);
+            return param;
+        }
+    },
+
     SATBAND_TX_SHAPE("SATBAND_TX_SHAPE") {
         public Param build() {
             TextParam param = new TextParam();
@@ -2474,7 +2491,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAmp);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(91.26904559014628);
+            param.setValue(80.182804556382);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2505,7 +2522,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAtt);
             param.setMinValue(0.0);
             param.setMaxValue(63.0);
-            param.setValue(0.0);
+            param.setValue(33.0);
             param.setDefaultValue(36.0);
             return param;
         }

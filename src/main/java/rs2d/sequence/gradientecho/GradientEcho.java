@@ -827,13 +827,15 @@ public class GradientEcho extends BaseSequenceGenerator {
             this.getParam(TX_AMP_90).setValue(pulseTX.getAmp90());     // display 90° amplitude
             this.getParam(TX_AMP_180).setValue(pulseTX.getAmp180());   // display 180° amplitude
             this.getParam(FATSAT_TX_AMP_90).setValue(pulseTXFatSat.getAmp90());
+            this.getParam(SATBAND_TX_AMP).setValue(pulseTXSatBandTOF.getAmp90());
 
         } else {
             pulseTX.setAtt(getInt(TX_ATT));
             pulseTX.setAmp(getDouble(TX_AMP_90) * flip_angle / 90);
 
-            pulseTX.setAmp(getDouble(FATSAT_TX_AMP_90));
-            pulseTX.setAmp(getDouble(FATSAT_TX_AMP_90));
+            pulseTXFatSat.setAmp(getDouble(FATSAT_TX_AMP_90));
+            pulseTXSatBandTOF.setAmp(getParam(SATBAND_TX_AMP));
+
         }
         this.getParam(FATSAT_FLIP_ANGLE).setValue(is_fatsat_enabled ? 90 : 0);
 

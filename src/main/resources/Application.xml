@@ -1211,14 +1211,6 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                     <name>HARDWARE_SHIM</name>
                     <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
                     <description></description>
                     <displayedName>HARDWARE_SHIM</displayedName>
                     <locked>true</locked>
@@ -1233,7 +1225,7 @@
                 <key>HARDWARE_SHIM_LABEL</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>HARDWARE_SHIM_LABEL</name>
-                    <value>YZ XY XZ X2-Y2 Z0 Z2 X Y Z</value>
+                    <value>NotConnected</value>
                     <defaultValue></defaultValue>
                     <description></description>
                     <displayedName>HARDWARE_SHIM_LABEL</displayedName>
@@ -2177,7 +2169,7 @@
                 <key>OBSERVED_FREQUENCY</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>OBSERVED_FREQUENCY</name>
-                    <value>3.0E8</value>
+                    <value>3.00001E8</value>
                     <defaultValue>6.3E7</defaultValue>
                     <description>The frequency of the acquisition</description>
                     <displayedName>Observed frequency</displayedName>
@@ -2933,6 +2925,24 @@
                 </value>
             </entry>
             <entry>
+                <key>SATBAND_TX_AMP</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>SATBAND_TX_AMP</name>
+                    <value>100.0</value>
+                    <defaultValue>0.0</defaultValue>
+                    <description></description>
+                    <displayedName>SATBAND_TX_AMP</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <numberEnum>TxAmp</numberEnum>
+                    <minValue>0.0</minValue>
+                    <maxValue>100.0</maxValue>
+                    <group>Emission</group>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
                 <key>SATBAND_TX_SHAPE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SATBAND_TX_SHAPE</name>
@@ -3424,7 +3434,7 @@
                 <key>TX_AMP_90</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_AMP_90</name>
-                    <value>91.26904559014628</value>
+                    <value>80.182804556382</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Amplitude of the transmitter</description>
                     <displayedName>TX_AMP_90</displayedName>
@@ -3455,7 +3465,7 @@
                 <key>TX_ATT</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_ATT</name>
-                    <value>0.0</value>
+                    <value>33.0</value>
                     <defaultValue>36.0</defaultValue>
                     <description>Emission attenuation</description>
                     <displayedName>TX_ATT</displayedName>

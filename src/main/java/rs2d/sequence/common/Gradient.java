@@ -17,6 +17,9 @@ import java.util.ArrayList;
 
 /**
  * Class Gradient
+ * V2.9
+ * V2.8 abs Gmax  & G < -100
+ * V2.7 bug SE  RO prephasing bug
  * V2.6 constructor with generatorSequenceParam .name() V2019.06
  * V2.5- getNearestSW Sup Inf for Cam4
  * V2.4- 2019-06-06 JR from TOF Flow compensation
@@ -65,7 +68,7 @@ public class Gradient {
 
     protected Gradient gradFlowComp = null;
 
-    protected static double gMax = GradientMath.getMaxGradientStrength();
+    protected static double gMax = Math.abs(GradientMath.getMaxGradientStrength());
 
     public Gradient(Table amplitudeTab, Table flat_TimeTab, Shape shapeUpTab, Shape shapeDownTab, Table rampTimeUpTab, Table rampTimeDownTab) {
         amplitudeTable = amplitudeTab;
@@ -351,23 +354,28 @@ public class Gradient {
         calculateStaticAmplitude();
     }
 
-    public void refocalizeGradient(Gradient grad, double ratio) {
+    //    refocalize the gradient with ratio of the top
+    public void refocalizeGradient(Gradient gradToRef, double ratio) {
         bStaticGradient = true;
-        double amp;
-        if (grad.getSteps() > 1)
-            amp = grad.getAmplitudeArray(0);
-        else {
-            amp = !Double.isNaN(grad.getAmplitude()) ? grad.getAmplitude() : grad.getAmplitudeArray(0);
+        double gradToRefTime = (gradToRef.getEquivalentTimeBlock(3)[0] + gradToRef.getEquivalentTimeFlat(gradToRef.flatTimeTable, Math.abs(ratio))[0]);
+        if (Double.isNaN(equivalentTime)) {
+            prepareEquivalentTime();
         }
-        double gradArea = (grad.getEquivalentTimeBlock(3)[0] + grad.getEquivalentTimeFlat(grad.flatTimeTable, ratio)[0]) * amp;
-        staticArea = -gradArea;
-        calculateStaticAmplitude();
-        if (!Double.isNaN(grad.getAmplitudeArray(0))) {
-            amplitudeArray = new double[grad.getSteps()];
-            for (int i = 0; i < grad.getSteps(); i++) {
-                amplitudeArray[i] = -grad.getAmplitudeArray(i);
+
+        double amp;
+        if (gradToRef.getSteps() > 1) {
+            amp = gradToRef.getAmplitudeArray(0);
+            amplitudeArray = new double[gradToRef.getSteps()];
+            for (int i = 0; i < gradToRef.getSteps(); i++) {
+                amplitudeArray[i] = (ratio > 0 ? 1 : -1) * (gradToRef.getAmplitudeArray(i) * gradToRefTime) / (equivalentTime);
+//                    amplitudeArray[i] = -gradToRef.getAmplitudeArray(i);
             }
-            steps = grad.getSteps();
+            steps = gradToRef.getSteps();
+        } else {
+            amp = !Double.isNaN(gradToRef.getAmplitude()) ? gradToRef.getAmplitude() : gradToRef.getAmplitudeArray(0);
+            double gradArea = (ratio > 0 ? 1 : -1) * gradToRefTime * amp;
+            staticArea = -gradArea;
+            calculateStaticAmplitude();
         }
     }
 
@@ -494,7 +502,7 @@ public class Gradient {
         boolean testSpectralWidth = true;
         this.spectralWidth = spectralWidth;
         amplitude = spectralWidth / ((GradientMath.GAMMA) * fov) * 100.0 / gMax;                 // amplitude in T/m
-        if (amplitude > 100.0) {
+        if (Math.abs(amplitude) > 100.0) {
             this.spectralWidth = solveSpectralWidthMax(fov);
             amplitude = this.spectralWidth / ((GradientMath.GAMMA) * fov) * 100.0 / gMax;                 // amplitude in T/m
             testSpectralWidth = false;
@@ -589,7 +597,7 @@ public class Gradient {
         txBandwidth = tx_bandwidth;
         this.sliceThicknessExcitation = slice_thickness_excitation;
         amplitude = (tx_bandwidth / ((GradientMath.GAMMA) * sliceThicknessExcitation)) * 100.0 / gMax;                 // amplitude in T/m
-        if (amplitude > 100.0) {
+        if (Math.abs(amplitude) > 100.0) {
             sliceThicknessExcitation = ceilToSubDecimal(tx_bandwidth / ((GradientMath.GAMMA) * gMax), 6);
             amplitude = (tx_bandwidth / ((GradientMath.GAMMA) * sliceThicknessExcitation)) * 100.0 / gMax;                 // amplitude in T/m
             testSliceThickness = false;
@@ -772,7 +780,6 @@ public class Gradient {
 
 
     public void reoderPhaseEncodingForSEEPI(int echoTrainLength) {
-        // flow Comp
         int new_steps = steps / echoTrainLength;
         double[] newTable = new double[new_steps];
         int fact = 1;
@@ -785,7 +792,6 @@ public class Gradient {
     }
 
     public void reoderPhaseEncodingForSEEPIplus2() {
-        // flow Comp
         int new_steps = steps + 2;
         double[] newTable = new double[new_steps];
         newTable[0] = 0;
@@ -807,7 +813,6 @@ public class Gradient {
                 amplitudeArray[i] = -amplitudeArray[i];
             }
         }
-
     }
 
 
@@ -939,7 +944,7 @@ public class Gradient {
         }
         calculateStaticArea();
         double[] gradMaxMin = checkGradientMax();
-        if (gradMaxMin[0] > 100.0) {
+        if (Math.abs(gradMaxMin[0]) > 100.0) {
             amplitude = 100.0;
             spoilerExcess = gradMaxMin[0] - 100.0;
             minTopTime = ceilToSubDecimal((gradMaxMin[0] * equivalentTime - grad_shape_rise_time * 100.0) / 100.0, 5);
@@ -950,7 +955,7 @@ public class Gradient {
 
     public boolean addSpoiler(double pixel_dimension, double factor) {
         bStaticGradient = true;
-        double grad_area_spoiler = factor / ((GradientMath.GAMMA) * pixel_dimension);//GradientMath.GAMMA: gamma/2pi értéke Hz/T-ban
+        double grad_area_spoiler = factor / ((GradientMath.GAMMA) * pixel_dimension);//GradientMath.GAMMA: gamma/2pi  Hz/T-tour
         double grad_amp_spoiler = (grad_area_spoiler / equivalentTime) / gMax * 100.0;//
         return (addSpoiler(grad_amp_spoiler));
     }

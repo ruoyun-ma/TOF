@@ -149,7 +149,7 @@
             <key>BASE_FREQ_1</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>BASE_FREQ_1</name>
-                <value>1.27552944E8</value>
+                <value>3.00001E8</value>
                 <defaultValue>1.27552944E8</defaultValue>
                 <description>The base frequency of the first sequence channel</description>
                 <displayedName>Base Freq 1</displayedName>
@@ -409,7 +409,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_BANDWIDTH</name>
                 <value>180.0</value>
-                <defaultValue>250.0</defaultValue>
+                <defaultValue>1053.5</defaultValue>
                 <description></description>
                 <displayedName>FATSAT_BANDWIDTH</displayedName>
                 <locked>false</locked>
@@ -463,7 +463,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_OFFSET_FREQ</name>
                 <value>-440.0</value>
-                <defaultValue>-440.0</defaultValue>
+                <defaultValue>1053.5</defaultValue>
                 <description></description>
                 <displayedName>FATSAT_OFFSET_FREQ</displayedName>
                 <locked>false</locked>
@@ -655,7 +655,7 @@
             <key>FLIP_ANGLE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FLIP_ANGLE</name>
-                <value>90.0</value>
+                <value>30.0</value>
                 <defaultValue>5.0</defaultValue>
                 <description>The flip angle for the excitation</description>
                 <displayedName>Flip angle</displayedName>
@@ -1191,8 +1191,8 @@
             <key>INTERMEDIATE_FREQUENCY</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>INTERMEDIATE_FREQUENCY</name>
-                <value>2.051E7</value>
-                <defaultValue>2.051E7</defaultValue>
+                <value>1.25E7</value>
+                <defaultValue>1.25E7</defaultValue>
                 <description>INTERMEDIATE_FREQUENCY.description</description>
                 <displayedName>INTERMEDIATE_FREQUENCY.name</displayedName>
                 <locked>false</locked>
@@ -2025,7 +2025,7 @@
             <key>OBSERVED_FREQUENCY</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OBSERVED_FREQUENCY</name>
-                <value>1.27552944E8</value>
+                <value>3.00001E8</value>
                 <defaultValue>6.3E7</defaultValue>
                 <description>The frequency of the acquisition</description>
                 <displayedName>Observed frequency</displayedName>
@@ -2732,13 +2732,13 @@
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <suggestedValues>CRANIAL</suggestedValues>
                 <suggestedValues>CAUDAL</suggestedValues>
-                <suggestedValues>RIGHT</suggestedValues>
-                <suggestedValues>LEFT</suggestedValues>
+                <suggestedValues>CRANIAL AND CAUDAL</suggestedValues>
                 <suggestedValues>ANTERIOR</suggestedValues>
                 <suggestedValues>POSTERIOR</suggestedValues>
-                <suggestedValues>CRANIAL AND CAUDAL</suggestedValues>
-                <suggestedValues>RIGHT AND LEFT</suggestedValues>
                 <suggestedValues>ANTERIOR AND POSTERIOR</suggestedValues>
+                <suggestedValues>RIGHT</suggestedValues>
+                <suggestedValues>LEFT</suggestedValues>
+                <suggestedValues>RIGHT AND LEFT</suggestedValues>
                 <suggestedValues>ALL</suggestedValues>
                 <group>Dimension</group>
                 <category>Acquisition</category>
@@ -2777,6 +2777,24 @@
                 <minValue>0.001</minValue>
                 <maxValue>0.1</maxValue>
                 <group>Dimension</group>
+                <category>Acquisition</category>
+            </value>
+        </entry>
+        <entry>
+            <key>SATBAND_TX_AMP</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>SATBAND_TX_AMP</name>
+                <value>100.0</value>
+                <defaultValue>0.0</defaultValue>
+                <description></description>
+                <displayedName>SATBAND_TX_AMP</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>TxAmp</numberEnum>
+                <minValue>0.0</minValue>
+                <maxValue>100.0</maxValue>
+                <group>Emission</group>
                 <category>Acquisition</category>
             </value>
         </entry>
@@ -2838,7 +2856,7 @@
             <key>SEQUENCE_VERSION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQUENCE_VERSION</name>
-                <value>Version9.1Cam4</value>
+                <value>Version9.4Cam4</value>
                 <defaultValue></defaultValue>
                 <description></description>
                 <displayedName>SEQUENCE_VERSION</displayedName>
@@ -3272,7 +3290,7 @@
             <key>TX_AMP_90</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP_90</name>
-                <value>80.1785101319833</value>
+                <value>100.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Amplitude of the transmitter</description>
                 <displayedName>TX_AMP_90</displayedName>
@@ -3303,7 +3321,7 @@
             <key>TX_ATT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_ATT</name>
-                <value>39.0</value>
+                <value>43.0</value>
                 <defaultValue>36.0</defaultValue>
                 <description>Emission attenuation</description>
                 <displayedName>TX_ATT</displayedName>

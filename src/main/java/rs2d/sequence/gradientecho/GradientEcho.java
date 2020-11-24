@@ -67,7 +67,7 @@ import static rs2d.sequence.gradientecho.U.*;
 //
 public class GradientEcho extends BaseSequenceGenerator {
 
-    private String sequenceVersion = "Version9.4Cam4";
+    private String sequenceVersion = "Version10.0";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -960,7 +960,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         // calculate SLICE gradient amplitudes for RF pulses
         // ---------------------------------------------------------------------
         double slice_thickness_excitation = (isMultiplanar ? sliceThickness : (sliceThickness * userMatrixDimension3D));
-        Gradient gradSlice = Gradient.createGradient(getSequence(), Grad_amp_slice, Time_tx, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
+        Gradient gradSlice = Gradient.createGradient(getSequence(), Grad_amp_slice, Time_tx, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp, nucleus);
         if (isEnableSlice && !gradSlice.prepareSliceSelection(tx_bandwidth_90, slice_thickness_excitation)) {
             slice_thickness_excitation = gradSlice.getSliceThickness();
             double slice_thickness_min = (isMultiplanar ? slice_thickness_excitation : (slice_thickness_excitation / userMatrixDimension3D));
@@ -978,7 +978,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         // -----------------------------------------------
         // calculate READ gradient amplitude
         // -----------------------------------------------
-        Gradient gradReadout = Gradient.createGradient(getSequence(), Grad_amp_read_read, Time_rx, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
+        Gradient gradReadout = Gradient.createGradient(getSequence(), Grad_amp_read_read, Time_rx, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp, nucleus);
         if (isEnableRead && !gradReadout.calculateReadoutGradient(spectralWidth, pixelDimension * acquisitionMatrixDimension1D)) {
             double spectral_width_max = gradReadout.getSpectralWidth();
             if (isSW) {
@@ -1005,8 +1005,8 @@ public class GradientEcho extends BaseSequenceGenerator {
         boolean is_k_s_centred = getBoolean(KS_CENTERED);  // symetrique around 0 or go through k0
 
         // pre-calculate READ_prephasing max area
-        Gradient gradReadPrep = Gradient.createGradient(getSequence(), Grad_amp_read_prep, Time_grad_phase_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
-        Gradient gradReadPrepFlowComp = Gradient.createGradient(getSequence(), Grad_amp_read_prep_flowcomp, Time_grad_top_flowcomp, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flowcomp);
+        Gradient gradReadPrep = Gradient.createGradient(getSequence(), Grad_amp_read_prep, Time_grad_phase_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp, nucleus);
+        Gradient gradReadPrepFlowComp = Gradient.createGradient(getSequence(), Grad_amp_read_prep_flowcomp, Time_grad_top_flowcomp, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flowcomp, nucleus);
         if (isEnableRead) {
             if (!is_flowcomp) {
                 gradReadPrep.refocalizeGradient(gradReadout, readGradientRatio);
@@ -1021,8 +1021,8 @@ public class GradientEcho extends BaseSequenceGenerator {
 
         // pre-calculate SLICE_refocusing  &  PHASE_3D
         double grad_ratio_slice_refoc = isEnableSlice ? getDouble(SLICE_REFOCUSING_GRADIENT_RATIO) : 0.0;   // get slice refocussing ratio
-        Gradient gradSliceRefPhase3D = Gradient.createGradient(getSequence(), Grad_amp_phase_3D_prep, Time_grad_phase_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
-        Gradient gradSliceRefPhase3DFlowComp = Gradient.createGradient(getSequence(), Grad_amp_phase_3D_prep_flowcomp, Time_grad_top_flowcomp, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flowcomp);
+        Gradient gradSliceRefPhase3D = Gradient.createGradient(getSequence(), Grad_amp_phase_3D_prep, Time_grad_phase_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp, nucleus);
+        Gradient gradSliceRefPhase3DFlowComp = Gradient.createGradient(getSequence(), Grad_amp_phase_3D_prep_flowcomp, Time_grad_top_flowcomp, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flowcomp, nucleus);
         if (isEnableSlice) {
             if (!is_flowcomp) {
                 gradSliceRefPhase3D.refocalizeGradient(gradSlice, grad_ratio_slice_refoc);
@@ -1055,8 +1055,8 @@ public class GradientEcho extends BaseSequenceGenerator {
         }
 
         // pre-calculate PHASE_2D
-        Gradient gradPhase2D = Gradient.createGradient(getSequence(), Grad_amp_phase_2D_prep, Time_grad_phase_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
-        Gradient gradPhase2DFlowComp = Gradient.createGradient(getSequence(), Grad_amp_phase_2D_prep_flowcomp, Time_grad_top_flowcomp, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flowcomp);
+        Gradient gradPhase2D = Gradient.createGradient(getSequence(), Grad_amp_phase_2D_prep, Time_grad_phase_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp, nucleus);
+        Gradient gradPhase2DFlowComp = Gradient.createGradient(getSequence(), Grad_amp_phase_2D_prep_flowcomp, Time_grad_top_flowcomp, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flowcomp, nucleus);
         if (isEnablePhase) {
             if (!is_flowcomp) {
                 gradPhase2D.preparePhaseEncodingForCheck(is_keyhole_allowed ? userMatrixDimension2D : acqMatrixDimension2D, acqMatrixDimension2D, fovPhase, is_k_s_centred);
@@ -1113,7 +1113,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         double time_flyback_ramp = is_flyback ? grad_rise_time : minInstructionDelay;
         set(Time_grad_ramp_flyback, time_flyback_ramp);
 
-        Gradient gradReadoutFlyback = Gradient.createGradient(getSequence(), Grad_amp_flyback, Time_flyback, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flyback);
+        Gradient gradReadoutFlyback = Gradient.createGradient(getSequence(), Grad_amp_flyback, Time_flyback, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flyback, nucleus);
         if (is_flyback) {
             gradReadoutFlyback.refocalizeGradient(gradReadout, 1);
             grad_area_max = gradReadoutFlyback.getTotalAbsArea();
@@ -1233,9 +1233,9 @@ public class GradientEcho extends BaseSequenceGenerator {
 
         //  Fat-Sat gradient
 
-        Gradient gradFatsatRead = Gradient.createGradient(getSequence(), Grad_amp_fatsat_read, Time_grad_fatsat, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_fatsat);
-        Gradient gradFatsatPhase = Gradient.createGradient(getSequence(), Grad_amp_fatsat_phase, Time_grad_fatsat, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_fatsat);
-        Gradient gradFatsatSlice = Gradient.createGradient(getSequence(), Grad_amp_fatsat_slice, Time_grad_fatsat, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_fatsat);
+        Gradient gradFatsatRead = Gradient.createGradient(getSequence(), Grad_amp_fatsat_read, Time_grad_fatsat, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_fatsat, nucleus);
+        Gradient gradFatsatPhase = Gradient.createGradient(getSequence(), Grad_amp_fatsat_phase, Time_grad_fatsat, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_fatsat, nucleus);
+        Gradient gradFatsatSlice = Gradient.createGradient(getSequence(), Grad_amp_fatsat_slice, Time_grad_fatsat, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_fatsat, nucleus);
 
         if (is_fatsat_enabled) {
             double pixel_dimension_ph = getDouble(RESOLUTION_PHASE);
@@ -1302,9 +1302,9 @@ public class GradientEcho extends BaseSequenceGenerator {
         }
         set(Time_grad_spoiler_top, grad_spoiler_application_time);
 
-        Gradient gradSliceSpoiler = Gradient.createGradient(getSequence(), Grad_amp_spoiler_slice, Time_grad_spoiler_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
-        Gradient gradPhaseSpoiler = Gradient.createGradient(getSequence(), Grad_amp_spoiler_phase, Time_grad_spoiler_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
-        Gradient gradReadSpoiler = Gradient.createGradient(getSequence(), Grad_amp_spoiler_read, Time_grad_spoiler_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp);
+        Gradient gradSliceSpoiler = Gradient.createGradient(getSequence(), Grad_amp_spoiler_slice, Time_grad_spoiler_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp, nucleus);
+        Gradient gradPhaseSpoiler = Gradient.createGradient(getSequence(), Grad_amp_spoiler_phase, Time_grad_spoiler_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp, nucleus);
+        Gradient gradReadSpoiler = Gradient.createGradient(getSequence(), Grad_amp_spoiler_read, Time_grad_spoiler_top, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp, nucleus);
 
         // Rewinding :
         if (is_grad_rewinding) {
@@ -1452,7 +1452,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         double grad_amp_satband_mTpm = 0;
 
         if (is_satband_enabled || is_tof_enabled) {
-            Gradient gradSB = Gradient.createGradient(getSequence(), Grad_amp_sb_read, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
+            Gradient gradSB = Gradient.createGradient(getSequence(), Grad_amp_sb_read, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb, nucleus);
             if (!gradSB.prepareSliceSelection(tx_bandwidth_sb, satband_tof_thickness)) {
                 double satband_thickness_mod = gradSB.getSliceThickness();
                 notifyOutOfRangeParam((is_satband_enabled ? SATBAND_THICKNESS : TOF2D_SB_THICKNESS), satband_thickness_mod, ((NumberParam) getParam(is_satband_enabled ? SATBAND_THICKNESS : TOF2D_SB_THICKNESS)).getMaxValue(), "Pulse length too short to reach this satband slice thickness");
@@ -1569,27 +1569,27 @@ public class GradientEcho extends BaseSequenceGenerator {
 
 
         // Apply values ot Gradient
-        Gradient gradSatBandSlice = Gradient.createGradient(getSequence(), Grad_amp_sb_slice, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
+        Gradient gradSatBandSlice = Gradient.createGradient(getSequence(), Grad_amp_sb_slice, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb, nucleus);
         gradSatBandSlice.setAmplitude(gradAmpSBSliceTable);
         gradSatBandSlice.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
 
-        Gradient gradSatBandPhase = Gradient.createGradient(getSequence(), Grad_amp_sb_phase, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
+        Gradient gradSatBandPhase = Gradient.createGradient(getSequence(), Grad_amp_sb_phase, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb, nucleus);
         gradSatBandPhase.setAmplitude(gradAmpSBPhaseTable);
         gradSatBandPhase.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
 
-        Gradient gradSatBandRead = Gradient.createGradient(getSequence(), Grad_amp_sb_read, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
+        Gradient gradSatBandRead = Gradient.createGradient(getSequence(), Grad_amp_sb_read, Time_tx_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb, nucleus);
         gradSatBandRead.setAmplitude(gradAmpSBReadTable);
         gradSatBandRead.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
 
-        Gradient gradSatBandSpoilerSlice = Gradient.createGradient(getSequence(), Grad_amp_sb_slice_spoiler, Time_grad_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
+        Gradient gradSatBandSpoilerSlice = Gradient.createGradient(getSequence(), Grad_amp_sb_slice_spoiler, Time_grad_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb, nucleus);
         gradSatBandSpoilerSlice.setAmplitude(gradAmpSBSliceSpoilerTable);
         gradSatBandSpoilerSlice.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
 
-        Gradient gradSatBandSpoilerPhase = Gradient.createGradient(getSequence(), Grad_amp_sb_phase_spoiler, Time_grad_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
+        Gradient gradSatBandSpoilerPhase = Gradient.createGradient(getSequence(), Grad_amp_sb_phase_spoiler, Time_grad_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb, nucleus);
         gradSatBandSpoilerPhase.setAmplitude(gradAmpSBPhaseSpoilerTable);
         gradSatBandSpoilerPhase.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
 
-        Gradient gradSatBandSpoilerRead = Gradient.createGradient(getSequence(), Grad_amp_sb_read_spoiler, Time_grad_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb);
+        Gradient gradSatBandSpoilerRead = Gradient.createGradient(getSequence(), Grad_amp_sb_read_spoiler, Time_grad_sb, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_sb, nucleus);
         gradSatBandSpoilerRead.setAmplitude(gradAmpSBReadSpoilerTable);
         gradSatBandSpoilerRead.applyAmplitude(is_satband_enabled ? Order.LoopB : Order.FourLoop);
 
@@ -2188,7 +2188,7 @@ public class GradientEcho extends BaseSequenceGenerator {
     }
 
     public String getVersion() {
-        return "3DfreeTrajectory";
+        return "master";
     }
     //</editor-fold>
 }

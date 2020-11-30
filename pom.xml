@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>rs2d-sequence</groupId>
   <artifactId>gradient-echo</artifactId>
-  <version>3DfreeTrajectory</version>
+  <version>master</version>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -17,12 +17,12 @@
     <dependency>
       <groupId>rs2d</groupId>
       <artifactId>spinlab</artifactId>
-      <version>2019.06.2</version>
+      <version>2020.01</version>
     </dependency>
     <dependency>
       <groupId>rs2d</groupId>
       <artifactId>rs2d-commons</artifactId>
-      <version>2019.06.2</version>
+      <version>2020.01</version>
     </dependency>
   </dependencies>
   <build>
@@ -36,7 +36,7 @@
               <RS2D-Sequence-Name>GRADIENT_ECHO</RS2D-Sequence-Name>
               <RS2D-Sequence-File>GradientEcho.sxml</RS2D-Sequence-File>
               <RS2D-Sequence-Generator>rs2d.sequence.gradientecho.GradientEcho</RS2D-Sequence-Generator>
-              <RS2D-Spinlab-Version>2019.06.2</RS2D-Spinlab-Version>
+              <RS2D-Spinlab-Version>2020.01</RS2D-Spinlab-Version>
               <RS2D-Compiler-Version>1210-2019.06.2</RS2D-Compiler-Version>
               <RS2D-Java-Version>11.0.1+13 (OpenJDK Runtime Environment)</RS2D-Java-Version>
             </manifestEntries>

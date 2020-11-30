@@ -67,7 +67,7 @@ import static rs2d.sequence.gradientecho.U.*;
 //
 public class GradientEcho extends BaseSequenceGenerator {
 
-    private String sequenceVersion = "Version10.0";
+    private String sequenceVersion = "Version10.1";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;

@@ -67,7 +67,7 @@ import static rs2d.sequence.gradientecho.U.*;
 //
 public class GradientEcho extends BaseSequenceGenerator {
 
-    private String sequenceVersion = "Version10.1";
+    private String sequenceVersion = "Version10.2";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -81,7 +81,7 @@ public class GradientEcho extends BaseSequenceGenerator {
     private int acquisitionMatrixDimension1D;
     private int acqMatrixDimension2D; // length of the sampled k-space in 2D direction
     private int acqMatrixDimension3D; // length of the sampled k-space in 3D direction
- 
+
     private int acquisitionMatrixDimension2D; // for dataset dimension
     private int acquisitionMatrixDimension3D; // for dataset dimension
 
@@ -472,18 +472,31 @@ public class GradientEcho extends BaseSequenceGenerator {
         // -----------------------------------------------
         boolean is_k_s_centred = getBoolean(KS_CENTERED);  // symetrique around 0 or go through k0
         if (!isMultiplanar) {
-            zTraj = trajEllipticTableBuilder(acqMatrixDimension2D, acqMatrixDimension3D, is_k_s_centred);
+            System.out.println(" kspace_filling " + kspace_filling);
+            if (kspace_filling.compareTo("3DElliptic") != 0) {
 
-            System.out.println("zTraj.size() " + zTraj.size());
+                System.out.println(" non 3DElliptic " + acqMatrixDimension2D);
+                nb_scan_2d = acqMatrixDimension2D;
+                nb_scan_3d = acqMatrixDimension3D;
+                acquisitionMatrixDimension2D = acqMatrixDimension2D;
+                acquisitionMatrixDimension3D = acqMatrixDimension3D;
+
+            } else {
+                System.out.println(" 3DElliptic");
+                zTraj = trajEllipticTableBuilder(acqMatrixDimension2D, acqMatrixDimension3D, is_k_s_centred);
+                System.out.println("zTraj.size() " + zTraj.size());
 //        split the PE in 2D 3D with 200 < 2D < 500
-            int[] nb2D_3D_Dummy = getNbScans2D3DForUpdateDimension(200, 500, zTraj);
-            nb_scan_2d = nb2D_3D_Dummy[0];
-            nb_scan_3d = nb2D_3D_Dummy[1];
-            acquisitionMatrixDimension2D = nb2D_3D_Dummy[0];
-            acquisitionMatrixDimension3D = nb2D_3D_Dummy[1];
-
-            System.out.println("zTraj.size() " + zTraj.size());
-            System.out.println("nbPE " + nbPE);
+                int[] nb2D_3D_Dummy;
+                if (Hardware.getSequenceCompiler().getVersionID() < 1303) {
+                    nb2D_3D_Dummy = getNbScans2D3DForUpdateDimension(200, 500, zTraj);
+                } else {
+                    nb2D_3D_Dummy = getNbScans2D3DForUpdateDimension(200, (int) (Math.pow(2, 20) - 100 / 2), zTraj);
+                }
+                nb_scan_2d = nb2D_3D_Dummy[0];
+                nb_scan_3d = nb2D_3D_Dummy[1];
+                acquisitionMatrixDimension2D = nb2D_3D_Dummy[0];
+                acquisitionMatrixDimension3D = nb2D_3D_Dummy[1];
+            }
         } else {
             nb_scan_2d = acqMatrixDimension2D;
             nb_scan_3d = nb_of_shoot_3d;
@@ -492,13 +505,14 @@ public class GradientEcho extends BaseSequenceGenerator {
             acquisitionMatrixDimension3D = acqMatrixDimension3D;
         }
         ArrayList<Integer> zTrajMatrix = new ArrayList<>();
+
         zTrajMatrix.add(acquisitionMatrixDimension1D);
         zTrajMatrix.add(acqMatrixDimension2D);
         zTrajMatrix.add(acqMatrixDimension3D);
         zTrajMatrix.add(acquisitionMatrixDimension4D);
-        getParam(Z_TRAJ_MATRIX).setValue(zTrajMatrix);
-        getParam(Z_TRAJ_POSITION).setValue(zTraj);
 
+        getParam(TRAJ_MATRIX).setValue(zTrajMatrix);
+        getParam(TRAJ_POSITION).setValue(zTraj);
         // -----------------------------------------------
         // 3D managment 2/2: dimension, FOV...
         // -----------------------------------------------
@@ -932,6 +946,9 @@ public class GradientEcho extends BaseSequenceGenerator {
             pulseTXSatBandTOF.prepTxAmp(getListInt(TX_ROUTE));
 
             this.getParam(TX_ATT).setValue(pulseTX.getAtt());            // display PULSE_ATT
+
+
+            this.getParam(TX_AMP).setValue(pulseTX.getAmp());     // display 90° amplitude
             this.getParam(TX_AMP_90).setValue(pulseTX.getAmp90());     // display 90° amplitude
             this.getParam(TX_AMP_180).setValue(pulseTX.getAmp180());   // display 180° amplitude
             this.getParam(FATSAT_TX_AMP_90).setValue(pulseTXFatSat.getAmp90());
@@ -939,11 +956,12 @@ public class GradientEcho extends BaseSequenceGenerator {
 
         } else {
             pulseTX.setAtt(getInt(TX_ATT));
-            pulseTX.setAmp(getDouble(TX_AMP_90) * flip_angle / 90);
+            pulseTX.setAmp(getDouble(TX_AMP));
+            this.getParam(TX_AMP_90).setValue(getDouble(TX_AMP) * 90 / flip_angle);     // display 90° amplitude
+            this.getParam(TX_AMP_180).setValue(getDouble(TX_AMP) * 90 / flip_angle);   // display 180° amplitude
 
             pulseTXFatSat.setAmp(getDouble(FATSAT_TX_AMP_90));
             pulseTXSatBandTOF.setAmp(getParam(SATBAND_TX_AMP));
-
         }
         this.getParam(FATSAT_FLIP_ANGLE).setValue(is_fatsat_enabled ? 90 : 0);
 
@@ -1044,13 +1062,13 @@ public class GradientEcho extends BaseSequenceGenerator {
 //               gradSliceRefPhase3D.preparePhaseEncodingForCheckWithFlowComp(is_keyhole_allowed ? userMatrixDimension3D : acqMatrixDimension3D, acqMatrixDimension3D, slice_thickness_excitation, is_k_s_centred, gradSliceRefPhase3DFlowComp);
             }
             if (kspace_filling.compareTo("3DElliptic") == 0) {
-                System.out.println("gradSliceRefPhase3D "+gradSliceRefPhase3D.getAmplitudeArray(0));
+                System.out.println("gradSliceRefPhase3D " + gradSliceRefPhase3D.getAmplitudeArray(0));
                 gradSliceRefPhase3D.reoderPhaseEncodingTraj3D(zTraj);
-                System.out.println("gradSliceRefPhase3D "+gradSliceRefPhase3D.getAmplitudeArray(0));
+                System.out.println("gradSliceRefPhase3D " + gradSliceRefPhase3D.getAmplitudeArray(0));
             } else {
-                System.out.println("gradSliceRefPhase3D "+gradSliceRefPhase3D.getAmplitudeArray(0));
+                System.out.println("gradSliceRefPhase3D " + gradSliceRefPhase3D.getAmplitudeArray(0));
                 gradSliceRefPhase3D.reoderPhaseEncoding3D(plugin, acqMatrixDimension3D);
-                System.out.println("gradSliceRefPhase3D "+gradSliceRefPhase3D.getAmplitudeArray(0));
+                System.out.println("gradSliceRefPhase3D " + gradSliceRefPhase3D.getAmplitudeArray(0));
             }
         }
 
@@ -1071,6 +1089,8 @@ public class GradientEcho extends BaseSequenceGenerator {
             if (kspace_filling.compareTo("3DElliptic") == 0) {
                 gradPhase2D.reoderPhaseEncodingTraj2D(zTraj);
             } else {
+                System.out.println();
+                System.out.println("acquisitionMatrixDimension2D  " + acquisitionMatrixDimension2D);
                 gradPhase2D.reoderPhaseEncoding(plugin, 1, acquisitionMatrixDimension2D, acquisitionMatrixDimension1D);
             }
         }
@@ -1090,7 +1110,7 @@ public class GradientEcho extends BaseSequenceGenerator {
 
         if (kspace_filling.compareTo("3DElliptic") == 0) {
             gradSliceRefPhase3D.applyAmplitude(Order.Two);
-        }else{
+        } else {
             gradSliceRefPhase3D.applyAmplitude(Order.Three);
         }
 

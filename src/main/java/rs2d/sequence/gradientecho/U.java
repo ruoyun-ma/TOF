@@ -138,7 +138,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.005111821086261981);
+            param.setValue(0.005111808);
             param.setDefaultValue(1.0);
             return param;
         }
@@ -1812,7 +1812,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Integer);
             param.setMinValue(1);
             param.setMaxValue(32);
-            param.setValue(1);
+            param.setValue(2);
             param.setDefaultValue(1);
             return param;
         }
@@ -2087,7 +2087,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("");
             param.setGroup(EnumGroup.User);
             param.setCategory(Category.Acquisition);
-            param.setValue("Version10.0");
+            param.setValue("Version10.2");
             param.setDefaultValue("");
             return param;
         }
@@ -2197,7 +2197,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.SW);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E8);
-            param.setValue(12520.0);
+            param.setValue(12520.03205128205);
             param.setDefaultValue(12500.0);
             return param;
         }
@@ -2228,7 +2228,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.SW);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E8);
-            param.setValue(195.625);
+            param.setValue(195.62550080128204);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2403,6 +2403,37 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
+    TRAJ_MATRIX("TRAJ_MATRIX") {
+        public Param build() {
+            ListNumberParam param = new ListNumberParam();
+            param.setName("TRAJ_MATRIX");
+            param.setDisplayedName("TRAJ_MATRIX");
+            param.setDescription("show the acquisition dimension");
+            param.setGroup(EnumGroup.Scan);
+            param.setCategory(Category.Acquisition);
+            param.setMinValue(0);
+            param.setMaxValue(2147483647);
+            param.setNumberEnum(NumberEnum.Scan);
+            param.setValue(asListNumber(64, 50, 20, 1));
+            return param;
+        }
+    },
+
+    TRAJ_POSITION("TRAJ_POSITION") {
+        public Param build() {
+            ListNumberParam param = new ListNumberParam();
+            param.setName("TRAJ_POSITION");
+            param.setDisplayedName("TRAJ_POSITION");
+            param.setDescription("2D 3D position");
+            param.setGroup(EnumGroup.Scan);
+            param.setCategory(Category.Acquisition);
+            param.setMinValue(0);
+            param.setMaxValue(2147483647);
+            param.setNumberEnum(NumberEnum.Scan);
+            return param;
+        }
+    },
+
     TRANSFORM_PLUGIN("TRANSFORM_PLUGIN") {
         public Param build() {
             TextParam param = new TextParam();
@@ -2461,6 +2492,23 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setValue(asListNumber(0.0));
             param.setDefaultValue(asListNumber(0.01));
+            return param;
+        }
+    },
+
+    TX_AMP("TX_AMP") {
+        public Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("TX_AMP");
+            param.setDisplayedName("TX_AMP");
+            param.setDescription("Emission amplitude");
+            param.setGroup(EnumGroup.Emission);
+            param.setCategory(Category.Acquisition);
+            param.setNumberEnum(NumberEnum.PERCENT);
+            param.setMinValue(0.0);
+            param.setMaxValue(100.0);
+            param.setValue(84.23253493677066);
+            param.setDefaultValue(40.0);
             return param;
         }
     },
@@ -2855,37 +2903,6 @@ public enum U implements GeneratorParamEnum {
             param.setMaxValue(100.0);
             param.setValue(0.0);
             param.setDefaultValue(0.0);
-            return param;
-        }
-    },
-
-    Z_TRAJ_MATRIX("Z_TRAJ_MATRIX") {
-        public Param build() {
-            ListNumberParam param = new ListNumberParam();
-            param.setName("Z_TRAJ_MATRIX");
-            param.setDisplayedName("Z_TRAJ_MATRIX");
-            param.setDescription("");
-            param.setGroup(EnumGroup.Scan);
-            param.setCategory(Category.Acquisition);
-            param.setMinValue(0);
-            param.setMaxValue(2147483647);
-            param.setNumberEnum(NumberEnum.Scan);
-            param.setValue(asListNumber(64, 50, 20, 1));
-            return param;
-        }
-    },
-
-    Z_TRAJ_POSITION("Z_TRAJ_POSITION") {
-        public Param build() {
-            ListNumberParam param = new ListNumberParam();
-            param.setName("Z_TRAJ_POSITION");
-            param.setDisplayedName("Z_TRAJ_POSITION");
-            param.setDescription("2D 3D position");
-            param.setGroup(EnumGroup.Scan);
-            param.setCategory(Category.Acquisition);
-            param.setMinValue(0);
-            param.setMaxValue(2147483647);
-            param.setNumberEnum(NumberEnum.Scan);
             return param;
         }
     };

@@ -285,7 +285,7 @@
                 <key>ACQUISITION_TIME_PER_SCAN</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_TIME_PER_SCAN</name>
-                    <value>0.005111808</value>
+                    <value>0.005111808000000001</value>
                     <defaultValue>1.0</defaultValue>
                     <description>The acquisition time per scan  ( SPECTRAL_WIDTH )</description>
                     <displayedName>Acq Time</displayedName>
@@ -303,7 +303,7 @@
                 <key>BASE_FREQ_1</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>BASE_FREQ_1</name>
-                    <value>1.28E8</value>
+                    <value>1.2818100000000001E8</value>
                     <defaultValue>1.27552944E8</defaultValue>
                     <description>The base frequency of the first sequence channel</description>
                     <displayedName>Base Freq 1</displayedName>
@@ -1345,7 +1345,7 @@
                 <key>INTERMEDIATE_FREQUENCY</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>INTERMEDIATE_FREQUENCY</name>
-                    <value>1.25E7</value>
+                    <value>2.051E7</value>
                     <defaultValue>1.25E7</defaultValue>
                     <description>INTERMEDIATE_FREQUENCY.description</description>
                     <displayedName>INTERMEDIATE_FREQUENCY.name</displayedName>
@@ -2179,7 +2179,7 @@
                 <key>OBSERVED_FREQUENCY</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>OBSERVED_FREQUENCY</name>
-                    <value>1.28E8</value>
+                    <value>1.2818100000000001E8</value>
                     <defaultValue>6.3E7</defaultValue>
                     <description>The frequency of the acquisition</description>
                     <displayedName>Observed frequency</displayedName>
@@ -2705,7 +2705,7 @@
                 <key>RECEIVER_COUNT</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>RECEIVER_COUNT</name>
-                    <value>2</value>
+                    <value>1</value>
                     <defaultValue>1</defaultValue>
                     <description>The number of receivers</description>
                     <displayedName>Receiver Count</displayedName>
@@ -3010,7 +3010,7 @@
                 <key>SEQUENCE_VERSION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQUENCE_VERSION</name>
-                    <value>Version10.2</value>
+                    <value>Version7.4</value>
                     <defaultValue></defaultValue>
                     <description></description>
                     <displayedName>SEQUENCE_VERSION</displayedName>
@@ -3025,7 +3025,7 @@
                 <key>SEQ_DESCRIPTION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
-                    <value>GE_2D_AXI_64x50x20</value>
+                    <value>GE_2DAXI_64x50x20</value>
                     <defaultValue></defaultValue>
                     <description></description>
                     <displayedName>SEQ_DESCRIPTION</displayedName>
@@ -3122,7 +3122,7 @@
                 <key>SPECTRAL_WIDTH</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SPECTRAL_WIDTH</name>
-                    <value>12520.03205128205</value>
+                    <value>12520.032051282049</value>
                     <defaultValue>12500.0</defaultValue>
                     <description>The spectral width of the reception ( SW BW, bandwidth )</description>
                     <displayedName>SW</displayedName>
@@ -3154,7 +3154,7 @@
                 <key>SPECTRAL_WIDTH_PER_PIXEL</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SPECTRAL_WIDTH_PER_PIXEL</name>
-                    <value>195.62550080128204</value>
+                    <value>195.62550080128202</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Spectral Width per pixel in Hz / Pix</description>
                     <displayedName>SPECTRAL_WIDTH_PER_PIXEL</displayedName>
@@ -3391,7 +3391,7 @@
                 <key>TRANSFORM_PLUGIN</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>TRANSFORM_PLUGIN</name>
-                    <value>Sequential4DBackAndForth</value>
+                    <value>Sequential4D</value>
                     <defaultValue>Sequential4D</defaultValue>
                     <description>Transform the acquisition space to the k space</description>
                     <displayedName>Transform plugin</displayedName>
@@ -3460,7 +3460,7 @@
                 <key>TX_AMP</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_AMP</name>
-                    <value>84.23253493677066</value>
+                    <value>11.448496981384862</value>
                     <defaultValue>40.0</defaultValue>
                     <description>Emission amplitude</description>
                     <displayedName>TX_AMP</displayedName>
@@ -3478,7 +3478,7 @@
                 <key>TX_AMP_180</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_AMP_180</name>
-                    <value>100.0</value>
+                    <value>80.14368241132927</value>
                     <defaultValue>0.0</defaultValue>
                     <description>The magnitude of the RF pulse 180</description>
                     <displayedName>TX_AMP_180</displayedName>
@@ -3496,7 +3496,7 @@
                 <key>TX_AMP_90</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_AMP_90</name>
-                    <value>100.0</value>
+                    <value>40.052483358517755</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Amplitude of the transmitter</description>
                     <displayedName>TX_AMP_90</displayedName>
@@ -3527,7 +3527,7 @@
                 <key>TX_ATT</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_ATT</name>
-                    <value>39.0</value>
+                    <value>21.0</value>
                     <defaultValue>36.0</defaultValue>
                     <description>Emission attenuation</description>
                     <displayedName>TX_ATT</displayedName>

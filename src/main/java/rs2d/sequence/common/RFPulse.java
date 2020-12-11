@@ -364,8 +364,21 @@ public class RFPulse {
         InstrumentTxChannel txCh = Instrument.instance().getTxChannels().get(txRoute.get(0));
 
         double tx_amp_180_desired = amp;     // set 180° RF puse arround 80% of Chameleon output
-        txAtt = 1 + (int) TxMath.getTxAttFor(powerPulse, txCh, tx_amp_180_desired, observeFrequency);
+
+        try {
+            // available after V1.214
+            txAtt = 1 + (int) TxMath.getTxAttFor(powerPulse, txCh, tx_amp_180_desired, observeFrequency);
+
+            txAtt = txAtt > 63 ?63 : txAtt;
+            System.out.println(" txAtt " + txAtt);
+
+        } catch (Exception e) {
+            System.out.println(" Tx att too high reduce it to 63 ");
+            Log.info(getClass(), " Tx att too high reduce it to 63 ");
+            txAtt = 63;
+        }
         attParam.setValue(txAtt);
+
         return txAtt;
     }
 

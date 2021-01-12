@@ -155,7 +155,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Frequency);
             param.setMinValue(0.0);
             param.setMaxValue(3.0E9);
-            param.setValue(1.2818100000000001E8);
+            param.setValue(1.2792096E8);
             param.setDefaultValue(1.27552944E8);
             return param;
         }

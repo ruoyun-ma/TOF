@@ -101,8 +101,10 @@ public class GradientEcho extends BaseSequenceGenerator {
     private int nb_scan_4d;
     private int nbOfInterleavedSlice;
 
-    ArrayList<Integer> zTraj = new ArrayList<>();
-    int nbPE;
+    private ArrayList<Integer> zTraj = new ArrayList<>();
+    private  int nbPE;
+    private String kspace_filling;
+    private boolean isElliptical;
     private int echoTrainLength;
     private double echo_spacing;
 
@@ -135,7 +137,6 @@ public class GradientEcho extends BaseSequenceGenerator {
     private int numberOfTrigger;
 
     private boolean is_flyback;
-    private String kspace_filling;
 
     private boolean is_flowcomp;
 
@@ -264,6 +265,9 @@ public class GradientEcho extends BaseSequenceGenerator {
         is_partial_oversampling = getBoolean(PARTIAL_OVERSAMPLING);
         is_keyhole_allowed = getBoolean(KEYHOLE_ALLOWED);
 
+        kspace_filling = getText(KSPACE_FILLING);
+        isElliptical = kspace_filling.equalsIgnoreCase("3DElliptic");
+
         echoTrainLength = getInt(ECHO_TRAIN_LENGTH);
         echo_spacing = getDouble(ECHO_SPACING);
 
@@ -296,7 +300,6 @@ public class GradientEcho extends BaseSequenceGenerator {
         isTrigger = isTrigger && (numberOfTrigger > 0);
 
         is_flyback = getBoolean(FLYBACK);
-        kspace_filling = getText(KSPACE_FILLING);
 
         is_flowcomp = getBoolean(FLOW_COMPENSATION);
 
@@ -471,10 +474,10 @@ public class GradientEcho extends BaseSequenceGenerator {
         // 2D 3D managment 2/2: Manage PE trajectory and update  dimension
         // -----------------------------------------------
         boolean is_k_s_centred = getBoolean(KS_CENTERED);  // symetrique around 0 or go through k0
+        String updateDimension = SequenceTool.UpdateDimensionEnum.Disable.getText();
         if (!isMultiplanar) {
             System.out.println(" kspace_filling " + kspace_filling);
-            if (kspace_filling.compareTo("3DElliptic") != 0) {
-
+            if (!isElliptical) {
                 System.out.println(" non 3DElliptic " + acqMatrixDimension2D);
                 nb_scan_2d = acqMatrixDimension2D;
                 nb_scan_3d = acqMatrixDimension3D;
@@ -485,10 +488,11 @@ public class GradientEcho extends BaseSequenceGenerator {
                 System.out.println(" 3DElliptic");
                 zTraj = trajEllipticTableBuilder(acqMatrixDimension2D, acqMatrixDimension3D, is_k_s_centred);
                 System.out.println("zTraj.size() " + zTraj.size());
-//        split the PE in 2D 3D with 200 < 2D < 500
                 int[] nb2D_3D_Dummy;
                 if (Hardware.getSequenceCompiler().getVersionID() < 1303) {
+                    //        split the PE in 2D 3D with 200 < 2D < 500
                     nb2D_3D_Dummy = getNbScans2D3DForUpdateDimension(200, 500, zTraj);
+                    updateDimension = ( nb2D_3D_Dummy[1] > 1) ? SequenceTool.UpdateDimensionEnum.ThreeD.getText() : updateDimension;
                 } else {
                     nb2D_3D_Dummy = getNbScans2D3DForUpdateDimension(200, (int) (Math.pow(2, 20) - 100 / 2), zTraj);
                 }
@@ -636,7 +640,9 @@ public class GradientEcho extends BaseSequenceGenerator {
         set(Nb_1d, nb_scan_1d);
         set(Nb_2d, nb_scan_2d);
         set(Nb_3d, nb_scan_3d);
-        set(Update_dimension, (!isMultiplanar & nb_scan_3d > 1) ? SequenceTool.UpdateDimensionEnum.ThreeD.getText() : SequenceTool.UpdateDimensionEnum.Disable.getText());
+
+        set(Update_dimension, updateDimension);
+
 
         set(Nb_4d, nb_scan_4d);
         // set the calculated Loop dimensions
@@ -890,7 +896,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         getParam(FLIP_ANGLE).setValue(flip_angle);
         double flip_angle_satband = 0;
         if (is_satband_enabled || is_tof_enabled) {
-            flip_angle_satband = 90;
+//            flip_angle_satband = 90;
             double time_tau_sat = TimeEvents.getTimeBetweenEvents(getSequence(), Events.FatSatPulse.ID, Events.P90.ID); /////////////////////////////////////////////////////////////////////////////////////////////////////////
             double time_t1_satband = getDouble(SATBAND_T1);
             double t1_relax_time_sat = time_t1_satband / 1000.0;   // T1_tissue = 500ms
@@ -1061,9 +1067,10 @@ public class GradientEcho extends BaseSequenceGenerator {
 //                delta = to do calculate the time from the PE to the Echo
 //               gradSliceRefPhase3D.preparePhaseEncodingForCheckWithFlowComp(is_keyhole_allowed ? userMatrixDimension3D : acqMatrixDimension3D, acqMatrixDimension3D, slice_thickness_excitation, is_k_s_centred, gradSliceRefPhase3DFlowComp);
             }
-            if (kspace_filling.compareTo("3DElliptic") == 0) {
+            if (isElliptical) {
                 System.out.println("gradSliceRefPhase3D " + gradSliceRefPhase3D.getAmplitudeArray(0));
                 gradSliceRefPhase3D.reoderPhaseEncodingTraj3D(zTraj);
+                gradSliceRefPhase3D.reoderPhaseEncodingTraj3D(plugin);
                 System.out.println("gradSliceRefPhase3D " + gradSliceRefPhase3D.getAmplitudeArray(0));
             } else {
                 System.out.println("gradSliceRefPhase3D " + gradSliceRefPhase3D.getAmplitudeArray(0));
@@ -1086,7 +1093,7 @@ public class GradientEcho extends BaseSequenceGenerator {
 //                delta = to do calculate the time from the PE to the Echo
 //                gradPhase2D.preparePhaseEncodingForCheckWithFlowComp(is_keyhole_allowed ? userMatrixDimension2D : acqMatrixDimension2D, acqMatrixDimension2D, fovPhase, is_k_s_centred, gradPhase2DFlowComp, delta);
             }
-            if (kspace_filling.compareTo("3DElliptic") == 0) {
+            if (isElliptical) {
                 gradPhase2D.reoderPhaseEncodingTraj2D(zTraj);
             } else {
                 System.out.println();
@@ -1108,7 +1115,7 @@ public class GradientEcho extends BaseSequenceGenerator {
             gradReadPrep.rePrepare();
         }
 
-        if (kspace_filling.compareTo("3DElliptic") == 0) {
+        if (isElliptical) {
             gradSliceRefPhase3D.applyAmplitude(Order.Two);
         } else {
             gradSliceRefPhase3D.applyAmplitude(Order.Three);
@@ -1560,7 +1567,7 @@ public class GradientEcho extends BaseSequenceGenerator {
                 gradAmpSBReadSpoilerTable[n] = 0;
                 double off_center_neg = off_center_distance_1D - (fov / 2.0 + satband_distance_from_fov + satband_tof_thickness / 2.0);
                 offsetFreqSBTable[n] = new RFPulse().calculateOffsetFreq(grad_amp_satband_mTpm, off_center_neg);
-                n += 1;
+
             }
         } else if (is_tof_enabled) {
             double satband_distance_from_slice = getDouble(TOF2D_SB_DISTANCE_FROM_SLICE);

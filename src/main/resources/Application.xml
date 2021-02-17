@@ -303,7 +303,7 @@
                 <key>BASE_FREQ_1</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>BASE_FREQ_1</name>
-                    <value>1.2792096E8</value>
+                    <value>1.28E8</value>
                     <defaultValue>1.27552944E8</defaultValue>
                     <description>The base frequency of the first sequence channel</description>
                     <displayedName>Base Freq 1</displayedName>
@@ -325,7 +325,7 @@
                     <defaultValue>0.0</defaultValue>
                     <description>The base frequency of the second sequence channel</description>
                     <displayedName>Base Freq 2</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>Frequency</numberEnum>
@@ -343,7 +343,7 @@
                     <defaultValue>0.0</defaultValue>
                     <description>The base frequency of the third sequence channel</description>
                     <displayedName>Base Freq 3</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>Frequency</numberEnum>
@@ -361,7 +361,7 @@
                     <defaultValue>0.0</defaultValue>
                     <description>The base frequency of the fourth sequence channel</description>
                     <displayedName>Base Freq 4</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>Frequency</numberEnum>
@@ -1107,144 +1107,6 @@
                 </value>
             </entry>
             <entry>
-                <key>HARDWARE_A0</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>HARDWARE_A0</name>
-                    <value>27.69</value>
-                    <value>28.58</value>
-                    <value>22.43</value>
-                    <description></description>
-                    <displayedName>HARDWARE_A0</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>PERCENT</numberEnum>
-                    <minValue>-2.147483648E9</minValue>
-                    <maxValue>2.147483647E9</maxValue>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_DC</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>HARDWARE_DC</name>
-                    <value>-0.174</value>
-                    <value>0.2686</value>
-                    <value>-0.1862</value>
-                    <value>0.0</value>
-                    <description></description>
-                    <displayedName>HARDWARE_DC</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>PERCENT</numberEnum>
-                    <minValue>-2.147483648E9</minValue>
-                    <maxValue>2.147483647E9</maxValue>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_PREEMPHASIS_A</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>HARDWARE_PREEMPHASIS_A</name>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <description></description>
-                    <displayedName>HARDWARE_PREEMPHASIS_A</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>PERCENT</numberEnum>
-                    <minValue>-2.147483648E9</minValue>
-                    <maxValue>2.147483647E9</maxValue>
-                    <group>Emission</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_PREEMPHASIS_T</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>HARDWARE_PREEMPHASIS_T</name>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <description></description>
-                    <displayedName>HARDWARE_PREEMPHASIS_T</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>Time</numberEnum>
-                    <minValue>0.0</minValue>
-                    <maxValue>1.0E9</maxValue>
-                    <group>Emission</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_SHIM</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>HARDWARE_SHIM</name>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <description></description>
-                    <displayedName>HARDWARE_SHIM</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>PERCENT</numberEnum>
-                    <minValue>-2.147483648E9</minValue>
-                    <maxValue>2.147483647E9</maxValue>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_SHIM_LABEL</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                    <name>HARDWARE_SHIM_LABEL</name>
-                    <value>YZ XY XZ X2-Y2 Z0 Z2 X Y Z</value>
-                    <defaultValue></defaultValue>
-                    <description></description>
-                    <displayedName>HARDWARE_SHIM_LABEL</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
                 <key>IMAGE_ORIENTATION_SUBJECT</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                     <name>IMAGE_ORIENTATION_SUBJECT</name>
@@ -1345,8 +1207,8 @@
                 <key>INTERMEDIATE_FREQUENCY</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>INTERMEDIATE_FREQUENCY</name>
-                    <value>1.25E7</value>
-                    <defaultValue>1.25E7</defaultValue>
+                    <value>1.251E7</value>
+                    <defaultValue>1.251E7</defaultValue>
                     <description>INTERMEDIATE_FREQUENCY.description</description>
                     <displayedName>INTERMEDIATE_FREQUENCY.name</displayedName>
                     <locked>false</locked>
@@ -1386,7 +1248,6 @@
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <suggestedValues>Linear</suggestedValues>
                     <suggestedValues>Centric</suggestedValues>
-                    <suggestedValues>3DElliptic</suggestedValues>
                     <category>Acquisition</category>
                 </value>
             </entry>
@@ -1429,7 +1290,7 @@
                     <defaultValue>0</defaultValue>
                     <description>LAST_PUT.description</description>
                     <displayedName>LAST_PUT</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <numberEnum>Integer</numberEnum>
                     <minValue>-2147483648</minValue>
@@ -1497,7 +1358,7 @@
                     <defaultValue>MRI</defaultValue>
                     <description>The modality for the acquisition</description>
                     <displayedName>Modality</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>true</lockedToDefault>
                     <restrictedToSuggested>true</restrictedToSuggested>
                     <suggestedValues>NMR</suggestedValues>
@@ -1515,7 +1376,7 @@
                     <defaultValue>Model name</defaultValue>
                     <description>Model name</description>
                     <displayedName>MODEL_NAME</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>true</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <group>Miscellaneous</group>
@@ -1715,7 +1576,7 @@
                     <defaultValue>1H</defaultValue>
                     <description>The nucleus used for the second sequence channel</description>
                     <displayedName>Nucleus 2</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>true</restrictedToSuggested>
                     <suggestedValues>Y</suggestedValues>
@@ -1853,7 +1714,7 @@
                     <defaultValue>1H</defaultValue>
                     <description>The nucleus used for the third sequence channel</description>
                     <displayedName>Nucleus 3</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>true</restrictedToSuggested>
                     <suggestedValues>Y</suggestedValues>
@@ -1991,7 +1852,7 @@
                     <defaultValue>1H</defaultValue>
                     <description>The nucleus used for the fourth sequence channel</description>
                     <displayedName>Nucleus 4</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>true</restrictedToSuggested>
                     <suggestedValues>Y</suggestedValues>
@@ -2179,7 +2040,7 @@
                 <key>OBSERVED_FREQUENCY</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>OBSERVED_FREQUENCY</name>
-                    <value>1.2792096E8</value>
+                    <value>1.28E8</value>
                     <defaultValue>6.3E7</defaultValue>
                     <description>The frequency of the acquisition</description>
                     <displayedName>Observed frequency</displayedName>
@@ -2357,7 +2218,7 @@
                     <defaultValue>0.0</defaultValue>
                     <description>The offset frequency of the second sequence channel</description>
                     <displayedName>Offset 2</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>FrequencyOffset</numberEnum>
@@ -2375,7 +2236,7 @@
                     <defaultValue>0.0</defaultValue>
                     <description>The offset frequency of the third sequence channel</description>
                     <displayedName>Offset 3</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>FrequencyOffset</numberEnum>
@@ -2393,7 +2254,7 @@
                     <defaultValue>0.0</defaultValue>
                     <description>The offset frequency of the fourth sequence channel</description>
                     <displayedName>Offset 4</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>FrequencyOffset</numberEnum>
@@ -2670,21 +2531,6 @@
                     <minValue>-1.7976931348623157E308</minValue>
                     <maxValue>1.7976931348623157E308</maxValue>
                     <group>Gradient</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>PROBE</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                    <name>PROBE</name>
-                    <value></value>
-                    <defaultValue></defaultValue>
-                    <description>The probe used for the mr acquisition</description>
-                    <displayedName>Probe</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <group>Miscellaneous</group>
                     <category>Acquisition</category>
                 </value>
             </entry>
@@ -3010,7 +2856,7 @@
                 <key>SEQUENCE_VERSION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQUENCE_VERSION</name>
-                    <value>Version10.2</value>
+                    <value>Version10.4</value>
                     <defaultValue></defaultValue>
                     <description></description>
                     <displayedName>SEQUENCE_VERSION</displayedName>
@@ -3460,7 +3306,7 @@
                 <key>TX_AMP</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_AMP</name>
-                    <value>84.41717803159186</value>
+                    <value>84.23253493677066</value>
                     <defaultValue>40.0</defaultValue>
                     <description>Emission amplitude</description>
                     <displayedName>TX_AMP</displayedName>
@@ -3527,7 +3373,7 @@
                 <key>TX_ATT</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_ATT</name>
-                    <value>60.0</value>
+                    <value>39.0</value>
                     <defaultValue>36.0</defaultValue>
                     <description>Emission attenuation</description>
                     <displayedName>TX_ATT</displayedName>
@@ -3609,7 +3455,7 @@
                 <key>TX_ROUTE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                     <name>TX_ROUTE</name>
-                    <value>0</value>
+                    <value>1</value>
                     <description></description>
                     <displayedName>TX_ROUTE</displayedName>
                     <locked>false</locked>
@@ -3718,7 +3564,7 @@
                 <key>USER_PARTIAL_PHASE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>USER_PARTIAL_PHASE</name>
-                    <value>80.0</value>
+                    <value>100.0</value>
                     <defaultValue>100.0</defaultValue>
                     <description>Partial Fourier acquisition in the phase encoding direction</description>
                     <displayedName>PARTIAL_PHASE</displayedName>
@@ -3747,122 +3593,6 @@
                     <minValue>0.0</minValue>
                     <maxValue>100.0</maxValue>
                     <group>Dimension</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>USER_TMP_PARAM_BOOL_1</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                    <name>USER_TMP_PARAM_BOOL_1</name>
-                    <value>false</value>
-                    <defaultValue>false</defaultValue>
-                    <description></description>
-                    <displayedName>USER_TMP_PARAM_BOOL_1</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>USER_TMP_PARAM_BOOL_2</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                    <name>USER_TMP_PARAM_BOOL_2</name>
-                    <value>false</value>
-                    <defaultValue>false</defaultValue>
-                    <description></description>
-                    <displayedName>USER_TMP_PARAM_BOOL_2</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>USER_TMP_PARAM_LIST_1</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>USER_TMP_PARAM_LIST_1</name>
-                    <description></description>
-                    <displayedName>USER_TMP_PARAM_LIST_1</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>Double</numberEnum>
-                    <minValue>-1.7976931348623157E308</minValue>
-                    <maxValue>1.7976931348623157E308</maxValue>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>USER_TMP_PARAM_LIST_2</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>USER_TMP_PARAM_LIST_2</name>
-                    <description></description>
-                    <displayedName>USER_TMP_PARAM_LIST_2</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>Double</numberEnum>
-                    <minValue>-1.7976931348623157E308</minValue>
-                    <maxValue>1.7976931348623157E308</maxValue>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>USER_TMP_PARAM_NUM_1</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                    <name>USER_TMP_PARAM_NUM_1</name>
-                    <value>0.0</value>
-                    <defaultValue>0.0</defaultValue>
-                    <description></description>
-                    <displayedName>USER_TMP_PARAM_NUM_1</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <numberEnum>Double</numberEnum>
-                    <minValue>-1.7976931348623157E308</minValue>
-                    <maxValue>1.7976931348623157E308</maxValue>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>USER_TMP_PARAM_NUM_2</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                    <name>USER_TMP_PARAM_NUM_2</name>
-                    <value>0.0</value>
-                    <defaultValue>0.0</defaultValue>
-                    <description></description>
-                    <displayedName>USER_TMP_PARAM_NUM_2</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <numberEnum>Double</numberEnum>
-                    <minValue>-1.7976931348623157E308</minValue>
-                    <maxValue>1.7976931348623157E308</maxValue>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>USER_TMP_PARAM_STR_1</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                    <name>USER_TMP_PARAM_STR_1</name>
-                    <value></value>
-                    <defaultValue></defaultValue>
-                    <description></description>
-                    <displayedName>USER_TMP_PARAM_STR_1</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>USER_TMP_PARAM_STR_2</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                    <name>USER_TMP_PARAM_STR_2</name>
-                    <value></value>
-                    <defaultValue></defaultValue>
-                    <description></description>
-                    <displayedName>USER_TMP_PARAM_STR_2</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
                     <category>Acquisition</category>
                 </value>
             </entry>

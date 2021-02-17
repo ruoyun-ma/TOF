@@ -67,7 +67,7 @@ import static rs2d.sequence.gradientecho.U.*;
 //
 public class GradientEcho extends BaseSequenceGenerator {
 
-    private String sequenceVersion = "Version10.2";
+    private String sequenceVersion = "Version10.4";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -214,7 +214,7 @@ public class GradientEcho extends BaseSequenceGenerator {
 
         // KSPACE_FILLING
         TextParam ksFilling = getParam(KSPACE_FILLING);
-        ksFilling.setSuggestedValues(asList("Linear", "Centric", "3DElliptic"));
+        ksFilling.setSuggestedValues(asList("Linear", "Centric"));// temporary removed "3DElliptic"
         ksFilling.setRestrictedToSuggested(true);
 
 
@@ -729,15 +729,6 @@ public class GradientEcho extends BaseSequenceGenerator {
         // -----------------------------------------------
         GradientRotation.setSequenceGradientRotation(this);
 
-      /*  HardwarePreemphasis hardwarePreemphasis = new HardwarePreemphasis();
-        getParam(HARDWARE_PREEMPHASIS_A).setValue(hardwarePreemphasis.getAmplitude());
-        getParam(HARDWARE_PREEMPHASIS_T).setValue(hardwarePreemphasis.getTime());
-        getParam(HARDWARE_DC).setValue(hardwarePreemphasis.getDC());
-        getParam(HARDWARE_A0).setValue(hardwarePreemphasis.getA0());
-*/
-//        HardwareShim hardwareShim = new HardwareShim();
-//        getParam(HARDWARE_SHIM).setValue(hardwareShim.getValue());
-//        getParam(HARDWARE_SHIM_LABEL).setValue(hardwareShim.getLabel());
     }
 
     /**
@@ -1070,7 +1061,7 @@ public class GradientEcho extends BaseSequenceGenerator {
             if (isElliptical) {
                 System.out.println("gradSliceRefPhase3D " + gradSliceRefPhase3D.getAmplitudeArray(0));
                 gradSliceRefPhase3D.reoderPhaseEncodingTraj3D(zTraj);
-                gradSliceRefPhase3D.reoderPhaseEncodingTraj3D(plugin);
+                // gradSliceRefPhase3D.reoderPhaseEncodingTraj3D(plugin);
                 System.out.println("gradSliceRefPhase3D " + gradSliceRefPhase3D.getAmplitudeArray(0));
             } else {
                 System.out.println("gradSliceRefPhase3D " + gradSliceRefPhase3D.getAmplitudeArray(0));
@@ -1702,7 +1693,7 @@ public class GradientEcho extends BaseSequenceGenerator {
         // modify RX FREQUENCY Prep and comp
         //----------------------------------------------------------------------
         double timeADC1 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Acq.ID - 1, Events.Acq.ID - 1) + observation_time / 2.0;
-        double timeADC2 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Acq.ID + 1, Events.Acq.ID + 2) + observation_time / 2.0;
+        double timeADC2 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Acq.ID + 1, Events.Delay2.ID) + observation_time / 2.0;
 
         RFPulse pulseRXPrep = RFPulse.createRFPulse(getSequence(), Time_min_instruction, FreqOffset_rx_prep);
         pulseRXPrep.setCompensationFrequencyOffsetWithTime(pulseRX, timeADC1);

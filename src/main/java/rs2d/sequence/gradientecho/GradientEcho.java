@@ -67,7 +67,7 @@ import static rs2d.sequence.gradientecho.U.*;
 //
 public class GradientEcho extends BaseSequenceGenerator {
 
-    private String sequenceVersion = "Version10.4";
+    private String sequenceVersion = "Version10.5";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -1125,22 +1125,22 @@ public class GradientEcho extends BaseSequenceGenerator {
         // -------------------------------------------------------------------------------------------------
         // Flyback init and gradient calculation
         // -------------------------------------------------------------------------------------------------
-        double time_flyback = is_flyback ? getDouble(GRADIENT_FLYBACK_TIME) : minInstructionDelay;
-        set(Time_flyback, time_flyback);
+        double timeGradTopFlyback = is_flyback ? getDouble(GRADIENT_FLYBACK_TIME) : minInstructionDelay;
+        set(Time_flyback, timeGradTopFlyback);
 
         double time_flyback_ramp = is_flyback ? grad_rise_time : minInstructionDelay;
         set(Time_grad_ramp_flyback, time_flyback_ramp);
 
         Gradient gradReadoutFlyback = Gradient.createGradient(getSequence(), Grad_amp_flyback, Time_flyback, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_flyback, nucleus);
         if (is_flyback) {
-            gradReadoutFlyback.refocalizeGradient(gradReadout, 1);
+            gradReadoutFlyback.refocalizeTotalGradient(gradReadout);
             grad_area_max = gradReadoutFlyback.getTotalAbsArea();
-            grad_area_sequence_max = 100 * (time_flyback + grad_shape_rise_time);
+            grad_area_sequence_max = 100 * (timeGradTopFlyback + grad_shape_rise_time);
             if (grad_area_max > grad_area_sequence_max) {
                 double grad_time_flyback_min = ceilToSubDecimal(grad_area_max / 100.0 - grad_shape_rise_time, 5);
-                time_flyback = grad_time_flyback_min;
-                getParam(GRADIENT_FLYBACK_TIME).setValue(time_flyback);
-                set(Time_flyback, time_flyback);
+                timeGradTopFlyback = grad_time_flyback_min;
+                getParam(GRADIENT_FLYBACK_TIME).setValue(timeGradTopFlyback);
+                set(Time_flyback, timeGradTopFlyback);
                 gradReadoutFlyback.rePrepare();
             }
             gradReadoutFlyback.applyAmplitude();
@@ -1199,8 +1199,8 @@ public class GradientEcho extends BaseSequenceGenerator {
         // calculate delays adapted to correct spacing in case of ETL & search for incoherence
         // ------------------------------------------
         double delay2;
-        double delay2_min = Math.max(min_FIR_4pts_delay - (grad_rise_time + 2 * time_flyback_ramp + time_flyback), minInstructionDelay);
-        delay2_min = Math.max(delay2_min, min_FIR_delay - (2 * grad_rise_time + 2 * time_flyback_ramp + time_flyback + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho.ID, Events.LoopStartEcho.ID) + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopEndEcho.ID, Events.LoopEndEcho.ID)));
+        double delay2_min = Math.max(min_FIR_4pts_delay - (grad_rise_time + 2 * time_flyback_ramp + timeGradTopFlyback), minInstructionDelay);
+        delay2_min = Math.max(delay2_min, min_FIR_delay - (2 * grad_rise_time + 2 * time_flyback_ramp + timeGradTopFlyback + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho.ID, Events.LoopStartEcho.ID) + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopEndEcho.ID, Events.LoopEndEcho.ID)));
         if (echoTrainLength > 1) {
             double time2 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho.ID, Events.LoopEndEcho.ID); // Actual EchoLoop time
             time2 -= TimeEvents.getTimeForEvents(getSequence(), Events.Delay2.ID); // Actual EchoLoop time without Delay2

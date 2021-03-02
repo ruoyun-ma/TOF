@@ -6,7 +6,8 @@ package rs2d.sequence.gradientecho;
 //  
 // ---------------------------------------------------------------------
 // test Commit
-// rename GRADIENT_SPOILER_TIME 
+// rename GRADIENT_SPOILER_TIME
+// 02/03/2021   V11 XG: from now on, we use SeqPrep/Gradient/RF library
 // 17/11/2017   V7.4
 //      - fovPhase  TX_LENGTH   TX_SHAPE
 // 17/11/2017   V7.3
@@ -65,9 +66,9 @@ import static rs2d.sequence.gradientecho.U.*;
 // *************************************** SEQUENCE GENERATOR ***************************************
 // **************************************************************************************************
 //
-public class GradientEcho extends BaseSequenceGenerator {
+public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 
-    private String sequenceVersion = "Version10.5";
+    private String sequenceVersion = "Version11";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -171,6 +172,7 @@ public class GradientEcho extends BaseSequenceGenerator {
     private double minInstructionDelay = 0.000005;     // single instruction minimal duration
 
     public GradientEcho() {
+        super(U.class);
         addUserParams();
     }
 
@@ -729,67 +731,6 @@ public class GradientEcho extends BaseSequenceGenerator {
         // -----------------------------------------------
         GradientRotation.setSequenceGradientRotation(this);
 
-    }
-
-    /**
-     * Split the traj table into 2D and 3D scans, according to memory limitation,
-     * NTraj + dummy = 2D * 3D
-     * will find the 2D, 3D couple that generates the least number of dummies
-     * the Dummy are added at the end of traj
-     * note: 2048 Gradient table split in 2 x 1024 when updatedim == true
-     *
-     * @param limMin2D min number of nb_2D
-     * @param limMax2D max number of nb_2D
-     * @param traj     table with indices in
-     * @return int[3] = nb_2D ,nb_3D, nd_dummy
-     */
-    private int[] getNbScans2D3DForUpdateDimension(int limMin2D, int limMax2D, ArrayList<Integer> traj) {
-        int[] nb2D_3D_Dummy = new int[3];
-        nbPE = traj.size() / 2;
-        if (nbPE > 2 * limMax2D) {   //  << Todo exact number of gradient left
-            int tmp22 = limMax2D;
-            int newNbPE = 0;
-            for (int i = limMin2D; i < limMax2D; i++) {
-                int tmpAdditionnalDummy = (int) Math.ceil(nbPE * 1f / (i)) * i - nbPE;
-                //  System.out.println(i+"  "+ tmpAdditionnalDummy+"   "+(int) Math.ceil(totalAcquisitionSpoke * 1f / (i)) * i+"   "+(int) Math.ceil(totalAcquisitionSpoke * 1f / (i)) * i);
-                if (tmpAdditionnalDummy <= tmp22) {
-                    tmp22 = tmpAdditionnalDummy;
-                    newNbPE = (int) Math.ceil(nbPE * 1f / (i)) * i;
-                    nb2D_3D_Dummy[0] = i;
-                }
-            }
-            nb2D_3D_Dummy[2] = newNbPE - nbPE;
-            nbPE = newNbPE;
-            nb2D_3D_Dummy[1] = newNbPE / nb2D_3D_Dummy[0];
-            for (int i = 0; i < nb2D_3D_Dummy[2]; i++) {
-                System.out.println(" Add  additionnalDummy " + nb2D_3D_Dummy[2]);
-                traj.add(traj.get(traj.size() - 1));
-                traj.add(traj.get(traj.size() - 1));
-            }
-        } else {
-            nb2D_3D_Dummy[0] = nbPE;
-            nb2D_3D_Dummy[1] = 1;
-        }
-        return nb2D_3D_Dummy;
-    }
-
-    private int floorEven(double value) {
-        return (int) Math.floor(Math.round(value) / 2.0) * 2;
-    }
-
-    private void setSquarePixel(boolean square) {
-        if (square) {
-            userMatrixDimension2D = (int) Math.round(userMatrixDimension1D * fovPhase / fov);
-            getParam(USER_MATRIX_DIMENSION_2D).setValue(userMatrixDimension2D);
-        }
-    }
-
-    private void prepareFovPhase() {
-        fovPhase = (getBoolean(FOV_SQUARE)) ? fov : fovPhase;
-        fovPhase = fovPhase > fov ? fov : fovPhase;
-        getParam(FIELD_OF_VIEW_PHASE).setValue(fovPhase);
-        getParam(PHASE_FIELD_OF_VIEW_RATIO).setValue((fovPhase / fov * 100.0));    // FOV ratio for display
-        getParam(FOV_RATIO_PHASE).setValue(Math.round(fovPhase / fov * 100.0));    // FOV ratio for display
     }
 
     // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -1807,8 +1748,6 @@ public class GradientEcho extends BaseSequenceGenerator {
     // *********************************************************************************************************************************************
     // *** END OF SEQUENCE GENERATOR *********  END OF SEQUENCE GENERATOR *********  END OF SEQUENCE GENERATOR ********* END OF SEQUENCE GENERATOR
     // *********************************************************************************************************************************************
-
-
     private int[] satBandPrep(U satbandOrientation, U orientation, U imageOrientationSubject) {
         int[] position_sli_ph_rea = new int[6];
 
@@ -2036,14 +1975,6 @@ public class GradientEcho extends BaseSequenceGenerator {
         return tx_bandwidth_factor;
     }
 
-    private double ceilToSubDecimal(double numberToBeRounded, double Order) {
-        return Math.ceil(numberToBeRounded * Math.pow(10, Order)) / Math.pow(10, Order);
-    }
-
-    private double roundToDecimal(double numberToBeRounded, double order) {
-        return Math.round(numberToBeRounded * Math.pow(10, order)) / Math.pow(10, order);
-    }
-
     private Table setSequenceTableValues(S tableName, Order order, double... values) {
         Table table = getSequenceTable(tableName);
         table.clear();
@@ -2055,109 +1986,6 @@ public class GradientEcho extends BaseSequenceGenerator {
         }
         return table;
     }
-
-    private double getOff_center_distance_1D_2D_3D(int dim) {
-        List<Double> image_orientation = getListDouble(IMAGE_ORIENTATION_SUBJECT);
-        double[] direction_index = new double[9];
-        direction_index[0] = image_orientation.get(0);
-        direction_index[1] = image_orientation.get(1);
-        direction_index[2] = image_orientation.get(2);
-        direction_index[3] = image_orientation.get(3);
-        direction_index[4] = image_orientation.get(4);
-        direction_index[5] = image_orientation.get(5);
-        direction_index[6] = direction_index[1] * direction_index[5] - direction_index[2] * direction_index[4];
-        direction_index[7] = direction_index[2] * direction_index[3] - direction_index[0] * direction_index[5];
-        direction_index[8] = direction_index[0] * direction_index[4] - direction_index[1] * direction_index[3];
-
-        double norm_vector_read = Math.sqrt(Math.pow(direction_index[0], 2) + Math.pow(direction_index[1], 2) + Math.pow(direction_index[2], 2));
-        double norm_vector_phase = Math.sqrt(Math.pow(direction_index[3], 2) + Math.pow(direction_index[4], 2) + Math.pow(direction_index[5], 2));
-        double norm_vector_slice = Math.sqrt(Math.pow(direction_index[6], 2) + Math.pow(direction_index[7], 2) + Math.pow(direction_index[8], 2));
-
-        //Offset according to animal position
-        double off_center_distance_Z = getDouble(OFF_CENTER_FIELD_OF_VIEW_Z);
-        double off_center_distance_Y = getDouble(OFF_CENTER_FIELD_OF_VIEW_Y);
-        double off_center_distance_X = getDouble(OFF_CENTER_FIELD_OF_VIEW_X);
-
-        //Offset according to READ PHASE and SLICE
-        double off_center_distance;
-        switch (dim) {
-            case 1:
-                off_center_distance = off_center_distance_X * direction_index[0] / norm_vector_read + off_center_distance_Y * direction_index[1] / norm_vector_read + off_center_distance_Z * direction_index[2] / norm_vector_read;
-                break;
-            case 2:
-                off_center_distance = off_center_distance_X * direction_index[3] / norm_vector_phase + off_center_distance_Y * direction_index[4] / norm_vector_phase + off_center_distance_Z * direction_index[5] / norm_vector_phase;
-                break;
-            case 3:
-                off_center_distance = off_center_distance_X * direction_index[6] / norm_vector_slice + off_center_distance_Y * direction_index[7] / norm_vector_slice + off_center_distance_Z * direction_index[8] / norm_vector_slice;
-                break;
-            default:
-                off_center_distance = 0;
-                break;
-        }
-        return off_center_distance;
-    }
-
-
-    private double getOff_center_distance_X_Y_Z(int dim, double off_center_distance_1D, double off_center_distance_2D, double off_center_distance_3D) {
-        List<Double> image_orientation = getListDouble(IMAGE_ORIENTATION_SUBJECT);
-        double[] direction_index = new double[9];
-        direction_index[0] = image_orientation.get(0);
-        direction_index[1] = image_orientation.get(1);
-        direction_index[2] = image_orientation.get(2);
-        direction_index[3] = image_orientation.get(3);
-        direction_index[4] = image_orientation.get(4);
-        direction_index[5] = image_orientation.get(5);
-        direction_index[6] = direction_index[1] * direction_index[5] - direction_index[2] * direction_index[4];
-        direction_index[7] = direction_index[2] * direction_index[3] - direction_index[0] * direction_index[5];
-        direction_index[8] = direction_index[0] * direction_index[4] - direction_index[1] * direction_index[3];
-
-        double norm_vector_read = Math.sqrt(Math.pow(direction_index[0], 2) + Math.pow(direction_index[1], 2) + Math.pow(direction_index[2], 2));
-        double norm_vector_phase = Math.sqrt(Math.pow(direction_index[3], 2) + Math.pow(direction_index[4], 2) + Math.pow(direction_index[5], 2));
-        double norm_vector_slice = Math.sqrt(Math.pow(direction_index[6], 2) + Math.pow(direction_index[7], 2) + Math.pow(direction_index[8], 2));
-
-        //Offset according to READ PHASE and SLICE
-        double off_center_distance;
-        switch (dim) {
-            case 1:
-                off_center_distance = off_center_distance_1D * direction_index[0] / norm_vector_read + off_center_distance_2D * direction_index[3] / norm_vector_phase + off_center_distance_3D * direction_index[6] / norm_vector_slice;
-                break;
-            case 2:
-                off_center_distance = off_center_distance_1D * direction_index[1] / norm_vector_read + off_center_distance_2D * direction_index[4] / norm_vector_phase + off_center_distance_3D * direction_index[7] / norm_vector_slice;
-                break;
-            case 3:
-                off_center_distance = off_center_distance_1D * direction_index[2] / norm_vector_read + off_center_distance_2D * direction_index[5] / norm_vector_phase + off_center_distance_3D * direction_index[8] / norm_vector_slice;
-                break;
-            default:
-                off_center_distance = 0;
-                break;
-        }
-        return off_center_distance;
-    }
-
-    /**
-     * Find the next inferior integer which can divide the dividend : dividend /
-     * -divisor- = integer
-     *
-     * @param divisor  dividend / DIVISOR = integer
-     * @param dividend DIVIDEND / divisor = integer
-     * @return Next inferior integer which is a multiple of the dividend
-     */
-    private int getInferiorDivisorToGetModulusZero(int divisor, int dividend) {
-        boolean exit = true;
-        int div;
-        int new_divisor;
-        do {
-            div = (int) Math.ceil(dividend / ((double) divisor));
-            new_divisor = (int) Math.floor(dividend / ((double) div));
-            if (dividend % new_divisor == 0) {
-                exit = false;
-            } else {
-                divisor = new_divisor;
-            }
-        } while (exit);
-        return new_divisor;
-    }
-
 
     /**
      * From 2D x 3D matrix, return the indices of the scaned PE within elliptic: corner not scans

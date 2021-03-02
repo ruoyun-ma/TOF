@@ -68,7 +68,7 @@ import static rs2d.sequence.gradientecho.U.*;
 //
 public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 
-    private String sequenceVersion = "Version11";
+    private String sequenceVersion = "Version11.1";
     private boolean CameleonVersion105 = false;
     private double protonFrequency;
     private double observeFrequency;
@@ -202,7 +202,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 
         //TRANSFORM PLUGIN
         TextParam transformPlugin = getParam(TRANSFORM_PLUGIN);
-        transformPlugin.setSuggestedValues(asList("Sequential4D", "Sequential4DBackAndForth", "EPISequential4D", "Centric4D"));
+        transformPlugin.setSuggestedValues(asList("Sequential4D", "Sequential4DBackAndForth", "EPISequential4D", "Centric4D", "Elliptical3D"));
         transformPlugin.setRestrictedToSuggested(true);
 
         //List<String> tx_shape = Arrays.asList("HARD", "GAUSSIAN", "SIN3", "xSINC5");
@@ -216,7 +216,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 
         // KSPACE_FILLING
         TextParam ksFilling = getParam(KSPACE_FILLING);
-        ksFilling.setSuggestedValues(asList("Linear", "Centric"));// temporary removed "3DElliptic"
+        ksFilling.setSuggestedValues(asList("Linear", "Centric", "3DElliptic"));// temporary removed "3DElliptic"
         ksFilling.setRestrictedToSuggested(true);
 
 
@@ -451,7 +451,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
         if (!isMultiplanar) {
             acqMatrixDimension3D = floorEven((1 - zero_filling_3D) * userMatrixDimension3D);
             acqMatrixDimension3D = (acqMatrixDimension3D < 4) && isEnablePhase3D ? 4 : acqMatrixDimension3D;
-            userMatrixDimension3D = userMatrixDimension3D < acqMatrixDimension3D ? acqMatrixDimension3D : userMatrixDimension3D;
+            userMatrixDimension3D = Math.max(userMatrixDimension3D, acqMatrixDimension3D);
             getParam(USER_MATRIX_DIMENSION_3D).setValue(userMatrixDimension3D);
         } else {
             if ((userMatrixDimension3D * 3 + ((is_rf_spoiling) ? 1 : 0) + 3 + 1) >= offset_channel_memory) {
@@ -498,10 +498,14 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
                 } else {
                     nb2D_3D_Dummy = getNbScans2D3DForUpdateDimension(200, (int) (Math.pow(2, 20) - 100 / 2), zTraj);
                 }
-                nb_scan_2d = nb2D_3D_Dummy[0];
+//                nb_scan_2d = nb2D_3D_Dummy[0];
+//                nb_scan_3d = nb2D_3D_Dummy[1];
+//                acquisitionMatrixDimension2D = nb2D_3D_Dummy[0];
+//                acquisitionMatrixDimension3D = nb2D_3D_Dummy[1];
+                nb_scan_2d = getInt(ACQUISITION_NB_ECHO_TRAIN);
                 nb_scan_3d = nb2D_3D_Dummy[1];
-                acquisitionMatrixDimension2D = nb2D_3D_Dummy[0];
-                acquisitionMatrixDimension3D = nb2D_3D_Dummy[1];
+                acquisitionMatrixDimension2D = acqMatrixDimension2D;
+                acquisitionMatrixDimension3D = acqMatrixDimension3D;
             }
         } else {
             nb_scan_2d = acqMatrixDimension2D;
@@ -517,8 +521,8 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
         zTrajMatrix.add(acqMatrixDimension3D);
         zTrajMatrix.add(acquisitionMatrixDimension4D);
 
-        getParam(TRAJ_MATRIX).setValue(zTrajMatrix);
-        getParam(TRAJ_POSITION).setValue(zTraj);
+        //getParam(TRAJ_MATRIX).setValue(zTrajMatrix);
+        //getParam(TRAJ_POSITION).setValue(zTraj);
         // -----------------------------------------------
         // 3D managment 2/2: dimension, FOV...
         // -----------------------------------------------
@@ -609,7 +613,8 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
                 if (isMultiplanar) {
                     kspace_filling = "Linear";
                     getParam(KSPACE_FILLING).setValue(kspace_filling);
-                    break;
+                }else{
+                    getParam(TRANSFORM_PLUGIN).setValue("Elliptical3D");
                 }
                 break;
             default:
@@ -617,6 +622,10 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
                 getParam(KSPACE_FILLING).setValue(kspace_filling);
                 break;
         }
+
+        plugin = getTransformPlugin();
+        plugin.setParameters(new ArrayList<>(getUserParams()));
+        plugin.getScanOrder(); //output traj. graphs for Elliptical3D plugin
 
         nb_satband = is_satband_enabled ? (int) Arrays.stream(position_sli_ph_rea).filter(item -> item == 1).count() : 1;
         nb_satband = is_tof_enabled ? 1 : nb_satband;
@@ -743,8 +752,8 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 
     private void afterRouting() throws Exception {
         Log.debug(getClass(), "------------ AFTER ROUTING -------------");
-        plugin = getTransformPlugin();
-        plugin.setParameters(new ArrayList<>(getUserParams()));
+//        plugin = getTransformPlugin();
+//        plugin.setParameters(new ArrayList<>(getUserParams()));
 
         // -----------------------------------------------
         // enable gradient lines
@@ -1001,8 +1010,8 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
             }
             if (isElliptical) {
                 System.out.println("gradSliceRefPhase3D " + gradSliceRefPhase3D.getAmplitudeArray(0));
-                gradSliceRefPhase3D.reoderPhaseEncodingTraj3D(zTraj);
-                // gradSliceRefPhase3D.reoderPhaseEncodingTraj3D(plugin);
+                //gradSliceRefPhase3D.reoderPhaseEncodingTraj3D(zTraj);
+                gradSliceRefPhase3D.reoderPhaseEncoding3D(plugin);
                 System.out.println("gradSliceRefPhase3D " + gradSliceRefPhase3D.getAmplitudeArray(0));
             } else {
                 System.out.println("gradSliceRefPhase3D " + gradSliceRefPhase3D.getAmplitudeArray(0));
@@ -1026,7 +1035,8 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 //                gradPhase2D.preparePhaseEncodingForCheckWithFlowComp(is_keyhole_allowed ? userMatrixDimension2D : acqMatrixDimension2D, acqMatrixDimension2D, fovPhase, is_k_s_centred, gradPhase2DFlowComp, delta);
             }
             if (isElliptical) {
-                gradPhase2D.reoderPhaseEncodingTraj2D(zTraj);
+                //gradPhase2D.reoderPhaseEncodingTraj2D(zTraj);
+                gradPhase2D.reoderPhaseEncoding3D(plugin);
             } else {
                 System.out.println();
                 System.out.println("acquisitionMatrixDimension2D  " + acquisitionMatrixDimension2D);
@@ -1748,7 +1758,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
     }
 
     public String getVersion() {
-        return "master";
+        return "develop_xg";
     }
     //</editor-fold>
 }

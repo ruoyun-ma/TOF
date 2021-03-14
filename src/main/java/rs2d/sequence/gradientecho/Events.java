@@ -4,8 +4,6 @@ import rs2d.spinlab.sequence.Sequence;
 import rs2d.spinlab.sequence.element.TimeElement;
 
 public enum Events {
-
-
          Start (0, "Time1"),
          TriggerDelay (1, S.Time_trigger_delay.name()),
 

@@ -213,7 +213,7 @@
                 <key>ACQUISITION_MATRIX_DIMENSION_3D</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_MATRIX_DIMENSION_3D</name>
-                    <value>64</value>
+                    <value>1</value>
                     <defaultValue>1</defaultValue>
                     <description>The acquisition size of the third dimension</description>
                     <displayedName>Acquisition 3D</displayedName>
@@ -304,7 +304,6 @@
                 <key>ACQUISITION_TIME_OFFSET</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                     <name>ACQUISITION_TIME_OFFSET</name>
-                    <value>0.0</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Relative acquisition start times in Dynamic or MultiSeries scans</description>
                     <displayedName>ACQUISITION_TIME_OFFSET</displayedName>
@@ -321,7 +320,7 @@
                 <key>ACQUISITION_TIME_PER_SCAN</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_TIME_PER_SCAN</name>
-                    <value>0.005111808</value>
+                    <value>2.62144E-5</value>
                     <defaultValue>1.0</defaultValue>
                     <description>The acquisition time per scan  ( SPECTRAL_WIDTH )</description>
                     <displayedName>Acq Time</displayedName>
@@ -809,7 +808,7 @@
                 <key>FIELD_OF_VIEW_3D</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FIELD_OF_VIEW_3D</name>
-                    <value>0.064</value>
+                    <value>0.001</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Field of View in the 3rd direction : total coverage</description>
                     <displayedName>FIELD_OF_VIEW_3D</displayedName>
@@ -919,24 +918,6 @@
                 </value>
             </entry>
             <entry>
-                <key>FOV_EFF</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                    <name>FOV_EFF</name>
-                    <value>0.04</value>
-                    <defaultValue>0.0</defaultValue>
-                    <description>Show the acquierd FOV when FOV doubled</description>
-                    <displayedName>FOV_EFF</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <numberEnum>Length</numberEnum>
-                    <minValue>0.0</minValue>
-                    <maxValue>1.7976931348623157E308</maxValue>
-                    <group>Dimension</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
                 <key>FOV_RATIO_PHASE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FOV_RATIO_PHASE</name>
@@ -944,7 +925,7 @@
                     <defaultValue>100.0</defaultValue>
                     <description>The fov ratio in the phase direction (2D/1D)</description>
                     <displayedName>Phase FOV</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>PERCENT</numberEnum>
@@ -1413,7 +1394,7 @@
                 <key>KSPACE_FILLING</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>KSPACE_FILLING</name>
-                    <value>3DElliptic</value>
+                    <value>Linear</value>
                     <defaultValue>Linear</defaultValue>
                     <description></description>
                     <displayedName>KSPACE_FILLING</displayedName>
@@ -1430,7 +1411,7 @@
                 <key>KS_CENTERED</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>KS_CENTERED</name>
-                    <value>false</value>
+                    <value>true</value>
                     <defaultValue>false</defaultValue>
                     <description>Center the k-space around k0(check) or go through k0</description>
                     <displayedName>KS_CENTERED</displayedName>
@@ -1444,7 +1425,7 @@
                 <key>KS_CENTER_MODE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>KS_CENTER_MODE</name>
-                    <value>false</value>
+                    <value>true</value>
                     <defaultValue>false</defaultValue>
                     <description>Turn off the PE gradient and acquieres two single scan only</description>
                     <displayedName>KS_CENTER_MODE</displayedName>
@@ -1562,7 +1543,7 @@
                 <key>MULTISERIES_PARAMETER_NAME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>MULTISERIES_PARAMETER_NAME</name>
-                    <value></value>
+                    <value>TE</value>
                     <defaultValue></defaultValue>
                     <description>Name of MultiSeries Parameter</description>
                     <displayedName>MULTISERIES_PARAMETER_NAME</displayedName>
@@ -2197,7 +2178,7 @@
                 <key>NUMBER_OF_SHOOT_3D</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>NUMBER_OF_SHOOT_3D</name>
-                    <value>64</value>
+                    <value>1</value>
                     <defaultValue>1</defaultValue>
                     <description>Number of Slice set acquiered sequencially</description>
                     <displayedName>Number of Shoot 3D</displayedName>
@@ -2660,24 +2641,6 @@
                 </value>
             </entry>
             <entry>
-                <key>PHASE_FIELD_OF_VIEW_RATIO</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                    <name>PHASE_FIELD_OF_VIEW_RATIO</name>
-                    <value>100.0</value>
-                    <defaultValue>100.0</defaultValue>
-                    <description>The fov ratio in the phase direction</description>
-                    <displayedName>Phase FOV</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <numberEnum>PERCENT</numberEnum>
-                    <minValue>0.0</minValue>
-                    <maxValue>100.0</maxValue>
-                    <group>Dimension</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
                 <key>PHASE_RESET</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>PHASE_RESET</name>
@@ -2831,7 +2794,7 @@
                 <key>RESOLUTION_SLICE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>RESOLUTION_SLICE</name>
-                    <value>0.001</value>
+                    <value>0.1</value>
                     <defaultValue>0.0</defaultValue>
                     <description>True pixel dimension in the 3rd direction</description>
                     <displayedName>RESOLUTION_SLICE</displayedName>
@@ -3028,7 +2991,7 @@
                 <key>SEQUENCE_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SEQUENCE_TIME</name>
-                    <value>625.4</value>
+                    <value>0.5</value>
                     <defaultValue>0.0</defaultValue>
                     <description></description>
                     <displayedName>SEQUENCE_TIME</displayedName>
@@ -3061,7 +3024,7 @@
                 <key>SEQ_DESCRIPTION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
-                    <value>GE_3D_AXI_64x64x64_SATBAND_FATSAT</value>
+                    <value>GE_3D_AXI_64x64x0x0_ETL=0_SATBAND_FATSAT</value>
                     <defaultValue></defaultValue>
                     <description></description>
                     <displayedName>SEQ_DESCRIPTION</displayedName>
@@ -3158,7 +3121,7 @@
                 <key>SPECTRAL_WIDTH</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SPECTRAL_WIDTH</name>
-                    <value>12520.03205128205</value>
+                    <value>2441406.25</value>
                     <defaultValue>12500.0</defaultValue>
                     <description>The spectral width of the reception ( SW BW, bandwidth )</description>
                     <displayedName>SW</displayedName>
@@ -3190,7 +3153,7 @@
                 <key>SPECTRAL_WIDTH_PER_PIXEL</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SPECTRAL_WIDTH_PER_PIXEL</name>
-                    <value>195.62550080128204</value>
+                    <value>38146.97265625</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Spectral Width per pixel in Hz / Pix</description>
                     <displayedName>SPECTRAL_WIDTH_PER_PIXEL</displayedName>
@@ -9963,7 +9926,7 @@
                 <key>TRANSFORM_PLUGIN</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>TRANSFORM_PLUGIN</name>
-                    <value>Elliptical3D</value>
+                    <value>Sequential4DBackAndForth</value>
                     <defaultValue>Sequential4D</defaultValue>
                     <description>Transform the acquisition space to the k space</description>
                     <displayedName>Transform plugin</displayedName>
@@ -9983,7 +9946,7 @@
                 <key>TRIGGER_CHANEL</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>TRIGGER_CHANEL</name>
-                    <value>Ext1_XOR_Ext2</value>
+                    <value>Ext1</value>
                     <defaultValue>Ext1_XOR_Ext2</defaultValue>
                     <description></description>
                     <displayedName>Trigger Channel</displayedName>
@@ -10016,7 +9979,7 @@
                 <key>TRIGGER_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                     <name>TRIGGER_TIME</name>
-                    <value>0.0</value>
+                    <value>0.01</value>
                     <defaultValue>0.01</defaultValue>
                     <description>TRIGGER_TIME.description</description>
                     <displayedName>TRIGGER_TIME</displayedName>
@@ -10255,7 +10218,7 @@
                 <key>USER_MATRIX_DIMENSION_3D</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>USER_MATRIX_DIMENSION_3D</name>
-                    <value>64</value>
+                    <value>1</value>
                     <defaultValue>1</defaultValue>
                     <description></description>
                     <displayedName>USER_ACQUISITION_MATRIX_DIMENSION_3D</displayedName>

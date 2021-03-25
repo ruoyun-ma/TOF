@@ -11,24 +11,24 @@ public enum Events {
 
          LoopSatBandStart (4, S.Time_min_instruction.name()),
          SatBandpulse (6, S.Time_tx_sb.name()),
-         LoopSatBandEnd (12, S.Time_min_instruction.name()),
+         LoopSatBandEnd (11, S.Time_min_instruction.name()),
 
-         FatSatPulse (15, S.Time_tx_fatsat.name()),
+         FatSatPulse (14, S.Time_tx_fatsat.name()),
 
 
-         P90 (21, S.Time_tx.name()),
-         Delay1 (29, S.Time_TE_delay1.name()),
+         P90 (20, S.Time_tx.name()),
+         Delay1 (28, S.Time_TE_delay1.name()),
 
-         LoopStartEcho (30, S.Time_min_instruction.name()),
-         Acq (32, S.Time_rx.name()),
-         Delay2 (37, S.Time_TE_delay2.name()),
-         LoopEndEcho (38, S.Time_min_instruction.name()),
+         LoopStartEcho (29, S.Time_min_instruction.name()),
+         Acq (31, S.Time_rx.name()),
+         Delay2 (36, S.Time_TE_delay2.name()),
+         LoopEndEcho (37, S.Time_min_instruction.name()),
 
-         Delay3 (42, S.Time_TR_delay.name()),
-         LoopMultiPlanarEnd (43, S.Time_min_instruction.name()),
+         Delay3 (41, S.Time_TR_delay.name()),
+         LoopMultiPlanarEnd (42, S.Time_min_instruction.name()),
 
-         Loop4D (45, S.Time_flush_delay.name()),
-         End (46, S.Time_btw_dyn_frames.name());
+         Loop4D (44, S.Time_flush_delay.name()),
+         End (45, S.Time_btw_dyn_frames.name());
 
         public final int ID;
         public final String shortcutName;

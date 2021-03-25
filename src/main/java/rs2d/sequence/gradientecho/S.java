@@ -11,7 +11,7 @@ import java.util.List;
 import static java.util.Arrays.asList;
 
 public enum S implements GeneratorSequenceParamEnum {
-    Enable_fatsat("Enable_fatsat"),
+    Enable_fs("Enable_fs"),
     Enable_sb("Enable_sb"),
     Ext_trig_source("Ext_trig_source"),
     Grad_enable_flowcomp("Grad_enable_flowcomp"),
@@ -84,6 +84,7 @@ public enum S implements GeneratorSequenceParamEnum {
     Nb_echo("Nb_echo"),
     Nb_interleaved_slice("Nb_interleaved_slice"),
     Nb_sb_loop("Nb_sb_loop"),
+    p1_att("p1_att"),
     Rx_freq_offset("Rx_freq_offset"),
     Rx_phase("Rx_phase"),
     Time_before_fatsat_pulse("Time_before_fatsat_pulse"),

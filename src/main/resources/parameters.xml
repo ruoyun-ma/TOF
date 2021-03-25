@@ -59,7 +59,7 @@
             <key>ACQUISITION_MATRIX_DIMENSION_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_MATRIX_DIMENSION_3D</name>
-                <value>1</value>
+                <value>64</value>
                 <defaultValue>1</defaultValue>
                 <description>The acquisition size of the third dimension</description>
                 <displayedName>Acquisition 3D</displayedName>
@@ -150,6 +150,7 @@
             <key>ACQUISITION_TIME_OFFSET</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>ACQUISITION_TIME_OFFSET</name>
+                <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Relative acquisition start times in Dynamic or MultiSeries scans</description>
                 <displayedName>ACQUISITION_TIME_OFFSET</displayedName>
@@ -461,11 +462,11 @@
             <key>FATSAT_FLIP_ANGLE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_FLIP_ANGLE</name>
-                <value>90.0</value>
+                <value>0.0</value>
                 <defaultValue>90.0</defaultValue>
                 <description></description>
                 <displayedName>FATSAT_FLIP_ANGLE</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Angle</numberEnum>
@@ -551,7 +552,7 @@
             <key>FATSAT_TX_AMP_90</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_TX_AMP_90</name>
-                <value>1.0</value>
+                <value>100.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>FATSAT_TX_AMP_90</displayedName>
@@ -569,7 +570,7 @@
             <key>FATSAT_TX_LENGTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_TX_LENGTH</name>
-                <value>0.015000000000000001</value>
+                <value>5.0E-6</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>FATSAT_TX_LENGTH</displayedName>
@@ -608,7 +609,7 @@
             <key>FAT_SATURATION_ENABLED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>FAT_SATURATION_ENABLED</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description></description>
                 <displayedName>FAT_SATURATION_ENABLED</displayedName>
@@ -654,7 +655,7 @@
             <key>FIELD_OF_VIEW_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FIELD_OF_VIEW_3D</name>
-                <value>0.001</value>
+                <value>0.064</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Field of View in the 3rd direction : total coverage</description>
                 <displayedName>FIELD_OF_VIEW_3D</displayedName>
@@ -725,7 +726,7 @@
             <key>FLOW_COMPENSATION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>FLOW_COMPENSATION</name>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>Use flow compensation</description>
                 <displayedName>Flow compensation</displayedName>
@@ -1257,7 +1258,7 @@
             <key>KS_CENTERED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>KS_CENTERED</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Center the k-space around k0(check) or go through k0</description>
                 <displayedName>KS_CENTERED</displayedName>
@@ -1271,7 +1272,7 @@
             <key>KS_CENTER_MODE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>KS_CENTER_MODE</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Turn off the PE gradient and acquieres two single scan only</description>
                 <displayedName>KS_CENTER_MODE</displayedName>
@@ -1389,7 +1390,7 @@
             <key>MULTISERIES_PARAMETER_NAME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>MULTISERIES_PARAMETER_NAME</name>
-                <value>TE</value>
+                <value></value>
                 <defaultValue></defaultValue>
                 <description>Name of MultiSeries Parameter</description>
                 <displayedName>MULTISERIES_PARAMETER_NAME</displayedName>
@@ -1422,7 +1423,7 @@
             <key>MULTI_PLANAR_EXCITATION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>MULTI_PLANAR_EXCITATION</name>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>true</defaultValue>
                 <description>Multi planar excitation</description>
                 <displayedName>Multi planar</displayedName>
@@ -2006,7 +2007,7 @@
             <key>NUMBER_OF_INTERLEAVED_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>NUMBER_OF_INTERLEAVED_SLICE</name>
-                <value>0</value>
+                <value>1</value>
                 <defaultValue>0</defaultValue>
                 <description></description>
                 <displayedName>NUMBER_OF_INTERLEAVED_SLICE</displayedName>
@@ -2024,7 +2025,7 @@
             <key>NUMBER_OF_SHOOT_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>NUMBER_OF_SHOOT_3D</name>
-                <value>1</value>
+                <value>64</value>
                 <defaultValue>1</defaultValue>
                 <description>Number of Slice set acquiered sequencially</description>
                 <displayedName>Number of Shoot 3D</displayedName>
@@ -2640,7 +2641,7 @@
             <key>RESOLUTION_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RESOLUTION_SLICE</name>
-                <value>0.1</value>
+                <value>0.001</value>
                 <defaultValue>0.0</defaultValue>
                 <description>True pixel dimension in the 3rd direction</description>
                 <displayedName>RESOLUTION_SLICE</displayedName>
@@ -2690,7 +2691,7 @@
             <key>SATBAND_ENABLED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>SATBAND_ENABLED</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description></description>
                 <displayedName>SATBAND_ENABLED</displayedName>
@@ -2783,7 +2784,7 @@
             <key>SATBAND_TX_AMP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SATBAND_TX_AMP</name>
-                <value>74.0</value>
+                <value>97.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>SATBAND_TX_AMP</displayedName>
@@ -2837,7 +2838,7 @@
             <key>SEQUENCE_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
-                <value>0.5</value>
+                <value>827.4</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>SEQUENCE_TIME</displayedName>
@@ -2870,7 +2871,7 @@
             <key>SEQ_DESCRIPTION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQ_DESCRIPTION</name>
-                <value>GE_3D_AXI_64x64x0x0_ETL=0_SATBAND_FATSAT</value>
+                <value>GE_2D_AXI_64x64x64_SATBAND_SATBAND</value>
                 <defaultValue></defaultValue>
                 <description></description>
                 <displayedName>SEQ_DESCRIPTION</displayedName>
@@ -3079,7 +3080,7 @@
             <key>TOF2D_ENABLED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>TOF2D_ENABLED</name>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description></description>
                 <displayedName>TOF2D_ENABLED</displayedName>
@@ -9842,7 +9843,7 @@
             <key>TX_AMP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP</name>
-                <value>41.0</value>
+                <value>2.0</value>
                 <defaultValue>40.0</defaultValue>
                 <description>Emission amplitude</description>
                 <displayedName>TX_AMP</displayedName>
@@ -9860,7 +9861,7 @@
             <key>TX_AMP_180</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP_180</name>
-                <value>100.0</value>
+                <value>40.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>The magnitude of the RF pulse 180</description>
                 <displayedName>TX_AMP_180</displayedName>
@@ -9878,7 +9879,7 @@
             <key>TX_AMP_90</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP_90</name>
-                <value>100.0</value>
+                <value>20.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Amplitude of the transmitter</description>
                 <displayedName>TX_AMP_90</displayedName>
@@ -9909,7 +9910,7 @@
             <key>TX_ATT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_ATT</name>
-                <value>63.0</value>
+                <value>37.0</value>
                 <defaultValue>36.0</defaultValue>
                 <description>Emission attenuation</description>
                 <displayedName>TX_ATT</displayedName>
@@ -10064,7 +10065,7 @@
             <key>USER_MATRIX_DIMENSION_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_3D</name>
-                <value>1</value>
+                <value>64</value>
                 <defaultValue>1</defaultValue>
                 <description></description>
                 <displayedName>USER_ACQUISITION_MATRIX_DIMENSION_3D</displayedName>

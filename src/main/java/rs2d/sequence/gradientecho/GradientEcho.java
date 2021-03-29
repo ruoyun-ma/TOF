@@ -35,6 +35,7 @@ package rs2d.sequence.gradientecho;
 //   setParamValue(MODALITY, "MRI");
 //   setSequenceParamValue("Phase_reset","USER_TMP_PARAM_BOOL_1");
 
+import common.Gradient;
 import rs2d.commons.log.Log;
 import rs2d.spinlab.instrument.Instrument;
 import rs2d.spinlab.instrument.util.GradientMath;
@@ -49,8 +50,9 @@ import java.util.*;
 
 import static java.util.Arrays.asList;
 
-import rs2d.sequence.common.*;
-
+import common.*;
+import kernel.*;
+import model.*;
 import static rs2d.sequence.gradientecho.S.*;
 import static rs2d.sequence.gradientecho.U.*;
 
@@ -110,8 +112,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
     @Override
     public void init() {
         super.init();
-        ((TextParam) getParam(TX_SHAPE)).setSuggestedValues(tx_shape);
-        ((TextParam) getParam(TX_SHAPE)).setRestrictedToSuggested(true);
+        setSuggestedValFromListString(tx_shape, true, TX_SHAPE);
 
         //TRANSFORM PLUGIN
         TextParam transformPlugin = getParam(TRANSFORM_PLUGIN);

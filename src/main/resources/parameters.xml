@@ -167,7 +167,7 @@
             <key>ACQUISITION_TIME_PER_SCAN</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_TIME_PER_SCAN</name>
-                <value>2.62144E-5</value>
+                <value>1.163264E-4</value>
                 <defaultValue>1.0</defaultValue>
                 <description>The acquisition time per scan  ( SPECTRAL_WIDTH )</description>
                 <displayedName>Acq Time</displayedName>
@@ -1241,7 +1241,7 @@
             <key>KSPACE_FILLING</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>KSPACE_FILLING</name>
-                <value>Linear</value>
+                <value>3DElliptic</value>
                 <defaultValue>Linear</defaultValue>
                 <description></description>
                 <displayedName>KSPACE_FILLING</displayedName>
@@ -1423,7 +1423,7 @@
             <key>MULTI_PLANAR_EXCITATION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>MULTI_PLANAR_EXCITATION</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>true</defaultValue>
                 <description>Multi planar excitation</description>
                 <displayedName>Multi planar</displayedName>
@@ -2007,7 +2007,7 @@
             <key>NUMBER_OF_INTERLEAVED_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>NUMBER_OF_INTERLEAVED_SLICE</name>
-                <value>1</value>
+                <value>0</value>
                 <defaultValue>0</defaultValue>
                 <description></description>
                 <displayedName>NUMBER_OF_INTERLEAVED_SLICE</displayedName>
@@ -2587,7 +2587,7 @@
             <key>REPETITION_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>REPETITION_TIME</name>
-                <value>0.202</value>
+                <value>0.576</value>
                 <defaultValue>0.2</defaultValue>
                 <description>The repetition time ( TR )</description>
                 <displayedName>TR</displayedName>
@@ -2784,7 +2784,7 @@
             <key>SATBAND_TX_AMP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SATBAND_TX_AMP</name>
-                <value>97.0</value>
+                <value>100.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>SATBAND_TX_AMP</displayedName>
@@ -2838,7 +2838,7 @@
             <key>SEQUENCE_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
-                <value>827.4</value>
+                <value>1783.3</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>SEQUENCE_TIME</displayedName>
@@ -2856,7 +2856,7 @@
             <key>SEQUENCE_VERSION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQUENCE_VERSION</name>
-                <value>Version11.1</value>
+                <value>Version x1.0</value>
                 <defaultValue></defaultValue>
                 <description></description>
                 <displayedName>SEQUENCE_VERSION</displayedName>
@@ -2871,7 +2871,7 @@
             <key>SEQ_DESCRIPTION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQ_DESCRIPTION</name>
-                <value>GE_2D_AXI_64x64x64_SATBAND_SATBAND</value>
+                <value>GE_3D_AXI_64x64x64</value>
                 <defaultValue></defaultValue>
                 <description></description>
                 <displayedName>SEQ_DESCRIPTION</displayedName>
@@ -2968,7 +2968,7 @@
             <key>SPECTRAL_WIDTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SPECTRAL_WIDTH</name>
-                <value>2441406.25</value>
+                <value>550176.0563380282</value>
                 <defaultValue>12500.0</defaultValue>
                 <description>The spectral width of the reception ( SW BW, bandwidth )</description>
                 <displayedName>SW</displayedName>
@@ -3000,7 +3000,7 @@
             <key>SPECTRAL_WIDTH_PER_PIXEL</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SPECTRAL_WIDTH_PER_PIXEL</name>
-                <value>38146.97265625</value>
+                <value>8596.50088028169</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Spectral Width per pixel in Hz / Pix</description>
                 <displayedName>SPECTRAL_WIDTH_PER_PIXEL</displayedName>
@@ -3080,7 +3080,7 @@
             <key>TOF2D_ENABLED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>TOF2D_ENABLED</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description></description>
                 <displayedName>TOF2D_ENABLED</displayedName>
@@ -3144,6 +3144,35 @@
             </value>
         </entry>
         <entry>
+            <key>TOF2D_SB_OFFSET</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>TOF2D_SB_OFFSET</name>
+                <value>750.0</value>
+                <defaultValue>0.0</defaultValue>
+                <description></description>
+                <displayedName>TOF2D_SB_OFFSET</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <suggestedValues>-1500.0</suggestedValues>
+                <suggestedValues>-1250.0</suggestedValues>
+                <suggestedValues>-1000.0</suggestedValues>
+                <suggestedValues>-750.0</suggestedValues>
+                <suggestedValues>-500.0</suggestedValues>
+                <suggestedValues>0.0</suggestedValues>
+                <suggestedValues>500.0</suggestedValues>
+                <suggestedValues>750.0</suggestedValues>
+                <suggestedValues>1000.0</suggestedValues>
+                <suggestedValues>1250.0</suggestedValues>
+                <suggestedValues>1500.0</suggestedValues>
+                <numberEnum>FrequencyOffset</numberEnum>
+                <minValue>-1.5E9</minValue>
+                <maxValue>1.5E9</maxValue>
+                <group>Emission</group>
+                <category>Acquisition</category>
+            </value>
+        </entry>
+        <entry>
             <key>TOF2D_SB_POSITION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>TOF2D_SB_POSITION</name>
@@ -3182,7 +3211,7 @@
             <key>TOF2D_SB_TX_SHAPE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>TOF2D_SB_TX_SHAPE</name>
-                <value>SINC5</value>
+                <value>GAUSSIAN</value>
                 <defaultValue>HARD</defaultValue>
                 <description></description>
                 <displayedName>TOF2D_SB_TX_SHAPE</displayedName>
@@ -9773,7 +9802,7 @@
             <key>TRANSFORM_PLUGIN</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>TRANSFORM_PLUGIN</name>
-                <value>Sequential4DBackAndForth</value>
+                <value>Elliptical3D</value>
                 <defaultValue>Sequential4D</defaultValue>
                 <description>Transform the acquisition space to the k space</description>
                 <displayedName>Transform plugin</displayedName>
@@ -9843,7 +9872,7 @@
             <key>TX_AMP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP</name>
-                <value>2.0</value>
+                <value>41.54606453510697</value>
                 <defaultValue>40.0</defaultValue>
                 <description>Emission amplitude</description>
                 <displayedName>TX_AMP</displayedName>
@@ -9861,7 +9890,7 @@
             <key>TX_AMP_180</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP_180</name>
-                <value>40.0</value>
+                <value>100.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>The magnitude of the RF pulse 180</description>
                 <displayedName>TX_AMP_180</displayedName>
@@ -9879,7 +9908,7 @@
             <key>TX_AMP_90</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP_90</name>
-                <value>20.0</value>
+                <value>100.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Amplitude of the transmitter</description>
                 <displayedName>TX_AMP_90</displayedName>
@@ -9910,7 +9939,7 @@
             <key>TX_ATT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_ATT</name>
-                <value>37.0</value>
+                <value>63.0</value>
                 <defaultValue>36.0</defaultValue>
                 <description>Emission attenuation</description>
                 <displayedName>TX_ATT</displayedName>

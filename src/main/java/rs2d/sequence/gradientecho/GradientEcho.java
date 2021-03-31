@@ -40,6 +40,7 @@ import rs2d.commons.log.Log;
 import rs2d.spinlab.instrument.Instrument;
 import rs2d.spinlab.instrument.util.GradientMath;
 import rs2d.spinlab.sequence.SequenceTool;
+import rs2d.spinlab.sequence.element.Opcode;
 import rs2d.spinlab.sequence.element.TimeElement;
 import rs2d.spinlab.sequence.table.Table;
 import rs2d.spinlab.sequenceGenerator.util.TimeEvents;
@@ -118,13 +119,12 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 
         //TRANSFORM PLUGIN
         TextParam transformPlugin = getParam(TRANSFORM_PLUGIN);
-        transformPlugin.setSuggestedValues(asList("Sequential4D", "Sequential4DBackAndForth", "EPISequential4D", "Elliptical3D"));
+        transformPlugin.setSuggestedValues(asList("Sequential4D", "Sequential4DBackAndForth", "EPISequential4D", "Elliptical3D", "Sequential4D_TOF"));
         transformPlugin.setRestrictedToSuggested(true);
-
 
         // KSPACE_FILLING
         TextParam ksFilling = getParam(KSPACE_FILLING);
-        ksFilling.setSuggestedValues(asList("Linear", "Centric", "3DElliptic"));// temporary removed "3DElliptic"
+        ksFilling.setSuggestedValues(asList("Linear", "3DElliptic"));
         ksFilling.setRestrictedToSuggested(true);
     }
 
@@ -185,6 +185,9 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
                     if (is_flyback) {
                         getParam(TRANSFORM_PLUGIN).setValue("Sequential4D");
                     }
+                    if (!isMultiplanar && nb_interleaved_slice > 1) {
+                        getParam(TRANSFORM_PLUGIN).setValue("Sequential4D_TOF");
+                    }
                     break;
                 case "3DElliptic":
                     getParam(TRANSFORM_PLUGIN).setValue("Elliptical3D");
@@ -195,9 +198,8 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
                     getParam(TRANSFORM_PLUGIN).setValue("Sequential4DBackAndForth");
                     break;
             }
-
         }
-
+        isElliptical = kspace_filling.equalsIgnoreCase("3DElliptic");
 
         plugin = getTransformPlugin();
         plugin.setParameters(new ArrayList<>(getUserParams()));
@@ -206,7 +208,6 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 
     @Override
     protected void iniScanLoop() {
-        nb_planar_excitation = (isMultiplanar ? acqMatrixDimension3D : 1);
         nb_scan_1d = nb_averages;
         String updateDimension = SequenceTool.UpdateDimensionEnum.Disable.getText();
         if (!isMultiplanar) {
@@ -214,7 +215,8 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
             if (!isElliptical) {
                 System.out.println(" non 3DElliptic " + acqMatrixDimension2D);
                 nb_scan_2d = acqMatrixDimension2D;
-                nb_scan_3d = acqMatrixDimension3D;
+                //nb_scan_3d = acqMatrixDimension3D;
+                nb_scan_3d = nb_shoot_3d;
             } else {
                 System.out.println(" 3DElliptic");
                 //CAMELEON3
@@ -237,11 +239,26 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
         }
 
         //Dynamic and multi echo are filled into the 4th Dimension
-        nb_scan_4d = ((ExtTrig) models.get("ExtTrig")).nb_trigger * nb_dynamic_acquisition;
-        getParam(USER_MATRIX_DIMENSION_4D).setValue(nb_scan_4d);
+        if (models.get("ExtTrig").isEnabled()) {
+            nb_scan_4d = ((ExtTrig) models.get("ExtTrig")).nb_trigger * nb_dynamic_acquisition;
+        } else {
+            nb_scan_4d = Math.max(acqMatrixDimension4D / nb_interleaved_slice, 1);
+        }
 
-        nb_planar_excitation = (isMultiplanar ? acqMatrixDimension3D : 1);
-        nb_slices_acquired_in_single_scan = (nb_planar_excitation > 1) ? (nb_interleaved_slice) : 1;
+        try {
+            if (models.get("TofSat").isEnabled() && !isMultiplanar) {
+                set(Loop_long, Opcode.CodeEnum.Continu);
+                set(Loop_short, Opcode.CodeEnum.StoreLoopAddress);
+            } else {
+                set(Loop_long, Opcode.CodeEnum.StoreLoopAddress);
+                set(Loop_short, Opcode.CodeEnum.Continu);
+            }
+        } catch (Exception e) {
+            Log.warning(getClass(), "Sequence Param Missing: Loop_short; use default: Loop_long");
+        }
+
+        nb_planar_excitation = (isMultiplanar ? acqMatrixDimension3D : 1); //XG:for 3D, we still use 1, to trick phaseoffset of MT pulse
+        //nb_slices_acquired_in_single_scan = (nb_planar_excitation > 1) ? (nb_interleaved_slice) : 1;
 
         if (isKSCenterMode) { // Do only the center of the k-space for auto RG
             nb_scan_1d = 1;
@@ -251,7 +268,6 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
             getParam(ACQUISITION_MATRIX_DIMENSION_3D).setValue(!isMultiplanar ? 1 : acqMatrixDimension3D);
             getParam(ACQUISITION_MATRIX_DIMENSION_4D).setValue(1);
         }
-
         // set Nb_scan  Values
         set(Pre_scan, nb_preScan); // Do the prescan
         set(Nb_point, acqMatrixDimension1D);
@@ -332,6 +348,9 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
         // -----------------------------------------------
         // Calculation RF pulse parameters  2/4 : Shape
         // -----------------------------------------------
+        if (hasParam(TOF3D_TX_RAMP_SLOPE) && "RAMP".equalsIgnoreCase(getText(TX_SHAPE))) {
+            pulseTX.setSincGenRampSlope(getDouble(TOF3D_TX_RAMP_SLOPE));
+        }
         pulseTX.setShape((getText(TX_SHAPE)), nb_shape_points, "Hamming");
 
         // -----------------------------------------------
@@ -365,26 +384,50 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
         // ---------------------------------------------------------------------
         slice_thickness_excitation = (isMultiplanar ? sliceThickness : (sliceThickness * userMatrixDimension3D));
         gradSlice = Gradient.createGradient(getSequence(), Grad_amp_slice, Time_tx, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp, nucleus);
-        if (isEnableSlice && !gradSlice.prepareSliceSelection(tx_bandwidth_90, slice_thickness_excitation)) {
-            slice_thickness_excitation = gradSlice.getSliceThickness();
-            double slice_thickness_min = (isMultiplanar ? slice_thickness_excitation : (slice_thickness_excitation / userMatrixDimension3D));
-            notifyOutOfRangeParam(SLICE_THICKNESS, slice_thickness_min, ((NumberParam) getParam(SLICE_THICKNESS)).getMaxValue(), "Pulse length too short to reach this slice thickness");
-            sliceThickness = slice_thickness_min;
+
+        if (hasParam(TOF3D_EXT_SHIRNK_FACTOR) && !isMultiplanar) {
+            if (isEnableSlice && !gradSlice.prepareSliceSelection(tx_bandwidth_90, slice_thickness_excitation * (100 - getDouble(TOF3D_EXT_SHIRNK_FACTOR)) / 100)) {
+                slice_thickness_excitation = gradSlice.getSliceThickness() / ((100 - getDouble(TOF3D_EXT_SHIRNK_FACTOR)) / 100);
+                double slice_thickness_min = (isMultiplanar ? slice_thickness_excitation : (slice_thickness_excitation / userMatrixDimension3D));
+                notifyOutOfRangeParam(SLICE_THICKNESS, slice_thickness_min, ((NumberParam) getParam(SLICE_THICKNESS)).getMaxValue(), "Pulse length too short to reach this slice thickness");
+                sliceThickness = slice_thickness_min;
+            }
+        } else {
+            if (isEnableSlice && !gradSlice.prepareSliceSelection(tx_bandwidth_90, slice_thickness_excitation)) {
+                slice_thickness_excitation = gradSlice.getSliceThickness();
+                double slice_thickness_min = (isMultiplanar ? slice_thickness_excitation : (slice_thickness_excitation / userMatrixDimension3D));
+                notifyOutOfRangeParam(SLICE_THICKNESS, slice_thickness_min, ((NumberParam) getParam(SLICE_THICKNESS)).getMaxValue(), "Pulse length too short to reach this slice thickness");
+                sliceThickness = slice_thickness_min;
+            }
         }
+
         gradSlice.applyAmplitude();
 
         // ------------------------------------------------------------------
         //calculate TX FREQUENCY offsets tables for slice positionning
         // ------------------------------------------------------------------
-        if (isMultiplanar && nb_planar_excitation > 1 && isEnableSlice) {
+        //if (isMultiplanar && nb_planar_excitation > 1 && isEnableSlice) {
+        if (isMultiplanar && isEnableSlice) {
             //MULTI-PLANAR case : calculation of frequency offset table
-            pulseTX.prepareOffsetFreqMultiSlice(gradSlice, nb_planar_excitation, spacingBetweenSlice, off_center_distance_3D);
-            pulseTX.reoderOffsetFreq(plugin, acqMatrixDimension1D * echoTrainLength, nb_slices_acquired_in_single_scan);
-            pulseTX.setFrequencyOffset(nb_slices_acquired_in_single_scan != 1 ? Order.ThreeLoop : Order.Three);
+            //pulseTX.prepareOffsetFreqMultiSlice(gradSlice, nb_planar_excitation, spacingBetweenSlice, off_center_distance_3D);
+            //pulseTX.reoderOffsetFreq(plugin, acqMatrixDimension1D * echoTrainLength, nb_slices_acquired_in_single_scan);
+            //pulseTX.setFrequencyOffset(nb_slices_acquired_in_single_scan != 1 ? Order.ThreeLoop : Order.Three);
+
+            pulseTX.prepareOffsetFreqMultiSlice(gradSlice, acqMatrixDimension3D, spacingBetweenSlice, off_center_distance_3D);
+            pulseTX.reoderOffsetFreq(plugin, acqMatrixDimension1D * echoTrainLength, nb_interleaved_slice);
+            pulseTX.setFrequencyOffset(nb_interleaved_slice != 1 ? Order.ThreeLoop : Order.Three);
+
         } else {
             //3D CASE :
-            pulseTX.prepareOffsetFreqMultiSlice(gradSlice, 1, 0, off_center_distance_3D);
-            pulseTX.setFrequencyOffset(Order.Three);
+            //pulseTX.prepareOffsetFreqMultiSlice(gradSlice, nb_interleaved_slice, 0, off_center_distance_3D);
+            //pulseTX.setFrequencyOffset(Order.Three);
+            pulseTX.prepareOffsetFreqMultiSlice(gradSlice, acqMatrixDimension4D, spacingBetweenSlice + (slice_thickness_excitation - gradSlice.getSliceThickness()), off_center_distance_3D);
+            pulseTX.reoderOffsetFreq(nb_interleaved_slice);
+            if (nb_interleaved_slice > 1) {
+                pulseTX.setFrequencyOffset(Order.FourLoop);
+            } else {
+                pulseTX.setFrequencyOffset(Order.Four);
+            }
         }
 
         // ------------------------------------------------------------------
@@ -468,36 +511,62 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
             acqMatrixDimension3D = floorEven((1 - zero_filling_3D) * userMatrixDimension3D);
             acqMatrixDimension3D = (acqMatrixDimension3D < 4) && isEnablePhase3D ? 4 : acqMatrixDimension3D;
             userMatrixDimension3D = Math.max(userMatrixDimension3D, acqMatrixDimension3D);
-            getParam(USER_MATRIX_DIMENSION_3D).setValue(userMatrixDimension3D);
         } else {
             if ((userMatrixDimension3D * 3 + ((is_rf_spoiling) ? 1 : 0) + 3 + 1) >= offset_channel_memory) {
                 userMatrixDimension3D = ((int) Math.floor((offset_channel_memory - 4 - ((is_rf_spoiling) ? 1 : 0)) / 3.0));
-                getParam(USER_MATRIX_DIMENSION_3D).setValue(userMatrixDimension3D);
             }
             acqMatrixDimension3D = userMatrixDimension3D;
         }
 
-        nb_shoot_3d = isMultiplanar ? getInferiorDivisorToGetModulusZero(nb_shoot_3d, acqMatrixDimension3D) : acqMatrixDimension3D;
-        nb_shoot_3d = models.get("TofSat").isEnabled() ? acqMatrixDimension3D : nb_shoot_3d; // TOF does not allow interleaved slice within the TR
+// support multi-slab in 3D acq
+        //nb_shoot_3d = isMultiplanar ? getInferiorDivisorToGetModulusZero(nb_shoot_3d, acqMatrixDimension3D) : acqMatrixDimension3D;
+        //nb_shoot_3d = models.get("TofSat").isEnabled() ? acqMatrixDimension3D : nb_shoot_3d; // TOF does not allow interleaved slice within the TR
+        //nb_interleaved_slice = isMultiplanar ? (int) Math.ceil((acqMatrixDimension3D / (double) nb_shoot_3d)) : 1;
 
-        nb_interleaved_slice = isMultiplanar ? (int) Math.ceil((acqMatrixDimension3D / (double) nb_shoot_3d)) : 1;
+        if (models.get("TofSat").isEnabled() && isMultiplanar) {
+            nb_shoot_3d = acqMatrixDimension3D; // TOF does not allow interleaved slice within the TR
+        } else if (/*models.get("TofSat").isEnabled() &&*/ !isMultiplanar) {  //in 3DTOF, we nb_shoot_3d depends on nb_interleaved_slice;
+            nb_interleaved_slice = getInt(NUMBER_OF_INTERLEAVED_SLICE);
+//            nb_interleaved_slice = getInferiorDivisorToGetModulusZero(nb_interleaved_slice, acqMatrixDimension3D * acqMatrixDimension4D);
+            nb_interleaved_slice = getInferiorDivisorToGetModulusZero(nb_interleaved_slice, acqMatrixDimension4D);
+        } else {
+            nb_shoot_3d = getInferiorDivisorToGetModulusZero(nb_shoot_3d, acqMatrixDimension3D);
+        }
+
+        if (!isMultiplanar /*&& models.get("TofSat").isEnabled()*/) {
+//            nb_shoot_3d = (int) Math.ceil((acqMatrixDimension3D * acqMatrixDimension4D / (double) nb_interleaved_slice));
+            nb_shoot_3d = acqMatrixDimension3D;
+        } else {
+            nb_interleaved_slice = (int) Math.ceil((acqMatrixDimension3D / (double) nb_shoot_3d));
+        }
+
         getParam(NUMBER_OF_SHOOT_3D).setValue(nb_shoot_3d);
-        getParam(NUMBER_OF_INTERLEAVED_SLICE).setValue(isMultiplanar ? nb_interleaved_slice : 0);
+        //getParam(NUMBER_OF_INTERLEAVED_SLICE).setValue(isMultiplanar ? nb_interleaved_slice : 0);
+        getParam(NUMBER_OF_INTERLEAVED_SLICE).setValue(nb_interleaved_slice);
 
         acqMatrixDimension3D = is_partial_oversampling ? (int) Math.round(acqMatrixDimension3D / 0.8 / 2) * 2 : acqMatrixDimension3D;
         userMatrixDimension3D = is_partial_oversampling ? (int) Math.round(userMatrixDimension3D / 0.8 / 2) * 2 : userMatrixDimension3D;
-
         getParam(ACQUISITION_MATRIX_DIMENSION_3D).setValue(acqMatrixDimension3D);
+        getParam(USER_MATRIX_DIMENSION_3D).setValue(userMatrixDimension3D);
 
         if (isMultiplanar) {
             spacingBetweenSlice = getDouble(SPACING_BETWEEN_SLICE);
+            fov3d = sliceThickness * userMatrixDimension3D + spacingBetweenSlice * (userMatrixDimension3D - 1);
+            getParam(FIELD_OF_VIEW_3D).setValue(fov3d);    // FOV ratio for display
         } else {
-            getParam(SPACING_BETWEEN_SLICE).setValue(0);
-            spacingBetweenSlice = 0;
-        }
+            sliceThickness = fov3d / userMatrixDimension3D;
+            spacingBetweenSlice = userMatrixDimension4D > 1 ? -getDouble(TOF3D_MOTSA_OVERLAP) / 100 * sliceThickness * userMatrixDimension3D : 0;
+            fov3d = sliceThickness * userMatrixDimension3D;
 
-        fov3d = sliceThickness * userMatrixDimension3D + spacingBetweenSlice * (userMatrixDimension3D - 1);
-        getParam(FIELD_OF_VIEW_3D).setValue(fov3d);    // FOV ratio for display
+            getParam(ACQUISITION_MATRIX_DIMENSION_3D).setValue(acqMatrixDimension3D);
+            getParam(USER_MATRIX_DIMENSION_3D).setValue(userMatrixDimension3D);
+            getParam(FIELD_OF_VIEW_3D).setValue(fov3d);    // FOV ratio for display
+            getParam(NUMBER_OF_SHOOT_3D).setValue(nb_shoot_3d);
+            getParam(SPACING_BETWEEN_SLICE).setValue(spacingBetweenSlice);
+
+            sliceThickness = fov3d / userMatrixDimension3D;
+            getParam(SLICE_THICKNESS).setValue(sliceThickness);
+        }
     }
 
     @Override
@@ -545,9 +614,15 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
             ((ExtTrig) models.get("ExtTrig")).triggerTime.add(tmp);
             ((ExtTrig) models.get("ExtTrig")).nb_trigger = 1;
         }
+        if (models.get("ExtTrig").isEnabled()) {
+            acqMatrixDimension4D = ((ExtTrig) models.get("ExtTrig")).nb_trigger * nb_dynamic_acquisition * echoTrainLength;
+            userMatrixDimension4D = ((ExtTrig) models.get("ExtTrig")).nb_trigger * nb_dynamic_acquisition;
+        } else {
+            acqMatrixDimension4D = userMatrixDimension4D;
+        }
 
-        acqMatrixDimension4D = ((ExtTrig) models.get("ExtTrig")).nb_trigger * nb_dynamic_acquisition * echoTrainLength;
         getParam(ACQUISITION_MATRIX_DIMENSION_4D).setValue(isKSCenterMode ? 1 : acqMatrixDimension4D);
+        getParam(USER_MATRIX_DIMENSION_4D).setValue(userMatrixDimension4D);
     }
 
     @Override
@@ -664,7 +739,9 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 //                double delta;
 //                delta = to do calculate the time from the PE to the Echo
 //               gradSliceRefPhase3D.preparePhaseEncodingForCheckWithFlowComp(is_keyhole_allowed ? userMatrixDimension3D : acqMatrixDimension3D, acqMatrixDimension3D, slice_thickness_excitation, is_k_s_centred, gradSliceRefPhase3DFlowComp);
+
             }
+
             if (isElliptical) {
                 System.out.println("gradSliceRefPhase3D " + gradSliceRefPhase3D.getAmplitudeArray(0));
                 gradSliceRefPhase3D.reoderPhaseEncoding3D(plugin);
@@ -693,7 +770,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 //                gradPhase2D.preparePhaseEncodingForCheckWithFlowComp(is_keyhole_allowed ? userMatrixDimension2D : acqMatrixDimension2D, acqMatrixDimension2D, fovPhase, is_k_s_centred, gradPhase2DFlowComp, delta);
             }
             if (isElliptical) {
-                gradPhase2D.reoderPhaseEncoding3D(plugin);
+                gradPhase2D.reoderPhaseEncoding(plugin);
             } else {
                 System.out.println();
                 System.out.println("acquisitionMatrixDimension2D  " + getInt(ACQUISITION_MATRIX_DIMENSION_2D));
@@ -793,6 +870,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 
     @Override
     protected void getTimeandDelay() throws Exception {
+
         Events.checkEventShortcut(getSequence());
         // ------------------------------------------
         // delays for FIR
@@ -874,20 +952,36 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
         // ---------------------------------------------------------------
         // calculate TR , Time_last_delay  Time_TR_delay & search for incoherence
         // ---------------------------------------------------------------
-        double delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1)
-                + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopMultiPlanarStart.ID - 1)
-                + models.get("ExtTrig").getDuration();
+        double delay_before_multi_planar_loop;
         double delay_sat_band = models.get("SatBand").getDuration();
-        double delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStart.ID, Events.LoopSatBandStart.ID - 1)
-                + delay_sat_band + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID + 1, Events.LoopStartEcho.ID - 1);
+        double delay_before_echo_loop;
+
+        if (models.get("TofSat").isEnabled() && !isMultiplanar) {
+            delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1)
+                    + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopSatBandStart.ID - 1)
+                    + models.get("ExtTrig").getDuration()
+                    + delay_sat_band
+                    + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID + 1, Events.LoopSatBandStart.ID - 1);
+            delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStartShort.ID, Events.LoopStartEcho.ID - 1);
+        } else {
+            delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1)
+                    + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopMultiPlanarStart.ID - 1)
+                    + models.get("ExtTrig").getDuration();
+            delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStart.ID, Events.LoopSatBandStart.ID - 1)
+                    + delay_sat_band + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID + 1, Events.LoopStartEcho.ID - 1);
+        }
         double delay_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho.ID, Events.LoopEndEcho.ID);
         double delay_spoiler = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopEndEcho.ID + 1, Events.LoopMultiPlanarEnd.ID - 2);// grad_phase_application_time + grad_rise_time * 2;
 //        min_flush_delay = min_time_per_acq_point * acqMatrixDimension1D * echoTrainLength * nb_slices_acquired_in_single_scan * 2;   // minimal time to flush Chameleon buffer (this time is doubled to avoid hidden delays);
 //        min_flush_delay = Math.max(CameleonVersion105 ? min_flush_delay : 0, minInstructionDelay);
         min_flush_delay = minInstructionDelay;
 
-        double time_seq_to_end_spoiler = delay_before_multi_planar_loop + (delay_before_echo_loop + (echoTrainLength * delay_echo_loop) + delay_spoiler) * nb_slices_acquired_in_single_scan;
-        double tr_min = time_seq_to_end_spoiler + minInstructionDelay * (nb_slices_acquired_in_single_scan * 2 + 1) + min_flush_delay;// 2 +( 2 minInstructionDelay: Events. 22 +(20&21
+//        double time_seq_to_end_spoiler = delay_before_multi_planar_loop + (delay_before_echo_loop + (echoTrainLength * delay_echo_loop) + delay_spoiler) * nb_slices_acquired_in_single_scan;
+//        double tr_min = time_seq_to_end_spoiler + minInstructionDelay * (nb_slices_acquired_in_single_scan * 2 + 1) + min_flush_delay;// 2 +( 2 minInstructionDelay: Events. 22 +(20&21
+
+        double time_seq_to_end_spoiler = delay_before_multi_planar_loop + (delay_before_echo_loop + (echoTrainLength * delay_echo_loop) + delay_spoiler) * nb_interleaved_slice;
+        double tr_min = time_seq_to_end_spoiler + minInstructionDelay * (nb_interleaved_slice * 2) + min_flush_delay;// 2 +( 2 minInstructionDelay: Events. 22 +(20&21
+
         if (tr < tr_min) {
             tr_min = ceilToSubDecimal(tr_min, 3);
             notifyOutOfRangeParam(REPETITION_TIME, tr_min, ((NumberParam) getParam(REPETITION_TIME)).getMaxValue(), "TR too short to reach (ETL * User Mx3D/Shoot3D) in a singl scan");
@@ -904,11 +998,15 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
         if (((ExtTrig) models.get("ExtTrig")).nb_trigger != 1) {
             for (int i = 0; i < ((ExtTrig) models.get("ExtTrig")).nb_trigger; i++) {
                 double tmp_time_seq_to_end_spoiler = time_seq_to_end_spoiler - ((ExtTrig) models.get("ExtTrig")).time_external_trigger_delay_max + ((ExtTrig) models.get("ExtTrig")).triggerdelay.get(i).doubleValue();
-                tr_delay = (tr - (tmp_time_seq_to_end_spoiler + last_delay + min_flush_delay)) / nb_slices_acquired_in_single_scan - minInstructionDelay;
+                //tr_delay = (tr - (tmp_time_seq_to_end_spoiler + last_delay + min_flush_delay)) / nb_slices_acquired_in_single_scan - minInstructionDelay;
+                tr_delay = (tr - (tmp_time_seq_to_end_spoiler + last_delay + min_flush_delay)) / nb_interleaved_slice - minInstructionDelay;
                 time_tr_delay.add(tr_delay);
             }
         } else {
-            tr_delay = (tr - (time_seq_to_end_spoiler + last_delay + min_flush_delay)) / nb_slices_acquired_in_single_scan - minInstructionDelay;
+            //tr_delay = (tr - (time_seq_to_end_spoiler + last_delay + min_flush_delay)) / nb_slices_acquired_in_single_scan - minInstructionDelay;
+            //tr_delay = (tr - (time_seq_to_end_spoiler + last_delay + min_flush_delay)) / nb_interleaved_slice - minInstructionDelay;
+
+            tr_delay = (tr - tr_min) / nb_interleaved_slice;
             time_tr_delay.add(tr_delay);
         }
         set(Time_last_delay, last_delay);
@@ -939,11 +1037,17 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
             }
             interval_between_frames_delay = Math.max(time_between_frames - frame_acquisition_time, min_flush_delay);
         }
+
         set(Time_btw_dyn_frames, interval_between_frames_delay);
         // ------------------------------------------------------------------
         // Total Acquisition Time
         // ------------------------------------------------------------------
-        double total_acquisition_time = time_between_frames * nb_dynamic_acquisition + tr * nb_preScan;
+        double total_acquisition_time;
+        if (!isMultiplanar) {
+            total_acquisition_time = time_between_frames * Math.ceil(acqMatrixDimension4D / nb_interleaved_slice) + tr * nb_preScan;
+        } else {
+            total_acquisition_time = time_between_frames * nb_dynamic_acquisition + tr * nb_preScan;
+        }
         getParam(SEQUENCE_TIME).setValue(total_acquisition_time);
 
     }

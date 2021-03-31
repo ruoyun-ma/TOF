@@ -53,6 +53,7 @@ import static java.util.Arrays.asList;
 import common.*;
 import kernel.*;
 import model.*;
+
 import static rs2d.sequence.gradientecho.S.*;
 import static rs2d.sequence.gradientecho.U.*;
 
@@ -61,7 +62,7 @@ import static rs2d.sequence.gradientecho.U.*;
 // **************************************************************************************************
 //
 public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
-    private String sequenceVersion = "Version x1.0";
+    private String sequenceVersion = "Version x1.1";
     private boolean CameleonVersion105 = false;
 
     private boolean is_keyhole_allowed;
@@ -78,7 +79,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 
     //Dynamic
     private boolean isDynamic;
-    private int numberOfDynamicAcquisition;
+    private int nb_dynamic_acquisition;
     private boolean isDynamicMinTime;
     private double time_between_frames;
 
@@ -103,6 +104,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
     private Gradient gradReadout;
     private Gradient gradReadoutFlyback;
     private Gradient gradSliceRefPhase3D;
+    private RFPulse pulseRX;
 
     public GradientEcho() {
         super();
@@ -116,7 +118,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 
         //TRANSFORM PLUGIN
         TextParam transformPlugin = getParam(TRANSFORM_PLUGIN);
-        transformPlugin.setSuggestedValues(asList("Sequential4D", "Sequential4DBackAndForth", "EPISequential4D", "Centric4D", "Elliptical3D"));
+        transformPlugin.setSuggestedValues(asList("Sequential4D", "Sequential4DBackAndForth", "EPISequential4D", "Elliptical3D"));
         transformPlugin.setRestrictedToSuggested(true);
 
 
@@ -140,8 +142,8 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
         txLength90 = getDouble(TX_LENGTH);
 
         isDynamic = getBoolean(DYNAMIC_SEQUENCE);
-        numberOfDynamicAcquisition = isDynamic ? getInt(DYN_NUMBER_OF_ACQUISITION) : 1;
-        isDynamic = isDynamic && (numberOfDynamicAcquisition > 1);
+        nb_dynamic_acquisition = isDynamic ? getInt(DYN_NUMBER_OF_ACQUISITION) : 1;
+        isDynamic = isDynamic && (nb_dynamic_acquisition > 1);
         isDynamicMinTime = getBoolean(DYNAMIC_MIN_TIME);
 
 
@@ -169,29 +171,33 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
     @Override
     protected void iniTransformPlugin() throws Exception {
         ///// transform plugin
-        switch (kspace_filling) {
-            case "Linear":
-                getParam(TRANSFORM_PLUGIN).setValue("Sequential4DBackAndForth");
-                if (is_flyback) {
-                    getParam(TRANSFORM_PLUGIN).setValue("Sequential4D");
-                }
-                break;
-            case "Centric":
-                getParam(TRANSFORM_PLUGIN).setValue("Centric4D");
-                break;
-            case "3DElliptic":
-                if (isMultiplanar) {
+        if (isMultiplanar) {
+            kspace_filling = "Linear";
+            getParam(KSPACE_FILLING).setValue(kspace_filling);
+            getParam(TRANSFORM_PLUGIN).setValue("Sequential4DBackAndForth");
+            if (is_flyback) {
+                getParam(TRANSFORM_PLUGIN).setValue("Sequential4D");
+            }
+        } else {
+            switch (kspace_filling) {
+                case "Linear":
+                    getParam(TRANSFORM_PLUGIN).setValue("Sequential4DBackAndForth");
+                    if (is_flyback) {
+                        getParam(TRANSFORM_PLUGIN).setValue("Sequential4D");
+                    }
+                    break;
+                case "3DElliptic":
+                    getParam(TRANSFORM_PLUGIN).setValue("Elliptical3D");
+                    break;
+                default:
                     kspace_filling = "Linear";
                     getParam(KSPACE_FILLING).setValue(kspace_filling);
-                } else {
-                    getParam(TRANSFORM_PLUGIN).setValue("Elliptical3D");
-                }
-                break;
-            default:
-                kspace_filling = "Linear";
-                getParam(KSPACE_FILLING).setValue(kspace_filling);
-                break;
+                    getParam(TRANSFORM_PLUGIN).setValue("Sequential4DBackAndForth");
+                    break;
+            }
+
         }
+
 
         plugin = getTransformPlugin();
         plugin.setParameters(new ArrayList<>(getUserParams()));
@@ -231,7 +237,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
         }
 
         //Dynamic and multi echo are filled into the 4th Dimension
-        nb_scan_4d = ((ExtTrig) models.get("ExtTrig")).nb_trigger * numberOfDynamicAcquisition;
+        nb_scan_4d = ((ExtTrig) models.get("ExtTrig")).nb_trigger * nb_dynamic_acquisition;
         getParam(USER_MATRIX_DIMENSION_4D).setValue(nb_scan_4d);
 
         nb_planar_excitation = (isMultiplanar ? acqMatrixDimension3D : 1);
@@ -257,7 +263,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
         // set the calculated Loop dimensions
         set(Nb_echo, echoTrainLength - 1);
         set(Nb_interleaved_slice, nb_interleaved_slice - 1);
-        set(Nb_sb_loop, nb_satband - 1);
+        set(Nb_sb, ((SatBand) models.get("SatBand")).nb_satband - 1);
     }
 
     @Override
@@ -282,7 +288,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
             seqDescription += "_ETL=" + echoTrainLength;
         }
         if (isDynamic) {
-            seqDescription += "_DYN=" + numberOfDynamicAcquisition;
+            seqDescription += "_DYN=" + nb_dynamic_acquisition;
         }
         getParam(SEQ_DESCRIPTION).setValue(seqDescription);
     }
@@ -396,9 +402,9 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
     @Override
     protected void prepDicom() {
         // Set  TRIGGER_TIME for dynamic or trigger acquisition
-        if (isDynamic && (numberOfDynamicAcquisition != 1) && !models.get("ExtTrig").isEnabled()) {
+        if (isDynamic && (nb_dynamic_acquisition != 1) && !models.get("ExtTrig").isEnabled()) {
             ArrayList<Number> arrayListTrigger = new ArrayList<>();
-            for (int i = 0; i < numberOfDynamicAcquisition; i++) {
+            for (int i = 0; i < nb_dynamic_acquisition; i++) {
                 arrayListTrigger.add(i * time_between_frames);
             }
 //            ListNumberParam list = new ListNumberParam((NumberParam) getParamFromName(MriDefaultParams.TRIGGER_TIME.name()), arrayListTrigger);       // associate TE to images for DICOM export
@@ -514,8 +520,8 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
             isDynamicMinTime = true;
             getParam(DYNAMIC_MIN_TIME).setValue(isDynamicMinTime);
 
-            numberOfDynamicAcquisition = nb_InterleavedEchoTrain;
-            getParam(DYN_NUMBER_OF_ACQUISITION).setValue(numberOfDynamicAcquisition);
+            nb_dynamic_acquisition = nb_InterleavedEchoTrain;
+            getParam(DYN_NUMBER_OF_ACQUISITION).setValue(nb_dynamic_acquisition);
 
             kspace_filling = "Linear";
             getParam(KSPACE_FILLING).setValue(kspace_filling);
@@ -540,7 +546,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
             ((ExtTrig) models.get("ExtTrig")).nb_trigger = 1;
         }
 
-        acqMatrixDimension4D = ((ExtTrig) models.get("ExtTrig")).nb_trigger * numberOfDynamicAcquisition * echoTrainLength;
+        acqMatrixDimension4D = ((ExtTrig) models.get("ExtTrig")).nb_trigger * nb_dynamic_acquisition * echoTrainLength;
         getParam(ACQUISITION_MATRIX_DIMENSION_4D).setValue(isKSCenterMode ? 1 : acqMatrixDimension4D);
     }
 
@@ -567,7 +573,11 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 
     @Override
     protected void getRx() {
-        RFPulse pulseRX = RFPulse.createRFPulse(getSequence(), Time_rx, Rx_freq_offset, Rx_phase);
+        //----------------------------------------------------------------------
+        // OFF CENTER FIELD OF VIEW 1D
+        // modify RX FREQUENCY OFFSET
+        //----------------------------------------------------------------------
+        pulseRX = RFPulse.createRFPulse(getSequence(), Time_rx, Rx_freq_offset, Rx_phase);
 //        pulseRX.setFrequencyOffsetReadout(gradReadout, off_center_distance_1D);
         pulseRX.setFrequencyOffsetReadoutEchoPlanar(gradReadout, off_center_distance_1D, is_flyback ? 1 : echoTrainLength, Order.LoopB);
 
@@ -590,12 +600,6 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 
         RFPulse pulseRXComp = RFPulse.createRFPulse(getSequence(), Time_min_instruction, FreqOffset_rx_comp);
         pulseRXComp.setCompensationFrequencyOffsetWithTime(pulseRX, timeADC2);
-
-        pulseRX.setPhase(0.0);
-        //--------------------------------------------------------------------------------------
-        // PHASE CYCLING
-        //--------------------------------------------------------------------------------------
-        getPhaseCyc();
     }
 
     @Override
@@ -603,6 +607,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
         //--------------------------------------------------------------------------------------
         //  calculate RF_SPOILING
         //--------------------------------------------------------------------------------------
+        pulseRX.setPhase(0.0);
         RFPulse pulseRFSpoiler = RFPulse.createRFPulse(getSequence(), Time_rf_spoiling, FreqOffset_RFSpoiling);
         pulseRFSpoiler.setFrequencyOffsetForPhaseShift(is_rf_spoiling ? 117.0 : 0.0);
 
@@ -869,15 +874,19 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
         // ---------------------------------------------------------------
         // calculate TR , Time_last_delay  Time_TR_delay & search for incoherence
         // ---------------------------------------------------------------
-        double delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1) + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopMultiPlanarStart.ID - 1) + ((ExtTrig) models.get("ExtTrig")).time_external_trigger_delay_max;
-        double delay_sat_band = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandStart.ID, Events.LoopSatBandStart.ID) * nb_satband;
-        double delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStart.ID, Events.LoopSatBandStart.ID - 1) + delay_sat_band + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID + 1, Events.LoopStartEcho.ID - 1);
+        double delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1)
+                + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopMultiPlanarStart.ID - 1)
+                + models.get("ExtTrig").getDuration();
+        double delay_sat_band = models.get("SatBand").getDuration();
+        double delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStart.ID, Events.LoopSatBandStart.ID - 1)
+                + delay_sat_band + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID + 1, Events.LoopStartEcho.ID - 1);
         double delay_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho.ID, Events.LoopEndEcho.ID);
         double delay_spoiler = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopEndEcho.ID + 1, Events.LoopMultiPlanarEnd.ID - 2);// grad_phase_application_time + grad_rise_time * 2;
-        min_flush_delay = min_time_per_acq_point * acqMatrixDimension1D * echoTrainLength * nb_slices_acquired_in_single_scan * 2;   // minimal time to flush Chameleon buffer (this time is doubled to avoid hidden delays);
-        min_flush_delay = Math.max(CameleonVersion105 ? min_flush_delay : 0, minInstructionDelay);
+//        min_flush_delay = min_time_per_acq_point * acqMatrixDimension1D * echoTrainLength * nb_slices_acquired_in_single_scan * 2;   // minimal time to flush Chameleon buffer (this time is doubled to avoid hidden delays);
+//        min_flush_delay = Math.max(CameleonVersion105 ? min_flush_delay : 0, minInstructionDelay);
+        min_flush_delay = minInstructionDelay;
 
-        double time_seq_to_end_spoiler = (delay_before_multi_planar_loop + (delay_before_echo_loop + (echoTrainLength * delay_echo_loop) + delay_spoiler) * nb_slices_acquired_in_single_scan);
+        double time_seq_to_end_spoiler = delay_before_multi_planar_loop + (delay_before_echo_loop + (echoTrainLength * delay_echo_loop) + delay_spoiler) * nb_slices_acquired_in_single_scan;
         double tr_min = time_seq_to_end_spoiler + minInstructionDelay * (nb_slices_acquired_in_single_scan * 2 + 1) + min_flush_delay;// 2 +( 2 minInstructionDelay: Events. 22 +(20&21
         if (tr < tr_min) {
             tr_min = ceilToSubDecimal(tr_min, 3);
@@ -934,7 +943,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
         // ------------------------------------------------------------------
         // Total Acquisition Time
         // ------------------------------------------------------------------
-        double total_acquisition_time = time_between_frames * numberOfDynamicAcquisition + tr * nb_preScan;
+        double total_acquisition_time = time_between_frames * nb_dynamic_acquisition + tr * nb_preScan;
         getParam(SEQUENCE_TIME).setValue(total_acquisition_time);
 
     }
@@ -970,7 +979,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 
         ArrayList<Number> acquisition_timesList = new ArrayList<>();
         double acqusition_time;
-        for (int i = 0; i < numberOfDynamicAcquisition; i++) {
+        for (int i = 0; i < nb_dynamic_acquisition; i++) {
             for (int j = 0; j < number_of_MultiSeries; j++) {
                 acqusition_time = roundToDecimal((i * time_between_frames + j * time_between_MultiSeries), 3);
                 acquisition_timesList.add(acqusition_time);
@@ -981,7 +990,6 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
 
     private void getGradRiseTime() {
         double min_rise_time_factor = getDouble(MIN_RISE_TIME_FACTOR);
-
         double min_rise_time_sinus = GradientMath.getShortestRiseTime(100.0) * Math.PI / 2 * 100 / min_rise_time_factor;
         if (grad_rise_time < min_rise_time_sinus) {
             double new_grad_rise_time = ceilToSubDecimal(min_rise_time_sinus, 5);

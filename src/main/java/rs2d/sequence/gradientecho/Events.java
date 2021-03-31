@@ -9,11 +9,11 @@ public enum Events {
 
          LoopMultiPlanarStart (3, S.Time_min_instruction.name()),
 
-         LoopSatBandStart (4, S.Time_min_instruction.name()),
-         SatBandpulse (6, S.Time_tx_sb.name()),
-         LoopSatBandEnd (11, S.Time_min_instruction.name()),
+         LoopSatBandStart (3, S.Time_min_instruction.name()),
+         SatBandpulse (5, S.Time_tx_sb.name()),
+         LoopSatBandEnd (10, S.Time_delay_sb.name()),
 
-         FatSatPulse (13, S.Time_tx_fatsat.name()),
+         FatSatPulse (12, S.Time_tx_fs.name()),
 
 
          P90 (19, S.Time_tx.name()),

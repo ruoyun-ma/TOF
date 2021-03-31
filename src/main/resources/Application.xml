@@ -616,7 +616,7 @@
                 <key>FATSAT_FLIP_ANGLE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FATSAT_FLIP_ANGLE</name>
-                    <value>0.0</value>
+                    <value>90.0</value>
                     <defaultValue>90.0</defaultValue>
                     <description></description>
                     <displayedName>FATSAT_FLIP_ANGLE</displayedName>
@@ -634,7 +634,7 @@
                 <key>FATSAT_GRAD_APP_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FATSAT_GRAD_APP_TIME</name>
-                    <value>1.0E-4</value>
+                    <value>3.1E-4</value>
                     <defaultValue>0.001</defaultValue>
                     <description></description>
                     <displayedName>FATSAT_GRAD_APP_TIME</displayedName>
@@ -706,7 +706,7 @@
                 <key>FATSAT_TX_AMP_90</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FATSAT_TX_AMP_90</name>
-                    <value>100.0</value>
+                    <value>0.9932207783811425</value>
                     <defaultValue>0.0</defaultValue>
                     <description></description>
                     <displayedName>FATSAT_TX_AMP_90</displayedName>
@@ -724,7 +724,7 @@
                 <key>FATSAT_TX_LENGTH</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FATSAT_TX_LENGTH</name>
-                    <value>5.0E-6</value>
+                    <value>0.007500000000000001</value>
                     <defaultValue>0.0</defaultValue>
                     <description></description>
                     <displayedName>FATSAT_TX_LENGTH</displayedName>
@@ -763,7 +763,7 @@
                 <key>FAT_SATURATION_ENABLED</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>FAT_SATURATION_ENABLED</name>
-                    <value>false</value>
+                    <value>true</value>
                     <defaultValue>false</defaultValue>
                     <description></description>
                     <displayedName>FAT_SATURATION_ENABLED</displayedName>
@@ -880,7 +880,7 @@
                 <key>FLOW_COMPENSATION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>FLOW_COMPENSATION</name>
-                    <value>true</value>
+                    <value>false</value>
                     <defaultValue>false</defaultValue>
                     <description>Use flow compensation</description>
                     <displayedName>Flow compensation</displayedName>
@@ -1395,7 +1395,7 @@
                 <key>KSPACE_FILLING</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>KSPACE_FILLING</name>
-                    <value>3DElliptic</value>
+                    <value>Linear</value>
                     <defaultValue>Linear</defaultValue>
                     <description></description>
                     <displayedName>KSPACE_FILLING</displayedName>
@@ -1577,7 +1577,7 @@
                 <key>MULTI_PLANAR_EXCITATION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>MULTI_PLANAR_EXCITATION</name>
-                    <value>false</value>
+                    <value>true</value>
                     <defaultValue>true</defaultValue>
                     <description>Multi planar excitation</description>
                     <displayedName>Multi planar</displayedName>
@@ -2161,7 +2161,7 @@
                 <key>NUMBER_OF_INTERLEAVED_SLICE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>NUMBER_OF_INTERLEAVED_SLICE</name>
-                    <value>0</value>
+                    <value>1</value>
                     <defaultValue>0</defaultValue>
                     <description></description>
                     <displayedName>NUMBER_OF_INTERLEAVED_SLICE</displayedName>
@@ -2741,7 +2741,7 @@
                 <key>REPETITION_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>REPETITION_TIME</name>
-                    <value>0.576</value>
+                    <value>0.586</value>
                     <defaultValue>0.2</defaultValue>
                     <description>The repetition time ( TR )</description>
                     <displayedName>TR</displayedName>
@@ -2956,7 +2956,7 @@
                 <key>SATBAND_TX_SHAPE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SATBAND_TX_SHAPE</name>
-                    <value>HARD</value>
+                    <value>SINC3</value>
                     <defaultValue>HARD</defaultValue>
                     <description></description>
                     <displayedName>SATBAND_TX_SHAPE</displayedName>
@@ -2992,7 +2992,7 @@
                 <key>SEQUENCE_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SEQUENCE_TIME</name>
-                    <value>1783.3</value>
+                    <value>2400.3</value>
                     <defaultValue>0.0</defaultValue>
                     <description></description>
                     <displayedName>SEQUENCE_TIME</displayedName>
@@ -3010,7 +3010,7 @@
                 <key>SEQUENCE_VERSION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQUENCE_VERSION</name>
-                    <value>Version x1.0</value>
+                    <value>Version x1.1</value>
                     <defaultValue></defaultValue>
                     <description></description>
                     <displayedName>SEQUENCE_VERSION</displayedName>
@@ -3025,7 +3025,7 @@
                 <key>SEQ_DESCRIPTION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
-                    <value>GE_3D_AXI_64x64x64</value>
+                    <value>GE_2D_AXI_64x64x64_TRIG_FATSAT_SATBAND_SATBAND</value>
                     <defaultValue></defaultValue>
                     <description></description>
                     <displayedName>SEQ_DESCRIPTION</displayedName>
@@ -3234,7 +3234,7 @@
                 <key>TOF2D_ENABLED</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>TOF2D_ENABLED</name>
-                    <value>false</value>
+                    <value>true</value>
                     <defaultValue>false</defaultValue>
                     <description></description>
                     <displayedName>TOF2D_ENABLED</displayedName>
@@ -9956,7 +9956,7 @@
                 <key>TRANSFORM_PLUGIN</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>TRANSFORM_PLUGIN</name>
-                    <value>Elliptical3D</value>
+                    <value>Sequential4DBackAndForth</value>
                     <defaultValue>Sequential4D</defaultValue>
                     <description>Transform the acquisition space to the k space</description>
                     <displayedName>Transform plugin</displayedName>
@@ -9966,7 +9966,6 @@
                     <suggestedValues>Sequential4D</suggestedValues>
                     <suggestedValues>Sequential4DBackAndForth</suggestedValues>
                     <suggestedValues>EPISequential4D</suggestedValues>
-                    <suggestedValues>Centric4D</suggestedValues>
                     <suggestedValues>Elliptical3D</suggestedValues>
                     <group>Scan</group>
                     <category>Acquisition</category>
@@ -9995,7 +9994,7 @@
                 <key>TRIGGER_EXTERNAL</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>TRIGGER_EXTERNAL</name>
-                    <value>false</value>
+                    <value>true</value>
                     <defaultValue>false</defaultValue>
                     <description>Enable the synchronization of the sequence with the trigger</description>
                     <displayedName>TRIGGER_EXTERNAL</displayedName>
@@ -10026,7 +10025,7 @@
                 <key>TX_AMP</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_AMP</name>
-                    <value>41.54606453510697</value>
+                    <value>6.584607485524112</value>
                     <defaultValue>40.0</defaultValue>
                     <description>Emission amplitude</description>
                     <displayedName>TX_AMP</displayedName>
@@ -10062,7 +10061,7 @@
                 <key>TX_AMP_90</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_AMP_90</name>
-                    <value>100.0</value>
+                    <value>63.602051266743395</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Amplitude of the transmitter</description>
                     <displayedName>TX_AMP_90</displayedName>
@@ -10093,7 +10092,7 @@
                 <key>TX_ATT</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_ATT</name>
-                    <value>63.0</value>
+                    <value>47.0</value>
                     <defaultValue>36.0</defaultValue>
                     <description>Emission attenuation</description>
                     <displayedName>TX_ATT</displayedName>

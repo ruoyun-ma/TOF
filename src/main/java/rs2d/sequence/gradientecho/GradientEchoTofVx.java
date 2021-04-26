@@ -56,13 +56,15 @@ import kernel.*;
 import model.*;
 
 import static rs2d.sequence.gradientecho.S.*;
+
 import static rs2d.sequence.gradientecho.U.*;
+
 
 // **************************************************************************************************
 // *************************************** SEQUENCE GENERATOR ***************************************
 // **************************************************************************************************
 //
-public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
+public class GradientEchoTofVx extends SeqPrep/*BaseSequenceGenerator*/ {
     private String sequenceVersion = "Version x1.1";
     private boolean CameleonVersion105 = false;
 
@@ -107,7 +109,7 @@ public class GradientEcho extends SeqPrep/*BaseSequenceGenerator*/ {
     private Gradient gradSliceRefPhase3D;
     private RFPulse pulseRX;
 
-    public GradientEcho() {
+    public GradientEchoTofVx() {
         super();
         addUserParams();
     }

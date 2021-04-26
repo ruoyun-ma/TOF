@@ -3,7 +3,7 @@
     <name>GRADIENT_ECHO_develop_xg</name>
     <description></description>
     <usage></usage>
-    <generatorName>seqdev-temp</generatorName>
+    <generatorName>GRADIENT_ECHO_TOF_vx</generatorName>
     <durationTime>0</durationTime>
     <setUpQueue>
         <enabled>true</enabled>

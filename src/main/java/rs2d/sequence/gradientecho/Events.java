@@ -22,14 +22,14 @@ public enum Events {
 
          LoopStartEcho (28, S.Time_min_instruction.name()),
          Acq (30, S.Time_rx.name()),
-         Delay2 (35, S.Time_TE_delay2.name()),
-         LoopEndEcho (36, S.Time_min_instruction.name()),
+         Delay2 (35-3, S.Time_TE_delay2.name()),
+         LoopEndEcho (36-3, S.Time_min_instruction.name()),
 
-         Delay3 (40, S.Time_TR_delay.name()),
-         LoopMultiPlanarEnd (41, S.Time_min_instruction.name()),
+         Delay3 (40-3, S.Time_TR_delay.name()),
+         LoopMultiPlanarEnd (41-3, S.Time_min_instruction.name()),
 
-         Loop4D (43, S.Time_flush_delay.name()),
-         End (44, S.Time_btw_dyn_frames.name());
+         Loop4D (43-3, S.Time_flush_delay.name()),
+         End (44-3, S.Time_btw_dyn_frames.name());
 
         public final int ID;
         public final String shortcutName;
@@ -56,4 +56,4 @@ public enum Events {
         }
 
 
-}
+}

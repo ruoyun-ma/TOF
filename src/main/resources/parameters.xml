@@ -408,7 +408,7 @@
             <key>ECHO_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ECHO_TIME</name>
-                <value>0.00406</value>
+                <value>0.0039</value>
                 <defaultValue>0.005</defaultValue>
                 <description>The echo time ( TE )</description>
                 <displayedName>TE</displayedName>
@@ -430,7 +430,7 @@
                 <defaultValue>1</defaultValue>
                 <description>The echo train lentgth</description>
                 <displayedName>ETL</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Scan</numberEnum>
@@ -737,20 +737,6 @@
             </value>
         </entry>
         <entry>
-            <key>FLYBACK</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>FLYBACK</name>
-                <value>false</value>
-                <defaultValue>false</defaultValue>
-                <description>Aquisition in the same direction in k space, fly back after every k space line</description>
-                <displayedName>FLYBACK</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <group>Scan</group>
-                <category>Acquisition</category>
-            </value>
-        </entry>
-        <entry>
             <key>FOV_DOUBLED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>FOV_DOUBLED</name>
@@ -881,28 +867,10 @@
             </value>
         </entry>
         <entry>
-            <key>GRADIENT_FLYBACK_TIME</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>GRADIENT_FLYBACK_TIME</name>
-                <value>1.9999999999999998E-4</value>
-                <defaultValue>4.9999999999999996E-6</defaultValue>
-                <description></description>
-                <displayedName>GRADIENT_FLYBACK_TIME</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-                <numberEnum>Time</numberEnum>
-                <minValue>4.9999999999999996E-6</minValue>
-                <maxValue>1.0E9</maxValue>
-                <group>Delay</group>
-                <category>Acquisition</category>
-            </value>
-        </entry>
-        <entry>
             <key>GRADIENT_PHASE_APPLICATION_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>GRADIENT_PHASE_APPLICATION_TIME</name>
-                <value>0.001131</value>
+                <value>1.9999999999999998E-4</value>
                 <defaultValue>0.0</defaultValue>
                 <description>the application time of the phase encoding gradient</description>
                 <displayedName>GRADIENT_PHASE_APPLICATION_TIME</displayedName>
@@ -920,7 +888,7 @@
             <key>GRADIENT_RISE_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>GRADIENT_RISE_TIME</name>
-                <value>9.999999999999999E-5</value>
+                <value>8.0E-5</value>
                 <defaultValue>0.0</defaultValue>
                 <description>The rise time of the gradient</description>
                 <displayedName>GRADIENT_RISE_TIME</displayedName>
@@ -938,7 +906,7 @@
             <key>GRADIENT_SPOILER_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>GRADIENT_SPOILER_TIME</name>
-                <value>0.001131</value>
+                <value>5.0E-4</value>
                 <defaultValue>9.999999999999999E-5</defaultValue>
                 <description></description>
                 <displayedName>Gradient spoiler top time</displayedName>
@@ -1224,20 +1192,6 @@
             </value>
         </entry>
         <entry>
-            <key>KEYHOLE_ALLOWED</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>KEYHOLE_ALLOWED</name>
-                <value>false</value>
-                <defaultValue>false</defaultValue>
-                <description>Allow keyhole: test the max amp of the phase encoding gradient for partial = 100%</description>
-                <displayedName>KEYHOLE_ALLOWED</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <group>Scan</group>
-                <category>Acquisition</category>
-            </value>
-        </entry>
-        <entry>
             <key>KSPACE_FILLING</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>KSPACE_FILLING</name>
@@ -1422,7 +1376,7 @@
             <key>MULTI_PLANAR_EXCITATION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>MULTI_PLANAR_EXCITATION</name>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>true</defaultValue>
                 <description>Multi planar excitation</description>
                 <displayedName>Multi planar</displayedName>
@@ -2274,7 +2228,7 @@
                 <defaultValue>0.0</defaultValue>
                 <description>Offset in Readout Direction</description>
                 <displayedName>Location 1D</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Location</numberEnum>
@@ -2292,7 +2246,7 @@
                 <defaultValue>0.0</defaultValue>
                 <description>Offset in Phase Encoding Direction</description>
                 <displayedName>Location 2D</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Location</numberEnum>
@@ -2310,7 +2264,7 @@
                 <defaultValue>0.0</defaultValue>
                 <description>Offset in the slice direction</description>
                 <displayedName>Location 3D</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Location</numberEnum>
@@ -2604,7 +2558,7 @@
             <key>REPETITION_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>REPETITION_TIME</name>
-                <value>5.012</value>
+                <value>0.016</value>
                 <defaultValue>0.2</defaultValue>
                 <description>The repetition time ( TR )</description>
                 <displayedName>TR</displayedName>
@@ -2801,7 +2755,7 @@
             <key>SATBAND_TX_AMP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SATBAND_TX_AMP</name>
-                <value>4.559761105047473</value>
+                <value>100.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>SATBAND_TX_AMP</displayedName>
@@ -2841,8 +2795,8 @@
             <key>SEQUENCE_NAME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQUENCE_NAME</name>
-                <value>GRADIENT_ECHO</value>
-                <defaultValue>GRADIENT_ECHO</defaultValue>
+                <value>GRADIENT_ECHO_TOF_vx</value>
+                <defaultValue>GRADIENT_ECHO_TOF_vx</defaultValue>
                 <description>The name of the sequence</description>
                 <displayedName>Seq</displayedName>
                 <locked>false</locked>
@@ -2856,7 +2810,7 @@
             <key>SEQUENCE_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
-                <value>51323.0</value>
+                <value>16.4</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>SEQUENCE_TIME</displayedName>
@@ -2874,7 +2828,7 @@
             <key>SEQUENCE_VERSION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQUENCE_VERSION</name>
-                <value>Version x1.1</value>
+                <value>Version x1.2</value>
                 <defaultValue></defaultValue>
                 <description></description>
                 <displayedName>SEQUENCE_VERSION</displayedName>
@@ -2889,7 +2843,7 @@
             <key>SEQ_DESCRIPTION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQ_DESCRIPTION</name>
-                <value>GE_3D_AXI_32x32x32x10_SATBAND_SATBAND</value>
+                <value>GE_2D_AXI_32x32x32x10_TOFSAT</value>
                 <defaultValue></defaultValue>
                 <description></description>
                 <displayedName>SEQ_DESCRIPTION</displayedName>
@@ -2965,10 +2919,27 @@
             </value>
         </entry>
         <entry>
+            <key>SPACING_BETWEEN_SLAB</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>SPACING_BETWEEN_SLAB</name>
+                <value>-0.02</value>
+                <defaultValue>0.0</defaultValue>
+                <description></description>
+                <displayedName>SPACING_BETWEEN_SLAB</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>LengthOffset</numberEnum>
+                <minValue>-1.7976931348623157E308</minValue>
+                <maxValue>1.7976931348623157E308</maxValue>
+                <category>Acquisition</category>
+            </value>
+        </entry>
+        <entry>
             <key>SPACING_BETWEEN_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SPACING_BETWEEN_SLICE</name>
-                <value>-0.02</value>
+                <value>0.0</value>
                 <defaultValue>5.0</defaultValue>
                 <description>Spacing betwin slice</description>
                 <displayedName>Slice Spacing</displayedName>
@@ -9936,7 +9907,7 @@
             <key>TRANSFORM_PLUGIN</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>TRANSFORM_PLUGIN</name>
-                <value>Sequential4DBackAndForth</value>
+                <value>Sequential4D</value>
                 <defaultValue>Sequential4D</defaultValue>
                 <description>Transform the acquisition space to the k space</description>
                 <displayedName>Transform plugin</displayedName>
@@ -9944,8 +9915,6 @@
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <suggestedValues>Sequential4D</suggestedValues>
-                <suggestedValues>Sequential4DBackAndForth</suggestedValues>
-                <suggestedValues>EPISequential4D</suggestedValues>
                 <suggestedValues>Elliptical3D</suggestedValues>
                 <suggestedValues>Sequential4D_TOF</suggestedValues>
                 <group>Scan</group>
@@ -10006,7 +9975,7 @@
             <key>TX_AMP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP</name>
-                <value>26.763397080532673</value>
+                <value>13.413472945260388</value>
                 <defaultValue>40.0</defaultValue>
                 <description>Emission amplitude</description>
                 <displayedName>TX_AMP</displayedName>
@@ -10073,7 +10042,7 @@
             <key>TX_ATT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_ATT</name>
-                <value>54.0</value>
+                <value>48.0</value>
                 <defaultValue>36.0</defaultValue>
                 <description>Emission attenuation</description>
                 <displayedName>TX_ATT</displayedName>
@@ -10294,122 +10263,6 @@
                 <minValue>0.0</minValue>
                 <maxValue>100.0</maxValue>
                 <group>Dimension</group>
-                <category>Acquisition</category>
-            </value>
-        </entry>
-        <entry>
-            <key>USER_TMP_PARAM_BOOL_1</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>USER_TMP_PARAM_BOOL_1</name>
-                <value>false</value>
-                <defaultValue>false</defaultValue>
-                <description></description>
-                <displayedName>USER_TMP_PARAM_BOOL_1</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <category>Acquisition</category>
-            </value>
-        </entry>
-        <entry>
-            <key>USER_TMP_PARAM_BOOL_2</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>USER_TMP_PARAM_BOOL_2</name>
-                <value>false</value>
-                <defaultValue>false</defaultValue>
-                <description></description>
-                <displayedName>USER_TMP_PARAM_BOOL_2</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <category>Acquisition</category>
-            </value>
-        </entry>
-        <entry>
-            <key>USER_TMP_PARAM_LIST_1</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                <name>USER_TMP_PARAM_LIST_1</name>
-                <description></description>
-                <displayedName>USER_TMP_PARAM_LIST_1</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <numberEnum>Double</numberEnum>
-                <minValue>-1.7976931348623157E308</minValue>
-                <maxValue>1.7976931348623157E308</maxValue>
-                <category>Acquisition</category>
-            </value>
-        </entry>
-        <entry>
-            <key>USER_TMP_PARAM_LIST_2</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                <name>USER_TMP_PARAM_LIST_2</name>
-                <description></description>
-                <displayedName>USER_TMP_PARAM_LIST_2</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <numberEnum>Double</numberEnum>
-                <minValue>-1.7976931348623157E308</minValue>
-                <maxValue>1.7976931348623157E308</maxValue>
-                <category>Acquisition</category>
-            </value>
-        </entry>
-        <entry>
-            <key>USER_TMP_PARAM_NUM_1</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>USER_TMP_PARAM_NUM_1</name>
-                <value>0.0</value>
-                <defaultValue>0.0</defaultValue>
-                <description></description>
-                <displayedName>USER_TMP_PARAM_NUM_1</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-                <numberEnum>Double</numberEnum>
-                <minValue>-1.7976931348623157E308</minValue>
-                <maxValue>1.7976931348623157E308</maxValue>
-                <category>Acquisition</category>
-            </value>
-        </entry>
-        <entry>
-            <key>USER_TMP_PARAM_NUM_2</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>USER_TMP_PARAM_NUM_2</name>
-                <value>0.0</value>
-                <defaultValue>0.0</defaultValue>
-                <description></description>
-                <displayedName>USER_TMP_PARAM_NUM_2</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-                <numberEnum>Double</numberEnum>
-                <minValue>-1.7976931348623157E308</minValue>
-                <maxValue>1.7976931348623157E308</maxValue>
-                <category>Acquisition</category>
-            </value>
-        </entry>
-        <entry>
-            <key>USER_TMP_PARAM_STR_1</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>USER_TMP_PARAM_STR_1</name>
-                <value></value>
-                <defaultValue></defaultValue>
-                <description></description>
-                <displayedName>USER_TMP_PARAM_STR_1</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-                <category>Acquisition</category>
-            </value>
-        </entry>
-        <entry>
-            <key>USER_TMP_PARAM_STR_2</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>USER_TMP_PARAM_STR_2</name>
-                <value></value>
-                <defaultValue></defaultValue>
-                <description></description>
-                <displayedName>USER_TMP_PARAM_STR_2</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
                 <category>Acquisition</category>
             </value>
         </entry>

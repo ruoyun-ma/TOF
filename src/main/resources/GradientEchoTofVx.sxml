@@ -44,9 +44,6 @@
             <keyList></keyList>
             <keyList></keyList>
             <keyList></keyList>
-            <keyList></keyList>
-            <keyList></keyList>
-            <keyList></keyList>
         </acquChannel>
         <actualScanKey>key19</actualScanKey>
         <actualScanKey>key22</actualScanKey>
@@ -80,9 +77,6 @@
             <keyList>key372</keyList>
             <keyList>key373</keyList>
             <keyList>key374</keyList>
-            <keyList></keyList>
-            <keyList></keyList>
-            <keyList></keyList>
             <keyList></keyList>
             <keyList></keyList>
             <keyList></keyList>
@@ -134,9 +128,6 @@
             <keyList></keyList>
             <keyList></keyList>
             <keyList></keyList>
-            <keyList></keyList>
-            <keyList></keyList>
-            <keyList></keyList>
             <keyList>key126</keyList>
             <keyList>key127</keyList>
             <keyList>key128</keyList>
@@ -179,9 +170,6 @@
             <keyList>key90</keyList>
             <keyList>key91</keyList>
             <keyList>key92</keyList>
-            <keyList>key190</keyList>
-            <keyList>key191</keyList>
-            <keyList>key192</keyList>
             <keyList></keyList>
             <keyList></keyList>
             <keyList>key123</keyList>
@@ -223,9 +211,6 @@
             <keyList></keyList>
             <keyList></keyList>
             <keyList>key171</keyList>
-            <keyList>key43</keyList>
-            <keyList>key43</keyList>
-            <keyList>key43</keyList>
             <keyList>key43</keyList>
             <keyList>key43</keyList>
             <keyList>key43</keyList>
@@ -277,9 +262,6 @@
             <keyList>key32</keyList>
             <keyList>key33</keyList>
             <keyList>key34</keyList>
-            <keyList>key188</keyList>
-            <keyList>key183</keyList>
-            <keyList>key167</keyList>
             <keyList>key101</keyList>
             <keyList>key96</keyList>
             <keyList>key111</keyList>
@@ -324,9 +306,6 @@
             <keyList>key25</keyList>
             <keyList>key26</keyList>
             <keyList>key27</keyList>
-            <keyList>key187</keyList>
-            <keyList>key182</keyList>
-            <keyList>key166</keyList>
             <keyList>key100</keyList>
             <keyList>key95</keyList>
             <keyList>key110</keyList>
@@ -375,9 +354,6 @@
             <keyList>key11</keyList>
             <keyList>key12</keyList>
             <keyList>key13</keyList>
-            <keyList>key185</keyList>
-            <keyList>key180</keyList>
-            <keyList>key164</keyList>
             <keyList>key98</keyList>
             <keyList>key93</keyList>
             <keyList>key108</keyList>
@@ -422,9 +398,6 @@
             <keyList>elem32</keyList>
             <keyList>elem33</keyList>
             <keyList>elem34</keyList>
-            <keyList>elem35</keyList>
-            <keyList>elem36</keyList>
-            <keyList>elem37</keyList>
             <keyList>elem38</keyList>
             <keyList>elem39</keyList>
             <keyList>elem40</keyList>
@@ -469,9 +442,6 @@
             <keyList>key18</keyList>
             <keyList>key19</keyList>
             <keyList>key20</keyList>
-            <keyList>key186</keyList>
-            <keyList>key181</keyList>
-            <keyList>key165</keyList>
             <keyList>key99</keyList>
             <keyList>key94</keyList>
             <keyList>key109</keyList>
@@ -513,9 +483,6 @@
             <keyList></keyList>
             <keyList></keyList>
             <keyList>key141</keyList>
-            <keyList>key142</keyList>
-            <keyList>key142</keyList>
-            <keyList>key142</keyList>
             <keyList>key142</keyList>
             <keyList>key142</keyList>
             <keyList>key142</keyList>
@@ -872,21 +839,6 @@
         </Entry>
         <Entry>
             <count>1</count>
-            <key>elem35</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="param110" nameKey="param108" enabledKey="param109"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>elem36</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="param113" nameKey="param111" enabledKey="param112"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>elem37</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="param116" nameKey="param114" enabledKey="param115"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
             <key>elem38</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="param119" nameKey="param117" enabledKey="param118"/>
         </Entry>
@@ -923,7 +875,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="param134" nameKey="param132" enabledKey="param133"/>
         </Entry>
         <Entry>
-            <count>7</count>
+            <count>4</count>
             <key>key43</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="loElement" offsetKey="key13" phaseKey="key14" shapePhaseKey="key15" nameKey="key174" enabledKey="key175">
                 <phaseModEnabled>false</phaseModEnabled>
@@ -1414,7 +1366,7 @@
             </value>
         </Entry>
         <Entry>
-            <count>7</count>
+            <count>4</count>
             <key>key142</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key13" phaseKey="key101" ampKey="key102" shapeKey="key103" shapePhaseKey="key104" attKey="key131" nameKey="key305" enabledKey="key307">
                 <phaseModEnabled>false</phaseModEnabled>
@@ -1511,26 +1463,6 @@
         </Entry>
         <Entry>
             <count>1</count>
-            <key>key164</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="timeElement" timeKey="key136" triggerKey="key501" nameKey="key453" enabledKey="key500"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key165</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="key517" nameKey="key502" enabledKey="key516"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key166</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="key548" nameKey="key546" enabledKey="key547"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key167</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="opcode" paramCodeKey="key553" paramDataFieldKey="key551" paramSecondaryFieldKey="key552" tableDatafieldKey="table36" nameKey="key549" enabledKey="key550"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
             <key>key168</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="key522" nameKey="key520" enabledKey="key521"/>
         </Entry>
@@ -1594,61 +1526,6 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="loElement" offsetKey="key82" phaseKey="key83" shapePhaseKey="key84" nameKey="key544" enabledKey="key545">
                 <phaseModEnabled>false</phaseModEnabled>
             </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key180</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="timeElement" timeKey="key135" triggerKey="key582" nameKey="key580" enabledKey="key581"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key181</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="key585" nameKey="key583" enabledKey="key584"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key182</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="key588" nameKey="key586" enabledKey="key587"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key183</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="opcode" paramCodeKey="key593" paramDataFieldKey="key591" paramSecondaryFieldKey="key592" tableDatafieldKey="table35" nameKey="key589" enabledKey="key590"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key185</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="timeElement" timeKey="key136" triggerKey="key599" nameKey="key597" enabledKey="key598"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key186</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="key602" nameKey="key600" enabledKey="key601"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key187</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="key605" nameKey="key603" enabledKey="key604"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key188</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="opcode" paramCodeKey="key610" paramDataFieldKey="key608" paramSecondaryFieldKey="key609" tableDatafieldKey="table34" nameKey="key606" enabledKey="key607"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key190</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="gradElement" ampKey="key137" shapeKey="key24" nameKey="key614" enabledKey="key617"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key191</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="gradElement" ampKey="key137" shapeKey="key140" nameKey="key616" enabledKey="key617"/>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key192</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="gradElement" ampKey="key137" shapeKey="key28" nameKey="key618" enabledKey="key617"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -3465,7 +3342,7 @@
             <key>key41</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Tx_att</name>
-                <value>54.0</value>
+                <value>48.0</value>
                 <defaultValue>30.0</defaultValue>
                 <displayedName>TxAtt0</displayedName>
                 <locked>false</locked>
@@ -5218,20 +5095,6 @@
         </Entry>
         <Entry>
             <count>1</count>
-            <key>param108</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>Name38</name>
-                <value>Bool107</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>Name38</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
             <key>key109</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>enabled22</name>
@@ -5245,19 +5108,6 @@
         </Entry>
         <Entry>
             <count>1</count>
-            <key>param109</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>Enabled36</name>
-                <value>true</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>Enabled36</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
             <key>key110</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>state12</name>
@@ -5265,19 +5115,6 @@
                 <defaultValue>false</defaultValue>
                 <description>State of the element</description>
                 <displayedName>state12</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>param110</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>State36</name>
-                <value>false</value>
-                <defaultValue>false</defaultValue>
-                <description>State of the element</description>
-                <displayedName>State36</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -5298,20 +5135,6 @@
         </Entry>
         <Entry>
             <count>1</count>
-            <key>param111</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>Name39</name>
-                <value>Bool112</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>Name39</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
             <key>key112</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>enabled23</name>
@@ -5325,19 +5148,6 @@
         </Entry>
         <Entry>
             <count>1</count>
-            <key>param112</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>Enabled37</name>
-                <value>true</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>Enabled37</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
             <key>key113</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>state13</name>
@@ -5345,19 +5155,6 @@
                 <defaultValue>false</defaultValue>
                 <description>State of the element</description>
                 <displayedName>state13</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>param113</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>State37</name>
-                <value>false</value>
-                <defaultValue>false</defaultValue>
-                <description>State of the element</description>
-                <displayedName>State37</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -5378,20 +5175,6 @@
         </Entry>
         <Entry>
             <count>1</count>
-            <key>param114</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>Name40</name>
-                <value>Bool113</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>Name40</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
             <key>key115</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>enabled24</name>
@@ -5405,19 +5188,6 @@
         </Entry>
         <Entry>
             <count>1</count>
-            <key>param115</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>Enabled38</name>
-                <value>true</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>Enabled38</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
             <key>key116</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>state14</name>
@@ -5425,19 +5195,6 @@
                 <defaultValue>false</defaultValue>
                 <description>State of the element</description>
                 <displayedName>state14</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>param116</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>State38</name>
-                <value>false</value>
-                <defaultValue>false</defaultValue>
-                <description>State of the element</description>
-                <displayedName>State38</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -5769,7 +5526,7 @@
             <key>key129</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
                 <name>Loop_short</name>
-                <value xsi:type="codeEnum">StoreLoopAddress</value>
+                <value xsi:type="codeEnum">Continu</value>
                 <defaultValue xsi:type="codeEnum">Continu</defaultValue>
                 <displayedName>Loop_short</displayedName>
                 <locked>false</locked>
@@ -7353,7 +7110,7 @@
             <key>key231</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
                 <name>Loop_long</name>
-                <value xsi:type="codeEnum">Continu</value>
+                <value xsi:type="codeEnum">StoreLoopAddress</value>
                 <defaultValue xsi:type="codeEnum">Continu</defaultValue>
                 <displayedName>Loop_long</displayedName>
                 <locked>false</locked>
@@ -8108,7 +7865,7 @@
             <key>key297</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Grad_enable_phase_3D</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Grad_enable_phase_3D</displayedName>
@@ -9959,20 +9716,6 @@
         </Entry>
         <Entry>
             <count>1</count>
-            <key>key453</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>name73</name>
-                <value>Time22</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>name2</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
             <key>key454</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
                 <name>Trigger1</name>
@@ -10468,45 +10211,6 @@
         </Entry>
         <Entry>
             <count>1</count>
-            <key>key500</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>enabled72</name>
-                <value>true</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>enabled2</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key501</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
-                <name>Trigger22</name>
-                <value xsi:type="trigger">Timer</value>
-                <defaultValue xsi:type="trigger">Timer</defaultValue>
-                <displayedName>Trigger0</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key502</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>name74</name>
-                <value>Bool42</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>name4</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
             <key>key503</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>name1112</name>
@@ -10638,32 +10342,6 @@
                 <numberEnum>Integer</numberEnum>
                 <minValue>-2147483648</minValue>
                 <maxValue>2147483647</maxValue>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key516</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>enabled73</name>
-                <value>true</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>enabled4</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key517</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>state10</name>
-                <value>false</value>
-                <defaultValue>false</defaultValue>
-                <description>State of the element</description>
-                <displayedName>state1</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
             </value>
         </Entry>
         <Entry>
@@ -10999,117 +10677,6 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>enabled11114</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key546</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>name75</name>
-                <value>Bool43</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>name5</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key547</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>enabled74</name>
-                <value>true</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>enabled5</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key548</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>state42</name>
-                <value>false</value>
-                <defaultValue>false</defaultValue>
-                <description>State of the element</description>
-                <displayedName>state2</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key549</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>name76</name>
-                <value>Opcode13</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>name</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key550</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>enabled75</name>
-                <value>true</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>enabled</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key551</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>Datafield7</name>
-                <value>0</value>
-                <defaultValue>0</defaultValue>
-                <displayedName>Datafield</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-                <numberEnum>Integer</numberEnum>
-                <minValue>-2147483648</minValue>
-                <maxValue>2147483647</maxValue>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key552</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>Secondary27</name>
-                <value>0</value>
-                <defaultValue>0</defaultValue>
-                <displayedName>Secondary26</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-                <numberEnum>Integer</numberEnum>
-                <minValue>-2147483648</minValue>
-                <maxValue>2147483647</maxValue>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key553</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
-                <name>CodeEnum13</name>
-                <value xsi:type="codeEnum">Continu</value>
-                <defaultValue xsi:type="codeEnum">Continu</defaultValue>
-                <displayedName>CodeEnum</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -11484,400 +11051,6 @@
         </Entry>
         <Entry>
             <count>1</count>
-            <key>key580</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>name136</name>
-                <value>Time26</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>name2</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key581</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>enabled77</name>
-                <value>true</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>enabled2</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key582</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
-                <name>Trigger25</name>
-                <value xsi:type="trigger">Timer</value>
-                <defaultValue xsi:type="trigger">Timer</defaultValue>
-                <displayedName>Trigger0</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key583</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>name137</name>
-                <value>Bool66</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>name4</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key584</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>enabled78</name>
-                <value>true</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>enabled4</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key585</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>state44</name>
-                <value>false</value>
-                <defaultValue>false</defaultValue>
-                <description>State of the element</description>
-                <displayedName>state1</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key586</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>name138</name>
-                <value>Bool67</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>name5</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key587</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>enabled79</name>
-                <value>true</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>enabled5</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key588</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>state66</name>
-                <value>false</value>
-                <defaultValue>false</defaultValue>
-                <description>State of the element</description>
-                <displayedName>state2</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key589</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>name139</name>
-                <value>Opcode21</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>name</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key590</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>enabled80</name>
-                <value>true</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>enabled</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key591</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>Datafield23</name>
-                <value>0</value>
-                <defaultValue>0</defaultValue>
-                <displayedName>Datafield</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-                <numberEnum>Integer</numberEnum>
-                <minValue>-2147483648</minValue>
-                <maxValue>2147483647</maxValue>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key592</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>Secondary28</name>
-                <value>0</value>
-                <defaultValue>0</defaultValue>
-                <displayedName>Secondary26</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-                <numberEnum>Integer</numberEnum>
-                <minValue>-2147483648</minValue>
-                <maxValue>2147483647</maxValue>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key593</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
-                <name>CodeEnum21</name>
-                <value xsi:type="codeEnum">Continu</value>
-                <defaultValue xsi:type="codeEnum">Continu</defaultValue>
-                <displayedName>CodeEnum</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key597</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>name141</name>
-                <value>Time27</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>name2</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key598</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>enabled127</name>
-                <value>true</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>enabled2</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key599</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
-                <name>Trigger26</name>
-                <value xsi:type="trigger">Timer</value>
-                <defaultValue xsi:type="trigger">Timer</defaultValue>
-                <displayedName>Trigger0</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key600</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>name142</name>
-                <value>Bool78</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>name4</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key601</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>enabled128</name>
-                <value>true</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>enabled4</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key602</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>state68</name>
-                <value>false</value>
-                <defaultValue>false</defaultValue>
-                <description>State of the element</description>
-                <displayedName>state1</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key603</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>name158</name>
-                <value>Bool79</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>name5</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key604</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>enabled129</name>
-                <value>true</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>enabled5</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key605</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>state78</name>
-                <value>false</value>
-                <defaultValue>false</defaultValue>
-                <description>State of the element</description>
-                <displayedName>state2</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key606</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>name159</name>
-                <value>Opcode25</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>name</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key607</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>enabled130</name>
-                <value>true</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>enabled</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key608</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>Datafield24</name>
-                <value>0</value>
-                <defaultValue>0</defaultValue>
-                <displayedName>Datafield</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-                <numberEnum>Integer</numberEnum>
-                <minValue>-2147483648</minValue>
-                <maxValue>2147483647</maxValue>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key609</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>Secondary29</name>
-                <value>0</value>
-                <defaultValue>0</defaultValue>
-                <displayedName>Secondary26</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-                <numberEnum>Integer</numberEnum>
-                <minValue>-2147483648</minValue>
-                <maxValue>2147483647</maxValue>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key610</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
-                <name>CodeEnum25</name>
-                <value xsi:type="codeEnum">Continu</value>
-                <defaultValue xsi:type="codeEnum">Continu</defaultValue>
-                <displayedName>CodeEnum</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key614</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>Name</name>
-                <value>Ge23</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>Name</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
             <key>key615</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>name161</name>
@@ -11885,48 +11058,6 @@
                 <defaultValue>Elem</defaultValue>
                 <description>The name of the element</description>
                 <displayedName>name2</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key616</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>Name1</name>
-                <value>Ge24</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>Name1</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>3</count>
-            <key>key617</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>Grad_enable_flyback</name>
-                <value>false</value>
-                <defaultValue>true</defaultValue>
-                <description>The state of the element</description>
-                <displayedName>Grad_enable_flyback</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <group>Gradient</group>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key618</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>Name2</name>
-                <value>Ge25</value>
-                <defaultValue>Elem</defaultValue>
-                <description>The name of the element</description>
-                <displayedName>Name2</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -15846,7 +14977,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>2</address>
-                <list>9.999999999999999E-5</list>
+                <list>8.0E-5</list>
             </value>
         </Entry>
         <Entry>
@@ -15993,10 +15124,21 @@
                 <name>Tx_freq_offset</name>
                 <description></description>
                 <numberEnum>FrequencyOffset</numberEnum>
-                <order>Four</order>
+                <order>Three</order>
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>6</address>
+                <list>65875.0</list>
+                <list>61625.0</list>
+                <list>57375.0</list>
+                <list>53125.0</list>
+                <list>48875.0</list>
+                <list>44625.0</list>
+                <list>40375.0</list>
+                <list>36125.0</list>
+                <list>31875.0</list>
+                <list>27625.0</list>
+                <list>23375.0</list>
                 <list>19125.0</list>
                 <list>14875.0</list>
                 <list>10625.0</list>
@@ -16007,6 +15149,17 @@
                 <list>-10625.0</list>
                 <list>-14875.0</list>
                 <list>-19125.0</list>
+                <list>-23375.0</list>
+                <list>-27625.0</list>
+                <list>-31875.0</list>
+                <list>-36125.0</list>
+                <list>-40375.0</list>
+                <list>-44625.0</list>
+                <list>-48875.0</list>
+                <list>-53125.0</list>
+                <list>-57375.0</list>
+                <list>-61625.0</list>
+                <list>-65875.0</list>
             </value>
         </Entry>
         <Entry>
@@ -16124,7 +15277,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>26.763397080532673</list>
+                <list>13.413472945260388</list>
             </value>
         </Entry>
         <Entry>
@@ -16475,7 +15628,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>4</address>
-                <list>0.001131</list>
+                <list>1.9999999999999998E-4</list>
             </value>
         </Entry>
         <Entry>
@@ -16554,7 +15707,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>5</address>
-                <list>1.0151999999999384E-5</list>
+                <list>8.611519999999996E-4</list>
             </value>
         </Entry>
         <Entry>
@@ -16622,7 +15775,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>1.5406722986395678</list>
+                <list>24.650756778233085</list>
             </value>
         </Entry>
         <Entry>
@@ -16639,7 +15792,7 @@
             </value>
         </Entry>
         <Entry>
-            <count>21</count>
+            <count>20</count>
             <key>key24</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="shape">
                 <name>Grad_shape_rise_up</name>
@@ -16855,7 +16008,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>4</address>
-                <list>0.001131</list>
+                <list>5.0E-4</list>
             </value>
         </Entry>
         <Entry>
@@ -16872,7 +16025,7 @@
             </value>
         </Entry>
         <Entry>
-            <count>21</count>
+            <count>20</count>
             <key>key28</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="shape">
                 <name>Grad_shape_rise_down</name>
@@ -17032,42 +16185,11 @@
                 <name>Grad_amp_phase_3D_prep</name>
                 <description></description>
                 <numberEnum>GradAmp</numberEnum>
-                <order>Three</order>
+                <order>FourLoop</order>
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>1</address>
-                <list>-2.9958305158799696</list>
-                <list>-2.851784553317682</list>
-                <list>-2.707738590755395</list>
-                <list>-2.5636926281931074</list>
-                <list>-2.41964666563082</list>
-                <list>-2.2756007030685326</list>
-                <list>-2.131554740506245</list>
-                <list>-1.9875087779439573</list>
-                <list>-1.84346281538167</list>
-                <list>-1.6994168528193827</list>
-                <list>-1.5553708902570953</list>
-                <list>-1.4113249276948077</list>
-                <list>-1.2672789651325203</list>
-                <list>-1.1232330025702328</list>
-                <list>-0.979187040007945</list>
-                <list>-0.8351410774456576</list>
-                <list>-0.6910951148833702</list>
-                <list>-0.5470491523210828</list>
-                <list>-0.4030031897587958</list>
-                <list>-0.2589572271965084</list>
-                <list>-0.11491126463422097</list>
-                <list>0.02913469792806689</list>
-                <list>0.1731806604903543</list>
-                <list>0.3172266230526417</list>
-                <list>0.4612725856149291</list>
-                <list>0.6053185481772165</list>
-                <list>0.7493645107395039</list>
-                <list>0.8934104733017914</list>
-                <list>1.0374564358640797</list>
-                <list>1.1815023984263666</list>
-                <list>1.3255483609886545</list>
-                <list>1.4695943235509414</list>
+                <list>-45.042214309763324</list>
             </value>
         </Entry>
         <Entry>
@@ -17200,19 +16322,6 @@
             </value>
         </Entry>
         <Entry>
-            <count>1</count>
-            <key>table34</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
-                <name>Datafield74</name>
-                <description></description>
-                <numberEnum>Scan</numberEnum>
-                <order>One</order>
-                <locked>false</locked>
-                <address>-1</address>
-                <list>0</list>
-            </value>
-        </Entry>
-        <Entry>
             <count>3</count>
             <key>key35</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
@@ -17223,20 +16332,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>-2.3790368094254064</list>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>table35</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
-                <name>Datafield75</name>
-                <description></description>
-                <numberEnum>Scan</numberEnum>
-                <order>One</order>
-                <locked>false</locked>
-                <address>-1</address>
-                <list>0</list>
+                <list>-9.85537495330463</list>
             </value>
         </Entry>
         <Entry>
@@ -17249,19 +16345,6 @@
                 <order>One</order>
                 <locked>false</locked>
                 <address>0</address>
-                <list>0</list>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>table36</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
-                <name>Datafield76</name>
-                <description></description>
-                <numberEnum>Scan</numberEnum>
-                <order>One</order>
-                <locked>false</locked>
-                <address>-1</address>
                 <list>0</list>
             </value>
         </Entry>
@@ -17379,38 +16462,38 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>-2.304735400996599</list>
-                <list>-2.1606894384343116</list>
-                <list>-2.016643475872024</list>
-                <list>-1.8725975133097368</list>
-                <list>-1.7285515507474492</list>
-                <list>-1.584505588185162</list>
-                <list>-1.4404596256228743</list>
-                <list>-1.2964136630605867</list>
-                <list>-1.1523677004982993</list>
-                <list>-1.008321737936012</list>
-                <list>-0.8642757753737247</list>
-                <list>-0.720229812811437</list>
-                <list>-0.5761838502491496</list>
-                <list>-0.43213788768686223</list>
-                <list>-0.2880919251245744</list>
-                <list>-0.14404596256228697</list>
-                <list>4.440892098500626E-16</list>
-                <list>0.14404596256228785</list>
-                <list>0.2880919251245748</list>
-                <list>0.43213788768686223</list>
-                <list>0.5761838502491496</list>
-                <list>0.7202298128114375</list>
-                <list>0.8642757753737249</list>
-                <list>1.0083217379360123</list>
-                <list>1.1523677004982997</list>
-                <list>1.2964136630605871</list>
-                <list>1.4404596256228746</list>
-                <list>1.584505588185162</list>
-                <list>1.7285515507474503</list>
-                <list>1.8725975133097372</list>
-                <list>2.016643475872025</list>
-                <list>2.160689438434312</list>
+                <list>-9.607586945587748</list>
+                <list>-9.007112761488514</list>
+                <list>-8.40663857738928</list>
+                <list>-7.806164393290045</list>
+                <list>-7.205690209190811</list>
+                <list>-6.605216025091577</list>
+                <list>-6.0047418409923425</list>
+                <list>-5.404267656893108</list>
+                <list>-4.803793472793874</list>
+                <list>-4.20331928869464</list>
+                <list>-3.6028451045954055</list>
+                <list>-3.002370920496171</list>
+                <list>-2.401896736396937</list>
+                <list>-1.8014225522977032</list>
+                <list>-1.2009483681984676</list>
+                <list>-0.6004741840992356</list>
+                <list>0.0</list>
+                <list>0.6004741840992356</list>
+                <list>1.2009483681984676</list>
+                <list>1.8014225522977032</list>
+                <list>2.401896736396937</list>
+                <list>3.002370920496171</list>
+                <list>3.6028451045954064</list>
+                <list>4.20331928869464</list>
+                <list>4.803793472793874</list>
+                <list>5.40426765689311</list>
+                <list>6.004741840992342</list>
+                <list>6.605216025091579</list>
+                <list>7.205690209190813</list>
+                <list>7.806164393290047</list>
+                <list>8.406638577389277</list>
+                <list>9.007112761488514</list>
             </value>
         </Entry>
         <Entry>
@@ -17656,20 +16739,42 @@
                 <name>FreqOffset_tx_comp</name>
                 <description></description>
                 <numberEnum>FrequencyOffset</numberEnum>
-                <order>Four</order>
+                <order>Three</order>
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-5625.000000000001</list>
-                <list>-4375.0</list>
-                <list>-3125.0000000000005</list>
-                <list>-1875.0000000000002</list>
-                <list>-625.0</list>
-                <list>625.0</list>
-                <list>1875.0000000000002</list>
-                <list>3125.0000000000005</list>
-                <list>4375.0</list>
-                <list>5625.000000000001</list>
+                <list>-11718.749999999998</list>
+                <list>-10156.25</list>
+                <list>-8593.75</list>
+                <list>-7031.249999999999</list>
+                <list>-5468.75</list>
+                <list>-3906.2499999999995</list>
+                <list>-2343.75</list>
+                <list>-781.2499999999999</list>
+                <list>-11718.749999999998</list>
+                <list>-10156.25</list>
+                <list>-8593.75</list>
+                <list>-7031.249999999999</list>
+                <list>-5468.75</list>
+                <list>-3906.2499999999995</list>
+                <list>-2343.75</list>
+                <list>-781.2499999999999</list>
+                <list>781.2499999999999</list>
+                <list>2343.75</list>
+                <list>3906.2499999999995</list>
+                <list>5468.75</list>
+                <list>7031.249999999999</list>
+                <list>8593.75</list>
+                <list>10156.25</list>
+                <list>11718.749999999998</list>
+                <list>781.2499999999999</list>
+                <list>2343.75</list>
+                <list>3906.2499999999995</list>
+                <list>5468.75</list>
+                <list>7031.249999999999</list>
+                <list>8593.75</list>
+                <list>10156.25</list>
+                <list>11718.749999999998</list>
             </value>
         </Entry>
         <Entry>
@@ -17710,7 +16815,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>7</address>
-                <list>0.002398488</list>
+                <list>0.002438488</list>
             </value>
         </Entry>
         <Entry>
@@ -17774,7 +16879,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>-2.378136003295061</list>
+                <list>-4.941360858255695</list>
             </value>
         </Entry>
         <Entry>
@@ -17853,38 +16958,38 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>256</address>
-                <list>2.304735400996599</list>
-                <list>2.1606894384343116</list>
-                <list>2.016643475872024</list>
-                <list>1.8725975133097368</list>
-                <list>1.728551550747449</list>
-                <list>1.584505588185162</list>
-                <list>1.4404596256228743</list>
-                <list>1.2964136630605867</list>
-                <list>1.1523677004982993</list>
-                <list>1.008321737936012</list>
-                <list>0.8642757753737247</list>
-                <list>0.720229812811437</list>
-                <list>0.5761838502491496</list>
-                <list>0.43213788768686223</list>
-                <list>0.2880919251245744</list>
-                <list>0.14404596256228697</list>
-                <list>-4.440892098500626E-16</list>
-                <list>-0.14404596256228785</list>
-                <list>-0.2880919251245748</list>
-                <list>-0.43213788768686223</list>
-                <list>-0.5761838502491496</list>
-                <list>-0.7202298128114375</list>
-                <list>-0.8642757753737248</list>
-                <list>-1.0083217379360123</list>
-                <list>-1.1523677004982997</list>
-                <list>-1.2964136630605871</list>
-                <list>-1.4404596256228746</list>
-                <list>-1.584505588185162</list>
-                <list>-1.7285515507474503</list>
-                <list>-1.872597513309737</list>
-                <list>-2.016643475872025</list>
-                <list>-2.160689438434312</list>
+                <list>4.818591868725028</list>
+                <list>4.5174298769297145</list>
+                <list>4.216267885134401</list>
+                <list>3.915105893339086</list>
+                <list>3.6139439015437715</list>
+                <list>3.312781909748457</list>
+                <list>3.0116199179531424</list>
+                <list>2.7104579261578285</list>
+                <list>2.409295934362514</list>
+                <list>2.1081339425672003</list>
+                <list>1.8069719507718858</list>
+                <list>1.5058099589765712</list>
+                <list>1.204647967181257</list>
+                <list>0.903485975385943</list>
+                <list>0.6023239835906281</list>
+                <list>0.30116199179531494</list>
+                <list>0.0</list>
+                <list>-0.30116199179531494</list>
+                <list>-0.6023239835906281</list>
+                <list>-0.903485975385943</list>
+                <list>-1.204647967181257</list>
+                <list>-1.5058099589765712</list>
+                <list>-1.806971950771886</list>
+                <list>-2.1081339425672003</list>
+                <list>-2.409295934362514</list>
+                <list>-2.710457926157829</list>
+                <list>-3.0116199179531424</list>
+                <list>-3.312781909748458</list>
+                <list>-3.613943901543772</list>
+                <list>-3.9151058933390863</list>
+                <list>-4.216267885134399</list>
+                <list>-4.5174298769297145</list>
             </value>
         </Entry>
         <Entry>
@@ -17957,42 +17062,11 @@
                 <name>Grad_amp_spoiler_slice</name>
                 <description></description>
                 <numberEnum>GradAmp</numberEnum>
-                <order>Three</order>
+                <order>FourLoop</order>
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>1</address>
-                <list>11.613640286113228</list>
-                <list>11.46959432355094</list>
-                <list>11.325548360988654</list>
-                <list>11.181502398426366</list>
-                <list>11.037456435864078</list>
-                <list>10.893410473301792</list>
-                <list>10.749364510739504</list>
-                <list>10.605318548177216</list>
-                <list>10.461272585614928</list>
-                <list>10.31722662305264</list>
-                <list>10.173180660490354</list>
-                <list>10.029134697928066</list>
-                <list>9.885088735365779</list>
-                <list>9.74104277280349</list>
-                <list>9.596996810241203</list>
-                <list>9.452950847678917</list>
-                <list>9.308904885116629</list>
-                <list>9.164858922554341</list>
-                <list>9.020812959992053</list>
-                <list>8.876766997429767</list>
-                <list>8.73272103486748</list>
-                <list>8.588675072305191</list>
-                <list>8.444629109742904</list>
-                <list>8.300583147180618</list>
-                <list>8.15653718461833</list>
-                <list>8.012491222056042</list>
-                <list>7.868445259493754</list>
-                <list>7.724399296931467</list>
-                <list>7.580353334369178</list>
-                <list>7.436307371806892</list>
-                <list>7.292261409244604</list>
-                <list>7.1482154466823165</list>
+                <list>-12.59048487945983</list>
             </value>
         </Entry>
         <Entry>
@@ -18002,20 +17076,42 @@
                 <name>FreqOffset_tx_prep</name>
                 <description></description>
                 <numberEnum>FrequencyOffset</numberEnum>
-                <order>Four</order>
+                <order>Three</order>
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-5625.000000000001</list>
-                <list>-4375.0</list>
-                <list>-3125.0000000000005</list>
-                <list>-1875.0000000000002</list>
-                <list>-625.0</list>
-                <list>625.0</list>
-                <list>1875.0000000000002</list>
-                <list>3125.0000000000005</list>
-                <list>4375.0</list>
-                <list>5625.000000000001</list>
+                <list>-11718.749999999998</list>
+                <list>-10156.25</list>
+                <list>-8593.75</list>
+                <list>-7031.249999999999</list>
+                <list>-5468.75</list>
+                <list>-3906.2499999999995</list>
+                <list>-2343.75</list>
+                <list>-781.2499999999999</list>
+                <list>-11718.749999999998</list>
+                <list>-10156.25</list>
+                <list>-8593.75</list>
+                <list>-7031.249999999999</list>
+                <list>-5468.75</list>
+                <list>-3906.2499999999995</list>
+                <list>-2343.75</list>
+                <list>-781.2499999999999</list>
+                <list>781.2499999999999</list>
+                <list>2343.75</list>
+                <list>3906.2499999999995</list>
+                <list>5468.75</list>
+                <list>7031.249999999999</list>
+                <list>8593.75</list>
+                <list>10156.25</list>
+                <list>11718.749999999998</list>
+                <list>781.2499999999999</list>
+                <list>2343.75</list>
+                <list>3906.2499999999995</list>
+                <list>5468.75</list>
+                <list>7031.249999999999</list>
+                <list>8593.75</list>
+                <list>10156.25</list>
+                <list>11718.749999999998</list>
             </value>
         </Entry>
         <Entry>
@@ -18080,7 +17176,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>8</address>
-                <list>4.990541663999999</list>
+                <list>0.004397664000000001</list>
             </value>
         </Entry>
         <Entry>
@@ -18815,48 +17911,6 @@
         </Entry>
         <Entry>
             <count>1</count>
-            <key>key135</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
-                <name>Time_flyback</name>
-                <description></description>
-                <numberEnum>Time</numberEnum>
-                <order>FourLoop</order>
-                <group>Delay</group>
-                <locked>false</locked>
-                <address>-1</address>
-                <list>5.0E-6</list>
-            </value>
-        </Entry>
-        <Entry>
-            <count>2</count>
-            <key>key136</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
-                <name>Time_grad_ramp_flyback</name>
-                <description></description>
-                <numberEnum>Time</numberEnum>
-                <order>FourLoop</order>
-                <group>Delay</group>
-                <locked>false</locked>
-                <address>-1</address>
-                <list>5.0E-6</list>
-            </value>
-        </Entry>
-        <Entry>
-            <count>3</count>
-            <key>key137</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
-                <name>Grad_amp_flyback</name>
-                <description></description>
-                <numberEnum>GradAmp</numberEnum>
-                <order>FourLoop</order>
-                <group>Gradient</group>
-                <locked>false</locked>
-                <address>-1</address>
-                <list>-37.47962699777109</list>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
             <key>key138</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
                 <name>ttl</name>
@@ -18866,19 +17920,6 @@
                 <locked>false</locked>
                 <address>-1</address>
                 <list>0</list>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key140</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="shape">
-                <name>Grad_shape1</name>
-                <description></description>
-                <numberEnum>GradShape</numberEnum>
-                <order>One</order>
-                <locked>false</locked>
-                <address>-1</address>
-                <list>100</list>
             </value>
         </Entry>
         <Entry>
@@ -19800,7 +18841,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>0.01</list>
+                <list>0.001</list>
             </value>
         </Entry>
         <Entry>
@@ -19814,7 +18855,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>9.999999999999999E-5</list>
+                <list>8.0E-5</list>
             </value>
         </Entry>
         <Entry>
@@ -19891,8 +18932,70 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>6</address>
-                <list>0.0</list>
-                <list>0.0</list>
+                <list>19731.25</list>
+                <list>18043.75</list>
+                <list>16356.25</list>
+                <list>14668.75</list>
+                <list>12981.25</list>
+                <list>11293.75</list>
+                <list>9606.250000000004</list>
+                <list>7918.750000000001</list>
+                <list>6231.250000000001</list>
+                <list>4543.750000000001</list>
+                <list>2856.250000000001</list>
+                <list>1168.75</list>
+                <list>-518.7499999999991</list>
+                <list>-2206.249999999999</list>
+                <list>-3893.749999999999</list>
+                <list>-5581.249999999999</list>
+                <list>-7268.75</list>
+                <list>-8956.25</list>
+                <list>-10643.75</list>
+                <list>-12331.25</list>
+                <list>-14018.749999999998</list>
+                <list>-15706.25</list>
+                <list>-17393.75</list>
+                <list>-19081.25</list>
+                <list>-20768.75</list>
+                <list>-22456.25</list>
+                <list>-24143.75</list>
+                <list>-25831.25</list>
+                <list>-27518.75</list>
+                <list>-29206.25</list>
+                <list>-30893.75</list>
+                <list>-32581.25</list>
+                <list>19731.25</list>
+                <list>18043.75</list>
+                <list>16356.25</list>
+                <list>14668.75</list>
+                <list>12981.25</list>
+                <list>11293.75</list>
+                <list>9606.250000000004</list>
+                <list>7918.750000000001</list>
+                <list>6231.250000000001</list>
+                <list>4543.750000000001</list>
+                <list>2856.250000000001</list>
+                <list>1168.75</list>
+                <list>-518.7499999999991</list>
+                <list>-2206.249999999999</list>
+                <list>-3893.749999999999</list>
+                <list>-5581.249999999999</list>
+                <list>-7268.75</list>
+                <list>-8956.25</list>
+                <list>-10643.75</list>
+                <list>-12331.25</list>
+                <list>-14018.749999999998</list>
+                <list>-15706.25</list>
+                <list>-17393.75</list>
+                <list>-19081.25</list>
+                <list>-20768.75</list>
+                <list>-22456.25</list>
+                <list>-24143.75</list>
+                <list>-25831.25</list>
+                <list>-27518.75</list>
+                <list>-29206.25</list>
+                <list>-30893.75</list>
+                <list>-32581.25</list>
             </value>
         </Entry>
         <Entry>
@@ -19971,7 +19074,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>88.38312814843383</list>
+                <list>82.53623675294654</list>
             </value>
         </Entry>
         <Entry>
@@ -20203,8 +19306,70 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-0.0</list>
-                <list>-0.0</list>
+                <list>-10820.312499999995</list>
+                <list>-273.4374999999955</list>
+                <list>-2226.5624999999955</list>
+                <list>-4179.687500000006</list>
+                <list>-6132.812500000006</list>
+                <list>-8085.937500000006</list>
+                <list>-10039.062500000027</list>
+                <list>-11992.187500000005</list>
+                <list>-1445.3125000000066</list>
+                <list>-3398.4375000000064</list>
+                <list>-5351.562500000006</list>
+                <list>-7304.687499999999</list>
+                <list>3242.1874999999945</list>
+                <list>1289.0624999999932</list>
+                <list>11835.937499999995</list>
+                <list>9882.812499999993</list>
+                <list>7929.687499999998</list>
+                <list>5976.562500000004</list>
+                <list>4023.437500000004</list>
+                <list>2070.312500000004</list>
+                <list>117.18749999999334</list>
+                <list>10664.062500000004</list>
+                <list>8710.937500000004</list>
+                <list>6757.812500000004</list>
+                <list>4804.687500000004</list>
+                <list>2851.562500000004</list>
+                <list>898.4375000000043</list>
+                <list>11445.312500000004</list>
+                <list>9492.187500000004</list>
+                <list>7539.062500000004</list>
+                <list>5585.937500000004</list>
+                <list>3632.812499999982</list>
+                <list>-10820.312499999995</list>
+                <list>-273.4374999999955</list>
+                <list>-2226.5624999999955</list>
+                <list>-4179.687500000006</list>
+                <list>-6132.812500000006</list>
+                <list>-8085.937500000006</list>
+                <list>-10039.062500000027</list>
+                <list>-11992.187500000005</list>
+                <list>-1445.3125000000066</list>
+                <list>-3398.4375000000064</list>
+                <list>-5351.562500000006</list>
+                <list>-7304.687499999999</list>
+                <list>3242.1874999999945</list>
+                <list>1289.0624999999932</list>
+                <list>11835.937499999995</list>
+                <list>9882.812499999993</list>
+                <list>7929.687499999998</list>
+                <list>5976.562500000004</list>
+                <list>4023.437500000004</list>
+                <list>2070.312500000004</list>
+                <list>117.18749999999334</list>
+                <list>10664.062500000004</list>
+                <list>8710.937500000004</list>
+                <list>6757.812500000004</list>
+                <list>4804.687500000004</list>
+                <list>2851.562500000004</list>
+                <list>898.4375000000043</list>
+                <list>11445.312500000004</list>
+                <list>9492.187500000004</list>
+                <list>7539.062500000004</list>
+                <list>5585.937500000004</list>
+                <list>3632.812499999982</list>
             </value>
         </Entry>
         <Entry>
@@ -20323,7 +19488,7 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>1</address>
-                <list>0.17488638716676208</list>
+                <list>0.8642112650984156</list>
             </value>
         </Entry>
         <Entry>
@@ -20350,7 +19515,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>0.0</list>
+                <list>9.787800485474902</list>
             </value>
         </Entry>
         <Entry>
@@ -20445,7 +19610,7 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>1</address>
-                <list>7.521823642428477</list>
+                <list>7.712682403243299</list>
             </value>
         </Entry>
         <Entry>
@@ -20512,7 +19677,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>0.0</list>
+                <list>40.0</list>
             </value>
         </Entry>
         <Entry>
@@ -20539,7 +19704,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>0.0</list>
+                <list>40.0</list>
             </value>
         </Entry>
         <Entry>
@@ -20566,8 +19731,70 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-0.0</list>
-                <list>-0.0</list>
+                <list>-10820.312499999995</list>
+                <list>-273.4374999999955</list>
+                <list>-2226.5624999999955</list>
+                <list>-4179.687500000006</list>
+                <list>-6132.812500000006</list>
+                <list>-8085.937500000006</list>
+                <list>-10039.062500000027</list>
+                <list>-11992.187500000005</list>
+                <list>-1445.3125000000066</list>
+                <list>-3398.4375000000064</list>
+                <list>-5351.562500000006</list>
+                <list>-7304.687499999999</list>
+                <list>3242.1874999999945</list>
+                <list>1289.0624999999932</list>
+                <list>11835.937499999995</list>
+                <list>9882.812499999993</list>
+                <list>7929.687499999998</list>
+                <list>5976.562500000004</list>
+                <list>4023.437500000004</list>
+                <list>2070.312500000004</list>
+                <list>117.18749999999334</list>
+                <list>10664.062500000004</list>
+                <list>8710.937500000004</list>
+                <list>6757.812500000004</list>
+                <list>4804.687500000004</list>
+                <list>2851.562500000004</list>
+                <list>898.4375000000043</list>
+                <list>11445.312500000004</list>
+                <list>9492.187500000004</list>
+                <list>7539.062500000004</list>
+                <list>5585.937500000004</list>
+                <list>3632.812499999982</list>
+                <list>-10820.312499999995</list>
+                <list>-273.4374999999955</list>
+                <list>-2226.5624999999955</list>
+                <list>-4179.687500000006</list>
+                <list>-6132.812500000006</list>
+                <list>-8085.937500000006</list>
+                <list>-10039.062500000027</list>
+                <list>-11992.187500000005</list>
+                <list>-1445.3125000000066</list>
+                <list>-3398.4375000000064</list>
+                <list>-5351.562500000006</list>
+                <list>-7304.687499999999</list>
+                <list>3242.1874999999945</list>
+                <list>1289.0624999999932</list>
+                <list>11835.937499999995</list>
+                <list>9882.812499999993</list>
+                <list>7929.687499999998</list>
+                <list>5976.562500000004</list>
+                <list>4023.437500000004</list>
+                <list>2070.312500000004</list>
+                <list>117.18749999999334</list>
+                <list>10664.062500000004</list>
+                <list>8710.937500000004</list>
+                <list>6757.812500000004</list>
+                <list>4804.687500000004</list>
+                <list>2851.562500000004</list>
+                <list>898.4375000000043</list>
+                <list>11445.312500000004</list>
+                <list>9492.187500000004</list>
+                <list>7539.062500000004</list>
+                <list>5585.937500000004</list>
+                <list>3632.812499999982</list>
             </value>
         </Entry>
         <Entry>

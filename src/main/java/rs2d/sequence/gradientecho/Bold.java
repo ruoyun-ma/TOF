@@ -25,18 +25,20 @@ import kernel.*;
 import model.*;
 
 import static rs2d.sequence.gradientecho.S.*;
+
 import static rs2d.sequence.gradientecho.U.*;
+
 
 // **************************************************************************************************
 // *************************************** SEQUENCE GENERATOR ***************************************
 // **************************************************************************************************
 //
-public class TOF extends KernelGE {
+public class Bold extends KernelGE {
     private String sequenceVersion = "Version x1.2";
     private boolean isElliptical;
     private double slice_thickness_excitation;
 
-    public TOF() {
+    public Bold() {
         super();
         addUserParams();
     }

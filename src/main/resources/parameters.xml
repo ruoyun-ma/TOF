@@ -390,7 +390,7 @@
             <key>ECHO_SPACING</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ECHO_SPACING</name>
-                <value>0.00417</value>
+                <value>0.00426</value>
                 <defaultValue>0.0</defaultValue>
                 <description>The delay between echo</description>
                 <displayedName>ECHO_SPACING</displayedName>
@@ -797,11 +797,11 @@
             <key>GRADIENT_ENABLE_REWINDING</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>GRADIENT_ENABLE_REWINDING</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Do Gradient Rewind instead of Spoiling</description>
                 <displayedName>GRADIENT_ENABLE_REWINDING</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
                 <category>Acquisition</category>
@@ -893,7 +893,7 @@
             <key>GRAD_AMP_SPOILER_SL_PH_RE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>GRAD_AMP_SPOILER_SL_PH_RE</name>
-                <value>10.0</value>
+                <value>40.0</value>
                 <value>0.0</value>
                 <value>0.0</value>
                 <description></description>
@@ -901,7 +901,7 @@
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <numberEnum>PERCENT</numberEnum>
-                <minValue>0.0</minValue>
+                <minValue>-100.0</minValue>
                 <maxValue>100.0</maxValue>
                 <group>Gradient</group>
                 <category>Acquisition</category>
@@ -2494,7 +2494,7 @@
             <key>REPETITION_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>REPETITION_TIME</name>
-                <value>0.272</value>
+                <value>0.277</value>
                 <defaultValue>0.2</defaultValue>
                 <description>The repetition time ( TR )</description>
                 <displayedName>TR</displayedName>
@@ -2745,7 +2745,7 @@
             <key>SEQUENCE_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
-                <value>17.5</value>
+                <value>17.8</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>SEQUENCE_TIME</displayedName>

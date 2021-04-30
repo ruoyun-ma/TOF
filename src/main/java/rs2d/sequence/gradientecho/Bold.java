@@ -80,11 +80,9 @@ public class Bold extends KernelGE {
     @Override
     protected void iniTransformPlugin() throws Exception {
         ///// transform plugin
-        if (isMultiplanar) {
-            kspace_filling = "Linear";
-            getParam(KSPACE_FILLING).setValue(kspace_filling);
-            getParam(TRANSFORM_PLUGIN).setValue("SEEPISequential");
-        }
+        kspace_filling = "Linear";
+        getParam(KSPACE_FILLING).setValue(kspace_filling);
+        getParam(TRANSFORM_PLUGIN).setValue("SEEPISequential");
 
         plugin = getTransformPlugin();
         plugin.setParameters(new ArrayList<>(getUserParams()));
@@ -97,6 +95,8 @@ public class Bold extends KernelGE {
         set(Loop_long, Opcode.CodeEnum.StoreLoopAddress);
         set(Loop_short, Opcode.CodeEnum.Continu);
 
+        nb_scan_2d = acqMatrixDimension2D/echoTrainLength;
+        set(Nb_2d, nb_scan_2d);
         set(Nb_sb, ((SatBand) models.get("SatBand")).nb_satband - 1);
     }
 
@@ -109,7 +109,7 @@ public class Bold extends KernelGE {
         // ------------------------------------------------------------------
         //calculate TX FREQUENCY offsets tables for slice positionning
         // ------------------------------------------------------------------
-        if (isMultiplanar && nb_planar_excitation > 1 && isEnableSlice) {
+        if (nb_planar_excitation > 1 && isEnableSlice) {
             //MULTI-PLANAR case : calculation of frequency offset table
             pulseTX.prepareOffsetFreqMultiSlice(gradSlice, nb_planar_excitation, spacingBetweenSlice, off_center_distance_3D);
             pulseTX.reoderOffsetFreq(plugin, acqMatrixDimension1D * echoTrainLength, nb_slices_acquired_in_single_scan);
@@ -187,7 +187,8 @@ public class Bold extends KernelGE {
     @Override
     protected void getPEGrad() {
         super.getPEGrad();
-        
+
+        //gradPhase2D.
     }
 
     @Override

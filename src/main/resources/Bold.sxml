@@ -41,6 +41,8 @@
             <keyList></keyList>
             <keyList></keyList>
             <keyList></keyList>
+            <keyList></keyList>
+            <keyList></keyList>
         </acquChannel>
         <actualScanKey>key19</actualScanKey>
         <actualScanKey>key22</actualScanKey>
@@ -71,6 +73,8 @@
             <keyList>key81</keyList>
             <keyList>key82</keyList>
             <keyList>key83</keyList>
+            <keyList></keyList>
+            <keyList></keyList>
             <keyList></keyList>
             <keyList></keyList>
             <keyList></keyList>
@@ -116,7 +120,9 @@
             <keyList></keyList>
             <keyList></keyList>
             <keyList></keyList>
-            <keyList></keyList>
+            <keyList>elem62</keyList>
+            <keyList>elem63</keyList>
+            <keyList>elem64</keyList>
             <keyList></keyList>
             <keyList></keyList>
             <keyList>key126</keyList>
@@ -160,6 +166,8 @@
             <keyList>key92</keyList>
             <keyList></keyList>
             <keyList></keyList>
+            <keyList></keyList>
+            <keyList></keyList>
             <keyList>key123</keyList>
             <keyList>key124</keyList>
             <keyList>key125</keyList>
@@ -196,6 +204,8 @@
             <keyList></keyList>
             <keyList></keyList>
             <keyList>key171</keyList>
+            <keyList>key43</keyList>
+            <keyList>key43</keyList>
             <keyList>key43</keyList>
             <keyList>key43</keyList>
             <keyList>key43</keyList>
@@ -244,6 +254,8 @@
             <keyList>key32</keyList>
             <keyList>key33</keyList>
             <keyList>key34</keyList>
+            <keyList>elem57</keyList>
+            <keyList>elem28</keyList>
             <keyList>key96</keyList>
             <keyList>key101</keyList>
             <keyList>key111</keyList>
@@ -285,6 +297,8 @@
             <keyList>key25</keyList>
             <keyList>key26</keyList>
             <keyList>key27</keyList>
+            <keyList>elem56</keyList>
+            <keyList>elem27</keyList>
             <keyList>elem37</keyList>
             <keyList>key100</keyList>
             <keyList>key110</keyList>
@@ -330,6 +344,8 @@
             <keyList>key11</keyList>
             <keyList>key12</keyList>
             <keyList>key13</keyList>
+            <keyList>elem39</keyList>
+            <keyList>elem5</keyList>
             <keyList>elem35</keyList>
             <keyList>key98</keyList>
             <keyList>key108</keyList>
@@ -371,6 +387,8 @@
             <keyList>elem32</keyList>
             <keyList>elem33</keyList>
             <keyList>elem34</keyList>
+            <keyList>elem58</keyList>
+            <keyList>elem29</keyList>
             <keyList>elem49</keyList>
             <keyList>elem38</keyList>
             <keyList>elem40</keyList>
@@ -412,6 +430,8 @@
             <keyList>key18</keyList>
             <keyList>key19</keyList>
             <keyList>key20</keyList>
+            <keyList>elem48</keyList>
+            <keyList>elem14</keyList>
             <keyList>elem36</keyList>
             <keyList>key99</keyList>
             <keyList>key109</keyList>
@@ -450,6 +470,8 @@
             <keyList></keyList>
             <keyList></keyList>
             <keyList>key141</keyList>
+            <keyList>key142</keyList>
+            <keyList>key142</keyList>
             <keyList>key142</keyList>
             <keyList>key142</keyList>
             <keyList>key142</keyList>
@@ -513,6 +535,11 @@
             <count>1</count>
             <key>elem4</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="param17" nameKey="param15" enabledKey="param16"/>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>elem5</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="timeElement" timeKey="key3" triggerKey="param39" nameKey="param19" enabledKey="param20"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -598,6 +625,11 @@
             <count>1</count>
             <key>key13</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="timeElement" timeKey="key3" triggerKey="key80" nameKey="key78" enabledKey="key79"/>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>elem14</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="param85" nameKey="param40" enabledKey="param84"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -726,13 +758,28 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>elem27</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="param88" nameKey="param86" enabledKey="param87"/>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key27</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="key122" nameKey="key120" enabledKey="key121"/>
         </Entry>
         <Entry>
             <count>1</count>
+            <key>elem28</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="opcode" paramCodeKey="param108" paramDataFieldKey="param91" paramSecondaryFieldKey="param92" tableDatafieldKey="table14" nameKey="param89" enabledKey="param90"/>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key28</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="opcode" paramCodeKey="key125" paramDataFieldKey="key126" paramSecondaryFieldKey="key450" tableDatafieldKey="table0" nameKey="key123" enabledKey="key124"/>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>elem29</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="param111" nameKey="param109" enabledKey="param110"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -811,6 +858,11 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>elem39</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="timeElement" timeKey="table20" triggerKey="param122" nameKey="param120" enabledKey="param121"/>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>elem40</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="param125" nameKey="param123" enabledKey="param124"/>
         </Entry>
@@ -837,7 +889,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="param134" nameKey="param132" enabledKey="param133"/>
         </Entry>
         <Entry>
-            <count>3</count>
+            <count>5</count>
             <key>key43</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="loElement" offsetKey="key13" phaseKey="key14" shapePhaseKey="key15" nameKey="key174" enabledKey="key175">
                 <phaseModEnabled>false</phaseModEnabled>
@@ -877,6 +929,11 @@
             <count>1</count>
             <key>elem47</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="param146" nameKey="param144" enabledKey="param145"/>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>elem48</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="param178" nameKey="param176" enabledKey="param177"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -952,8 +1009,23 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>elem56</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="param185" nameKey="param179" enabledKey="param180"/>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key56</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="opcode" paramCodeKey="key215" paramDataFieldKey="key216" paramSecondaryFieldKey="key560" tableDatafieldKey="table23" nameKey="key213" enabledKey="key214"/>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>elem57</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="opcode" paramCodeKey="param190" paramDataFieldKey="param188" paramSecondaryFieldKey="param189" tableDatafieldKey="table26" nameKey="param186" enabledKey="param187"/>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>elem58</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanElement" stateKey="param193" nameKey="param191" enabledKey="param192"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -977,8 +1049,23 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>elem62</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="gradElement" ampKey="table27" shapeKey="key24" nameKey="param197" enabledKey="key309"/>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>elem63</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="gradElement" ampKey="table27" shapeKey="table34" nameKey="param199" enabledKey="key309"/>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key63</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="timeElement" timeKey="key20" triggerKey="key238" nameKey="key236" enabledKey="key237"/>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>elem64</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="gradElement" ampKey="table27" shapeKey="key28" nameKey="param200" enabledKey="key309"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -1318,7 +1405,7 @@
             </value>
         </Entry>
         <Entry>
-            <count>3</count>
+            <count>5</count>
             <key>key142</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key13" phaseKey="key101" ampKey="key102" shapeKey="key103" shapePhaseKey="key104" attKey="key131" nameKey="key305" enabledKey="key307">
                 <phaseModEnabled>false</phaseModEnabled>
@@ -2600,6 +2687,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param19</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>name46</name>
+                <value>Time15</value>
+                <defaultValue>Elem</defaultValue>
+                <description>The name of the element</description>
+                <displayedName>name2</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key20</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Start 1D</name>
@@ -2612,6 +2713,19 @@
                 <numberEnum>Scan</numberEnum>
                 <minValue>0</minValue>
                 <maxValue>65536</maxValue>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param20</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>enabled46</name>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>The state of the element</description>
+                <displayedName>enabled2</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
             </value>
         </Entry>
         <Entry>
@@ -3154,6 +3268,18 @@
             </value>
         </Entry>
         <Entry>
+            <count>1</count>
+            <key>param39</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Trigger15</name>
+                <value xsi:type="trigger">Timer</value>
+                <defaultValue xsi:type="trigger">Timer</defaultValue>
+                <displayedName>Trigger0</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
             <count>2</count>
             <key>key40</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
@@ -3168,6 +3294,20 @@
                 <minValue>0.0</minValue>
                 <maxValue>3.0E9</maxValue>
                 <group>Emission</group>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param40</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>name51</name>
+                <value>Bool45</value>
+                <defaultValue>Elem</defaultValue>
+                <description>The name of the element</description>
+                <displayedName>name4</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
             </value>
         </Entry>
         <Entry>
@@ -4287,6 +4427,19 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param84</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>enabled51</name>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>The state of the element</description>
+                <displayedName>enabled4</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key85</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>enabled14</name>
@@ -4294,6 +4447,19 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>enabled14</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param85</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>state20</name>
+                <value>false</value>
+                <defaultValue>false</defaultValue>
+                <description>State of the element</description>
+                <displayedName>state1</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -4313,6 +4479,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param86</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>name56</name>
+                <value>Bool46</value>
+                <defaultValue>Elem</defaultValue>
+                <description>The name of the element</description>
+                <displayedName>name5</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key87</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>name15</name>
@@ -4327,6 +4507,19 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param87</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>enabled56</name>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>The state of the element</description>
+                <displayedName>enabled5</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key88</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>enabled15</name>
@@ -4334,6 +4527,19 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>enabled15</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param88</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>state21</name>
+                <value>false</value>
+                <defaultValue>false</defaultValue>
+                <description>State of the element</description>
+                <displayedName>state2</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -4353,6 +4559,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param89</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>name71</name>
+                <value>Opcode13</value>
+                <defaultValue>Elem</defaultValue>
+                <description>The name of the element</description>
+                <displayedName>name</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key90</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>name16</name>
@@ -4363,6 +4583,19 @@
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param90</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>enabled71</name>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>The state of the element</description>
+                <displayedName>enabled</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
             </value>
         </Entry>
         <Entry>
@@ -4380,6 +4613,22 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param91</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>Datafield7</name>
+                <value>0</value>
+                <defaultValue>0</defaultValue>
+                <displayedName>Datafield</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>Integer</numberEnum>
+                <minValue>-2147483648</minValue>
+                <maxValue>2147483647</maxValue>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key92</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>state6</name>
@@ -4389,6 +4638,22 @@
                 <displayedName>state6</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param92</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>Secondary27</name>
+                <value>0</value>
+                <defaultValue>0</defaultValue>
+                <displayedName>Secondary26</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>Integer</numberEnum>
+                <minValue>-2147483648</minValue>
+                <maxValue>2147483647</maxValue>
             </value>
         </Entry>
         <Entry>
@@ -4808,6 +5073,18 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param108</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>CodeEnum10</name>
+                <value xsi:type="codeEnum">Continu</value>
+                <defaultValue xsi:type="codeEnum">Continu</defaultValue>
+                <displayedName>CodeEnum</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key109</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>enabled22</name>
@@ -4817,6 +5094,20 @@
                 <displayedName>enabled22</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param109</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>Name17</name>
+                <value>Bool67</value>
+                <defaultValue>Elem</defaultValue>
+                <description>The name of the element</description>
+                <displayedName>Name3</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
             </value>
         </Entry>
         <Entry>
@@ -4834,6 +5125,19 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param110</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>Enabled15</name>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>The state of the element</description>
+                <displayedName>Enabled</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key111</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>name23</name>
@@ -4844,6 +5148,19 @@
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param111</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>State15</name>
+                <value>false</value>
+                <defaultValue>false</defaultValue>
+                <description>State of the element</description>
+                <displayedName>State</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
             </value>
         </Entry>
         <Entry>
@@ -5074,6 +5391,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param120</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>name73</name>
+                <value>Time26</value>
+                <defaultValue>Elem</defaultValue>
+                <description>The name of the element</description>
+                <displayedName>name2</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key121</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>enabled26</name>
@@ -5087,6 +5418,19 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param121</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>enabled72</name>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>The state of the element</description>
+                <displayedName>enabled2</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key122</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>state16</name>
@@ -5094,6 +5438,18 @@
                 <defaultValue>false</defaultValue>
                 <description>State of the element</description>
                 <displayedName>state16</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param122</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Trigger25</name>
+                <value xsi:type="trigger">Timer</value>
+                <defaultValue xsi:type="trigger">Timer</defaultValue>
+                <displayedName>Trigger0</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -6294,6 +6650,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param176</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>name74</name>
+                <value>Bool78</value>
+                <defaultValue>Elem</defaultValue>
+                <description>The name of the element</description>
+                <displayedName>name4</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key177</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>enabled41</name>
@@ -6301,6 +6671,19 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>enabled41</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param177</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>enabled73</name>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>The state of the element</description>
+                <displayedName>enabled4</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -6324,6 +6707,19 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param178</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>state22</name>
+                <value>false</value>
+                <defaultValue>false</defaultValue>
+                <description>State of the element</description>
+                <displayedName>state1</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key179</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>enabled44</name>
@@ -6337,6 +6733,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param179</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>name75</name>
+                <value>Bool79</value>
+                <defaultValue>Elem</defaultValue>
+                <description>The name of the element</description>
+                <displayedName>name5</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key180</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>state25</name>
@@ -6344,6 +6754,19 @@
                 <defaultValue>false</defaultValue>
                 <description>State of the element</description>
                 <displayedName>state25</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param180</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>enabled74</name>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>The state of the element</description>
+                <displayedName>enabled5</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -6459,6 +6882,46 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param185</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>state23</name>
+                <value>false</value>
+                <defaultValue>false</defaultValue>
+                <description>State of the element</description>
+                <displayedName>state2</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param186</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>name76</name>
+                <value>Opcode21</value>
+                <defaultValue>Elem</defaultValue>
+                <description>The name of the element</description>
+                <displayedName>name</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param187</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>enabled75</name>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>The state of the element</description>
+                <displayedName>enabled</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key188</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>name47</name>
@@ -6469,6 +6932,22 @@
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param188</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>Datafield23</name>
+                <value>0</value>
+                <defaultValue>0</defaultValue>
+                <displayedName>Datafield</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>Integer</numberEnum>
+                <minValue>-2147483648</minValue>
+                <maxValue>2147483647</maxValue>
             </value>
         </Entry>
         <Entry>
@@ -6486,12 +6965,40 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param189</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>Secondary28</name>
+                <value>0</value>
+                <defaultValue>0</defaultValue>
+                <displayedName>Secondary26</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>Integer</numberEnum>
+                <minValue>-2147483648</minValue>
+                <maxValue>2147483647</maxValue>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key190</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
                 <name>Trigger9</name>
                 <value xsi:type="trigger">Timer</value>
                 <defaultValue xsi:type="trigger">Timer</defaultValue>
                 <displayedName>Trigger9</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param190</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>CodeEnum13</name>
+                <value xsi:type="codeEnum">Continu</value>
+                <defaultValue xsi:type="codeEnum">Continu</defaultValue>
+                <displayedName>CodeEnum</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -6512,6 +7019,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param191</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>Name30</name>
+                <value>Bool83</value>
+                <defaultValue>Elem</defaultValue>
+                <description>The name of the element</description>
+                <displayedName>Name3</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key192</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>enabled48</name>
@@ -6525,6 +7046,19 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param192</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>Enabled28</name>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>The state of the element</description>
+                <displayedName>Enabled</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key193</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>state27</name>
@@ -6532,6 +7066,19 @@
                 <defaultValue>false</defaultValue>
                 <description>State of the element</description>
                 <displayedName>state27</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param193</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>State28</name>
+                <value>false</value>
+                <defaultValue>false</defaultValue>
+                <description>State of the element</description>
+                <displayedName>State</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -6592,6 +7139,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param197</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>name92</name>
+                <value>Ge23</value>
+                <defaultValue>Elem</defaultValue>
+                <description>The name of the element</description>
+                <displayedName>name86</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key198</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>enabled50</name>
@@ -6617,6 +7178,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param199</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>name93</name>
+                <value>Ge24</value>
+                <defaultValue>Elem</defaultValue>
+                <description>The name of the element</description>
+                <displayedName>name87</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key200</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Datafield8</name>
@@ -6629,6 +7204,20 @@
                 <numberEnum>Integer</numberEnum>
                 <minValue>-2147483648</minValue>
                 <maxValue>2147483647</maxValue>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param200</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>name94</name>
+                <value>Ge25</value>
+                <defaultValue>Elem</defaultValue>
+                <description>The name of the element</description>
+                <displayedName>name88</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
             </value>
         </Entry>
         <Entry>
@@ -7846,7 +8435,7 @@
             </value>
         </Entry>
         <Entry>
-            <count>3</count>
+            <count>6</count>
             <key>key309</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Grad_enable_phase_2D</name>
@@ -8929,7 +9518,7 @@
             <key>key417</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Grad_enable_spoiler_read</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Grad_enable_spoiler_read</displayedName>
@@ -9020,7 +9609,7 @@
             <key>key423</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Grad_enable_spoiler_phase</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Grad_enable_spoiler_phase</displayedName>
@@ -13916,7 +14505,7 @@
             </value>
         </Entry>
         <Entry>
-            <count>8</count>
+            <count>9</count>
             <key>key3</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
                 <name>Time_grad_ramp</name>
@@ -14536,6 +15125,19 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>table14</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>Datafield89</name>
+                <description></description>
+                <numberEnum>Scan</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key15</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="shape">
                 <name>Phase</name>
@@ -14680,6 +15282,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>table20</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>Time_grad_phase_blipTop</name>
+                <description></description>
+                <numberEnum>Time</numberEnum>
+                <order>One</order>
+                <group>Delay</group>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>9.999999999999999E-6</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key21</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
                 <name>Time_trigger_delay</name>
@@ -14760,7 +15376,7 @@
             </value>
         </Entry>
         <Entry>
-            <count>17</count>
+            <count>18</count>
             <key>key24</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="shape">
                 <name>Grad_shape_rise_up</name>
@@ -14928,6 +15544,19 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>table26</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>Datafield91</name>
+                <description></description>
+                <numberEnum>Scan</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key27</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
                 <name>Time_grad_spoiler_top</name>
@@ -14941,7 +15570,84 @@
             </value>
         </Entry>
         <Entry>
-            <count>17</count>
+            <count>3</count>
+            <key>table27</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>Grad_amp_phase_EPI</name>
+                <description></description>
+                <numberEnum>GradAmp</numberEnum>
+                <order>Two</order>
+                <group>Gradient</group>
+                <locked>false</locked>
+                <address>0</address>
+                <list>-20.714921662380743</list>
+                <list>-20.067580360431343</list>
+                <list>-19.420239058481947</list>
+                <list>-18.772897756532547</list>
+                <list>-18.12555645458315</list>
+                <list>-17.47821515263375</list>
+                <list>-16.830873850684352</list>
+                <list>-16.183532548734956</list>
+                <list>-15.536191246785556</list>
+                <list>-14.888849944836158</list>
+                <list>-14.24150864288676</list>
+                <list>-13.594167340937362</list>
+                <list>-12.946826038987965</list>
+                <list>-12.299484737038565</list>
+                <list>-11.652143435089167</list>
+                <list>-11.00480213313977</list>
+                <list>-10.357460831190371</list>
+                <list>-9.710119529240973</list>
+                <list>-9.062778227291574</list>
+                <list>-8.415436925342176</list>
+                <list>-7.768095623392778</list>
+                <list>-7.12075432144338</list>
+                <list>-6.473413019493982</list>
+                <list>-5.826071717544584</list>
+                <list>-5.178730415595185</list>
+                <list>-4.531389113645787</list>
+                <list>-3.8840478116963872</list>
+                <list>-3.236706509746991</list>
+                <list>-2.5893652077975915</list>
+                <list>-1.9420239058481954</list>
+                <list>-1.2946826038987957</list>
+                <list>-0.6473413019493997</list>
+                <list>0.0</list>
+                <list>0.6473413019493997</list>
+                <list>1.2946826038987957</list>
+                <list>1.942023905848199</list>
+                <list>2.589365207797595</list>
+                <list>3.2367065097469947</list>
+                <list>3.884047811696391</list>
+                <list>4.5313891136457904</list>
+                <list>5.1787304155951865</list>
+                <list>5.826071717544586</list>
+                <list>6.473413019493982</list>
+                <list>7.120754321443382</list>
+                <list>7.768095623392778</list>
+                <list>8.415436925342178</list>
+                <list>9.062778227291574</list>
+                <list>9.710119529240973</list>
+                <list>10.357460831190373</list>
+                <list>11.004802133139773</list>
+                <list>11.652143435089169</list>
+                <list>12.299484737038572</list>
+                <list>12.946826038987968</list>
+                <list>13.594167340937364</list>
+                <list>14.24150864288676</list>
+                <list>14.888849944836164</list>
+                <list>15.53619124678556</list>
+                <list>16.183532548734956</list>
+                <list>16.830873850684352</list>
+                <list>17.478215152633755</list>
+                <list>18.12555645458315</list>
+                <list>18.772897756532547</list>
+                <list>19.420239058481943</list>
+                <list>20.067580360431347</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>18</count>
             <key>key28</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="shape">
                 <name>Grad_shape_rise_down</name>
@@ -15196,6 +15902,19 @@
                 <locked>false</locked>
                 <address>-1</address>
                 <list>0</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>table34</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="shape">
+                <name>GradShape9</name>
+                <description></description>
+                <numberEnum>GradShape</numberEnum>
+                <order>One</order>
+                <locked>false</locked>
+                <address>64</address>
+                <list>100</list>
             </value>
         </Entry>
         <Entry>
@@ -15538,7 +16257,7 @@
             <count>1</count>
             <key>key44</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="shape">
-                <name>GradShape9</name>
+                <name>GradShape14</name>
                 <description></description>
                 <numberEnum>GradShape</numberEnum>
                 <order>One</order>
@@ -15780,7 +16499,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>7</address>
-                <list>0.0011728239999999968</list>
+                <list>0.001129687999999995</list>
             </value>
         </Entry>
         <Entry>
@@ -15844,7 +16563,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>21.129458869059413</list>
+                <list>0.0</list>
             </value>
         </Entry>
         <Entry>
@@ -15919,74 +16638,11 @@
                 <name>Grad_amp_spoiler_phase</name>
                 <description></description>
                 <numberEnum>GradAmp</numberEnum>
-                <order>Two</order>
+                <order>FourLoop</order>
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>256</address>
-                <list>20.714921662380743</list>
-                <list>20.067580360431343</list>
-                <list>19.420239058481947</list>
-                <list>18.772897756532547</list>
-                <list>18.12555645458315</list>
-                <list>17.47821515263375</list>
-                <list>16.830873850684352</list>
-                <list>16.183532548734956</list>
-                <list>15.536191246785556</list>
-                <list>14.888849944836156</list>
-                <list>14.24150864288676</list>
-                <list>13.594167340937362</list>
-                <list>12.946826038987965</list>
-                <list>12.299484737038565</list>
-                <list>11.652143435089167</list>
-                <list>11.00480213313977</list>
-                <list>10.357460831190371</list>
-                <list>9.710119529240973</list>
-                <list>9.062778227291574</list>
-                <list>8.415436925342176</list>
-                <list>7.768095623392778</list>
-                <list>7.12075432144338</list>
-                <list>6.473413019493982</list>
-                <list>5.826071717544584</list>
-                <list>5.178730415595185</list>
-                <list>4.531389113645787</list>
-                <list>3.884047811696387</list>
-                <list>3.236706509746991</list>
-                <list>2.5893652077975915</list>
-                <list>1.9420239058481954</list>
-                <list>1.2946826038987957</list>
-                <list>0.6473413019493997</list>
                 <list>0.0</list>
-                <list>-0.6473413019493997</list>
-                <list>-1.2946826038987957</list>
-                <list>-1.942023905848199</list>
-                <list>-2.589365207797595</list>
-                <list>-3.2367065097469947</list>
-                <list>-3.884047811696391</list>
-                <list>-4.5313891136457904</list>
-                <list>-5.1787304155951865</list>
-                <list>-5.826071717544586</list>
-                <list>-6.473413019493982</list>
-                <list>-7.120754321443382</list>
-                <list>-7.768095623392778</list>
-                <list>-8.415436925342178</list>
-                <list>-9.062778227291574</list>
-                <list>-9.710119529240973</list>
-                <list>-10.357460831190373</list>
-                <list>-11.004802133139773</list>
-                <list>-11.652143435089169</list>
-                <list>-12.299484737038572</list>
-                <list>-12.946826038987968</list>
-                <list>-13.594167340937364</list>
-                <list>-14.24150864288676</list>
-                <list>-14.888849944836164</list>
-                <list>-15.53619124678556</list>
-                <list>-16.183532548734956</list>
-                <list>-16.830873850684352</list>
-                <list>-17.478215152633755</list>
-                <list>-18.12555645458315</list>
-                <list>-18.772897756532547</list>
-                <list>-19.420239058481943</list>
-                <list>-20.067580360431347</list>
             </value>
         </Entry>
         <Entry>
@@ -16063,7 +16719,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>1</address>
-                <list>-18.52444712909828</list>
+                <list>40.0</list>
             </value>
         </Entry>
         <Entry>
@@ -16142,7 +16798,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>8</address>
-                <list>0.0011884800000000473</list>
+                <list>4.7161600000006354E-4</list>
             </value>
         </Entry>
         <Entry>

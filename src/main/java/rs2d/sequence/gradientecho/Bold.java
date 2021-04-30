@@ -18,6 +18,8 @@ import rs2d.spinlab.tools.param.*;
 import rs2d.spinlab.tools.table.Order;
 
 import java.util.*;
+
+import static common.CommonUP.PREPHASING_READ_GRADIENT_RATIO;
 import static java.util.Arrays.asList;
 
 import common.*;
@@ -25,9 +27,7 @@ import kernel.*;
 import model.*;
 
 import static rs2d.sequence.gradientecho.S.*;
-
 import static rs2d.sequence.gradientecho.U.*;
-
 
 // **************************************************************************************************
 // *************************************** SEQUENCE GENERATOR ***************************************
@@ -35,8 +35,6 @@ import static rs2d.sequence.gradientecho.U.*;
 //
 public class Bold extends KernelGE {
     private String sequenceVersion = "Version x1.2";
-    private boolean isElliptical;
-    private double slice_thickness_excitation;
 
     public Bold() {
         super();
@@ -48,12 +46,12 @@ public class Bold extends KernelGE {
         super.init();
         //TRANSFORM PLUGIN
         TextParam transformPlugin = getParam(TRANSFORM_PLUGIN);
-        transformPlugin.setSuggestedValues(asList("Sequential4D", "Elliptical3D", "Sequential4D_TOF"));
+        transformPlugin.setSuggestedValues(asList("SEEPISequential"));
         transformPlugin.setRestrictedToSuggested(true);
 
         // KSPACE_FILLING
         TextParam ksFilling = getParam(KSPACE_FILLING);
-        ksFilling.setSuggestedValues(asList("Linear", "3DElliptic"));
+        ksFilling.setSuggestedValues(asList("Linear"));
         ksFilling.setRestrictedToSuggested(true);
     }
 
@@ -64,8 +62,11 @@ public class Bold extends KernelGE {
     public void initUserParam() {
         super.initUserParam();
         getParam(SEQUENCE_VERSION).setValue(sequenceVersion);
-
-        isElliptical = getText(KSPACE_FILLING).equalsIgnoreCase("3DElliptic");
+        getParam(ECHO_TRAIN_LENGTH).setValue(getInt(ACQUISITION_MATRIX_DIMENSION_2D));
+        acqMatrixDimension2D = getInt(ACQUISITION_MATRIX_DIMENSION_2D);
+        echoTrainLength = getInt(ECHO_TRAIN_LENGTH);
+        isMultiplanar = true;
+        getParam(MULTI_PLANAR_EXCITATION).setValue(isMultiplanar);
     }
 
     //--------------------------------------------------------------------------------------
@@ -73,7 +74,7 @@ public class Bold extends KernelGE {
     //--------------------------------------------------------------------------------------
     @Override
     protected void iniModels() {
-        setModels(new ArrayList<>(Arrays.asList("ExtTrig", "FatSat", "TofSat", "FlowComp", "SatBand")), this);
+        setModels(new ArrayList<>(Arrays.asList("ExtTrig", "FatSat", "SatBand")), this);
     }
 
     @Override
@@ -82,26 +83,8 @@ public class Bold extends KernelGE {
         if (isMultiplanar) {
             kspace_filling = "Linear";
             getParam(KSPACE_FILLING).setValue(kspace_filling);
-            getParam(TRANSFORM_PLUGIN).setValue("Sequential4D");
-        } else {
-            switch (kspace_filling) {
-                case "Linear":
-                    getParam(TRANSFORM_PLUGIN).setValue("Sequential4D");
-                    if (!isMultiplanar && nb_interleaved_slice > 1) {
-                        getParam(TRANSFORM_PLUGIN).setValue("Sequential4D_TOF");
-                    }
-                    break;
-                case "3DElliptic":
-                    getParam(TRANSFORM_PLUGIN).setValue("Elliptical3D");
-                    break;
-                default:
-                    kspace_filling = "Linear";
-                    getParam(KSPACE_FILLING).setValue(kspace_filling);
-                    getParam(TRANSFORM_PLUGIN).setValue("Sequential4D");
-                    break;
-            }
+            getParam(TRANSFORM_PLUGIN).setValue("SEEPISequential");
         }
-        isElliptical = kspace_filling.equalsIgnoreCase("3DElliptic");
 
         plugin = getTransformPlugin();
         plugin.setParameters(new ArrayList<>(getUserParams()));
@@ -111,17 +94,9 @@ public class Bold extends KernelGE {
     @Override
     protected void iniScanLoop() {
         super.iniScanLoop();
-        try {
-            if (models.get("TofSat").isEnabled() && !isMultiplanar) {
-                set(Loop_long, Opcode.CodeEnum.Continu);
-                set(Loop_short, Opcode.CodeEnum.StoreLoopAddress);
-            } else {
-                set(Loop_long, Opcode.CodeEnum.StoreLoopAddress);
-                set(Loop_short, Opcode.CodeEnum.Continu);
-            }
-        } catch (Exception e) {
-            Log.warning(getClass(), "Sequence Param Missing: Loop_short; use default: Loop_long");
-        }
+        set(Loop_long, Opcode.CodeEnum.StoreLoopAddress);
+        set(Loop_short, Opcode.CodeEnum.Continu);
+
         set(Nb_sb, ((SatBand) models.get("SatBand")).nb_satband - 1);
     }
 
@@ -130,91 +105,15 @@ public class Bold extends KernelGE {
     //--------------------------------------------------------------------------------------
     @Override
     protected void prepRFandSliceGrad() throws Exception {
-        getGradRiseTime();
-        // -----------------------------------------------
-        // Calculation RF pulse parameters  1/4 : Pulse declaration & Fatsat Flip angle calculation
-        // -----------------------------------------------
-        set(Time_tx, txLength90);    // set RF pulse length to sequence
-        pulseTX = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_amp, Tx_phase, Time_tx, Tx_shape, Tx_shape_phase, Tx_freq_offset);
-
-        double flip_angle = getDouble(FLIP_ANGLE);
-        flip_angle = models.get("TofSat").isEnabled() && models.get("TofSat").getRfPulses().isSlr() ? 90 : flip_angle;
-        getParam(FLIP_ANGLE).setValue(flip_angle);
-
-        // -----------------------------------------------
-        // Calculation RF pulse parameters  2/4 : Shape
-        // -----------------------------------------------
-        if (hasParam(TOF3D_TX_RAMP_SLOPE) && "RAMP".equalsIgnoreCase(getText(TX_SHAPE))) {
-            pulseTX.setSincGenRampSlope(getDouble(TOF3D_TX_RAMP_SLOPE));
-        }
-        pulseTX.setShape((getText(TX_SHAPE)), nb_shape_points, "Hamming");
-
-        // -----------------------------------------------
-        // Calculation RF pulse parameters  3/4 : RF pulse & attenuation
-        // -----------------------------------------------
-        if (getBoolean(TX_AMP_ATT_AUTO)) {
-            if (!pulseTX.checkPower(flip_angle, observeFrequency, nucleus)) {
-                notifyOutOfRangeParam(TX_LENGTH, pulseTX.getPulseDuration(), ((NumberParam) getParam(TX_LENGTH)).getMaxValue(), "Pulse length too short to reach RF power with this pulse shape");
-                txLength90 = pulseTX.getPulseDuration();
-            }
-            pulseTX.prepAtt(80, getListInt(TX_ROUTE));
-            pulseTX.prepTxAmp(getListInt(TX_ROUTE));
-            rfPulses.add(pulseTX);
-            rfPulsesTree.put(pulseTX.getPower(), pulseTX);
-            getUPDisp();
-        } else {
-            pulseTX.setAtt(getInt(TX_ATT));
-            pulseTX.setAmp(getDouble(TX_AMP));
-            this.getParam(TX_AMP_90).setValue(getDouble(TX_AMP) * 90 / flip_angle);     // display 90° amplitude
-            this.getParam(TX_AMP_180).setValue(getDouble(TX_AMP) * 90 / flip_angle);   // display 180° amplitude
-        }
-
-        // -----------------------------------------------
-        // Calculation RF pulse parameters  4/4: bandwidth
-        // -----------------------------------------------
-        double tx_bandwidth_factor_90 = getTx_bandwidth_factor(TX_SHAPE, TX_BANDWIDTH_FACTOR, TX_BANDWIDTH_FACTOR_3D);
-        double tx_bandwidth_90 = tx_bandwidth_factor_90 / txLength90;
-
-        // ---------------------------------------------------------------------
-        // calculate SLICE gradient amplitudes for RF pulses
-        // ---------------------------------------------------------------------
-        slice_thickness_excitation = (isMultiplanar ? sliceThickness : (sliceThickness * userMatrixDimension3D));
-        gradSlice = Gradient.createGradient(getSequence(), Grad_amp_slice, Time_tx, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp, nucleus);
-
-        if (hasParam(TOF3D_EXT_SHIRNK_FACTOR) && !isMultiplanar) {
-            if (isEnableSlice && !gradSlice.prepareSliceSelection(tx_bandwidth_90, slice_thickness_excitation * (100 - getDouble(TOF3D_EXT_SHIRNK_FACTOR)) / 100)) {
-                slice_thickness_excitation = gradSlice.getSliceThickness() / ((100 - getDouble(TOF3D_EXT_SHIRNK_FACTOR)) / 100);
-                double slice_thickness_min = (isMultiplanar ? slice_thickness_excitation : (slice_thickness_excitation / userMatrixDimension3D));
-                notifyOutOfRangeParam(SLICE_THICKNESS, slice_thickness_min, ((NumberParam) getParam(SLICE_THICKNESS)).getMaxValue(), "Pulse length too short to reach this slice thickness");
-                sliceThickness = slice_thickness_min;
-            }
-        } else {
-            if (isEnableSlice && !gradSlice.prepareSliceSelection(tx_bandwidth_90, slice_thickness_excitation)) {
-                slice_thickness_excitation = gradSlice.getSliceThickness();
-                double slice_thickness_min = (isMultiplanar ? slice_thickness_excitation : (slice_thickness_excitation / userMatrixDimension3D));
-                notifyOutOfRangeParam(SLICE_THICKNESS, slice_thickness_min, ((NumberParam) getParam(SLICE_THICKNESS)).getMaxValue(), "Pulse length too short to reach this slice thickness");
-                sliceThickness = slice_thickness_min;
-            }
-        }
-
-        gradSlice.applyAmplitude();
-
+        super.prepRFandSliceGrad();
         // ------------------------------------------------------------------
         //calculate TX FREQUENCY offsets tables for slice positionning
         // ------------------------------------------------------------------
-        if (isMultiplanar && isEnableSlice) {
-            pulseTX.prepareOffsetFreqMultiSlice(gradSlice, acqMatrixDimension3D, spacingBetweenSlice, off_center_distance_3D);
-            pulseTX.reoderOffsetFreq(plugin, acqMatrixDimension1D * echoTrainLength, nb_interleaved_slice);
-            pulseTX.setFrequencyOffset(nb_interleaved_slice != 1 ? Order.ThreeLoop : Order.Three);
-
-        } else {
-            pulseTX.prepareOffsetFreqMultiSlice(gradSlice, acqMatrixDimension4D, getDouble(SPACING_BETWEEN_SLAB) + (slice_thickness_excitation - gradSlice.getSliceThickness()), off_center_distance_3D);
-            pulseTX.reoderOffsetFreq(nb_interleaved_slice);
-            if (nb_interleaved_slice > 1) {
-                pulseTX.setFrequencyOffset(Order.FourLoop);
-            } else {
-                pulseTX.setFrequencyOffset(Order.Four);
-            }
+        if (isMultiplanar && nb_planar_excitation > 1 && isEnableSlice) {
+            //MULTI-PLANAR case : calculation of frequency offset table
+            pulseTX.prepareOffsetFreqMultiSlice(gradSlice, nb_planar_excitation, spacingBetweenSlice, off_center_distance_3D);
+            pulseTX.reoderOffsetFreq(plugin, acqMatrixDimension1D * echoTrainLength, nb_slices_acquired_in_single_scan);
+            pulseTX.setFrequencyOffset(nb_slices_acquired_in_single_scan != 1 ? Order.ThreeLoop : Order.Three);
         }
 
         // ------------------------------------------------------------------
@@ -229,28 +128,40 @@ public class Bold extends KernelGE {
         pulseTXComp.setCompensationFrequencyOffset(pulseTX, grad_ratio_slice_refoc);
     }
 
+    @Override
+    protected void prepDicom() { //TODO  XG, EPI echo in the center of k-space
+        super.prepDicom();
+
+        // Set  ECHO_TIME
+        if (echoTrainLength != 1) {
+            ArrayList<Number> arrayListEcho = new ArrayList<>();
+            for (int i = 0; i < acqMatrixDimension4D; i++) {
+                arrayListEcho.add(echo_spacing * i);
+            }
+            NumberParam echoTime = getParam(ECHO_TIME);
+            ListNumberParam list = new ListNumberParam(echoTime, arrayListEcho);       // associate TE to images for DICOM export
+            putVariableParameter(list, 4);
+        }
+    }
+
     //--------------------------------------------------------------------------------------
     // get functions
     //--------------------------------------------------------------------------------------
     @Override
     protected void getAcq3D() {
         super.getAcq3D();
+    }
 
-        if (!isMultiplanar) {
-            getParam(SPACING_BETWEEN_SLAB).setValue(userMatrixDimension4D > 1 ? -getDouble(TOF3D_MOTSA_OVERLAP) / 100 * sliceThickness * userMatrixDimension3D : 0);
-        } else {
-            if (models.get("TofSat").isEnabled()) {
-                nb_shoot_3d = acqMatrixDimension3D; // TOF does not allow interleaved slice within the TR
-                nb_interleaved_slice = (int) Math.ceil((acqMatrixDimension3D / (double) nb_shoot_3d));
-                getParam(NUMBER_OF_SHOOT_3D).setValue(nb_shoot_3d);
-                getParam(NUMBER_OF_INTERLEAVED_SLICE).setValue(isMultiplanar ? nb_interleaved_slice : 0);
-            }
-        }
+    @Override
+    protected void getROGrad() throws Exception {
+        super.getROGrad();
+        gradReadout.applyReadoutEchoPlanarAmplitude(echoTrainLength, Order.LoopB);
     }
 
     @Override
     protected void getRx() {
         super.getRx();
+        pulseRX.setFrequencyOffsetReadoutEchoPlanar(gradReadout, off_center_distance_1D, echoTrainLength, Order.LoopB);
         //----------------------------------------------------------------------
         // modify RX FREQUENCY Prep and comp
         //----------------------------------------------------------------------
@@ -268,40 +179,21 @@ public class Bold extends KernelGE {
     protected void getPrephaseGrad() {
         super.getPrephaseGrad();
 
-        if (isEnableRead && models.get("FlowComp").isEnabled()) {
-            gradReadPrep.refocalizeGradientWithFlowComp(gradReadout, getDouble(PREPHASING_READ_GRADIENT_RATIO), ((FlowComp) models.get("FlowComp")).gradReadPrepFlowComp);
-            gradSliceRefPhase3D.refocalizeGradientWithFlowComp(gradSlice, getDouble(SLICE_REFOCUSING_GRADIENT_RATIO), ((FlowComp) models.get("FlowComp")).gradSliceRefPhase3DFlowComp);
-        }
-
-        if (!isMultiplanar && isEnablePhase3D) {
-            gradSliceRefPhase3D.preparePhaseEncodingForCheck(acqMatrixDimension3D, acqMatrixDimension3D, slice_thickness_excitation, is_k_s_centred);
-            Log.info(getClass(), " flow comp not supported for PE dir");
-
-            if (isElliptical) {
-                gradSliceRefPhase3D.reoderPhaseEncoding3D(plugin);
-            } else {
-                gradSliceRefPhase3D.reoderPhaseEncoding3D(plugin, acqMatrixDimension3D);
-            }
+        if (isEnableRead) {
+            gradReadPrep.refocalizeGradient(gradReadout, 0, getDouble(PREPHASING_READ_GRADIENT_RATIO));
         }
     }
 
     @Override
     protected void getPEGrad() {
         super.getPEGrad();
-        if (isEnablePhase) {
-            Log.info(getClass(), " flow comp not suported ");
-            if (isElliptical) {
-                gradPhase2D.reoderPhaseEncoding(plugin);
-            }
-        }
+        
     }
 
     @Override
     protected void getGradOpt() {
         super.getGradOpt();
-        if (isElliptical) {
-            gradSliceRefPhase3D.applyAmplitude(Order.Two);
-        }
+
     }
 
     @Override
@@ -336,22 +228,8 @@ public class Bold extends KernelGE {
         // set calculated the time delays to get the proper TE
         double delay1 = te - time1;
 
-        double effectiveEchoSpacing = getDouble(INTERLEAVED_EFF_ECHO_SPACING);
-        Table time_TE_delay1 = setSequenceTableValues(Time_TE_delay1, is_interleaved_echo_train ? Order.Four : Order.FourLoop);
-        if (is_interleaved_echo_train) {
-            if (echoTrainLength != 1) {
-                echo_spacing = effectiveEchoSpacing * nb_InterleavedEchoTrain;
-                getParam(ECHO_SPACING).setValue(echo_spacing);
-            }
-
-            for (int ind4D = 0; ind4D < nb_InterleavedEchoTrain; ind4D++) {
-                time_TE_delay1.add(delay1 + ind4D * effectiveEchoSpacing);
-            }
-
-        } else {
-            time_TE_delay1.add(delay1);
-        }
-
+        Table time_TE_delay1 = setSequenceTableValues(Time_TE_delay1, Order.FourLoop);
+        time_TE_delay1.add(delay1);
 
         // ------------------------------------------
         // calculate delays adapted to correct spacing in case of ETL & search for incoherence
@@ -366,14 +244,9 @@ public class Bold extends KernelGE {
             time2 -= TimeEvents.getTimeForEvents(getSequence(), Events.Delay2.ID); // Actual EchoLoop time without Delay2
             double echo_spacing_min = time2 + delay2_min;
             if (echo_spacing < echo_spacing_min) {
-                if (is_interleaved_echo_train) {
-                    double effectiveEchoSpacingMin = echo_spacing_min / nb_InterleavedEchoTrain;
-                    notifyOutOfRangeParam(INTERLEAVED_EFF_ECHO_SPACING, effectiveEchoSpacingMin, ((NumberParam) getParam(INTERLEAVED_EFF_ECHO_SPACING)).getMaxValue(), "Effective echo spacing too short for interleaved mode.");
-                } else {
-                    echo_spacing_min = ceilToSubDecimal(echo_spacing_min, 5);
-                    notifyOutOfRangeParam(ECHO_SPACING, echo_spacing_min, ((NumberParam) getParam(ECHO_SPACING)).getMaxValue(), "Echo spacing too short for the User Mx1D and SW");
-                    echo_spacing = echo_spacing_min;
-                }
+                echo_spacing_min = ceilToSubDecimal(echo_spacing_min, 5);
+                notifyOutOfRangeParam(ECHO_SPACING, echo_spacing_min, ((NumberParam) getParam(ECHO_SPACING)).getMaxValue(), "Echo spacing too short for the User Mx1D and SW");
+                echo_spacing = echo_spacing_min;
             }
             delay2 = echo_spacing - time2;
         } else {
@@ -392,20 +265,12 @@ public class Bold extends KernelGE {
         double delay_sat_band = models.get("SatBand").getDuration();
         double delay_before_echo_loop;
 
-        if (models.get("TofSat").isEnabled() && !isMultiplanar) {
-            delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1)
-                    + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopSatBandStart.ID - 1)
-                    + models.get("ExtTrig").getDuration()
-                    + delay_sat_band
-                    + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID + 1, Events.LoopSatBandStart.ID - 1);
-            delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStartShort.ID, Events.LoopStartEcho.ID - 1);
-        } else {
-            delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1)
-                    + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopMultiPlanarStart.ID - 1)
-                    + models.get("ExtTrig").getDuration();
-            delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStart.ID, Events.LoopSatBandStart.ID - 1)
-                    + delay_sat_band + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID + 1, Events.LoopStartEcho.ID - 1);
-        }
+        delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1)
+                + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopMultiPlanarStart.ID - 1)
+                + models.get("ExtTrig").getDuration();
+        delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStart.ID, Events.LoopSatBandStart.ID - 1)
+                + delay_sat_band + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID + 1, Events.LoopStartEcho.ID - 1);
+
         double delay_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho.ID, Events.LoopEndEcho.ID);
         double delay_spoiler = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopEndEcho.ID + 1, Events.LoopMultiPlanarEnd.ID - 2);// grad_phase_application_time + grad_rise_time * 2;
         min_flush_delay = minInstructionDelay;
@@ -449,7 +314,7 @@ public class Bold extends KernelGE {
     }
 
     public String getName() {
-        return "GRADIENT_ECHO_TOF_vx";
+        return "BOLD";
     }
 
     public String getVersion() {

@@ -62,11 +62,8 @@ public class Bold extends KernelGE {
     public void initUserParam() {
         super.initUserParam();
         getParam(SEQUENCE_VERSION).setValue(sequenceVersion);
-        getParam(ECHO_TRAIN_LENGTH).setValue(getInt(ACQUISITION_MATRIX_DIMENSION_2D));
-        acqMatrixDimension2D = getInt(ACQUISITION_MATRIX_DIMENSION_2D);
-        echoTrainLength = getInt(ECHO_TRAIN_LENGTH);
-        isMultiplanar = true;
-        getParam(MULTI_PLANAR_EXCITATION).setValue(isMultiplanar);
+        getParam(MULTI_PLANAR_EXCITATION).setValue(true);
+        isMultiplanar = getBoolean(MULTI_PLANAR_EXCITATION);
     }
 
     //--------------------------------------------------------------------------------------
@@ -148,13 +145,31 @@ public class Bold extends KernelGE {
     // get functions
     //--------------------------------------------------------------------------------------
     @Override
-    protected void getAcq3D() {
-        super.getAcq3D();
+    protected void getAcq2D() {
+        super.getAcq2D();
+        // advanced parallel imaging is not supported yet.
+        getParam(ECHO_TRAIN_LENGTH).setValue(getInt(ACQUISITION_MATRIX_DIMENSION_2D));
+        echoTrainLength = getInt(ECHO_TRAIN_LENGTH);
     }
 
     @Override
     protected void getROGrad() throws Exception {
-        super.getROGrad();
+        //super.getROGrad();
+        set(Time_grad_ramp_epi, getDouble(GRADIENT_RISE_TIME_EPI));
+        this.gradReadout = Gradient.createGradient(this.getSequence(), KernelGE.SP.Grad_amp_read_read, CommonSP.Time_rx, CommonSP.Grad_shape_rise_up, CommonSP.Grad_shape_rise_down, Time_grad_ramp_epi, this.nucleus);
+        if (this.isEnableRead && !this.gradReadout.calculateReadoutGradient(this.spectralWidth, this.getDouble(CommonUP.RESOLUTION_FREQUENCY) * (double) this.acqMatrixDimension1D)) {
+            double spectral_width_max = this.gradReadout.getSpectralWidth();
+            if (this.getBoolean(CommonUP.SPECTRAL_WIDTH_OPT)) {
+                this.notifyOutOfRangeParam(CommonUP.SPECTRAL_WIDTH, ((NumberParam) this.getParam(CommonUP.SPECTRAL_WIDTH)).getMinValue(), spectral_width_max / (double) (this.isFovDoubled ? 2 : 1), "SPECTRAL_WIDTH too high for the readout gradient");
+            } else {
+                this.notifyOutOfRangeParam(CommonUP.SPECTRAL_WIDTH_PER_PIXEL, ((NumberParam) this.getParam(CommonUP.SPECTRAL_WIDTH_PER_PIXEL)).getMinValue(), spectral_width_max / (double) this.acqMatrixDimension1D, "SPECTRAL_WIDTH too high for the readout gradient");
+            }
+
+            this.spectralWidth = spectral_width_max;
+        }
+
+        this.gradReadout.applyAmplitude(Order.LoopB);
+        this.set(CommonSP.Spectral_width, this.spectralWidth);
         gradReadout.applyReadoutEchoPlanarAmplitude(echoTrainLength, Order.LoopB);
     }
 
@@ -188,13 +203,22 @@ public class Bold extends KernelGE {
     protected void getPEGrad() {
         super.getPEGrad();
 
-        //gradPhase2D.
-    }
+        if (isEnablePhase) {
+            gradPhase2D.preparePhaseEncoding(acqMatrixDimension2D, fovPhase, is_k_s_centred);
+            gradPhase2D.reoderPhaseEncodingForSEEPI(echoTrainLength);
+        }
 
-    @Override
-    protected void getGradOpt() {
-        super.getGradOpt();
-
+        set(Time_grad_phase_blipTop, minInstructionDelay);
+        Gradient gradPhase2D_blip = Gradient.createGradient(getSequence(), Grad_amp_phase_EPI, Time_grad_phase_blipTop, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_epi);
+        if (!gradPhase2D_blip.prepareEPIBlip(1 + 1, fovPhase)) {
+            System.out.println("XXXXXXXXXXXX SOMETHING WRONG");
+//            gradPhaseEPI_blipRampTime_min = ((gradPhase2D_blip.getTotalArea() / 100.0) - gradPhase2D_blip.getMinTopTime()) / (2 * gradPhase2D_blip.getShapeFactor());
+//            notifyOutOfRangeParam(GRADIENT_EPI_RAMP, gradPhaseEPI_blipRampTime_min, ((NumberParam) getParam(GRADIENT_EPI_RAMP)).getMaxValue(), "blip ram too short");
+//            gradPhaseEPI_blipRampTime = gradPhaseEPI_blipRampTime_min;
+//            getParam(GRADIENT_EPI_RAMP).setValue(gradPhaseEPI_blipRampTime);   // display observation time
+        }
+        gradPhase2D_blip.inversePolarity();
+        gradPhase2D_blip.applyAmplitude();
     }
 
     @Override

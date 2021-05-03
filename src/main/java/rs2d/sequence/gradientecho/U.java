@@ -845,6 +845,22 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
+    GRADIENT_RISE_TIME_EPI("GRADIENT_RISE_TIME_EPI") {
+        public Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("GRADIENT_RISE_TIME_EPI");
+            param.setDisplayedName("GRADIENT_RISE_TIME_EPI");
+            param.setDescription("");
+            param.setCategory(Category.Acquisition);
+            param.setNumberEnum(NumberEnum.Time);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.0E9);
+            param.setValue(9.999999999999999E-6);
+            param.setDefaultValue(0.0);
+            return param;
+        }
+    },
+
     GRADIENT_SPOILER_TIME("GRADIENT_SPOILER_TIME") {
         public Param build() {
             NumberParam param = new NumberParam();
@@ -1998,7 +2014,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(17.8);
+            param.setValue(0.3);
             param.setDefaultValue(0.0);
             return param;
         }

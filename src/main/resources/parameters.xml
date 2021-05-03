@@ -872,6 +872,23 @@
             </value>
         </entry>
         <entry>
+            <key>GRADIENT_RISE_TIME_EPI</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>GRADIENT_RISE_TIME_EPI</name>
+                <value>9.999999999999999E-6</value>
+                <defaultValue>0.0</defaultValue>
+                <description></description>
+                <displayedName>GRADIENT_RISE_TIME_EPI</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>Time</numberEnum>
+                <minValue>0.0</minValue>
+                <maxValue>1.0E9</maxValue>
+                <category>Acquisition</category>
+            </value>
+        </entry>
+        <entry>
             <key>GRADIENT_SPOILER_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>GRADIENT_SPOILER_TIME</name>
@@ -2745,7 +2762,7 @@
             <key>SEQUENCE_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
-                <value>17.8</value>
+                <value>0.3</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>SEQUENCE_TIME</displayedName>

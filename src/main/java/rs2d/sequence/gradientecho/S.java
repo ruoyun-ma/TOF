@@ -93,6 +93,7 @@ public enum S implements GeneratorSequenceParamEnum {
     Time_grad_phase_blipTop("Time_grad_phase_blipTop"),
     Time_grad_phase_top("Time_grad_phase_top"),
     Time_grad_ramp("Time_grad_ramp"),
+    Time_grad_ramp_epi("Time_grad_ramp_epi"),
     Time_grad_ramp_fs("Time_grad_ramp_fs"),
     Time_grad_ramp_sb("Time_grad_ramp_sb"),
     Time_grad_sb("Time_grad_sb"),

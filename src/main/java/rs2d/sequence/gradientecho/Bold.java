@@ -35,6 +35,7 @@ import static rs2d.sequence.gradientecho.U.*;
 //
 public class Bold extends KernelGE {
     private String sequenceVersion = "Version x1.2";
+    private boolean isEPICalibration;
 
     public Bold() {
         super();
@@ -64,6 +65,12 @@ public class Bold extends KernelGE {
         getParam(SEQUENCE_VERSION).setValue(sequenceVersion);
         getParam(MULTI_PLANAR_EXCITATION).setValue(true);
         isMultiplanar = getBoolean(MULTI_PLANAR_EXCITATION);
+        isEPICalibration = getBoolean(EPI_CALIBRATION);
+        if (isEPICalibration) {
+            isKSCenterMode = true;
+            isEnablePhase3D = false;
+            isEnablePhase = false;
+        }
     }
 
     //--------------------------------------------------------------------------------------
@@ -92,9 +99,10 @@ public class Bold extends KernelGE {
         set(Loop_long, Opcode.CodeEnum.StoreLoopAddress);
         set(Loop_short, Opcode.CodeEnum.Continu);
 
-        nb_scan_2d = acqMatrixDimension2D/echoTrainLength;
+        nb_scan_2d = acqMatrixDimension2D / echoTrainLength;
         set(Nb_2d, nb_scan_2d);
         set(Nb_sb, ((SatBand) models.get("SatBand")).nb_satband - 1);
+        set(Nb_echo, echoTrainLength-1);
     }
 
     //--------------------------------------------------------------------------------------
@@ -181,7 +189,7 @@ public class Bold extends KernelGE {
         // modify RX FREQUENCY Prep and comp
         //----------------------------------------------------------------------
         double timeADC1 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Acq.ID - 1, Events.Acq.ID - 1) + observation_time / 2.0;
-        double timeADC2 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Acq.ID + 1, Events.Delay2.ID) + observation_time / 2.0;
+        double timeADC2 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Acq.ID + 1, Events.Delay2.ID - 2) + observation_time / 2.0;
 
         RFPulse pulseRXPrep = RFPulse.createRFPulse(getSequence(), Time_min_instruction, FreqOffset_rx_prep);
         pulseRXPrep.setCompensationFrequencyOffsetWithTime(pulseRX, timeADC1);
@@ -249,7 +257,7 @@ public class Bold extends KernelGE {
             notifyOutOfRangeParam(ECHO_TIME, te_min, ((NumberParam) getParam(ECHO_TIME)).getMaxValue(), "TE too short for the User Mx1D and SW");
             te = te_min;//
         }
-
+        getParam(ECHO_TIME_EFFECTIVE).setValue(te + acqMatrixDimension2D / 2 * TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho.ID, Events.LoopEndEcho.ID)); //TODO:if we improve the partial fft, one need to consider it here as well.
         // set calculated the time delays to get the proper TE
         double delay1 = te - time1;
 

@@ -195,7 +195,7 @@
                 <key>ACQUISITION_MATRIX_DIMENSION_2D</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_MATRIX_DIMENSION_2D</name>
-                    <value>32</value>
+                    <value>64</value>
                     <defaultValue>128</defaultValue>
                     <description>The acquisition size of the second dimension</description>
                     <displayedName>Acquisition 2D</displayedName>
@@ -321,7 +321,7 @@
                 <key>ACQUISITION_TIME_PER_SCAN</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_TIME_PER_SCAN</name>
-                    <value>0.003997696</value>
+                    <value>6.668288E-4</value>
                     <defaultValue>1.0</defaultValue>
                     <description>The acquisition time per scan  ( SPECTRAL_WIDTH )</description>
                     <displayedName>Acq Time</displayedName>
@@ -544,7 +544,7 @@
                 <key>ECHO_SPACING</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ECHO_SPACING</name>
-                    <value>0.00426</value>
+                    <value>0.0055</value>
                     <defaultValue>0.0</defaultValue>
                     <description>The delay between echo</description>
                     <displayedName>ECHO_SPACING</displayedName>
@@ -580,7 +580,7 @@
                 <key>ECHO_TIME_EFFECTIVE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ECHO_TIME_EFFECTIVE</name>
-                    <value>0.06970313599999998</value>
+                    <value>0.0322465216</value>
                     <defaultValue>0.01</defaultValue>
                     <description>Effective echo time in Fast Spin Echo sequence</description>
                     <displayedName>EFFECTIVE_ECHO_TIME</displayedName>
@@ -598,7 +598,7 @@
                 <key>ECHO_TRAIN_LENGTH</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ECHO_TRAIN_LENGTH</name>
-                    <value>32</value>
+                    <value>64</value>
                     <defaultValue>1</defaultValue>
                     <description>The echo train lentgth</description>
                     <displayedName>ETL</displayedName>
@@ -1060,7 +1060,7 @@
                 <key>GRADIENT_RISE_TIME_EPI</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>GRADIENT_RISE_TIME_EPI</name>
-                    <value>9.999999999999999E-6</value>
+                    <value>6.2E-5</value>
                     <defaultValue>0.0</defaultValue>
                     <description></description>
                     <displayedName>GRADIENT_RISE_TIME_EPI</displayedName>
@@ -1070,6 +1070,19 @@
                     <numberEnum>Time</numberEnum>
                     <minValue>0.0</minValue>
                     <maxValue>1.0E9</maxValue>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
+                <key>GRADIENT_RISE_TIME_EPI_MIN</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                    <name>GRADIENT_RISE_TIME_EPI_MIN</name>
+                    <value>true</value>
+                    <defaultValue>false</defaultValue>
+                    <description></description>
+                    <displayedName>GRADIENT_RISE_TIME_EPI_MIN</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
                     <category>Acquisition</category>
                 </value>
             </entry>
@@ -2696,7 +2709,7 @@
                 <key>REPETITION_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>REPETITION_TIME</name>
-                    <value>0.277</value>
+                    <value>0.099</value>
                     <defaultValue>0.2</defaultValue>
                     <description>The repetition time ( TR )</description>
                     <displayedName>TR</displayedName>
@@ -2732,7 +2745,7 @@
                 <key>RESOLUTION_PHASE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>RESOLUTION_PHASE</name>
-                    <value>0.00125</value>
+                    <value>6.25E-4</value>
                     <defaultValue>5.0E-4</defaultValue>
                     <description>True pixel dimension in the phase encoding direction</description>
                     <displayedName>RESOLUTION_PHASE</displayedName>
@@ -2947,7 +2960,7 @@
                 <key>SEQUENCE_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SEQUENCE_TIME</name>
-                    <value>0.3</value>
+                    <value>0.1</value>
                     <defaultValue>0.0</defaultValue>
                     <description></description>
                     <displayedName>SEQUENCE_TIME</displayedName>
@@ -2980,7 +2993,7 @@
                 <key>SEQ_DESCRIPTION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
-                    <value>GE_2D_AXI_64x32x1</value>
+                    <value>GE_2D_AXI_64x64x1</value>
                     <defaultValue></defaultValue>
                     <description></description>
                     <displayedName>SEQ_DESCRIPTION</displayedName>
@@ -3077,7 +3090,7 @@
                 <key>SPECTRAL_WIDTH</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SPECTRAL_WIDTH</name>
-                    <value>16009.22131147541</value>
+                    <value>95976.65847665847</value>
                     <defaultValue>12500.0</defaultValue>
                     <description>The spectral width of the reception ( SW BW, bandwidth )</description>
                     <displayedName>SW</displayedName>
@@ -3098,7 +3111,7 @@
                     <value>false</value>
                     <defaultValue>false</defaultValue>
                     <description>Use SW to calculate SW_PER_PIXEL (true) Use SW_PER_PIXEL to calculate SW (false)</description>
-                    <displayedName>SPECTRAL_WIDTH_OPT</displayedName>
+                    <displayedName>SW_OPT</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <group>Reception</group>
@@ -3109,10 +3122,10 @@
                 <key>SPECTRAL_WIDTH_PER_PIXEL</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SPECTRAL_WIDTH_PER_PIXEL</name>
-                    <value>250.1440829918033</value>
+                    <value>1499.6352886977886</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Spectral Width per pixel in Hz / Pix</description>
-                    <displayedName>SPECTRAL_WIDTH_PER_PIXEL</displayedName>
+                    <displayedName>SW_PER_PIXEL</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -3196,25 +3209,6 @@
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <group>Gradient</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>TRAJ_MATRIX</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>TRAJ_MATRIX</name>
-                    <value>64</value>
-                    <value>64</value>
-                    <value>64</value>
-                    <value>1</value>
-                    <description>show the acquisition dimension</description>
-                    <displayedName>TRAJ_MATRIX</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>Scan</numberEnum>
-                    <minValue>0</minValue>
-                    <maxValue>2147483647</maxValue>
-                    <group>Scan</group>
                     <category>Acquisition</category>
                 </value>
             </entry>
@@ -10043,7 +10037,7 @@
                 <key>USER_MATRIX_DIMENSION_2D</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>USER_MATRIX_DIMENSION_2D</name>
-                    <value>32</value>
+                    <value>64</value>
                     <defaultValue>1</defaultValue>
                     <description></description>
                     <displayedName>USER_ACQUISITION_MATRIX_DIMENSION_2D</displayedName>

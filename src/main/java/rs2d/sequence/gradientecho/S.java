@@ -112,7 +112,6 @@ public enum S implements GeneratorSequenceParamEnum {
     Tx_amp("Tx_amp"),
     Tx_amp_fs("Tx_amp_fs"),
     Tx_amp_sb("Tx_amp_sb"),
-    Tx_att_offset("Tx_att_offset"),
     Tx_freq_offset("Tx_freq_offset"),
     Tx_phase("Tx_phase"),
     Tx_phase_fs("Tx_phase_fs"),

@@ -102,7 +102,7 @@ public class Bold extends KernelGE {
         nb_scan_2d = acqMatrixDimension2D / echoTrainLength;
         set(Nb_2d, nb_scan_2d);
         set(Nb_sb, ((SatBand) models.get("SatBand")).nb_satband - 1);
-        set(Nb_echo, echoTrainLength-1);
+        set(Nb_echo, echoTrainLength - 1);
     }
 
     //--------------------------------------------------------------------------------------
@@ -136,7 +136,6 @@ public class Bold extends KernelGE {
     @Override
     protected void prepDicom() { //TODO  XG, EPI echo in the center of k-space
         super.prepDicom();
-
         // Set  ECHO_TIME
         if (echoTrainLength != 1) {
             ArrayList<Number> arrayListEcho = new ArrayList<>();
@@ -201,7 +200,6 @@ public class Bold extends KernelGE {
     @Override
     protected void getPrephaseGrad() {
         super.getPrephaseGrad();
-
         if (isEnableRead) {
             gradReadPrep.refocalizeGradient(gradReadout, 0, getDouble(PREPHASING_READ_GRADIENT_RATIO));
         }
@@ -210,7 +208,6 @@ public class Bold extends KernelGE {
     @Override
     protected void getPEGrad() {
         super.getPEGrad();
-
         if (isEnablePhase) {
             gradPhase2D.preparePhaseEncoding(acqMatrixDimension2D, fovPhase, is_k_s_centred);
             gradPhase2D.reoderPhaseEncodingForSEEPI(echoTrainLength);
@@ -218,12 +215,8 @@ public class Bold extends KernelGE {
 
         set(Time_grad_phase_blipTop, minInstructionDelay);
         Gradient gradPhase2D_blip = Gradient.createGradient(getSequence(), Grad_amp_phase_EPI, Time_grad_phase_blipTop, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp_epi);
-        if (!gradPhase2D_blip.prepareEPIBlip(1 + 1, fovPhase)) {
-            System.out.println("XXXXXXXXXXXX SOMETHING WRONG");
-//            gradPhaseEPI_blipRampTime_min = ((gradPhase2D_blip.getTotalArea() / 100.0) - gradPhase2D_blip.getMinTopTime()) / (2 * gradPhase2D_blip.getShapeFactor());
-//            notifyOutOfRangeParam(GRADIENT_EPI_RAMP, gradPhaseEPI_blipRampTime_min, ((NumberParam) getParam(GRADIENT_EPI_RAMP)).getMaxValue(), "blip ram too short");
-//            gradPhaseEPI_blipRampTime = gradPhaseEPI_blipRampTime_min;
-//            getParam(GRADIENT_EPI_RAMP).setValue(gradPhaseEPI_blipRampTime);   // display observation time
+        if (!gradPhase2D_blip.prepareEPIBlip(nb_scan_2d + 1, fovPhase)) {
+            set(Time_grad_phase_blipTop, gradPhase2D_blip.getTotalArea() / 100.0 - gradPhase2D_blip.getGradientShapeRiseTime());
         }
         gradPhase2D_blip.inversePolarity();
         gradPhase2D_blip.applyAmplitude();
@@ -231,7 +224,6 @@ public class Bold extends KernelGE {
 
     @Override
     protected void getTimeandDelay() throws Exception {
-
         Events.checkEventShortcut(getSequence());
         // ------------------------------------------
         // delays for FIR
@@ -267,11 +259,21 @@ public class Bold extends KernelGE {
         // ------------------------------------------
         // calculate delays adapted to correct spacing in case of ETL & search for incoherence
         // ------------------------------------------
+        double rise_time_epi_min = Math.max(minInstructionDelay, ceilToSubDecimal((min_FIR_4pts_delay - getSequenceTable(Time_grad_phase_blipTop).get(0).doubleValue()) / 2, 6));
+        rise_time_epi_min = Math.max(rise_time_epi_min, ceilToSubDecimal((min_FIR_delay
+                        - TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho.ID, Events.Acq.ID - 1)
+                        - getSequenceTable(Time_grad_phase_blipTop).get(0).doubleValue()
+                        - TimeEvents.getTimeForEvents(getSequence(), Events.LoopEndEcho.ID)) / 2,
+                6));
+
+        if (getBoolean(GRADIENT_RISE_TIME_EPI_MIN)) {
+            getParam(GRADIENT_RISE_TIME_EPI).setValue(rise_time_epi_min);
+        }else if (getDouble(GRADIENT_RISE_TIME_EPI) < rise_time_epi_min){
+            notifyOutOfRangeParam(GRADIENT_RISE_TIME_EPI, rise_time_epi_min, ((NumberParam) getParam(ECHO_TIME)).getMaxValue(), "GRADIENT_RISE_TIME_EPI too short for the Hardware requirement under the current SW");
+        }
+        //=============================
         double delay2;
-        double time_flyback_ramp = minInstructionDelay;
-        double timeGradTopFlyback = minInstructionDelay;
-        double delay2_min = Math.max(min_FIR_4pts_delay - (grad_rise_time + 2 * time_flyback_ramp + timeGradTopFlyback), minInstructionDelay);
-        delay2_min = Math.max(delay2_min, min_FIR_delay - (2 * grad_rise_time + 2 * time_flyback_ramp + timeGradTopFlyback + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho.ID, Events.LoopStartEcho.ID) + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopEndEcho.ID, Events.LoopEndEcho.ID)));
+        double delay2_min = minInstructionDelay;
         if (echoTrainLength > 1) {
             double time2 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopStartEcho.ID, Events.LoopEndEcho.ID); // Actual EchoLoop time
             time2 -= TimeEvents.getTimeForEvents(getSequence(), Events.Delay2.ID); // Actual EchoLoop time without Delay2

@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>rs2d-sequence</groupId>
-  <artifactId>bold</artifactId>
+  <artifactId>tof</artifactId>
   <version>master</version>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -27,7 +27,7 @@
     <dependency>
       <groupId>rs2d-sequence</groupId>
       <artifactId>sequence-common</artifactId>
-      <version>1.3</version>
+      <version>1.4</version>
     </dependency>
     <dependency>
       <groupId>rs2d-sequence</groupId>
@@ -43,9 +43,9 @@
         <configuration>
           <archive>
             <manifestEntries>
-              <RS2D-Sequence-Name>BOLD</RS2D-Sequence-Name>
-              <RS2D-Sequence-File>Bold.sxml</RS2D-Sequence-File>
-              <RS2D-Sequence-Generator>rs2d.sequence.gradientecho.Bold</RS2D-Sequence-Generator>
+              <RS2D-Sequence-Name>TOF</RS2D-Sequence-Name>
+              <RS2D-Sequence-File>Tof.sxml</RS2D-Sequence-File>
+              <RS2D-Sequence-Generator>rs2d.sequence.gradientecho.TOF</RS2D-Sequence-Generator>
               <RS2D-Spinlab-Version>2021.01-NEXT</RS2D-Spinlab-Version>
               <RS2D-Compiler-Version>1403-hps_10-2020.11-NEXT</RS2D-Compiler-Version>
               <RS2D-Java-Version>11.0.1+13 (OpenJDK Runtime Environment)</RS2D-Java-Version>

@@ -339,7 +339,7 @@
                 <key>BASE_FREQ_1</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>BASE_FREQ_1</name>
-                    <value>1.279370711E8</value>
+                    <value>1.2793707200410439E8</value>
                     <defaultValue>1.27552944E8</defaultValue>
                     <description>The base frequency of the first sequence channel</description>
                     <displayedName>Base Freq 1</displayedName>
@@ -2150,7 +2150,7 @@
                 <key>OBSERVED_FREQUENCY</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>OBSERVED_FREQUENCY</name>
-                    <value>1.279370711E8</value>
+                    <value>1.2793707200410439E8</value>
                     <defaultValue>6.3E7</defaultValue>
                     <description>The frequency of the acquisition</description>
                     <displayedName>Observed frequency</displayedName>
@@ -2982,7 +2982,7 @@
                 <key>SEQUENCE_VERSION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQUENCE_VERSION</name>
-                    <value>Version x1.2</value>
+                    <value>Version x1.3</value>
                     <defaultValue></defaultValue>
                     <description></description>
                     <displayedName>SEQUENCE_VERSION</displayedName>

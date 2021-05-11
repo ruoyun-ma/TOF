@@ -3368,7 +3368,7 @@
             <key>key40</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Tx_frequency</name>
-                <value>1.279370711E8</value>
+                <value>1.2793707200410439E8</value>
                 <defaultValue>6.35E7</defaultValue>
                 <displayedName>Frequency0</displayedName>
                 <locked>false</locked>

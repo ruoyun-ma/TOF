@@ -191,7 +191,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Frequency);
             param.setMinValue(0.0);
             param.setMaxValue(3.0E9);
-            param.setValue(1.279370711E8);
+            param.setValue(1.2793707200410439E8);
             param.setDefaultValue(1.27552944E8);
             return param;
         }
@@ -2087,7 +2087,7 @@ public enum U implements GeneratorParamEnum {
             param.setDisplayedName("SEQ_DESCRIPTION");
             param.setDescription("");
             param.setCategory(Category.Acquisition);
-            param.setValue("GE_3D_AXI_32x32x32_FATSAT");
+            param.setValue("GE_3D_AXI_32x32x32_FATSAT_TOFSAT");
             param.setDefaultValue("");
             return param;
         }
@@ -2703,7 +2703,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAtt);
             param.setMinValue(0.0);
             param.setMaxValue(63.0);
-            param.setValue(63.0);
+            param.setValue(43.0);
             param.setDefaultValue(36.0);
             return param;
         }

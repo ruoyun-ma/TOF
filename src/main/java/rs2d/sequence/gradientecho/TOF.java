@@ -33,7 +33,7 @@ import static rs2d.sequence.gradientecho.U.*;
 // **************************************************************************************************
 //
 public class TOF extends KernelGE {
-    private String sequenceVersion = "Version x1.2";
+    private String sequenceVersion = "Version x1.3";
     private boolean isElliptical;
     private double slice_thickness_excitation;
 
@@ -72,7 +72,7 @@ public class TOF extends KernelGE {
     //--------------------------------------------------------------------------------------
     @Override
     protected void iniModels() {
-        setModels(new ArrayList<>(Arrays.asList("ExtTrig", "FatSat", "TofSat", "FlowComp", "SatBand")), this);
+        setModels(new ArrayList<>(Arrays.asList(new ExtTrig(), new FatSat(), new TofSat(), new FlowComp(), new SatBand())), this);
     }
 
     @Override
@@ -111,7 +111,7 @@ public class TOF extends KernelGE {
     protected void iniScanLoop() {
         super.iniScanLoop();
         try {
-            if (models.get("TofSat").isEnabled() && !isMultiplanar) {
+            if (models.get(TofSat.class).isEnabled() && !isMultiplanar) {
                 set(Loop_long, Opcode.CodeEnum.Continu);
                 set(Loop_short, Opcode.CodeEnum.StoreLoopAddress);
             } else {
@@ -121,7 +121,7 @@ public class TOF extends KernelGE {
         } catch (Exception e) {
             Log.warning(getClass(), "Sequence Param Missing: Loop_short; use default: Loop_long");
         }
-        set(Nb_sb, ((SatBand) models.get("SatBand")).nb_satband - 1);
+        set(Nb_sb, models.get(SatBand.class).nb_satband - 1);
     }
 
     //--------------------------------------------------------------------------------------
@@ -139,7 +139,7 @@ public class TOF extends KernelGE {
         pulseTX = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_att_offset, Tx_amp, Tx_phase, Time_tx, Tx_shape, Tx_shape_phase, Tx_freq_offset);
 
         double flip_angle = getDouble(FLIP_ANGLE);
-        flip_angle = models.get("TofSat").isEnabled() && models.get("TofSat").getRfPulses().isSlr() ? 90 : flip_angle;
+        flip_angle = models.get(TofSat.class).isEnabled() && models.get(TofSat.class).getRfPulses().isSlr() ? 90 : flip_angle;
         getParam(FLIP_ANGLE).setValue(flip_angle);
 
         // -----------------------------------------------
@@ -239,7 +239,7 @@ public class TOF extends KernelGE {
         if (!isMultiplanar) {
             getParam(SPACING_BETWEEN_SLAB).setValue(userMatrixDimension4D > 1 ? -getDouble(TOF3D_MOTSA_OVERLAP) / 100 * sliceThickness * userMatrixDimension3D : 0);
         } else {
-            if (models.get("TofSat").isEnabled()) {
+            if (models.get(TofSat.class).isEnabled()) {
                 nb_shoot_3d = acqMatrixDimension3D; // TOF does not allow interleaved slice within the TR
                 nb_interleaved_slice = (int) Math.ceil((acqMatrixDimension3D / (double) nb_shoot_3d));
                 getParam(NUMBER_OF_SHOOT_3D).setValue(nb_shoot_3d);
@@ -268,9 +268,9 @@ public class TOF extends KernelGE {
     protected void getPrephaseGrad() {
         super.getPrephaseGrad();
 
-        if (isEnableRead && models.get("FlowComp").isEnabled()) {
-            gradReadPrep.refocalizeGradientWithFlowComp(gradReadout, getDouble(PREPHASING_READ_GRADIENT_RATIO), ((FlowComp) models.get("FlowComp")).gradReadPrepFlowComp);
-            gradSliceRefPhase3D.refocalizeGradientWithFlowComp(gradSlice, getDouble(SLICE_REFOCUSING_GRADIENT_RATIO), ((FlowComp) models.get("FlowComp")).gradSliceRefPhase3DFlowComp);
+        if (isEnableRead && models.get(FlowComp.class).isEnabled()) {
+            gradReadPrep.refocalizeGradientWithFlowComp(gradReadout, getDouble(PREPHASING_READ_GRADIENT_RATIO), models.get(FlowComp.class).gradReadPrepFlowComp);
+            gradSliceRefPhase3D.refocalizeGradientWithFlowComp(gradSlice, getDouble(SLICE_REFOCUSING_GRADIENT_RATIO), models.get(FlowComp.class).gradSliceRefPhase3DFlowComp);
         }
     }
 
@@ -356,20 +356,20 @@ public class TOF extends KernelGE {
         // calculate TR , Time_last_delay  Time_TR_delay & search for incoherence
         // ---------------------------------------------------------------
         double delay_before_multi_planar_loop;
-        double delay_sat_band = models.get("SatBand").getDuration();
+        double delay_sat_band = models.get(SatBand.class).getDuration();
         double delay_before_echo_loop;
 
-        if (models.get("TofSat").isEnabled() && !isMultiplanar) {
+        if (models.get(TofSat.class).isEnabled() && !isMultiplanar) {
             delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1)
                     + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopSatBandStart.ID - 1)
-                    + models.get("ExtTrig").getDuration()
+                    + models.get(ExtTrig.class).getDuration()
                     + delay_sat_band
                     + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID + 1, Events.LoopSatBandStart.ID - 1);
             delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStartShort.ID, Events.Delay1.ID);
         } else {
             delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1)
                     + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopMultiPlanarStart.ID - 1)
-                    + models.get("ExtTrig").getDuration();
+                    + models.get(ExtTrig.class).getDuration();
             delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStart.ID, Events.LoopSatBandStart.ID - 1)
                     + delay_sat_band + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID + 1, Events.Delay1.ID);
         }
@@ -393,9 +393,9 @@ public class TOF extends KernelGE {
         double last_delay = minInstructionDelay;
         double tr_delay;
         Table time_tr_delay = setSequenceTableValues(Time_TR_delay, Order.Four);
-        if (((ExtTrig) models.get("ExtTrig")).nb_trigger != 1) {
-            for (int i = 0; i < ((ExtTrig) models.get("ExtTrig")).nb_trigger; i++) {
-                double tmp_time_seq_to_end_spoiler = time_seq_to_end_spoiler - ((ExtTrig) models.get("ExtTrig")).time_external_trigger_delay_max + ((ExtTrig) models.get("ExtTrig")).triggerdelay.get(i).doubleValue();
+        if (models.get(ExtTrig.class).nb_trigger != 1) {
+            for (int i = 0; i < models.get(ExtTrig.class).nb_trigger; i++) {
+                double tmp_time_seq_to_end_spoiler = time_seq_to_end_spoiler - models.get(ExtTrig.class).time_external_trigger_delay_max + models.get(ExtTrig.class).triggerdelay.get(i).doubleValue();
                 tr_delay = (tr - (tmp_time_seq_to_end_spoiler + last_delay + min_flush_delay)) / nb_interleaved_slice - minInstructionDelay;
                 time_tr_delay.add(tr_delay);
             }

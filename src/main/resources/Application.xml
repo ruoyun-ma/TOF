@@ -763,7 +763,7 @@
                 <key>FAT_SATURATION_ENABLED</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>FAT_SATURATION_ENABLED</name>
-                    <value>true</value>
+                    <value>false</value>
                     <defaultValue>false</defaultValue>
                     <description></description>
                     <displayedName>FAT_SATURATION_ENABLED</displayedName>
@@ -2997,7 +2997,7 @@
                 <key>SEQ_DESCRIPTION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
-                    <value>GE_3D_AXI_32x32x32_FATSAT_TOFSAT</value>
+                    <value>GE_3D_AXI_32x32x32_TOFSAT_FATSAT</value>
                     <defaultValue></defaultValue>
                     <description></description>
                     <displayedName>SEQ_DESCRIPTION</displayedName>

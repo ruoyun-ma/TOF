@@ -13,7 +13,6 @@ import static java.util.Arrays.asList;
 public enum S implements GeneratorSequenceParamEnum {
     Enable_fs("Enable_fs"),
     Enable_sb("Enable_sb"),
-    Ext_trig_source("Ext_trig_source"),
     Grad_enable_flowcomp("Grad_enable_flowcomp"),
     Grad_enable_phase_2D("Grad_enable_phase_2D"),
     Grad_enable_phase_3D("Grad_enable_phase_3D"),
@@ -39,7 +38,6 @@ public enum S implements GeneratorSequenceParamEnum {
     Nb_point("Nb_point"),
     Phase_reset("Phase_reset"),
     Pre_scan("Pre_scan"),
-    Rx_gain("Rx_gain"),
     Spectral_width("Spectral_width"),
     Synchro_trigger("Synchro_trigger"),
     Tx_att("Tx_att"),
@@ -85,6 +83,7 @@ public enum S implements GeneratorSequenceParamEnum {
     Nb_interleaved_slice("Nb_interleaved_slice"),
     Nb_sb("Nb_sb"),
     Rx_freq_offset("Rx_freq_offset"),
+    Rx_gain("Rx_gain"),
     Rx_phase("Rx_phase"),
     Time_before_fs_pulse("Time_before_fs_pulse"),
     Time_btw_dyn_frames("Time_btw_dyn_frames"),

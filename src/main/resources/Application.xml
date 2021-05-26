@@ -616,7 +616,7 @@
                 <key>FATSAT_FLIP_ANGLE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FATSAT_FLIP_ANGLE</name>
-                    <value>90.0</value>
+                    <value>0.0</value>
                     <defaultValue>90.0</defaultValue>
                     <description></description>
                     <displayedName>FATSAT_FLIP_ANGLE</displayedName>
@@ -706,7 +706,7 @@
                 <key>FATSAT_TX_AMP_90</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FATSAT_TX_AMP_90</name>
-                    <value>2.96907290628734</value>
+                    <value>100.0</value>
                     <defaultValue>0.0</defaultValue>
                     <description></description>
                     <displayedName>FATSAT_TX_AMP_90</displayedName>
@@ -724,7 +724,7 @@
                 <key>FATSAT_TX_LENGTH</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FATSAT_TX_LENGTH</name>
-                    <value>0.00475</value>
+                    <value>5.0E-6</value>
                     <defaultValue>0.0</defaultValue>
                     <description></description>
                     <displayedName>FATSAT_TX_LENGTH</displayedName>
@@ -2997,7 +2997,7 @@
                 <key>SEQ_DESCRIPTION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
-                    <value>GE_3D_AXI_32x32x32_TOFSAT_FATSAT</value>
+                    <value>GE_3D_AXI_32x32x32_TOFSAT</value>
                     <defaultValue></defaultValue>
                     <description></description>
                     <displayedName>SEQ_DESCRIPTION</displayedName>
@@ -10072,25 +10072,6 @@
                     <suggestedValues>Elliptical3D</suggestedValues>
                     <suggestedValues>Sequential4D_TOF</suggestedValues>
                     <group>Scan</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>TRIGGER_CHANEL</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                    <name>TRIGGER_CHANEL</name>
-                    <value>Ext1</value>
-                    <defaultValue>Ext1_XOR_Ext2</defaultValue>
-                    <description></description>
-                    <displayedName>Trigger Channel</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>true</restrictedToSuggested>
-                    <suggestedValues>Ext1</suggestedValues>
-                    <suggestedValues>Ext2</suggestedValues>
-                    <suggestedValues>Ext1_AND_Ext2</suggestedValues>
-                    <suggestedValues>Ext1_XOR_Ext2</suggestedValues>
-                    <group>Delay</group>
                     <category>Acquisition</category>
                 </value>
             </entry>

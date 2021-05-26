@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <sequenceIO>
-    <sequence rxGainKey="key34" ifFreqKey="key1" accuDimKey="key2" phaseModKey="key4" extTrigModeKey="key425" extTrigSourceKey="key421" dummyScanKey="key30" preScanKey="key3" firCoefSelectedKey="key419" updateDimensionKey="key427" acqTimeModeKey="param1" gradRotPhiKey="key31" gradRotThetaKey="key32" gradRotPsiKey="key33">
+    <sequence rxGainTableKey="table35" ifFreqKey="key1" accuDimKey="key2" phaseModKey="key4" extTrigModeKey="key425" extTrigSourceKey="key421" dummyScanKey="key30" preScanKey="key3" firCoefSelectedKey="key419" updateDimensionKey="key427" acqTimeModeKey="param1" gradRotPhiKey="key31" gradRotThetaKey="key32" gradRotPsiKey="key33">
         <acquChannel swKey="key46" nameKey="key45">
             <keyList></keyList>
             <keyList></keyList>
@@ -3195,23 +3195,6 @@
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key34</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>Rx_gain</name>
-                <value>15.0</value>
-                <defaultValue>1.0</defaultValue>
-                <displayedName>Rx Gain</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-                <numberEnum>RxGain</numberEnum>
-                <minValue>0.0</minValue>
-                <maxValue>120.0</maxValue>
-                <group>Reception</group>
             </value>
         </Entry>
         <Entry>
@@ -9344,7 +9327,6 @@
                 <suggestedValues>Ext2</suggestedValues>
                 <suggestedValues>Ext1_AND_Ext2</suggestedValues>
                 <suggestedValues>Ext1_XOR_Ext2</suggestedValues>
-                <group>Delay</group>
             </value>
         </Entry>
         <Entry>
@@ -12516,7 +12498,7 @@
             <key>key797</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Enable_fs</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Enable_fs</displayedName>
@@ -16925,7 +16907,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>-1</address>
-                <list>20.0</list>
+                <list>0.0</list>
             </value>
         </Entry>
         <Entry>
@@ -17043,6 +17025,20 @@
                 <locked>true</locked>
                 <address>0</address>
                 <list>-10.564729434529706</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>table35</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>Rx_gain</name>
+                <description></description>
+                <numberEnum>RxGain</numberEnum>
+                <order>One</order>
+                <group>Reception</group>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>15.0</list>
             </value>
         </Entry>
         <Entry>
@@ -20992,7 +20988,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>2.96907290628734</list>
+                <list>0.0</list>
             </value>
         </Entry>
         <Entry>
@@ -21175,7 +21171,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-7031.249999999999</list>
+                <list>-0.0</list>
             </value>
         </Entry>
         <Entry>
@@ -21265,7 +21261,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>89.23350869948628</list>
+                <list>0.0</list>
             </value>
         </Entry>
         <Entry>
@@ -21279,7 +21275,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>0.00475</list>
+                <list>5.0E-6</list>
             </value>
         </Entry>
         <Entry>
@@ -21293,7 +21289,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>2</address>
-                <list>8.0E-5</list>
+                <list>5.0E-6</list>
             </value>
         </Entry>
         <Entry>
@@ -21307,7 +21303,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>3</address>
-                <list>3.1E-4</list>
+                <list>5.0E-6</list>
             </value>
         </Entry>
         <Entry>
@@ -21375,7 +21371,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-14062.499999999998</list>
+                <list>-0.0</list>
             </value>
         </Entry>
         <Entry>
@@ -21414,7 +21410,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>6</address>
-                <list>1500.0</list>
+                <list>0.0</list>
             </value>
         </Entry>
         <Entry>

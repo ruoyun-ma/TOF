@@ -459,7 +459,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Angle);
             param.setMinValue(0.0);
             param.setMaxValue(360.0);
-            param.setValue(90.0);
+            param.setValue(0.0);
             param.setDefaultValue(90.0);
             return param;
         }
@@ -546,7 +546,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAmp);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(2.96907290628734);
+            param.setValue(100.0);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -563,7 +563,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.00475);
+            param.setValue(5.0E-6);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2087,7 +2087,7 @@ public enum U implements GeneratorParamEnum {
             param.setDisplayedName("SEQ_DESCRIPTION");
             param.setDescription("");
             param.setCategory(Category.Acquisition);
-            param.setValue("GE_3D_AXI_32x32x32_TOFSAT_FATSAT");
+            param.setValue("GE_3D_AXI_32x32x32_TOFSAT");
             param.setDefaultValue("");
             return param;
         }
@@ -2577,22 +2577,6 @@ public enum U implements GeneratorParamEnum {
             param.setValue("Elliptical3D");
             param.setDefaultValue("Sequential4D");
             param.setSuggestedValues(asList("Sequential4D", "Elliptical3D", "Sequential4D_TOF"));
-            return param;
-        }
-    },
-
-    TRIGGER_CHANEL("TRIGGER_CHANEL") {
-        public Param build() {
-            TextParam param = new TextParam();
-            param.setName("TRIGGER_CHANEL");
-            param.setDisplayedName("Trigger Channel");
-            param.setDescription("");
-            param.setGroup(EnumGroup.Delay);
-            param.setCategory(Category.Acquisition);
-            param.setValue("Ext1");
-            param.setDefaultValue("Ext1_XOR_Ext2");
-            param.setSuggestedValues(asList("Ext1", "Ext2", "Ext1_AND_Ext2", "Ext1_XOR_Ext2"));
-            param.setRestrictedToSuggested(true);
             return param;
         }
     },

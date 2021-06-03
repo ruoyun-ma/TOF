@@ -2074,7 +2074,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("");
             param.setGroup(EnumGroup.User);
             param.setCategory(Category.Acquisition);
-            param.setValue("Version x1.3");
+            param.setValue("Version x1.4");
             param.setDefaultValue("");
             return param;
         }
@@ -2087,7 +2087,7 @@ public enum U implements GeneratorParamEnum {
             param.setDisplayedName("SEQ_DESCRIPTION");
             param.setDescription("");
             param.setCategory(Category.Acquisition);
-            param.setValue("GE_3D_AXI_32x32x32_TOFSAT");
+            param.setValue("GE_2D_AXI_32x32x32_TOFSAT");
             param.setDefaultValue("");
             return param;
         }
@@ -2572,9 +2572,10 @@ public enum U implements GeneratorParamEnum {
             param.setName("TRANSFORM_PLUGIN");
             param.setDisplayedName("Transform plugin");
             param.setDescription("Transform the acquisition space to the k space");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Scan);
             param.setCategory(Category.Acquisition);
-            param.setValue("Elliptical3D");
+            param.setValue("Sequential4D");
             param.setDefaultValue("Sequential4D");
             param.setSuggestedValues(asList("Sequential4D", "Elliptical3D", "Sequential4D_TOF"));
             return param;
@@ -2687,7 +2688,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAtt);
             param.setMinValue(0.0);
             param.setMaxValue(63.0);
-            param.setValue(43.0);
+            param.setValue(48.0);
             param.setDefaultValue(36.0);
             return param;
         }

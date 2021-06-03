@@ -2828,7 +2828,7 @@
             <key>SEQUENCE_VERSION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQUENCE_VERSION</name>
-                <value>Version x1.3</value>
+                <value>Version x1.4</value>
                 <defaultValue></defaultValue>
                 <description></description>
                 <displayedName>SEQUENCE_VERSION</displayedName>
@@ -9911,7 +9911,7 @@
                 <defaultValue>Sequential4D</defaultValue>
                 <description>Transform the acquisition space to the k space</description>
                 <displayedName>Transform plugin</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <suggestedValues>Sequential4D</suggestedValues>

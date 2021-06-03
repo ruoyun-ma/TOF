@@ -33,7 +33,7 @@ import static rs2d.sequence.gradientecho.U.*;
 // **************************************************************************************************
 //
 public class TOF extends KernelGE {
-    private String sequenceVersion = "Version x1.3";
+    private String sequenceVersion = "Version x1.4";
     private boolean isElliptical;
     private double slice_thickness_excitation;
 
@@ -355,6 +355,7 @@ public class TOF extends KernelGE {
         // ---------------------------------------------------------------
         // calculate TR , Time_last_delay  Time_TR_delay & search for incoherence
         // ---------------------------------------------------------------
+        int nb_slices_acquired_in_single_scan = (nb_planar_excitation > 1) ? (nb_interleaved_slice) : 1;
         double delay_before_multi_planar_loop;
         double delay_sat_band = models.get(SatBand.class).getDuration();
         double delay_before_echo_loop;
@@ -377,8 +378,8 @@ public class TOF extends KernelGE {
         double delay_spoiler = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Delay2.ID + 2, Events.LoopMultiPlanarEnd.ID - 2);// grad_phase_application_time + grad_rise_time * 2;
         min_flush_delay = minInstructionDelay;
 
-        double time_seq_to_end_spoiler = delay_before_multi_planar_loop + (delay_before_echo_loop + delay_echo_loop + delay_spoiler) * nb_interleaved_slice;
-        double tr_min = time_seq_to_end_spoiler + minInstructionDelay * (nb_interleaved_slice * 2) + min_flush_delay;// 2 +( 2 minInstructionDelay: Events. 22 +(20&21
+        double time_seq_to_end_spoiler = delay_before_multi_planar_loop + (delay_before_echo_loop + delay_echo_loop + delay_spoiler) * nb_slices_acquired_in_single_scan;
+        double tr_min = time_seq_to_end_spoiler + minInstructionDelay * (nb_slices_acquired_in_single_scan * 2) + min_flush_delay;// 2 +( 2 minInstructionDelay: Events. 22 +(20&21
 
         if (tr < tr_min) {
             tr_min = ceilToSubDecimal(tr_min, 3);
@@ -396,14 +397,14 @@ public class TOF extends KernelGE {
         if (models.get(ExtTrig.class).nb_trigger != 1) {
             for (int i = 0; i < models.get(ExtTrig.class).nb_trigger; i++) {
                 double tmp_time_seq_to_end_spoiler = time_seq_to_end_spoiler - models.get(ExtTrig.class).time_external_trigger_delay_max + models.get(ExtTrig.class).triggerdelay.get(i).doubleValue();
-                tr_delay = (tr - (tmp_time_seq_to_end_spoiler + last_delay + min_flush_delay)) / nb_interleaved_slice - minInstructionDelay;
+                tr_delay = (tr - (tmp_time_seq_to_end_spoiler + last_delay + min_flush_delay)) / nb_slices_acquired_in_single_scan - minInstructionDelay;
                 time_tr_delay.add(tr_delay);
             }
         } else {
             //tr_delay = (tr - (time_seq_to_end_spoiler + last_delay + min_flush_delay)) / nb_slices_acquired_in_single_scan - minInstructionDelay;
             //tr_delay = (tr - (time_seq_to_end_spoiler + last_delay + min_flush_delay)) / nb_interleaved_slice - minInstructionDelay;
 
-            tr_delay = (tr - tr_min) / nb_interleaved_slice;
+            tr_delay = (tr - tr_min) / nb_slices_acquired_in_single_scan;
             time_tr_delay.add(tr_delay);
         }
         set(Time_last_delay, last_delay);

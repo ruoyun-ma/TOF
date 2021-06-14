@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <sequenceIO>
-    <sequence rxGainTableKey="table35" ifFreqKey="key1" accuDimKey="key2" phaseModKey="key4" extTrigModeKey="key425" extTrigSourceKey="key421" dummyScanKey="key30" preScanKey="key3" firCoefSelectedKey="key419" updateDimensionKey="key427" acqTimeModeKey="param1" gradRotPhiKey="key31" gradRotThetaKey="key32" gradRotPsiKey="key33">
+    <sequence rxGainKey="key34" ifFreqKey="key1" accuDimKey="key2" phaseModKey="key4" extTrigModeKey="key425" extTrigSourceKey="key421" dummyScanKey="key30" preScanKey="key3" firCoefSelectedKey="key419" updateDimensionKey="key427" acqTimeModeKey="param1" gradRotPhiKey="key31" gradRotThetaKey="key32" gradRotPsiKey="key33">
         <acquChannel swKey="key46" nameKey="key45">
             <keyList></keyList>
             <keyList></keyList>
@@ -3195,6 +3195,23 @@
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>key34</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>Rx_gain</name>
+                <value>15.0</value>
+                <defaultValue>1.0</defaultValue>
+                <displayedName>Rx Gain</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>RxGain</numberEnum>
+                <minValue>0.0</minValue>
+                <maxValue>120.0</maxValue>
+                <group>Reception</group>
             </value>
         </Entry>
         <Entry>
@@ -17025,20 +17042,6 @@
                 <locked>true</locked>
                 <address>0</address>
                 <list>-10.564729434529706</list>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>table35</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
-                <name>Rx_gain</name>
-                <description></description>
-                <numberEnum>RxGain</numberEnum>
-                <order>One</order>
-                <group>Reception</group>
-                <locked>false</locked>
-                <address>-1</address>
-                <list>15.0</list>
             </value>
         </Entry>
         <Entry>

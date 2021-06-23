@@ -23,7 +23,7 @@
             <key>ACQUISITION_MATRIX_DIMENSION_1D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_MATRIX_DIMENSION_1D</name>
-                <value>32</value>
+                <value>64</value>
                 <defaultValue>128</defaultValue>
                 <description>The acquisition size of the first dimension</description>
                 <displayedName>Acquisition 1D</displayedName>
@@ -41,7 +41,7 @@
             <key>ACQUISITION_MATRIX_DIMENSION_2D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_MATRIX_DIMENSION_2D</name>
-                <value>32</value>
+                <value>64</value>
                 <defaultValue>128</defaultValue>
                 <description>The acquisition size of the second dimension</description>
                 <displayedName>Acquisition 2D</displayedName>
@@ -114,7 +114,7 @@
             <key>ACQUISITION_NB_ECHO_TRAIN</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_NB_ECHO_TRAIN</name>
-                <value>740</value>
+                <value>1520</value>
                 <defaultValue>0</defaultValue>
                 <description></description>
                 <displayedName>ACQUISITION_NB_ECHO_TRAIN</displayedName>
@@ -132,7 +132,7 @@
             <key>ACQUISITION_NB_VIEW</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_NB_VIEW</name>
-                <value>740</value>
+                <value>1520</value>
                 <defaultValue>0</defaultValue>
                 <description></description>
                 <displayedName>ACQUISITION_NB_VIEW</displayedName>
@@ -340,7 +340,7 @@
             <key>DYNAMIC_SEQUENCE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>DYNAMIC_SEQUENCE</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Sequence used for dynamic acquisitions</description>
                 <displayedName>DYNAMIC_SEQUENCE</displayedName>
@@ -354,7 +354,7 @@
             <key>DYN_NUMBER_OF_ACQUISITION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>DYN_NUMBER_OF_ACQUISITION</name>
-                <value>1</value>
+                <value>3</value>
                 <defaultValue>1</defaultValue>
                 <description></description>
                 <displayedName>DYN_NUMBER_OF_ACQUISITION</displayedName>
@@ -372,7 +372,7 @@
             <key>DYN_TIME_BTW_FRAMES</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>DYN_TIME_BTW_FRAMES</name>
-                <value>0.5</value>
+                <value>98.4</value>
                 <defaultValue>0.0</defaultValue>
                 <description>The time between 4D acquisition</description>
                 <displayedName>TIME_BETWEEN_FRAMES</displayedName>
@@ -462,7 +462,7 @@
             <key>FATSAT_FLIP_ANGLE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_FLIP_ANGLE</name>
-                <value>0.0</value>
+                <value>90.0</value>
                 <defaultValue>90.0</defaultValue>
                 <description></description>
                 <displayedName>FATSAT_FLIP_ANGLE</displayedName>
@@ -480,7 +480,7 @@
             <key>FATSAT_GRAD_APP_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_GRAD_APP_TIME</name>
-                <value>3.1E-4</value>
+                <value>6.2E-4</value>
                 <defaultValue>0.001</defaultValue>
                 <description></description>
                 <displayedName>FATSAT_GRAD_APP_TIME</displayedName>
@@ -552,7 +552,7 @@
             <key>FATSAT_TX_AMP_90</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_TX_AMP_90</name>
-                <value>100.0</value>
+                <value>2.96907290628734</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>FATSAT_TX_AMP_90</displayedName>
@@ -570,7 +570,7 @@
             <key>FATSAT_TX_LENGTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_TX_LENGTH</name>
-                <value>5.0E-6</value>
+                <value>0.00475</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>FATSAT_TX_LENGTH</displayedName>
@@ -609,7 +609,7 @@
             <key>FAT_SATURATION_ENABLED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>FAT_SATURATION_ENABLED</name>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description></description>
                 <displayedName>FAT_SATURATION_ENABLED</displayedName>
@@ -691,7 +691,7 @@
             <key>FLIP_ANGLE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FLIP_ANGLE</name>
-                <value>30.0</value>
+                <value>90.0</value>
                 <defaultValue>5.0</defaultValue>
                 <description>The flip angle for the excitation</description>
                 <displayedName>Flip angle</displayedName>
@@ -2522,7 +2522,7 @@
             <key>RECEIVER_COUNT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RECEIVER_COUNT</name>
-                <value>1</value>
+                <value>4</value>
                 <defaultValue>1</defaultValue>
                 <description>The number of receivers</description>
                 <displayedName>Receiver Count</displayedName>
@@ -2576,7 +2576,7 @@
             <key>RESOLUTION_FREQUENCY</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RESOLUTION_FREQUENCY</name>
-                <value>0.00125</value>
+                <value>6.25E-4</value>
                 <defaultValue>5.0E-4</defaultValue>
                 <description>True Pixel dimension in the frequency encoding direction</description>
                 <displayedName>RESOLUTION_FREQUENCY</displayedName>
@@ -2594,7 +2594,7 @@
             <key>RESOLUTION_PHASE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RESOLUTION_PHASE</name>
-                <value>0.00125</value>
+                <value>6.25E-4</value>
                 <defaultValue>5.0E-4</defaultValue>
                 <description>True pixel dimension in the phase encoding direction</description>
                 <displayedName>RESOLUTION_PHASE</displayedName>
@@ -2755,7 +2755,7 @@
             <key>SATBAND_TX_AMP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SATBAND_TX_AMP</name>
-                <value>100.0</value>
+                <value>89.87217249893767</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>SATBAND_TX_AMP</displayedName>
@@ -2810,7 +2810,7 @@
             <key>SEQUENCE_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
-                <value>24.6</value>
+                <value>36.481</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>SEQUENCE_TIME</displayedName>
@@ -2843,7 +2843,7 @@
             <key>SEQ_DESCRIPTION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQ_DESCRIPTION</name>
-                <value>GE_3D_AXI_32x32x32_TOFSAT</value>
+                <value>GE_3D_AXI_64x64x32_FATSAT_TOFSAT</value>
                 <defaultValue></defaultValue>
                 <description></description>
                 <displayedName>SEQ_DESCRIPTION</displayedName>
@@ -2957,7 +2957,7 @@
             <key>SPECTRAL_WIDTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SPECTRAL_WIDTH</name>
-                <value>8004.610655737705</value>
+                <value>16009.22131147541</value>
                 <defaultValue>12500.0</defaultValue>
                 <description>The spectral width of the reception ( SW BW, bandwidth )</description>
                 <displayedName>SW</displayedName>
@@ -3343,7 +3343,7 @@
                 <value>1</value>
                 <description>show the acquisition dimension</description>
                 <displayedName>TRAJ_MATRIX</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <numberEnum>Scan</numberEnum>
                 <minValue>0</minValue>
@@ -9939,7 +9939,9 @@
             <key>TRIGGER_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>TRIGGER_TIME</name>
-                <value>0.01</value>
+                <value>0.0</value>
+                <value>98.4</value>
+                <value>196.8</value>
                 <defaultValue>0.01</defaultValue>
                 <description>TRIGGER_TIME.description</description>
                 <displayedName>TRIGGER_TIME</displayedName>
@@ -9956,7 +9958,7 @@
             <key>TX_AMP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP</name>
-                <value>75.4295015144262</value>
+                <value>72.85887629433343</value>
                 <defaultValue>40.0</defaultValue>
                 <description>Emission amplitude</description>
                 <displayedName>TX_AMP</displayedName>
@@ -9992,7 +9994,7 @@
             <key>TX_AMP_90</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP_90</name>
-                <value>100.0</value>
+                <value>72.85887629433343</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Amplitude of the transmitter</description>
                 <displayedName>TX_AMP_90</displayedName>
@@ -10143,7 +10145,7 @@
             <key>USER_MATRIX_DIMENSION_1D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_1D</name>
-                <value>32</value>
+                <value>64</value>
                 <defaultValue>1</defaultValue>
                 <description></description>
                 <displayedName>USER_ACQUISITION_MATRIX_DIMENSION_1D</displayedName>
@@ -10161,7 +10163,7 @@
             <key>USER_MATRIX_DIMENSION_2D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_2D</name>
-                <value>32</value>
+                <value>64</value>
                 <defaultValue>1</defaultValue>
                 <description></description>
                 <displayedName>USER_ACQUISITION_MATRIX_DIMENSION_2D</displayedName>

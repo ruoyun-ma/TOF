@@ -64,7 +64,7 @@ public class TOF extends KernelGE {
         super.initUserParam();
         getParam(SEQUENCE_VERSION).setValue(sequenceVersion);
 
-        isElliptical = getText(KSPACE_FILLING).equalsIgnoreCase("3DElliptic");
+        isElliptical = getText(KSPACE_FILLING).equalsIgnoreCase("3DElliptic") && !isMultiplanar;
     }
 
     //--------------------------------------------------------------------------------------
@@ -100,7 +100,7 @@ public class TOF extends KernelGE {
                     break;
             }
         }
-        isElliptical = kspace_filling.equalsIgnoreCase("3DElliptic");
+        isElliptical = kspace_filling.equalsIgnoreCase("3DElliptic") && !isMultiplanar;
 
         plugin = getTransformPlugin();
         plugin.setParameters(new ArrayList<>(getUserParams()));
@@ -121,6 +121,14 @@ public class TOF extends KernelGE {
         } catch (Exception e) {
             Log.warning(getClass(), "Sequence Param Missing: Loop_short; use default: Loop_long");
         }
+
+        if (isElliptical) {
+            nb_scan_2d = getInt(ACQUISITION_NB_ECHO_TRAIN);
+            nb_scan_3d = 1;
+            set(Nb_2d, nb_scan_2d);
+            set(Nb_3d, nb_scan_3d);
+        }
+
         set(Nb_sb, models.get(SatBand.class).nb_satband - 1);
     }
 
@@ -238,6 +246,15 @@ public class TOF extends KernelGE {
 
         if (!isMultiplanar) {
             getParam(SPACING_BETWEEN_SLAB).setValue(userMatrixDimension4D > 1 ? -getDouble(TOF3D_MOTSA_OVERLAP) / 100 * sliceThickness * userMatrixDimension3D : 0);
+
+            if (isElliptical) {
+                if (userMatrixDimension3D / (double) userMatrixDimension2D < 0.5) {
+                    userMatrixDimension3D = floorEven(userMatrixDimension2D / 2);
+                    acqMatrixDimension3D = userMatrixDimension3D;
+                    getParam(USER_MATRIX_DIMENSION_3D).setValue(userMatrixDimension3D);
+                    getParam(ACQUISITION_MATRIX_DIMENSION_3D).setValue(acqMatrixDimension3D);
+                }
+            }
         } else {
             if (models.get(TofSat.class).isEnabled()) {
                 nb_shoot_3d = acqMatrixDimension3D; // TOF does not allow interleaved slice within the TR

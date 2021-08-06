@@ -31,6 +31,8 @@ public enum S implements GeneratorSequenceParamEnum {
     LO_att("LO_att"),
     Loop_long("Loop_long"),
     Loop_short("Loop_short"),
+    Loop_xd("Loop_xd"),
+    Loop_xd_start("Loop_xd_start"),
     Nb_1d("Nb_1d"),
     Nb_2d("Nb_2d"),
     Nb_3d("Nb_3d"),

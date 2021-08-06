@@ -33,7 +33,7 @@ import static rs2d.sequence.gradientecho.U.*;
 // **************************************************************************************************
 //
 public class TOF extends KernelGE {
-    private String sequenceVersion = "Version x1.5";
+    private String sequenceVersion = "Version x1.6";
     private boolean isElliptical;
     private double slice_thickness_excitation;
 
@@ -64,6 +64,8 @@ public class TOF extends KernelGE {
         super.initUserParam();
         getParam(SEQUENCE_VERSION).setValue(sequenceVersion);
 
+        if (isMultiplanar)
+            getParam(NUMBER_OF_SLAB).setValue(1);
         isElliptical = getText(KSPACE_FILLING).equalsIgnoreCase("3DElliptic") && !isMultiplanar;
     }
 
@@ -120,6 +122,14 @@ public class TOF extends KernelGE {
             }
         } catch (Exception e) {
             Log.warning(getClass(), "Sequence Param Missing: Loop_short; use default: Loop_long");
+        }
+
+        if (getBoolean(TOF3D_MT_INDIV)) {
+            set(Loop_xd, Opcode.CodeEnum.GotoWhile);
+            set(Loop_xd_start, Events.P90.ID - 1);
+        } else {
+            set(Loop_xd, Opcode.CodeEnum.GotoFirstWhile);
+            set(Loop_xd_start, 0);
         }
 
         if (isElliptical) {
@@ -206,17 +216,17 @@ public class TOF extends KernelGE {
         }
 
         gradSlice.applyAmplitude();
-
         // ------------------------------------------------------------------
         //calculate TX FREQUENCY offsets tables for slice positionning
         // ------------------------------------------------------------------
+
         if (isMultiplanar && isEnableSlice) {
             pulseTX.prepareOffsetFreqMultiSlice(gradSlice, acqMatrixDimension3D, spacingBetweenSlice, off_center_distance_3D);
             pulseTX.reoderOffsetFreq(plugin, acqMatrixDimension1D, nb_interleaved_slice);
             pulseTX.setFrequencyOffset(nb_interleaved_slice != 1 ? Order.ThreeLoop : Order.Three);
 
         } else {
-            pulseTX.prepareOffsetFreqMultiSlice(gradSlice, acqMatrixDimension4D, getDouble(SPACING_BETWEEN_SLAB) + (slice_thickness_excitation - gradSlice.getSliceThickness()), off_center_distance_3D);
+            pulseTX.prepareOffsetFreqMultiSlice(gradSlice, getInt(NUMBER_OF_SLAB), getDouble(SPACING_BETWEEN_SLAB) + (slice_thickness_excitation - gradSlice.getSliceThickness()), off_center_distance_3D);
             pulseTX.reoderOffsetFreq(nb_interleaved_slice);
             if (nb_interleaved_slice > 1) {
                 pulseTX.setFrequencyOffset(Order.FourLoop);
@@ -245,7 +255,7 @@ public class TOF extends KernelGE {
         super.getAcq3D();
 
         if (!isMultiplanar) {
-            getParam(SPACING_BETWEEN_SLAB).setValue(userMatrixDimension4D > 1 ? -getDouble(TOF3D_MOTSA_OVERLAP) / 100 * sliceThickness * userMatrixDimension3D : 0);
+            getParam(SPACING_BETWEEN_SLAB).setValue(getInt(NUMBER_OF_SLAB) > 1 ? -getDouble(SLAB_OVERLAP) / 100 * sliceThickness * userMatrixDimension3D : 0);
 
             if (isElliptical) {
                 if (userMatrixDimension3D / (double) userMatrixDimension2D < 0.5) {
@@ -263,6 +273,16 @@ public class TOF extends KernelGE {
                 getParam(NUMBER_OF_INTERLEAVED_SLICE).setValue(isMultiplanar ? nb_interleaved_slice : 0);
             }
         }
+    }
+
+    @Override
+    protected void getAcq4D() {
+        super.getAcq4D();
+        acqMatrixDimension4D *= getInt(NUMBER_OF_SLAB);
+        userMatrixDimension4D = acqMatrixDimension4D;
+
+        getParam(ACQUISITION_MATRIX_DIMENSION_4D).setValue(isKSCenterMode ? 1 : acqMatrixDimension4D);
+        getParam(USER_MATRIX_DIMENSION_4D).setValue(userMatrixDimension4D);
     }
 
     @Override
@@ -354,7 +374,6 @@ public class TOF extends KernelGE {
         Table time_TE_delay1 = setSequenceTableValues(Time_TE_delay1, Order.FourLoop);
         time_TE_delay1.add(delay1);
 
-
         // ------------------------------------------
         // calculate delays adapted to correct spacing in case of ETL & search for incoherence
         // ------------------------------------------
@@ -396,6 +415,9 @@ public class TOF extends KernelGE {
 
         double time_seq_to_end_spoiler = delay_before_multi_planar_loop + (delay_before_echo_loop + delay_echo_loop + delay_spoiler) * nb_slices_acquired_in_single_scan;
         double tr_min = time_seq_to_end_spoiler + minInstructionDelay * (nb_slices_acquired_in_single_scan * 2) + min_flush_delay;// 2 +( 2 minInstructionDelay: Events. 22 +(20&21
+
+        if (getBoolean(TOF3D_MT_INDIV))
+            tr_min = tr_min - models.get(TofSat.class).getDuration();
 
         if (tr < tr_min) {
             tr_min = ceilToSubDecimal(tr_min, 3);

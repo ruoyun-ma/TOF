@@ -213,7 +213,7 @@
                 <key>ACQUISITION_MATRIX_DIMENSION_3D</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_MATRIX_DIMENSION_3D</name>
-                    <value>32</value>
+                    <value>16</value>
                     <defaultValue>1</defaultValue>
                     <description>The acquisition size of the third dimension</description>
                     <displayedName>Acquisition 3D</displayedName>
@@ -462,7 +462,7 @@
                 <key>DUMMY_SCAN</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>DUMMY_SCAN</name>
-                    <value>5</value>
+                    <value>10</value>
                     <defaultValue>128</defaultValue>
                     <description>Dummy Scan</description>
                     <displayedName>DS</displayedName>
@@ -526,7 +526,7 @@
                 <key>DYN_TIME_BTW_FRAMES</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>DYN_TIME_BTW_FRAMES</name>
-                    <value>500.0</value>
+                    <value>16.385</value>
                     <defaultValue>0.0</defaultValue>
                     <description>The time between 4D acquisition</description>
                     <displayedName>TIME_BETWEEN_FRAMES</displayedName>
@@ -562,7 +562,7 @@
                 <key>ECHO_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ECHO_TIME</name>
-                    <value>0.00342</value>
+                    <value>0.0035</value>
                     <defaultValue>0.005</defaultValue>
                     <description>The echo time ( TE )</description>
                     <displayedName>TE</displayedName>
@@ -845,7 +845,7 @@
                 <key>FLIP_ANGLE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FLIP_ANGLE</name>
-                    <value>15.0</value>
+                    <value>30.0</value>
                     <defaultValue>5.0</defaultValue>
                     <description>The flip angle for the excitation</description>
                     <displayedName>Flip angle</displayedName>
@@ -1042,7 +1042,7 @@
                 <key>GRADIENT_RISE_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>GRADIENT_RISE_TIME</name>
-                    <value>8.999999999999999E-5</value>
+                    <value>1.3E-4</value>
                     <defaultValue>0.0</defaultValue>
                     <description>The rise time of the gradient</description>
                     <displayedName>GRADIENT_RISE_TIME</displayedName>
@@ -1078,9 +1078,9 @@
                 <key>GRAD_AMP_SPOILER_SL_PH_RE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                     <name>GRAD_AMP_SPOILER_SL_PH_RE</name>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
+                    <value>40.0</value>
+                    <value>40.0</value>
+                    <value>40.0</value>
                     <description></description>
                     <displayedName>GRAD_AMP_SPOILER_SL_PH_SL</displayedName>
                     <locked>false</locked>
@@ -1394,9 +1394,9 @@
                     <name>LAST_PUT</name>
                     <value>1</value>
                     <value>127</value>
-                    <value>127</value>
-                    <value>2</value>
-                    <value>3</value>
+                    <value>15</value>
+                    <value>0</value>
+                    <value>7</value>
                     <defaultValue>0</defaultValue>
                     <defaultValue>0</defaultValue>
                     <defaultValue>0</defaultValue>
@@ -2134,7 +2134,7 @@
                 <key>NUMBER_OF_SHOOT_3D</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>NUMBER_OF_SHOOT_3D</name>
-                    <value>32</value>
+                    <value>16</value>
                     <defaultValue>1</defaultValue>
                     <description>Number of Slice set acquiered sequencially</description>
                     <displayedName>Number of Shoot 3D</displayedName>
@@ -2433,7 +2433,7 @@
                 <key>OFF_CENTER_FIELD_OF_VIEW_3D</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>OFF_CENTER_FIELD_OF_VIEW_3D</name>
-                    <value>-0.01</value>
+                    <value>0.016</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Offset in the slice direction</description>
                     <displayedName>Location 3D</displayedName>
@@ -2508,7 +2508,7 @@
                 <key>OFF_CENTER_FIELD_OF_VIEW_Z</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>OFF_CENTER_FIELD_OF_VIEW_Z</name>
-                    <value>0.01</value>
+                    <value>-0.016</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Location in the I/S direction</description>
                     <displayedName>Location Z</displayedName>
@@ -2682,7 +2682,7 @@
                 <key>PROBES</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listTextParam">
                     <name>PROBES</name>
-                    <value>4CH 18cm</value>
+                    <value>8RX array 5CM</value>
                     <description>The probes used for the acquisition</description>
                     <displayedName>Probes</displayedName>
                     <locked>true</locked>
@@ -2713,7 +2713,7 @@
                 <key>RECEIVER_GAIN</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>RECEIVER_GAIN</name>
-                    <value>15.0</value>
+                    <value>50.0</value>
                     <defaultValue>1.0</defaultValue>
                     <description>The receiver gain</description>
                     <displayedName>RG</displayedName>
@@ -2731,7 +2731,7 @@
                 <key>REPETITION_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>REPETITION_TIME</name>
-                    <value>0.01</value>
+                    <value>0.008</value>
                     <defaultValue>0.2</defaultValue>
                     <description>The repetition time ( TR )</description>
                     <displayedName>TR</displayedName>
@@ -2785,7 +2785,7 @@
                 <key>RESOLUTION_SLICE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>RESOLUTION_SLICE</name>
-                    <value>5.0E-4</value>
+                    <value>0.001</value>
                     <defaultValue>0.0</defaultValue>
                     <description>True pixel dimension in the 3rd direction</description>
                     <displayedName>RESOLUTION_SLICE</displayedName>
@@ -2983,7 +2983,7 @@
                 <key>SEQUENCE_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SEQUENCE_TIME</name>
-                    <value>122.93299999999999</value>
+                    <value>49.430075</value>
                     <defaultValue>0.0</defaultValue>
                     <description></description>
                     <displayedName>SEQUENCE_TIME</displayedName>
@@ -3001,7 +3001,7 @@
                 <key>SEQUENCE_VERSION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQUENCE_VERSION</name>
-                    <value>Version x1.5</value>
+                    <value>Version x1.6</value>
                     <defaultValue></defaultValue>
                     <description></description>
                     <displayedName>SEQUENCE_VERSION</displayedName>
@@ -3016,7 +3016,7 @@
                 <key>SEQ_DESCRIPTION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
-                    <value>GE_3D_AXI_128x128x32x3</value>
+                    <value>GE_3D_AXI_128x128x16x3_TOFSAT</value>
                     <defaultValue></defaultValue>
                     <description></description>
                     <displayedName>SEQ_DESCRIPTION</displayedName>
@@ -3079,7 +3079,7 @@
                 <key>SLICE_THICKNESS</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SLICE_THICKNESS</name>
-                    <value>5.0E-4</value>
+                    <value>0.001</value>
                     <defaultValue>0.005</defaultValue>
                     <description>The slice thickness</description>
                     <displayedName>SL</displayedName>
@@ -3425,7 +3425,7 @@
                 <key>TOF3D_MT_FLIP_ANGLE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TOF3D_MT_FLIP_ANGLE</name>
-                    <value>972.0000000000001</value>
+                    <value>1152.0</value>
                     <defaultValue>360.0</defaultValue>
                     <description>MT flip angle only for 3D TOF</description>
                     <displayedName>TOF3D_MT_FLIP_ANGLE</displayedName>
@@ -3472,7 +3472,7 @@
                 <key>TOF3D_MT_TX_LENGTH</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TOF3D_MT_TX_LENGTH</name>
-                    <value>0.054000000000000006</value>
+                    <value>0.064</value>
                     <defaultValue>0.0</defaultValue>
                     <description></description>
                     <displayedName>TOF3D_MT_TX_LENGTH</displayedName>
@@ -3489,7 +3489,7 @@
                 <key>TOF3D_TX_RAMP_SLOPE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TOF3D_TX_RAMP_SLOPE</name>
-                    <value>-0.2</value>
+                    <value>0.0</value>
                     <defaultValue>0.0</defaultValue>
                     <description></description>
                     <displayedName>TOF3D_TX_RAMP_SLOPE</displayedName>
@@ -3506,7 +3506,7 @@
                 <key>TOF_ENABLED</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>TOF_ENABLED</name>
-                    <value>false</value>
+                    <value>true</value>
                     <defaultValue>false</defaultValue>
                     <description></description>
                     <displayedName>TOF_ENABLED</displayedName>
@@ -10173,8 +10173,8 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                     <name>TRIGGER_TIME</name>
                     <value>0.0</value>
-                    <value>500.0</value>
-                    <value>1000.0</value>
+                    <value>16.385</value>
+                    <value>32.77</value>
                     <defaultValue>0.01</defaultValue>
                     <description>TRIGGER_TIME.description</description>
                     <displayedName>TRIGGER_TIME</displayedName>
@@ -10191,7 +10191,7 @@
                 <key>TX_AMP</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_AMP</name>
-                    <value>31.80739866222001</value>
+                    <value>88.32995959337244</value>
                     <defaultValue>40.0</defaultValue>
                     <description>Emission amplitude</description>
                     <displayedName>TX_AMP</displayedName>
@@ -10258,7 +10258,7 @@
                 <key>TX_ATT</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_ATT</name>
-                    <value>63.0</value>
+                    <value>57.0</value>
                     <defaultValue>36.0</defaultValue>
                     <description>Emission attenuation</description>
                     <displayedName>TX_ATT</displayedName>
@@ -10306,12 +10306,12 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                     <name>TX_BANDWIDTH_FACTOR_3D</name>
                     <value>1.1</value>
-                    <value>2.7</value>
-                    <value>5.1</value>
-                    <value>8.5</value>
+                    <value>3.2</value>
+                    <value>5.0</value>
+                    <value>7.3</value>
                     <value>0.0</value>
                     <value>0.0</value>
-                    <value>8.5</value>
+                    <value>7.3</value>
                     <defaultValue>1.1</defaultValue>
                     <defaultValue>3.2</defaultValue>
                     <defaultValue>5.0</defaultValue>
@@ -10368,7 +10368,7 @@
                 <key>TX_SHAPE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>TX_SHAPE</name>
-                    <value>SINC3</value>
+                    <value>RAMP</value>
                     <defaultValue>GAUSSIAN</defaultValue>
                     <description>the shape of the rf pulse</description>
                     <displayedName>TX_SHAPE</displayedName>
@@ -10426,7 +10426,7 @@
                 <key>USER_MATRIX_DIMENSION_3D</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>USER_MATRIX_DIMENSION_3D</name>
-                    <value>32</value>
+                    <value>16</value>
                     <defaultValue>1</defaultValue>
                     <description></description>
                     <displayedName>USER_ACQUISITION_MATRIX_DIMENSION_3D</displayedName>

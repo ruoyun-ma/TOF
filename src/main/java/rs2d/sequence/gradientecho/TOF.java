@@ -66,6 +66,10 @@ public class TOF extends KernelGE {
 
         if (isMultiplanar)
             getParam(NUMBER_OF_SLAB).setValue(1);
+        else {
+            if (getInt(NUMBER_OF_SLAB) > 1)
+                getParam(SLAB_OVERLAP).setValue(Math.round(getDouble(SLAB_OVERLAP) / 100 * userMatrixDimension3D) / (double) userMatrixDimension3D * 100);
+        }
         isElliptical = getText(KSPACE_FILLING).equalsIgnoreCase("3DElliptic") && !isMultiplanar;
     }
 
@@ -447,6 +451,13 @@ public class TOF extends KernelGE {
         }
         set(Time_last_delay, last_delay);
         set(Time_flush_delay, min_flush_delay);
+    }
+
+    protected void getAcqTime() {
+        super.getAcqTime();
+        if (!this.isMultiplanar && getBoolean(TOF3D_MT_INDIV)) {
+            getParam(SEQUENCE_TIME).setValue(getDouble(SEQUENCE_TIME) + models.get(TofSat.class).getDuration() * (getInt(NUMBER_OF_SLAB) + nb_preScan));
+        }
     }
 
     //<editor-fold defaultstate="collapsed" desc="Generated Code (RS2D)">

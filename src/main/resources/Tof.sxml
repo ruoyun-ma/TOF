@@ -2322,7 +2322,7 @@
             <key>key3</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Pre_scan</name>
-                <value>5</value>
+                <value>10</value>
                 <defaultValue>0</defaultValue>
                 <description>PreScan</description>
                 <displayedName>PS</displayedName>
@@ -2902,7 +2902,7 @@
             <key>key24</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Nb_3d</name>
-                <value>32</value>
+                <value>16</value>
                 <defaultValue>1</defaultValue>
                 <displayedName>Nb 3D</displayedName>
                 <locked>false</locked>
@@ -3202,7 +3202,7 @@
             <key>key34</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Rx_gain</name>
-                <value>15.0</value>
+                <value>50.0</value>
                 <defaultValue>1.0</defaultValue>
                 <displayedName>Rx Gain</displayedName>
                 <locked>false</locked>
@@ -3401,7 +3401,7 @@
             <key>key41</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Tx_att</name>
-                <value>63.0</value>
+                <value>57.0</value>
                 <defaultValue>30.0</defaultValue>
                 <displayedName>TxAtt0</displayedName>
                 <locked>false</locked>
@@ -5668,7 +5668,7 @@
             <key>key129</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
                 <name>Loop_short</name>
-                <value xsi:type="codeEnum">Continu</value>
+                <value xsi:type="codeEnum">StoreLoopAddress</value>
                 <defaultValue xsi:type="codeEnum">Continu</defaultValue>
                 <displayedName>Loop_short</displayedName>
                 <locked>false</locked>
@@ -7197,7 +7197,7 @@
             <key>key231</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
                 <name>Loop_long</name>
-                <value xsi:type="codeEnum">StoreLoopAddress</value>
+                <value xsi:type="codeEnum">Continu</value>
                 <defaultValue xsi:type="codeEnum">Continu</defaultValue>
                 <displayedName>Loop_long</displayedName>
                 <locked>false</locked>
@@ -13987,7 +13987,7 @@
             <key>key1023</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Enable_sb</name>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Enable_sb</displayedName>
@@ -14772,38 +14772,6 @@
                         <maxValue>100.0</maxValue>
                     </params>
                 </generator>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
                 <list>0.0</list>
                 <list>0.0</list>
                 <list>0.0</list>
@@ -14825,6 +14793,28 @@
                 <list>0.0</list>
                 <list>0.0</list>
                 <list>0.0</list>
+                <list>0.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
+                <list>180.0</list>
                 <list>0.0</list>
                 <list>0.0</list>
                 <list>0.0</list>
@@ -14868,16 +14858,6 @@
                 <list>0.0</list>
                 <list>0.0</list>
                 <list>0.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
                 <list>180.0</list>
                 <list>180.0</list>
                 <list>180.0</list>
@@ -14899,7 +14879,27 @@
                 <list>180.0</list>
                 <list>180.0</list>
                 <list>180.0</list>
-                <list>180.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
+                <list>0.0</list>
             </value>
         </Entry>
         <Entry>
@@ -14978,7 +14978,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>2</address>
-                <list>8.999999999999999E-5</list>
+                <list>1.3E-4</list>
             </value>
         </Entry>
         <Entry>
@@ -15142,9 +15142,9 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>6</address>
-                <list>5737.499999999999</list>
-                <list>3187.4999999999995</list>
-                <list>637.5</list>
+                <list>-3649.9999999999995</list>
+                <list>-7299.999999999999</list>
+                <list>-10949.999999999998</list>
             </value>
         </Entry>
         <Entry>
@@ -15262,7 +15262,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>31.80739866222001</list>
+                <list>88.32995959337244</list>
             </value>
         </Entry>
         <Entry>
@@ -15291,7 +15291,7 @@
                 <locked>false</locked>
                 <address>0</address>
                 <generator>
-                    <name>Sinus Cardinal with Apodisation</name>
+                    <name>SincRamp</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
                         <value>128</value>
@@ -15307,9 +15307,9 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Nb lobe</name>
-                        <value>2</value>
+                        <value>3</value>
                         <defaultValue>3</defaultValue>
-                        <description>Number of lobe of the sinus cardinal</description>
+                        <description>Number of lobe of the sinus cardinal (ramp)</description>
                         <displayedName>Nb lobe</displayedName>
                         <locked>false</locked>
                         <lockedToDefault>false</lockedToDefault>
@@ -15322,7 +15322,7 @@
                         <name>Amplitude</name>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
-                        <description>Amplitude of the sinus cardinal</description>
+                        <description>Amplitude of the sinus cardinal(ramp)</description>
                         <displayedName>Amplitude</displayedName>
                         <locked>false</locked>
                         <lockedToDefault>false</lockedToDefault>
@@ -15353,135 +15353,148 @@
                         <suggestedValues>Hanning</suggestedValues>
                         <suggestedValues>Hamming</suggestedValues>
                     </params>
+                    <params xsi:type="numberParam">
+                        <name>Ramp slope</name>
+                        <value>0.0</value>
+                        <defaultValue>0.1</defaultValue>
+                        <description>Slope of the ramp</description>
+                        <displayedName>Ramp slope</displayedName>
+                        <locked>false</locked>
+                        <lockedToDefault>false</lockedToDefault>
+                        <restrictedToSuggested>false</restrictedToSuggested>
+                        <numberEnum>Double</numberEnum>
+                        <minValue>-1.7976931348623157E308</minValue>
+                        <maxValue>100.0</maxValue>
+                    </params>
                 </generator>
-                <list>3.1185374660155014E-16</list>
-                <list>0.12765833640868793</list>
-                <list>0.263508930750307</list>
-                <list>0.4119125313751634</list>
-                <list>0.5771531333333222</list>
-                <list>0.7632572460322755</list>
-                <list>0.9738095317994258</list>
-                <list>1.2117689131504208</list>
-                <list>1.479289353920318</list>
-                <list>1.7775495434774609</list>
-                <list>2.1065956520361206</list>
-                <list>2.4652011782893455</list>
-                <list>2.850747679550319</list>
-                <list>3.2591298623423564</list>
-                <list>3.68468812257112</list>
-                <list>4.120171165266783</list>
-                <list>4.556730812078653</list>
-                <list>4.983950529251203</list>
-                <list>5.389908589890016</list>
-                <list>5.761276133111428</list>
-                <list>6.083449711117891</list>
-                <list>6.340717235875218</list>
-                <list>6.516455562742546</list>
-                <list>6.593357292063055</list>
-                <list>6.5536837441488345</list>
-                <list>6.379540480666539</list>
-                <list>6.053171217887675</list>
-                <list>5.557265515468252</list>
-                <list>4.875275238135509</list>
-                <list>3.9917344853636907</list>
-                <list>2.8925774728323277</list>
-                <list>1.5654487345831807</list>
-                <list>2.105012789560463E-15</list>
-                <list>1.8118318131161921</list>
-                <list>3.8755708590283198</list>
-                <list>6.193977958656246</list>
-                <list>8.766860223494168</list>
-                <list>11.590918928072476</list>
-                <list>14.6596392908703</list>
-                <list>17.963225189887872</list>
-                <list>21.48858114140776</list>
-                <list>25.219343120489363</list>
-                <list>29.135959012202505</list>
-                <list>33.215818667114604</list>
-                <list>37.433432707300256</list>
-                <list>41.7606584046899</list>
-                <list>46.166970146540756</list>
-                <list>50.61977122763421</list>
-                <list>55.08474297946284</list>
-                <list>59.52622657643439</list>
-                <list>63.907632260294164</list>
-                <list>68.19187020766631</list>
-                <list>72.34179684154796</list>
-                <list>76.32067006388236</list>
-                <list>80.09260666936913</list>
-                <list>83.62303509495335</list>
-                <list>86.87913666752522</list>
-                <list>89.83026863480258</list>
-                <list>92.44836249966549</list>
-                <list>94.70829152287556</list>
-                <list>96.58820170767892</list>
-                <list>98.06980112495849</list>
-                <list>99.13860307031474</list>
-                <list>99.78411925409944</list>
+                <list>3.131572730409183E-16</list>
+                <list>0.1279345224099308</list>
+                <list>0.2624847054113778</list>
+                <list>0.4061563563926968</list>
+                <list>0.5609325514426584</list>
+                <list>0.7279286054224404</list>
+                <list>0.9070697775377258</list>
+                <list>1.0968100066304158</list>
+                <list>1.2939090576171053</list>
+                <list>1.4932837932291136</list>
+                <list>1.6879469044903357</list>
+                <list>1.869043408343859</list>
+                <list>2.0259916468254424</list>
+                <list>2.146731517760359</list>
+                <list>2.2180783701461864</list>
+                <list>2.2261765610282285</list>
+                <list>2.1570422572296577</list>
+                <list>1.9971808411394554</list>
+                <list>1.734260409245169</list>
+                <list>1.3578194915814676</list>
+                <list>0.8599844122859475</list>
+                <list>0.23616977928417093</list>
+                <list>0.5142654660936804</list>
+                <list>1.3874341201355922</list>
+                <list>2.3744357150554554</list>
+                <list>3.460995386148527</list>
+                <list>4.627248721872809</list>
+                <list>5.847690984244918</list>
+                <list>7.091304557301151</list>
+                <list>8.321873275553635</list>
+                <list>9.498486555979488</list>
+                <list>10.57623018191451</list>
+                <list>11.507054357756683</list>
+                <list>12.240803472580353</list>
+                <list>12.726386085410883</list>
+                <list>12.913058178721336</list>
+                <list>12.751787913385982</list>
+                <list>12.19666613483592</list>
+                <list>11.2063238805043</list>
+                <list>9.745316248240695</list>
+                <list>7.785431296342221</list>
+                <list>5.306883213335639</list>
+                <list>2.299350835316762</list>
+                <list>1.2371743245340863</list>
+                <list>5.291762101328815</list>
+                <list>9.842165980775544</list>
+                <list>14.854713619843244</list>
+                <list>20.28447848455714</list>
+                <list>26.07573789971888</list>
+                <list>32.16271486195246</list>
+                <list>38.47059292087457</list>
+                <list>44.916785526493214</list>
+                <list>51.41243371649029</list>
+                <list>57.86409910864609</list>
+                <list>64.17561308903983</list>
+                <list>70.25003804036396</list>
+                <list>75.99169260168993</list>
+                <list>81.30819042122056</list>
+                <list>86.11244074736628</list>
+                <list>90.32455954866039</list>
+                <list>93.87364166288987</list>
+                <list>96.6993477088257</list>
+                <list>98.75326406475781</list>
                 <list>100.0</list>
-                <list>99.78411925409944</list>
-                <list>99.13860307031474</list>
-                <list>98.06980112495849</list>
-                <list>96.58820170767892</list>
-                <list>94.70829152287556</list>
-                <list>92.44836249966549</list>
-                <list>89.83026863480258</list>
-                <list>86.87913666752522</list>
-                <list>83.62303509495335</list>
-                <list>80.09260666936913</list>
-                <list>76.32067006388236</list>
-                <list>72.34179684154796</list>
-                <list>68.19187020766631</list>
-                <list>63.907632260294164</list>
-                <list>59.52622657643439</list>
-                <list>55.08474297946284</list>
-                <list>50.61977122763421</list>
-                <list>46.166970146540756</list>
-                <list>41.7606584046899</list>
-                <list>37.433432707300256</list>
-                <list>33.215818667114604</list>
-                <list>29.135959012202505</list>
-                <list>25.219343120489363</list>
-                <list>21.48858114140776</list>
-                <list>17.963225189887872</list>
-                <list>14.6596392908703</list>
-                <list>11.590918928072476</list>
-                <list>8.766860223494168</list>
-                <list>6.193977958656246</list>
-                <list>3.8755708590283198</list>
-                <list>1.8118318131161921</list>
-                <list>2.105012789560463E-15</list>
-                <list>1.5654487345831807</list>
-                <list>2.8925774728323277</list>
-                <list>3.9917344853636907</list>
-                <list>4.875275238135509</list>
-                <list>5.557265515468252</list>
-                <list>6.053171217887675</list>
-                <list>6.379540480666539</list>
-                <list>6.5536837441488345</list>
-                <list>6.593357292063055</list>
-                <list>6.516455562742546</list>
-                <list>6.340717235875218</list>
-                <list>6.083449711117891</list>
-                <list>5.761276133111428</list>
-                <list>5.389908589890016</list>
-                <list>4.983950529251203</list>
-                <list>4.556730812078653</list>
-                <list>4.120171165266783</list>
-                <list>3.68468812257112</list>
-                <list>3.2591298623423564</list>
-                <list>2.850747679550319</list>
-                <list>2.4652011782893455</list>
-                <list>2.1065956520361206</list>
-                <list>1.7775495434774609</list>
-                <list>1.479289353920318</list>
-                <list>1.2117689131504208</list>
-                <list>0.9738095317994258</list>
-                <list>0.7632572460322755</list>
-                <list>0.5771531333333222</list>
-                <list>0.4119125313751634</list>
-                <list>0.263508930750307</list>
-                <list>0.12765833640868793</list>
+                <list>100</list>
+                <list>100.0</list>
+                <list>98.75326406475781</list>
+                <list>96.6993477088257</list>
+                <list>93.87364166288987</list>
+                <list>90.32455954866039</list>
+                <list>86.11244074736628</list>
+                <list>81.30819042122056</list>
+                <list>75.99169260168993</list>
+                <list>70.25003804036396</list>
+                <list>64.17561308903983</list>
+                <list>57.86409910864609</list>
+                <list>51.41243371649029</list>
+                <list>44.916785526493214</list>
+                <list>38.47059292087457</list>
+                <list>32.16271486195246</list>
+                <list>26.07573789971888</list>
+                <list>20.28447848455714</list>
+                <list>14.854713619843244</list>
+                <list>9.842165980775544</list>
+                <list>5.291762101328815</list>
+                <list>1.2371743245340863</list>
+                <list>2.299350835316762</list>
+                <list>5.306883213335639</list>
+                <list>7.785431296342221</list>
+                <list>9.745316248240695</list>
+                <list>11.2063238805043</list>
+                <list>12.19666613483592</list>
+                <list>12.751787913385982</list>
+                <list>12.913058178721336</list>
+                <list>12.726386085410883</list>
+                <list>12.240803472580353</list>
+                <list>11.507054357756683</list>
+                <list>10.57623018191451</list>
+                <list>9.498486555979488</list>
+                <list>8.321873275553635</list>
+                <list>7.091304557301151</list>
+                <list>5.847690984244918</list>
+                <list>4.627248721872809</list>
+                <list>3.460995386148527</list>
+                <list>2.3744357150554554</list>
+                <list>1.3874341201355922</list>
+                <list>0.5142654660936804</list>
+                <list>0.23616977928417093</list>
+                <list>0.8599844122859475</list>
+                <list>1.3578194915814676</list>
+                <list>1.734260409245169</list>
+                <list>1.9971808411394554</list>
+                <list>2.1570422572296577</list>
+                <list>2.2261765610282285</list>
+                <list>2.2180783701461864</list>
+                <list>2.146731517760359</list>
+                <list>2.0259916468254424</list>
+                <list>1.869043408343859</list>
+                <list>1.6879469044903357</list>
+                <list>1.4932837932291136</list>
+                <list>1.2939090576171053</list>
+                <list>1.0968100066304158</list>
+                <list>0.9070697775377258</list>
+                <list>0.7279286054224404</list>
+                <list>0.5609325514426584</list>
+                <list>0.4061563563926968</list>
+                <list>0.2624847054113778</list>
+                <list>0.1279345224099308</list>
             </value>
         </Entry>
         <Entry>
@@ -15692,7 +15705,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>5</address>
-                <list>9.615199999999952E-5</list>
+                <list>1.6151999999999746E-5</list>
             </value>
         </Entry>
         <Entry>
@@ -15704,9 +15717,9 @@
                 <numberEnum>TxAtt</numberEnum>
                 <order>FourLoop</order>
                 <group>Emission</group>
-                <locked>false</locked>
+                <locked>true</locked>
                 <address>-1</address>
-                <list>0</list>
+                <list>0.0</list>
             </value>
         </Entry>
         <Entry>
@@ -15774,7 +15787,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>2.3110084479593516</list>
+                <list>3.307914052961425</list>
             </value>
         </Entry>
         <Entry>
@@ -16136,38 +16149,22 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>1</address>
-                <list>-15.906022777516089</list>
-                <list>-15.059034158143044</list>
-                <list>-14.212045538769999</list>
-                <list>-13.365056919396956</list>
-                <list>-12.518068300023911</list>
-                <list>-11.671079680650866</list>
-                <list>-10.824091061277821</list>
-                <list>-9.977102441904776</list>
-                <list>-9.130113822531733</list>
-                <list>-8.283125203158688</list>
-                <list>-7.436136583785645</list>
-                <list>-6.5891479644126</list>
-                <list>-5.742159345039553</list>
-                <list>-4.89517072566651</list>
-                <list>-4.048182106293465</list>
-                <list>-3.20119348692042</list>
-                <list>-2.354204867547377</list>
-                <list>-1.5072162481743319</list>
-                <list>-0.6602276288012869</list>
-                <list>0.1867609905717562</list>
-                <list>1.0337496099447994</list>
-                <list>1.880738229317846</list>
-                <list>2.727726848690889</list>
-                <list>3.574715468063936</list>
-                <list>4.421704087436982</list>
-                <list>5.268692706810025</list>
-                <list>6.1156813261830685</list>
-                <list>6.962669945556112</list>
-                <list>7.809658564929158</list>
-                <list>8.656647184302201</list>
-                <list>9.503635803675248</list>
-                <list>10.350624423048291</list>
+                <list>-9.554926488417106</list>
+                <list>-8.766858816478708</list>
+                <list>-7.97879114454031</list>
+                <list>-7.190723472601912</list>
+                <list>-6.4026558006635135</list>
+                <list>-5.614588128725115</list>
+                <list>-4.826520456786717</list>
+                <list>-4.038452784848319</list>
+                <list>-3.2503851129099215</list>
+                <list>-2.4623174409715234</list>
+                <list>-1.6742497690331253</list>
+                <list>-0.8861820970947281</list>
+                <list>-0.09811442515632995</list>
+                <list>0.6899532467820682</list>
+                <list>1.4780209187204663</list>
+                <list>2.2660885906588644</list>
             </value>
         </Entry>
         <Entry>
@@ -16310,7 +16307,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>-1</address>
-                <list>0.0</list>
+                <list>6.0</list>
             </value>
         </Entry>
         <Entry>
@@ -16324,7 +16321,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>-17.736844218528258</list>
+                <list>-16.6644660716672</list>
             </value>
         </Entry>
         <Entry>
@@ -16441,134 +16438,134 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>-17.34632692475995</list>
-                <list>-17.075290566560575</list>
-                <list>-16.8042542083612</list>
-                <list>-16.533217850161826</list>
-                <list>-16.26218149196245</list>
-                <list>-15.991145133763078</list>
-                <list>-15.720108775563705</list>
-                <list>-15.44907241736433</list>
-                <list>-15.178036059164956</list>
-                <list>-14.906999700965581</list>
-                <list>-14.635963342766207</list>
-                <list>-14.364926984566834</list>
-                <list>-14.09389062636746</list>
-                <list>-13.822854268168085</list>
-                <list>-13.551817909968712</list>
-                <list>-13.280781551769337</list>
-                <list>-13.009745193569962</list>
-                <list>-12.738708835370588</list>
-                <list>-12.467672477171213</list>
-                <list>-12.19663611897184</list>
-                <list>-11.925599760772466</list>
-                <list>-11.65456340257309</list>
-                <list>-11.383527044373718</list>
-                <list>-11.112490686174343</list>
-                <list>-10.841454327974969</list>
-                <list>-10.570417969775594</list>
-                <list>-10.29938161157622</list>
-                <list>-10.028345253376846</list>
-                <list>-9.757308895177472</list>
-                <list>-9.486272536978099</list>
-                <list>-9.215236178778722</list>
-                <list>-8.94419982057935</list>
-                <list>-8.673163462379975</list>
-                <list>-8.4021271041806</list>
-                <list>-8.131090745981227</list>
-                <list>-7.860054387781853</list>
-                <list>-7.589018029582478</list>
-                <list>-7.317981671383105</list>
-                <list>-7.0469453131837305</list>
-                <list>-6.775908954984354</list>
-                <list>-6.504872596784981</list>
-                <list>-6.2338362385856065</list>
-                <list>-5.962799880386232</list>
-                <list>-5.691763522186859</list>
-                <list>-5.420727163987484</list>
-                <list>-5.14969080578811</list>
-                <list>-4.878654447588737</list>
-                <list>-4.607618089389362</list>
-                <list>-4.3365817311899875</list>
-                <list>-4.065545372990615</list>
-                <list>-3.794509014791238</list>
-                <list>-3.5234726565918653</list>
-                <list>-3.2524362983924906</list>
-                <list>-2.981399940193116</list>
-                <list>-2.710363581993743</list>
-                <list>-2.4393272237943684</list>
-                <list>-2.1682908655949937</list>
-                <list>-1.8972545073956208</list>
-                <list>-1.6262181491962462</list>
-                <list>-1.3551817909968715</list>
-                <list>-1.084145432797495</list>
-                <list>-0.813109074598124</list>
-                <list>-0.5420727163987493</list>
-                <list>-0.27103635819937466</list>
+                <list>-16.13962592129839</list>
+                <list>-15.887444266278102</list>
+                <list>-15.635262611257815</list>
+                <list>-15.383080956237528</list>
+                <list>-15.13089930121724</list>
+                <list>-14.878717646196952</list>
+                <list>-14.626535991176665</list>
+                <list>-14.374354336156378</list>
+                <list>-14.12217268113609</list>
+                <list>-13.869991026115803</list>
+                <list>-13.617809371095516</list>
+                <list>-13.365627716075227</list>
+                <list>-13.11344606105494</list>
+                <list>-12.861264406034653</list>
+                <list>-12.609082751014366</list>
+                <list>-12.356901095994079</list>
+                <list>-12.104719440973792</list>
+                <list>-11.852537785953505</list>
+                <list>-11.600356130933218</list>
+                <list>-11.34817447591293</list>
+                <list>-11.095992820892643</list>
+                <list>-10.843811165872356</list>
+                <list>-10.591629510852067</list>
+                <list>-10.33944785583178</list>
+                <list>-10.087266200811493</list>
+                <list>-9.835084545791206</list>
+                <list>-9.582902890770919</list>
+                <list>-9.33072123575063</list>
+                <list>-9.078539580730343</list>
+                <list>-8.826357925710056</list>
+                <list>-8.574176270689769</list>
+                <list>-8.321994615669482</list>
+                <list>-8.069812960649195</list>
+                <list>-7.8176313056289075</list>
+                <list>-7.56544965060862</list>
+                <list>-7.313267995588333</list>
+                <list>-7.061086340568044</list>
+                <list>-6.808904685547757</list>
+                <list>-6.556723030527472</list>
+                <list>-6.304541375507183</list>
+                <list>-6.052359720486896</list>
+                <list>-5.800178065466609</list>
+                <list>-5.547996410446322</list>
+                <list>-5.295814755426033</list>
+                <list>-5.043633100405746</list>
+                <list>-4.79145144538546</list>
+                <list>-4.5392697903651715</list>
+                <list>-4.287088135344884</list>
+                <list>-4.034906480324597</list>
+                <list>-3.78272482530431</list>
+                <list>-3.530543170284023</list>
+                <list>-3.278361515263734</list>
+                <list>-3.026179860243449</list>
+                <list>-2.77399820522316</list>
+                <list>-2.521816550202873</list>
+                <list>-2.2696348951825858</list>
+                <list>-2.0174532401622987</list>
+                <list>-1.7652715851420115</list>
+                <list>-1.5130899301217227</list>
+                <list>-1.2609082751014373</list>
+                <list>-1.0087266200811502</list>
+                <list>-0.7565449650608613</list>
+                <list>-0.5043633100405742</list>
+                <list>-0.2521816550202871</list>
                 <list>0.0</list>
-                <list>0.2710363581993711</list>
-                <list>0.5420727163987493</list>
-                <list>0.813109074598124</list>
-                <list>1.084145432797495</list>
-                <list>1.3551817909968733</list>
-                <list>1.6262181491962444</list>
-                <list>1.897254507395619</list>
-                <list>2.1682908655949937</list>
-                <list>2.4393272237943684</list>
-                <list>2.7103635819937395</list>
-                <list>2.9813999401931177</list>
-                <list>3.252436298392489</list>
-                <list>3.5234726565918635</list>
-                <list>3.7945090147912417</list>
-                <list>4.065545372990613</list>
-                <list>4.3365817311899875</list>
-                <list>4.607618089389362</list>
-                <list>4.878654447588737</list>
-                <list>5.149690805788108</list>
-                <list>5.420727163987486</list>
-                <list>5.691763522186857</list>
-                <list>5.962799880386232</list>
-                <list>6.2338362385856065</list>
-                <list>6.504872596784981</list>
-                <list>6.775908954984356</list>
-                <list>7.0469453131837305</list>
-                <list>7.317981671383105</list>
-                <list>7.589018029582476</list>
-                <list>7.8600543877818545</list>
-                <list>8.131090745981226</list>
-                <list>8.4021271041806</list>
-                <list>8.673163462379975</list>
-                <list>8.94419982057935</list>
-                <list>9.21523617877872</list>
-                <list>9.486272536978095</list>
-                <list>9.757308895177474</list>
-                <list>10.028345253376845</list>
-                <list>10.29938161157622</list>
-                <list>10.570417969775594</list>
-                <list>10.841454327974969</list>
-                <list>11.11249068617434</list>
-                <list>11.383527044373718</list>
-                <list>11.654563402573089</list>
-                <list>11.925599760772464</list>
-                <list>12.196636118971842</list>
-                <list>12.467672477171213</list>
-                <list>12.738708835370588</list>
-                <list>13.009745193569962</list>
-                <list>13.280781551769337</list>
-                <list>13.551817909968708</list>
-                <list>13.822854268168086</list>
-                <list>14.093890626367457</list>
-                <list>14.364926984566832</list>
-                <list>14.635963342766207</list>
-                <list>14.906999700965578</list>
-                <list>15.17803605916496</list>
-                <list>15.449072417364327</list>
-                <list>15.720108775563702</list>
-                <list>15.991145133763084</list>
-                <list>16.26218149196245</list>
-                <list>16.533217850161826</list>
-                <list>16.8042542083612</list>
-                <list>17.075290566560575</list>
+                <list>0.2521816550202871</list>
+                <list>0.5043633100405742</list>
+                <list>0.7565449650608649</list>
+                <list>1.0087266200811484</list>
+                <list>1.2609082751014355</list>
+                <list>1.5130899301217227</list>
+                <list>1.7652715851420098</list>
+                <list>2.0174532401623004</list>
+                <list>2.2696348951825875</list>
+                <list>2.5218165502028747</list>
+                <list>2.773998205223158</list>
+                <list>3.0261798602434453</list>
+                <list>3.278361515263736</list>
+                <list>3.530543170284023</list>
+                <list>3.78272482530431</list>
+                <list>4.034906480324597</list>
+                <list>4.287088135344884</list>
+                <list>4.5392697903651715</list>
+                <list>4.791451445385459</list>
+                <list>5.043633100405746</list>
+                <list>5.295814755426033</list>
+                <list>5.5479964104463235</list>
+                <list>5.800178065466611</list>
+                <list>6.052359720486898</list>
+                <list>6.304541375507181</list>
+                <list>6.556723030527468</list>
+                <list>6.808904685547759</list>
+                <list>7.061086340568046</list>
+                <list>7.313267995588333</list>
+                <list>7.56544965060862</list>
+                <list>7.8176313056289075</list>
+                <list>8.069812960649195</list>
+                <list>8.321994615669482</list>
+                <list>8.574176270689769</list>
+                <list>8.826357925710056</list>
+                <list>9.078539580730343</list>
+                <list>9.330721235750634</list>
+                <list>9.58290289077092</list>
+                <list>9.835084545791208</list>
+                <list>10.087266200811492</list>
+                <list>10.339447855831779</list>
+                <list>10.59162951085207</list>
+                <list>10.843811165872356</list>
+                <list>11.095992820892643</list>
+                <list>11.34817447591293</list>
+                <list>11.600356130933218</list>
+                <list>11.852537785953505</list>
+                <list>12.104719440973792</list>
+                <list>12.356901095994079</list>
+                <list>12.609082751014366</list>
+                <list>12.861264406034653</list>
+                <list>13.113446061054944</list>
+                <list>13.365627716075231</list>
+                <list>13.617809371095515</list>
+                <list>13.869991026115802</list>
+                <list>14.122172681136089</list>
+                <list>14.37435433615638</list>
+                <list>14.626535991176667</list>
+                <list>14.878717646196954</list>
+                <list>15.13089930121724</list>
+                <list>15.383080956237524</list>
+                <list>15.635262611257815</list>
+                <list>15.887444266278102</list>
             </value>
         </Entry>
         <Entry>
@@ -16818,9 +16815,9 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-9652.777777777772</list>
-                <list>-6597.22222222222</list>
-                <list>-3541.6666666666674</list>
+                <list>6346.153846153845</list>
+                <list>4999.999999999996</list>
+                <list>3653.8461538461515</list>
             </value>
         </Entry>
         <Entry>
@@ -16861,7 +16858,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>7</address>
-                <list>3.4928000000000015E-5</list>
+                <list>5.0E-6</list>
             </value>
         </Entry>
         <Entry>
@@ -16925,7 +16922,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>-16.08340958798749</list>
+                <list>24.790368267922794</list>
             </value>
         </Entry>
         <Entry>
@@ -17004,134 +17001,134 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>256</address>
-                <list>15.729296448723003</list>
-                <list>15.483526191711707</list>
-                <list>15.23775593470041</list>
-                <list>14.991985677689113</list>
-                <list>14.746215420677816</list>
-                <list>14.50044516366652</list>
-                <list>14.254674906655223</list>
-                <list>14.008904649643927</list>
-                <list>13.76313439263263</list>
-                <list>13.51736413562133</list>
-                <list>13.271593878610034</list>
-                <list>13.02582362159874</list>
-                <list>12.780053364587442</list>
-                <list>12.534283107576144</list>
-                <list>12.288512850564848</list>
-                <list>12.042742593553552</list>
-                <list>11.796972336542252</list>
-                <list>11.551202079530956</list>
-                <list>11.305431822519658</list>
-                <list>11.059661565508362</list>
-                <list>10.813891308497066</list>
-                <list>10.568121051485768</list>
-                <list>10.322350794474472</list>
-                <list>10.076580537463174</list>
-                <list>9.830810280451878</list>
-                <list>9.58504002344058</list>
-                <list>9.339269766429284</list>
-                <list>9.093499509417988</list>
-                <list>8.84772925240669</list>
-                <list>8.601958995395394</list>
-                <list>8.356188738384095</list>
-                <list>8.110418481372799</list>
-                <list>7.864648224361502</list>
-                <list>7.618877967350205</list>
-                <list>7.373107710338909</list>
-                <list>7.127337453327612</list>
-                <list>6.881567196316315</list>
-                <list>6.635796939305019</list>
-                <list>6.390026682293722</list>
-                <list>6.144256425282422</list>
-                <list>5.898486168271126</list>
-                <list>5.652715911259829</list>
-                <list>5.406945654248532</list>
-                <list>5.161175397237236</list>
-                <list>4.915405140225939</list>
-                <list>4.669634883214642</list>
-                <list>4.423864626203346</list>
-                <list>4.178094369192048</list>
-                <list>3.932324112180751</list>
-                <list>3.686553855169455</list>
-                <list>3.4407835981581565</list>
-                <list>3.195013341146861</list>
-                <list>2.949243084135563</list>
-                <list>2.703472827124266</list>
-                <list>2.4577025701129704</list>
-                <list>2.211932313101673</list>
-                <list>1.9661620560903754</list>
-                <list>1.7203917990790798</list>
-                <list>1.4746215420677824</list>
-                <list>1.2288512850564852</list>
-                <list>0.9830810280451863</list>
-                <list>0.7373107710338921</list>
-                <list>0.4915405140225947</list>
-                <list>0.24577025701129734</list>
-                <list>0.0</list>
-                <list>-0.24577025701129412</list>
-                <list>-0.4915405140225947</list>
-                <list>-0.7373107710338921</list>
-                <list>-0.9830810280451863</list>
-                <list>-1.2288512850564868</list>
-                <list>-1.4746215420677808</list>
-                <list>-1.7203917990790782</list>
-                <list>-1.9661620560903754</list>
-                <list>-2.211932313101673</list>
-                <list>-2.457702570112967</list>
-                <list>-2.7034728271242674</list>
-                <list>-2.9492430841355617</list>
-                <list>-3.195013341146859</list>
-                <list>-3.4407835981581596</list>
-                <list>-3.686553855169454</list>
-                <list>-3.932324112180751</list>
-                <list>-4.178094369192048</list>
-                <list>-4.423864626203346</list>
-                <list>-4.6696348832146395</list>
-                <list>-4.915405140225941</list>
-                <list>-5.161175397237234</list>
-                <list>-5.406945654248532</list>
-                <list>-5.652715911259829</list>
-                <list>-5.898486168271126</list>
-                <list>-6.144256425282424</list>
-                <list>-6.390026682293722</list>
-                <list>-6.635796939305019</list>
-                <list>-6.881567196316313</list>
-                <list>-7.1273374533276135</list>
-                <list>-7.373107710338908</list>
-                <list>-7.618877967350205</list>
-                <list>-7.864648224361502</list>
-                <list>-8.110418481372799</list>
-                <list>-8.356188738384093</list>
-                <list>-8.60195899539539</list>
-                <list>-8.847729252406692</list>
-                <list>-9.093499509417986</list>
-                <list>-9.339269766429284</list>
-                <list>-9.58504002344058</list>
-                <list>-9.830810280451878</list>
-                <list>-10.076580537463173</list>
-                <list>-10.322350794474472</list>
-                <list>-10.568121051485766</list>
-                <list>-10.813891308497064</list>
-                <list>-11.059661565508364</list>
-                <list>-11.305431822519658</list>
-                <list>-11.551202079530956</list>
-                <list>-11.796972336542252</list>
-                <list>-12.042742593553552</list>
-                <list>-12.288512850564844</list>
-                <list>-12.534283107576146</list>
-                <list>-12.78005336458744</list>
-                <list>-13.025823621598738</list>
-                <list>-13.271593878610034</list>
-                <list>-13.517364135621328</list>
-                <list>-13.763134392632631</list>
-                <list>-14.008904649643922</list>
-                <list>-14.25467490665522</list>
-                <list>-14.500445163666525</list>
-                <list>-14.746215420677816</list>
-                <list>-14.991985677689113</list>
-                <list>-15.23775593470041</list>
-                <list>-15.483526191711707</list>
+                <list>54.7306109599152</list>
+                <list>54.50044516366652</list>
+                <list>54.27027936741784</list>
+                <list>54.04011357116917</list>
+                <list>53.809947774920495</list>
+                <list>53.57978197867182</list>
+                <list>53.34961618242315</list>
+                <list>53.11945038617447</list>
+                <list>52.88928458992579</list>
+                <list>52.65911879367712</list>
+                <list>52.428952997428446</list>
+                <list>52.19878720117977</list>
+                <list>51.9686214049311</list>
+                <list>51.73845560868242</list>
+                <list>51.508289812433745</list>
+                <list>51.278124016185075</list>
+                <list>51.0479582199364</list>
+                <list>50.81779242368772</list>
+                <list>50.58762662743905</list>
+                <list>50.35746083119037</list>
+                <list>50.127295034941696</list>
+                <list>49.897129238693026</list>
+                <list>49.66696344244435</list>
+                <list>49.43679764619567</list>
+                <list>49.206631849946994</list>
+                <list>48.976466053698324</list>
+                <list>48.74630025744965</list>
+                <list>48.51613446120097</list>
+                <list>48.28596866495229</list>
+                <list>48.05580286870362</list>
+                <list>47.825637072454946</list>
+                <list>47.59547127620627</list>
+                <list>47.3653054799576</list>
+                <list>47.13513968370892</list>
+                <list>46.90497388746025</list>
+                <list>46.674808091211574</list>
+                <list>46.4446422949629</list>
+                <list>46.21447649871422</list>
+                <list>45.98431070246555</list>
+                <list>45.75414490621687</list>
+                <list>45.523979109968195</list>
+                <list>45.293813313719525</list>
+                <list>45.06364751747085</list>
+                <list>44.83348172122217</list>
+                <list>44.6033159249735</list>
+                <list>44.373150128724824</list>
+                <list>44.142984332476146</list>
+                <list>43.912818536227476</list>
+                <list>43.6826527399788</list>
+                <list>43.45248694373012</list>
+                <list>43.22232114748145</list>
+                <list>42.992155351232775</list>
+                <list>42.7619895549841</list>
+                <list>42.53182375873542</list>
+                <list>42.30165796248675</list>
+                <list>42.07149216623807</list>
+                <list>41.8413263699894</list>
+                <list>41.611160573740726</list>
+                <list>41.38099477749205</list>
+                <list>41.15082898124338</list>
+                <list>40.9206631849947</list>
+                <list>40.690497388746024</list>
+                <list>40.46033159249735</list>
+                <list>40.23016579624868</list>
+                <list>40.0</list>
+                <list>39.76983420375132</list>
+                <list>39.53966840750265</list>
+                <list>39.309502611253976</list>
+                <list>39.0793368150053</list>
+                <list>38.84917101875663</list>
+                <list>38.61900522250795</list>
+                <list>38.388839426259274</list>
+                <list>38.1586736300106</list>
+                <list>37.92850783376193</list>
+                <list>37.69834203751325</list>
+                <list>37.46817624126458</list>
+                <list>37.2380104450159</list>
+                <list>37.007844648767225</list>
+                <list>36.77767885251855</list>
+                <list>36.54751305626988</list>
+                <list>36.3173472600212</list>
+                <list>36.087181463772524</list>
+                <list>35.857015667523854</list>
+                <list>35.626849871275176</list>
+                <list>35.3966840750265</list>
+                <list>35.16651827877783</list>
+                <list>34.93635248252915</list>
+                <list>34.706186686280475</list>
+                <list>34.4760208900318</list>
+                <list>34.24585509378313</list>
+                <list>34.01568929753445</list>
+                <list>33.78552350128577</list>
+                <list>33.5553577050371</list>
+                <list>33.325191908788426</list>
+                <list>33.09502611253975</list>
+                <list>32.86486031629108</list>
+                <list>32.6346945200424</list>
+                <list>32.40452872379373</list>
+                <list>32.174362927545054</list>
+                <list>31.944197131296377</list>
+                <list>31.714031335047704</list>
+                <list>31.483865538799026</list>
+                <list>31.253699742550353</list>
+                <list>31.023533946301676</list>
+                <list>30.793368150053006</list>
+                <list>30.56320235380433</list>
+                <list>30.33303655755565</list>
+                <list>30.102870761306974</list>
+                <list>29.872704965058304</list>
+                <list>29.642539168809627</list>
+                <list>29.41237337256095</list>
+                <list>29.18220757631228</list>
+                <list>28.952041780063603</list>
+                <list>28.72187598381493</list>
+                <list>28.491710187566255</list>
+                <list>28.261544391317578</list>
+                <list>28.0313785950689</list>
+                <list>27.801212798820224</list>
+                <list>27.571047002571554</list>
+                <list>27.340881206322884</list>
+                <list>27.110715410074206</list>
+                <list>26.88054961382553</list>
+                <list>26.650383817576852</list>
+                <list>26.42021802132818</list>
+                <list>26.190052225079505</list>
+                <list>25.959886428830835</list>
+                <list>25.729720632582154</list>
+                <list>25.49955483633348</list>
             </value>
         </Entry>
         <Entry>
@@ -17208,38 +17205,22 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>1</address>
-                <list>10.153767758805786</list>
-                <list>9.385735705645484</list>
-                <list>8.61770365248518</list>
-                <list>7.849671599324877</list>
-                <list>7.081639546164574</list>
-                <list>6.313607493004271</list>
-                <list>5.545575439843967</list>
-                <list>4.777543386683664</list>
-                <list>4.009511333523362</list>
-                <list>3.2414792803630585</list>
-                <list>2.473447227202757</list>
-                <list>1.7054151740424537</list>
-                <list>0.9373831208821484</list>
-                <list>0.1693510677218466</list>
-                <list>-0.5986809854384567</list>
-                <list>-1.36671303859876</list>
-                <list>-2.134745091759062</list>
-                <list>-2.9027771449193653</list>
-                <list>-3.6708091980796684</list>
-                <list>-4.43884125123997</list>
-                <list>-5.206873304400272</list>
-                <list>-5.974905357560577</list>
-                <list>-6.742937410720879</list>
-                <list>-7.5109694638811835</list>
-                <list>-8.27900151704149</list>
-                <list>-9.04703357020179</list>
-                <list>-9.815065623362093</list>
-                <list>-10.583097676522394</list>
-                <list>-11.351129729682699</list>
-                <list>-12.119161782843</list>
-                <list>-12.887193836003306</list>
-                <list>-13.655225889163608</list>
+                <list>42.78752357300544</list>
+                <list>42.06825545972833</list>
+                <list>41.34898734645122</list>
+                <list>40.629719233174114</list>
+                <list>39.910451119897004</list>
+                <list>39.191183006619895</list>
+                <list>38.471914893342785</list>
+                <list>37.752646780065675</list>
+                <list>37.033378666788565</list>
+                <list>36.314110553511455</list>
+                <list>35.594842440234345</list>
+                <list>34.875574326957235</list>
+                <list>34.156306213680125</list>
+                <list>33.437038100403015</list>
+                <list>32.71776998712591</list>
+                <list>31.9985018738488</list>
             </value>
         </Entry>
         <Entry>
@@ -17253,9 +17234,9 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-9652.777777777772</list>
-                <list>-6597.22222222222</list>
-                <list>-3541.6666666666674</list>
+                <list>6346.153846153845</list>
+                <list>4999.999999999996</list>
+                <list>3653.8461538461515</list>
             </value>
         </Entry>
         <Entry>
@@ -17320,7 +17301,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>8</address>
-                <list>0.003066224000000002</list>
+                <list>9.261519999999926E-4</list>
             </value>
         </Entry>
         <Entry>
@@ -18036,7 +18017,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>5.0E-6</list>
+                <list>4.9999999999999996E-6</list>
             </value>
         </Entry>
         <Entry>
@@ -18652,7 +18633,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>5.0E-6</list>
+                <list>0.064</list>
             </value>
         </Entry>
         <Entry>
@@ -18666,7 +18647,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>5.0E-6</list>
+                <list>1.3E-4</list>
             </value>
         </Entry>
         <Entry>
@@ -18739,12 +18720,11 @@
                 <name>Freq_offset_tx_sb</name>
                 <description></description>
                 <numberEnum>FrequencyOffset</numberEnum>
-                <order>FourLoop</order>
+                <order>Three</order>
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>6</address>
-                <list>0.0</list>
-                <list>0.0</list>
+                <list>1000.0</list>
             </value>
         </Entry>
         <Entry>
@@ -18823,7 +18803,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>0.0</list>
+                <list>7.2276557030548165</list>
             </value>
         </Entry>
         <Entry>
@@ -18838,7 +18818,7 @@
                 <locked>false</locked>
                 <address>0</address>
                 <generator>
-                    <name>Sinus Cardinal with Apodisation</name>
+                    <name>Gaussian</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
                         <value>128</value>
@@ -18853,23 +18833,23 @@
                         <maxValue>262144</maxValue>
                     </params>
                     <params xsi:type="numberParam">
-                        <name>Nb lobe</name>
-                        <value>2</value>
-                        <defaultValue>3</defaultValue>
-                        <description>Number of lobe of the sinus cardinal</description>
-                        <displayedName>Nb lobe</displayedName>
+                        <name>Width</name>
+                        <value>0.25</value>
+                        <defaultValue>0.25</defaultValue>
+                        <description>Width of the gaussian</description>
+                        <displayedName>Width</displayedName>
                         <locked>false</locked>
                         <lockedToDefault>false</lockedToDefault>
                         <restrictedToSuggested>false</restrictedToSuggested>
-                        <numberEnum>Integer</numberEnum>
-                        <minValue>-2147483648</minValue>
-                        <maxValue>10</maxValue>
+                        <numberEnum>Double</numberEnum>
+                        <minValue>-1.7976931348623157E308</minValue>
+                        <maxValue>1.7976931348623157E308</maxValue>
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
-                        <description>Amplitude of the sinus cardinal</description>
+                        <description>Amplitude of the gaussian</description>
                         <displayedName>Amplitude</displayedName>
                         <locked>false</locked>
                         <lockedToDefault>false</lockedToDefault>
@@ -18880,155 +18860,142 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <value>true</value>
+                        <value>false</value>
                         <defaultValue>false</defaultValue>
-                        <description>Absolue value</description>
+                        <description>Absolute value</description>
                         <displayedName>Abs</displayedName>
                         <locked>false</locked>
                         <lockedToDefault>false</lockedToDefault>
                     </params>
-                    <params xsi:type="textParam">
-                        <name>Window</name>
-                        <value>Hamming</value>
-                        <defaultValue>None</defaultValue>
-                        <description>The apodisation window</description>
-                        <displayedName>Window</displayedName>
-                        <locked>false</locked>
-                        <lockedToDefault>false</lockedToDefault>
-                        <restrictedToSuggested>true</restrictedToSuggested>
-                        <suggestedValues>None</suggestedValues>
-                        <suggestedValues>Hanning</suggestedValues>
-                        <suggestedValues>Hamming</suggestedValues>
-                    </params>
                 </generator>
-                <list>3.1185374660155014E-16</list>
-                <list>0.12765833640868793</list>
-                <list>0.263508930750307</list>
-                <list>0.4119125313751634</list>
-                <list>0.5771531333333222</list>
-                <list>0.7632572460322755</list>
-                <list>0.9738095317994258</list>
-                <list>1.2117689131504208</list>
-                <list>1.479289353920318</list>
-                <list>1.7775495434774609</list>
-                <list>2.1065956520361206</list>
-                <list>2.4652011782893455</list>
-                <list>2.850747679550319</list>
-                <list>3.2591298623423564</list>
-                <list>3.68468812257112</list>
-                <list>4.120171165266783</list>
-                <list>4.556730812078653</list>
-                <list>4.983950529251203</list>
-                <list>5.389908589890016</list>
-                <list>5.761276133111428</list>
-                <list>6.083449711117891</list>
-                <list>6.340717235875218</list>
-                <list>6.516455562742546</list>
-                <list>6.593357292063055</list>
-                <list>6.5536837441488345</list>
-                <list>6.379540480666539</list>
-                <list>6.053171217887675</list>
-                <list>5.557265515468252</list>
-                <list>4.875275238135509</list>
-                <list>3.9917344853636907</list>
-                <list>2.8925774728323277</list>
-                <list>1.5654487345831807</list>
-                <list>2.105012789560463E-15</list>
-                <list>1.8118318131161921</list>
-                <list>3.8755708590283198</list>
-                <list>6.193977958656246</list>
-                <list>8.766860223494168</list>
-                <list>11.590918928072476</list>
-                <list>14.6596392908703</list>
-                <list>17.963225189887872</list>
-                <list>21.48858114140776</list>
-                <list>25.219343120489363</list>
-                <list>29.135959012202505</list>
-                <list>33.215818667114604</list>
-                <list>37.433432707300256</list>
-                <list>41.7606584046899</list>
-                <list>46.166970146540756</list>
-                <list>50.61977122763421</list>
-                <list>55.08474297946284</list>
-                <list>59.52622657643439</list>
-                <list>63.907632260294164</list>
-                <list>68.19187020766631</list>
-                <list>72.34179684154796</list>
-                <list>76.32067006388236</list>
-                <list>80.09260666936913</list>
-                <list>83.62303509495335</list>
-                <list>86.87913666752522</list>
-                <list>89.83026863480258</list>
-                <list>92.44836249966549</list>
-                <list>94.70829152287556</list>
-                <list>96.58820170767892</list>
-                <list>98.06980112495849</list>
-                <list>99.13860307031474</list>
-                <list>99.78411925409944</list>
+                <list>1.8315638888734178</list>
+                <list>2.0734079858838736</list>
+                <list>2.3426058854020853</list>
+                <list>2.641590303508207</list>
+                <list>2.972921638615875</list>
+                <list>3.3392830340714026</list>
+                <list>3.743473545900107</list>
+                <list>4.188399263080075</list>
+                <list>4.677062238395898</list>
+                <list>5.212547102255847</list>
+                <list>5.79800525002544</list>
+                <list>6.436636515561175</list>
+                <list>7.131668269775804</list>
+                <list>7.886331913210262</list>
+                <list>8.70383676562235</list>
+                <list>9.587341393331283</list>
+                <list>10.539922456186433</list>
+                <list>11.564541200162086</list>
+                <list>12.664007768218774</list>
+                <list>13.840943550614293</list>
+                <list>15.097741845591461</list>
+                <list>16.436527151519908</list>
+                <list>17.859113461243563</list>
+                <list>19.366961977629256</list>
+                <list>20.96113871510978</list>
+                <list>22.642272494309783</list>
+                <list>24.410513874555384</list>
+                <list>26.26549560111886</list>
+                <list>28.206295169381544</list>
+                <list>30.231400125704937</list>
+                <list>32.338676733750475</list>
+                <list>34.525342634454375</list>
+                <list>36.787944117144235</list>
+                <list>39.12233859783412</list>
+                <list>41.52368286818413</list>
+                <list>43.98642763478829</list>
+                <list>46.50431881340563</list>
+                <list>49.07040597674413</list>
+                <list>51.67705827795766</list>
+                <list>54.31598808587053</list>
+                <list>56.9782824730923</list>
+                <list>59.6544425958485</list>
+                <list>62.334430895963436</list>
+                <list>65.00772594262844</list>
+                <list>67.66338461617289</list>
+                <list>70.29011121997449</list>
+                <list>72.87633299194913</list>
+                <list>75.41028137586227</list>
+                <list>77.8800783071405</list>
+                <list>80.27382667004204</list>
+                <list>82.57970399501006</list>
+                <list>84.78605838869831</list>
+                <list>86.88150562628432</list>
+                <list>88.85502628781266</list>
+                <list>90.69606178873836</list>
+                <list>92.39460814058079</list>
+                <list>93.94130628134758</list>
+                <list>95.32752783750715</list>
+                <list>96.54545521978378</list>
+                <list>97.58815501356588</list>
+                <list>98.44964370054085</list>
+                <list>99.12494484023183</list>
+                <list>99.61013694701175</list>
+                <list>99.90239141819757</list>
                 <list>100.0</list>
-                <list>99.78411925409944</list>
-                <list>99.13860307031474</list>
-                <list>98.06980112495849</list>
-                <list>96.58820170767892</list>
-                <list>94.70829152287556</list>
-                <list>92.44836249966549</list>
-                <list>89.83026863480258</list>
-                <list>86.87913666752522</list>
-                <list>83.62303509495335</list>
-                <list>80.09260666936913</list>
-                <list>76.32067006388236</list>
-                <list>72.34179684154796</list>
-                <list>68.19187020766631</list>
-                <list>63.907632260294164</list>
-                <list>59.52622657643439</list>
-                <list>55.08474297946284</list>
-                <list>50.61977122763421</list>
-                <list>46.166970146540756</list>
-                <list>41.7606584046899</list>
-                <list>37.433432707300256</list>
-                <list>33.215818667114604</list>
-                <list>29.135959012202505</list>
-                <list>25.219343120489363</list>
-                <list>21.48858114140776</list>
-                <list>17.963225189887872</list>
-                <list>14.6596392908703</list>
-                <list>11.590918928072476</list>
-                <list>8.766860223494168</list>
-                <list>6.193977958656246</list>
-                <list>3.8755708590283198</list>
-                <list>1.8118318131161921</list>
-                <list>2.105012789560463E-15</list>
-                <list>1.5654487345831807</list>
-                <list>2.8925774728323277</list>
-                <list>3.9917344853636907</list>
-                <list>4.875275238135509</list>
-                <list>5.557265515468252</list>
-                <list>6.053171217887675</list>
-                <list>6.379540480666539</list>
-                <list>6.5536837441488345</list>
-                <list>6.593357292063055</list>
-                <list>6.516455562742546</list>
-                <list>6.340717235875218</list>
-                <list>6.083449711117891</list>
-                <list>5.761276133111428</list>
-                <list>5.389908589890016</list>
-                <list>4.983950529251203</list>
-                <list>4.556730812078653</list>
-                <list>4.120171165266783</list>
-                <list>3.68468812257112</list>
-                <list>3.2591298623423564</list>
-                <list>2.850747679550319</list>
-                <list>2.4652011782893455</list>
-                <list>2.1065956520361206</list>
-                <list>1.7775495434774609</list>
-                <list>1.479289353920318</list>
-                <list>1.2117689131504208</list>
-                <list>0.9738095317994258</list>
-                <list>0.7632572460322755</list>
-                <list>0.5771531333333222</list>
-                <list>0.4119125313751634</list>
-                <list>0.263508930750307</list>
-                <list>0.12765833640868793</list>
+                <list>99.90239141819757</list>
+                <list>99.61013694701175</list>
+                <list>99.12494484023183</list>
+                <list>98.44964370054085</list>
+                <list>97.58815501356588</list>
+                <list>96.54545521978378</list>
+                <list>95.32752783750715</list>
+                <list>93.94130628134758</list>
+                <list>92.39460814058079</list>
+                <list>90.69606178873836</list>
+                <list>88.85502628781266</list>
+                <list>86.88150562628432</list>
+                <list>84.78605838869831</list>
+                <list>82.57970399501006</list>
+                <list>80.27382667004204</list>
+                <list>77.8800783071405</list>
+                <list>75.41028137586227</list>
+                <list>72.87633299194913</list>
+                <list>70.29011121997449</list>
+                <list>67.66338461617289</list>
+                <list>65.00772594262844</list>
+                <list>62.334430895963436</list>
+                <list>59.6544425958485</list>
+                <list>56.9782824730923</list>
+                <list>54.31598808587053</list>
+                <list>51.67705827795766</list>
+                <list>49.07040597674413</list>
+                <list>46.50431881340563</list>
+                <list>43.98642763478829</list>
+                <list>41.52368286818413</list>
+                <list>39.12233859783412</list>
+                <list>36.787944117144235</list>
+                <list>34.525342634454375</list>
+                <list>32.338676733750475</list>
+                <list>30.231400125704937</list>
+                <list>28.206295169381544</list>
+                <list>26.26549560111886</list>
+                <list>24.410513874555384</list>
+                <list>22.642272494309783</list>
+                <list>20.96113871510978</list>
+                <list>19.366961977629256</list>
+                <list>17.859113461243563</list>
+                <list>16.436527151519908</list>
+                <list>15.097741845591461</list>
+                <list>13.840943550614293</list>
+                <list>12.664007768218774</list>
+                <list>11.564541200162086</list>
+                <list>10.539922456186433</list>
+                <list>9.587341393331283</list>
+                <list>8.70383676562235</list>
+                <list>7.886331913210262</list>
+                <list>7.131668269775804</list>
+                <list>6.436636515561175</list>
+                <list>5.79800525002544</list>
+                <list>5.212547102255847</list>
+                <list>4.677062238395898</list>
+                <list>4.188399263080075</list>
+                <list>3.743473545900107</list>
+                <list>3.3392830340714026</list>
+                <list>2.972921638615875</list>
+                <list>2.641590303508207</list>
+                <list>2.3426058854020853</list>
+                <list>2.0734079858838736</list>
             </value>
         </Entry>
         <Entry>
@@ -19042,134 +19009,6 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>0.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
-                <list>180.0</list>
             </value>
         </Entry>
         <Entry>
@@ -19179,11 +19018,10 @@
                 <name>Freq_offset_tx_sb_comp</name>
                 <description></description>
                 <numberEnum>FrequencyOffset</numberEnum>
-                <order>FourLoop</order>
+                <order>Three</order>
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-0.0</list>
                 <list>-0.0</list>
             </value>
         </Entry>
@@ -19275,7 +19113,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>5.0E-6</list>
+                <list>5.0E-4</list>
             </value>
         </Entry>
         <Entry>
@@ -19492,7 +19330,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>0.0</list>
+                <list>40.0</list>
             </value>
         </Entry>
         <Entry>
@@ -19519,7 +19357,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>0.0</list>
+                <list>40.0</list>
             </value>
         </Entry>
         <Entry>
@@ -19542,11 +19380,10 @@
                 <name>Freq_offset_tx_sb_prep</name>
                 <description></description>
                 <numberEnum>FrequencyOffset</numberEnum>
-                <order>FourLoop</order>
+                <order>Three</order>
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-0.0</list>
                 <list>-0.0</list>
             </value>
         </Entry>

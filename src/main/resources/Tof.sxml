@@ -2902,7 +2902,7 @@
             <key>key24</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Nb_3d</name>
-                <value>4</value>
+                <value>1</value>
                 <defaultValue>1</defaultValue>
                 <displayedName>Nb 3D</displayedName>
                 <locked>false</locked>
@@ -15142,9 +15142,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>6</address>
-                <list>6374.999999999999</list>
-                <list>2125.0</list>
-                <list>-2124.999999999999</list>
+                <list>0.0</list>
                 <list>-6374.999999999999</list>
             </value>
         </Entry>
@@ -16801,9 +16799,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-1704.5454545454504</list>
-                <list>-568.1818181818181</list>
-                <list>568.1818181818142</list>
+                <list>-0.0</list>
                 <list>1704.5454545454504</list>
             </value>
         </Entry>
@@ -17206,9 +17202,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-1704.5454545454504</list>
-                <list>-568.1818181818181</list>
-                <list>568.1818181818142</list>
+                <list>-0.0</list>
                 <list>1704.5454545454504</list>
             </value>
         </Entry>

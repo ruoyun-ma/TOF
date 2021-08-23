@@ -25,6 +25,7 @@ import common.*;
 import kernel.*;
 import model.*;
 
+import static java.util.Arrays.parallelSetAll;
 import static rs2d.sequence.gradientecho.S.*;
 import static rs2d.sequence.gradientecho.U.*;
 
@@ -68,9 +69,12 @@ public class TOF extends KernelGE {
             getParam(NUMBER_OF_SLAB).setValue(1);
         else {
             if (getInt(NUMBER_OF_SLAB) > 1)
-                getParam(SLAB_OVERLAP).setValue(Math.round(getDouble(SLAB_OVERLAP) / 100 * userMatrixDimension3D) / (double) userMatrixDimension3D * 100);
+                getParam(SLAB_OVERLAP).setValue(floorEven(getDouble(SLAB_OVERLAP) / 100 * userMatrixDimension3D) / (double) userMatrixDimension3D * 100);
         }
-        isElliptical = getText(KSPACE_FILLING).equalsIgnoreCase("3DElliptic") && !isMultiplanar;
+
+        isElliptical = kspace_filling.equalsIgnoreCase("3DElliptic") && !isMultiplanar;
+        if (isElliptical)
+            getParam(USER_PARTIAL_SLICE).setValue(100);
     }
 
     //--------------------------------------------------------------------------------------
@@ -106,7 +110,6 @@ public class TOF extends KernelGE {
                     break;
             }
         }
-        isElliptical = kspace_filling.equalsIgnoreCase("3DElliptic") && !isMultiplanar;
 
         plugin = getTransformPlugin();
         plugin.setParameters(new ArrayList<>(getUserParams()));
@@ -130,7 +133,10 @@ public class TOF extends KernelGE {
 
         if (getBoolean(TOF3D_MT_INDIV)) {
             set(Loop_xd, Opcode.CodeEnum.GotoWhile);
-            set(Loop_xd_start, Events.P90.ID - 1);
+            if (models.get(FatSat.class).isEnabled())
+                set(Loop_xd_start, Events.FatSatPulse.ID - 1);
+            else
+                set(Loop_xd_start, Events.P90.ID - 1);
         } else {
             set(Loop_xd, Opcode.CodeEnum.GotoFirstWhile);
             set(Loop_xd_start, 0);
@@ -205,10 +211,7 @@ public class TOF extends KernelGE {
 
         if (hasParam(TOF3D_EXT_SHIRNK_FACTOR) && !isMultiplanar) {
             if (isEnableSlice && !gradSlice.prepareSliceSelection(tx_bandwidth_90, slice_thickness_excitation * (100 - getDouble(TOF3D_EXT_SHIRNK_FACTOR)) / 100)) {
-                slice_thickness_excitation = gradSlice.getSliceThickness() / ((100 - getDouble(TOF3D_EXT_SHIRNK_FACTOR)) / 100);
-                double slice_thickness_min = (isMultiplanar ? slice_thickness_excitation : (slice_thickness_excitation / userMatrixDimension3D));
-                notifyOutOfRangeParam(SLICE_THICKNESS, slice_thickness_min, ((NumberParam) getParam(SLICE_THICKNESS)).getMaxValue(), "Pulse length too short to reach this slice thickness");
-                sliceThickness = slice_thickness_min;
+                notifyOutOfRangeParam(FIELD_OF_VIEW_3D, fov3d, ((NumberParam) getParam(FIELD_OF_VIEW_3D)).getMaxValue(), "Pulse length too short to reach this fov3d");
             }
         } else {
             if (isEnableSlice && !gradSlice.prepareSliceSelection(tx_bandwidth_90, slice_thickness_excitation)) {
@@ -260,15 +263,6 @@ public class TOF extends KernelGE {
 
         if (!isMultiplanar) {
             getParam(SPACING_BETWEEN_SLAB).setValue(getInt(NUMBER_OF_SLAB) > 1 ? -getDouble(SLAB_OVERLAP) / 100 * sliceThickness * userMatrixDimension3D : 0);
-
-            if (isElliptical) {
-                if (userMatrixDimension3D / (double) userMatrixDimension2D < 0.5) {
-                    userMatrixDimension3D = floorEven(userMatrixDimension2D / 2);
-                    acqMatrixDimension3D = userMatrixDimension3D;
-                    getParam(USER_MATRIX_DIMENSION_3D).setValue(userMatrixDimension3D);
-                    getParam(ACQUISITION_MATRIX_DIMENSION_3D).setValue(acqMatrixDimension3D);
-                }
-            }
         } else {
             if (models.get(TofSat.class).isEnabled()) {
                 nb_shoot_3d = acqMatrixDimension3D; // TOF does not allow interleaved slice within the TR
@@ -404,7 +398,7 @@ public class TOF extends KernelGE {
                     + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopSatBandStart.ID - 1)
                     + models.get(ExtTrig.class).getDuration()
                     + delay_sat_band
-                    + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID + 1, Events.LoopSatBandStart.ID - 1);
+                    + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID + 1, Events.LoopMultiPlanarStartShort.ID - 1);
             delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStartShort.ID, Events.Delay1.ID);
         } else {
             delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1)

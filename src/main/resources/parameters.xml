@@ -23,7 +23,7 @@
             <key>ACQUISITION_MATRIX_DIMENSION_1D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_MATRIX_DIMENSION_1D</name>
-                <value>128</value>
+                <value>256</value>
                 <defaultValue>128</defaultValue>
                 <description>The acquisition size of the first dimension</description>
                 <displayedName>Acquisition 1D</displayedName>
@@ -41,7 +41,7 @@
             <key>ACQUISITION_MATRIX_DIMENSION_2D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_MATRIX_DIMENSION_2D</name>
-                <value>128</value>
+                <value>160</value>
                 <defaultValue>128</defaultValue>
                 <description>The acquisition size of the second dimension</description>
                 <displayedName>Acquisition 2D</displayedName>
@@ -114,7 +114,7 @@
             <key>ACQUISITION_NB_ECHO_TRAIN</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_NB_ECHO_TRAIN</name>
-                <value>2268</value>
+                <value>2582</value>
                 <defaultValue>0</defaultValue>
                 <description></description>
                 <displayedName>ACQUISITION_NB_ECHO_TRAIN</displayedName>
@@ -132,7 +132,7 @@
             <key>ACQUISITION_NB_VIEW</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_NB_VIEW</name>
-                <value>2268</value>
+                <value>2582</value>
                 <defaultValue>0</defaultValue>
                 <description></description>
                 <displayedName>ACQUISITION_NB_VIEW</displayedName>
@@ -326,11 +326,11 @@
             <key>DYNAMIC_MIN_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>DYNAMIC_MIN_TIME</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Execute the dynamic scan without delay between repetition</description>
                 <displayedName>DYNAMIC_MIN_TIME</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Delay</group>
                 <category>Acquisition</category>
@@ -340,11 +340,11 @@
             <key>DYNAMIC_SEQUENCE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>DYNAMIC_SEQUENCE</name>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>Sequence used for dynamic acquisitions</description>
                 <displayedName>DYNAMIC_SEQUENCE</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Miscellaneous</group>
                 <category>Acquisition</category>
@@ -354,11 +354,11 @@
             <key>DYN_NUMBER_OF_ACQUISITION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>DYN_NUMBER_OF_ACQUISITION</name>
-                <value>3</value>
+                <value>1</value>
                 <defaultValue>1</defaultValue>
                 <description></description>
                 <displayedName>DYN_NUMBER_OF_ACQUISITION</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Scan</numberEnum>
@@ -372,11 +372,11 @@
             <key>DYN_TIME_BTW_FRAMES</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>DYN_TIME_BTW_FRAMES</name>
-                <value>278.529</value>
+                <value>1.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>The time between 4D acquisition</description>
                 <displayedName>TIME_BETWEEN_FRAMES</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Time</numberEnum>
@@ -655,7 +655,7 @@
             <key>FIELD_OF_VIEW_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FIELD_OF_VIEW_3D</name>
-                <value>3.09E-4</value>
+                <value>0.0075</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Field of View in the 3rd direction : total coverage</description>
                 <displayedName>FOV_3D</displayedName>
@@ -2541,7 +2541,7 @@
             <key>RECEIVER_COUNT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RECEIVER_COUNT</name>
-                <value>4</value>
+                <value>1</value>
                 <defaultValue>1</defaultValue>
                 <description>The number of receivers</description>
                 <displayedName>Receiver Count</displayedName>
@@ -2595,7 +2595,7 @@
             <key>RESOLUTION_FREQUENCY</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RESOLUTION_FREQUENCY</name>
-                <value>5.0E-4</value>
+                <value>2.5E-4</value>
                 <defaultValue>5.0E-4</defaultValue>
                 <description>True Pixel dimension in the frequency encoding direction</description>
                 <displayedName>RESOLUTION_FREQUENCY</displayedName>
@@ -2613,7 +2613,7 @@
             <key>RESOLUTION_PHASE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RESOLUTION_PHASE</name>
-                <value>5.0E-4</value>
+                <value>4.0E-4</value>
                 <defaultValue>5.0E-4</defaultValue>
                 <description>True pixel dimension in the phase encoding direction</description>
                 <displayedName>RESOLUTION_PHASE</displayedName>
@@ -2631,7 +2631,7 @@
             <key>RESOLUTION_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RESOLUTION_SLICE</name>
-                <value>3.09E-4</value>
+                <value>0.0075</value>
                 <defaultValue>0.0</defaultValue>
                 <description>True pixel dimension in the 3rd direction</description>
                 <displayedName>RESOLUTION_SLICE</displayedName>
@@ -2829,7 +2829,7 @@
             <key>SEQUENCE_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
-                <value>1.153</value>
+                <value>1.441</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>SEQUENCE_TIME</displayedName>
@@ -2862,7 +2862,7 @@
             <key>SEQ_DESCRIPTION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQ_DESCRIPTION</name>
-                <value>GE_2D_AXI_128x128x1</value>
+                <value>GE_2D_AXI_256x160x1</value>
                 <defaultValue></defaultValue>
                 <description></description>
                 <displayedName>SEQ_DESCRIPTION</displayedName>
@@ -2890,7 +2890,7 @@
             <key>SLAB_OVERLAP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SLAB_OVERLAP</name>
-                <value>0.0</value>
+                <value>50.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>SLAB_OVERLAP</displayedName>
@@ -2925,7 +2925,7 @@
             <key>SLICE_THICKNESS</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SLICE_THICKNESS</name>
-                <value>3.09E-4</value>
+                <value>0.0075</value>
                 <defaultValue>0.005</defaultValue>
                 <description>The slice thickness</description>
                 <displayedName>SL</displayedName>
@@ -2993,7 +2993,7 @@
             <key>SPECTRAL_WIDTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SPECTRAL_WIDTH</name>
-                <value>32018.44262295082</value>
+                <value>64036.88524590164</value>
                 <defaultValue>12500.0</defaultValue>
                 <description>The spectral width of the reception ( SW BW, bandwidth )</description>
                 <displayedName>SW</displayedName>
@@ -10236,7 +10236,7 @@
             <key>USER_MATRIX_DIMENSION_1D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_1D</name>
-                <value>128</value>
+                <value>256</value>
                 <defaultValue>1</defaultValue>
                 <description></description>
                 <displayedName>USER_ACQUISITION_MATRIX_DIMENSION_1D</displayedName>
@@ -10254,7 +10254,7 @@
             <key>USER_MATRIX_DIMENSION_2D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_2D</name>
-                <value>128</value>
+                <value>160</value>
                 <defaultValue>1</defaultValue>
                 <description></description>
                 <displayedName>USER_ACQUISITION_MATRIX_DIMENSION_2D</displayedName>

@@ -315,7 +315,11 @@ public class TOF extends KernelGE {
 
         if (isEnablePhase && isElliptical) {
             Log.info(getClass(), " flow comp not supported ");
-            gradPhase2D.preparePhaseEncoding(acqMatrixDimension2D, fovPhase, is_k_s_centred);
+            if (isElliptical)
+                gradPhase2D.preparePhaseEncoding(userMatrixDimension2D, fovPhase, is_k_s_centred);
+            else
+                gradPhase2D.preparePhaseEncoding(acqMatrixDimension2D, fovPhase, is_k_s_centred);
+            
             gradPhase2D.reoderPhaseEncoding(plugin);
         }
 

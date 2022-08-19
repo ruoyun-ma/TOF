@@ -34,7 +34,7 @@ import static rs2d.sequence.gradientecho.U.*;
 // **************************************************************************************************
 //
 public class TOF extends KernelGE {
-    private String sequenceVersion = "Version x1.6";
+    private String sequenceVersion = "Version x1.7";
     private boolean isElliptical;
     private double slice_thickness_excitation;
 

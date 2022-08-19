@@ -25,8 +25,8 @@
                 <name>ACQUISITION_MATRIX_DIMENSION_1D</name>
                 <value>256</value>
                 <defaultValue>128</defaultValue>
-                <description>The acquisition size of the first dimension</description>
-                <displayedName>Acquisition 1D</displayedName>
+                <description>Info: Size of the initial dataset (raw data) in first dimension</description>
+                <displayedName>Acquisition Matrix 1D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -41,10 +41,10 @@
             <key>ACQUISITION_MATRIX_DIMENSION_2D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_MATRIX_DIMENSION_2D</name>
-                <value>160</value>
+                <value>256</value>
                 <defaultValue>128</defaultValue>
-                <description>The acquisition size of the second dimension</description>
-                <displayedName>Acquisition 2D</displayedName>
+                <description>Info: Size of the initial dataset (raw data) in second dimension</description>
+                <displayedName>Acquisition Matrix 2D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -59,10 +59,10 @@
             <key>ACQUISITION_MATRIX_DIMENSION_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_MATRIX_DIMENSION_3D</name>
-                <value>1</value>
+                <value>4</value>
                 <defaultValue>1</defaultValue>
-                <description>The acquisition size of the third dimension</description>
-                <displayedName>Acquisition 3D</displayedName>
+                <description>Info: Size of the initial dataset (raw data) in third dimension</description>
+                <displayedName>Acquisition Matrix 3D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -79,8 +79,8 @@
                 <name>ACQUISITION_MATRIX_DIMENSION_4D</name>
                 <value>1</value>
                 <defaultValue>1</defaultValue>
-                <description>The acquisition size of the fourth dimension</description>
-                <displayedName>Acquisition 4D</displayedName>
+                <description>Info: Size of the initial dataset (raw data) in fourth dimension</description>
+                <displayedName>Acquisition Matrix 4D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -152,8 +152,8 @@
                 <name>ACQUISITION_TIME_OFFSET</name>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
-                <description>Relative acquisition start times in Dynamic or MultiSeries scans</description>
-                <displayedName>ACQUISITION_TIME_OFFSET</displayedName>
+                <description>Info: Relative acquisition start times in Dynamic or MultiSeries scans</description>
+                <displayedName>Acquisition time offset </displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <numberEnum>Time</numberEnum>
@@ -310,7 +310,7 @@
                 <name>DUMMY_SCAN</name>
                 <value>0</value>
                 <defaultValue>128</defaultValue>
-                <description>Dummy Scan</description>
+                <description>Number of dummy cycles used to reach steady-state</description>
                 <displayedName>DS</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -372,7 +372,7 @@
             <key>DYN_TIME_BTW_FRAMES</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>DYN_TIME_BTW_FRAMES</name>
-                <value>1.0</value>
+                <value>37.889</value>
                 <defaultValue>0.0</defaultValue>
                 <description>The time between 4D acquisition</description>
                 <displayedName>TIME_BETWEEN_FRAMES</displayedName>
@@ -392,7 +392,7 @@
                 <name>ECHO_SPACING</name>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
-                <description>The delay between echo</description>
+                <description>Echo spacing : delay between two consecutive echoes of the train (ETL&gt;1), input if MultiEcho - Separated Scans unchecked</description>
                 <displayedName>ECHO_SPACING</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -410,7 +410,7 @@
                 <name>ECHO_TIME</name>
                 <value>0.00505</value>
                 <defaultValue>0.005</defaultValue>
-                <description>The echo time ( TE )</description>
+                <description>Echo Time</description>
                 <displayedName>TE</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -428,8 +428,8 @@
                 <name>ECHO_TRAIN_LENGTH</name>
                 <value>1</value>
                 <defaultValue>1</defaultValue>
-                <description>The echo train lentgth</description>
-                <displayedName>ETL</displayedName>
+                <description>Echo Train Length for multiecho acquisition</description>
+                <displayedName>ECHO_TRAIN_LENGTH</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -639,8 +639,8 @@
                 <name>FIELD_OF_VIEW</name>
                 <value>0.064</value>
                 <defaultValue>0.6</defaultValue>
-                <description>The field of view</description>
-                <displayedName>FOV</displayedName>
+                <description>Field Of View along the frequency encoding direction</description>
+                <displayedName>FOV Read</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -655,10 +655,10 @@
             <key>FIELD_OF_VIEW_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FIELD_OF_VIEW_3D</name>
-                <value>0.0075</value>
+                <value>0.02</value>
                 <defaultValue>0.0</defaultValue>
-                <description>Field of View in the 3rd direction : total coverage</description>
-                <displayedName>FOV_3D</displayedName>
+                <description>Info: Field Of View coverage along the direction orthogonal to the phase and frequency encoding directions</description>
+                <displayedName>FOV Slice/3D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -675,8 +675,8 @@
                 <name>FIELD_OF_VIEW_PHASE</name>
                 <value>0.064</value>
                 <defaultValue>0.08</defaultValue>
-                <description>Field of View in the phase encoding direction</description>
-                <displayedName>FOV_PHASE</displayedName>
+                <description>Field Of View along the phase encoding direction</description>
+                <displayedName>FOV Phase</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -693,8 +693,8 @@
                 <name>FLIP_ANGLE</name>
                 <value>90.0</value>
                 <defaultValue>5.0</defaultValue>
-                <description>The flip angle for the excitation</description>
-                <displayedName>Flip angle</displayedName>
+                <description>Excitation flip angle</description>
+                <displayedName>Flip Angle</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -774,8 +774,8 @@
                 <name>FOV_SQUARE</name>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
-                <description>Impose FOV_PHASE= FOV</description>
-                <displayedName>FOV_SQUARE</displayedName>
+                <description>Enable to enforce a square FOV (Phase FOV ratio = 100%)</description>
+                <displayedName>Square FOV</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Dimension</group>
@@ -828,10 +828,10 @@
             <key>GRADIENT_ENABLE_REWINDING</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>GRADIENT_ENABLE_REWINDING</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
-                <description>Do Gradient Rewind instead of Spoiling</description>
-                <displayedName>GRADIENT_ENABLE_REWINDING</displayedName>
+                <description>Enable to do gradient rewind instead of spoiling</description>
+                <displayedName>Gradient Rewinding </displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
@@ -856,10 +856,10 @@
             <key>GRADIENT_ENABLE_SPOILER</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>GRADIENT_ENABLE_SPOILER</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
-                <description>Enable gradient spoiler on the three direction</description>
-                <displayedName>GRADIENT_ENABLE_SPOILER</displayedName>
+                <description>Enable gradient spoiler in the three directions</description>
+                <displayedName>Gradient Spoiling</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
@@ -927,9 +927,9 @@
                 <value>0.0</value>
                 <value>0.0</value>
                 <value>0.0</value>
-                <description></description>
-                <displayedName>GRAD_AMP_SPOILER_SL_PH_SL</displayedName>
-                <locked>false</locked>
+                <description>List of spoiler gradient amplitudes [Slice, Phase, Read]</description>
+                <displayedName>GRAD_AMP_SPOILER_SL_PH_RE</displayedName>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <numberEnum>PERCENT</numberEnum>
                 <minValue>0.0</minValue>
@@ -1093,7 +1093,7 @@
                 <defaultValue>1.0</defaultValue>
                 <defaultValue>0.0</defaultValue>
                 <description>Direction cosines of the first row and the first column with respect to the subject</description>
-                <displayedName>IMAGE_ORIENTATION_SUBJECT</displayedName>
+                <displayedName>Image Orientation</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <numberEnum>Double</numberEnum>
@@ -1197,8 +1197,8 @@
                 <name>KSPACE_FILLING</name>
                 <value>Linear</value>
                 <defaultValue>Linear</defaultValue>
-                <description></description>
-                <displayedName>KSPACE_FILLING</displayedName>
+                <description>Choose the way to fill the k-space i.e. the order of line acquisition</description>
+                <displayedName>k-space Filling</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -1213,8 +1213,8 @@
                 <name>KS_CENTERED</name>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
-                <description>Center the k-space around k0(check) or go through k0</description>
-                <displayedName>KS_CENTERED</displayedName>
+                <description>Center the k-space around k0 (Checked) or go through k0 (Unchecked)</description>
+                <displayedName>k-space Centered</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
@@ -1347,8 +1347,8 @@
                 <name>MULTISERIES_PARAMETER_NAME</name>
                 <value></value>
                 <defaultValue></defaultValue>
-                <description>Name of MultiSeries Parameter</description>
-                <displayedName>MULTISERIES_PARAMETER_NAME</displayedName>
+                <description>Info: Name of the multiseries parameter. Can be TE (multi-echoes) or Trigger Delay</description>
+                <displayedName>Multiseries param name</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -1363,8 +1363,8 @@
             <key>MULTISERIES_PARAMETER_VALUE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>MULTISERIES_PARAMETER_VALUE</name>
-                <description>Values of MultiSeries Parameter</description>
-                <displayedName>MULTISERIES_PARAMETER_VALUE</displayedName>
+                <description>Info: List of valueS of the incremented parameter in multiseries mode. Can be TE (multi-echoes) or Trigger Delay</description>
+                <displayedName>Multiseries param values</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <numberEnum>Double</numberEnum>
@@ -1378,10 +1378,10 @@
             <key>MULTI_PLANAR_EXCITATION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>MULTI_PLANAR_EXCITATION</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>true</defaultValue>
-                <description>Multi planar excitation</description>
-                <displayedName>Multi planar</displayedName>
+                <description>Switch between 2D multislice (enable) or 3D acquisition (disable)</description>
+                <displayedName>2D-Imaging </displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Miscellaneous</group>
@@ -1946,7 +1946,7 @@
                 <name>NUMBER_OF_AVERAGES</name>
                 <value>1</value>
                 <defaultValue>1</defaultValue>
-                <description>The number of average</description>
+                <description>Number of averages</description>
                 <displayedName>NEX</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -1964,9 +1964,9 @@
                 <name>NUMBER_OF_INTERLEAVED_SLICE</name>
                 <value>1</value>
                 <defaultValue>1</defaultValue>
-                <description></description>
-                <displayedName>NUMBER_OF_INTERLEAVED_SLICE</displayedName>
-                <locked>true</locked>
+                <description>Info: Number of interleaved slice acquired during one TR</description>
+                <displayedName>No. Slices per TR</displayedName>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Scan</numberEnum>
@@ -1980,10 +1980,10 @@
             <key>NUMBER_OF_SHOOT_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>NUMBER_OF_SHOOT_3D</name>
-                <value>1</value>
+                <value>4</value>
                 <defaultValue>1</defaultValue>
-                <description>Number of Slice set acquiered sequencially</description>
-                <displayedName>Number of Shoot 3D</displayedName>
+                <description>To split the slices in different packs (nb of slices per TR = nb of slices / number of slice packs). Increase the number of packs (must be a divisor of the number of slices) to reach shorter TR</description>
+                <displayedName>No. Interleaved Slice Packs</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -2015,7 +2015,7 @@
             <key>OBSERVED_FREQUENCY</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OBSERVED_FREQUENCY</name>
-                <value>1.2793707200410439E8</value>
+                <value>1.28E8</value>
                 <defaultValue>6.3E7</defaultValue>
                 <description>The frequency of the acquisition</description>
                 <displayedName>Observed frequency</displayedName>
@@ -2245,7 +2245,7 @@
                 <name>OFF_CENTER_FIELD_OF_VIEW_1D</name>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
-                <description>Offset in Readout Direction</description>
+                <description>Info: Off-center distance in Readout Direction</description>
                 <displayedName>Location 1D</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -2263,7 +2263,7 @@
                 <name>OFF_CENTER_FIELD_OF_VIEW_2D</name>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
-                <description>Offset in Phase Encoding Direction</description>
+                <description>Info: Off-center distance in Phase Encoding Direction</description>
                 <displayedName>Location 2D</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -2281,7 +2281,7 @@
                 <name>OFF_CENTER_FIELD_OF_VIEW_3D</name>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
-                <description>Offset in the slice direction</description>
+                <description>Info: Off-center distance in Slice Direction</description>
                 <displayedName>Location 3D</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -2320,7 +2320,7 @@
                 <name>OFF_CENTER_FIELD_OF_VIEW_X</name>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
-                <description>Location in the R/L direction</description>
+                <description>Off-center distance  in the R/L direction</description>
                 <displayedName>Location X</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -2338,7 +2338,7 @@
                 <name>OFF_CENTER_FIELD_OF_VIEW_Y</name>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
-                <description>Location in the A/P direction</description>
+                <description>Off-center distance in the A/P direction</description>
                 <displayedName>Location Y</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -2356,7 +2356,7 @@
                 <name>OFF_CENTER_FIELD_OF_VIEW_Z</name>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
-                <description>Location in the I/S direction</description>
+                <description>Off-center distance in the I/S direction</description>
                 <displayedName>Location Z</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -2465,8 +2465,8 @@
                 <name>PHASE_FIELD_OF_VIEW_RATIO</name>
                 <value>100.0</value>
                 <defaultValue>100.0</defaultValue>
-                <description>Fov ratio in the phase direction</description>
-                <displayedName>Phase FOV ratio</displayedName>
+                <description>Info: Ratio between the phase-encoded FOV and the frequency-encoded FOV in % </description>
+                <displayedName>Phase FOV Ratio</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -2561,7 +2561,7 @@
                 <name>RECEIVER_GAIN</name>
                 <value>42.0</value>
                 <defaultValue>1.0</defaultValue>
-                <description>The receiver gain</description>
+                <description>Receiver Gain</description>
                 <displayedName>RG</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -2577,9 +2577,9 @@
             <key>REPETITION_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>REPETITION_TIME</name>
-                <value>0.01</value>
+                <value>0.037</value>
                 <defaultValue>0.2</defaultValue>
-                <description>The repetition time ( TR )</description>
+                <description>Repetition Time</description>
                 <displayedName>TR</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -2597,8 +2597,8 @@
                 <name>RESOLUTION_FREQUENCY</name>
                 <value>2.5E-4</value>
                 <defaultValue>5.0E-4</defaultValue>
-                <description>True Pixel dimension in the frequency encoding direction</description>
-                <displayedName>RESOLUTION_FREQUENCY</displayedName>
+                <description>Info: True voxel size in the frequency encoding direction (FOV/acquisition_matrix_dimension_1D) </description>
+                <displayedName>Voxel Size Read</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -2613,10 +2613,10 @@
             <key>RESOLUTION_PHASE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RESOLUTION_PHASE</name>
-                <value>4.0E-4</value>
+                <value>2.5E-4</value>
                 <defaultValue>5.0E-4</defaultValue>
-                <description>True pixel dimension in the phase encoding direction</description>
-                <displayedName>RESOLUTION_PHASE</displayedName>
+                <description>Info:True voxel in the phase encoding direction (FOV/acquisition_matrix_dimension_2D) </description>
+                <displayedName>Voxel Size Phase</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -2631,10 +2631,10 @@
             <key>RESOLUTION_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RESOLUTION_SLICE</name>
-                <value>0.0075</value>
+                <value>0.005</value>
                 <defaultValue>0.0</defaultValue>
-                <description>True pixel dimension in the 3rd direction</description>
-                <displayedName>RESOLUTION_SLICE</displayedName>
+                <description>Info: True voxel size in the third direction</description>
+                <displayedName>Voxel Size Slice/3D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -2649,10 +2649,10 @@
             <key>RF_SPOILING</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>RF_SPOILING</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
-                <description>Enable the phase cycling in the sequence</description>
-                <displayedName>RF_SPOILING</displayedName>
+                <description>Enable the RF spoiling by cycling RF phase in the sequence</description>
+                <displayedName>RF-Spoiling</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Reception</group>
@@ -2816,8 +2816,8 @@
                 <name>SEQUENCE_NAME</name>
                 <value>TOF</value>
                 <defaultValue>TOF</defaultValue>
-                <description>The name of the sequence</description>
-                <displayedName>Seq</displayedName>
+                <description>Info: Name of the sequence</description>
+                <displayedName>Sequence Name</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>true</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -2829,10 +2829,10 @@
             <key>SEQUENCE_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
-                <value>1.441</value>
+                <value>37.906105000000004</value>
                 <defaultValue>0.0</defaultValue>
-                <description></description>
-                <displayedName>SEQUENCE_TIME</displayedName>
+                <description>Info: Total acquisition time</description>
+                <displayedName>Sequence Version</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -2847,10 +2847,10 @@
             <key>SEQUENCE_VERSION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQUENCE_VERSION</name>
-                <value>Version x1.6</value>
+                <value>Version x1.7</value>
                 <defaultValue></defaultValue>
-                <description></description>
-                <displayedName>SEQUENCE_VERSION</displayedName>
+                <description>Info: Name of the sequence</description>
+                <displayedName>Sequence Version</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -2862,10 +2862,10 @@
             <key>SEQ_DESCRIPTION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQ_DESCRIPTION</name>
-                <value>GE_2D_AXI_256x160x1</value>
+                <value>GE_3D_AXI_256x256x4_TOFSAT</value>
                 <defaultValue></defaultValue>
-                <description></description>
-                <displayedName>SEQ_DESCRIPTION</displayedName>
+                <description>Info: Description of the sequence</description>
+                <displayedName>Sequence Description</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -2925,10 +2925,10 @@
             <key>SLICE_THICKNESS</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SLICE_THICKNESS</name>
-                <value>0.0075</value>
+                <value>0.005</value>
                 <defaultValue>0.005</defaultValue>
-                <description>The slice thickness</description>
-                <displayedName>SL</displayedName>
+                <description>Slice Thickness</description>
+                <displayedName>Slice Thickness</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -2943,12 +2943,12 @@
             <key>SOFTWARE_VERSION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SOFTWARE_VERSION</name>
-                <value>Software version</value>
-                <defaultValue>Software version</defaultValue>
-                <description>The version of the software</description>
-                <displayedName>SOFTWARE_VERSION</displayedName>
+                <value>PRim 2021.06.2</value>
+                <defaultValue>Spinlab 2020.06.1</defaultValue>
+                <description>Info: Software version</description>
+                <displayedName>Software Version</displayedName>
                 <locked>false</locked>
-                <lockedToDefault>true</lockedToDefault>
+                <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <group>Miscellaneous</group>
                 <category>Miscellaneous</category>
@@ -2977,7 +2977,7 @@
                 <name>SPACING_BETWEEN_SLICE</name>
                 <value>0.0</value>
                 <defaultValue>5.0</defaultValue>
-                <description>Spacing betwin slice</description>
+                <description>Gap between slice</description>
                 <displayedName>Slice Spacing</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -2995,8 +2995,8 @@
                 <name>SPECTRAL_WIDTH</name>
                 <value>64036.88524590164</value>
                 <defaultValue>12500.0</defaultValue>
-                <description>The spectral width of the reception ( SW BW, bandwidth )</description>
-                <displayedName>SW</displayedName>
+                <description>Receiver bandwidth (SW, BW, bandwidth )</description>
+                <displayedName>BW</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -3043,10 +3043,10 @@
             <key>SQUARE_PIXEL</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>SQUARE_PIXEL</name>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>true</defaultValue>
-                <description>Same pixel dimension in frequency and phase encoding direction, this will change Phase FOV</description>
-                <displayedName>SQUARE_PIXEL</displayedName>
+                <description>Enable to have same pixel dimension in frequency and phase encoding direction, this will adjust Acquisition matrix 2D size</description>
+                <displayedName>Square Pixel</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Dimension</group>
@@ -3074,8 +3074,8 @@
                 <name>SUBJECT_POSITION</name>
                 <value>HeadFirstProne</value>
                 <defaultValue>FeetFirstProne</defaultValue>
-                <description>Subject position relative to the magnet.</description>
-                <displayedName>SUBJECT_POSITION</displayedName>
+                <description>Subject position relative to the magnet</description>
+                <displayedName>Subject Position</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>true</restrictedToSuggested>
@@ -3335,7 +3335,7 @@
             <key>TOF3D_TX_RAMP_SLOPE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF3D_TX_RAMP_SLOPE</name>
-                <value>0.0</value>
+                <value>2.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description></description>
                 <displayedName>TOF3D_TX_RAMP_SLOPE</displayedName>
@@ -3352,7 +3352,7 @@
             <key>TOF_ENABLED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>TOF_ENABLED</name>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description></description>
                 <displayedName>TOF_ENABLED</displayedName>
@@ -9988,8 +9988,8 @@
                 <name>TRANSFORM_PLUGIN</name>
                 <value>Sequential4D</value>
                 <defaultValue>Sequential4D</defaultValue>
-                <description>Transform the acquisition space to the k space</description>
-                <displayedName>Transform plugin</displayedName>
+                <description>Info :Transform the acquisition space to the k-space. </description>
+                <displayedName>Transform Plugin</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -10019,8 +10019,10 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>TRIGGER_TIME</name>
                 <value>0.0</value>
-                <value>278.529</value>
-                <value>557.058</value>
+                <value>37.889</value>
+                <value>75.778</value>
+                <value>113.667</value>
+                <value>151.556</value>
                 <defaultValue>0.01</defaultValue>
                 <description>TRIGGER_TIME.description</description>
                 <displayedName>TRIGGER_TIME</displayedName>
@@ -10037,7 +10039,7 @@
             <key>TX_AMP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP</name>
-                <value>87.98404042555254</value>
+                <value>83.51911111321503</value>
                 <defaultValue>40.0</defaultValue>
                 <description>Emission amplitude</description>
                 <displayedName>TX_AMP</displayedName>
@@ -10073,7 +10075,7 @@
             <key>TX_AMP_90</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP_90</name>
-                <value>87.98404042555254</value>
+                <value>83.51911111321503</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Amplitude of the transmitter</description>
                 <displayedName>TX_AMP_90</displayedName>
@@ -10104,7 +10106,7 @@
             <key>TX_ATT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_ATT</name>
-                <value>41.0</value>
+                <value>31.0</value>
                 <defaultValue>36.0</defaultValue>
                 <description>Emission attenuation</description>
                 <displayedName>TX_ATT</displayedName>
@@ -10238,8 +10240,8 @@
                 <name>USER_MATRIX_DIMENSION_1D</name>
                 <value>256</value>
                 <defaultValue>1</defaultValue>
-                <description></description>
-                <displayedName>USER_ACQUISITION_MATRIX_DIMENSION_1D</displayedName>
+                <description>Image size in readout direction (user matrix dimension 1D)</description>
+                <displayedName>Matrix 1D Read</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -10254,10 +10256,10 @@
             <key>USER_MATRIX_DIMENSION_2D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_2D</name>
-                <value>160</value>
+                <value>256</value>
                 <defaultValue>1</defaultValue>
-                <description></description>
-                <displayedName>USER_ACQUISITION_MATRIX_DIMENSION_2D</displayedName>
+                <description>Image size in phase encoding direction  (user matrix dimension 2D)</description>
+                <displayedName>Matrix 2D Phase</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -10272,10 +10274,10 @@
             <key>USER_MATRIX_DIMENSION_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_3D</name>
-                <value>1</value>
+                <value>4</value>
                 <defaultValue>1</defaultValue>
-                <description></description>
-                <displayedName>USER_ACQUISITION_MATRIX_DIMENSION_3D</displayedName>
+                <description>Image size in the third dimension: slice or 3D PE  (user matrix dimension 3D)</description>
+                <displayedName>Matrix 3D / No. Slices</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -10292,8 +10294,8 @@
                 <name>USER_MATRIX_DIMENSION_4D</name>
                 <value>1</value>
                 <defaultValue>1</defaultValue>
-                <description></description>
-                <displayedName>USER_ACQUISITION_MATRIX_DIMENSION_4D</displayedName>
+                <description>Info: Number of image data set (user maxtrix 4D)</description>
+                <displayedName>No. Data Sets</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -10310,8 +10312,8 @@
                 <name>USER_PARTIAL_PHASE</name>
                 <value>100.0</value>
                 <defaultValue>100.0</defaultValue>
-                <description>Partial Fourier acquisition in the phase encoding direction</description>
-                <displayedName>PARTIAL_PHASE</displayedName>
+                <description>Percent of the k-space that is acquired, the rest will be completed by zeros in the phase encoding direction (Zero-filling interpolation)</description>
+                <displayedName>Zero-filling Phase</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -10326,10 +10328,10 @@
             <key>USER_PARTIAL_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_PARTIAL_SLICE</name>
-                <value>100.0</value>
+                <value>75.0</value>
                 <defaultValue>100.0</defaultValue>
-                <description>Partial Fourier acquisition in the 3D slice encoding direction</description>
-                <displayedName>PARTIAL_SLICE</displayedName>
+                <description>Percent of the k-space that is acquired, the rest will be completed by zeros in the third encoding direction (only for 3D acquisition mode)</description>
+                <displayedName>Zero-filling 3D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -10346,7 +10348,7 @@
                 <name>USER_ZERO_FILLING_2D</name>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
-                <description>Percentage of zero filling (=1 - PARTIAL_PHASE)</description>
+                <description>Info: Percentage of zero filling (=1 - Zero-filling Phase)</description>
                 <displayedName>ZERO_FILING_2D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -10362,9 +10364,9 @@
             <key>USER_ZERO_FILLING_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_ZERO_FILLING_3D</name>
-                <value>0.0</value>
+                <value>25.0</value>
                 <defaultValue>0.0</defaultValue>
-                <description>Percentage of zero filing  (=1 - PARTIAL_SLICE)</description>
+                <description>Info: Percentage of zero filling (=1 - Zero-filling 3D)</description>
                 <displayedName>ZERO_FILING_3D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>

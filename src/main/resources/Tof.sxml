@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <sequenceIO>
-    <sequence rxGainKey="key34" ifFreqKey="key1" accuDimKey="key2" phaseModKey="key4" extTrigModeKey="key425" extTrigSourceKey="key421" dummyScanKey="key30" preScanKey="key3" firCoefSelectedKey="key419" updateDimensionKey="key427" acqTimeModeKey="param1" gradRotPhiKey="key31" gradRotThetaKey="key32" gradRotPsiKey="key33">
+    <sequence rxGainTableKey="table35" ifFreqKey="key1" accuDimKey="key2" phaseModKey="key4" extTrigModeKey="key425" extTrigSourceKey="key421" dummyScanKey="key30" preScanKey="key3" firCoefSelectedKey="key419" updateDimensionKey="key427" acqTimeModeKey="param1" gradRotPhiKey="key31" gradRotThetaKey="key32" gradRotPsiKey="key33">
         <acquChannel swKey="key46" nameKey="key45">
             <keyList></keyList>
             <keyList></keyList>
@@ -3195,23 +3195,6 @@
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
-            </value>
-        </Entry>
-        <Entry>
-            <count>1</count>
-            <key>key34</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>Rx_gain</name>
-                <value>42.0</value>
-                <defaultValue>1.0</defaultValue>
-                <displayedName>Rx Gain</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-                <numberEnum>RxGain</numberEnum>
-                <minValue>0.0</minValue>
-                <maxValue>120.0</maxValue>
-                <group>Reception</group>
             </value>
         </Entry>
         <Entry>
@@ -14695,83 +14678,6 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <generator>
-                    <name>SincRampPhase</name>
-                    <params xsi:type="numberParam">
-                        <name>Nb points</name>
-                        <value>128</value>
-                        <defaultValue>64</defaultValue>
-                        <description>Number of points</description>
-                        <displayedName>Nb points</displayedName>
-                        <locked>false</locked>
-                        <lockedToDefault>false</lockedToDefault>
-                        <restrictedToSuggested>false</restrictedToSuggested>
-                        <numberEnum>Integer</numberEnum>
-                        <minValue>1</minValue>
-                        <maxValue>262144</maxValue>
-                    </params>
-                    <params xsi:type="numberParam">
-                        <name>Nb lobe</name>
-                        <value>3</value>
-                        <defaultValue>3</defaultValue>
-                        <description>Number of lobe of the sinus cardinal (ramp)</description>
-                        <displayedName>Nb lobe</displayedName>
-                        <locked>false</locked>
-                        <lockedToDefault>false</lockedToDefault>
-                        <restrictedToSuggested>false</restrictedToSuggested>
-                        <numberEnum>Integer</numberEnum>
-                        <minValue>-2147483648</minValue>
-                        <maxValue>10</maxValue>
-                    </params>
-                    <params xsi:type="numberParam">
-                        <name>Amplitude</name>
-                        <value>100.0</value>
-                        <defaultValue>100.0</defaultValue>
-                        <description>Amplitude of the sinus cardinal(ramp)</description>
-                        <displayedName>Amplitude</displayedName>
-                        <locked>false</locked>
-                        <lockedToDefault>false</lockedToDefault>
-                        <restrictedToSuggested>false</restrictedToSuggested>
-                        <numberEnum>Double</numberEnum>
-                        <minValue>-1.7976931348623157E308</minValue>
-                        <maxValue>1.7976931348623157E308</maxValue>
-                    </params>
-                    <params xsi:type="booleanParam">
-                        <name>Abs</name>
-                        <value>true</value>
-                        <defaultValue>false</defaultValue>
-                        <description>Absolue value</description>
-                        <displayedName>Abs</displayedName>
-                        <locked>false</locked>
-                        <lockedToDefault>false</lockedToDefault>
-                    </params>
-                    <params xsi:type="textParam">
-                        <name>Window</name>
-                        <value>Hamming</value>
-                        <defaultValue>None</defaultValue>
-                        <description>The apodisation window</description>
-                        <displayedName>Window</displayedName>
-                        <locked>false</locked>
-                        <lockedToDefault>false</lockedToDefault>
-                        <restrictedToSuggested>true</restrictedToSuggested>
-                        <suggestedValues>None</suggestedValues>
-                        <suggestedValues>Hanning</suggestedValues>
-                        <suggestedValues>Hamming</suggestedValues>
-                    </params>
-                    <params xsi:type="numberParam">
-                        <name>Ramp slope</name>
-                        <value>0.0</value>
-                        <defaultValue>0.1</defaultValue>
-                        <description>Slope of the ramp</description>
-                        <displayedName>Ramp slope</displayedName>
-                        <locked>false</locked>
-                        <lockedToDefault>false</lockedToDefault>
-                        <restrictedToSuggested>false</restrictedToSuggested>
-                        <numberEnum>Double</numberEnum>
-                        <minValue>-1.7976931348623157E308</minValue>
-                        <maxValue>100.0</maxValue>
-                    </params>
-                </generator>
                 <list>0.0</list>
                 <list>0.0</list>
                 <list>0.0</list>
@@ -15288,83 +15194,6 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>0</address>
-                <generator>
-                    <name>SincRamp</name>
-                    <params xsi:type="numberParam">
-                        <name>Nb points</name>
-                        <value>128</value>
-                        <defaultValue>64</defaultValue>
-                        <description>Number of points</description>
-                        <displayedName>Nb points</displayedName>
-                        <locked>false</locked>
-                        <lockedToDefault>false</lockedToDefault>
-                        <restrictedToSuggested>false</restrictedToSuggested>
-                        <numberEnum>Integer</numberEnum>
-                        <minValue>1</minValue>
-                        <maxValue>262144</maxValue>
-                    </params>
-                    <params xsi:type="numberParam">
-                        <name>Nb lobe</name>
-                        <value>3</value>
-                        <defaultValue>3</defaultValue>
-                        <description>Number of lobe of the sinus cardinal (ramp)</description>
-                        <displayedName>Nb lobe</displayedName>
-                        <locked>false</locked>
-                        <lockedToDefault>false</lockedToDefault>
-                        <restrictedToSuggested>false</restrictedToSuggested>
-                        <numberEnum>Integer</numberEnum>
-                        <minValue>-2147483648</minValue>
-                        <maxValue>10</maxValue>
-                    </params>
-                    <params xsi:type="numberParam">
-                        <name>Amplitude</name>
-                        <value>100.0</value>
-                        <defaultValue>100.0</defaultValue>
-                        <description>Amplitude of the sinus cardinal(ramp)</description>
-                        <displayedName>Amplitude</displayedName>
-                        <locked>false</locked>
-                        <lockedToDefault>false</lockedToDefault>
-                        <restrictedToSuggested>false</restrictedToSuggested>
-                        <numberEnum>Double</numberEnum>
-                        <minValue>-1.7976931348623157E308</minValue>
-                        <maxValue>1.7976931348623157E308</maxValue>
-                    </params>
-                    <params xsi:type="booleanParam">
-                        <name>Abs</name>
-                        <value>true</value>
-                        <defaultValue>false</defaultValue>
-                        <description>Absolue value</description>
-                        <displayedName>Abs</displayedName>
-                        <locked>false</locked>
-                        <lockedToDefault>false</lockedToDefault>
-                    </params>
-                    <params xsi:type="textParam">
-                        <name>Window</name>
-                        <value>Hamming</value>
-                        <defaultValue>None</defaultValue>
-                        <description>The apodisation window</description>
-                        <displayedName>Window</displayedName>
-                        <locked>false</locked>
-                        <lockedToDefault>false</lockedToDefault>
-                        <restrictedToSuggested>true</restrictedToSuggested>
-                        <suggestedValues>None</suggestedValues>
-                        <suggestedValues>Hanning</suggestedValues>
-                        <suggestedValues>Hamming</suggestedValues>
-                    </params>
-                    <params xsi:type="numberParam">
-                        <name>Ramp slope</name>
-                        <value>0.0</value>
-                        <defaultValue>0.1</defaultValue>
-                        <description>Slope of the ramp</description>
-                        <displayedName>Ramp slope</displayedName>
-                        <locked>false</locked>
-                        <lockedToDefault>false</lockedToDefault>
-                        <restrictedToSuggested>false</restrictedToSuggested>
-                        <numberEnum>Double</numberEnum>
-                        <minValue>-1.7976931348623157E308</minValue>
-                        <maxValue>100.0</maxValue>
-                    </params>
-                </generator>
                 <list>3.131572730409183E-16</list>
                 <list>0.1279345224099308</list>
                 <list>0.2624847054113778</list>
@@ -16305,6 +16134,20 @@
                 <locked>true</locked>
                 <address>0</address>
                 <list>-37.25811840766906</list>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>table35</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="table">
+                <name>Rx_gain</name>
+                <description></description>
+                <numberEnum>RxGain</numberEnum>
+                <order>One</order>
+                <group>Reception</group>
+                <locked>false</locked>
+                <address>-1</address>
+                <list>42.0</list>
             </value>
         </Entry>
         <Entry>

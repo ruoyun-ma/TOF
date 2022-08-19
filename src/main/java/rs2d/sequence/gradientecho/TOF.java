@@ -468,7 +468,7 @@ public class TOF extends KernelGE {
     }
 
     public String getVersion() {
-        return "master";
+        return "LocalDev";
     }
     //</editor-fold>
 }

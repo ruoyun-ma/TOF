@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <application>
-    <name>TOF_master</name>
+    <name>TOF_LocalDev</name>
     <description></description>
     <usage></usage>
     <generatorName>seqdev-temp</generatorName>
@@ -339,7 +339,7 @@
                 <key>BASE_FREQ_1</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>BASE_FREQ_1</name>
-                    <value>1.2793707200410439E8</value>
+                    <value>1.28E8</value>
                     <defaultValue>1.27552944E8</defaultValue>
                     <description>The base frequency of the first sequence channel</description>
                     <displayedName>Base Freq 1</displayedName>
@@ -562,7 +562,7 @@
                 <key>ECHO_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ECHO_TIME</name>
-                    <value>0.00481</value>
+                    <value>0.00505</value>
                     <defaultValue>0.005</defaultValue>
                     <description>The echo time ( TE )</description>
                     <displayedName>TE</displayedName>
@@ -1042,7 +1042,7 @@
                 <key>GRADIENT_RISE_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>GRADIENT_RISE_TIME</name>
-                    <value>1.1E-4</value>
+                    <value>1.5E-4</value>
                     <defaultValue>0.0</defaultValue>
                     <description>The rise time of the gradient</description>
                     <displayedName>GRADIENT_RISE_TIME</displayedName>
@@ -2731,7 +2731,7 @@
                 <key>REPETITION_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>REPETITION_TIME</name>
-                    <value>0.009000000000000001</value>
+                    <value>0.01</value>
                     <defaultValue>0.2</defaultValue>
                     <description>The repetition time ( TR )</description>
                     <displayedName>TR</displayedName>

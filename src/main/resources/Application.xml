@@ -600,8 +600,8 @@
                     <name>FATSAT_BANDWIDTH</name>
                     <value>400.0</value>
                     <defaultValue>448.0</defaultValue>
-                    <description></description>
-                    <displayedName>FATSAT_BANDWIDTH</displayedName>
+                    <description>Fat-Sat pulse Bandwidth</description>
+                    <displayedName>FatSat - TX BW</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -616,11 +616,11 @@
                 <key>FATSAT_FLIP_ANGLE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FATSAT_FLIP_ANGLE</name>
-                    <value>0.0</value>
+                    <value>90.0</value>
                     <defaultValue>90.0</defaultValue>
-                    <description></description>
-                    <displayedName>FATSAT_FLIP_ANGLE</displayedName>
-                    <locked>true</locked>
+                    <description>Info: Fat-Sat pulse (90°) Flip Angle</description>
+                    <displayedName>FatSat - Flip Angle</displayedName>
+                    <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>Angle</numberEnum>
@@ -636,8 +636,8 @@
                     <name>FATSAT_GRAD_APP_TIME</name>
                     <value>6.2E-4</value>
                     <defaultValue>0.001</defaultValue>
-                    <description></description>
-                    <displayedName>FATSAT_GRAD_APP_TIME</displayedName>
+                    <description>Top time of Fat-Sat gradient</description>
+                    <displayedName>FatSat - Gradient Duration</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -654,10 +654,10 @@
                     <name>FATSAT_OFFSET_FREQ</name>
                     <value>448.0</value>
                     <defaultValue>448.0</defaultValue>
-                    <description></description>
-                    <displayedName>FATSAT_OFFSET_FREQ</displayedName>
+                    <description>Separation between fat and water frequencies (at 3T ~ 420-448Hz ; at 1.5T ~ 210-224Hz): Default = water frequency * 3.5</description>
+                    <displayedName>Fat-Water Offset</displayedName>
                     <locked>false</locked>
-                    <lockedToDefault>true</lockedToDefault>
+                    <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>FrequencyOffset</numberEnum>
                     <minValue>-1.5E9</minValue>
@@ -672,9 +672,9 @@
                     <name>FATSAT_PERIODE</name>
                     <value>0.07</value>
                     <defaultValue>0.05</defaultValue>
-                    <description></description>
+                    <description>Not applicable in TOF</description>
                     <displayedName>FATSAT_PERIODE</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>Time</numberEnum>
@@ -690,9 +690,9 @@
                     <name>FATSAT_PERIODE_EFF</name>
                     <value>0.06207235200000001</value>
                     <defaultValue>0.0</defaultValue>
-                    <description></description>
+                    <description>Not applicable in TOF</description>
                     <displayedName>FATSAT_PERIODE_EFF</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>Time</numberEnum>
@@ -706,11 +706,11 @@
                 <key>FATSAT_TX_AMP_90</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FATSAT_TX_AMP_90</name>
-                    <value>100.0</value>
+                    <value>46.31679206846105</value>
                     <defaultValue>0.0</defaultValue>
-                    <description></description>
-                    <displayedName>FATSAT_TX_AMP_90</displayedName>
-                    <locked>true</locked>
+                    <description>Info: Fat-Sat Pulse amplitude</description>
+                    <displayedName>FatSat - TX Amplitude</displayedName>
+                    <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>TxAmp</numberEnum>
@@ -724,10 +724,10 @@
                 <key>FATSAT_TX_LENGTH</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FATSAT_TX_LENGTH</name>
-                    <value>5.0E-6</value>
+                    <value>0.008</value>
                     <defaultValue>0.0</defaultValue>
-                    <description></description>
-                    <displayedName>FATSAT_TX_LENGTH</displayedName>
+                    <description>Info: Fat-Sat Pulse duration</description>
+                    <displayedName>FatSat - TX Length</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -744,8 +744,8 @@
                     <name>FATSAT_TX_SHAPE</name>
                     <value>GAUSSIAN</value>
                     <defaultValue>HARD</defaultValue>
-                    <description></description>
-                    <displayedName>FATSAT_TX_SHAPE</displayedName>
+                    <description>Fat-Sat Pulse shape</description>
+                    <displayedName>FatSat - TX Shape</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>true</restrictedToSuggested>
@@ -763,10 +763,10 @@
                 <key>FAT_SATURATION_ENABLED</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>FAT_SATURATION_ENABLED</name>
-                    <value>false</value>
+                    <value>true</value>
                     <defaultValue>false</defaultValue>
-                    <description></description>
-                    <displayedName>FAT_SATURATION_ENABLED</displayedName>
+                    <description>Enable Fat-Sat preparation pulse </description>
+                    <displayedName>Fat Saturation</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <group>Miscellaneous</group>
@@ -865,8 +865,8 @@
                     <name>FLOWCOMP_DURATION</name>
                     <value>7.0E-4</value>
                     <defaultValue>5.0E-4</defaultValue>
-                    <description></description>
-                    <displayedName>FLOWCOMP_DURATION</displayedName>
+                    <description>Duration of plateau of flow compensation gradient</description>
+                    <displayedName>Flow Comp Duration</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -880,10 +880,10 @@
                 <key>FLOW_COMPENSATION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>FLOW_COMPENSATION</name>
-                    <value>true</value>
+                    <value>false</value>
                     <defaultValue>false</defaultValue>
-                    <description>Use flow compensation</description>
-                    <displayedName>Flow compensation</displayedName>
+                    <description>Enable flow compensation</description>
+                    <displayedName>Flow Compensation</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <group>Miscellaneous</group>
@@ -2152,7 +2152,7 @@
                 <key>NUMBER_OF_SLAB</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>NUMBER_OF_SLAB</name>
-                    <value>1</value>
+                    <value>4</value>
                     <defaultValue>1</defaultValue>
                     <description></description>
                     <displayedName>NUMBER_OF_SLAB</displayedName>
@@ -2819,8 +2819,8 @@
                     <name>SATBAND_DISTANCE_FROM_FOV</name>
                     <value>0.005</value>
                     <defaultValue>0.0</defaultValue>
-                    <description></description>
-                    <displayedName>SATBAND_DISTANCE_FROM_FOV</displayedName>
+                    <description>Distance of the Saturation Band from the FOV </description>
+                    <displayedName>SatBand - Distance from FOV</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -2837,8 +2837,8 @@
                     <name>SATBAND_ENABLED</name>
                     <value>false</value>
                     <defaultValue>false</defaultValue>
-                    <description></description>
-                    <displayedName>SATBAND_ENABLED</displayedName>
+                    <description>Enable Saturation Band</description>
+                    <displayedName>Saturation Band</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <group>Miscellaneous</group>
@@ -2851,8 +2851,8 @@
                     <name>SATBAND_GRAD_AMP_SPOILER</name>
                     <value>40.0</value>
                     <defaultValue>40.0</defaultValue>
-                    <description>Amplitude of the spoiler gradient after saturation pulse</description>
-                    <displayedName>SATBAND_GRAD_AMP_SPOILER</displayedName>
+                    <description>Amplitude of the spoiler gradient following the saturation pulse. </description>
+                    <displayedName>SatBand - Gradient Amplitude</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -2869,8 +2869,8 @@
                     <name>SATBAND_ORIENTATION</name>
                     <value>ALL</value>
                     <defaultValue>CRANIAL</defaultValue>
-                    <description></description>
-                    <displayedName>SATBAND_ORIENTATION</displayedName>
+                    <description>Orientation of the Saturation Band</description>
+                    <displayedName>SatBand - Orientation</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -2894,8 +2894,8 @@
                     <name>SATBAND_T1</name>
                     <value>500.0</value>
                     <defaultValue>500.0</defaultValue>
-                    <description></description>
-                    <displayedName>SATBAND_T1</displayedName>
+                    <description>T1 of the saturated tissue : the longitudinal magnetization will be nulled when the excitation pulse is applied.</description>
+                    <displayedName>SatBand - Target T1</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -2912,8 +2912,8 @@
                     <name>SATBAND_THICKNESS</name>
                     <value>0.01</value>
                     <defaultValue>0.01</defaultValue>
-                    <description></description>
-                    <displayedName>SATBAND_THICKNESS</displayedName>
+                    <description>Thickness of the Saturation Band</description>
+                    <displayedName>SatBand - Thickness</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -2928,10 +2928,10 @@
                 <key>SATBAND_TX_AMP</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SATBAND_TX_AMP</name>
-                    <value>100.0</value>
+                    <value>23.931361339686273</value>
                     <defaultValue>0.0</defaultValue>
-                    <description></description>
-                    <displayedName>SATBAND_TX_AMP</displayedName>
+                    <description>Info: Saturation Band Pulse amplitude</description>
+                    <displayedName>SatBand - TX Amplitude</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -2948,8 +2948,8 @@
                     <name>SATBAND_TX_SHAPE</name>
                     <value>SINC3</value>
                     <defaultValue>HARD</defaultValue>
-                    <description></description>
-                    <displayedName>SATBAND_TX_SHAPE</displayedName>
+                    <description>Saturation Band Pulse shape</description>
+                    <displayedName>SatBand - TX Shape</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>true</restrictedToSuggested>
@@ -2983,7 +2983,7 @@
                 <key>SEQUENCE_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SEQUENCE_TIME</name>
-                    <value>37.906105000000004</value>
+                    <value>37.889</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: Total acquisition time</description>
                     <displayedName>Sequence Version</displayedName>
@@ -3016,7 +3016,7 @@
                 <key>SEQ_DESCRIPTION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
-                    <value>GE_3D_AXI_256x256x4_TOFSAT</value>
+                    <value>GE_3D_AXI_256x256x4_FATSAT_TOFSAT</value>
                     <defaultValue></defaultValue>
                     <description>Info: Description of the sequence</description>
                     <displayedName>Sequence Description</displayedName>
@@ -3273,16 +3273,16 @@
                 <key>TOF2D_FLOW_TAU</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TOF2D_FLOW_TAU</name>
-                    <value>4.9999999999999996E-6</value>
+                    <value>4.9999999999999996E-5</value>
                     <defaultValue>0.0</defaultValue>
-                    <description></description>
-                    <displayedName>TOF2D_FLOW_TAU</displayedName>
+                    <description>Delay right in front of excitation pulse to allow the blood flow from satband through imaging slice/volume</description>
+                    <displayedName>TOF Flow - Delay</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
-                    <numberEnum>Double</numberEnum>
-                    <minValue>-1.7976931348623157E308</minValue>
-                    <maxValue>1.7976931348623157E308</maxValue>
+                    <numberEnum>Time</numberEnum>
+                    <minValue>0.0</minValue>
+                    <maxValue>1.0E9</maxValue>
                     <category>Acquisition</category>
                 </value>
             </entry>
@@ -3292,8 +3292,8 @@
                     <name>TOF2D_FLOW_VELOCITY</name>
                     <value>0.12</value>
                     <defaultValue>0.3</defaultValue>
-                    <description></description>
-                    <displayedName>TOF2D_FLOW_VELOCITY</displayedName>
+                    <description>Average velocity of (blood) flow</description>
+                    <displayedName>TOF Flow - Velocity</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -3322,8 +3322,8 @@
                     <name>TOF2D_SB_DISTANCE_FROM_SLICE</name>
                     <value>0.005</value>
                     <defaultValue>0.002</defaultValue>
-                    <description></description>
-                    <displayedName>TOF2D_SB_DISTANCE_FROM_SLICE</displayedName>
+                    <description>Distance of the TOF satband from the active imaging slice (2D) or imaging volume (3D)</description>
+                    <displayedName>TOF SatBand - Distance from FOV</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -3340,8 +3340,8 @@
                     <name>TOF2D_SB_GRAMP_SP</name>
                     <value>40.0</value>
                     <defaultValue>40.0</defaultValue>
-                    <description>Spoiler gradient</description>
-                    <displayedName>TOF2D_SB_GRAMP_SP</displayedName>
+                    <description>Amplitude of the spoiler gradient following the TOF satband RF pulse. </description>
+                    <displayedName>TOF SatBand - Spoiler Grad Amp</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -3358,8 +3358,8 @@
                     <name>TOF2D_SB_POSITION</name>
                     <value>ABOVE THE SLICE</value>
                     <defaultValue>BELOW THE SLICE</defaultValue>
-                    <description>Saturation band position</description>
-                    <displayedName>TOF2D_SB_POSITION</displayedName>
+                    <description>TOF Satband position relative to imaging slices</description>
+                    <displayedName>TOF Satband -  Position</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -3375,8 +3375,8 @@
                     <name>TOF2D_SB_THICKNESS</name>
                     <value>0.001</value>
                     <defaultValue>0.01</defaultValue>
-                    <description></description>
-                    <displayedName>TOF2D_SB_THICKNESS</displayedName>
+                    <description>Thickness of the Saturation Band</description>
+                    <displayedName>TOF SatBand - Thickness</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -3459,7 +3459,7 @@
                 <key>TOF3D_MT_INDIV</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>TOF3D_MT_INDIV</name>
-                    <value>true</value>
+                    <value>false</value>
                     <defaultValue>false</defaultValue>
                     <description></description>
                     <displayedName>TOF3D_MT_INDIV</displayedName>
@@ -3522,8 +3522,8 @@
                     <name>TOF_SB_OFFSET</name>
                     <value>0.0</value>
                     <defaultValue>0.0</defaultValue>
-                    <description></description>
-                    <displayedName>TOF_SB_OFFSET</displayedName>
+                    <description>Additional global requency offset applied to all TOF satband RF pulses</description>
+                    <displayedName>TOF Satband - Offset Frequence</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -3551,8 +3551,8 @@
                     <name>TOF_SB_TX_SHAPE</name>
                     <value>GAUSSIAN</value>
                     <defaultValue>HARD</defaultValue>
-                    <description></description>
-                    <displayedName>TOF_SB_TX_SHAPE</displayedName>
+                    <description>TOF satband RF pulse shape</description>
+                    <displayedName>TOF SatBand - TX Shape</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -10482,7 +10482,7 @@
                 <key>USER_PARTIAL_SLICE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>USER_PARTIAL_SLICE</name>
-                    <value>75.0</value>
+                    <value>100.0</value>
                     <defaultValue>100.0</defaultValue>
                     <description>Percent of the k-space that is acquired, the rest will be completed by zeros in the third encoding direction (only for 3D acquisition mode)</description>
                     <displayedName>Zero-filling 3D</displayedName>
@@ -10518,7 +10518,7 @@
                 <key>USER_ZERO_FILLING_3D</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>USER_ZERO_FILLING_3D</name>
-                    <value>25.0</value>
+                    <value>0.0</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: Percentage of zero filling (=1 - Zero-filling 3D)</description>
                     <displayedName>ZERO_FILING_3D</displayedName>

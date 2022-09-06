@@ -10026,7 +10026,7 @@
             <key>key479</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
                 <name>Loop_xd</name>
-                <value xsi:type="codeEnum">GotoWhile</value>
+                <value xsi:type="codeEnum">GotoFirstWhile</value>
                 <defaultValue xsi:type="codeEnum">Continu</defaultValue>
                 <displayedName>Loop_xd</displayedName>
                 <locked>false</locked>
@@ -10989,7 +10989,7 @@
             <key>key577</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Loop_xd_start</name>
-                <value>18</value>
+                <value>0</value>
                 <defaultValue>0</defaultValue>
                 <displayedName>Loop_xd_start</displayedName>
                 <locked>false</locked>
@@ -12500,7 +12500,7 @@
             <key>key797</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Enable_fs</name>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Enable_fs</displayedName>
@@ -14543,7 +14543,7 @@
             <key>key1080</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Grad_enable_flowcomp</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>Grad_enable_flowcomp</displayedName>
@@ -15686,7 +15686,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>5</address>
-                <list>1.615200000000018E-5</list>
+                <list>0.001001152</list>
             </value>
         </Entry>
         <Entry>
@@ -16130,10 +16130,10 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>1</address>
-                <list>1.6565147615983726</list>
-                <list>1.4887065111983473</list>
-                <list>1.3208982607983217</list>
-                <list>1.1530900103982962</list>
+                <list>1.039991631854158</list>
+                <list>0.8721833814541324</list>
+                <list>0.704375131054107</list>
+                <list>0.5365668806540815</list>
             </value>
         </Entry>
         <Entry>
@@ -16173,7 +16173,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>-1</address>
-                <list>0.0</list>
+                <list>32.0</list>
             </value>
         </Entry>
         <Entry>
@@ -16276,7 +16276,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>-1</address>
-                <list>12.0</list>
+                <list>0.0</list>
             </value>
         </Entry>
         <Entry>
@@ -16290,7 +16290,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>17.747683164816173</list>
+                <list>6.96418746148966</list>
             </value>
         </Entry>
         <Entry>
@@ -17266,7 +17266,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>8</address>
-                <list>0.027796151999999998</list>
+                <list>0.0017461519999999939</list>
             </value>
         </Entry>
         <Entry>
@@ -17982,7 +17982,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>4.9999999999999996E-6</list>
+                <list>4.9999999999999996E-5</list>
             </value>
         </Entry>
         <Entry>
@@ -18202,7 +18202,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>0.0</list>
+                <list>46.31679206846105</list>
             </value>
         </Entry>
         <Entry>
@@ -18421,7 +18421,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-0.0</list>
+                <list>-5280.000000000001</list>
             </value>
         </Entry>
         <Entry>
@@ -18511,7 +18511,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>0.0</list>
+                <list>-2.8244089937458834</list>
             </value>
         </Entry>
         <Entry>
@@ -18525,7 +18525,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>5.0E-6</list>
+                <list>0.008</list>
             </value>
         </Entry>
         <Entry>
@@ -18539,7 +18539,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>2</address>
-                <list>5.0E-6</list>
+                <list>1.5E-4</list>
             </value>
         </Entry>
         <Entry>
@@ -18553,7 +18553,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>3</address>
-                <list>5.0E-6</list>
+                <list>6.2E-4</list>
             </value>
         </Entry>
         <Entry>
@@ -18621,7 +18621,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-0.0</list>
+                <list>-19800.0</list>
             </value>
         </Entry>
         <Entry>
@@ -18660,7 +18660,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>6</address>
-                <list>0.0</list>
+                <list>448.0</list>
             </value>
         </Entry>
         <Entry>
@@ -18894,7 +18894,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>83.379404279018</list>
+                <list>23.931361339686273</list>
             </value>
         </Entry>
         <Entry>
@@ -19190,7 +19190,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>7.0E-4</list>
+                <list>5.0E-6</list>
             </value>
         </Entry>
         <Entry>
@@ -19218,7 +19218,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>1.5E-4</list>
+                <list>5.0E-6</list>
             </value>
         </Entry>
         <Entry>
@@ -19230,9 +19230,9 @@
                 <numberEnum>GradAmp</numberEnum>
                 <order>FourLoop</order>
                 <group>Gradient</group>
-                <locked>true</locked>
+                <locked>false</locked>
                 <address>1</address>
-                <list>-0.7833470354397084</list>
+                <list>-1.8242328222568551</list>
             </value>
         </Entry>
         <Entry>
@@ -19284,7 +19284,7 @@
                 <numberEnum>GradAmp</numberEnum>
                 <order>FourLoop</order>
                 <group>Gradient</group>
-                <locked>true</locked>
+                <locked>false</locked>
                 <address>1</address>
                 <list>0.0</list>
             </value>
@@ -19352,7 +19352,7 @@
                 <numberEnum>GradAmp</numberEnum>
                 <order>FourLoop</order>
                 <group>Gradient</group>
-                <locked>true</locked>
+                <locked>false</locked>
                 <address>1</address>
                 <list>-13.701382775991334</list>
             </value>

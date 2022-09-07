@@ -1008,6 +1008,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("IMAGE_ORIENTATION_SUBJECT");
             param.setDisplayedName("Image Orientation");
             param.setDescription("Direction cosines of the first row and the first column with respect to the subject");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
             param.setMinValue(-1.7976931348623157E308);
@@ -1112,7 +1113,7 @@ public enum U implements GeneratorParamEnum {
             param.setDisplayedName("k-space Filling");
             param.setDescription("Choose the way to fill the k-space i.e. the order of line acquisition");
             param.setCategory(Category.Acquisition);
-            param.setValue("3DElliptic");
+            param.setValue("Linear");
             param.setDefaultValue("Linear");
             param.setSuggestedValues(asList("Linear", "3DElliptic"));
             return param;
@@ -1138,7 +1139,7 @@ public enum U implements GeneratorParamEnum {
             BooleanParam param = new BooleanParam();
             param.setName("KS_CENTER_MODE");
             param.setDisplayedName("KS_CENTER_MODE");
-            param.setDescription("Turn off the PE gradient and acquieres two single scan only");
+            param.setDescription("Enable to turn off the phase encoding gradient and acquire two scans only. Used for RG calibration setup ");
             param.setCategory(Category.Acquisition);
             param.setValue(false);
             param.setDefaultValue(false);
@@ -1577,8 +1578,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             ListNumberParam param = new ListNumberParam();
             param.setName("OFF_CENTER_FIELD_OF_VIEW_EFF");
-            param.setDisplayedName("OFF_CENTER_FIELD_OF_VIEW_EFF");
-            param.setDescription("Offcenter effective in 1D 2D and 3D (read phase slice)");
+            param.setDisplayedName("Location Eff");
+            param.setDescription("Info: Off Center effective handeled by the acquisition in 1D, 2D and 3D (read, phase, slice)");
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
             param.setMinValue(-1.7976931348623157E308);
@@ -1677,9 +1678,10 @@ public enum U implements GeneratorParamEnum {
             param.setName("PARTIAL_OVERSAMPLING");
             param.setDisplayedName("PARTIAL_OVERSAMPLING");
             param.setDescription("");
+            param.setLocked(true);
             param.setCategory(Category.Acquisition);
             param.setValue(false);
-            param.setDefaultValue(true);
+            param.setDefaultValue(false);
             return param;
         }
     },
@@ -2079,7 +2081,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(100.324);
+            param.setValue(155.652);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2652,7 +2654,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Info :Transform the acquisition space to the k-space. ");
             param.setGroup(EnumGroup.Scan);
             param.setCategory(Category.Acquisition);
-            param.setValue("Elliptical3D");
+            param.setValue("Sequential4D");
             param.setDefaultValue("Sequential4D");
             param.setSuggestedValues(asList("Sequential4D", "Elliptical3D", "Sequential4D_TOF"));
             return param;
@@ -2794,7 +2796,7 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             ListNumberParam param = new ListNumberParam();
             param.setName("TX_BANDWIDTH_FACTOR_3D");
-            param.setDisplayedName("TX_BANDWIDTH_FACTOR_3D");
+            param.setDisplayedName("TX BW Factor 3D");
             param.setDescription("Bandwidth factor 3D of the RF pulse for 4 shapes: 1-HARD, 2-GAUSSIAN, 3-SINC3 and 4-SINC5");
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);

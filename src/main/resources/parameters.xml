@@ -1096,7 +1096,7 @@
                 <defaultValue>0.0</defaultValue>
                 <description>Direction cosines of the first row and the first column with respect to the subject</description>
                 <displayedName>Image Orientation</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <numberEnum>Double</numberEnum>
                 <minValue>-1.7976931348623157E308</minValue>
@@ -1198,7 +1198,7 @@
             <key>KSPACE_FILLING</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>KSPACE_FILLING</name>
-                <value>3DElliptic</value>
+                <value>Linear</value>
                 <defaultValue>Linear</defaultValue>
                 <description>Choose the way to fill the k-space i.e. the order of line acquisition</description>
                 <displayedName>k-space Filling</displayedName>
@@ -1230,7 +1230,7 @@
                 <name>KS_CENTER_MODE</name>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
-                <description>Turn off the PE gradient and acquieres two single scan only</description>
+                <description>Enable to turn off the phase encoding gradient and acquire two scans only. Used for RG calibration setup </description>
                 <displayedName>KS_CENTER_MODE</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -2306,8 +2306,8 @@
                 <defaultValue>0.0</defaultValue>
                 <defaultValue>0.0</defaultValue>
                 <defaultValue>0.0</defaultValue>
-                <description>Offcenter effective in 1D 2D and 3D (read phase slice)</description>
-                <displayedName>OFF_CENTER_FIELD_OF_VIEW_EFF</displayedName>
+                <description>Info: Off Center effective handeled by the acquisition in 1D, 2D and 3D (read, phase, slice)</description>
+                <displayedName>Location Eff</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <numberEnum>Location</numberEnum>
@@ -2410,10 +2410,10 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>PARTIAL_OVERSAMPLING</name>
                 <value>false</value>
-                <defaultValue>true</defaultValue>
+                <defaultValue>false</defaultValue>
                 <description></description>
                 <displayedName>PARTIAL_OVERSAMPLING</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <category>Acquisition</category>
             </value>
@@ -2832,7 +2832,7 @@
             <key>SEQUENCE_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
-                <value>100.324</value>
+                <value>155.652</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Total acquisition time</description>
                 <displayedName>Sequence Version</displayedName>
@@ -9989,7 +9989,7 @@
             <key>TRANSFORM_PLUGIN</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>TRANSFORM_PLUGIN</name>
-                <value>Elliptical3D</value>
+                <value>Sequential4D</value>
                 <defaultValue>Sequential4D</defaultValue>
                 <description>Info :Transform the acquisition space to the k-space. </description>
                 <displayedName>Transform Plugin</displayedName>
@@ -10171,7 +10171,7 @@
                 <defaultValue>0.0</defaultValue>
                 <defaultValue>7.3</defaultValue>
                 <description>Bandwidth factor 3D of the RF pulse for 4 shapes: 1-HARD, 2-GAUSSIAN, 3-SINC3 and 4-SINC5</description>
-                <displayedName>TX_BANDWIDTH_FACTOR_3D</displayedName>
+                <displayedName>TX BW Factor 3D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <numberEnum>Double</numberEnum>

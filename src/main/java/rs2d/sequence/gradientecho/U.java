@@ -15,8 +15,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("ACCU_DIM");
-            param.setDisplayedName("ACCU_DIM.name");
-            param.setDescription("ACCU_DIM.description");
+            param.setDisplayedName("ACCU_DIM");
+            param.setDescription("Dimension on which averaging is performed by the Cameleon");
             param.setGroup(EnumGroup.Scan);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Integer);
@@ -73,7 +73,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(65536);
-            param.setValue(4);
+            param.setValue(8);
             param.setDefaultValue(1);
             return param;
         }
@@ -90,7 +90,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(65536);
-            param.setValue(1);
+            param.setValue(4);
             param.setDefaultValue(1);
             return param;
         }
@@ -114,15 +114,14 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("ACQUISITION_NB_ECHO_TRAIN");
-            param.setDisplayedName("ACQUISITION_NB_ECHO_TRAIN");
-            param.setDescription("");
-            param.setLocked(true);
+            param.setDisplayedName("Nb. Echo Train");
+            param.setDescription("Info: Number of echo trains in each slab ");
             param.setGroup(EnumGroup.Scan);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(2147483647);
-            param.setValue(2582);
+            param.setValue(1320);
             param.setDefaultValue(0);
             return param;
         }
@@ -132,15 +131,14 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("ACQUISITION_NB_VIEW");
-            param.setDisplayedName("ACQUISITION_NB_VIEW");
-            param.setDescription("");
-            param.setLocked(true);
+            param.setDisplayedName("Nb. View");
+            param.setDescription("Info: Number of sampling points in 2D-3D plane");
             param.setGroup(EnumGroup.Scan);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(2147483647);
-            param.setValue(2582);
+            param.setValue(1320);
             param.setDefaultValue(0);
             return param;
         }
@@ -167,8 +165,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("ACQUISITION_TIME_PER_SCAN");
-            param.setDisplayedName("Acq Time");
-            param.setDescription("The acquisition time per scan  ( SPECTRAL_WIDTH )");
+            param.setDisplayedName("Observation Time ");
+            param.setDescription("Info: Time during which the signal is sampled by the ADC");
             param.setGroup(EnumGroup.Reception);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Time);
@@ -269,8 +267,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("DIGITAL_FILTER_REMOVED");
-            param.setDisplayedName("Digital filter removed");
-            param.setDescription("Data shift due to the digital filter are removed");
+            param.setDisplayedName("DIGITAL_FILTER_REMOVED");
+            param.setDescription("Enable to activate the data shift");
             param.setLockedToDefault(true);
             param.setGroup(EnumGroup.Reception);
             param.setCategory(Category.Acquisition);
@@ -284,7 +282,7 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("DIGITAL_FILTER_SHIFT");
-            param.setDisplayedName("Digital filter shift");
+            param.setDisplayedName("DIGITAL_FILTER_SHIFT");
             param.setDescription("Data shift due to the digital filter");
             param.setLockedToDefault(true);
             param.setGroup(EnumGroup.Reception);
@@ -319,8 +317,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("DYNAMIC_MIN_TIME");
-            param.setDisplayedName("DYNAMIC_MIN_TIME");
-            param.setDescription("Execute the dynamic scan without delay between repetition");
+            param.setDisplayedName("Dyn - Min Time");
+            param.setDescription("Enable to use the minimum time allowed to perform dynamic acquisition ");
             param.setGroup(EnumGroup.Delay);
             param.setCategory(Category.Acquisition);
             param.setValue(false);
@@ -333,11 +331,11 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("DYNAMIC_SEQUENCE");
-            param.setDisplayedName("DYNAMIC_SEQUENCE");
-            param.setDescription("Sequence used for dynamic acquisitions");
+            param.setDisplayedName("Dynamic");
+            param.setDescription("Enable dynamic acquisition measurments");
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
-            param.setValue(true);
+            param.setValue(false);
             param.setDefaultValue(false);
             return param;
         }
@@ -347,8 +345,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("DYN_NUMBER_OF_ACQUISITION");
-            param.setDisplayedName("DYN_NUMBER_OF_ACQUISITION");
-            param.setDescription("");
+            param.setDisplayedName("Dyn - No. Frames");
+            param.setDescription("Number of frames acquired in dynamic sequence");
             param.setGroup(EnumGroup.Scan);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Scan);
@@ -364,14 +362,14 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("DYN_TIME_BTW_FRAMES");
-            param.setDisplayedName("TIME_BETWEEN_FRAMES");
-            param.setDescription("The time between 4D acquisition");
+            param.setDisplayedName("Dyn - Time btw Frames");
+            param.setDescription("Time interval between frames in dynamic sequence");
             param.setGroup(EnumGroup.Delay);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(37.889);
+            param.setValue(221.185);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -416,14 +414,13 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("ECHO_TRAIN_LENGTH");
-            param.setDisplayedName("ECHO_TRAIN_LENGTH");
-            param.setDescription("Echo Train Length for multiecho acquisition");
-            param.setLocked(true);
-            param.setGroup(EnumGroup.Delay);
+            param.setDisplayedName("Echo Train Length");
+            param.setDescription("Length of echo train after one excitation pulse ( fixed to 1 in TOF)");
+            param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(1);
-            param.setMaxValue(65536);
+            param.setMaxValue(1);
             param.setValue(1);
             param.setDefaultValue(1);
             return param;
@@ -458,7 +455,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Angle);
             param.setMinValue(0.0);
             param.setMaxValue(360.0);
-            param.setValue(90.0);
+            param.setValue(0.0);
             param.setDefaultValue(90.0);
             return param;
         }
@@ -545,7 +542,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAmp);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(46.31679206846105);
+            param.setValue(100.0);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -562,7 +559,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.008);
+            param.setValue(5.0E-6);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -592,7 +589,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Enable Fat-Sat preparation pulse ");
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
-            param.setValue(true);
+            param.setValue(false);
             param.setDefaultValue(false);
             return param;
         }
@@ -604,6 +601,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("FAT_WATER_SEP_2DMRSI");
             param.setDisplayedName("FAT_WATER_SEP_2DMRSI");
             param.setDescription("Checkbox parameter for running fat-water separation plugin");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
             param.setValue(false);
@@ -714,8 +712,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("FOV_DOUBLED");
-            param.setDisplayedName("FOV_DOUBLED");
-            param.setDescription("Double the FOV and SW");
+            param.setDisplayedName("Frequency Oversampling");
+            param.setDescription("Enable double FOV and BW to avoid aliazing");
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
             param.setValue(false);
@@ -834,7 +832,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Enable gradient spoiler in the three directions");
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
-            param.setValue(false);
+            param.setValue(true);
             param.setDefaultValue(false);
             return param;
         }
@@ -1043,9 +1041,10 @@ public enum U implements GeneratorParamEnum {
             param.setName("INTERLEAVED_ECHO_TRAIN");
             param.setDisplayedName("INTERLEAVED_ECHO_TRAIN");
             param.setDescription("multiple ETL in interleaved mode");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Scan);
             param.setCategory(Category.Acquisition);
-            param.setValue(false);
+            param.setValue(true);
             param.setDefaultValue(false);
             return param;
         }
@@ -1063,7 +1062,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(8.0E-4);
+            param.setValue(9.0E-4);
             param.setDefaultValue(8.0E-4);
             return param;
         }
@@ -1082,6 +1081,8 @@ public enum U implements GeneratorParamEnum {
             param.setMaxValue(65535);
             param.setValue(1);
             param.setDefaultValue(1);
+            param.setSuggestedValues(asListNumber(1));
+            param.setRestrictedToSuggested(true);
             return param;
         }
     },
@@ -1110,7 +1111,7 @@ public enum U implements GeneratorParamEnum {
             param.setDisplayedName("k-space Filling");
             param.setDescription("Choose the way to fill the k-space i.e. the order of line acquisition");
             param.setCategory(Category.Acquisition);
-            param.setValue("Linear");
+            param.setValue("3DElliptic");
             param.setDefaultValue("Linear");
             param.setSuggestedValues(asList("Linear", "3DElliptic"));
             return param;
@@ -1149,7 +1150,8 @@ public enum U implements GeneratorParamEnum {
             ListNumberParam param = new ListNumberParam();
             param.setName("LAST_PUT");
             param.setDisplayedName("LAST_PUT");
-            param.setDescription("LAST_PUT.description");
+            param.setDescription("LAST_PUT");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Reception);
             param.setCategory(Category.Acquisition);
             param.setMinValue(-2147483648);
@@ -1396,7 +1398,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Integer);
             param.setMinValue(1);
             param.setMaxValue(2147483647);
-            param.setValue(4);
+            param.setValue(8);
             param.setDefaultValue(1);
             return param;
         }
@@ -1406,8 +1408,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("NUMBER_OF_SLAB");
-            param.setDisplayedName("NUMBER_OF_SLAB");
-            param.setDescription("");
+            param.setDisplayedName("Nb. Slab");
+            param.setDescription("Number of slabs ");
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(1);
@@ -1531,7 +1533,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Location);
             param.setMinValue(-1.7976931348623157E308);
             param.setMaxValue(1.7976931348623157E308);
-            param.setValue(0.0);
+            param.setValue(0.015);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -1584,7 +1586,7 @@ public enum U implements GeneratorParamEnum {
             param.setMinValue(-1.7976931348623157E308);
             param.setMaxValue(1.7976931348623157E308);
             param.setNumberEnum(NumberEnum.Location);
-            param.setValue(asListNumber(0.0, 0.0, 0.0));
+            param.setValue(asListNumber(0.015, 0.0, 0.0));
             param.setDefaultValue(asListNumber(0.0, 0.0, 0.0));
             return param;
         }
@@ -1601,7 +1603,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Location);
             param.setMinValue(-1.7976931348623157E308);
             param.setMaxValue(1.7976931348623157E308);
-            param.setValue(0.0);
+            param.setValue(0.015);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -1689,7 +1691,8 @@ public enum U implements GeneratorParamEnum {
             ListNumberParam param = new ListNumberParam();
             param.setName("PHASE_0");
             param.setDisplayedName("PHASE_0");
-            param.setDescription("PHASE_0.description");
+            param.setDescription("0th order phase");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Process);
             param.setMinValue(-1.7976931348623157E308);
@@ -1704,7 +1707,8 @@ public enum U implements GeneratorParamEnum {
             ListNumberParam param = new ListNumberParam();
             param.setName("PHASE_1");
             param.setDisplayedName("PHASE_1");
-            param.setDescription("PHASE_1.description");
+            param.setDescription("1st order phase");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Process);
             param.setMinValue(-1.7976931348623157E308);
@@ -1719,7 +1723,8 @@ public enum U implements GeneratorParamEnum {
             BooleanParam param = new BooleanParam();
             param.setName("PHASE_APPLIED");
             param.setDisplayedName("PHASE_APPLIED");
-            param.setDescription("PHASE_APPLIED");
+            param.setDescription("Phase application applied");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Process);
             param.setValue(false);
@@ -1750,7 +1755,7 @@ public enum U implements GeneratorParamEnum {
             BooleanParam param = new BooleanParam();
             param.setName("PHASE_RESET");
             param.setDisplayedName("PHASE_RESET");
-            param.setDescription("");
+            param.setDescription("Enable electronic phase reset at the beginning of the scan");
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
             param.setValue(false);
@@ -1849,7 +1854,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.037);
+            param.setValue(0.019);
             param.setDefaultValue(0.2);
             return param;
         }
@@ -1900,7 +1905,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Length);
             param.setMinValue(0.0);
             param.setMaxValue(0.1);
-            param.setValue(0.005);
+            param.setValue(0.0025);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2028,7 +2033,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAmp);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(23.931361339686273);
+            param.setValue(100.0);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2076,7 +2081,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(37.889);
+            param.setValue(100.324);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2103,7 +2108,7 @@ public enum U implements GeneratorParamEnum {
             param.setDisplayedName("Sequence Description");
             param.setDescription("Info: Description of the sequence");
             param.setCategory(Category.Acquisition);
-            param.setValue("GE_3D_AXI_256x256x4_FATSAT_TOFSAT");
+            param.setValue("GE_3D_AXI_256x256x8x4_TOFSAT");
             param.setDefaultValue("");
             return param;
         }
@@ -2127,13 +2132,13 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("SLAB_OVERLAP");
-            param.setDisplayedName("SLAB_OVERLAP");
-            param.setDescription("");
+            param.setDisplayedName("Slab Overlap");
+            param.setDescription("Percentage of the slab volume overlapped with one neighbouring slab");
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.PERCENT);
             param.setMinValue(-100.0);
             param.setMaxValue(100.0);
-            param.setValue(50.0);
+            param.setValue(25.0);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2167,7 +2172,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Length);
             param.setMinValue(5.0E-5);
             param.setMaxValue(1.7976931348623157E308);
-            param.setValue(0.005);
+            param.setValue(0.0025);
             param.setDefaultValue(0.005);
             return param;
         }
@@ -2191,13 +2196,13 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("SPACING_BETWEEN_SLAB");
-            param.setDisplayedName("SPACING_BETWEEN_SLAB");
-            param.setDescription("");
+            param.setDisplayedName("Slab Spacing");
+            param.setDescription("Space between slabs");
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.LengthOffset);
             param.setMinValue(-1.7976931348623157E308);
             param.setMaxValue(1.7976931348623157E308);
-            param.setValue(0.0);
+            param.setValue(-0.005);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2241,8 +2246,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("SPECTRAL_WIDTH_OPT");
-            param.setDisplayedName("SPECTRAL_WIDTH_OPT");
-            param.setDescription("Use SW to calculate SW_PER_PIXEL (true) Use SW_PER_PIXEL to calculate SW (false)");
+            param.setDisplayedName("BW Option");
+            param.setDescription("Use BW to calculate BW per pixel (Check) / Use  BW per pixel to calculate BW (Uncheck)");
             param.setGroup(EnumGroup.Reception);
             param.setCategory(Category.Acquisition);
             param.setValue(false);
@@ -2255,8 +2260,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("SPECTRAL_WIDTH_PER_PIXEL");
-            param.setDisplayedName("SPECTRAL_WIDTH_PER_PIXEL");
-            param.setDescription("Spectral Width per pixel in Hz / Pix");
+            param.setDisplayedName("BW/px");
+            param.setDescription("Bandwidth per pixel ");
             param.setGroup(EnumGroup.Delay);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.SW);
@@ -2276,7 +2281,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Enable to have same pixel dimension in frequency and phase encoding direction, this will adjust Acquisition matrix 2D size");
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
-            param.setValue(true);
+            param.setValue(false);
             param.setDefaultValue(true);
             return param;
         }
@@ -2390,8 +2395,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("TOF2D_SB_DISTANCE_FROM_SLICE");
-            param.setDisplayedName("TOF SatBand - Distance from FOV");
-            param.setDescription("Distance of the TOF satband from the active imaging slice (2D) or imaging volume (3D)");
+            param.setDisplayedName("TOF 2D Satband - Distance from FOV");
+            param.setDescription("Distance of the TOF satband from the active imaging slice in 2D acquisition");
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Location);
@@ -2414,7 +2419,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.PERCENT);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(40.0);
+            param.setValue(60.0);
             param.setDefaultValue(40.0);
             return param;
         }
@@ -2424,8 +2429,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             TextParam param = new TextParam();
             param.setName("TOF2D_SB_POSITION");
-            param.setDisplayedName("TOF Satband -  Position");
-            param.setDescription("TOF Satband position relative to imaging slices");
+            param.setDisplayedName("TOF 2D Satband -  Position");
+            param.setDescription("TOF Satband position relative to imaging slices in 2D acquisition");
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
             param.setValue("ABOVE THE SLICE");
@@ -2439,8 +2444,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("TOF2D_SB_THICKNESS");
-            param.setDisplayedName("TOF SatBand - Thickness");
-            param.setDescription("Thickness of the Saturation Band");
+            param.setDisplayedName("TOF 2D SatBand - Thickness");
+            param.setDescription("Thickness of the TOF saturation band in 2D acquisition");
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Length);
@@ -2472,13 +2477,13 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("TOF3D_MT_BANDWIDTH");
-            param.setDisplayedName("TOF3D_MT_BANDWIDTH");
-            param.setDescription("");
+            param.setDisplayedName("TOF 3D MT Sat - Bandwidth");
+            param.setDescription("Bandwidth of TOF MT saturation pulse");
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Frequency);
             param.setMinValue(0.0);
             param.setMaxValue(3.0E9);
-            param.setValue(200.0);
+            param.setValue(400.0);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2488,13 +2493,13 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("TOF3D_MT_FLIP_ANGLE");
-            param.setDisplayedName("TOF3D_MT_FLIP_ANGLE");
-            param.setDescription("MT flip angle only for 3D TOF");
+            param.setDisplayedName("TOF 3D MT Sat - Flip Angle");
+            param.setDescription("Info: nominal flip angle of TOF 3D MT saturation pulse");
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.RotationAngle);
             param.setMinValue(4.9E-324);
             param.setMaxValue(1.7976931348623157E308);
-            param.setValue(2880.0);
+            param.setValue(1728.0);
             param.setDefaultValue(360.0);
             return param;
         }
@@ -2504,13 +2509,13 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("TOF3D_MT_GAMMA_B1");
-            param.setDisplayedName("TOF3D_MT_GAMMA_B1");
-            param.setDescription("");
+            param.setDisplayedName("TOF 3D MT Sat - Gamma B1");
+            param.setDescription("Gamma B1 value of TOF 3D MT saturation pulse");
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Frequency);
             param.setMinValue(0.0);
             param.setMaxValue(3.0E9);
-            param.setValue(500.0);
+            param.setValue(600.0);
             param.setDefaultValue(50.0);
             return param;
         }
@@ -2520,8 +2525,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("TOF3D_MT_INDIV");
-            param.setDisplayedName("TOF3D_MT_INDIV");
-            param.setDescription("");
+            param.setDisplayedName("TOF 3D MT Sat - One Sat Per Slab");
+            param.setDescription("True if running only one saturation pulse per slab");
             param.setCategory(Category.Acquisition);
             param.setValue(false);
             param.setDefaultValue(false);
@@ -2533,13 +2538,13 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("TOF3D_MT_TX_LENGTH");
-            param.setDisplayedName("TOF3D_MT_TX_LENGTH");
-            param.setDescription("");
+            param.setDisplayedName("TOF 3D MT Sat - Tx Length");
+            param.setDescription("Info :uration of TOF 3D MT saturation pulse");
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.016);
+            param.setValue(0.008);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2565,8 +2570,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("TOF_ENABLED");
-            param.setDisplayedName("TOF_ENABLED");
-            param.setDescription("");
+            param.setDisplayedName("TOF Enable");
+            param.setDescription("Enable TOF acquisition with stationary tissue saturation");
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
             param.setValue(true);
@@ -2646,10 +2651,9 @@ public enum U implements GeneratorParamEnum {
             param.setName("TRANSFORM_PLUGIN");
             param.setDisplayedName("Transform Plugin");
             param.setDescription("Info :Transform the acquisition space to the k-space. ");
-            param.setLocked(true);
             param.setGroup(EnumGroup.Scan);
             param.setCategory(Category.Acquisition);
-            param.setValue("Sequential4D");
+            param.setValue("Elliptical3D");
             param.setDefaultValue("Sequential4D");
             param.setSuggestedValues(asList("Sequential4D", "Elliptical3D", "Sequential4D_TOF"));
             return param;
@@ -2660,8 +2664,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("TRIGGER_EXTERNAL");
-            param.setDisplayedName("TRIGGER_EXTERNAL");
-            param.setDescription("Enable the synchronization of the sequence with the trigger");
+            param.setDisplayedName("Trigger External ");
+            param.setDescription("Enable to synchronize the acquisition with external trigger");
             param.setGroup(EnumGroup.Delay);
             param.setCategory(Category.Acquisition);
             param.setValue(false);
@@ -2674,14 +2678,14 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             ListNumberParam param = new ListNumberParam();
             param.setName("TRIGGER_TIME");
-            param.setDisplayedName("TRIGGER_TIME");
-            param.setDescription("TRIGGER_TIME.description");
+            param.setDisplayedName("Trigger Delay");
+            param.setDescription("Delays between trigger and acquisition start. (Multiple values)");
             param.setGroup(EnumGroup.Delay);
             param.setCategory(Category.Acquisition);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
             param.setNumberEnum(NumberEnum.Time);
-            param.setValue(asListNumber(0.0, 37.889, 75.778, 113.667, 151.556));
+            param.setValue(asListNumber(0.0, 221.185, 442.37, 663.5550000000001, 884.74));
             param.setDefaultValue(asListNumber(0.01));
             return param;
         }
@@ -2698,7 +2702,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.PERCENT);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(83.51911111321503);
+            param.setValue(82.75962538077337);
             param.setDefaultValue(40.0);
             return param;
         }
@@ -2731,7 +2735,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAmp);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(83.51911111321503);
+            param.setValue(82.75962538077337);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2762,7 +2766,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAtt);
             param.setMinValue(0.0);
             param.setMaxValue(63.0);
-            param.setValue(31.0);
+            param.setValue(29.0);
             param.setDefaultValue(36.0);
             return param;
         }
@@ -2813,7 +2817,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.001);
+            param.setValue(7.999999999999999E-4);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2895,7 +2899,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(1);
             param.setMaxValue(65536);
-            param.setValue(4);
+            param.setValue(8);
             param.setDefaultValue(1);
             return param;
         }
@@ -2912,7 +2916,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(1);
             param.setMaxValue(65536);
-            param.setValue(1);
+            param.setValue(4);
             param.setDefaultValue(1);
             return param;
         }

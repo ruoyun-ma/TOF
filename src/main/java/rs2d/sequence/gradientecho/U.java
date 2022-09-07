@@ -302,7 +302,7 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("DUMMY_SCAN");
-            param.setDisplayedName("DS");
+            param.setDisplayedName("Dummy Scans");
             param.setDescription("Number of dummy cycles used to reach steady-state");
             param.setGroup(EnumGroup.Scan);
             param.setCategory(Category.Acquisition);
@@ -1092,8 +1092,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("INTERMEDIATE_FREQUENCY");
-            param.setDisplayedName("INTERMEDIATE_FREQUENCY.name");
-            param.setDescription("INTERMEDIATE_FREQUENCY.description");
+            param.setDisplayedName("INTERMEDIATE_FREQUENCY");
+            param.setDescription("Info: Frequency from the Hardware used for the signal demodulation (ADC optimal frequency)");
             param.setGroup(EnumGroup.Reception);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Frequency);
@@ -1168,9 +1168,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("MAGNETIC_FIELD_STRENGTH");
-            param.setDisplayedName("B0");
-            param.setDescription("The magnetic field tregth");
-            param.setLockedToDefault(true);
+            param.setDisplayedName("B0 Strength");
+            param.setDescription("Info: Magnetic field stength from the hardware");
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Field);
@@ -1186,9 +1185,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             TextParam param = new TextParam();
             param.setName("MANUFACTURER");
-            param.setDisplayedName("MANUFACTURER");
+            param.setDisplayedName("Manufacturer");
             param.setDescription("Manufacturer");
-            param.setLockedToDefault(true);
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Miscellaneous);
             param.setValue("Manufacturer");
@@ -1235,9 +1233,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             TextParam param = new TextParam();
             param.setName("MODEL_NAME");
-            param.setDisplayedName("MODEL_NAME");
+            param.setDisplayedName("Model Name");
             param.setDescription("Model name");
-            param.setLockedToDefault(true);
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Miscellaneous);
             param.setValue("Model name");
@@ -2119,7 +2116,7 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("SETUP_MODE");
-            param.setDisplayedName("Setup");
+            param.setDisplayedName("SETUP_MODE");
             param.setDescription("True during setup process");
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
@@ -2292,9 +2289,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             TextParam param = new TextParam();
             param.setName("STATION_NAME");
-            param.setDisplayedName("STATION_NAME");
+            param.setDisplayedName("Station Name");
             param.setDescription("Station name");
-            param.setLockedToDefault(true);
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Miscellaneous);
             param.setValue("Station name");
@@ -2619,7 +2615,7 @@ public enum U implements GeneratorParamEnum {
             ListNumberParam param = new ListNumberParam();
             param.setName("TRAJ_MATRIX");
             param.setDisplayedName("TRAJ_MATRIX");
-            param.setDescription("show the acquisition dimension");
+            param.setDescription(" acquisition dimension");
             param.setLocked(true);
             param.setGroup(EnumGroup.Scan);
             param.setCategory(Category.Acquisition);
@@ -2637,6 +2633,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("TRAJ_POSITION");
             param.setDisplayedName("TRAJ_POSITION");
             param.setDescription("2D 3D position");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Scan);
             param.setCategory(Category.Acquisition);
             param.setMinValue(0);

@@ -313,7 +313,7 @@
                 <value>0</value>
                 <defaultValue>128</defaultValue>
                 <description>Number of dummy cycles used to reach steady-state</description>
-                <displayedName>DS</displayedName>
+                <displayedName>Dummy Scans</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -1182,8 +1182,8 @@
                 <name>INTERMEDIATE_FREQUENCY</name>
                 <value>1.251E7</value>
                 <defaultValue>1.251E7</defaultValue>
-                <description>INTERMEDIATE_FREQUENCY.description</description>
-                <displayedName>INTERMEDIATE_FREQUENCY.name</displayedName>
+                <description>Info: Frequency from the Hardware used for the signal demodulation (ADC optimal frequency)</description>
+                <displayedName>INTERMEDIATE_FREQUENCY</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -1266,10 +1266,10 @@
                 <name>MAGNETIC_FIELD_STRENGTH</name>
                 <value>3.0</value>
                 <defaultValue>3.0</defaultValue>
-                <description>The magnetic field tregth</description>
-                <displayedName>B0</displayedName>
+                <description>Info: Magnetic field stength from the hardware</description>
+                <displayedName>B0 Strength</displayedName>
                 <locked>false</locked>
-                <lockedToDefault>true</lockedToDefault>
+                <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Field</numberEnum>
                 <minValue>0.0</minValue>
@@ -1285,9 +1285,9 @@
                 <value>Manufacturer</value>
                 <defaultValue>Manufacturer</defaultValue>
                 <description>Manufacturer</description>
-                <displayedName>MANUFACTURER</displayedName>
+                <displayedName>Manufacturer</displayedName>
                 <locked>false</locked>
-                <lockedToDefault>true</lockedToDefault>
+                <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <group>Miscellaneous</group>
                 <category>Miscellaneous</category>
@@ -1336,9 +1336,9 @@
                 <value>Model name</value>
                 <defaultValue>Model name</defaultValue>
                 <description>Model name</description>
-                <displayedName>MODEL_NAME</displayedName>
+                <displayedName>Model Name</displayedName>
                 <locked>false</locked>
-                <lockedToDefault>true</lockedToDefault>
+                <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <group>Miscellaneous</group>
                 <category>Miscellaneous</category>
@@ -2882,7 +2882,7 @@
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>True during setup process</description>
-                <displayedName>Setup</displayedName>
+                <displayedName>SETUP_MODE</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Miscellaneous</group>
@@ -3063,9 +3063,9 @@
                 <value>Station name</value>
                 <defaultValue>Station name</defaultValue>
                 <description>Station name</description>
-                <displayedName>STATION_NAME</displayedName>
+                <displayedName>Station Name</displayedName>
                 <locked>false</locked>
-                <lockedToDefault>true</lockedToDefault>
+                <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <group>Miscellaneous</group>
                 <category>Miscellaneous</category>
@@ -3423,7 +3423,7 @@
                 <value>64</value>
                 <value>64</value>
                 <value>1</value>
-                <description>show the acquisition dimension</description>
+                <description> acquisition dimension</description>
                 <displayedName>TRAJ_MATRIX</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -9976,7 +9976,7 @@
                 <value>43</value>
                 <description>2D 3D position</description>
                 <displayedName>TRAJ_POSITION</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <numberEnum>Scan</numberEnum>
                 <minValue>0</minValue>

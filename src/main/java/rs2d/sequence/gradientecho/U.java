@@ -684,8 +684,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("FLOWCOMP_DURATION");
-            param.setDisplayedName("Flow Comp Duration");
-            param.setDescription("Duration of plateau of flow compensation gradient");
+            param.setDisplayedName("Gradient Duration Flow Comp");
+            param.setDescription("Plateau duration of the gradient used for flow compensation ");
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
@@ -760,8 +760,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("GRADIENT_ENABLE_PHASE");
-            param.setDisplayedName("GRADIENT_ENABLE_PHASE");
-            param.setDescription("enable the phase encoding gradient");
+            param.setDisplayedName("Gradient Phase-2D");
+            param.setDescription("Enable 2D phase encoding gradient");
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setValue(true);
@@ -774,8 +774,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("GRADIENT_ENABLE_PHASE_3D");
-            param.setDisplayedName("GRADIENT_ENABLE_PHASE_3D");
-            param.setDescription("enable the 3D phase encoding gradient");
+            param.setDisplayedName("Gradient Phase-3D");
+            param.setDescription("Enable 3D phase encoding gradient");
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setValue(true);
@@ -788,8 +788,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("GRADIENT_ENABLE_READ");
-            param.setDisplayedName("GRADIENT_ENABLE_READ");
-            param.setDescription("enable the read encoding gradient");
+            param.setDisplayedName("Gradient Read ");
+            param.setDescription("Enable  frequency encoding gradient");
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setValue(true);
@@ -816,11 +816,11 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("GRADIENT_ENABLE_SLICE");
-            param.setDisplayedName("GRADIENT_ENABLE_SLICE");
-            param.setDescription("enable the slice encoding gradient");
+            param.setDisplayedName("Gradient Slice");
+            param.setDescription("Enable the slice selection gradient");
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
-            param.setValue(true);
+            param.setValue(false);
             param.setDefaultValue(false);
             return param;
         }
@@ -834,7 +834,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Enable gradient spoiler in the three directions");
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
-            param.setValue(true);
+            param.setValue(false);
             param.setDefaultValue(false);
             return param;
         }
@@ -844,8 +844,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("GRADIENT_PHASE_APPLICATION_TIME");
-            param.setDisplayedName("GRADIENT_PHASE_APPLICATION_TIME");
-            param.setDescription("the application time of the phase encoding gradient");
+            param.setDisplayedName("Gradient Duration Phase");
+            param.setDescription("Phase encoding gradient application time");
             param.setGroup(EnumGroup.Delay);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Time);
@@ -861,8 +861,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("GRADIENT_RISE_TIME");
-            param.setDisplayedName("GRADIENT_RISE_TIME");
-            param.setDescription("The rise time of the gradient");
+            param.setDisplayedName("Gradient Rise Time");
+            param.setDescription("Rise time of the gradient");
             param.setGroup(EnumGroup.Delay);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Time);
@@ -878,8 +878,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("GRADIENT_SPOILER_TIME");
-            param.setDisplayedName("Gradient spoiler top time");
-            param.setDescription("");
+            param.setDisplayedName("Gradient Duration Spoiler");
+            param.setDescription("Duration of the spoiler gradients");
             param.setGroup(EnumGroup.Delay);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Time);
@@ -895,9 +895,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             ListNumberParam param = new ListNumberParam();
             param.setName("GRAD_AMP_SPOILER_SL_PH_RE");
-            param.setDisplayedName("GRAD_AMP_SPOILER_SL_PH_RE");
+            param.setDisplayedName("Gradient Amplitude Spoilers");
             param.setDescription("List of spoiler gradient amplitudes [Slice, Phase, Read]");
-            param.setLocked(true);
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setMinValue(0.0);
@@ -1202,8 +1201,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("MIN_RISE_TIME_FACTOR");
-            param.setDisplayedName("MIN_RISE_TIME_FACTOR");
-            param.setDescription("");
+            param.setDisplayedName("Min Rise Time Factor");
+            param.setDescription("Safety parameter applied on maximum gradient slew rate. Fastest is 100%");
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.PERCENT);
@@ -1535,7 +1534,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Location);
             param.setMinValue(-1.7976931348623157E308);
             param.setMaxValue(1.7976931348623157E308);
-            param.setValue(0.015);
+            param.setValue(0.0);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -1588,7 +1587,7 @@ public enum U implements GeneratorParamEnum {
             param.setMinValue(-1.7976931348623157E308);
             param.setMaxValue(1.7976931348623157E308);
             param.setNumberEnum(NumberEnum.Location);
-            param.setValue(asListNumber(0.015, 0.0, 0.0));
+            param.setValue(asListNumber(0.0, 0.0, 0.0));
             param.setDefaultValue(asListNumber(0.0, 0.0, 0.0));
             return param;
         }
@@ -1605,7 +1604,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Location);
             param.setMinValue(-1.7976931348623157E308);
             param.setMaxValue(1.7976931348623157E308);
-            param.setValue(0.015);
+            param.setValue(0.0);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -1770,8 +1769,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("PREPHASING_READ_GRADIENT_RATIO");
-            param.setDisplayedName("PREPHASING_READ_GRADIENT_RATIO");
-            param.setDescription("The prephasing reading gradient ratio");
+            param.setDisplayedName("Gradient Prephasing Ratio Read");
+            param.setDescription("Prephasing reading gradient ratio");
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Double);
@@ -2150,8 +2149,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("SLICE_REFOCUSING_GRADIENT_RATIO");
-            param.setDisplayedName("SLICE_REFOCUSING_GRADIENT_RATIO");
-            param.setDescription("The ratio of the slice refocusing gradient");
+            param.setDisplayedName("Gradient Refocusing Ratio Slice ");
+            param.setDescription("Ratio of the slice refocusing gradient");
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Double);

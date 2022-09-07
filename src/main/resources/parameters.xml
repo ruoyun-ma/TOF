@@ -713,8 +713,8 @@
                 <name>FLOWCOMP_DURATION</name>
                 <value>7.0E-4</value>
                 <defaultValue>5.0E-4</defaultValue>
-                <description>Duration of plateau of flow compensation gradient</description>
-                <displayedName>Flow Comp Duration</displayedName>
+                <description>Plateau duration of the gradient used for flow compensation </description>
+                <displayedName>Gradient Duration Flow Comp</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -790,8 +790,8 @@
                 <name>GRADIENT_ENABLE_PHASE</name>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
-                <description>enable the phase encoding gradient</description>
-                <displayedName>GRADIENT_ENABLE_PHASE</displayedName>
+                <description>Enable 2D phase encoding gradient</description>
+                <displayedName>Gradient Phase-2D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
@@ -804,8 +804,8 @@
                 <name>GRADIENT_ENABLE_PHASE_3D</name>
                 <value>true</value>
                 <defaultValue>true</defaultValue>
-                <description>enable the 3D phase encoding gradient</description>
-                <displayedName>GRADIENT_ENABLE_PHASE_3D</displayedName>
+                <description>Enable 3D phase encoding gradient</description>
+                <displayedName>Gradient Phase-3D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
@@ -818,8 +818,8 @@
                 <name>GRADIENT_ENABLE_READ</name>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
-                <description>enable the read encoding gradient</description>
-                <displayedName>GRADIENT_ENABLE_READ</displayedName>
+                <description>Enable  frequency encoding gradient</description>
+                <displayedName>Gradient Read </displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
@@ -844,10 +844,10 @@
             <key>GRADIENT_ENABLE_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>GRADIENT_ENABLE_SLICE</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
-                <description>enable the slice encoding gradient</description>
-                <displayedName>GRADIENT_ENABLE_SLICE</displayedName>
+                <description>Enable the slice selection gradient</description>
+                <displayedName>Gradient Slice</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
@@ -858,7 +858,7 @@
             <key>GRADIENT_ENABLE_SPOILER</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>GRADIENT_ENABLE_SPOILER</name>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable gradient spoiler in the three directions</description>
                 <displayedName>Gradient Spoiling</displayedName>
@@ -874,8 +874,8 @@
                 <name>GRADIENT_PHASE_APPLICATION_TIME</name>
                 <value>9.3E-4</value>
                 <defaultValue>0.0</defaultValue>
-                <description>the application time of the phase encoding gradient</description>
-                <displayedName>GRADIENT_PHASE_APPLICATION_TIME</displayedName>
+                <description>Phase encoding gradient application time</description>
+                <displayedName>Gradient Duration Phase</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -892,8 +892,8 @@
                 <name>GRADIENT_RISE_TIME</name>
                 <value>1.5E-4</value>
                 <defaultValue>0.0</defaultValue>
-                <description>The rise time of the gradient</description>
-                <displayedName>GRADIENT_RISE_TIME</displayedName>
+                <description>Rise time of the gradient</description>
+                <displayedName>Gradient Rise Time</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -910,8 +910,8 @@
                 <name>GRADIENT_SPOILER_TIME</name>
                 <value>9.3E-4</value>
                 <defaultValue>9.999999999999999E-5</defaultValue>
-                <description></description>
-                <displayedName>Gradient spoiler top time</displayedName>
+                <description>Duration of the spoiler gradients</description>
+                <displayedName>Gradient Duration Spoiler</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -930,8 +930,8 @@
                 <value>0.0</value>
                 <value>0.0</value>
                 <description>List of spoiler gradient amplitudes [Slice, Phase, Read]</description>
-                <displayedName>GRAD_AMP_SPOILER_SL_PH_RE</displayedName>
-                <locked>true</locked>
+                <displayedName>Gradient Amplitude Spoilers</displayedName>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <numberEnum>PERCENT</numberEnum>
                 <minValue>0.0</minValue>
@@ -1299,8 +1299,8 @@
                 <name>MIN_RISE_TIME_FACTOR</name>
                 <value>100.0</value>
                 <defaultValue>100.0</defaultValue>
-                <description></description>
-                <displayedName>MIN_RISE_TIME_FACTOR</displayedName>
+                <description>Safety parameter applied on maximum gradient slew rate. Fastest is 100%</description>
+                <displayedName>Min Rise Time Factor</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -2246,7 +2246,7 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_1D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_1D</name>
-                <value>0.015</value>
+                <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Off-center distance in Readout Direction</description>
                 <displayedName>Location 1D</displayedName>
@@ -2300,7 +2300,7 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_EFF</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_EFF</name>
-                <value>0.015</value>
+                <value>0.0</value>
                 <value>0.0</value>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
@@ -2321,7 +2321,7 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_X</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_X</name>
-                <value>0.015</value>
+                <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Off-center distance  in the R/L direction</description>
                 <displayedName>Location X</displayedName>
@@ -2500,8 +2500,8 @@
                 <name>PREPHASING_READ_GRADIENT_RATIO</name>
                 <value>0.5</value>
                 <defaultValue>0.5</defaultValue>
-                <description>The prephasing reading gradient ratio</description>
-                <displayedName>PREPHASING_READ_GRADIENT_RATIO</displayedName>
+                <description>Prephasing reading gradient ratio</description>
+                <displayedName>Gradient Prephasing Ratio Read</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -2912,8 +2912,8 @@
                 <name>SLICE_REFOCUSING_GRADIENT_RATIO</name>
                 <value>0.5</value>
                 <defaultValue>0.5</defaultValue>
-                <description>The ratio of the slice refocusing gradient</description>
-                <displayedName>SLICE_REFOCUSING_GRADIENT_RATIO</displayedName>
+                <description>Ratio of the slice refocusing gradient</description>
+                <displayedName>Gradient Refocusing Ratio Slice </displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>

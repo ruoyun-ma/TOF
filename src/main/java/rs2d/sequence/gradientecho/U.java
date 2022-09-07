@@ -101,6 +101,7 @@ public enum U implements GeneratorParamEnum {
             ListTextParam param = new ListTextParam();
             param.setName("ACQUISITION_MODE");
             param.setDisplayedName("ACQUISITION_MODE");
+            param.setDescription("ACQUISITION_MODE and DATA_REPRESENTATION are filled according to the phase modulation chosen");
             param.setLocked(true);
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
@@ -254,6 +255,7 @@ public enum U implements GeneratorParamEnum {
             ListTextParam param = new ListTextParam();
             param.setName("DATA_REPRESENTATION");
             param.setDisplayedName("DATA_REPRESENTATION");
+            param.setDescription("ACQUISITION_MODE and DATA_REPRESENTATION are filled according to the phase modulation chosen");
             param.setLocked(true);
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Miscellaneous);
@@ -1787,6 +1789,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("PROBE");
             param.setDisplayedName("Probe");
             param.setDescription("The probe used for the mr acquisition");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
             param.setValue("");
@@ -1800,8 +1803,7 @@ public enum U implements GeneratorParamEnum {
             ListTextParam param = new ListTextParam();
             param.setName("PROBES");
             param.setDisplayedName("Probes");
-            param.setDescription("The probes used for the acquisition");
-            param.setLocked(true);
+            param.setDescription("Name of probes used for the transmit and reception");
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
             param.setValue(asList("4CH 18cm"));
@@ -2384,6 +2386,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("TOF2D_MT_CALI");
             param.setDisplayedName("TOF2D_MT_CALI");
             param.setDescription("");
+            param.setLocked(true);
             param.setCategory(Category.Acquisition);
             param.setValue(false);
             param.setDefaultValue(false);
@@ -2461,8 +2464,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("TOF3D_EXT_SHIRNK_FACTOR");
-            param.setDisplayedName("TOF3D_EXT_SHIRNK_FACTOR");
-            param.setDescription("");
+            param.setDisplayedName("TOF Slab Shink Factor");
+            param.setDescription("Shrink factor for TOF slabs");
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.PERCENT);
             param.setMinValue(0.0);
@@ -2554,8 +2557,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("TOF3D_TX_RAMP_SLOPE");
-            param.setDisplayedName("TOF3D_TX_RAMP_SLOPE");
-            param.setDescription("");
+            param.setDisplayedName("TOF TX Ramp Slope");
+            param.setDescription("Ramp slope of TONE pulse used in TOF");
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Double);
             param.setMinValue(-1.7976931348623157E308);
@@ -2695,8 +2698,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("TX_AMP");
-            param.setDisplayedName("TX_AMP");
-            param.setDescription("Emission amplitude");
+            param.setDisplayedName("TX Amplitude");
+            param.setDescription("Amplitude of the excitation RF pulse ");
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.PERCENT);
@@ -2714,6 +2717,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("TX_AMP_180");
             param.setDisplayedName("TX_AMP_180");
             param.setDescription("The magnitude of the RF pulse 180");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.TxAmp);
@@ -2731,6 +2735,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("TX_AMP_90");
             param.setDisplayedName("TX_AMP_90");
             param.setDescription("Amplitude of the transmitter");
+            param.setLocked(true);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.TxAmp);
             param.setMinValue(0.0);
@@ -2745,8 +2750,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("TX_AMP_ATT_AUTO");
-            param.setDisplayedName("TX_AMP_ATT_AUTO");
-            param.setDescription("Use the ATT and AMP set from the calibration ");
+            param.setDisplayedName("TX Att/Amp Auto");
+            param.setDescription("Enable to automatically set attenuation and amplitude for the RF according to the calibration");
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
             param.setValue(true);
@@ -2759,8 +2764,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("TX_ATT");
-            param.setDisplayedName("TX_ATT");
-            param.setDescription("Emission attenuation");
+            param.setDisplayedName("TX Attenuation");
+            param.setDescription("RF pulse attenuation");
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.TxAtt);
@@ -2776,8 +2781,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             ListNumberParam param = new ListNumberParam();
             param.setName("TX_BANDWIDTH_FACTOR");
-            param.setDisplayedName("TX_BANDWIDTH_FACTOR");
-            param.setDescription("The bandwidth factor of the RF pulse");
+            param.setDisplayedName("TX BW Factor");
+            param.setDescription("Bandwidth factor of the RF pulse for 4 shapes: 1-HARD, 2-GAUSSIAN, 3-SINC3 and 4-SINC5");
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
             param.setMinValue(-1.7976931348623157E308);
@@ -2794,7 +2799,7 @@ public enum U implements GeneratorParamEnum {
             ListNumberParam param = new ListNumberParam();
             param.setName("TX_BANDWIDTH_FACTOR_3D");
             param.setDisplayedName("TX_BANDWIDTH_FACTOR_3D");
-            param.setDescription("0, Rect; 1, Gaussin; 2, Sinc3; 3, Sinc5; 4. SLR; 5, SLR; 6, Ramp");
+            param.setDescription("Bandwidth factor 3D of the RF pulse for 4 shapes: 1-HARD, 2-GAUSSIAN, 3-SINC3 and 4-SINC5");
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
             param.setMinValue(-1.7976931348623157E308);
@@ -2810,8 +2815,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("TX_LENGTH");
-            param.setDisplayedName("TX_LENGTH");
-            param.setDescription("length of RF pulse");
+            param.setDisplayedName("TX Length");
+            param.setDescription("RF pulse length");
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
             param.setNumberEnum(NumberEnum.Time);
@@ -2827,8 +2832,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             ListNumberParam param = new ListNumberParam();
             param.setName("TX_ROUTE");
-            param.setDisplayedName("TX_ROUTE");
-            param.setDescription("");
+            param.setDisplayedName("TX Route");
+            param.setDescription("Info: Selected physical transmit channel");
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
             param.setMinValue(-2147483648);
@@ -2843,8 +2848,8 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             TextParam param = new TextParam();
             param.setName("TX_SHAPE");
-            param.setDisplayedName("TX_SHAPE");
-            param.setDescription("the shape of the rf pulse");
+            param.setDisplayedName("TX Shape");
+            param.setDescription("RF Pulse shape");
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
             param.setValue("RAMP");

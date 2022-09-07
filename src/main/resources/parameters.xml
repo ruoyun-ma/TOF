@@ -103,6 +103,7 @@
                 <defaultValue>REAL</defaultValue>
                 <defaultValue>REAL</defaultValue>
                 <defaultValue>REAL</defaultValue>
+                <description>ACQUISITION_MODE and DATA_REPRESENTATION are filled according to the phase modulation chosen</description>
                 <displayedName>ACQUISITION_MODE</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -265,6 +266,7 @@
                 <defaultValue>REAL</defaultValue>
                 <defaultValue>REAL</defaultValue>
                 <defaultValue>REAL</defaultValue>
+                <description>ACQUISITION_MODE and DATA_REPRESENTATION are filled according to the phase modulation chosen</description>
                 <displayedName>DATA_REPRESENTATION</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -2518,7 +2520,7 @@
                 <defaultValue></defaultValue>
                 <description>The probe used for the mr acquisition</description>
                 <displayedName>Probe</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <group>Miscellaneous</group>
@@ -2530,9 +2532,9 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listTextParam">
                 <name>PROBES</name>
                 <value>4CH 18cm</value>
-                <description>The probes used for the acquisition</description>
+                <description>Name of probes used for the transmit and reception</description>
                 <displayedName>Probes</displayedName>
-                <locked>true</locked>
+                <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Miscellaneous</group>
                 <category>Acquisition</category>
@@ -3158,7 +3160,7 @@
                 <defaultValue>false</defaultValue>
                 <description></description>
                 <displayedName>TOF2D_MT_CALI</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <category>Acquisition</category>
             </value>
@@ -3240,8 +3242,8 @@
                 <name>TOF3D_EXT_SHIRNK_FACTOR</name>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
-                <description></description>
-                <displayedName>TOF3D_EXT_SHIRNK_FACTOR</displayedName>
+                <description>Shrink factor for TOF slabs</description>
+                <displayedName>TOF Slab Shink Factor</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -3338,8 +3340,8 @@
                 <name>TOF3D_TX_RAMP_SLOPE</name>
                 <value>2.0</value>
                 <defaultValue>0.0</defaultValue>
-                <description></description>
-                <displayedName>TOF3D_TX_RAMP_SLOPE</displayedName>
+                <description>Ramp slope of TONE pulse used in TOF</description>
+                <displayedName>TOF TX Ramp Slope</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -10042,8 +10044,8 @@
                 <name>TX_AMP</name>
                 <value>82.75962538077337</value>
                 <defaultValue>40.0</defaultValue>
-                <description>Emission amplitude</description>
-                <displayedName>TX_AMP</displayedName>
+                <description>Amplitude of the excitation RF pulse </description>
+                <displayedName>TX Amplitude</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -10062,7 +10064,7 @@
                 <defaultValue>0.0</defaultValue>
                 <description>The magnitude of the RF pulse 180</description>
                 <displayedName>TX_AMP_180</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>TxAmp</numberEnum>
@@ -10080,7 +10082,7 @@
                 <defaultValue>0.0</defaultValue>
                 <description>Amplitude of the transmitter</description>
                 <displayedName>TX_AMP_90</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>TxAmp</numberEnum>
@@ -10095,8 +10097,8 @@
                 <name>TX_AMP_ATT_AUTO</name>
                 <value>true</value>
                 <defaultValue>true</defaultValue>
-                <description>Use the ATT and AMP set from the calibration </description>
-                <displayedName>TX_AMP_ATT_AUTO</displayedName>
+                <description>Enable to automatically set attenuation and amplitude for the RF according to the calibration</description>
+                <displayedName>TX Att/Amp Auto</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Emission</group>
@@ -10109,8 +10111,8 @@
                 <name>TX_ATT</name>
                 <value>29.0</value>
                 <defaultValue>36.0</defaultValue>
-                <description>Emission attenuation</description>
-                <displayedName>TX_ATT</displayedName>
+                <description>RF pulse attenuation</description>
+                <displayedName>TX Attenuation</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -10139,8 +10141,8 @@
                 <defaultValue>0.0</defaultValue>
                 <defaultValue>0.0</defaultValue>
                 <defaultValue>4.25</defaultValue>
-                <description>The bandwidth factor of the RF pulse</description>
-                <displayedName>TX_BANDWIDTH_FACTOR</displayedName>
+                <description>Bandwidth factor of the RF pulse for 4 shapes: 1-HARD, 2-GAUSSIAN, 3-SINC3 and 4-SINC5</description>
+                <displayedName>TX BW Factor</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <numberEnum>Double</numberEnum>
@@ -10168,7 +10170,7 @@
                 <defaultValue>0.0</defaultValue>
                 <defaultValue>0.0</defaultValue>
                 <defaultValue>7.3</defaultValue>
-                <description>0, Rect; 1, Gaussin; 2, Sinc3; 3, Sinc5; 4. SLR; 5, SLR; 6, Ramp</description>
+                <description>Bandwidth factor 3D of the RF pulse for 4 shapes: 1-HARD, 2-GAUSSIAN, 3-SINC3 and 4-SINC5</description>
                 <displayedName>TX_BANDWIDTH_FACTOR_3D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -10185,8 +10187,8 @@
                 <name>TX_LENGTH</name>
                 <value>7.999999999999999E-4</value>
                 <defaultValue>0.0</defaultValue>
-                <description>length of RF pulse</description>
-                <displayedName>TX_LENGTH</displayedName>
+                <description>RF pulse length</description>
+                <displayedName>TX Length</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -10202,8 +10204,8 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>TX_ROUTE</name>
                 <value>0</value>
-                <description></description>
-                <displayedName>TX_ROUTE</displayedName>
+                <description>Info: Selected physical transmit channel</description>
+                <displayedName>TX Route</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <numberEnum>Integer</numberEnum>
@@ -10219,8 +10221,8 @@
                 <name>TX_SHAPE</name>
                 <value>RAMP</value>
                 <defaultValue>GAUSSIAN</defaultValue>
-                <description>the shape of the rf pulse</description>
-                <displayedName>TX_SHAPE</displayedName>
+                <description>RF Pulse shape</description>
+                <displayedName>TX Shape</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>

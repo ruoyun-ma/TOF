@@ -464,7 +464,7 @@
             <key>FATSAT_FLIP_ANGLE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_FLIP_ANGLE</name>
-                <value>0.0</value>
+                <value>90.0</value>
                 <defaultValue>90.0</defaultValue>
                 <description>Info: Fat-Sat pulse (90°) Flip Angle</description>
                 <displayedName>FatSat - Flip Angle</displayedName>
@@ -554,7 +554,7 @@
             <key>FATSAT_TX_AMP_90</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_TX_AMP_90</name>
-                <value>100.0</value>
+                <value>46.31679206846105</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Fat-Sat Pulse amplitude</description>
                 <displayedName>FatSat - TX Amplitude</displayedName>
@@ -572,7 +572,7 @@
             <key>FATSAT_TX_LENGTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_TX_LENGTH</name>
-                <value>5.0E-6</value>
+                <value>0.008</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Fat-Sat Pulse duration</description>
                 <displayedName>FatSat - TX Length</displayedName>
@@ -611,7 +611,7 @@
             <key>FAT_SATURATION_ENABLED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>FAT_SATURATION_ENABLED</name>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable Fat-Sat preparation pulse </description>
                 <displayedName>Fat Saturation</displayedName>
@@ -659,7 +659,7 @@
                 <name>FIELD_OF_VIEW_3D</name>
                 <value>0.02</value>
                 <defaultValue>0.0</defaultValue>
-                <description>Info: Field Of View coverage along the direction orthogonal to the phase and frequency encoding directions</description>
+                <description> Field Of View coverage along the direction orthogonal to the phase and frequency encoding directions</description>
                 <displayedName>FOV Slice/3D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -830,7 +830,7 @@
             <key>GRADIENT_ENABLE_REWINDING</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>GRADIENT_ENABLE_REWINDING</name>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable to do gradient rewind instead of spoiling</description>
                 <displayedName>Gradient Rewinding </displayedName>
@@ -844,7 +844,7 @@
             <key>GRADIENT_ENABLE_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>GRADIENT_ENABLE_SLICE</name>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable the slice selection gradient</description>
                 <displayedName>Gradient Slice</displayedName>
@@ -2004,7 +2004,7 @@
                 <value>4</value>
                 <defaultValue>1</defaultValue>
                 <description>Number of slabs </description>
-                <displayedName>Nb. Slab</displayedName>
+                <displayedName>No. Slabs</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -2580,7 +2580,7 @@
             <key>REPETITION_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>REPETITION_TIME</name>
-                <value>0.019</value>
+                <value>0.073</value>
                 <defaultValue>0.2</defaultValue>
                 <description>Repetition Time</description>
                 <displayedName>TR</displayedName>
@@ -2777,7 +2777,7 @@
             <key>SATBAND_TX_AMP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SATBAND_TX_AMP</name>
-                <value>100.0</value>
+                <value>23.73213791818464</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Saturation Band Pulse amplitude</description>
                 <displayedName>SatBand - TX Amplitude</displayedName>
@@ -2832,7 +2832,7 @@
             <key>SEQUENCE_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
-                <value>155.652</value>
+                <value>598.02</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Total acquisition time</description>
                 <displayedName>Sequence Version</displayedName>
@@ -2865,7 +2865,7 @@
             <key>SEQ_DESCRIPTION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQ_DESCRIPTION</name>
-                <value>GE_3D_AXI_256x256x8x4_TOFSAT</value>
+                <value>GE_3D_AXI_256x256x8x4_FATSAT_TOFSAT</value>
                 <defaultValue></defaultValue>
                 <description>Info: Description of the sequence</description>
                 <displayedName>Sequence Description</displayedName>
@@ -2893,9 +2893,9 @@
             <key>SLAB_OVERLAP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SLAB_OVERLAP</name>
-                <value>25.0</value>
+                <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
-                <description>Percentage of the slab volume overlapped with one neighbouring slab</description>
+                <description>Percentage of the slab volume overlapped with one adjacent slab</description>
                 <displayedName>Slab Overlap</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -2961,7 +2961,7 @@
             <key>SPACING_BETWEEN_SLAB</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SPACING_BETWEEN_SLAB</name>
-                <value>-0.005</value>
+                <value>-0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Space between slabs</description>
                 <displayedName>Slab Spacing</displayedName>
@@ -3190,7 +3190,7 @@
                 <value>60.0</value>
                 <defaultValue>40.0</defaultValue>
                 <description>Amplitude of the spoiler gradient following the TOF satband RF pulse. </description>
-                <displayedName>TOF SatBand - Spoiler Grad Amp</displayedName>
+                <displayedName>TOF Sat - Spoiler Grad Amp</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -3243,7 +3243,7 @@
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Shrink factor for TOF slabs</description>
-                <displayedName>TOF Slab Shink Factor</displayedName>
+                <displayedName>TOF Slab Shrink Factor</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -3277,8 +3277,8 @@
                 <value>1728.0</value>
                 <defaultValue>360.0</defaultValue>
                 <description>Info: nominal flip angle of TOF 3D MT saturation pulse</description>
-                <displayedName>TOF 3D MT Sat - Flip Angle</displayedName>
-                <locked>false</locked>
+                <displayedName>TOF3D_MT_FLIP_ANGLE</displayedName>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>RotationAngle</numberEnum>
@@ -3369,10 +3369,10 @@
             <key>TOF_SB_OFFSET</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF_SB_OFFSET</name>
-                <value>0.0</value>
+                <value>1000.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Additional global requency offset applied to all TOF satband RF pulses</description>
-                <displayedName>TOF Satband - Offset Frequence</displayedName>
+                <displayedName>TOF Sat - Offset Frequency</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -3401,7 +3401,7 @@
                 <value>GAUSSIAN</value>
                 <defaultValue>HARD</defaultValue>
                 <description>TOF satband RF pulse shape</description>
-                <displayedName>TOF SatBand - TX Shape</displayedName>
+                <displayedName>TOF Sat - TX Shape</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>

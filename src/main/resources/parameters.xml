@@ -59,7 +59,7 @@
             <key>ACQUISITION_MATRIX_DIMENSION_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_MATRIX_DIMENSION_3D</name>
-                <value>8</value>
+                <value>10</value>
                 <defaultValue>1</defaultValue>
                 <description>Info: Size of the initial dataset (raw data) in third dimension</description>
                 <displayedName>Acquisition Matrix 3D</displayedName>
@@ -1232,7 +1232,7 @@
                 <defaultValue>false</defaultValue>
                 <description>Enable to turn off the phase encoding gradient and acquire two scans only. Used for RG calibration setup </description>
                 <displayedName>KS_CENTER_MODE</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <category>Acquisition</category>
             </value>
@@ -1983,7 +1983,7 @@
             <key>NUMBER_OF_SHOOT_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>NUMBER_OF_SHOOT_3D</name>
-                <value>8</value>
+                <value>10</value>
                 <defaultValue>1</defaultValue>
                 <description>To split the slices in different packs (nb of slices per TR = nb of slices / number of slice packs). Increase the number of packs (must be a divisor of the number of slices) to reach shorter TR</description>
                 <displayedName>No. Interleaved Slice Packs</displayedName>
@@ -2546,8 +2546,8 @@
                 <name>RECEIVER_COUNT</name>
                 <value>1</value>
                 <defaultValue>1</defaultValue>
-                <description>The number of receivers</description>
-                <displayedName>Receiver Count</displayedName>
+                <description>Info: Number of reception channels</description>
+                <displayedName>No. Receivers</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -2580,7 +2580,7 @@
             <key>REPETITION_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>REPETITION_TIME</name>
-                <value>0.073</value>
+                <value>0.126</value>
                 <defaultValue>0.2</defaultValue>
                 <description>Repetition Time</description>
                 <displayedName>TR</displayedName>
@@ -2634,7 +2634,7 @@
             <key>RESOLUTION_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RESOLUTION_SLICE</name>
-                <value>0.0025</value>
+                <value>0.002</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: True voxel size in the third direction</description>
                 <displayedName>Voxel Size Slice/3D</displayedName>
@@ -2832,7 +2832,7 @@
             <key>SEQUENCE_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
-                <value>598.02</value>
+                <value>1290.244</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Total acquisition time</description>
                 <displayedName>Sequence Version</displayedName>
@@ -2865,7 +2865,7 @@
             <key>SEQ_DESCRIPTION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQ_DESCRIPTION</name>
-                <value>GE_3D_AXI_256x256x8x4_FATSAT_TOFSAT</value>
+                <value>GE_3D_AXI_256x256x10x4_TOFSAT_FATSAT</value>
                 <defaultValue></defaultValue>
                 <description>Info: Description of the sequence</description>
                 <displayedName>Sequence Description</displayedName>
@@ -2893,7 +2893,7 @@
             <key>SLAB_OVERLAP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SLAB_OVERLAP</name>
-                <value>0.0</value>
+                <value>20.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Percentage of the slab volume overlapped with one adjacent slab</description>
                 <displayedName>Slab Overlap</displayedName>
@@ -2928,7 +2928,7 @@
             <key>SLICE_THICKNESS</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SLICE_THICKNESS</name>
-                <value>0.0025</value>
+                <value>0.002</value>
                 <defaultValue>0.005</defaultValue>
                 <description>Slice Thickness</description>
                 <displayedName>Slice Thickness</displayedName>
@@ -2961,9 +2961,9 @@
             <key>SPACING_BETWEEN_SLAB</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SPACING_BETWEEN_SLAB</name>
-                <value>-0.0</value>
+                <value>-0.004</value>
                 <defaultValue>0.0</defaultValue>
-                <description>Space between slabs</description>
+                <description>Info: Space between slabs</description>
                 <displayedName>Slab Spacing</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -3122,7 +3122,7 @@
             <key>TOF2D_FLOW_TAU</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF2D_FLOW_TAU</name>
-                <value>4.9999999999999996E-5</value>
+                <value>9.999999999999999E-6</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Delay right in front of excitation pulse to allow the blood flow from satband through imaging slice/volume</description>
                 <displayedName>TOF Flow - Delay</displayedName>
@@ -3172,7 +3172,7 @@
                 <value>0.005</value>
                 <defaultValue>0.002</defaultValue>
                 <description>Distance of the TOF satband from the active imaging slice in 2D acquisition</description>
-                <displayedName>TOF 2D Satband - Distance from FOV</displayedName>
+                <displayedName>TOF 2D Satband - Distance From Slice</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -3257,7 +3257,7 @@
             <key>TOF3D_MT_BANDWIDTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF3D_MT_BANDWIDTH</name>
-                <value>400.0</value>
+                <value>200.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Bandwidth of TOF MT saturation pulse</description>
                 <displayedName>TOF 3D MT Sat - Bandwidth</displayedName>
@@ -3274,7 +3274,7 @@
             <key>TOF3D_MT_FLIP_ANGLE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF3D_MT_FLIP_ANGLE</name>
-                <value>1728.0</value>
+                <value>1152.0</value>
                 <defaultValue>360.0</defaultValue>
                 <description>Info: nominal flip angle of TOF 3D MT saturation pulse</description>
                 <displayedName>TOF3D_MT_FLIP_ANGLE</displayedName>
@@ -3291,7 +3291,7 @@
             <key>TOF3D_MT_GAMMA_B1</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF3D_MT_GAMMA_B1</name>
-                <value>600.0</value>
+                <value>200.0</value>
                 <defaultValue>50.0</defaultValue>
                 <description>Gamma B1 value of TOF 3D MT saturation pulse</description>
                 <displayedName>TOF 3D MT Sat - Gamma B1</displayedName>
@@ -3321,7 +3321,7 @@
             <key>TOF3D_MT_TX_LENGTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF3D_MT_TX_LENGTH</name>
-                <value>0.008</value>
+                <value>0.016</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info :uration of TOF 3D MT saturation pulse</description>
                 <displayedName>TOF 3D MT Sat - Tx Length</displayedName>
@@ -3369,7 +3369,7 @@
             <key>TOF_SB_OFFSET</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF_SB_OFFSET</name>
-                <value>1000.0</value>
+                <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Additional global requency offset applied to all TOF satband RF pulses</description>
                 <displayedName>TOF Sat - Offset Frequency</displayedName>
@@ -10022,10 +10022,8 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>TRIGGER_TIME</name>
                 <value>0.0</value>
-                <value>221.185</value>
-                <value>442.37</value>
-                <value>663.5550000000001</value>
-                <value>884.74</value>
+                <value>0.05</value>
+                <value>0.09</value>
                 <defaultValue>0.01</defaultValue>
                 <description>Delays between trigger and acquisition start. (Multiple values)</description>
                 <displayedName>Trigger Delay</displayedName>
@@ -10277,7 +10275,7 @@
             <key>USER_MATRIX_DIMENSION_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_3D</name>
-                <value>8</value>
+                <value>10</value>
                 <defaultValue>1</defaultValue>
                 <description>Image size in the third dimension: slice or 3D PE  (user matrix dimension 3D)</description>
                 <displayedName>Matrix 3D / No. Slices</displayedName>

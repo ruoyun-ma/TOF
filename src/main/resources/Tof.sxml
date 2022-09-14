@@ -2902,7 +2902,7 @@
             <key>key24</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Nb_3d</name>
-                <value>8</value>
+                <value>10</value>
                 <defaultValue>1</defaultValue>
                 <displayedName>Nb 3D</displayedName>
                 <locked>false</locked>
@@ -15152,10 +15152,10 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>6</address>
-                <list>13687.5</list>
-                <list>4562.5</list>
-                <list>-4562.5</list>
-                <list>-13687.5</list>
+                <list>10950.0</list>
+                <list>3650.0</list>
+                <list>-3650.0</list>
+                <list>-10950.0</list>
             </value>
         </Entry>
         <Entry>
@@ -16160,14 +16160,16 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>1</address>
-                <list>1.3985768869277122</list>
-                <list>1.2307686365276869</list>
+                <list>1.5663851373277375</list>
+                <list>1.398576886927712</list>
+                <list>1.2307686365276866</list>
                 <list>1.0629603861276613</list>
                 <list>0.8951521357276357</list>
-                <list>0.7273438853276102</list>
-                <list>0.5595356349275847</list>
-                <list>0.3917273845275593</list>
+                <list>0.7273438853276104</list>
+                <list>0.5595356349275848</list>
+                <list>0.3917273845275595</list>
                 <list>0.22391913412753395</list>
+                <list>0.05611088372750861</list>
             </value>
         </Entry>
         <Entry>
@@ -16310,7 +16312,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>-1</address>
-                <list>0.0</list>
+                <list>34.0</list>
             </value>
         </Entry>
         <Entry>
@@ -16986,10 +16988,10 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-3166.6666666666647</list>
-                <list>-5499.999999999999</list>
-                <list>5499.999999999999</list>
-                <list>3166.6666666666647</list>
+                <list>-2533.333333333333</list>
+                <list>-3066.6666666666665</list>
+                <list>3066.6666666666665</list>
+                <list>2533.333333333333</list>
             </value>
         </Entry>
         <Entry>
@@ -17505,14 +17507,16 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>1</address>
-                <list>0.05611088372750839</list>
-                <list>0.22391913412753384</list>
+                <list>-0.11169736667251695</list>
+                <list>0.0561108837275085</list>
+                <list>0.22391913412753395</list>
                 <list>0.3917273845275594</list>
                 <list>0.5595356349275848</list>
-                <list>0.7273438853276104</list>
-                <list>0.8951521357276359</list>
-                <list>1.0629603861276613</list>
+                <list>0.7273438853276102</list>
+                <list>0.8951521357276357</list>
+                <list>1.062960386127661</list>
                 <list>1.2307686365276866</list>
+                <list>1.398576886927712</list>
             </value>
         </Entry>
         <Entry>
@@ -17526,10 +17530,10 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>-3166.6666666666647</list>
-                <list>-5499.999999999999</list>
-                <list>5499.999999999999</list>
-                <list>3166.6666666666647</list>
+                <list>-2533.333333333333</list>
+                <list>-3066.6666666666665</list>
+                <list>3066.6666666666665</list>
+                <list>2533.333333333333</list>
             </value>
         </Entry>
         <Entry>
@@ -17594,7 +17598,7 @@
                 <group>Delay</group>
                 <locked>true</locked>
                 <address>8</address>
-                <list>0.045846151999999994</list>
+                <list>0.090886152</list>
             </value>
         </Entry>
         <Entry>
@@ -18310,7 +18314,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>4.9999999999999996E-5</list>
+                <list>9.999999999999999E-6</list>
             </value>
         </Entry>
         <Entry>
@@ -18839,7 +18843,7 @@
                 <group>Gradient</group>
                 <locked>true</locked>
                 <address>0</address>
-                <list>-5.648817987491767</list>
+                <list>-7.061022484364708</list>
             </value>
         </Entry>
         <Entry>
@@ -19052,7 +19056,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>0.008</list>
+                <list>0.016</list>
             </value>
         </Entry>
         <Entry>
@@ -19143,7 +19147,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>6</address>
-                <list>1000.0</list>
+                <list>0.0</list>
             </value>
         </Entry>
         <Entry>
@@ -19222,7 +19226,7 @@
                 <group>Emission</group>
                 <locked>true</locked>
                 <address>2</address>
-                <list>22.794546546099465</list>
+                <list>100.0</list>
             </value>
         </Entry>
         <Entry>

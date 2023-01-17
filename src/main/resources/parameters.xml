@@ -77,7 +77,7 @@
             <key>ACQUISITION_MATRIX_DIMENSION_4D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_MATRIX_DIMENSION_4D</name>
-                <value>15</value>
+                <value>1</value>
                 <defaultValue>1</defaultValue>
                 <description>Info: Size of the initial dataset (raw data) in fourth dimension</description>
                 <displayedName>Acquisition Matrix 4D</displayedName>
@@ -1381,7 +1381,7 @@
             <key>MULTI_PLANAR_EXCITATION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>MULTI_PLANAR_EXCITATION</name>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>true</defaultValue>
                 <description>Switch between 2D multislice (enable) or 3D acquisition (disable)</description>
                 <displayedName>2D-Imaging </displayedName>
@@ -2001,7 +2001,7 @@
             <key>NUMBER_OF_SLAB</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>NUMBER_OF_SLAB</name>
-                <value>15</value>
+                <value>1</value>
                 <defaultValue>1</defaultValue>
                 <description>Number of slabs </description>
                 <displayedName>No. Slabs</displayedName>
@@ -2832,7 +2832,7 @@
             <key>SEQUENCE_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
-                <value>864.352625</value>
+                <value>57.751</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Total acquisition time</description>
                 <displayedName>Sequence Version</displayedName>
@@ -2865,7 +2865,7 @@
             <key>SEQ_DESCRIPTION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQ_DESCRIPTION</name>
-                <value>GE_3D_AXI_256x160x24x15_TOFSAT</value>
+                <value>GE_2D_AXI_256x160x24_TOFSAT</value>
                 <defaultValue></defaultValue>
                 <description>Info: Description of the sequence</description>
                 <displayedName>Sequence Description</displayedName>
@@ -10107,7 +10107,7 @@
             <key>TX_ATT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_ATT</name>
-                <value>43.0</value>
+                <value>46.0</value>
                 <defaultValue>36.0</defaultValue>
                 <description>RF pulse attenuation</description>
                 <displayedName>TX Attenuation</displayedName>
@@ -10293,7 +10293,7 @@
             <key>USER_MATRIX_DIMENSION_4D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_4D</name>
-                <value>15</value>
+                <value>1</value>
                 <defaultValue>1</defaultValue>
                 <description>Info: Number of image data set (user maxtrix 4D)</description>
                 <displayedName>No. Data Sets</displayedName>

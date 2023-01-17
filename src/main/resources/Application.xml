@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <application>
-    <name>TOF_LocalDev</name>
+    <name>TOF_V1.7</name>
     <description></description>
     <usage></usage>
     <generatorName>seqdev-temp</generatorName>
@@ -10,9 +10,6 @@
     </setUpQueue>
     <processQueue>
         <enabled>true</enabled>
-        <commands>
-            <name>Off Center FOV</name>
-        </commands>
         <commands>
             <name>BCImage</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
@@ -33,13 +30,16 @@
             <name>SignAlternation</name>
         </commands>
         <commands>
+            <name>Off Center Multi FOV</name>
+        </commands>
+        <commands>
             <name>ZF</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_1D</name>
                 <value>256</value>
                 <defaultValue>1</defaultValue>
                 <description></description>
-                <displayedName>USER_ACQUISITION_MATRIX_DIMENSION_1D</displayedName>
+                <displayedName>USER_MATRIX_DIMENSION_1D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -51,12 +51,26 @@
             </parameters>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Symmetric</name>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>Data are zero-filled symmetrically</description>
                 <displayedName>Symmetric</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
+            </parameters>
+        </commands>
+        <commands>
+            <name>ZIP</name>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>ZIP</name>
+                <value>false</value>
+                <defaultValue>true</defaultValue>
+                <description>Mutiply the matrix dimensions by 2</description>
+                <displayedName>ZIP</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Dimension</group>
+                <category>Process</category>
             </parameters>
         </commands>
         <commands>
@@ -93,7 +107,7 @@
                 <value>256</value>
                 <defaultValue>1</defaultValue>
                 <description></description>
-                <displayedName>USER_ACQUISITION_MATRIX_DIMENSION_2D</displayedName>
+                <displayedName>USER_MATRIX_DIMENSION_2D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -114,6 +128,20 @@
             </parameters>
         </commands>
         <commands>
+            <name>ZIP</name>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>ZIP</name>
+                <value>false</value>
+                <defaultValue>true</defaultValue>
+                <description>Mutiply the matrix dimensions by 2</description>
+                <displayedName>ZIP</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Dimension</group>
+                <category>Process</category>
+            </parameters>
+        </commands>
+        <commands>
             <name>IFFT</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Phase Correction</name>
@@ -129,7 +157,7 @@
             <name>Transpose</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>Transpose Order</name>
-                <value>indirect</value>
+                <value>Direct</value>
                 <defaultValue>Direct</defaultValue>
                 <description>The order of the transposition</description>
                 <displayedName>Transpose Order</displayedName>
@@ -141,15 +169,132 @@
             </parameters>
         </commands>
         <commands>
+            <name>ZF</name>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>USER_MATRIX_DIMENSION_3D</name>
+                <value>1</value>
+                <defaultValue>1</defaultValue>
+                <description></description>
+                <displayedName>Matrix 3D</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>Scan</numberEnum>
+                <minValue>1</minValue>
+                <maxValue>65536</maxValue>
+                <group>User</group>
+                <category>Acquisition</category>
+            </parameters>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>Symmetric</name>
+                <value>true</value>
+                <defaultValue>false</defaultValue>
+                <description>Data are zero-filled symmetrically</description>
+                <displayedName>Symmetric</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </parameters>
+        </commands>
+        <commands>
+            <name>ZIP</name>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>ZIP</name>
+                <value>false</value>
+                <defaultValue>true</defaultValue>
+                <description>Mutiply the matrix dimensions by 2</description>
+                <displayedName>ZIP</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <group>Dimension</group>
+                <category>Process</category>
+            </parameters>
+        </commands>
+        <commands>
+            <name>IFFT</name>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>Phase Correction</name>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>Applied order 1 phase correction</description>
+                <displayedName>Phase Correction</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </parameters>
+        </commands>
+        <commands>
+            <name>Transpose</name>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>Transpose Order</name>
+                <value>Direct</value>
+                <defaultValue>Direct</defaultValue>
+                <description>The order of the transposition</description>
+                <displayedName>Transpose Order</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>true</restrictedToSuggested>
+                <suggestedValues>Direct</suggestedValues>
+                <suggestedValues>indirect</suggestedValues>
+            </parameters>
+        </commands>
+        <commands>
+            <name>SignAlternation</name>
+        </commands>
+        <commands>
             <name>Amplitude</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Sum Of Square</name>
                 <value>true</value>
                 <defaultValue>true</defaultValue>
-                <description>Do the sum of square of the signal coming from all receivers.</description>
+                <description>Do the sum of sqare of the different recievers</description>
                 <displayedName>Sum Of Square</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
+            </parameters>
+        </commands>
+        <commands>
+            <name>SlabConcatenate</name>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>OverlappedSlabMethod</name>
+                <value>Discard</value>
+                <defaultValue>Discard</defaultValue>
+                <description>Method to treat the overlapped slabs.</description>
+                <displayedName>OverlappedSlabMethod</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>true</restrictedToSuggested>
+                <suggestedValues>Discard</suggestedValues>
+                <suggestedValues>Average</suggestedValues>
+            </parameters>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>EdgeSlabMethod</name>
+                <value>Discard</value>
+                <defaultValue>Discard</defaultValue>
+                <description>Method to treat two border slabs.</description>
+                <displayedName>EdgeSlabMethod</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>true</restrictedToSuggested>
+                <suggestedValues>Discard</suggestedValues>
+                <suggestedValues>Keep</suggestedValues>
+            </parameters>
+        </commands>
+        <commands>
+            <name>MIP</name>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>ORIENTATION</name>
+                <value>AXIAL</value>
+                <defaultValue>AXIAL</defaultValue>
+                <description>Field of view orientation</description>
+                <displayedName>Orientation</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>true</restrictedToSuggested>
+                <suggestedValues>AXIAL</suggestedValues>
+                <suggestedValues>CORONAL</suggestedValues>
+                <suggestedValues>SAGITTAL</suggestedValues>
+                <suggestedValues>OBLIQUE</suggestedValues>
+                <group>Dimension</group>
+                <category>Acquisition</category>
             </parameters>
         </commands>
     </processQueue>
@@ -231,7 +376,7 @@
                 <key>ACQUISITION_MATRIX_DIMENSION_4D</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_MATRIX_DIMENSION_4D</name>
-                    <value>15</value>
+                    <value>1</value>
                     <defaultValue>1</defaultValue>
                     <description>Info: Size of the initial dataset (raw data) in fourth dimension</description>
                     <displayedName>Acquisition Matrix 4D</displayedName>
@@ -1535,7 +1680,7 @@
                 <key>MULTI_PLANAR_EXCITATION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>MULTI_PLANAR_EXCITATION</name>
-                    <value>false</value>
+                    <value>true</value>
                     <defaultValue>true</defaultValue>
                     <description>Switch between 2D multislice (enable) or 3D acquisition (disable)</description>
                     <displayedName>2D-Imaging </displayedName>
@@ -2155,7 +2300,7 @@
                 <key>NUMBER_OF_SLAB</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>NUMBER_OF_SLAB</name>
-                    <value>15</value>
+                    <value>1</value>
                     <defaultValue>1</defaultValue>
                     <description>Number of slabs </description>
                     <displayedName>No. Slabs</displayedName>
@@ -2986,7 +3131,7 @@
                 <key>SEQUENCE_TIME</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SEQUENCE_TIME</name>
-                    <value>864.352625</value>
+                    <value>57.751</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: Total acquisition time</description>
                     <displayedName>Sequence Version</displayedName>
@@ -3019,7 +3164,7 @@
                 <key>SEQ_DESCRIPTION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
-                    <value>GE_3D_AXI_256x160x24x15_TOFSAT</value>
+                    <value>GE_2D_AXI_256x160x24_TOFSAT</value>
                     <defaultValue></defaultValue>
                     <description>Info: Description of the sequence</description>
                     <displayedName>Sequence Description</displayedName>
@@ -10261,7 +10406,7 @@
                 <key>TX_ATT</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_ATT</name>
-                    <value>43.0</value>
+                    <value>46.0</value>
                     <defaultValue>36.0</defaultValue>
                     <description>RF pulse attenuation</description>
                     <displayedName>TX Attenuation</displayedName>
@@ -10447,7 +10592,7 @@
                 <key>USER_MATRIX_DIMENSION_4D</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>USER_MATRIX_DIMENSION_4D</name>
-                    <value>15</value>
+                    <value>1</value>
                     <defaultValue>1</defaultValue>
                     <description>Info: Number of image data set (user maxtrix 4D)</description>
                     <displayedName>No. Data Sets</displayedName>

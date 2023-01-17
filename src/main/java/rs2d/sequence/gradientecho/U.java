@@ -1283,7 +1283,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Switch between 2D multislice (enable) or 3D acquisition (disable)");
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
-            param.setValue(false);
+            param.setValue(true);
             param.setDefaultValue(true);
             return param;
         }

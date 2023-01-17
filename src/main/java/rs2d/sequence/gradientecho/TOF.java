@@ -470,7 +470,7 @@ public class TOF extends KernelGE {
     }
 
     public String getVersion() {
-        return "LocalDev";
+        return "V1.7";
     }
     //</editor-fold>
 }

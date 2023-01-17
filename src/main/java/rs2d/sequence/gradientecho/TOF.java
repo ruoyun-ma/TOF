@@ -34,7 +34,7 @@ import static rs2d.sequence.gradientecho.U.*;
 // **************************************************************************************************
 //
 public class TOF extends KernelGE {
-    private String sequenceVersion = "Version x1.6";
+    private String sequenceVersion = "Version x1.7";
     private boolean isElliptical;
     private double slice_thickness_excitation;
 
@@ -70,6 +70,7 @@ public class TOF extends KernelGE {
         else {
             if (getInt(NUMBER_OF_SLAB) > 1)
                 getParam(SLAB_OVERLAP).setValue(floorEven(getDouble(SLAB_OVERLAP) / 100 * userMatrixDimension3D) / (double) userMatrixDimension3D * 100);
+
         }
 
         isElliptical = kspace_filling.equalsIgnoreCase("3DElliptic") && !isMultiplanar;
@@ -207,6 +208,7 @@ public class TOF extends KernelGE {
         // calculate SLICE gradient amplitudes for RF pulses
         // ---------------------------------------------------------------------
         slice_thickness_excitation = (isMultiplanar ? sliceThickness : (sliceThickness * userMatrixDimension3D));
+
         gradSlice = Gradient.createGradient(getSequence(), Grad_amp_slice, Time_tx, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp, nucleus);
 
         if (hasParam(TOF3D_EXT_SHIRNK_FACTOR) && !isMultiplanar) {
@@ -468,7 +470,7 @@ public class TOF extends KernelGE {
     }
 
     public String getVersion() {
-        return "master";
+        return "V1.7";
     }
     //</editor-fold>
 }

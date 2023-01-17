@@ -471,7 +471,7 @@ public class TOF extends KernelGE {
     }
 
     public String getVersion() {
-        return "master";
+        return "V1.8_spinlab_2022.06.3";
     }
     //</editor-fold>
 }

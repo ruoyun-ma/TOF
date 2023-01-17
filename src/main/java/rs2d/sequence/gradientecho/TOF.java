@@ -10,6 +10,7 @@ package rs2d.sequence.gradientecho;
 
 import common.Gradient;
 import rs2d.commons.log.Log;
+import rs2d.spinlab.exception.ConfigurationException;
 import rs2d.spinlab.instrument.Instrument;
 import rs2d.spinlab.sequence.element.Opcode;
 import rs2d.spinlab.sequence.table.Table;
@@ -61,7 +62,7 @@ public class TOF extends KernelGE {
 // -----   GENERATE
 // ==============================
     @Override
-    public void initUserParam() {
+    public void initUserParam() throws ConfigurationException {
         super.initUserParam();
         getParam(SEQUENCE_VERSION).setValue(sequenceVersion);
 
@@ -165,7 +166,7 @@ public class TOF extends KernelGE {
         set(Time_tx, txLength90);    // set RF pulse length to sequence
         //pulseTX = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_amp, Tx_phase, Time_tx, Tx_shape, Tx_shape_phase, Tx_freq_offset);
         set(Tx_att_offset, 0);
-        pulseTX = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_att_offset, Tx_amp, Tx_phase, Time_tx, Tx_shape, Tx_shape_phase, Tx_freq_offset);
+        pulseTX = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_att_offset, Tx_amp, Tx_phase, Time_tx, Tx_shape, Tx_shape_phase, Tx_freq_offset, nucleus);
 
         double flip_angle = getDouble(FLIP_ANGLE);
         flip_angle = models.get(TofSat.class).isEnabled() && models.get(TofSat.class).getRfPulses().isSlr() ? 90 : flip_angle;
@@ -249,10 +250,10 @@ public class TOF extends KernelGE {
         // ------------------------------------------------------------------
         double grad_ratio_slice_refoc = isEnableSlice ? getDouble(SLICE_REFOCUSING_GRADIENT_RATIO) : 0.0;   // get slice refocussing ratio
 
-        RFPulse pulseTXPrep = RFPulse.createRFPulse(getSequence(), Time_grad_ramp, FreqOffset_tx_prep);
+        RFPulse pulseTXPrep = RFPulse.createRFPulse(getSequence(), Time_grad_ramp, FreqOffset_tx_prep, nucleus);
         pulseTXPrep.setCompensationFrequencyOffset(pulseTX, grad_ratio_slice_refoc);
 
-        RFPulse pulseTXComp = RFPulse.createRFPulse(getSequence(), Time_grad_ramp, FreqOffset_tx_comp);
+        RFPulse pulseTXComp = RFPulse.createRFPulse(getSequence(), Time_grad_ramp, FreqOffset_tx_comp, nucleus);
         pulseTXComp.setCompensationFrequencyOffset(pulseTX, grad_ratio_slice_refoc);
     }
 
@@ -294,10 +295,10 @@ public class TOF extends KernelGE {
         double timeADC1 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Acq.ID - 1, Events.Acq.ID - 1) + observation_time / 2.0;
         double timeADC2 = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Acq.ID + 1, Events.Delay2.ID) + observation_time / 2.0;
 
-        RFPulse pulseRXPrep = RFPulse.createRFPulse(getSequence(), Time_min_instruction, FreqOffset_rx_prep);
+        RFPulse pulseRXPrep = RFPulse.createRFPulse(getSequence(), Time_min_instruction, FreqOffset_rx_prep, nucleus);
         pulseRXPrep.setCompensationFrequencyOffsetWithTime(pulseRX, timeADC1);
 
-        RFPulse pulseRXComp = RFPulse.createRFPulse(getSequence(), Time_min_instruction, FreqOffset_rx_comp);
+        RFPulse pulseRXComp = RFPulse.createRFPulse(getSequence(), Time_min_instruction, FreqOffset_rx_comp, nucleus);
         pulseRXComp.setCompensationFrequencyOffsetWithTime(pulseRX, timeADC2);
     }
 
@@ -470,7 +471,7 @@ public class TOF extends KernelGE {
     }
 
     public String getVersion() {
-        return "V1.7";
+        return "master";
     }
     //</editor-fold>
 }

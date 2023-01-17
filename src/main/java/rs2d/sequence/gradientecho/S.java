@@ -2,13 +2,7 @@
 
 package rs2d.sequence.gradientecho;
 
-import rs2d.spinlab.tools.param.*;
-import rs2d.spinlab.tools.table.*;
-import rs2d.spinlab.tools.role.RoleEnum;
 import rs2d.spinlab.sequenceGenerator.GeneratorSequenceParamEnum;
-
-import java.util.List;
-import static java.util.Arrays.asList;
 
 public enum S implements GeneratorSequenceParamEnum {
     Enable_fs("Enable_fs"),

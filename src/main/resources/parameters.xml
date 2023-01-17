@@ -5,6 +5,7 @@
             <key>ACCU_DIM</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACCU_DIM</name>
+                <uuid>473dfd9e-3773-4e51-accb-7d145c352f57</uuid>
                 <value>1</value>
                 <defaultValue>1</defaultValue>
                 <description>Dimension on which averaging is performed by the Cameleon</description>
@@ -23,6 +24,7 @@
             <key>ACQUISITION_MATRIX_DIMENSION_1D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_MATRIX_DIMENSION_1D</name>
+                <uuid>9aa51594-63f2-4b8a-8fd7-f87ac140067d</uuid>
                 <value>256</value>
                 <defaultValue>128</defaultValue>
                 <description>Info: Size of the initial dataset (raw data) in first dimension</description>
@@ -41,6 +43,7 @@
             <key>ACQUISITION_MATRIX_DIMENSION_2D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_MATRIX_DIMENSION_2D</name>
+                <uuid>ba7d6f05-ce1d-442e-a7d3-660f49d83b8f</uuid>
                 <value>160</value>
                 <defaultValue>128</defaultValue>
                 <description>Info: Size of the initial dataset (raw data) in second dimension</description>
@@ -59,6 +62,7 @@
             <key>ACQUISITION_MATRIX_DIMENSION_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_MATRIX_DIMENSION_3D</name>
+                <uuid>7dc0c916-905b-497b-bfc5-1b47b33c0e13</uuid>
                 <value>24</value>
                 <defaultValue>1</defaultValue>
                 <description>Info: Size of the initial dataset (raw data) in third dimension</description>
@@ -77,6 +81,7 @@
             <key>ACQUISITION_MATRIX_DIMENSION_4D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_MATRIX_DIMENSION_4D</name>
+                <uuid>c95d9ac9-4a59-4344-aff5-bcaccaed5e8f</uuid>
                 <value>1</value>
                 <defaultValue>1</defaultValue>
                 <description>Info: Size of the initial dataset (raw data) in fourth dimension</description>
@@ -95,6 +100,7 @@
             <key>ACQUISITION_MODE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listTextParam">
                 <name>ACQUISITION_MODE</name>
+                <uuid>f6f0bba4-e4a2-49af-a7f9-54a3ca18750e</uuid>
                 <value>COMPLEX</value>
                 <value>REAL</value>
                 <value>REAL</value>
@@ -107,6 +113,7 @@
                 <displayedName>ACQUISITION_MODE</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
                 <group>Miscellaneous</group>
                 <category>Acquisition</category>
             </value>
@@ -115,6 +122,7 @@
             <key>ACQUISITION_NB_ECHO_TRAIN</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_NB_ECHO_TRAIN</name>
+                <uuid>87a6abf6-aafb-4490-bd32-b88221ef37a4</uuid>
                 <value>2848</value>
                 <defaultValue>0</defaultValue>
                 <description>Info: Number of echo trains in each slab </description>
@@ -133,6 +141,7 @@
             <key>ACQUISITION_NB_VIEW</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_NB_VIEW</name>
+                <uuid>8f5bdf76-0c42-4c4e-82ab-3c85306d7112</uuid>
                 <value>2848</value>
                 <defaultValue>0</defaultValue>
                 <description>Info: Number of sampling points in 2D-3D plane</description>
@@ -151,10 +160,11 @@
             <key>ACQUISITION_TIME_OFFSET</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>ACQUISITION_TIME_OFFSET</name>
+                <uuid>8d549bff-0416-40e2-9e2c-6ba674a88ca9</uuid>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Relative acquisition start times in Dynamic or MultiSeries scans</description>
-                <displayedName>Acquisition time offset </displayedName>
+                <displayedName>Acquisition time offset</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <numberEnum>Time</numberEnum>
@@ -168,10 +178,11 @@
             <key>ACQUISITION_TIME_PER_SCAN</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_TIME_PER_SCAN</name>
+                <uuid>e0a49139-ddf3-44a3-b636-036e4f2352e8</uuid>
                 <value>0.003997696</value>
                 <defaultValue>1.0</defaultValue>
                 <description>Info: Time during which the signal is sampled by the ADC</description>
-                <displayedName>Observation Time </displayedName>
+                <displayedName>Observation Time</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -186,7 +197,8 @@
             <key>BASE_FREQ_1</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>BASE_FREQ_1</name>
-                <value>1.28E8</value>
+                <uuid>f273a149-341b-461d-89dd-24057ebcf0f4</uuid>
+                <value>1.2781254725870714E8</value>
                 <defaultValue>1.27552944E8</defaultValue>
                 <description>The base frequency of the first sequence channel</description>
                 <displayedName>Base Freq 1</displayedName>
@@ -204,6 +216,7 @@
             <key>BASE_FREQ_2</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>BASE_FREQ_2</name>
+                <uuid>67130a54-a433-4de3-b94c-230c67ba1c16</uuid>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>The base frequency of the second sequence channel</description>
@@ -222,6 +235,7 @@
             <key>BASE_FREQ_3</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>BASE_FREQ_3</name>
+                <uuid>a5fb1693-16d9-4558-8f0c-9eeec98b054e</uuid>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>The base frequency of the third sequence channel</description>
@@ -240,6 +254,7 @@
             <key>BASE_FREQ_4</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>BASE_FREQ_4</name>
+                <uuid>74d5a23e-59bc-47b7-87d5-14245c54016f</uuid>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>The base frequency of the fourth sequence channel</description>
@@ -258,6 +273,7 @@
             <key>DATA_REPRESENTATION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listTextParam">
                 <name>DATA_REPRESENTATION</name>
+                <uuid>8f2ef739-8e03-46c3-bb3e-11c19661a4ef</uuid>
                 <value>COMPLEX</value>
                 <value>REAL</value>
                 <value>REAL</value>
@@ -270,6 +286,7 @@
                 <displayedName>DATA_REPRESENTATION</displayedName>
                 <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
                 <group>Dimension</group>
                 <category>Miscellaneous</category>
             </value>
@@ -278,6 +295,7 @@
             <key>DIGITAL_FILTER_REMOVED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>DIGITAL_FILTER_REMOVED</name>
+                <uuid>482a509c-a299-4d95-b002-d51b0a73ba01</uuid>
                 <value>true</value>
                 <defaultValue>true</defaultValue>
                 <description>Enable to activate the data shift</description>
@@ -292,8 +310,9 @@
             <key>DIGITAL_FILTER_SHIFT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>DIGITAL_FILTER_SHIFT</name>
-                <value>19</value>
-                <defaultValue>19</defaultValue>
+                <uuid>9769e871-df83-42c2-a7cf-5fa87dae1116</uuid>
+                <value>20</value>
+                <defaultValue>20</defaultValue>
                 <description>Data shift due to the digital filter</description>
                 <displayedName>DIGITAL_FILTER_SHIFT</displayedName>
                 <locked>false</locked>
@@ -310,6 +329,7 @@
             <key>DUMMY_SCAN</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>DUMMY_SCAN</name>
+                <uuid>06bbc812-d79a-4467-a361-0933c1725d1e</uuid>
                 <value>10</value>
                 <defaultValue>128</defaultValue>
                 <description>Number of dummy cycles used to reach steady-state</description>
@@ -325,9 +345,29 @@
             </value>
         </entry>
         <entry>
+            <key>DWELL_TIME</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>DWELL_TIME</name>
+                <uuid>6a63b9dd-a532-46cd-a462-8db10811ea9e</uuid>
+                <value>0.0</value>
+                <defaultValue>0.0</defaultValue>
+                <description>Reception dwell time</description>
+                <displayedName>DW</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>Time</numberEnum>
+                <minValue>0.0</minValue>
+                <maxValue>1.0E9</maxValue>
+                <group>Reception</group>
+                <category>Acquisition</category>
+            </value>
+        </entry>
+        <entry>
             <key>DYNAMIC_MIN_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>DYNAMIC_MIN_TIME</name>
+                <uuid>1099b9e7-3d31-4184-a66c-803be5842bd9</uuid>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable to use the minimum time allowed to perform dynamic acquisition </description>
@@ -342,6 +382,7 @@
             <key>DYNAMIC_SEQUENCE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>DYNAMIC_SEQUENCE</name>
+                <uuid>45fcf061-e9e6-4cea-95bc-4d394dbb588e</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable dynamic acquisition measurments</description>
@@ -356,6 +397,7 @@
             <key>DYN_NUMBER_OF_ACQUISITION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>DYN_NUMBER_OF_ACQUISITION</name>
+                <uuid>4cbfa1d4-7f63-4999-bd3d-70fe46f7c61a</uuid>
                 <value>3</value>
                 <defaultValue>1</defaultValue>
                 <description>Number of frames acquired in dynamic sequence</description>
@@ -374,6 +416,7 @@
             <key>DYN_TIME_BTW_FRAMES</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>DYN_TIME_BTW_FRAMES</name>
+                <uuid>df021729-1e29-4bc5-bfbc-612afdc75b1e</uuid>
                 <value>12.161</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Time interval between frames in dynamic sequence</description>
@@ -392,6 +435,7 @@
             <key>ECHO_SPACING</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ECHO_SPACING</name>
+                <uuid>3b9375d4-4cfc-456a-a44f-91e816df225c</uuid>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Echo spacing : delay between two consecutive echoes of the train (ETL&gt;1), input if MultiEcho - Separated Scans unchecked</description>
@@ -410,7 +454,8 @@
             <key>ECHO_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ECHO_TIME</name>
-                <value>0.0037</value>
+                <uuid>bf36975c-8ef8-4fa7-a9bc-ca2796d0333f</uuid>
+                <value>0.00402</value>
                 <defaultValue>0.005</defaultValue>
                 <description>Echo Time</description>
                 <displayedName>TE</displayedName>
@@ -428,6 +473,7 @@
             <key>ECHO_TRAIN_LENGTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ECHO_TRAIN_LENGTH</name>
+                <uuid>d1593896-1f42-43ab-b4e9-6ddc341c40e4</uuid>
                 <value>1</value>
                 <defaultValue>1</defaultValue>
                 <description>Length of echo train after one excitation pulse ( fixed to 1 in TOF)</description>
@@ -446,6 +492,7 @@
             <key>FATSAT_BANDWIDTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_BANDWIDTH</name>
+                <uuid>bfaa0140-9687-41b8-a27a-0ba6115d2f3f</uuid>
                 <value>400.0</value>
                 <defaultValue>448.0</defaultValue>
                 <description>Fat-Sat pulse Bandwidth</description>
@@ -464,6 +511,7 @@
             <key>FATSAT_FLIP_ANGLE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_FLIP_ANGLE</name>
+                <uuid>36198022-798e-41a7-ac78-504271aa4d0c</uuid>
                 <value>0.0</value>
                 <defaultValue>90.0</defaultValue>
                 <description>Info: Fat-Sat pulse (90°) Flip Angle</description>
@@ -482,6 +530,7 @@
             <key>FATSAT_GRAD_APP_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_GRAD_APP_TIME</name>
+                <uuid>56dedd5d-c0ec-4159-bd07-1c1575474887</uuid>
                 <value>6.2E-4</value>
                 <defaultValue>0.001</defaultValue>
                 <description>Top time of Fat-Sat gradient</description>
@@ -500,6 +549,7 @@
             <key>FATSAT_OFFSET_FREQ</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_OFFSET_FREQ</name>
+                <uuid>2d62085f-f2be-4f9f-9853-72b7f61aaa1c</uuid>
                 <value>448.0</value>
                 <defaultValue>448.0</defaultValue>
                 <description>Separation between fat and water frequencies (at 3T ~ 420-448Hz ; at 1.5T ~ 210-224Hz): Default = water frequency * 3.5</description>
@@ -518,6 +568,7 @@
             <key>FATSAT_PERIODE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_PERIODE</name>
+                <uuid>6360d188-42bf-4aef-8423-04e582071613</uuid>
                 <value>0.07</value>
                 <defaultValue>0.05</defaultValue>
                 <description>Not applicable in TOF</description>
@@ -536,6 +587,7 @@
             <key>FATSAT_PERIODE_EFF</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_PERIODE_EFF</name>
+                <uuid>6cd0345c-cbf8-4592-bd3d-5f5e3ef9c009</uuid>
                 <value>0.06207235200000001</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Not applicable in TOF</description>
@@ -554,7 +606,8 @@
             <key>FATSAT_TX_AMP_90</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_TX_AMP_90</name>
-                <value>100.0</value>
+                <uuid>7bd1a4e5-0e24-4640-8ce8-d9fcd3b1fa21</uuid>
+                <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Fat-Sat Pulse amplitude</description>
                 <displayedName>FatSat - TX Amplitude</displayedName>
@@ -572,6 +625,7 @@
             <key>FATSAT_TX_LENGTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FATSAT_TX_LENGTH</name>
+                <uuid>bc29b4ac-958c-4aac-b411-89dd67ba4a89</uuid>
                 <value>5.0E-6</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Fat-Sat Pulse duration</description>
@@ -590,6 +644,7 @@
             <key>FATSAT_TX_SHAPE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>FATSAT_TX_SHAPE</name>
+                <uuid>878894a0-4575-4f11-af38-0304d06305c3</uuid>
                 <value>HARD</value>
                 <defaultValue>HARD</defaultValue>
                 <description>Fat-Sat Pulse shape</description>
@@ -611,6 +666,7 @@
             <key>FAT_SATURATION_ENABLED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>FAT_SATURATION_ENABLED</name>
+                <uuid>2ad4fa90-f0cf-476e-9640-60d3bf78234f</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable Fat-Sat preparation pulse </description>
@@ -625,6 +681,7 @@
             <key>FAT_WATER_SEP_2DMRSI</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>FAT_WATER_SEP_2DMRSI</name>
+                <uuid>e77d85ce-14a3-4b6f-8acd-50b02b80e873</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Checkbox parameter for running fat-water separation plugin</description>
@@ -639,6 +696,7 @@
             <key>FIELD_OF_VIEW</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FIELD_OF_VIEW</name>
+                <uuid>b580dc2d-326d-49a0-953b-d624cd8e97ea</uuid>
                 <value>0.07</value>
                 <defaultValue>0.6</defaultValue>
                 <description>Field Of View along the frequency encoding direction</description>
@@ -657,7 +715,8 @@
             <key>FIELD_OF_VIEW_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FIELD_OF_VIEW_3D</name>
-                <value>0.012</value>
+                <uuid>0a888a27-0fd3-4c90-a9cf-47b947469ba7</uuid>
+                <value>0.018383999999999998</value>
                 <defaultValue>0.0</defaultValue>
                 <description> Field Of View coverage along the direction orthogonal to the phase and frequency encoding directions</description>
                 <displayedName>FOV Slice/3D</displayedName>
@@ -675,6 +734,7 @@
             <key>FIELD_OF_VIEW_PHASE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FIELD_OF_VIEW_PHASE</name>
+                <uuid>2b159029-7c26-45a4-8573-90d5d37cb04f</uuid>
                 <value>0.07</value>
                 <defaultValue>0.08</defaultValue>
                 <description>Field Of View along the phase encoding direction</description>
@@ -693,6 +753,7 @@
             <key>FLIP_ANGLE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FLIP_ANGLE</name>
+                <uuid>c4aaa278-e4b3-4915-b4eb-59a176928326</uuid>
                 <value>30.0</value>
                 <defaultValue>5.0</defaultValue>
                 <description>Excitation flip angle</description>
@@ -711,6 +772,7 @@
             <key>FLOWCOMP_DURATION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FLOWCOMP_DURATION</name>
+                <uuid>95fda8a3-e8d7-4d20-9e81-9bdb31136cf6</uuid>
                 <value>7.0E-4</value>
                 <defaultValue>5.0E-4</defaultValue>
                 <description>Plateau duration of the gradient used for flow compensation </description>
@@ -728,6 +790,7 @@
             <key>FLOW_COMPENSATION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>FLOW_COMPENSATION</name>
+                <uuid>1e6af408-b2ba-40d7-898c-fbbb936d7baa</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable flow compensation</description>
@@ -742,6 +805,7 @@
             <key>FOV_DOUBLED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>FOV_DOUBLED</name>
+                <uuid>77383397-4b0f-4091-970d-d600ce8eac32</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable double FOV and BW to avoid aliazing</description>
@@ -756,6 +820,7 @@
             <key>FOV_RATIO_PHASE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FOV_RATIO_PHASE</name>
+                <uuid>561c6f27-d9b2-4fd1-929c-034b0a304864</uuid>
                 <value>100.0</value>
                 <defaultValue>100.0</defaultValue>
                 <description>The fov ratio in the phase direction (2D/1D)</description>
@@ -774,6 +839,7 @@
             <key>FOV_SQUARE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>FOV_SQUARE</name>
+                <uuid>6d1988a1-6d67-439a-bef1-5fbf5934d9f0</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable to enforce a square FOV (Phase FOV ratio = 100%)</description>
@@ -788,6 +854,7 @@
             <key>GRADIENT_ENABLE_PHASE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>GRADIENT_ENABLE_PHASE</name>
+                <uuid>35530cb2-7fe1-4780-9e93-43a106415c41</uuid>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable 2D phase encoding gradient</description>
@@ -802,6 +869,7 @@
             <key>GRADIENT_ENABLE_PHASE_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>GRADIENT_ENABLE_PHASE_3D</name>
+                <uuid>e52704e0-b6fa-4db3-9bc3-e564190dafb3</uuid>
                 <value>true</value>
                 <defaultValue>true</defaultValue>
                 <description>Enable 3D phase encoding gradient</description>
@@ -816,10 +884,11 @@
             <key>GRADIENT_ENABLE_READ</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>GRADIENT_ENABLE_READ</name>
+                <uuid>e8b5622e-c7d7-41ae-ab7a-eb40879cf61e</uuid>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable  frequency encoding gradient</description>
-                <displayedName>Gradient Read </displayedName>
+                <displayedName>Gradient Read</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
@@ -830,10 +899,11 @@
             <key>GRADIENT_ENABLE_REWINDING</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>GRADIENT_ENABLE_REWINDING</name>
+                <uuid>0913979f-af29-474c-bf6e-3d6e8e40b965</uuid>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable to do gradient rewind instead of spoiling</description>
-                <displayedName>Gradient Rewinding </displayedName>
+                <displayedName>Gradient Rewinding</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Gradient</group>
@@ -844,6 +914,7 @@
             <key>GRADIENT_ENABLE_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>GRADIENT_ENABLE_SLICE</name>
+                <uuid>a44a45b4-05e8-4f5a-a8d4-431a1f7048e1</uuid>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable the slice selection gradient</description>
@@ -858,6 +929,7 @@
             <key>GRADIENT_ENABLE_SPOILER</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>GRADIENT_ENABLE_SPOILER</name>
+                <uuid>b1537257-7249-42af-a110-224dcde7af48</uuid>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable gradient spoiler in the three directions</description>
@@ -872,6 +944,7 @@
             <key>GRADIENT_PHASE_APPLICATION_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>GRADIENT_PHASE_APPLICATION_TIME</name>
+                <uuid>b1fb19af-50dd-4482-b16e-d2eba7632126</uuid>
                 <value>5.67E-4</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Phase encoding gradient application time</description>
@@ -890,7 +963,8 @@
             <key>GRADIENT_RISE_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>GRADIENT_RISE_TIME</name>
-                <value>1.5E-4</value>
+                <uuid>a2e3081b-864c-4d99-a0e5-0e2e3474d823</uuid>
+                <value>2.3E-4</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Rise time of the gradient</description>
                 <displayedName>Gradient Rise Time</displayedName>
@@ -908,6 +982,7 @@
             <key>GRADIENT_SPOILER_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>GRADIENT_SPOILER_TIME</name>
+                <uuid>88d5bdce-4690-438a-b244-59ce7136980a</uuid>
                 <value>5.67E-4</value>
                 <defaultValue>9.999999999999999E-5</defaultValue>
                 <description>Duration of the spoiler gradients</description>
@@ -926,6 +1001,7 @@
             <key>GRAD_AMP_SPOILER_SL_PH_RE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>GRAD_AMP_SPOILER_SL_PH_RE</name>
+                <uuid>d8fc2a23-08be-4fab-a849-e29a3a482e2e</uuid>
                 <value>40.0</value>
                 <value>40.0</value>
                 <value>40.0</value>
@@ -944,6 +1020,7 @@
             <key>HARDWARE_A0</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>HARDWARE_A0</name>
+                <uuid>779b6b39-0a3c-49c4-b165-9dd8b3a68ddd</uuid>
                 <value>27.69</value>
                 <value>28.58</value>
                 <value>22.43</value>
@@ -961,6 +1038,7 @@
             <key>HARDWARE_DC</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>HARDWARE_DC</name>
+                <uuid>cd4356bb-543c-4cd0-883e-4ca2284967b3</uuid>
                 <value>-0.174</value>
                 <value>0.2686</value>
                 <value>-0.1862</value>
@@ -979,6 +1057,7 @@
             <key>HARDWARE_PREEMPHASIS_A</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>HARDWARE_PREEMPHASIS_A</name>
+                <uuid>2f4595fe-bd43-4ac2-b738-a625c807ef0b</uuid>
                 <value>0.0</value>
                 <value>0.0</value>
                 <value>0.0</value>
@@ -1012,6 +1091,7 @@
             <key>HARDWARE_PREEMPHASIS_T</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>HARDWARE_PREEMPHASIS_T</name>
+                <uuid>31d01f2f-5821-4837-a854-3a3384e1d677</uuid>
                 <value>0.02</value>
                 <value>0.02</value>
                 <value>0.02</value>
@@ -1045,6 +1125,7 @@
             <key>HARDWARE_SHIM</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>HARDWARE_SHIM</name>
+                <uuid>5b52caa2-2dd6-4f77-9026-65fe0d63e4e4</uuid>
                 <value>0.0</value>
                 <value>0.0</value>
                 <value>0.0</value>
@@ -1068,6 +1149,7 @@
             <key>HARDWARE_SHIM_LABEL</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>HARDWARE_SHIM_LABEL</name>
+                <uuid>0ede3b51-0811-4286-8835-bfd70092a242</uuid>
                 <value>YZ XY XZ X2-Y2 Z0 Z2 X Y Z</value>
                 <defaultValue></defaultValue>
                 <description></description>
@@ -1082,6 +1164,7 @@
             <key>IMAGE_ORIENTATION_SUBJECT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>IMAGE_ORIENTATION_SUBJECT</name>
+                <uuid>c7477a67-e60e-406c-88b1-a33916b646d0</uuid>
                 <value>1.0</value>
                 <value>0.0</value>
                 <value>0.0</value>
@@ -1109,6 +1192,7 @@
             <key>IMAGE_POSITION_SUBJECT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>IMAGE_POSITION_SUBJECT</name>
+                <uuid>24a78e8c-26b2-4347-bac2-6f5000e4dfa1</uuid>
                 <value>0.0</value>
                 <value>0.0</value>
                 <value>0.0</value>
@@ -1130,6 +1214,7 @@
             <key>INTERLEAVED_ECHO_TRAIN</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>INTERLEAVED_ECHO_TRAIN</name>
+                <uuid>2df2f8b2-e7e2-415c-a28f-76d7e11d6cdf</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>multiple ETL in interleaved mode</description>
@@ -1144,6 +1229,7 @@
             <key>INTERLEAVED_EFF_ECHO_SPACING</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>INTERLEAVED_EFF_ECHO_SPACING</name>
+                <uuid>6f23e6c4-edba-4dc2-88ef-99e6d69caee0</uuid>
                 <value>8.0E-4</value>
                 <defaultValue>8.0E-4</defaultValue>
                 <description>Effective echo spacing of interleaved echo trains</description>
@@ -1162,6 +1248,7 @@
             <key>INTERLEAVED_NUM_OF_ECHO_TRAIN</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>INTERLEAVED_NUM_OF_ECHO_TRAIN</name>
+                <uuid>ae0670b0-35a8-4bd6-968b-5f324c5f0cfe</uuid>
                 <value>1</value>
                 <defaultValue>1</defaultValue>
                 <description>Number of interleaved echo train</description>
@@ -1180,8 +1267,9 @@
             <key>INTERMEDIATE_FREQUENCY</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>INTERMEDIATE_FREQUENCY</name>
-                <value>1.251E7</value>
-                <defaultValue>1.251E7</defaultValue>
+                <uuid>c97cbd77-d0b0-4d0e-908e-1fc62dfcacb3</uuid>
+                <value>1.253E7</value>
+                <defaultValue>1.253E7</defaultValue>
                 <description>Info: Frequency from the Hardware used for the signal demodulation (ADC optimal frequency)</description>
                 <displayedName>INTERMEDIATE_FREQUENCY</displayedName>
                 <locked>false</locked>
@@ -1198,6 +1286,7 @@
             <key>KSPACE_FILLING</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>KSPACE_FILLING</name>
+                <uuid>af80d304-c30e-4983-a07d-aa68994fa821</uuid>
                 <value>Linear</value>
                 <defaultValue>Linear</defaultValue>
                 <description>Choose the way to fill the k-space i.e. the order of line acquisition</description>
@@ -1214,6 +1303,7 @@
             <key>KS_CENTERED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>KS_CENTERED</name>
+                <uuid>76fb8195-3f12-4563-a53b-c23b2b7cf3e4</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Center the k-space around k0 (Checked) or go through k0 (Unchecked)</description>
@@ -1228,6 +1318,7 @@
             <key>KS_CENTER_MODE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>KS_CENTER_MODE</name>
+                <uuid>ac2b34ac-5f06-451a-9b0d-df8c9e7a1e0a</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable to turn off the phase encoding gradient and acquire two scans only. Used for RG calibration setup </description>
@@ -1241,6 +1332,7 @@
             <key>LAST_PUT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>LAST_PUT</name>
+                <uuid>7d65fa51-281e-4383-9a81-13fb98f9e183</uuid>
                 <value>1</value>
                 <value>127</value>
                 <value>127</value>
@@ -1264,6 +1356,7 @@
             <key>MAGNETIC_FIELD_STRENGTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>MAGNETIC_FIELD_STRENGTH</name>
+                <uuid>f81ab596-5d6d-4fe2-97b0-b6ac1e0956ab</uuid>
                 <value>3.0</value>
                 <defaultValue>3.0</defaultValue>
                 <description>Info: Magnetic field stength from the hardware</description>
@@ -1282,6 +1375,7 @@
             <key>MANUFACTURER</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>MANUFACTURER</name>
+                <uuid>a3022667-fbfb-4680-a900-e9ebfa430731</uuid>
                 <value>Manufacturer</value>
                 <defaultValue>Manufacturer</defaultValue>
                 <description>Manufacturer</description>
@@ -1297,6 +1391,7 @@
             <key>MIN_RISE_TIME_FACTOR</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>MIN_RISE_TIME_FACTOR</name>
+                <uuid>5d62d692-75f7-481e-824a-6d113b3f7543</uuid>
                 <value>100.0</value>
                 <defaultValue>100.0</defaultValue>
                 <description>Safety parameter applied on maximum gradient slew rate. Fastest is 100%</description>
@@ -1315,6 +1410,7 @@
             <key>MODALITY</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>MODALITY</name>
+                <uuid>9337d70a-079c-4078-b438-9307b977b175</uuid>
                 <value>MRI</value>
                 <defaultValue>MRI</defaultValue>
                 <description>The modality for the acquisition</description>
@@ -1333,6 +1429,7 @@
             <key>MODEL_NAME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>MODEL_NAME</name>
+                <uuid>fa221df5-9ab7-4dcc-9d32-0eb49a532826</uuid>
                 <value>Model name</value>
                 <defaultValue>Model name</defaultValue>
                 <description>Model name</description>
@@ -1348,6 +1445,7 @@
             <key>MULTISERIES_PARAMETER_NAME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>MULTISERIES_PARAMETER_NAME</name>
+                <uuid>a67d993a-afd6-440b-b1b7-ba441a48ebb3</uuid>
                 <value></value>
                 <defaultValue></defaultValue>
                 <description>Info: Name of the multiseries parameter. Can be TE (multi-echoes) or Trigger Delay</description>
@@ -1366,6 +1464,7 @@
             <key>MULTISERIES_PARAMETER_VALUE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>MULTISERIES_PARAMETER_VALUE</name>
+                <uuid>f1fa4c91-bf80-4161-8d7b-50046f97c0e1</uuid>
                 <description>Info: List of valueS of the incremented parameter in multiseries mode. Can be TE (multi-echoes) or Trigger Delay</description>
                 <displayedName>Multiseries param values</displayedName>
                 <locked>false</locked>
@@ -1381,10 +1480,11 @@
             <key>MULTI_PLANAR_EXCITATION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>MULTI_PLANAR_EXCITATION</name>
+                <uuid>0d103275-f00c-459a-9a8f-20da22a63830</uuid>
                 <value>true</value>
                 <defaultValue>true</defaultValue>
                 <description>Switch between 2D multislice (enable) or 3D acquisition (disable)</description>
-                <displayedName>2D-Imaging </displayedName>
+                <displayedName>2D-Imaging</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Miscellaneous</group>
@@ -1395,6 +1495,7 @@
             <key>NUCLEUS_1</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>NUCLEUS_1</name>
+                <uuid>ed84b6e4-c616-47c5-8848-0c5847319126</uuid>
                 <value>1H</value>
                 <defaultValue>1H</defaultValue>
                 <description>The nucleus used for the first sequence channel</description>
@@ -1533,6 +1634,7 @@
             <key>NUCLEUS_2</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>NUCLEUS_2</name>
+                <uuid>56498278-4b75-4c88-9420-e6a79853cbe2</uuid>
                 <value>1H</value>
                 <defaultValue>1H</defaultValue>
                 <description>The nucleus used for the second sequence channel</description>
@@ -1671,6 +1773,7 @@
             <key>NUCLEUS_3</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>NUCLEUS_3</name>
+                <uuid>53234cd6-f0e1-4f2c-8d52-b0cc66468a92</uuid>
                 <value>1H</value>
                 <defaultValue>1H</defaultValue>
                 <description>The nucleus used for the third sequence channel</description>
@@ -1809,6 +1912,7 @@
             <key>NUCLEUS_4</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>NUCLEUS_4</name>
+                <uuid>1a9b97f4-4648-4145-92cf-587f742ca1c8</uuid>
                 <value>1H</value>
                 <defaultValue>1H</defaultValue>
                 <description>The nucleus used for the fourth sequence channel</description>
@@ -1947,6 +2051,7 @@
             <key>NUMBER_OF_AVERAGES</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>NUMBER_OF_AVERAGES</name>
+                <uuid>1aa021a2-286c-466a-8c9f-b2cd509d256d</uuid>
                 <value>1</value>
                 <defaultValue>1</defaultValue>
                 <description>Number of averages</description>
@@ -1965,6 +2070,7 @@
             <key>NUMBER_OF_INTERLEAVED_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>NUMBER_OF_INTERLEAVED_SLICE</name>
+                <uuid>6eb597b1-2d6f-4d11-8dbf-adabeb319802</uuid>
                 <value>1</value>
                 <defaultValue>1</defaultValue>
                 <description>Info: Number of interleaved slice acquired during one TR</description>
@@ -1983,6 +2089,7 @@
             <key>NUMBER_OF_SHOOT_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>NUMBER_OF_SHOOT_3D</name>
+                <uuid>37b6360a-2f9e-40ed-83d7-10708d271efe</uuid>
                 <value>24</value>
                 <defaultValue>1</defaultValue>
                 <description>To split the slices in different packs (nb of slices per TR = nb of slices / number of slice packs). Increase the number of packs (must be a divisor of the number of slices) to reach shorter TR</description>
@@ -2001,6 +2108,7 @@
             <key>NUMBER_OF_SLAB</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>NUMBER_OF_SLAB</name>
+                <uuid>c3b60ab8-60af-4c36-a8e9-ec78cd3b7ade</uuid>
                 <value>1</value>
                 <defaultValue>1</defaultValue>
                 <description>Number of slabs </description>
@@ -2018,7 +2126,8 @@
             <key>OBSERVED_FREQUENCY</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OBSERVED_FREQUENCY</name>
-                <value>1.28E8</value>
+                <uuid>3f45d8fb-3979-4c93-8eb6-995eac09198e</uuid>
+                <value>1.2781254725870714E8</value>
                 <defaultValue>6.3E7</defaultValue>
                 <description>The frequency of the acquisition</description>
                 <displayedName>Observed frequency</displayedName>
@@ -2036,6 +2145,7 @@
             <key>OBSERVED_NUCLEUS</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>OBSERVED_NUCLEUS</name>
+                <uuid>caba8e31-e46f-48d4-8383-3243314cfc8a</uuid>
                 <value>1H</value>
                 <defaultValue>1H</defaultValue>
                 <description>The observed nucleus</description>
@@ -2174,6 +2284,7 @@
             <key>OFFSET_FREQ_1</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFFSET_FREQ_1</name>
+                <uuid>971ae646-4908-4d1b-941b-6f4997bc103a</uuid>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>The offset frequency of the first sequence channel</description>
@@ -2192,6 +2303,7 @@
             <key>OFFSET_FREQ_2</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFFSET_FREQ_2</name>
+                <uuid>531af524-7e90-42b0-a542-4b622367e4a7</uuid>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>The offset frequency of the second sequence channel</description>
@@ -2210,6 +2322,7 @@
             <key>OFFSET_FREQ_3</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFFSET_FREQ_3</name>
+                <uuid>158b3fa7-4ddf-4d60-a7f7-a38d90368919</uuid>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>The offset frequency of the third sequence channel</description>
@@ -2228,6 +2341,7 @@
             <key>OFFSET_FREQ_4</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFFSET_FREQ_4</name>
+                <uuid>fddfd0cc-8184-40e0-934c-7c771571896a</uuid>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>The offset frequency of the fourth sequence channel</description>
@@ -2246,6 +2360,7 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_1D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_1D</name>
+                <uuid>79934eaa-a84d-4a2f-bb4d-66c22390d2ed</uuid>
                 <value>-0.002</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Off-center distance in Readout Direction</description>
@@ -2264,6 +2379,7 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_2D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_2D</name>
+                <uuid>8888f087-da25-40b1-805b-4286d6b84a7a</uuid>
                 <value>-0.004</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Off-center distance in Phase Encoding Direction</description>
@@ -2282,6 +2398,7 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_3D</name>
+                <uuid>2e6bca84-09da-467c-8a64-b00b51210a56</uuid>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Off-center distance in Slice Direction</description>
@@ -2300,6 +2417,7 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_EFF</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_EFF</name>
+                <uuid>001f4c53-a88c-4af2-80c9-636b588fbc4d</uuid>
                 <value>-0.002</value>
                 <value>0.0</value>
                 <value>0.0</value>
@@ -2321,6 +2439,7 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_X</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_X</name>
+                <uuid>c13a1410-a118-4a56-b7a9-6ac79cf1945a</uuid>
                 <value>-0.002</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Off-center distance  in the R/L direction</description>
@@ -2339,6 +2458,7 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_Y</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_Y</name>
+                <uuid>53125b9e-94bd-40f5-9498-212b46248e0e</uuid>
                 <value>0.004</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Off-center distance in the A/P direction</description>
@@ -2357,6 +2477,7 @@
             <key>OFF_CENTER_FIELD_OF_VIEW_Z</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>OFF_CENTER_FIELD_OF_VIEW_Z</name>
+                <uuid>11d5876d-b47d-49ad-82d0-6a87defbd7e1</uuid>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Off-center distance in the I/S direction</description>
@@ -2375,6 +2496,7 @@
             <key>ORIENTATION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>ORIENTATION</name>
+                <uuid>52e8dc95-2fff-4eed-a947-eba2db2be647</uuid>
                 <value>AXIAL</value>
                 <defaultValue>AXIAL</defaultValue>
                 <description>Field of view orientation</description>
@@ -2394,6 +2516,7 @@
             <key>PAROPT_PARAM</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>PAROPT_PARAM</name>
+                <uuid>3c9d5fce-3f13-48f6-aaba-74ffcc887620</uuid>
                 <value></value>
                 <defaultValue>PULSE_LENGTH</defaultValue>
                 <description>Name of the current optimised parameter</description>
@@ -2409,6 +2532,7 @@
             <key>PARTIAL_OVERSAMPLING</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>PARTIAL_OVERSAMPLING</name>
+                <uuid>d4702f70-7786-44ca-b5ef-f6ce85f0b0be</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description></description>
@@ -2422,6 +2546,7 @@
             <key>PHASE_0</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>PHASE_0</name>
+                <uuid>a6e924e0-96e3-42f0-9e35-f5289a401c8b</uuid>
                 <description>0th order phase</description>
                 <displayedName>PHASE_0</displayedName>
                 <locked>true</locked>
@@ -2437,6 +2562,7 @@
             <key>PHASE_1</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>PHASE_1</name>
+                <uuid>c4df026b-529e-4259-9c25-01da2db66017</uuid>
                 <description>1st order phase</description>
                 <displayedName>PHASE_1</displayedName>
                 <locked>true</locked>
@@ -2452,6 +2578,7 @@
             <key>PHASE_APPLIED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>PHASE_APPLIED</name>
+                <uuid>5a6f5eb4-b5ed-4439-9d91-973582ec0832</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Phase application applied</description>
@@ -2466,6 +2593,7 @@
             <key>PHASE_FIELD_OF_VIEW_RATIO</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>PHASE_FIELD_OF_VIEW_RATIO</name>
+                <uuid>f1c3afc6-42b9-4322-ae69-988af7b8b3c7</uuid>
                 <value>100.0</value>
                 <defaultValue>100.0</defaultValue>
                 <description>Info: Ratio between the phase-encoded FOV and the frequency-encoded FOV in % </description>
@@ -2484,6 +2612,7 @@
             <key>PHASE_RESET</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>PHASE_RESET</name>
+                <uuid>26a50f90-f314-4080-be94-2e46d72ce301</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable electronic phase reset at the beginning of the scan</description>
@@ -2498,6 +2627,7 @@
             <key>PREPHASING_READ_GRADIENT_RATIO</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>PREPHASING_READ_GRADIENT_RATIO</name>
+                <uuid>1d7e4745-c357-4735-9198-1491d251bfa7</uuid>
                 <value>0.5</value>
                 <defaultValue>0.5</defaultValue>
                 <description>Prephasing reading gradient ratio</description>
@@ -2516,6 +2646,7 @@
             <key>PROBE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>PROBE</name>
+                <uuid>a79bd9a8-5b58-4573-b82c-4416e97baf07</uuid>
                 <value></value>
                 <defaultValue></defaultValue>
                 <description>The probe used for the mr acquisition</description>
@@ -2531,11 +2662,13 @@
             <key>PROBES</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listTextParam">
                 <name>PROBES</name>
+                <uuid>7822254a-25e8-4aad-9604-e4dbbb7fac55</uuid>
                 <value>4CH 18cm</value>
                 <description>Name of probes used for the transmit and reception</description>
                 <displayedName>Probes</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
                 <group>Miscellaneous</group>
                 <category>Acquisition</category>
             </value>
@@ -2544,7 +2677,8 @@
             <key>RECEIVER_COUNT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RECEIVER_COUNT</name>
-                <value>1</value>
+                <uuid>b34d5aaa-896d-41dd-9d99-290fcef0aaf4</uuid>
+                <value>4</value>
                 <defaultValue>1</defaultValue>
                 <description>Info: Number of reception channels</description>
                 <displayedName>No. Receivers</displayedName>
@@ -2562,6 +2696,7 @@
             <key>RECEIVER_GAIN</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RECEIVER_GAIN</name>
+                <uuid>9b427296-be65-4eed-b52b-29e4068a662b</uuid>
                 <value>40.0</value>
                 <defaultValue>1.0</defaultValue>
                 <description>Receiver Gain</description>
@@ -2580,6 +2715,7 @@
             <key>REPETITION_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>REPETITION_TIME</name>
+                <uuid>f4c1958e-1832-45db-bbd1-ce2cd666885c</uuid>
                 <value>0.015</value>
                 <defaultValue>0.2</defaultValue>
                 <description>Repetition Time</description>
@@ -2598,6 +2734,7 @@
             <key>RESOLUTION_FREQUENCY</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RESOLUTION_FREQUENCY</name>
+                <uuid>6f4ec98b-f6e6-4ef2-bf15-581f57381566</uuid>
                 <value>2.734375E-4</value>
                 <defaultValue>5.0E-4</defaultValue>
                 <description>Info: True voxel size in the frequency encoding direction (FOV/acquisition_matrix_dimension_1D) </description>
@@ -2616,6 +2753,7 @@
             <key>RESOLUTION_PHASE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RESOLUTION_PHASE</name>
+                <uuid>6efd41b4-1f4c-44a1-a5bd-f33769f92abd</uuid>
                 <value>4.3750000000000006E-4</value>
                 <defaultValue>5.0E-4</defaultValue>
                 <description>Info:True voxel in the phase encoding direction (FOV/acquisition_matrix_dimension_2D) </description>
@@ -2634,7 +2772,8 @@
             <key>RESOLUTION_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RESOLUTION_SLICE</name>
-                <value>5.0E-4</value>
+                <uuid>8f842b7e-89f2-4ec9-b33c-1fe66ea14607</uuid>
+                <value>7.66E-4</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: True voxel size in the third direction</description>
                 <displayedName>Voxel Size Slice/3D</displayedName>
@@ -2652,6 +2791,7 @@
             <key>RF_SPOILING</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>RF_SPOILING</name>
+                <uuid>08ba1a26-616a-4abe-b5ca-7ef9590ed56f</uuid>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable the RF spoiling by cycling RF phase in the sequence</description>
@@ -2666,6 +2806,7 @@
             <key>SATBAND_DISTANCE_FROM_FOV</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SATBAND_DISTANCE_FROM_FOV</name>
+                <uuid>644a65ff-80c5-406e-9c3c-aafd37b67b88</uuid>
                 <value>0.005</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Distance of the Saturation Band from the FOV </description>
@@ -2684,6 +2825,7 @@
             <key>SATBAND_ENABLED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>SATBAND_ENABLED</name>
+                <uuid>8413d4ac-247a-4915-ad7c-54e4ce92dce7</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable Saturation Band</description>
@@ -2698,6 +2840,7 @@
             <key>SATBAND_GRAD_AMP_SPOILER</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SATBAND_GRAD_AMP_SPOILER</name>
+                <uuid>8ae036ae-2542-46ea-835c-a35ca094fa8a</uuid>
                 <value>40.0</value>
                 <defaultValue>40.0</defaultValue>
                 <description>Amplitude of the spoiler gradient following the saturation pulse. </description>
@@ -2716,6 +2859,7 @@
             <key>SATBAND_ORIENTATION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SATBAND_ORIENTATION</name>
+                <uuid>c115e3f5-9882-4be8-8320-876f0e01a6b1</uuid>
                 <value>ALL</value>
                 <defaultValue>CRANIAL</defaultValue>
                 <description>Orientation of the Saturation Band</description>
@@ -2741,6 +2885,7 @@
             <key>SATBAND_T1</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SATBAND_T1</name>
+                <uuid>a50e07f4-c0fc-45b2-9a42-b38d0307abf1</uuid>
                 <value>500.0</value>
                 <defaultValue>500.0</defaultValue>
                 <description>T1 of the saturated tissue : the longitudinal magnetization will be nulled when the excitation pulse is applied.</description>
@@ -2759,6 +2904,7 @@
             <key>SATBAND_THICKNESS</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SATBAND_THICKNESS</name>
+                <uuid>d5542533-f1c5-4bef-b4b8-9a0c367cca62</uuid>
                 <value>0.01</value>
                 <defaultValue>0.01</defaultValue>
                 <description>Thickness of the Saturation Band</description>
@@ -2777,7 +2923,8 @@
             <key>SATBAND_TX_AMP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SATBAND_TX_AMP</name>
-                <value>100.0</value>
+                <uuid>ce650681-d777-4ff2-b848-33c8e27f92fe</uuid>
+                <value>75.32704525411751</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Saturation Band Pulse amplitude</description>
                 <displayedName>SatBand - TX Amplitude</displayedName>
@@ -2795,6 +2942,7 @@
             <key>SATBAND_TX_SHAPE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SATBAND_TX_SHAPE</name>
+                <uuid>41495edb-f903-4407-998a-e52a92ebc7df</uuid>
                 <value>SINC3</value>
                 <defaultValue>HARD</defaultValue>
                 <description>Saturation Band Pulse shape</description>
@@ -2817,6 +2965,7 @@
             <key>SEQUENCE_NAME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQUENCE_NAME</name>
+                <uuid>9a852535-c163-4d4d-a2f0-e75b18817a25</uuid>
                 <value>TOF</value>
                 <defaultValue>TOF</defaultValue>
                 <description>Info: Name of the sequence</description>
@@ -2832,6 +2981,7 @@
             <key>SEQUENCE_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
+                <uuid>26665c25-c3d2-481e-ad83-4dc57f63bf5b</uuid>
                 <value>57.751</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Total acquisition time</description>
@@ -2850,6 +3000,7 @@
             <key>SEQUENCE_VERSION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQUENCE_VERSION</name>
+                <uuid>00fc2c3e-168b-438a-be54-2e1369a6d45c</uuid>
                 <value>Version x1.7</value>
                 <defaultValue></defaultValue>
                 <description>Info: Name of the sequence</description>
@@ -2865,6 +3016,7 @@
             <key>SEQ_DESCRIPTION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQ_DESCRIPTION</name>
+                <uuid>4724b61e-deb1-4d18-8993-1bba2dd1a640</uuid>
                 <value>GE_2D_AXI_256x160x24_TOFSAT</value>
                 <defaultValue></defaultValue>
                 <description>Info: Description of the sequence</description>
@@ -2879,6 +3031,7 @@
             <key>SETUP_MODE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>SETUP_MODE</name>
+                <uuid>5a6236db-84ad-4e92-a26b-d5cace8b7dc0</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>True during setup process</description>
@@ -2893,6 +3046,7 @@
             <key>SLAB_OVERLAP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SLAB_OVERLAP</name>
+                <uuid>ce529546-8028-4ff4-83ff-067b20919f35</uuid>
                 <value>50.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Percentage of the slab volume overlapped with one adjacent slab</description>
@@ -2910,10 +3064,11 @@
             <key>SLICE_REFOCUSING_GRADIENT_RATIO</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SLICE_REFOCUSING_GRADIENT_RATIO</name>
+                <uuid>9cd36786-4e69-4ad5-965e-849d1d90dab4</uuid>
                 <value>0.5</value>
                 <defaultValue>0.5</defaultValue>
                 <description>Ratio of the slice refocusing gradient</description>
-                <displayedName>Gradient Refocusing Ratio Slice </displayedName>
+                <displayedName>Gradient Refocusing Ratio Slice</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
@@ -2928,7 +3083,8 @@
             <key>SLICE_THICKNESS</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SLICE_THICKNESS</name>
-                <value>5.0E-4</value>
+                <uuid>e8102e24-af07-4080-bbe1-7c1a403b4ab0</uuid>
+                <value>7.66E-4</value>
                 <defaultValue>0.005</defaultValue>
                 <description>Slice Thickness</description>
                 <displayedName>Slice Thickness</displayedName>
@@ -2946,6 +3102,7 @@
             <key>SOFTWARE_VERSION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SOFTWARE_VERSION</name>
+                <uuid>9efb3e96-df7e-4da4-8e41-92334fbb7c2f</uuid>
                 <value>Software version</value>
                 <defaultValue>Spinlab 2020.06.1</defaultValue>
                 <description>Info: Software version</description>
@@ -2961,6 +3118,7 @@
             <key>SPACING_BETWEEN_SLAB</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SPACING_BETWEEN_SLAB</name>
+                <uuid>4f8d2519-6c90-4248-a0c3-53755a84d9c1</uuid>
                 <value>-0.006</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Space between slabs</description>
@@ -2978,6 +3136,7 @@
             <key>SPACING_BETWEEN_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SPACING_BETWEEN_SLICE</name>
+                <uuid>19172d3d-67de-4f5b-8da4-e8998cf59005</uuid>
                 <value>0.0</value>
                 <defaultValue>5.0</defaultValue>
                 <description>Gap between slice</description>
@@ -2996,6 +3155,7 @@
             <key>SPECTRAL_WIDTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SPECTRAL_WIDTH</name>
+                <uuid>0d5bfd40-d42b-460e-9bba-f35049ae79bb</uuid>
                 <value>64036.88524590164</value>
                 <defaultValue>12500.0</defaultValue>
                 <description>Receiver bandwidth (SW, BW, bandwidth )</description>
@@ -3014,6 +3174,7 @@
             <key>SPECTRAL_WIDTH_OPT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>SPECTRAL_WIDTH_OPT</name>
+                <uuid>17b18f4e-1ece-4fd5-894e-478955d0ca0e</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Use BW to calculate BW per pixel (Check) / Use  BW per pixel to calculate BW (Uncheck)</description>
@@ -3028,6 +3189,7 @@
             <key>SPECTRAL_WIDTH_PER_PIXEL</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SPECTRAL_WIDTH_PER_PIXEL</name>
+                <uuid>902f25b2-0199-4a71-a71c-747aca0c1e3a</uuid>
                 <value>250.1440829918033</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Bandwidth per pixel </description>
@@ -3046,6 +3208,7 @@
             <key>SQUARE_PIXEL</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>SQUARE_PIXEL</name>
+                <uuid>5699593d-bb12-4507-9e4d-9ebed1bde63e</uuid>
                 <value>false</value>
                 <defaultValue>true</defaultValue>
                 <description>Enable to have same pixel dimension in frequency and phase encoding direction, this will adjust Acquisition matrix 2D size</description>
@@ -3060,6 +3223,7 @@
             <key>STATION_NAME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>STATION_NAME</name>
+                <uuid>81ebb9cc-3cf9-46c4-bf97-a9b7d96d3dbb</uuid>
                 <value>Station name</value>
                 <defaultValue>Station name</defaultValue>
                 <description>Station name</description>
@@ -3075,6 +3239,7 @@
             <key>SUBJECT_POSITION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SUBJECT_POSITION</name>
+                <uuid>27f9d68d-3a40-4415-850c-a54a349d966e</uuid>
                 <value>HeadFirstProne</value>
                 <defaultValue>FeetFirstProne</defaultValue>
                 <description>Subject position relative to the magnet</description>
@@ -3094,6 +3259,7 @@
             <key>SWITCH_READ_PHASE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>SWITCH_READ_PHASE</name>
+                <uuid>a3594e8b-be9b-465d-9b89-ea56c6a942e9</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Switch Read and phase encoding gradient</description>
@@ -3108,6 +3274,7 @@
             <key>SWITCH_READ_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>SWITCH_READ_SLICE</name>
+                <uuid>8a580ad9-5075-494a-b3ca-a4ff28ce8783</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Switch the read and slice (partition) encoding gradient</description>
@@ -3122,6 +3289,7 @@
             <key>TOF2D_FLOW_TAU</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF2D_FLOW_TAU</name>
+                <uuid>1f34c748-60d5-4bd9-9356-5489e605a10a</uuid>
                 <value>4.9999999999999996E-6</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Delay right in front of excitation pulse to allow the blood flow from satband through imaging slice/volume</description>
@@ -3139,6 +3307,7 @@
             <key>TOF2D_FLOW_VELOCITY</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF2D_FLOW_VELOCITY</name>
+                <uuid>d2a15eb2-50c6-4812-83a4-b513a583cd22</uuid>
                 <value>0.12</value>
                 <defaultValue>0.3</defaultValue>
                 <description>Average velocity of (blood) flow</description>
@@ -3156,6 +3325,7 @@
             <key>TOF2D_MT_CALI</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>TOF2D_MT_CALI</name>
+                <uuid>5d8b8f9a-0225-4143-9a35-92a3efdf0f46</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description></description>
@@ -3169,6 +3339,7 @@
             <key>TOF2D_SB_DISTANCE_FROM_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF2D_SB_DISTANCE_FROM_SLICE</name>
+                <uuid>262e64d3-a1d5-4e54-903f-59306ca7c721</uuid>
                 <value>0.005</value>
                 <defaultValue>0.002</defaultValue>
                 <description>Distance of the TOF satband from the active imaging slice in 2D acquisition</description>
@@ -3187,6 +3358,7 @@
             <key>TOF2D_SB_GRAMP_SP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF2D_SB_GRAMP_SP</name>
+                <uuid>90e37746-8973-447c-bfb2-19d4eade397a</uuid>
                 <value>40.0</value>
                 <defaultValue>40.0</defaultValue>
                 <description>Amplitude of the spoiler gradient following the TOF satband RF pulse. </description>
@@ -3205,6 +3377,7 @@
             <key>TOF2D_SB_POSITION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>TOF2D_SB_POSITION</name>
+                <uuid>68054820-7dfa-4c4b-9d8c-63dc204e3563</uuid>
                 <value>ABOVE THE SLICE</value>
                 <defaultValue>BELOW THE SLICE</defaultValue>
                 <description>TOF Satband position relative to imaging slices in 2D acquisition</description>
@@ -3222,6 +3395,7 @@
             <key>TOF2D_SB_THICKNESS</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF2D_SB_THICKNESS</name>
+                <uuid>6ef04f0f-b963-4f13-9ecc-0f6335a1583d</uuid>
                 <value>0.01</value>
                 <defaultValue>0.01</defaultValue>
                 <description>Thickness of the TOF saturation band in 2D acquisition</description>
@@ -3240,6 +3414,7 @@
             <key>TOF3D_EXT_SHIRNK_FACTOR</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF3D_EXT_SHIRNK_FACTOR</name>
+                <uuid>7472c394-758b-4a10-bf16-056679061503</uuid>
                 <value>20.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Shrink factor for TOF slabs</description>
@@ -3257,6 +3432,7 @@
             <key>TOF3D_MT_BANDWIDTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF3D_MT_BANDWIDTH</name>
+                <uuid>5f2132d0-0e73-428b-badd-d884650c4423</uuid>
                 <value>500.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Bandwidth of TOF MT saturation pulse</description>
@@ -3274,6 +3450,7 @@
             <key>TOF3D_MT_FLIP_ANGLE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF3D_MT_FLIP_ANGLE</name>
+                <uuid>ec20c38d-fe28-4364-a3cc-18f4023b9609</uuid>
                 <value>1152.0000000000002</value>
                 <defaultValue>360.0</defaultValue>
                 <description>Info: nominal flip angle of TOF 3D MT saturation pulse</description>
@@ -3291,6 +3468,7 @@
             <key>TOF3D_MT_GAMMA_B1</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF3D_MT_GAMMA_B1</name>
+                <uuid>efc5e67d-b16d-4db7-a54b-0b2e324830c1</uuid>
                 <value>500.0</value>
                 <defaultValue>50.0</defaultValue>
                 <description>Gamma B1 value of TOF 3D MT saturation pulse</description>
@@ -3308,6 +3486,7 @@
             <key>TOF3D_MT_INDIV</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>TOF3D_MT_INDIV</name>
+                <uuid>4ab0cc71-9238-470a-8860-763359f33303</uuid>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>True if running only one saturation pulse per slab</description>
@@ -3321,6 +3500,7 @@
             <key>TOF3D_MT_TX_LENGTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF3D_MT_TX_LENGTH</name>
+                <uuid>0cf66f7b-3430-4138-b2e5-df6f5b6bf1e2</uuid>
                 <value>0.0064</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info :uration of TOF 3D MT saturation pulse</description>
@@ -3338,6 +3518,7 @@
             <key>TOF3D_TX_RAMP_SLOPE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF3D_TX_RAMP_SLOPE</name>
+                <uuid>12323d21-0fd5-4bfb-8a13-d7144a4ca30f</uuid>
                 <value>-0.2</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Ramp slope of TONE pulse used in TOF</description>
@@ -3355,6 +3536,7 @@
             <key>TOF_ENABLED</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>TOF_ENABLED</name>
+                <uuid>16a8e9c2-619d-4790-a091-50898d1053ae</uuid>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable TOF acquisition with stationary tissue saturation</description>
@@ -3369,6 +3551,7 @@
             <key>TOF_SB_OFFSET</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF_SB_OFFSET</name>
+                <uuid>f67c4343-e279-448e-b9c3-6835feaaa37d</uuid>
                 <value>1000.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Additional global requency offset applied to all TOF satband RF pulses</description>
@@ -3398,6 +3581,7 @@
             <key>TOF_SB_TX_SHAPE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>TOF_SB_TX_SHAPE</name>
+                <uuid>aebf11b7-67a5-4121-8b37-b2a2a4aa388f</uuid>
                 <value>GAUSSIAN</value>
                 <defaultValue>HARD</defaultValue>
                 <description>TOF satband RF pulse shape</description>
@@ -3419,6 +3603,7 @@
             <key>TRAJ_MATRIX</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>TRAJ_MATRIX</name>
+                <uuid>97cb5733-670e-470a-bafc-fad423059bd3</uuid>
                 <value>64</value>
                 <value>64</value>
                 <value>64</value>
@@ -3438,6 +3623,7 @@
             <key>TRAJ_POSITION</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>TRAJ_POSITION</name>
+                <uuid>d40c658e-1b4e-4077-93c7-5ad274e2a688</uuid>
                 <value>1</value>
                 <value>25</value>
                 <value>1</value>
@@ -9989,6 +10175,7 @@
             <key>TRANSFORM_PLUGIN</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>TRANSFORM_PLUGIN</name>
+                <uuid>f8cdf9da-2f6b-48b1-8ba1-2cd1d5da2e1d</uuid>
                 <value>Sequential4D</value>
                 <defaultValue>Sequential4D</defaultValue>
                 <description>Info :Transform the acquisition space to the k-space. </description>
@@ -10004,13 +10191,90 @@
             </value>
         </entry>
         <entry>
+            <key>TRANSMIT_FREQ_1</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>TRANSMIT_FREQ_1</name>
+                <uuid>0fa73160-74c9-4984-b918-e3c83d4a6d25</uuid>
+                <value>0.0</value>
+                <defaultValue>0.0</defaultValue>
+                <description>Transmit frequency of the first sequence channel</description>
+                <displayedName>Transmit Freq 1</displayedName>
+                <locked>true</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>Frequency</numberEnum>
+                <minValue>0.0</minValue>
+                <maxValue>3.0E9</maxValue>
+                <group>Emission</group>
+                <category>Acquisition</category>
+            </value>
+        </entry>
+        <entry>
+            <key>TRANSMIT_FREQ_2</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>TRANSMIT_FREQ_2</name>
+                <uuid>72563d44-a489-4ce0-86f9-d3a6a94f9aa5</uuid>
+                <value>0.0</value>
+                <defaultValue>0.0</defaultValue>
+                <description>Transmit frequency of the second sequence channel</description>
+                <displayedName>Transmit Freq 2</displayedName>
+                <locked>true</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>Frequency</numberEnum>
+                <minValue>0.0</minValue>
+                <maxValue>3.0E9</maxValue>
+                <group>Emission</group>
+                <category>Acquisition</category>
+            </value>
+        </entry>
+        <entry>
+            <key>TRANSMIT_FREQ_3</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>TRANSMIT_FREQ_3</name>
+                <uuid>456a77af-bee4-46c7-9cad-235ef5ced4a7</uuid>
+                <value>0.0</value>
+                <defaultValue>0.0</defaultValue>
+                <description>Transmit frequency of the third sequence channel</description>
+                <displayedName>Transmit Freq 3</displayedName>
+                <locked>true</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>Frequency</numberEnum>
+                <minValue>0.0</minValue>
+                <maxValue>3.0E9</maxValue>
+                <group>Emission</group>
+                <category>Acquisition</category>
+            </value>
+        </entry>
+        <entry>
+            <key>TRANSMIT_FREQ_4</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>TRANSMIT_FREQ_4</name>
+                <uuid>1268af26-5440-4b06-837f-77f8003a3643</uuid>
+                <value>0.0</value>
+                <defaultValue>0.0</defaultValue>
+                <description>Transmit frequency of the fourth sequence channel</description>
+                <displayedName>Transmit Freq 4</displayedName>
+                <locked>true</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>Frequency</numberEnum>
+                <minValue>0.0</minValue>
+                <maxValue>3.0E9</maxValue>
+                <group>Emission</group>
+                <category>Acquisition</category>
+            </value>
+        </entry>
+        <entry>
             <key>TRIGGER_EXTERNAL</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>TRIGGER_EXTERNAL</name>
+                <uuid>b7225008-61a4-434e-bcfa-41e45d622e21</uuid>
                 <value>false</value>
                 <defaultValue>false</defaultValue>
                 <description>Enable to synchronize the acquisition with external trigger</description>
-                <displayedName>Trigger External </displayedName>
+                <displayedName>Trigger External</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Delay</group>
@@ -10021,6 +10285,7 @@
             <key>TRIGGER_TIME</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>TRIGGER_TIME</name>
+                <uuid>8f5fa87b-c81b-4262-94bc-4f74faa590a0</uuid>
                 <value>0.0</value>
                 <value>12.161</value>
                 <value>24.322</value>
@@ -10040,7 +10305,8 @@
             <key>TX_AMP</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP</name>
-                <value>80.15087639647997</value>
+                <uuid>6d533b2b-46db-468e-81d9-e86ffe3b2e90</uuid>
+                <value>77.47537494100442</value>
                 <defaultValue>40.0</defaultValue>
                 <description>Amplitude of the excitation RF pulse </description>
                 <displayedName>TX Amplitude</displayedName>
@@ -10058,6 +10324,7 @@
             <key>TX_AMP_180</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP_180</name>
+                <uuid>cb183c2a-1c8a-4386-ad09-555c0730b3f9</uuid>
                 <value>100.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>The magnitude of the RF pulse 180</description>
@@ -10076,6 +10343,7 @@
             <key>TX_AMP_90</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP_90</name>
+                <uuid>14c88b3e-61fb-4e22-b010-fdc486555725</uuid>
                 <value>100.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Amplitude of the transmitter</description>
@@ -10093,6 +10361,7 @@
             <key>TX_AMP_ATT_AUTO</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>TX_AMP_ATT_AUTO</name>
+                <uuid>a53c7df0-f9e1-4b7a-b09d-246bf73716b7</uuid>
                 <value>true</value>
                 <defaultValue>true</defaultValue>
                 <description>Enable to automatically set attenuation and amplitude for the RF according to the calibration</description>
@@ -10107,16 +10376,17 @@
             <key>TX_ATT</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_ATT</name>
-                <value>46.0</value>
-                <defaultValue>36.0</defaultValue>
+                <uuid>13a8651e-9ec7-4485-8162-a7726c6194bb</uuid>
+                <value>0</value>
+                <defaultValue>36</defaultValue>
                 <description>RF pulse attenuation</description>
                 <displayedName>TX Attenuation</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>TxAtt</numberEnum>
-                <minValue>0.0</minValue>
-                <maxValue>63.0</maxValue>
+                <minValue>0</minValue>
+                <maxValue>63</maxValue>
                 <group>Emission</group>
                 <category>Acquisition</category>
             </value>
@@ -10125,6 +10395,7 @@
             <key>TX_BANDWIDTH_FACTOR</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>TX_BANDWIDTH_FACTOR</name>
+                <uuid>b9b88155-f184-4470-afe8-9488b7a4130b</uuid>
                 <value>0.95</value>
                 <value>1.35</value>
                 <value>2.55</value>
@@ -10154,6 +10425,7 @@
             <key>TX_BANDWIDTH_FACTOR_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>TX_BANDWIDTH_FACTOR_3D</name>
+                <uuid>74f1e335-ecc6-412b-a4a5-a33128535fbd</uuid>
                 <value>1.1</value>
                 <value>3.2</value>
                 <value>5.0</value>
@@ -10183,6 +10455,7 @@
             <key>TX_LENGTH</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_LENGTH</name>
+                <uuid>b2c4e5d0-953b-4178-bafe-db217492ca70</uuid>
                 <value>0.001</value>
                 <defaultValue>0.0</defaultValue>
                 <description>RF pulse length</description>
@@ -10201,6 +10474,7 @@
             <key>TX_ROUTE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                 <name>TX_ROUTE</name>
+                <uuid>66671cf4-50af-4f69-89fd-ffbc24081eec</uuid>
                 <value>0</value>
                 <description>Info: Selected physical transmit channel</description>
                 <displayedName>TX Route</displayedName>
@@ -10217,6 +10491,7 @@
             <key>TX_SHAPE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>TX_SHAPE</name>
+                <uuid>74cc532c-6424-43ea-8054-7da39bb8e59a</uuid>
                 <value>RAMP</value>
                 <defaultValue>GAUSSIAN</defaultValue>
                 <description>RF Pulse shape</description>
@@ -10239,6 +10514,7 @@
             <key>USER_MATRIX_DIMENSION_1D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_1D</name>
+                <uuid>0c39cd10-8c2b-4df3-ae75-025ab7e6a807</uuid>
                 <value>256</value>
                 <defaultValue>1</defaultValue>
                 <description>Image size in readout direction (user matrix dimension 1D)</description>
@@ -10257,6 +10533,7 @@
             <key>USER_MATRIX_DIMENSION_2D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_2D</name>
+                <uuid>8ef6d0ad-6cae-448f-af79-cb2ca03126df</uuid>
                 <value>160</value>
                 <defaultValue>1</defaultValue>
                 <description>Image size in phase encoding direction  (user matrix dimension 2D)</description>
@@ -10275,6 +10552,7 @@
             <key>USER_MATRIX_DIMENSION_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_3D</name>
+                <uuid>13c8c179-b598-4424-a745-4a8aa15f0e0c</uuid>
                 <value>24</value>
                 <defaultValue>1</defaultValue>
                 <description>Image size in the third dimension: slice or 3D PE  (user matrix dimension 3D)</description>
@@ -10293,6 +10571,7 @@
             <key>USER_MATRIX_DIMENSION_4D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_4D</name>
+                <uuid>5bf4eb84-6d3d-4c54-a575-b17b9c78940a</uuid>
                 <value>1</value>
                 <defaultValue>1</defaultValue>
                 <description>Info: Number of image data set (user maxtrix 4D)</description>
@@ -10311,6 +10590,7 @@
             <key>USER_PARTIAL_PHASE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_PARTIAL_PHASE</name>
+                <uuid>36b81a97-321b-4fc5-90ff-352c942da842</uuid>
                 <value>100.0</value>
                 <defaultValue>100.0</defaultValue>
                 <description>Percent of the k-space that is acquired, the rest will be completed by zeros in the phase encoding direction (Zero-filling interpolation)</description>
@@ -10329,6 +10609,7 @@
             <key>USER_PARTIAL_SLICE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_PARTIAL_SLICE</name>
+                <uuid>80e729c1-19ba-4e8a-b960-1506fd8f0494</uuid>
                 <value>100.0</value>
                 <defaultValue>100.0</defaultValue>
                 <description>Percent of the k-space that is acquired, the rest will be completed by zeros in the third encoding direction (only for 3D acquisition mode)</description>
@@ -10347,6 +10628,7 @@
             <key>USER_ZERO_FILLING_2D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_ZERO_FILLING_2D</name>
+                <uuid>ed5760b7-a263-4e3b-908e-a0503708734c</uuid>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Percentage of zero filling (=1 - Zero-filling Phase)</description>
@@ -10365,6 +10647,7 @@
             <key>USER_ZERO_FILLING_3D</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_ZERO_FILLING_3D</name>
+                <uuid>63338c14-6eb5-4a3f-a44e-488a7a536ea9</uuid>
                 <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Percentage of zero filling (=1 - Zero-filling 3D)</description>

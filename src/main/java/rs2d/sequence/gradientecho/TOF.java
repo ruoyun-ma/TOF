@@ -10,6 +10,7 @@ package rs2d.sequence.gradientecho;
 
 import common.Gradient;
 import rs2d.commons.log.Log;
+import rs2d.spinlab.api.Hardware;
 import rs2d.spinlab.exception.ConfigurationException;
 import rs2d.spinlab.instrument.Instrument;
 import rs2d.spinlab.sequence.element.Opcode;
@@ -184,11 +185,11 @@ public class TOF extends KernelGE {
         // Calculation RF pulse parameters  3/4 : RF pulse & attenuation
         // -----------------------------------------------
         if (getBoolean(TX_AMP_ATT_AUTO)) {
-            if (!pulseTX.checkPower(flip_angle, observeFrequency, nucleus)) {
+            if (!pulseTX.prepPower(flip_angle, observeFrequency)) {
                 notifyOutOfRangeParam(TX_LENGTH, pulseTX.getPulseDuration(), ((NumberParam) getParam(TX_LENGTH)).getMaxValue(), "Pulse length too short to reach RF power with this pulse shape");
                 txLength90 = pulseTX.getPulseDuration();
             }
-            pulseTX.prepAtt(80, getListInt(TX_ROUTE));
+            pulseTX.prepChannelAtt(80, getListInt(TX_ROUTE));
             pulseTX.prepTxAmp(getListInt(TX_ROUTE));
             rfPulses.add(pulseTX);
             getUPDisp();
@@ -471,7 +472,7 @@ public class TOF extends KernelGE {
     }
 
     public String getVersion() {
-        return "V1.8_spinlab_2022.06.3";
+        return "V2.1_spinlab_2022.06.3";
     }
     //</editor-fold>
 }

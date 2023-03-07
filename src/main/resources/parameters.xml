@@ -311,8 +311,8 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>DIGITAL_FILTER_SHIFT</name>
                 <uuid>9769e871-df83-42c2-a7cf-5fa87dae1116</uuid>
-                <value>20</value>
-                <defaultValue>20</defaultValue>
+                <value>19</value>
+                <defaultValue>19</defaultValue>
                 <description>Data shift due to the digital filter</description>
                 <displayedName>DIGITAL_FILTER_SHIFT</displayedName>
                 <locked>false</locked>
@@ -2924,7 +2924,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SATBAND_TX_AMP</name>
                 <uuid>ce650681-d777-4ff2-b848-33c8e27f92fe</uuid>
-                <value>75.32704525411751</value>
+                <value>10.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Saturation Band Pulse amplitude</description>
                 <displayedName>SatBand - TX Amplitude</displayedName>
@@ -10377,7 +10377,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_ATT</name>
                 <uuid>13a8651e-9ec7-4485-8162-a7726c6194bb</uuid>
-                <value>0</value>
+                <value>62</value>
                 <defaultValue>36</defaultValue>
                 <description>RF pulse attenuation</description>
                 <displayedName>TX Attenuation</displayedName>

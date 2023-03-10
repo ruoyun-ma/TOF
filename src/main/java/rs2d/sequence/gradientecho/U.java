@@ -1379,7 +1379,7 @@ public enum U implements GeneratorParamEnum {
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
             param.setUuid("0d103275-f00c-459a-9a8f-20da22a63830");
-            param.setValue(true);
+            param.setValue(false);
             param.setDefaultValue(true);
             return param;
         }
@@ -1950,7 +1950,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Integer);
             param.setMinValue(1);
             param.setMaxValue(32);
-            param.setValue(4);
+            param.setValue(1);
             param.setDefaultValue(1);
             return param;
         }
@@ -2227,7 +2227,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(57.751);
+            param.setValue(57.837075);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2256,7 +2256,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Info: Description of the sequence");
             param.setCategory(Category.Acquisition);
             param.setUuid("4724b61e-deb1-4d18-8993-1bba2dd1a640");
-            param.setValue("GE_2D_AXI_256x160x24_TOFSAT");
+            param.setValue("GE_3D_AXI_256x160x24_TOFSAT");
             param.setDefaultValue("");
             return param;
         }
@@ -2356,7 +2356,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.LengthOffset);
             param.setMinValue(-1.7976931348623157E308);
             param.setMaxValue(1.7976931348623157E308);
-            param.setValue(-0.006);
+            param.setValue(0.0);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2966,7 +2966,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.PERCENT);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(77.47537494100442);
+            param.setValue(76.66444030842445);
             param.setDefaultValue(40.0);
             return param;
         }

@@ -1481,7 +1481,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>MULTI_PLANAR_EXCITATION</name>
                 <uuid>0d103275-f00c-459a-9a8f-20da22a63830</uuid>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>true</defaultValue>
                 <description>Switch between 2D multislice (enable) or 3D acquisition (disable)</description>
                 <displayedName>2D-Imaging</displayedName>
@@ -2678,7 +2678,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RECEIVER_COUNT</name>
                 <uuid>b34d5aaa-896d-41dd-9d99-290fcef0aaf4</uuid>
-                <value>4</value>
+                <value>1</value>
                 <defaultValue>1</defaultValue>
                 <description>Info: Number of reception channels</description>
                 <displayedName>No. Receivers</displayedName>
@@ -2982,7 +2982,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
                 <uuid>26665c25-c3d2-481e-ad83-4dc57f63bf5b</uuid>
-                <value>57.751</value>
+                <value>57.837075</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Total acquisition time</description>
                 <displayedName>Sequence Version</displayedName>
@@ -3017,7 +3017,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQ_DESCRIPTION</name>
                 <uuid>4724b61e-deb1-4d18-8993-1bba2dd1a640</uuid>
-                <value>GE_2D_AXI_256x160x24_TOFSAT</value>
+                <value>GE_3D_AXI_256x160x24_TOFSAT</value>
                 <defaultValue></defaultValue>
                 <description>Info: Description of the sequence</description>
                 <displayedName>Sequence Description</displayedName>
@@ -3119,7 +3119,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SPACING_BETWEEN_SLAB</name>
                 <uuid>4f8d2519-6c90-4248-a0c3-53755a84d9c1</uuid>
-                <value>-0.006</value>
+                <value>0.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Space between slabs</description>
                 <displayedName>Slab Spacing</displayedName>
@@ -10306,7 +10306,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP</name>
                 <uuid>6d533b2b-46db-468e-81d9-e86ffe3b2e90</uuid>
-                <value>77.47537494100442</value>
+                <value>76.66444030842445</value>
                 <defaultValue>40.0</defaultValue>
                 <description>Amplitude of the excitation RF pulse </description>
                 <displayedName>TX Amplitude</displayedName>

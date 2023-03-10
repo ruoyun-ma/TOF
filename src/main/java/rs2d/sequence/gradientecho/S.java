@@ -95,6 +95,7 @@ public enum S implements GeneratorSequenceParamEnum {
     Time_btw_dyn_frames("Time_btw_dyn_frames"),
     Time_delay_fs("Time_delay_fs"),
     Time_delay_sb("Time_delay_sb"),
+    Time_delay_tofsat("Time_delay_tofsat"),
     Time_flow("Time_flow"),
     Time_flush_delay("Time_flush_delay"),
     Time_grad_fs("Time_grad_fs"),

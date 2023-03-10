@@ -1986,7 +1986,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.015);
+            param.setValue(0.019);
             param.setDefaultValue(0.2);
             return param;
         }
@@ -2088,7 +2088,7 @@ public enum U implements GeneratorParamEnum {
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
             param.setUuid("8413d4ac-247a-4915-ad7c-54e4ce92dce7");
-            param.setValue(false);
+            param.setValue(true);
             param.setDefaultValue(false);
             return param;
         }
@@ -2124,6 +2124,23 @@ public enum U implements GeneratorParamEnum {
             param.setValue("ALL");
             param.setDefaultValue("CRANIAL");
             param.setSuggestedValues(asList("CRANIAL", "CAUDAL", "CRANIAL AND CAUDAL", "ANTERIOR", "POSTERIOR", "ANTERIOR AND POSTERIOR", "RIGHT", "LEFT", "RIGHT AND LEFT", "ALL"));
+            return param;
+        }
+    },
+
+    SATBAND_SPOILER_LENGTH("SATBAND_SPOILER_LENGTH") {
+        public Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("SATBAND_SPOILER_LENGTH");
+            param.setDisplayedName("Satband - Spoiler Plateau Duration");
+            param.setDescription("");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("6b6c2b42-581d-4a52-9040-6e7905796c90");
+            param.setNumberEnum(NumberEnum.Time);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.0E9);
+            param.setValue(5.0E-4);
+            param.setDefaultValue(0.0);
             return param;
         }
     },
@@ -2182,6 +2199,23 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
+    SATBAND_TX_LENGTH("SATBAND_TX_LENGTH") {
+        public Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("SATBAND_TX_LENGTH");
+            param.setDisplayedName("Satband - Tx Duration");
+            param.setDescription("");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("8d918b0c-1cf5-4f2e-80ec-fe65cf3651fd");
+            param.setNumberEnum(NumberEnum.Time);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.0E9);
+            param.setValue(0.001);
+            param.setDefaultValue(0.0);
+            return param;
+        }
+    },
+
     SATBAND_TX_SHAPE("SATBAND_TX_SHAPE") {
         public Param build() {
             TextParam param = new TextParam();
@@ -2227,7 +2261,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(57.837075);
+            param.setValue(73.227175);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2242,7 +2276,7 @@ public enum U implements GeneratorParamEnum {
             param.setGroup(EnumGroup.User);
             param.setCategory(Category.Acquisition);
             param.setUuid("00fc2c3e-168b-438a-be54-2e1369a6d45c");
-            param.setValue("Version x1.7");
+            param.setValue("Version 2.1");
             param.setDefaultValue("");
             return param;
         }
@@ -2256,7 +2290,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Info: Description of the sequence");
             param.setCategory(Category.Acquisition);
             param.setUuid("4724b61e-deb1-4d18-8993-1bba2dd1a640");
-            param.setValue("GE_3D_AXI_256x160x24_TOFSAT");
+            param.setValue("GE_3D_AXI_256x160x24_SATBAND_MT");
             param.setDefaultValue("");
             return param;
         }
@@ -2784,7 +2818,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("");
             param.setCategory(Category.Acquisition);
             param.setUuid("e6934b93-96b1-45b9-a7e8-5c9d5a9b76a0");
-            param.setValue("");
+            param.setValue("GAUSSIAN");
             param.setDefaultValue("HARD");
             param.setSuggestedValues(asList("HARD", "GAUSSIAN", "SINC3", "SINC5", "SLR_8_5152", "SLR_4_2576"));
             return param;
@@ -3068,7 +3102,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAtt);
             param.setMinValue(0);
             param.setMaxValue(63);
-            param.setValue(62);
+            param.setValue(8);
             param.setDefaultValue(36);
             return param;
         }

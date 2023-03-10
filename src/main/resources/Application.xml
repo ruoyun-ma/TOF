@@ -3035,7 +3035,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>REPETITION_TIME</name>
                     <uuid>f4c1958e-1832-45db-bbd1-ce2cd666885c</uuid>
-                    <value>0.015</value>
+                    <value>0.019</value>
                     <defaultValue>0.2</defaultValue>
                     <description>Repetition Time</description>
                     <displayedName>TR</displayedName>
@@ -3145,7 +3145,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>SATBAND_ENABLED</name>
                     <uuid>8413d4ac-247a-4915-ad7c-54e4ce92dce7</uuid>
-                    <value>false</value>
+                    <value>true</value>
                     <defaultValue>false</defaultValue>
                     <description>Enable Saturation Band</description>
                     <displayedName>Saturation Band</displayedName>
@@ -3197,6 +3197,24 @@
                     <suggestedValues>RIGHT AND LEFT</suggestedValues>
                     <suggestedValues>ALL</suggestedValues>
                     <group>Dimension</group>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
+                <key>SATBAND_SPOILER_LENGTH</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>SATBAND_SPOILER_LENGTH</name>
+                    <uuid>6b6c2b42-581d-4a52-9040-6e7905796c90</uuid>
+                    <value>5.0E-4</value>
+                    <defaultValue>0.0</defaultValue>
+                    <description></description>
+                    <displayedName>Satband - Spoiler Plateau Duration</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <numberEnum>Time</numberEnum>
+                    <minValue>0.0</minValue>
+                    <maxValue>1.0E9</maxValue>
                     <category>Acquisition</category>
                 </value>
             </entry>
@@ -3258,6 +3276,24 @@
                 </value>
             </entry>
             <entry>
+                <key>SATBAND_TX_LENGTH</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>SATBAND_TX_LENGTH</name>
+                    <uuid>8d918b0c-1cf5-4f2e-80ec-fe65cf3651fd</uuid>
+                    <value>0.001</value>
+                    <defaultValue>0.0</defaultValue>
+                    <description></description>
+                    <displayedName>Satband - Tx Duration</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <numberEnum>Time</numberEnum>
+                    <minValue>0.0</minValue>
+                    <maxValue>1.0E9</maxValue>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
                 <key>SATBAND_TX_SHAPE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SATBAND_TX_SHAPE</name>
@@ -3301,7 +3337,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SEQUENCE_TIME</name>
                     <uuid>26665c25-c3d2-481e-ad83-4dc57f63bf5b</uuid>
-                    <value>57.837075</value>
+                    <value>73.227175</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: Total acquisition time</description>
                     <displayedName>Sequence Version</displayedName>
@@ -3320,7 +3356,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQUENCE_VERSION</name>
                     <uuid>00fc2c3e-168b-438a-be54-2e1369a6d45c</uuid>
-                    <value>Version x1.7</value>
+                    <value>Version 2.1</value>
                     <defaultValue></defaultValue>
                     <description>Info: Name of the sequence</description>
                     <displayedName>Sequence Version</displayedName>
@@ -3336,7 +3372,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
                     <uuid>4724b61e-deb1-4d18-8993-1bba2dd1a640</uuid>
-                    <value>GE_3D_AXI_256x160x24_TOFSAT</value>
+                    <value>GE_3D_AXI_256x160x24_SATBAND_MT</value>
                     <defaultValue></defaultValue>
                     <description>Info: Description of the sequence</description>
                     <displayedName>Sequence Description</displayedName>
@@ -3889,7 +3925,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>TOF_MT_TX_SHAPE</name>
                     <uuid>e6934b93-96b1-45b9-a7e8-5c9d5a9b76a0</uuid>
-                    <value></value>
+                    <value>GAUSSIAN</value>
                     <defaultValue>HARD</defaultValue>
                     <description></description>
                     <displayedName>TOF 3D -  MT TX Shape</displayedName>
@@ -10735,7 +10771,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_ATT</name>
                     <uuid>13a8651e-9ec7-4485-8162-a7726c6194bb</uuid>
-                    <value>62</value>
+                    <value>8</value>
                     <defaultValue>36</defaultValue>
                     <description>RF pulse attenuation</description>
                     <displayedName>TX Attenuation</displayedName>

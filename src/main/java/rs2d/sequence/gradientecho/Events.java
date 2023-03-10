@@ -8,25 +8,25 @@ public enum Events {
          TriggerDelay (1, S.Time_trigger_delay.name()),
 
          LoopMultiPlanarStart (3, S.Time_min_instruction.name()),
-         LoopMultiPlanarStartShort (18, S.Time_grad_ramp.name()),
+         LoopMultiPlanarStartShort (18+7, S.Time_grad_ramp.name()),
 
          LoopSatBandStart (4, S.Time_grad_ramp_tofsat.name()),
          SatBandpulse (5, S.Time_tx_tofsat.name()),
-         LoopSatBandEnd (10, S.Time_delay_sb.name()),
+         LoopSatBandEnd (10, S.Time_delay_tofsat.name()),
 
-         FatSatPulse (12, S.Time_tx_fs.name()),
+         FatSatPulse (12+7, S.Time_tx_fs.name()),
 
-         P90 (19, S.Time_tx.name()),
-         Delay1 (27, S.Time_TE_delay1.name()),
+         P90 (19+7, S.Time_tx.name()),
+         Delay1 (27+7, S.Time_TE_delay1.name()),
 
-         Acq (30, S.Time_rx.name()),
-         Delay2 (35-3, S.Time_TE_delay2.name()),
+         Acq (30+7, S.Time_rx.name()),
+         Delay2 (35-3+7, S.Time_TE_delay2.name()),
 
-         Delay3 (40-3, S.Time_TR_delay.name()),
-         LoopMultiPlanarEnd (41-3, S.Time_min_instruction.name()),
+         Delay3 (40-3+7, S.Time_TR_delay.name()),
+         LoopMultiPlanarEnd (41-3+7, S.Time_min_instruction.name()),
 
-         Loop4D (43-3, S.Time_flush_delay.name()),
-         End (44-3, S.Time_btw_dyn_frames.name());
+         Loop4D (43-3+7, S.Time_flush_delay.name()),
+         End (44-3+7, S.Time_btw_dyn_frames.name());
 
         public final int ID;
         public final String shortcutName;

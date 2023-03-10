@@ -35,8 +35,10 @@ import static rs2d.sequence.gradientecho.U.*;
 // *************************************** SEQUENCE GENERATOR ***************************************
 // **************************************************************************************************
 //
+// * < V2.1 TOF 3D with MT sat, TOF 2D with travelling bands, simultaneous use of TofSat and SatBand not possible
+//        * V2.1: separate TofSat and Satband, 3D TOF with saturation bands
 public class TOF extends KernelGE {
-    private String sequenceVersion = "Version x1.7";
+    private String sequenceVersion = "Version 2.1";
     private boolean isElliptical;
     private double slice_thickness_excitation;
 

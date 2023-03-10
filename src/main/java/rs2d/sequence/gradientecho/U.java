@@ -2727,6 +2727,23 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
+    TOF3D_SPOILER_LENGTH("TOF3D_SPOILER_LENGTH") {
+        public Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("TOF3D_SPOILER_LENGTH");
+            param.setDisplayedName("TOF3D - Spoiler Grad Plateau Duration");
+            param.setDescription("Duration of spoiler gradient after MT saturation pulse");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("b2c5111a-9381-44e5-abbe-ccef8c841f21");
+            param.setNumberEnum(NumberEnum.Time);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.0E9);
+            param.setValue(5.0E-4);
+            param.setDefaultValue(5.0E-4);
+            return param;
+        }
+    },
+
     TOF3D_TX_RAMP_SLOPE("TOF3D_TX_RAMP_SLOPE") {
         public Param build() {
             NumberParam param = new NumberParam();
@@ -2755,6 +2772,21 @@ public enum U implements GeneratorParamEnum {
             param.setUuid("16a8e9c2-619d-4790-a091-50898d1053ae");
             param.setValue(true);
             param.setDefaultValue(false);
+            return param;
+        }
+    },
+
+    TOF_MT_TX_SHAPE("TOF_MT_TX_SHAPE") {
+        public Param build() {
+            TextParam param = new TextParam();
+            param.setName("TOF_MT_TX_SHAPE");
+            param.setDisplayedName("TOF 3D -  MT TX Shape");
+            param.setDescription("");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("e6934b93-96b1-45b9-a7e8-5c9d5a9b76a0");
+            param.setValue("");
+            param.setDefaultValue("HARD");
+            param.setSuggestedValues(asList("HARD", "GAUSSIAN", "SINC3", "SINC5", "SLR_8_5152", "SLR_4_2576"));
             return param;
         }
     },

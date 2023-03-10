@@ -3515,6 +3515,24 @@
             </value>
         </entry>
         <entry>
+            <key>TOF3D_SPOILER_LENGTH</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>TOF3D_SPOILER_LENGTH</name>
+                <uuid>b2c5111a-9381-44e5-abbe-ccef8c841f21</uuid>
+                <value>5.0E-4</value>
+                <defaultValue>5.0E-4</defaultValue>
+                <description>Duration of spoiler gradient after MT saturation pulse</description>
+                <displayedName>TOF3D - Spoiler Grad Plateau Duration</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>Time</numberEnum>
+                <minValue>0.0</minValue>
+                <maxValue>1.0E9</maxValue>
+                <category>Acquisition</category>
+            </value>
+        </entry>
+        <entry>
             <key>TOF3D_TX_RAMP_SLOPE</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF3D_TX_RAMP_SLOPE</name>
@@ -3544,6 +3562,27 @@
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <group>Miscellaneous</group>
+                <category>Acquisition</category>
+            </value>
+        </entry>
+        <entry>
+            <key>TOF_MT_TX_SHAPE</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                <name>TOF_MT_TX_SHAPE</name>
+                <uuid>e6934b93-96b1-45b9-a7e8-5c9d5a9b76a0</uuid>
+                <value></value>
+                <defaultValue>HARD</defaultValue>
+                <description></description>
+                <displayedName>TOF 3D -  MT TX Shape</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <suggestedValues>HARD</suggestedValues>
+                <suggestedValues>GAUSSIAN</suggestedValues>
+                <suggestedValues>SINC3</suggestedValues>
+                <suggestedValues>SINC5</suggestedValues>
+                <suggestedValues>SLR_8_5152</suggestedValues>
+                <suggestedValues>SLR_4_2576</suggestedValues>
                 <category>Acquisition</category>
             </value>
         </entry>

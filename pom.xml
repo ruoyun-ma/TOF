@@ -27,7 +27,7 @@
     <dependency>
       <groupId>rs2d-sequence</groupId>
       <artifactId>sequence-common</artifactId>
-      <version>2.11-spinlab-2022.06.3</version>
+      <version>2.12-spinlab-2022.06.3</version>
     </dependency>
   </dependencies>
   <build>

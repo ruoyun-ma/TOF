@@ -13,8 +13,10 @@ import rs2d.commons.log.Log;
 import rs2d.spinlab.api.Hardware;
 import rs2d.spinlab.exception.ConfigurationException;
 import rs2d.spinlab.instrument.Instrument;
+import rs2d.spinlab.instrument.util.GradientMath;
 import rs2d.spinlab.sequence.element.Opcode;
 import rs2d.spinlab.sequence.table.Table;
+import rs2d.spinlab.sequenceGenerator.GeneratorParamEnum;
 import rs2d.spinlab.sequenceGenerator.util.TimeEvents;
 import rs2d.spinlab.tools.param.*;
 import rs2d.spinlab.tools.table.Order;
@@ -41,6 +43,8 @@ public class TOF extends KernelGE {
     private String sequenceVersion = "Version 2.1";
     private boolean isElliptical;
     private double slice_thickness_excitation;
+    private boolean isMultiSlab;
+
 
     public TOF() {
         super();
@@ -67,6 +71,7 @@ public class TOF extends KernelGE {
     @Override
     public void initUserParam() throws ConfigurationException {
         super.initUserParam();
+        super.isDebugMode = true;
         getParam(SEQUENCE_VERSION).setValue(sequenceVersion);
 
         if (isMultiplanar)
@@ -74,7 +79,7 @@ public class TOF extends KernelGE {
         else {
             if (getInt(NUMBER_OF_SLAB) > 1)
                 getParam(SLAB_OVERLAP).setValue(floorEven(getDouble(SLAB_OVERLAP) / 100 * userMatrixDimension3D) / (double) userMatrixDimension3D * 100);
-
+            isMultiSlab = true;
         }
 
         isElliptical = kspace_filling.equalsIgnoreCase("3DElliptic") && !isMultiplanar;
@@ -167,7 +172,6 @@ public class TOF extends KernelGE {
         // Calculation RF pulse parameters  1/4 : Pulse declaration & Fatsat Flip angle calculation
         // -----------------------------------------------
         set(Time_tx, txLength90);    // set RF pulse length to sequence
-        //pulseTX = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_amp, Tx_phase, Time_tx, Tx_shape, Tx_shape_phase, Tx_freq_offset);
         set(Tx_att_offset, 0);
         pulseTX = RFPulse.createRFPulse(getSequence(), Tx_att, Tx_att_offset, Tx_amp, Tx_phase, Time_tx, Tx_shape, Tx_shape_phase, Tx_freq_offset, nucleus);
 
@@ -205,7 +209,13 @@ public class TOF extends KernelGE {
         // -----------------------------------------------
         // Calculation RF pulse parameters  4/4: bandwidth
         // -----------------------------------------------
-        double tx_bandwidth_factor_90 = getTx_bandwidth_factor(TX_SHAPE, TX_BANDWIDTH_FACTOR, TX_BANDWIDTH_FACTOR_3D);
+        double tx_bandwidth_factor_90;
+        if (isMultiSlab) {
+            boolean isSelective = getBoolean(TX_SELECTION_PULSE);  // not clear yet for multislab, the bandwidth factor should be chosen from 2D or 3D excitation
+            tx_bandwidth_factor_90 = isSelective ? this.getTx_bandwidth_factor(TX_SHAPE, TX_BANDWIDTH_FACTOR) : this.getTx_bandwidth_factor(TX_SHAPE, TX_BANDWIDTH_FACTOR_3D);
+        } else {
+            tx_bandwidth_factor_90 = getTx_bandwidth_factor(TX_SHAPE, TX_BANDWIDTH_FACTOR, TX_BANDWIDTH_FACTOR_3D);
+        }
         double tx_bandwidth_90 = tx_bandwidth_factor_90 / txLength90;
 
         // ---------------------------------------------------------------------
@@ -258,6 +268,18 @@ public class TOF extends KernelGE {
 
         RFPulse pulseTXComp = RFPulse.createRFPulse(getSequence(), Time_grad_ramp, FreqOffset_tx_comp, nucleus);
         pulseTXComp.setCompensationFrequencyOffset(pulseTX, grad_ratio_slice_refoc);
+
+        // ------------------------------------------------------------------
+        // calculate effective FOV in slab direction for Satband with 3D TOF
+        // ------------------------------------------------------------------
+        if(!isMultiplanar && (getInt(NUMBER_OF_SLAB)>1)) {
+            double fovMultiSlab = (getInt(NUMBER_OF_SLAB) -1) * (fov3d + getDouble(SPACING_BETWEEN_SLAB)) + fov3d;
+            models.get(SatBand.class).setMultiSab(true);
+            models.get(SatBand.class).setFovMultiSlab(fovMultiSlab);
+            Log.info(getClass(), "fovMultiSlab = " + fovMultiSlab);
+            Log.info(getClass(), "fov3D = " + fov3d);
+            Log.info(getClass(), "satband = " + models.get(SatBand.class).gradSatBandSlice.getAmplitude());
+        }
     }
 
     //--------------------------------------------------------------------------------------
@@ -359,7 +381,10 @@ public class TOF extends KernelGE {
         double lo_FIR_dead_point = is_FIR ? Instrument.instance().getDevices().getCameleon().getAcquDeadPointCount() : 0;
         double min_FIR_delay = (lo_FIR_dead_point + 2) / spectralWidth;
         double min_FIR_4pts_delay = 4 / spectralWidth;
-
+        // ------------------------------------------
+        // update Dwell Time
+        // -----------------------------------------
+        getParam(DWELL_TIME).setValue(roundToDecimal(1/spectralWidth,7));
         // ------------------------------------------
         // calculate delays adapted to current TE & search for incoherence
         // ------------------------------------------
@@ -447,20 +472,70 @@ public class TOF extends KernelGE {
                 time_tr_delay.add(tr_delay);
             }
         } else {
-            //tr_delay = (tr - (time_seq_to_end_spoiler + last_delay + min_flush_delay)) / nb_slices_acquired_in_single_scan - minInstructionDelay;
-            //tr_delay = (tr - (time_seq_to_end_spoiler + last_delay + min_flush_delay)) / nb_interleaved_slice - minInstructionDelay;
 
             tr_delay = (tr - tr_min) / nb_slices_acquired_in_single_scan;
             time_tr_delay.add(tr_delay);
         }
         set(Time_last_delay, last_delay);
         set(Time_flush_delay, min_flush_delay);
+
+
     }
 
     protected void getAcqTime() {
         super.getAcqTime();
         if (!this.isMultiplanar && getBoolean(TOF3D_MT_INDIV)) {
             getParam(SEQUENCE_TIME).setValue(getDouble(SEQUENCE_TIME) + models.get(TofSat.class).getDuration() * (getInt(NUMBER_OF_SLAB) + nb_preScan));
+        }
+    }
+
+    /**
+     * internal function to get TX bandwidth time product: not confond with getTx_bandwidth_factor from SeqPrepBasic as in Satband module, slice-selective is always on, while
+     * it might not be the case for the parent sequence, e.g. applying satband on whole-volume excitation or slab excitation.
+     *
+     * @param tx_shape      : TX shape user parameter
+     * @param tx_bandwith_factor_param: TX_BANDWIDTH_FACTOR or TX_BANDWIDTH_FACTOR_3D, depending on whether it is slice selection
+     *
+     * return the BWTP of the selected pulse shape
+     *
+     */
+    private double getTx_bandwidth_factor(GeneratorParamEnum tx_shape, GeneratorParamEnum tx_bandwith_factor_param) {
+        double tx_bandwidth_factor;
+        String tx_shape_name = getText(tx_shape);
+
+        List<Double> tx_bandwith_factor_table = getListDouble(tx_bandwith_factor_param);
+
+        if ("GAUSSIAN".equalsIgnoreCase(tx_shape_name)) {
+            tx_bandwidth_factor = tx_bandwith_factor_table.get(1);
+        } else if ("SINC3".equalsIgnoreCase(tx_shape_name)) {
+            tx_bandwidth_factor = tx_bandwith_factor_table.get(2);
+        } else if ("SINC5".equalsIgnoreCase(tx_shape_name)) {
+            tx_bandwidth_factor = tx_bandwith_factor_table.get(3);
+        } else if ("SLR_8_5152".equalsIgnoreCase(tx_shape_name)) {
+            tx_bandwidth_factor = tx_bandwith_factor_table.get(4);
+        } else if ("SLR_4_2576".equalsIgnoreCase(tx_shape_name)) {
+            tx_bandwidth_factor = tx_bandwith_factor_table.get(5);
+        } else if ("RAMP".equalsIgnoreCase(tx_shape_name)) {
+            tx_bandwidth_factor = tx_bandwith_factor_table.get(6);
+        } else {
+            tx_bandwidth_factor = tx_bandwith_factor_table.get(0);
+        }
+
+        return tx_bandwidth_factor;
+    }
+
+
+    @Override
+    protected void printForDebug() throws Exception {
+        
+        if (getBoolean(DEBUG_MODE)) {
+            Log.info(getClass(), "satband rf = " + models.get(SatBand.class).pulseTXSatBand.getFrequencyOffset(0));
+            Log.info(getClass(), "gmax = " + Math.abs(GradientMath.getMaxGradientStrength()));
+            Log.info(getClass(), "tofsat enabled = " +models.get(TofSat.class).isEnabled());
+            if (models.get(TofSat.class).isEnabled()) {
+                Log.info(getClass(), "tofsat rf gamma b1 calculated = " + models.get(TofSat.class).pulseTXTofSat.getPowerGammaB1());
+                
+            }
         }
     }
 

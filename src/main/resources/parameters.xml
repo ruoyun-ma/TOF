@@ -82,7 +82,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>ACQUISITION_MATRIX_DIMENSION_4D</name>
                 <uuid>c95d9ac9-4a59-4344-aff5-bcaccaed5e8f</uuid>
-                <value>1</value>
+                <value>5</value>
                 <defaultValue>1</defaultValue>
                 <description>Info: Size of the initial dataset (raw data) in fourth dimension</description>
                 <displayedName>Acquisition Matrix 4D</displayedName>
@@ -730,7 +730,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>FIELD_OF_VIEW_3D</name>
                 <uuid>0a888a27-0fd3-4c90-a9cf-47b947469ba7</uuid>
-                <value>0.018383999999999998</value>
+                <value>0.01</value>
                 <defaultValue>0.0</defaultValue>
                 <description> Field Of View coverage along the direction orthogonal to the phase and frequency encoding directions</description>
                 <displayedName>FOV Slice/3D</displayedName>
@@ -1495,7 +1495,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>MULTI_PLANAR_EXCITATION</name>
                 <uuid>0d103275-f00c-459a-9a8f-20da22a63830</uuid>
-                <value>true</value>
+                <value>false</value>
                 <defaultValue>true</defaultValue>
                 <description>Switch between 2D multislice (enable) or 3D acquisition (disable)</description>
                 <displayedName>2D-Imaging</displayedName>
@@ -2123,7 +2123,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>NUMBER_OF_SLAB</name>
                 <uuid>c3b60ab8-60af-4c36-a8e9-ec78cd3b7ade</uuid>
-                <value>1</value>
+                <value>5</value>
                 <defaultValue>1</defaultValue>
                 <description>Number of slabs </description>
                 <displayedName>No. Slabs</displayedName>
@@ -2787,7 +2787,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>RESOLUTION_SLICE</name>
                 <uuid>8f842b7e-89f2-4ec9-b33c-1fe66ea14607</uuid>
-                <value>7.66E-4</value>
+                <value>4.166666666666667E-4</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: True voxel size in the third direction</description>
                 <displayedName>Voxel Size Slice/3D</displayedName>
@@ -2874,7 +2874,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SATBAND_ORIENTATION</name>
                 <uuid>c115e3f5-9882-4be8-8320-876f0e01a6b1</uuid>
-                <value>CRANIAL AND CAUDAL</value>
+                <value>CRANIAL</value>
                 <defaultValue>CRANIAL</defaultValue>
                 <description>Orientation of the Saturation Band</description>
                 <displayedName>SatBand - Orientation</displayedName>
@@ -3032,7 +3032,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
                 <uuid>26665c25-c3d2-481e-ad83-4dc57f63bf5b</uuid>
-                <value>88.551</value>
+                <value>441.952375</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Total acquisition time</description>
                 <displayedName>Sequence Version</displayedName>
@@ -3067,7 +3067,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>SEQ_DESCRIPTION</name>
                 <uuid>4724b61e-deb1-4d18-8993-1bba2dd1a640</uuid>
-                <value>GE_2D_AXI_256x160x24_SATBAND</value>
+                <value>GE_3D_AXI_256x160x24x5_MT_SATBAND</value>
                 <defaultValue></defaultValue>
                 <description>Info: Description of the sequence</description>
                 <displayedName>Sequence Description</displayedName>
@@ -3134,7 +3134,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SLICE_THICKNESS</name>
                 <uuid>e8102e24-af07-4080-bbe1-7c1a403b4ab0</uuid>
-                <value>7.66E-4</value>
+                <value>4.166666666666667E-4</value>
                 <defaultValue>0.005</defaultValue>
                 <description>Slice Thickness</description>
                 <displayedName>Slice Thickness</displayedName>
@@ -3169,7 +3169,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SPACING_BETWEEN_SLAB</name>
                 <uuid>4f8d2519-6c90-4248-a0c3-53755a84d9c1</uuid>
-                <value>0.0</value>
+                <value>-0.005</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Space between slabs</description>
                 <displayedName>Slab Spacing</displayedName>
@@ -3394,32 +3394,13 @@
                 <defaultValue>0.002</defaultValue>
                 <description>Distance of the TOF satband from the active imaging slice in 2D acquisition</description>
                 <displayedName>TOF 2D Satband - Distance From Slice</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Location</numberEnum>
                 <minValue>-1.7976931348623157E308</minValue>
                 <maxValue>1.7976931348623157E308</maxValue>
                 <group>Dimension</group>
-                <category>Acquisition</category>
-            </value>
-        </entry>
-        <entry>
-            <key>TOF2D_SB_GRAMP_SP</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                <name>TOF2D_SB_GRAMP_SP</name>
-                <uuid>90e37746-8973-447c-bfb2-19d4eade397a</uuid>
-                <value>40.0</value>
-                <defaultValue>40.0</defaultValue>
-                <description>Amplitude of the spoiler gradient following the TOF satband RF pulse. </description>
-                <displayedName>TOF Sat - Spoiler Grad Amp</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>false</restrictedToSuggested>
-                <numberEnum>PERCENT</numberEnum>
-                <minValue>0.0</minValue>
-                <maxValue>100.0</maxValue>
-                <group>Gradient</group>
                 <category>Acquisition</category>
             </value>
         </entry>
@@ -3432,7 +3413,7 @@
                 <defaultValue>BELOW THE SLICE</defaultValue>
                 <description>TOF Satband position relative to imaging slices in 2D acquisition</description>
                 <displayedName>TOF 2D Satband -  Position</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <suggestedValues>ABOVE THE SLICE</suggestedValues>
@@ -3450,7 +3431,7 @@
                 <defaultValue>0.01</defaultValue>
                 <description>Thickness of the TOF saturation band in 2D acquisition</description>
                 <displayedName>TOF 2D SatBand - Thickness</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Length</numberEnum>
@@ -3475,6 +3456,25 @@
                 <numberEnum>PERCENT</numberEnum>
                 <minValue>0.0</minValue>
                 <maxValue>50.0</maxValue>
+                <category>Acquisition</category>
+            </value>
+        </entry>
+        <entry>
+            <key>TOF3D_MP_SPOILER_AMP</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <name>TOF3D_MP_SPOILER_AMP</name>
+                <uuid>6d4f53f0-2bf9-4e14-8744-f8f44a360862</uuid>
+                <value>40.0</value>
+                <defaultValue>40.0</defaultValue>
+                <description>Amplitude of the spoiler gradient following the TOF satband RF pulse. </description>
+                <displayedName>TOF Sat - Spoiler Grad Amp</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+                <restrictedToSuggested>false</restrictedToSuggested>
+                <numberEnum>PERCENT</numberEnum>
+                <minValue>0.0</minValue>
+                <maxValue>100.0</maxValue>
+                <group>Gradient</group>
                 <category>Acquisition</category>
             </value>
         </entry>
@@ -3519,7 +3519,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF3D_MT_GAMMA_B1</name>
                 <uuid>efc5e67d-b16d-4db7-a54b-0b2e324830c1</uuid>
-                <value>0.0</value>
+                <value>547.1628306230544</value>
                 <defaultValue>50.0</defaultValue>
                 <description>Gamma B1 value of TOF 3D MT saturation pulse</description>
                 <displayedName>TOF 3D MT Sat - Gamma B1</displayedName>
@@ -3641,7 +3641,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TOF_SB_OFFSET</name>
                 <uuid>f67c4343-e279-448e-b9c3-6835feaaa37d</uuid>
-                <value>0.0</value>
+                <value>1000.0</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Additional global requency offset applied to all TOF satband RF pulses</description>
                 <displayedName>TOF Sat - Offset Frequency</displayedName>
@@ -3675,7 +3675,7 @@
                 <defaultValue>HARD</defaultValue>
                 <description>TOF satband RF pulse shape</description>
                 <displayedName>TOF Sat - TX Shape</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <suggestedValues>HARD</suggestedValues>
@@ -10395,7 +10395,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>TX_AMP</name>
                 <uuid>6d533b2b-46db-468e-81d9-e86ffe3b2e90</uuid>
-                <value>76.66444030842445</value>
+                <value>71.4902297830898</value>
                 <defaultValue>40.0</defaultValue>
                 <description>Amplitude of the excitation RF pulse </description>
                 <displayedName>TX Amplitude</displayedName>
@@ -10581,7 +10581,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>TX_SELECTION_PULSE</name>
                 <uuid>b3755568-2dd4-415b-babb-64bb9ee18ce7</uuid>
-                <value>false</value>
+                <value>true</value>
                 <defaultValue>false</defaultValue>
                 <description>True: use TX_BANDWIDTH_FACTOR for slab selection, False: use TX_BANDWIDTH_FACTOR_3D for slab selection</description>
                 <displayedName>Tx Selection Pulse</displayedName>
@@ -10595,7 +10595,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>TX_SHAPE</name>
                 <uuid>74cc532c-6424-43ea-8054-7da39bb8e59a</uuid>
-                <value>RAMP</value>
+                <value>GAUSSIAN</value>
                 <defaultValue>GAUSSIAN</defaultValue>
                 <description>RF Pulse shape</description>
                 <displayedName>TX Shape</displayedName>
@@ -10675,7 +10675,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_4D</name>
                 <uuid>5bf4eb84-6d3d-4c54-a575-b17b9c78940a</uuid>
-                <value>1</value>
+                <value>5</value>
                 <defaultValue>1</defaultValue>
                 <description>Info: Number of image data set (user maxtrix 4D)</description>
                 <displayedName>No. Data Sets</displayedName>

@@ -94,7 +94,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(65536);
-            param.setValue(1);
+            param.setValue(5);
             param.setDefaultValue(1);
             return param;
         }
@@ -709,7 +709,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Length);
             param.setMinValue(0.0);
             param.setMaxValue(1.0);
-            param.setValue(0.018383999999999998);
+            param.setValue(0.01);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -1393,7 +1393,7 @@ public enum U implements GeneratorParamEnum {
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
             param.setUuid("0d103275-f00c-459a-9a8f-20da22a63830");
-            param.setValue(true);
+            param.setValue(false);
             param.setDefaultValue(true);
             return param;
         }
@@ -1532,7 +1532,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(1);
             param.setMaxValue(2147483647);
-            param.setValue(1);
+            param.setValue(5);
             param.setDefaultValue(1);
             return param;
         }
@@ -2054,7 +2054,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Length);
             param.setMinValue(0.0);
             param.setMaxValue(0.1);
-            param.setValue(7.66E-4);
+            param.setValue(4.166666666666667E-4);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2135,7 +2135,7 @@ public enum U implements GeneratorParamEnum {
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
             param.setUuid("c115e3f5-9882-4be8-8320-876f0e01a6b1");
-            param.setValue("CRANIAL AND CAUDAL");
+            param.setValue("CRANIAL");
             param.setDefaultValue("CRANIAL");
             param.setSuggestedValues(asList("CRANIAL", "CAUDAL", "CRANIAL AND CAUDAL", "ANTERIOR", "POSTERIOR", "ANTERIOR AND POSTERIOR", "RIGHT", "LEFT", "RIGHT AND LEFT", "ALL"));
             return param;
@@ -2275,7 +2275,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(88.551);
+            param.setValue(441.952375);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2304,7 +2304,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Info: Description of the sequence");
             param.setCategory(Category.Acquisition);
             param.setUuid("4724b61e-deb1-4d18-8993-1bba2dd1a640");
-            param.setValue("GE_2D_AXI_256x160x24_SATBAND");
+            param.setValue("GE_3D_AXI_256x160x24x5_MT_SATBAND");
             param.setDefaultValue("");
             return param;
         }
@@ -2372,7 +2372,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Length);
             param.setMinValue(5.0E-5);
             param.setMaxValue(1.7976931348623157E308);
-            param.setValue(7.66E-4);
+            param.setValue(4.166666666666667E-4);
             param.setDefaultValue(0.005);
             return param;
         }
@@ -2404,7 +2404,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.LengthOffset);
             param.setMinValue(-1.7976931348623157E308);
             param.setMaxValue(1.7976931348623157E308);
-            param.setValue(0.0);
+            param.setValue(-0.005);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2611,6 +2611,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("TOF2D_SB_DISTANCE_FROM_SLICE");
             param.setDisplayedName("TOF 2D Satband - Distance From Slice");
             param.setDescription("Distance of the TOF satband from the active imaging slice in 2D acquisition");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
             param.setUuid("262e64d3-a1d5-4e54-903f-59306ca7c721");
@@ -2623,30 +2624,13 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
-    TOF2D_SB_GRAMP_SP("TOF2D_SB_GRAMP_SP") {
-        public Param build() {
-            NumberParam param = new NumberParam();
-            param.setName("TOF2D_SB_GRAMP_SP");
-            param.setDisplayedName("TOF Sat - Spoiler Grad Amp");
-            param.setDescription("Amplitude of the spoiler gradient following the TOF satband RF pulse. ");
-            param.setGroup(EnumGroup.Gradient);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("90e37746-8973-447c-bfb2-19d4eade397a");
-            param.setNumberEnum(NumberEnum.PERCENT);
-            param.setMinValue(0.0);
-            param.setMaxValue(100.0);
-            param.setValue(40.0);
-            param.setDefaultValue(40.0);
-            return param;
-        }
-    },
-
     TOF2D_SB_POSITION("TOF2D_SB_POSITION") {
         public Param build() {
             TextParam param = new TextParam();
             param.setName("TOF2D_SB_POSITION");
             param.setDisplayedName("TOF 2D Satband -  Position");
             param.setDescription("TOF Satband position relative to imaging slices in 2D acquisition");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
             param.setUuid("68054820-7dfa-4c4b-9d8c-63dc204e3563");
@@ -2663,6 +2647,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("TOF2D_SB_THICKNESS");
             param.setDisplayedName("TOF 2D SatBand - Thickness");
             param.setDescription("Thickness of the TOF saturation band in 2D acquisition");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
             param.setUuid("6ef04f0f-b963-4f13-9ecc-0f6335a1583d");
@@ -2688,6 +2673,24 @@ public enum U implements GeneratorParamEnum {
             param.setMaxValue(50.0);
             param.setValue(20.0);
             param.setDefaultValue(0.0);
+            return param;
+        }
+    },
+
+    TOF3D_MP_SPOILER_AMP("TOF3D_MP_SPOILER_AMP") {
+        public Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("TOF3D_MP_SPOILER_AMP");
+            param.setDisplayedName("TOF Sat - Spoiler Grad Amp");
+            param.setDescription("Amplitude of the spoiler gradient following the TOF satband RF pulse. ");
+            param.setGroup(EnumGroup.Gradient);
+            param.setCategory(Category.Acquisition);
+            param.setUuid("6d4f53f0-2bf9-4e14-8744-f8f44a360862");
+            param.setNumberEnum(NumberEnum.PERCENT);
+            param.setMinValue(0.0);
+            param.setMaxValue(100.0);
+            param.setValue(40.0);
+            param.setDefaultValue(40.0);
             return param;
         }
     },
@@ -2737,7 +2740,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Frequency);
             param.setMinValue(0.0);
             param.setMaxValue(3.0E9);
-            param.setValue(0.0);
+            param.setValue(547.1628306230544);
             param.setDefaultValue(50.0);
             return param;
         }
@@ -2850,7 +2853,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.FrequencyOffset);
             param.setMinValue(-1.5E9);
             param.setMaxValue(1.5E9);
-            param.setValue(0.0);
+            param.setValue(1000.0);
             param.setDefaultValue(0.0);
             param.setSuggestedValues(asListNumber(-1500.0, -1250.0, -1000.0, -750.0, -500.0, 0.0, 500.0, 750.0, 1000.0, 1250.0, 1500.0));
             return param;
@@ -2863,6 +2866,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("TOF_SB_TX_SHAPE");
             param.setDisplayedName("TOF Sat - TX Shape");
             param.setDescription("TOF satband RF pulse shape");
+            param.setLocked(true);
             param.setCategory(Category.Acquisition);
             param.setUuid("aebf11b7-67a5-4121-8b37-b2a2a4aa388f");
             param.setValue("GAUSSIAN");
@@ -3045,7 +3049,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.PERCENT);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(76.66444030842445);
+            param.setValue(71.4902297830898);
             param.setDefaultValue(40.0);
             return param;
         }
@@ -3200,7 +3204,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("True: use TX_BANDWIDTH_FACTOR for slab selection, False: use TX_BANDWIDTH_FACTOR_3D for slab selection");
             param.setCategory(Category.Acquisition);
             param.setUuid("b3755568-2dd4-415b-babb-64bb9ee18ce7");
-            param.setValue(false);
+            param.setValue(true);
             param.setDefaultValue(false);
             return param;
         }
@@ -3215,7 +3219,7 @@ public enum U implements GeneratorParamEnum {
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
             param.setUuid("74cc532c-6424-43ea-8054-7da39bb8e59a");
-            param.setValue("RAMP");
+            param.setValue("GAUSSIAN");
             param.setDefaultValue("GAUSSIAN");
             param.setSuggestedValues(asList("HARD", "GAUSSIAN", "SINC3", "SINC5", "SLR_8_5152", "SLR_4_2576", "RAMP"));
             return param;
@@ -3288,7 +3292,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(1);
             param.setMaxValue(65536);
-            param.setValue(1);
+            param.setValue(5);
             param.setDefaultValue(1);
             return param;
         }

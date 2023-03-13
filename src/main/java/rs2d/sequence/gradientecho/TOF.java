@@ -534,7 +534,7 @@ public class TOF extends KernelGE {
             Log.info(getClass(), "tofsat enabled = " +models.get(TofSat.class).isEnabled());
             if (models.get(TofSat.class).isEnabled()) {
                 Log.info(getClass(), "tofsat rf gamma b1 calculated = " + models.get(TofSat.class).pulseTXTofSat.getPowerGammaB1());
-                
+                Log.info(getClass(), "TOFSAT duration = " + models.get(TofSat.class).getDuration());
             }
         }
     }

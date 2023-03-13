@@ -2275,7 +2275,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(441.952375);
+            param.setValue(441.94562500000006);
             param.setDefaultValue(0.0);
             return param;
         }

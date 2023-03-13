@@ -423,18 +423,24 @@ public class TOF extends KernelGE {
         // ---------------------------------------------------------------
         // calculate TR , Time_last_delay  Time_TR_delay & search for incoherence
         // ---------------------------------------------------------------
-        int nb_slices_acquired_in_single_scan = (nb_planar_excitation > 1) ? (nb_interleaved_slice) : 1;
+        nb_slices_acquired_in_single_scan = (nb_planar_excitation > 1) ? (nb_interleaved_slice) : 1;
         double delay_before_multi_planar_loop;
         double delay_sat_band = models.get(SatBand.class).getDuration();
         double delay_before_echo_loop;
+        Log.info(getClass()," delay_sat_band = " +  delay_sat_band);
+        Log.info(getClass()," ext trigger duration = " +  models.get(ExtTrig.class).getDuration());
 
         if (models.get(TofSat.class).isEnabled() && !isMultiplanar) {
+            Log.info(getClass(),"multislab tof");
             delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1)
-                    + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopSatBandStart.ID - 1)
+                    + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopMultiPlanarStart.ID)
                     + models.get(ExtTrig.class).getDuration()
                     + delay_sat_band
+                    + models.get(TofSat.class).getDuration()
                     + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID + 1, Events.LoopMultiPlanarStartShort.ID - 1);
+            Log.info(getClass(), "delay_before_multi_planar_loop = " + delay_before_multi_planar_loop);
             delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStartShort.ID, Events.Delay1.ID);
+            Log.info(getClass(), "delay_before_echo_loop = " + delay_before_echo_loop);
         } else {
             delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1)
                     + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopMultiPlanarStart.ID - 1)
@@ -448,7 +454,8 @@ public class TOF extends KernelGE {
 
         double time_seq_to_end_spoiler = delay_before_multi_planar_loop + (delay_before_echo_loop + delay_echo_loop + delay_spoiler) * nb_slices_acquired_in_single_scan;
         double tr_min = time_seq_to_end_spoiler + minInstructionDelay * (nb_slices_acquired_in_single_scan * 2) + min_flush_delay;// 2 +( 2 minInstructionDelay: Events. 22 +(20&21
-
+        Log.info(getClass(), "time_seq_to_end_spoiler = " + time_seq_to_end_spoiler);
+        Log.info(getClass(), "tr min = " + tr_min);
         if (getBoolean(TOF3D_MT_INDIV))
             tr_min = tr_min - models.get(TofSat.class).getDuration();
 
@@ -532,9 +539,12 @@ public class TOF extends KernelGE {
             Log.info(getClass(), "satband rf = " + models.get(SatBand.class).pulseTXSatBand.getFrequencyOffset(0));
             Log.info(getClass(), "gmax = " + Math.abs(GradientMath.getMaxGradientStrength()));
             Log.info(getClass(), "tofsat enabled = " +models.get(TofSat.class).isEnabled());
+            Log.info(getClass(), "nb_slices_acquired_in_single_scan = " + nb_slices_acquired_in_single_scan);
+            Log.info(getClass(), "nb_interleaved_slice = " + nb_interleaved_slice);
             if (models.get(TofSat.class).isEnabled()) {
                 Log.info(getClass(), "tofsat rf gamma b1 calculated = " + models.get(TofSat.class).pulseTXTofSat.getPowerGammaB1());
                 Log.info(getClass(), "TOFSAT duration = " + models.get(TofSat.class).getDuration());
+                Log.info(getClass(), "SATBAND duration = " + models.get(SatBand.class).getDuration());
             }
         }
     }

@@ -11,10 +11,13 @@
     <processQueue>
         <enabled>true</enabled>
         <commands>
+            <name>Off Center FOV</name>
+        </commands>
+        <commands>
             <name>BCImage</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>Noise location</name>
-                <uuid>a7708ac6-4963-4822-8404-e5a51ac097d4</uuid>
+                <uuid>2df2ce88-6562-4245-8262-56d101daeeda</uuid>
                 <value>End</value>
                 <defaultValue>End</defaultValue>
                 <description>The noise location : End=the last 1/4 points ; Start=the first 1/4 points ;  Both=the first and last 1/8 points</description>
@@ -28,63 +31,68 @@
             </parameters>
         </commands>
         <commands>
-            <name>SignAlternation</name>
+            <name>Fourier shift</name>
         </commands>
         <commands>
-            <name>Off Center Multi FOV</name>
-        </commands>
-        <commands>
-            <name>ZF</name>
+            <name>Zero-filling</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_1D</name>
-                <uuid>77aa2d7d-07d7-4673-ad64-a8d83c79fdc3</uuid>
-                <value>256</value>
-                <defaultValue>1</defaultValue>
-                <description></description>
-                <displayedName>USER_MATRIX_DIMENSION_1D</displayedName>
+                <uuid>69b94ea5-772a-4d87-b5dd-257034f9036e</uuid>
+                <value>80</value>
+                <defaultValue>128</defaultValue>
+                <description>The matrix size of the first dimension</description>
+                <displayedName>Matrix 1D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Scan</numberEnum>
-                <minValue>1</minValue>
+                <minValue>0</minValue>
                 <maxValue>65536</maxValue>
-                <group>User</group>
+                <group>Scan</group>
                 <category>Acquisition</category>
             </parameters>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Symmetric</name>
-                <uuid>db4b92c5-d7cb-4a04-b882-cb16435a6d75</uuid>
+                <uuid>6c6339e2-bba3-43fc-b35f-be60195d3c64</uuid>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
-                <description>Data are zero-filled symmetrically</description>
+                <description>If check, the rows will be filled with zeros symmetrically around the center; otherwise they will be filled with zeros at the end.</description>
                 <displayedName>Symmetric</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </parameters>
         </commands>
         <commands>
-            <name>ZIP</name>
+            <name>Zero-filling power of 2</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>ZIP</name>
-                <uuid>82320b62-8bd0-4afe-ad4b-24761294a966</uuid>
+                <name>Second next power of 2</name>
+                <uuid>39658375-fb8e-46f3-9459-0260b26e4cfc</uuid>
                 <value>false</value>
                 <defaultValue>true</defaultValue>
-                <description>Mutiply the matrix dimensions by 2</description>
-                <displayedName>ZIP</displayedName>
+                <description>Set the reconstruction size to the second next power of 2.</description>
+                <displayedName>Second next power of 2</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
-                <group>Dimension</group>
-                <category>Process</category>
+            </parameters>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>Symmetric</name>
+                <uuid>d8ec5d10-98fa-4654-9a1d-b50fda34c853</uuid>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>If check, the rows will be filled with zeros symmetrically around the center; otherwise they will be filled with zeros at the end.</description>
+                <displayedName>Symmetric</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
             </parameters>
         </commands>
         <commands>
-            <name>IFFT</name>
+            <name>Inverse fast Fourier transform</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>Phase Correction</name>
-                <uuid>122e19da-3d8f-4520-9cff-2864b1658f43</uuid>
-                <value>true</value>
+                <name>Phase correction</name>
+                <uuid>2647e889-41c0-4ee8-ac7b-2c52462a1519</uuid>
+                <value>false</value>
                 <defaultValue>true</defaultValue>
-                <description>Applied order 1 phase correction</description>
+                <description>Apply a first-order phase correction in spectral domain to account for the zero-time delay in the data.</description>
                 <displayedName>Phase Correction</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -93,11 +101,11 @@
         <commands>
             <name>Transpose</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>Transpose Order</name>
-                <uuid>4d537912-d7ee-410a-b42c-85234eed28fa</uuid>
+                <name>Transpose order</name>
+                <uuid>7be96e81-418e-4d5c-9cfa-72630404a94c</uuid>
                 <value>Direct</value>
                 <defaultValue>Direct</defaultValue>
-                <description>The order of the transposition</description>
+                <description>The order of transposition; 'Direct' for descending order ((N+1)D becomes ND); 'Indirect' for ascending order ((N-1)D becomes N).</description>
                 <displayedName>Transpose Order</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -107,57 +115,65 @@
             </parameters>
         </commands>
         <commands>
-            <name>ZF</name>
+            <name>Zero-filling</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_2D</name>
-                <uuid>d149b0b2-f47d-430e-a289-ba8c8bc3d99d</uuid>
-                <value>256</value>
-                <defaultValue>1</defaultValue>
-                <description></description>
-                <displayedName>USER_MATRIX_DIMENSION_2D</displayedName>
-                <locked>false</locked>
+                <uuid>9e87324b-fdd5-4106-a55a-b6e48f4d9251</uuid>
+                <value>80</value>
+                <defaultValue>128</defaultValue>
+                <description>Info: Image size in phase encoding direction  (user matrix dimension 2D)</description>
+                <displayedName>Matrix 2D</displayedName>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Scan</numberEnum>
-                <minValue>1</minValue>
+                <minValue>0</minValue>
                 <maxValue>65536</maxValue>
-                <group>User</group>
+                <group>Scan</group>
                 <category>Acquisition</category>
             </parameters>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Symmetric</name>
-                <uuid>028b82d7-7f41-4423-ac22-f7ee12464101</uuid>
+                <uuid>2ad66c06-787f-47eb-bf85-d3bb42d77994</uuid>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
-                <description>Data are zero-filled symmetrically</description>
+                <description>If check, the rows will be filled with zeros symmetrically around the center; otherwise they will be filled with zeros at the end.</description>
                 <displayedName>Symmetric</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </parameters>
         </commands>
         <commands>
-            <name>ZIP</name>
+            <name>Zero-filling power of 2</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>ZIP</name>
-                <uuid>41f6f210-506f-462e-952c-a437b333e069</uuid>
+                <name>Second next power of 2</name>
+                <uuid>39658375-fb8e-46f3-9459-0260b26e4cfc</uuid>
                 <value>false</value>
                 <defaultValue>true</defaultValue>
-                <description>Mutiply the matrix dimensions by 2</description>
-                <displayedName>ZIP</displayedName>
+                <description>Set the reconstruction size to the second next power of 2.</description>
+                <displayedName>Second next power of 2</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
-                <group>Dimension</group>
-                <category>Process</category>
+            </parameters>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>Symmetric</name>
+                <uuid>d8ec5d10-98fa-4654-9a1d-b50fda34c853</uuid>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>If check, the rows will be filled with zeros symmetrically around the center; otherwise they will be filled with zeros at the end.</description>
+                <displayedName>Symmetric</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
             </parameters>
         </commands>
         <commands>
-            <name>IFFT</name>
+            <name>Inverse fast Fourier transform</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>Phase Correction</name>
-                <uuid>73ed2bcd-5b46-4f8d-ad30-c0fd1bf93800</uuid>
+                <name>Phase correction</name>
+                <uuid>1e869571-4d30-4750-b081-e46a4895e3c8</uuid>
                 <value>true</value>
                 <defaultValue>true</defaultValue>
-                <description>Applied order 1 phase correction</description>
+                <description>Apply a first-order phase correction in spectral domain to account for the zero-time delay in the data.</description>
                 <displayedName>Phase Correction</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -166,11 +182,11 @@
         <commands>
             <name>Transpose</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>Transpose Order</name>
-                <uuid>59f8549f-df88-43d1-b8b3-8e2031ab371f</uuid>
+                <name>Transpose order</name>
+                <uuid>c1506ab7-f5c3-4925-b549-e9dc7ab28411</uuid>
                 <value>Direct</value>
                 <defaultValue>Direct</defaultValue>
-                <description>The order of the transposition</description>
+                <description>The order of transposition; 'Direct' for descending order ((N+1)D becomes ND); 'Indirect' for ascending order ((N-1)D becomes N).</description>
                 <displayedName>Transpose Order</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -180,57 +196,65 @@
             </parameters>
         </commands>
         <commands>
-            <name>ZF</name>
+            <name>Zero-filling</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_3D</name>
-                <uuid>87ccb11c-1ad5-4e1a-8ce7-fc12079d693f</uuid>
-                <value>1</value>
+                <uuid>8dd0a7c7-e15b-4b81-ab85-c12e0997c7e7</uuid>
+                <value>80</value>
                 <defaultValue>1</defaultValue>
-                <description></description>
+                <description>Info: Image size in the third dimension: slice or 3D PE  (user matrix dimension 3D)</description>
                 <displayedName>Matrix 3D</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Scan</numberEnum>
-                <minValue>1</minValue>
+                <minValue>0</minValue>
                 <maxValue>65536</maxValue>
-                <group>User</group>
+                <group>Scan</group>
                 <category>Acquisition</category>
             </parameters>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Symmetric</name>
-                <uuid>715127b6-a7b8-437e-8559-d45ed193d8a9</uuid>
+                <uuid>66527ea1-0975-4b29-8520-8f7a78b73734</uuid>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
-                <description>Data are zero-filled symmetrically</description>
+                <description>If check, the rows will be filled with zeros symmetrically around the center; otherwise they will be filled with zeros at the end.</description>
                 <displayedName>Symmetric</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </parameters>
         </commands>
         <commands>
-            <name>ZIP</name>
+            <name>Zero-filling power of 2</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>ZIP</name>
-                <uuid>30fc6f3e-b3cc-4310-8398-8245020b20db</uuid>
+                <name>Second next power of 2</name>
+                <uuid>39658375-fb8e-46f3-9459-0260b26e4cfc</uuid>
                 <value>false</value>
                 <defaultValue>true</defaultValue>
-                <description>Mutiply the matrix dimensions by 2</description>
-                <displayedName>ZIP</displayedName>
+                <description>Set the reconstruction size to the second next power of 2.</description>
+                <displayedName>Second next power of 2</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
-                <group>Dimension</group>
-                <category>Process</category>
+            </parameters>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>Symmetric</name>
+                <uuid>d8ec5d10-98fa-4654-9a1d-b50fda34c853</uuid>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>If check, the rows will be filled with zeros symmetrically around the center; otherwise they will be filled with zeros at the end.</description>
+                <displayedName>Symmetric</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
             </parameters>
         </commands>
         <commands>
-            <name>IFFT</name>
+            <name>Inverse fast Fourier transform</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>Phase Correction</name>
-                <uuid>296b3eb7-0f7c-4730-a1cb-209bc8541da8</uuid>
+                <name>Phase correction</name>
+                <uuid>2589f3b2-5e31-43b7-9e80-ab67c052a39e</uuid>
                 <value>true</value>
                 <defaultValue>true</defaultValue>
-                <description>Applied order 1 phase correction</description>
+                <description>Apply a first-order phase correction in spectral domain to account for the zero-time delay in the data.</description>
                 <displayedName>Phase Correction</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -239,11 +263,11 @@
         <commands>
             <name>Transpose</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>Transpose Order</name>
-                <uuid>a734790f-62ee-42e8-b0a4-d2685a5e48d1</uuid>
+                <name>Transpose order</name>
+                <uuid>7209809c-73d0-4229-a705-15057803c5ac</uuid>
                 <value>Direct</value>
                 <defaultValue>Direct</defaultValue>
-                <description>The order of the transposition</description>
+                <description>The order of transposition; 'Direct' for descending order ((N+1)D becomes ND); 'Indirect' for ascending order ((N-1)D becomes N).</description>
                 <displayedName>Transpose Order</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -253,55 +277,26 @@
             </parameters>
         </commands>
         <commands>
-            <name>SignAlternation</name>
+            <name>Fourier shift</name>
         </commands>
         <commands>
-            <name>Amplitude</name>
+            <name>Magnitude</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>Sum Of Square</name>
-                <uuid>d5a801a4-3b1b-478f-b4fe-8a75e021747b</uuid>
+                <name>Combine receivers</name>
+                <uuid>582bf518-8e8e-4db4-966e-60305035a41d</uuid>
                 <value>true</value>
                 <defaultValue>true</defaultValue>
-                <description>Do the sum of sqare of the different recievers</description>
+                <description>Combine the data from all the receivers using the sum of square method.</description>
                 <displayedName>Sum Of Square</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </parameters>
         </commands>
         <commands>
-            <name>SlabConcatenate</name>
-            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>OverlappedSlabMethod</name>
-                <uuid>d9b1b879-1e49-4715-bd0d-ddfaadca9c5d</uuid>
-                <value>Discard</value>
-                <defaultValue>Discard</defaultValue>
-                <description>Method to treat the overlapped slabs.</description>
-                <displayedName>OverlappedSlabMethod</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>true</restrictedToSuggested>
-                <suggestedValues>Discard</suggestedValues>
-                <suggestedValues>Average</suggestedValues>
-            </parameters>
-            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>EdgeSlabMethod</name>
-                <uuid>ea8356fc-6985-4f1a-8b4e-1ec4f09bce00</uuid>
-                <value>Discard</value>
-                <defaultValue>Discard</defaultValue>
-                <description>Method to treat two border slabs.</description>
-                <displayedName>EdgeSlabMethod</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>true</restrictedToSuggested>
-                <suggestedValues>Discard</suggestedValues>
-                <suggestedValues>Keep</suggestedValues>
-            </parameters>
-        </commands>
-        <commands>
             <name>MIP</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>ORIENTATION</name>
-                <uuid>486962ae-9c38-4f5f-b549-7e5a641b1c57</uuid>
+                <uuid>dd413b91-bbbb-4eab-bd1b-b4acb83a119d</uuid>
                 <value>AXIAL</value>
                 <defaultValue>AXIAL</defaultValue>
                 <description>Field of view orientation</description>
@@ -3351,7 +3346,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SEQUENCE_TIME</name>
                     <uuid>26665c25-c3d2-481e-ad83-4dc57f63bf5b</uuid>
-                    <value>441.952375</value>
+                    <value>441.94562500000006</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: Total acquisition time</description>
                     <displayedName>Sequence Version</displayedName>

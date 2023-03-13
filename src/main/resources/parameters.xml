@@ -3032,7 +3032,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>SEQUENCE_TIME</name>
                 <uuid>26665c25-c3d2-481e-ad83-4dc57f63bf5b</uuid>
-                <value>441.952375</value>
+                <value>441.94562500000006</value>
                 <defaultValue>0.0</defaultValue>
                 <description>Info: Total acquisition time</description>
                 <displayedName>Sequence Version</displayedName>

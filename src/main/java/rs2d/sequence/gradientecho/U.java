@@ -782,6 +782,23 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
+    FOV_MULTISLAB("FOV_MULTISLAB") {
+        public Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("FOV_MULTISLAB");
+            param.setDisplayedName("FOV - MultiSlab");
+            param.setDescription("FOV in slab direction for multislab acquisition");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("e11b07de-e67e-4af0-aeba-35ec49e7a288");
+            param.setNumberEnum(NumberEnum.Length);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.7976931348623157E308);
+            param.setValue(0.035);
+            param.setDefaultValue(0.0);
+            return param;
+        }
+    },
+
     FOV_RATIO_PHASE("FOV_RATIO_PHASE") {
         public Param build() {
             NumberParam param = new NumberParam();
@@ -1846,7 +1863,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Integer);
             param.setMinValue(1);
             param.setMaxValue(32);
-            param.setValue(1);
+            param.setValue(4);
             param.setDefaultValue(1);
             return param;
         }
@@ -2915,7 +2932,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.PERCENT);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(71.4902297830898);
+            param.setValue(78.97087861607963);
             param.setDefaultValue(40.0);
             return param;
         }
@@ -2948,7 +2965,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAtt);
             param.setMinValue(0);
             param.setMaxValue(63);
-            param.setValue(13);
+            param.setValue(10);
             param.setDefaultValue(36);
             return param;
         }
@@ -3047,7 +3064,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("RF Pulse shape");
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
-            param.setUuid("74cc532c-6424-43ea-8054-7da39bb8e59a");
+            param.setUuid("b5f2a190-a8eb-4d22-9905-df295f4c368f");
             param.setValue("GAUSSIAN");
             param.setDefaultValue("GAUSSIAN");
             param.setSuggestedValues(asList("HARD", "GAUSSIAN", "SINC3", "SINC5", "SLR_8_5152", "SLR_4_2576", "RAMP"));

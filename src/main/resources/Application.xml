@@ -1130,6 +1130,24 @@
                 </value>
             </entry>
             <entry>
+                <key>FOV_MULTISLAB</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>FOV_MULTISLAB</name>
+                    <uuid>e11b07de-e67e-4af0-aeba-35ec49e7a288</uuid>
+                    <value>0.035</value>
+                    <defaultValue>0.0</defaultValue>
+                    <description>FOV in slab direction for multislab acquisition</description>
+                    <displayedName>FOV - MultiSlab</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <numberEnum>Length</numberEnum>
+                    <minValue>0.0</minValue>
+                    <maxValue>1.7976931348623157E308</maxValue>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
                 <key>FOV_RATIO_PHASE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FOV_RATIO_PHASE</name>
@@ -2847,7 +2865,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>RECEIVER_COUNT</name>
                     <uuid>b34d5aaa-896d-41dd-9d99-290fcef0aaf4</uuid>
-                    <value>1</value>
+                    <value>4</value>
                     <defaultValue>1</defaultValue>
                     <description>Info: Number of reception channels</description>
                     <displayedName>No. Receivers</displayedName>
@@ -10528,7 +10546,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_AMP</name>
                     <uuid>6d533b2b-46db-468e-81d9-e86ffe3b2e90</uuid>
-                    <value>71.4902297830898</value>
+                    <value>78.97087861607963</value>
                     <defaultValue>40.0</defaultValue>
                     <description>Amplitude of the excitation RF pulse </description>
                     <displayedName>TX Amplitude</displayedName>
@@ -10562,7 +10580,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_ATT</name>
                     <uuid>13a8651e-9ec7-4485-8162-a7726c6194bb</uuid>
-                    <value>13</value>
+                    <value>10</value>
                     <defaultValue>36</defaultValue>
                     <description>RF pulse attenuation</description>
                     <displayedName>TX Attenuation</displayedName>
@@ -10690,7 +10708,7 @@
                 <key>TX_SHAPE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>TX_SHAPE</name>
-                    <uuid>74cc532c-6424-43ea-8054-7da39bb8e59a</uuid>
+                    <uuid>b5f2a190-a8eb-4d22-9905-df295f4c368f</uuid>
                     <value>GAUSSIAN</value>
                     <defaultValue>GAUSSIAN</defaultValue>
                     <description>RF Pulse shape</description>

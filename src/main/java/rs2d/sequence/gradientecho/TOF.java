@@ -276,6 +276,7 @@ public class TOF extends KernelGE {
             double fovMultiSlab = (getInt(NUMBER_OF_SLAB) -1) * (fov3d + getDouble(SPACING_BETWEEN_SLAB)) + fov3d;
             models.get(SatBand.class).setMultiSab(true);
             models.get(SatBand.class).setFovMultiSlab(fovMultiSlab);
+            getParam(FOV_MULTISLAB).setValue(fovMultiSlab);
             Log.info(getClass(), "fovMultiSlab = " + fovMultiSlab);
             Log.info(getClass(), "fov3D = " + fov3d);
             Log.info(getClass(), "satband = " + models.get(SatBand.class).gradSatBandSlice.getAmplitude());
@@ -537,6 +538,7 @@ public class TOF extends KernelGE {
         
         if (getBoolean(DEBUG_MODE)) {
             Log.info(getClass(), "satband rf = " + models.get(SatBand.class).pulseTXSatBand.getFrequencyOffset(0));
+            Log.info(getClass(), "satband grad slice = " + models.get(SatBand.class).gradSatBandSlice.getAmplitude_mTpm());
             Log.info(getClass(), "gmax = " + Math.abs(GradientMath.getMaxGradientStrength()));
             Log.info(getClass(), "tofsat enabled = " +models.get(TofSat.class).isEnabled());
             Log.info(getClass(), "nb_slices_acquired_in_single_scan = " + nb_slices_acquired_in_single_scan);
@@ -545,6 +547,9 @@ public class TOF extends KernelGE {
                 Log.info(getClass(), "tofsat rf gamma b1 calculated = " + models.get(TofSat.class).pulseTXTofSat.getPowerGammaB1());
                 Log.info(getClass(), "TOFSAT duration = " + models.get(TofSat.class).getDuration());
                 Log.info(getClass(), "SATBAND duration = " + models.get(SatBand.class).getDuration());
+            }
+            if (models.get(SatBand.class).isEnabled()) {
+                Log.info(getClass(), "SATband flip angle = " + models.get(SatBand.class).pulseTXSatBand.getFlipAngle());
             }
         }
     }

@@ -396,7 +396,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_MATRIX_DIMENSION_4D</name>
                     <uuid>c95d9ac9-4a59-4344-aff5-bcaccaed5e8f</uuid>
-                    <value>5</value>
+                    <value>6</value>
                     <defaultValue>1</defaultValue>
                     <description>Info: Size of the initial dataset (raw data) in fourth dimension</description>
                     <displayedName>Acquisition Matrix 4D</displayedName>
@@ -1006,21 +1006,6 @@
                 </value>
             </entry>
             <entry>
-                <key>FAT_WATER_SEP_2DMRSI</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                    <name>FAT_WATER_SEP_2DMRSI</name>
-                    <uuid>e77d85ce-14a3-4b6f-8acd-50b02b80e873</uuid>
-                    <value>false</value>
-                    <defaultValue>false</defaultValue>
-                    <description>Checkbox parameter for running fat-water separation plugin</description>
-                    <displayedName>FAT_WATER_SEP_2DMRSI</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <group>Miscellaneous</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
                 <key>FIELD_OF_VIEW</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FIELD_OF_VIEW</name>
@@ -1153,7 +1138,7 @@
                     <defaultValue>100.0</defaultValue>
                     <description>The fov ratio in the phase direction (2D/1D)</description>
                     <displayedName>Phase FOV</displayedName>
-                    <locked>true</locked>
+                    <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>PERCENT</numberEnum>
@@ -1341,150 +1326,6 @@
                     <minValue>0.0</minValue>
                     <maxValue>100.0</maxValue>
                     <group>Gradient</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_A0</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>HARDWARE_A0</name>
-                    <uuid>779b6b39-0a3c-49c4-b165-9dd8b3a68ddd</uuid>
-                    <value>27.69</value>
-                    <value>28.58</value>
-                    <value>22.43</value>
-                    <description></description>
-                    <displayedName>HARDWARE_A0</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>PERCENT</numberEnum>
-                    <minValue>-2.147483648E9</minValue>
-                    <maxValue>2.147483647E9</maxValue>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_DC</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>HARDWARE_DC</name>
-                    <uuid>cd4356bb-543c-4cd0-883e-4ca2284967b3</uuid>
-                    <value>-0.174</value>
-                    <value>0.2686</value>
-                    <value>-0.1862</value>
-                    <value>0.0</value>
-                    <description></description>
-                    <displayedName>HARDWARE_DC</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>PERCENT</numberEnum>
-                    <minValue>-2.147483648E9</minValue>
-                    <maxValue>2.147483647E9</maxValue>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_PREEMPHASIS_A</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>HARDWARE_PREEMPHASIS_A</name>
-                    <uuid>2f4595fe-bd43-4ac2-b738-a625c807ef0b</uuid>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <description></description>
-                    <displayedName>HARDWARE_PREEMPHASIS_A</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>PERCENT</numberEnum>
-                    <minValue>-2.147483648E9</minValue>
-                    <maxValue>2.147483647E9</maxValue>
-                    <group>Emission</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_PREEMPHASIS_T</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>HARDWARE_PREEMPHASIS_T</name>
-                    <uuid>31d01f2f-5821-4837-a854-3a3384e1d677</uuid>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <description></description>
-                    <displayedName>HARDWARE_PREEMPHASIS_T</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>Time</numberEnum>
-                    <minValue>0.0</minValue>
-                    <maxValue>1.0E9</maxValue>
-                    <group>Emission</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_SHIM</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>HARDWARE_SHIM</name>
-                    <uuid>5b52caa2-2dd6-4f77-9026-65fe0d63e4e4</uuid>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <description></description>
-                    <displayedName>HARDWARE_SHIM</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>PERCENT</numberEnum>
-                    <minValue>-2.147483648E9</minValue>
-                    <maxValue>2.147483647E9</maxValue>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_SHIM_LABEL</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                    <name>HARDWARE_SHIM_LABEL</name>
-                    <uuid>0ede3b51-0811-4286-8835-bfd70092a242</uuid>
-                    <value>YZ XY XZ X2-Y2 Z0 Z2 X Y Z</value>
-                    <defaultValue></defaultValue>
-                    <description></description>
-                    <displayedName>HARDWARE_SHIM_LABEL</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
                     <category>Acquisition</category>
                 </value>
             </entry>
@@ -2437,7 +2278,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>NUMBER_OF_SLAB</name>
                     <uuid>c3b60ab8-60af-4c36-a8e9-ec78cd3b7ade</uuid>
-                    <value>5</value>
+                    <value>6</value>
                     <defaultValue>1</defaultValue>
                     <description>Number of slabs </description>
                     <displayedName>No. Slabs</displayedName>
@@ -3346,7 +3187,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SEQUENCE_TIME</name>
                     <uuid>26665c25-c3d2-481e-ad83-4dc57f63bf5b</uuid>
-                    <value>441.94562500000006</value>
+                    <value>530.274</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: Total acquisition time</description>
                     <displayedName>Sequence Version</displayedName>
@@ -3381,7 +3222,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
                     <uuid>4724b61e-deb1-4d18-8993-1bba2dd1a640</uuid>
-                    <value>GE_3D_AXI_256x160x24x5_MT_SATBAND</value>
+                    <value>GE_3D_AXI_256x160x24x6_MT_SATBAND</value>
                     <defaultValue></defaultValue>
                     <description>Info: Description of the sequence</description>
                     <displayedName>Sequence Description</displayedName>
@@ -3977,28 +3818,6 @@
                     <minValue>-1.5E9</minValue>
                     <maxValue>1.5E9</maxValue>
                     <group>Emission</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>TOF_SB_TX_SHAPE</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                    <name>TOF_SB_TX_SHAPE</name>
-                    <uuid>aebf11b7-67a5-4121-8b37-b2a2a4aa388f</uuid>
-                    <value>GAUSSIAN</value>
-                    <defaultValue>HARD</defaultValue>
-                    <description>TOF satband RF pulse shape</description>
-                    <displayedName>TOF Sat - TX Shape</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <suggestedValues>HARD</suggestedValues>
-                    <suggestedValues>GAUSSIAN</suggestedValues>
-                    <suggestedValues>SINC3</suggestedValues>
-                    <suggestedValues>SINC5</suggestedValues>
-                    <suggestedValues>SLR_8_5152</suggestedValues>
-                    <suggestedValues>SLR_4_2576</suggestedValues>
-                    <suggestedValues>RAMP</suggestedValues>
                     <category>Acquisition</category>
                 </value>
             </entry>
@@ -10724,43 +10543,6 @@
                 </value>
             </entry>
             <entry>
-                <key>TX_AMP_180</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                    <name>TX_AMP_180</name>
-                    <uuid>cb183c2a-1c8a-4386-ad09-555c0730b3f9</uuid>
-                    <value>100.0</value>
-                    <defaultValue>0.0</defaultValue>
-                    <description>The magnitude of the RF pulse 180</description>
-                    <displayedName>TX_AMP_180</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <numberEnum>TxAmp</numberEnum>
-                    <minValue>0.0</minValue>
-                    <maxValue>100.0</maxValue>
-                    <group>Emission</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>TX_AMP_90</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                    <name>TX_AMP_90</name>
-                    <uuid>14c88b3e-61fb-4e22-b010-fdc486555725</uuid>
-                    <value>100.0</value>
-                    <defaultValue>0.0</defaultValue>
-                    <description>Amplitude of the transmitter</description>
-                    <displayedName>TX_AMP_90</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <numberEnum>TxAmp</numberEnum>
-                    <minValue>0.0</minValue>
-                    <maxValue>100.0</maxValue>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
                 <key>TX_AMP_ATT_AUTO</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>TX_AMP_ATT_AUTO</name>
@@ -10989,7 +10771,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>USER_MATRIX_DIMENSION_4D</name>
                     <uuid>5bf4eb84-6d3d-4c54-a575-b17b9c78940a</uuid>
-                    <value>5</value>
+                    <value>6</value>
                     <defaultValue>1</defaultValue>
                     <description>Info: Number of image data set (user maxtrix 4D)</description>
                     <displayedName>No. Data Sets</displayedName>

@@ -74,8 +74,10 @@ public class TOF extends KernelGE {
         super.isDebugMode = true;
         getParam(SEQUENCE_VERSION).setValue(sequenceVersion);
 
-        if (isMultiplanar)
+        if (isMultiplanar) {
             getParam(NUMBER_OF_SLAB).setValue(1);
+            getParam(TOF3D_MT_INDIV).setValue(false);
+        }
         else {
             if (getInt(NUMBER_OF_SLAB) > 1)
                 getParam(SLAB_OVERLAP).setValue(floorEven(getDouble(SLAB_OVERLAP) / 100 * userMatrixDimension3D) / (double) userMatrixDimension3D * 100);
@@ -141,7 +143,7 @@ public class TOF extends KernelGE {
             Log.warning(getClass(), "Sequence Param Missing: Loop_short; use default: Loop_long");
         }
 
-        if (getBoolean(TOF3D_MT_INDIV)) {
+        if (getBoolean(TOF3D_MT_INDIV) ) {
             set(Loop_xd, Opcode.CodeEnum.GotoWhile);
             if (models.get(FatSat.class).isEnabled())
                 set(Loop_xd_start, Events.FatSatPulse.ID - 1);
@@ -202,8 +204,6 @@ public class TOF extends KernelGE {
         } else {
             pulseTX.setAtt(getInt(TX_ATT));
             pulseTX.setAmp(getDouble(TX_AMP));
-            this.getParam(TX_AMP_90).setValue(getDouble(TX_AMP) * 90 / flip_angle);     // display 90° amplitude
-            this.getParam(TX_AMP_180).setValue(getDouble(TX_AMP) * 90 / flip_angle);   // display 180° amplitude
         }
 
         // -----------------------------------------------

@@ -3492,7 +3492,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Nb_4d</name>
                 <uuid>46fa9e9e-b329-483a-b780-2fd8dac540ec</uuid>
-                <value>5</value>
+                <value>6</value>
                 <defaultValue>1</defaultValue>
                 <displayedName>Nb 4D</displayedName>
                 <locked>false</locked>
@@ -19925,11 +19925,12 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>6</address>
-                <list>1687.5</list>
-                <list>843.75</list>
-                <list>0.0</list>
-                <list>-843.75</list>
-                <list>-1687.5</list>
+                <list>2109.375</list>
+                <list>1265.625</list>
+                <list>421.875</list>
+                <list>-421.875</list>
+                <list>-1265.625</list>
+                <list>-2109.375</list>
             </value>
         </Entry>
         <Entry>
@@ -20084,7 +20085,7 @@
                     <name>Gaussian</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
-                        <uuid>b3a79301-4b2f-4ab4-b24e-fdf44fe691be</uuid>
+                        <uuid>73952fc5-4d21-4d58-85ff-42c10ac7d3e9</uuid>
                         <value>128</value>
                         <defaultValue>64</defaultValue>
                         <description>Number of points</description>
@@ -20098,7 +20099,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Width</name>
-                        <uuid>1172d9ca-17d3-421b-ae31-3ea065148c69</uuid>
+                        <uuid>c3196dec-c169-4e55-a648-3f38b8537de9</uuid>
                         <value>0.25</value>
                         <defaultValue>0.25</defaultValue>
                         <description>Width of the gaussian</description>
@@ -20112,7 +20113,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
-                        <uuid>e2874863-1c68-465f-88a6-31a925d64cd5</uuid>
+                        <uuid>8f0b2ba3-0265-4665-99df-f4d2ee49cebb</uuid>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
                         <description>Amplitude of the gaussian</description>
@@ -20126,7 +20127,7 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <uuid>17662755-77ad-48fc-866f-8f722677b65c</uuid>
+                        <uuid>f952daf1-8ab7-4034-9b27-426247c1d94b</uuid>
                         <value>false</value>
                         <defaultValue>false</defaultValue>
                         <description>Absolute value</description>
@@ -21633,11 +21634,12 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>2</address>
-                <list>-3668.478260869565</list>
-                <list>-1834.2391304347825</list>
-                <list>-0.0</list>
-                <list>1834.2391304347825</list>
-                <list>3668.478260869565</list>
+                <list>-237.77173913043478</list>
+                <list>-2751.358695652174</list>
+                <list>-917.1195652173913</list>
+                <list>917.1195652173913</list>
+                <list>2751.358695652174</list>
+                <list>237.77173913043478</list>
             </value>
         </Entry>
         <Entry>
@@ -22362,11 +22364,12 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>2</address>
-                <list>-3668.478260869565</list>
-                <list>-1834.2391304347825</list>
-                <list>-0.0</list>
-                <list>1834.2391304347825</list>
-                <list>3668.478260869565</list>
+                <list>-237.77173913043478</list>
+                <list>-2751.358695652174</list>
+                <list>-917.1195652173913</list>
+                <list>917.1195652173913</list>
+                <list>2751.358695652174</list>
+                <list>237.77173913043478</list>
             </value>
         </Entry>
         <Entry>
@@ -24977,7 +24980,7 @@
                     <name>Gaussian</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
-                        <uuid>9cebc16f-ea0b-4b36-bfdd-e9906dbd801b</uuid>
+                        <uuid>692ae614-2dbd-4f4b-9cc6-0cd0e981b71a</uuid>
                         <value>128</value>
                         <defaultValue>64</defaultValue>
                         <description>Number of points</description>
@@ -24991,7 +24994,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Width</name>
-                        <uuid>0fc994dd-1c11-451a-8d28-8e2be29729e6</uuid>
+                        <uuid>0d9496bd-ec3e-4ea8-9ec3-22e74f319244</uuid>
                         <value>0.25</value>
                         <defaultValue>0.25</defaultValue>
                         <description>Width of the gaussian</description>
@@ -25005,7 +25008,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
-                        <uuid>10e007aa-46c7-4fe8-a6fa-83f0a5d0c7fd</uuid>
+                        <uuid>aea54404-827d-433b-a0a8-325e762cadfb</uuid>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
                         <description>Amplitude of the gaussian</description>
@@ -25019,7 +25022,7 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <uuid>c4583576-c951-4671-bbb2-c200ae3ef429</uuid>
+                        <uuid>72d42505-3a1c-406d-888b-e2807eb54c52</uuid>
                         <value>false</value>
                         <defaultValue>false</defaultValue>
                         <description>Absolute value</description>
@@ -25712,7 +25715,7 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>-3375.0000000000005</list>
+                <list>-3712.5000000000005</list>
             </value>
         </Entry>
         <Entry>
@@ -25771,7 +25774,7 @@
                     <name>Gaussian</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
-                        <uuid>19aa7ab5-4d7d-444b-8ea6-7c8f466c71ce</uuid>
+                        <uuid>f34e97ba-a7a2-458f-bcef-36007a24ccab</uuid>
                         <value>128</value>
                         <defaultValue>64</defaultValue>
                         <description>Number of points</description>
@@ -25785,7 +25788,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Width</name>
-                        <uuid>9f690d19-85ce-4b77-87dd-6ee77da7df5a</uuid>
+                        <uuid>816e9d1a-e8fe-4a1a-b38a-7f46e0f36033</uuid>
                         <value>0.25</value>
                         <defaultValue>0.25</defaultValue>
                         <description>Width of the gaussian</description>
@@ -25799,7 +25802,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
-                        <uuid>b79ed7ec-94cb-4665-8d5e-c49aabf009a1</uuid>
+                        <uuid>0687d67b-de62-4eff-925f-8bcd3b3dea9f</uuid>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
                         <description>Amplitude of the gaussian</description>
@@ -25813,7 +25816,7 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <uuid>c3f15a89-9625-494c-a916-204e694c24cf</uuid>
+                        <uuid>6ddd4753-b6c5-41cf-b49b-793a0a895462</uuid>
                         <value>false</value>
                         <defaultValue>false</defaultValue>
                         <description>Absolute value</description>
@@ -26030,7 +26033,7 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>2989.1304347826094</list>
+                <list>3722.8260869565224</list>
             </value>
         </Entry>
         <Entry>
@@ -26136,7 +26139,7 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>2989.1304347826094</list>
+                <list>3722.8260869565224</list>
             </value>
         </Entry>
         <Entry>

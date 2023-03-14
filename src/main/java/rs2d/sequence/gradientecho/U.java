@@ -94,7 +94,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(65536);
-            param.setValue(5);
+            param.setValue(6);
             param.setDefaultValue(1);
             return param;
         }
@@ -663,22 +663,6 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
-    FAT_WATER_SEP_2DMRSI("FAT_WATER_SEP_2DMRSI") {
-        public Param build() {
-            BooleanParam param = new BooleanParam();
-            param.setName("FAT_WATER_SEP_2DMRSI");
-            param.setDisplayedName("FAT_WATER_SEP_2DMRSI");
-            param.setDescription("Checkbox parameter for running fat-water separation plugin");
-            param.setLocked(true);
-            param.setGroup(EnumGroup.Miscellaneous);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("e77d85ce-14a3-4b6f-8acd-50b02b80e873");
-            param.setValue(false);
-            param.setDefaultValue(false);
-            return param;
-        }
-    },
-
     FIELD_OF_VIEW("FIELD_OF_VIEW") {
         public Param build() {
             NumberParam param = new NumberParam();
@@ -804,7 +788,6 @@ public enum U implements GeneratorParamEnum {
             param.setName("FOV_RATIO_PHASE");
             param.setDisplayedName("Phase FOV");
             param.setDescription("The fov ratio in the phase direction (2D/1D)");
-            param.setLocked(true);
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
             param.setUuid("561c6f27-d9b2-4fd1-929c-034b0a304864");
@@ -989,107 +972,6 @@ public enum U implements GeneratorParamEnum {
             param.setMaxValue(100.0);
             param.setNumberEnum(NumberEnum.PERCENT);
             param.setValue(asListNumber(40.0, 40.0, 40.0));
-            return param;
-        }
-    },
-
-    HARDWARE_A0("HARDWARE_A0") {
-        public Param build() {
-            ListNumberParam param = new ListNumberParam();
-            param.setName("HARDWARE_A0");
-            param.setDisplayedName("HARDWARE_A0");
-            param.setDescription("");
-            param.setCategory(Category.Acquisition);
-            param.setUuid("779b6b39-0a3c-49c4-b165-9dd8b3a68ddd");
-            param.setMinValue(-2.147483648E9);
-            param.setMaxValue(2.147483647E9);
-            param.setNumberEnum(NumberEnum.PERCENT);
-            param.setValue(asListNumber(27.69, 28.58, 22.43));
-            return param;
-        }
-    },
-
-    HARDWARE_DC("HARDWARE_DC") {
-        public Param build() {
-            ListNumberParam param = new ListNumberParam();
-            param.setName("HARDWARE_DC");
-            param.setDisplayedName("HARDWARE_DC");
-            param.setDescription("");
-            param.setLocked(true);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("cd4356bb-543c-4cd0-883e-4ca2284967b3");
-            param.setMinValue(-2.147483648E9);
-            param.setMaxValue(2.147483647E9);
-            param.setNumberEnum(NumberEnum.PERCENT);
-            param.setValue(asListNumber(-0.174, 0.2686, -0.1862, 0.0));
-            return param;
-        }
-    },
-
-    HARDWARE_PREEMPHASIS_A("HARDWARE_PREEMPHASIS_A") {
-        public Param build() {
-            ListNumberParam param = new ListNumberParam();
-            param.setName("HARDWARE_PREEMPHASIS_A");
-            param.setDisplayedName("HARDWARE_PREEMPHASIS_A");
-            param.setDescription("");
-            param.setLocked(true);
-            param.setGroup(EnumGroup.Emission);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("2f4595fe-bd43-4ac2-b738-a625c807ef0b");
-            param.setMinValue(-2.147483648E9);
-            param.setMaxValue(2.147483647E9);
-            param.setNumberEnum(NumberEnum.PERCENT);
-            param.setValue(asListNumber(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0));
-            return param;
-        }
-    },
-
-    HARDWARE_PREEMPHASIS_T("HARDWARE_PREEMPHASIS_T") {
-        public Param build() {
-            ListNumberParam param = new ListNumberParam();
-            param.setName("HARDWARE_PREEMPHASIS_T");
-            param.setDisplayedName("HARDWARE_PREEMPHASIS_T");
-            param.setDescription("");
-            param.setLocked(true);
-            param.setGroup(EnumGroup.Emission);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("31d01f2f-5821-4837-a854-3a3384e1d677");
-            param.setMinValue(0.0);
-            param.setMaxValue(1.0E9);
-            param.setNumberEnum(NumberEnum.Time);
-            param.setValue(asListNumber(0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.0));
-            return param;
-        }
-    },
-
-    HARDWARE_SHIM("HARDWARE_SHIM") {
-        public Param build() {
-            ListNumberParam param = new ListNumberParam();
-            param.setName("HARDWARE_SHIM");
-            param.setDisplayedName("HARDWARE_SHIM");
-            param.setDescription("");
-            param.setLocked(true);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("5b52caa2-2dd6-4f77-9026-65fe0d63e4e4");
-            param.setMinValue(-2.147483648E9);
-            param.setMaxValue(2.147483647E9);
-            param.setNumberEnum(NumberEnum.PERCENT);
-            param.setValue(asListNumber(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0));
-            return param;
-        }
-    },
-
-    HARDWARE_SHIM_LABEL("HARDWARE_SHIM_LABEL") {
-        public Param build() {
-            TextParam param = new TextParam();
-            param.setName("HARDWARE_SHIM_LABEL");
-            param.setDisplayedName("HARDWARE_SHIM_LABEL");
-            param.setDescription("");
-            param.setLocked(true);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("0ede3b51-0811-4286-8835-bfd70092a242");
-            param.setValue("YZ XY XZ X2-Y2 Z0 Z2 X Y Z");
-            param.setDefaultValue("");
             return param;
         }
     },
@@ -1532,7 +1414,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(1);
             param.setMaxValue(2147483647);
-            param.setValue(5);
+            param.setValue(6);
             param.setDefaultValue(1);
             return param;
         }
@@ -2275,7 +2157,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(441.94562500000006);
+            param.setValue(530.274);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2304,7 +2186,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Info: Description of the sequence");
             param.setCategory(Category.Acquisition);
             param.setUuid("4724b61e-deb1-4d18-8993-1bba2dd1a640");
-            param.setValue("GE_3D_AXI_256x160x24x5_MT_SATBAND");
+            param.setValue("GE_3D_AXI_256x160x24x6_MT_SATBAND");
             param.setDefaultValue("");
             return param;
         }
@@ -2860,22 +2742,6 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
-    TOF_SB_TX_SHAPE("TOF_SB_TX_SHAPE") {
-        public Param build() {
-            TextParam param = new TextParam();
-            param.setName("TOF_SB_TX_SHAPE");
-            param.setDisplayedName("TOF Sat - TX Shape");
-            param.setDescription("TOF satband RF pulse shape");
-            param.setLocked(true);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("aebf11b7-67a5-4121-8b37-b2a2a4aa388f");
-            param.setValue("GAUSSIAN");
-            param.setDefaultValue("HARD");
-            param.setSuggestedValues(asList("HARD", "GAUSSIAN", "SINC3", "SINC5", "SLR_8_5152", "SLR_4_2576", "RAMP"));
-            return param;
-        }
-    },
-
     TRAJ_MATRIX("TRAJ_MATRIX") {
         public Param build() {
             ListNumberParam param = new ListNumberParam();
@@ -3051,43 +2917,6 @@ public enum U implements GeneratorParamEnum {
             param.setMaxValue(100.0);
             param.setValue(71.4902297830898);
             param.setDefaultValue(40.0);
-            return param;
-        }
-    },
-
-    TX_AMP_180("TX_AMP_180") {
-        public Param build() {
-            NumberParam param = new NumberParam();
-            param.setName("TX_AMP_180");
-            param.setDisplayedName("TX_AMP_180");
-            param.setDescription("The magnitude of the RF pulse 180");
-            param.setLocked(true);
-            param.setGroup(EnumGroup.Emission);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("cb183c2a-1c8a-4386-ad09-555c0730b3f9");
-            param.setNumberEnum(NumberEnum.TxAmp);
-            param.setMinValue(0.0);
-            param.setMaxValue(100.0);
-            param.setValue(100.0);
-            param.setDefaultValue(0.0);
-            return param;
-        }
-    },
-
-    TX_AMP_90("TX_AMP_90") {
-        public Param build() {
-            NumberParam param = new NumberParam();
-            param.setName("TX_AMP_90");
-            param.setDisplayedName("TX_AMP_90");
-            param.setDescription("Amplitude of the transmitter");
-            param.setLocked(true);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("14c88b3e-61fb-4e22-b010-fdc486555725");
-            param.setNumberEnum(NumberEnum.TxAmp);
-            param.setMinValue(0.0);
-            param.setMaxValue(100.0);
-            param.setValue(100.0);
-            param.setDefaultValue(0.0);
             return param;
         }
     },
@@ -3292,7 +3121,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(1);
             param.setMaxValue(65536);
-            param.setValue(5);
+            param.setValue(6);
             param.setDefaultValue(1);
             return param;
         }

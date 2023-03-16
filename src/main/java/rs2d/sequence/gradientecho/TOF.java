@@ -54,14 +54,18 @@ public class TOF extends KernelGE {
     @Override
     public void init() {
         super.init();
+        //sliceThickness = getDouble(USER_SLICE_THICKNESS);
         //TRANSFORM PLUGIN
         TextParam transformPlugin = getParam(TRANSFORM_PLUGIN);
-        transformPlugin.setSuggestedValues(asList("Sequential4D", "Elliptical3D", "Sequential4D_TOF"));
+        //transformPlugin.setSuggestedValues(asList("Sequential4D", "Elliptical3D", "Sequential4D_TOF"));
+        transformPlugin.setSuggestedValues(asList("Sequential4D"));
+        // TOF V2.1 : remove Elliptical3D and Sequential4D_TOF because they don't work for spinlab 2022.06, need to implement them in future (at least Ellipitcal
         transformPlugin.setRestrictedToSuggested(true);
 
         // KSPACE_FILLING
         TextParam ksFilling = getParam(KSPACE_FILLING);
-        ksFilling.setSuggestedValues(asList("Linear", "3DElliptic"));
+        //ksFilling.setSuggestedValues(asList("Linear", "3DElliptic"));
+        ksFilling.setSuggestedValues(asList("Linear"));
         ksFilling.setRestrictedToSuggested(true);
     }
 
@@ -71,6 +75,7 @@ public class TOF extends KernelGE {
     @Override
     public void initUserParam() throws ConfigurationException {
         super.initUserParam();
+        sliceThickness = getDouble(USER_SLICE_THICKNESS);
         super.isDebugMode = getBoolean(DEBUG_MODE);
         getParam(SEQUENCE_VERSION).setValue(sequenceVersion);
 
@@ -286,6 +291,8 @@ public class TOF extends KernelGE {
                 Log.info(getClass(), "---DEBUG INFO---: fov3D = " + fov3d);
                 Log.info(getClass(), "---DEBUG INFO---: satband = " + models.get(SatBand.class).gradSatBandSlice.getAmplitude());
             }
+        } else {
+            getParam(FOV_MULTISLAB).setValue(fov3d);
         }
     }
 
@@ -295,7 +302,7 @@ public class TOF extends KernelGE {
     @Override
     protected void getAcq3D() {
         super.getAcq3D();
-
+        getParam(USER_SLICE_THICKNESS).setValue(sliceThickness);
         if (!isMultiplanar) {
             getParam(SPACING_BETWEEN_SLAB).setValue(getInt(NUMBER_OF_SLAB) > 1 ? -getDouble(SLAB_OVERLAP) / 100 * sliceThickness * userMatrixDimension3D : 0);
         } else {

@@ -2211,7 +2211,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Info: Description of the sequence");
             param.setCategory(Category.Acquisition);
             param.setUuid("4724b61e-deb1-4d18-8993-1bba2dd1a640");
-            param.setValue("GE_3D_AXI_80x80x24_MT_SATBAND");
+            param.setValue("GE_3D_AXI_80x80x24_SATBAND_MT");
             param.setDefaultValue("");
             return param;
         }
@@ -2275,7 +2275,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Intermediate Slice Thickness, value changes after slab concatenation");
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
-            param.setUuid("af5974d3-d28b-4789-b695-aabe9dc212bd");
+            param.setUuid("a2d9eaae-f305-4921-971d-bd4b0ed56552");
             param.setNumberEnum(NumberEnum.Length);
             param.setMinValue(0.0);
             param.setMaxValue(1.7976931348623157E308);
@@ -2591,7 +2591,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.RotationAngle);
             param.setMinValue(4.9E-324);
             param.setMaxValue(1.7976931348623157E308);
-            param.setValue(100.0);
+            param.setValue(500.0);
             param.setDefaultValue(360.0);
             return param;
         }
@@ -2608,7 +2608,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Frequency);
             param.setMinValue(0.0);
             param.setMaxValue(3.0E9);
-            param.setValue(98.41058104731195);
+            param.setValue(492.0529052365598);
             param.setDefaultValue(50.0);
             return param;
         }
@@ -2903,7 +2903,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.PERCENT);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(43.41717182169603);
+            param.setValue(77.4319513446612);
             param.setDefaultValue(40.0);
             return param;
         }

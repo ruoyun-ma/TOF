@@ -444,7 +444,6 @@ public class TOF extends KernelGE {
 
 
         if (models.get(TofSat.class).isEnabled() && !isMultiplanar) {
-            Log.info(getClass(),"multislab tof");
             delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1)
                     + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopMultiPlanarStart.ID)
                     + models.get(ExtTrig.class).getDuration()
@@ -454,6 +453,7 @@ public class TOF extends KernelGE {
 
             delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStartShort.ID, Events.Delay1.ID);
             if (isDebugMode) {
+                Log.info(getClass(),"---DEBUG INFO---: multislab tof mode");
                 Log.info(getClass(),"---DEBUG INFO---: delay_sat_band = " +  delay_sat_band);
                 Log.info(getClass(),"---DEBUG INFO---: ext trigger duration = " +  models.get(ExtTrig.class).getDuration());
                 Log.info(getClass(), "---DEBUG INFO---: delay_before_multi_planar_loop = " + delay_before_multi_planar_loop);
@@ -472,8 +472,10 @@ public class TOF extends KernelGE {
 
         double time_seq_to_end_spoiler = delay_before_multi_planar_loop + (delay_before_echo_loop + delay_echo_loop + delay_spoiler) * nb_slices_acquired_in_single_scan;
         double tr_min = time_seq_to_end_spoiler + minInstructionDelay * (nb_slices_acquired_in_single_scan * 2) + min_flush_delay;// 2 +( 2 minInstructionDelay: Events. 22 +(20&21
-        Log.info(getClass(), "time_seq_to_end_spoiler = " + time_seq_to_end_spoiler);
-        Log.info(getClass(), "tr min = " + tr_min);
+        if (isDebugMode) {
+            Log.info(getClass(), "---DEBUG INFO---: time_seq_to_end_spoiler = " + time_seq_to_end_spoiler);
+            Log.info(getClass(), "---DEBUG INFO---: tr min = " + tr_min);
+        }
         if (getBoolean(TOF3D_MT_INDIV))
             tr_min = tr_min - models.get(TofSat.class).getDuration();
 
@@ -568,6 +570,17 @@ public class TOF extends KernelGE {
             if (models.get(SatBand.class).isEnabled()) {
                 Log.info(getClass(), "---DEBUG INFO---: SATband flip angle = " + models.get(SatBand.class).pulseTXSatBand.getFlipAngle());
             }
+            Log.info(getClass(), "---DEBUG INFO---: ################# Power from all RFs ####################");
+            if (models.get(TofSat.class).isEnabled()) {
+                Log.info(getClass(), "---DEBUG INFO---: TofSat RF Power = " + models.get(TofSat.class).pulseTXTofSat.getPower());
+            }
+            if (models.get(SatBand.class).isEnabled()) {
+                Log.info(getClass(), "---DEBUG INFO---: SatBand RF Power = " + models.get(SatBand.class).pulseTXSatBand.getPower());
+            }
+            if (models.get(FatSat.class).isEnabled()) {
+                Log.info(getClass(), "---DEBUG INFO---: FatSat RF Power = " + models.get(FatSat.class).pulseTXFatSat.getPower());
+            }
+            Log.info(getClass(), "---DEBUG INFO---: Excitation RF Power = " + pulseTX.getPower());
         }
     }
 

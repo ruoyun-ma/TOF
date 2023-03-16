@@ -3239,7 +3239,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
                     <uuid>4724b61e-deb1-4d18-8993-1bba2dd1a640</uuid>
-                    <value>GE_3D_AXI_80x80x24_MT_SATBAND</value>
+                    <value>GE_3D_AXI_80x80x24_SATBAND_MT</value>
                     <defaultValue></defaultValue>
                     <description>Info: Description of the sequence</description>
                     <displayedName>Sequence Description</displayedName>
@@ -3305,7 +3305,7 @@
                 <key>SLICE_THICKNESS</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SLICE_THICKNESS</name>
-                    <uuid>af5974d3-d28b-4789-b695-aabe9dc212bd</uuid>
+                    <uuid>a2d9eaae-f305-4921-971d-bd4b0ed56552</uuid>
                     <value>5.0E-4</value>
                     <defaultValue>0.005</defaultValue>
                     <description>Intermediate Slice Thickness, value changes after slab concatenation</description>
@@ -3635,7 +3635,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TOF3D_MT_FLIP_ANGLE</name>
                     <uuid>4bde5818-ccea-473e-81b2-4492a2262c1d</uuid>
-                    <value>100.0</value>
+                    <value>500.0</value>
                     <defaultValue>360.0</defaultValue>
                     <description>Nnominal flip angle of TOF 3D MT saturation pulse</description>
                     <displayedName>TOF 3D - MT Flip Angle</displayedName>
@@ -3653,7 +3653,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TOF3D_MT_GAMMA_B1</name>
                     <uuid>31453ed8-0afb-4feb-8842-b8a0bd8f5500</uuid>
-                    <value>98.41058104731195</value>
+                    <value>492.0529052365598</value>
                     <defaultValue>50.0</defaultValue>
                     <description>Info: Gamma B1 value of TOF 3D MT saturation pulse</description>
                     <displayedName>TOF 3D - MT Gamma B1</displayedName>
@@ -10507,7 +10507,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_AMP</name>
                     <uuid>6d533b2b-46db-468e-81d9-e86ffe3b2e90</uuid>
-                    <value>43.41717182169603</value>
+                    <value>77.4319513446612</value>
                     <defaultValue>40.0</defaultValue>
                     <description>Amplitude of the excitation RF pulse </description>
                     <displayedName>TX Amplitude</displayedName>

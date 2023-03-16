@@ -19604,7 +19604,7 @@
                     <name>SincRampPhase</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
-                        <uuid>64dec23b-929a-439c-a94c-721b1aa14b8b</uuid>
+                        <uuid>acf291bf-b9aa-4d55-9d13-49c731d62d79</uuid>
                         <value>128</value>
                         <defaultValue>64</defaultValue>
                         <description>Number of points</description>
@@ -19618,7 +19618,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Nb lobe</name>
-                        <uuid>63077b8a-d6f9-4b0a-b7a2-0f98f9096be8</uuid>
+                        <uuid>5ce81cbb-52f3-469d-8e08-72caf1ad0ae3</uuid>
                         <value>3</value>
                         <defaultValue>3</defaultValue>
                         <description>Number of lobe of the sinus cardinal (ramp)</description>
@@ -19632,7 +19632,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
-                        <uuid>9c0c3c99-65e5-41d6-8a68-f770e8992e16</uuid>
+                        <uuid>bf3aa0f9-8918-4797-aa19-31d6cee2577f</uuid>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
                         <description>Amplitude of the sinus cardinal(ramp)</description>
@@ -19646,7 +19646,7 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <uuid>abc280d3-8d86-4820-b5a1-ee1bb1f00ca3</uuid>
+                        <uuid>6431a4d9-2f1d-4af9-8bd3-a1c6713f459e</uuid>
                         <value>true</value>
                         <defaultValue>false</defaultValue>
                         <description>Absolue value</description>
@@ -19656,7 +19656,7 @@
                     </params>
                     <params xsi:type="textParam">
                         <name>Window</name>
-                        <uuid>7bf30da1-8d48-4195-9db6-fa00a17607c8</uuid>
+                        <uuid>546ce23e-afd9-4db8-8939-b5830ea47936</uuid>
                         <value>Hamming</value>
                         <defaultValue>None</defaultValue>
                         <description>The apodisation window</description>
@@ -19670,7 +19670,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Ramp slope</name>
-                        <uuid>a9ec0fea-5843-4e12-b6cb-8faaa0ed3099</uuid>
+                        <uuid>8f52cb83-43ee-4d23-8516-38f0573b7935</uuid>
                         <value>-0.0</value>
                         <defaultValue>0.1</defaultValue>
                         <description>Slope of the ramp</description>
@@ -20176,7 +20176,7 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>2</address>
-                <list>43.41717182169603</list>
+                <list>77.4319513446612</list>
             </value>
         </Entry>
         <Entry>
@@ -20208,7 +20208,7 @@
                     <name>SincRamp</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
-                        <uuid>1d19f65f-4d9d-44b2-8e5d-8244d56cf208</uuid>
+                        <uuid>6ce1dc0a-f7db-4ab5-9e48-a0ff6bf8dc9f</uuid>
                         <value>128</value>
                         <defaultValue>64</defaultValue>
                         <description>Number of points</description>
@@ -20222,7 +20222,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Nb lobe</name>
-                        <uuid>f78dfdce-6602-4d21-9305-e13071d835f9</uuid>
+                        <uuid>3f8b3009-b197-41bb-809d-118e023f3edc</uuid>
                         <value>3</value>
                         <defaultValue>3</defaultValue>
                         <description>Number of lobe of the sinus cardinal (ramp)</description>
@@ -20236,7 +20236,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
-                        <uuid>e2987248-2cd4-4ffd-8655-3944c8a8ff42</uuid>
+                        <uuid>0485d6b1-7ed2-43a4-a9da-df6125252e1f</uuid>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
                         <description>Amplitude of the sinus cardinal(ramp)</description>
@@ -20250,7 +20250,7 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <uuid>127cd5b7-0042-48ce-956d-54fab90e8b0a</uuid>
+                        <uuid>3d0f47c8-624d-4b1f-b253-6628593d2817</uuid>
                         <value>true</value>
                         <defaultValue>false</defaultValue>
                         <description>Absolue value</description>
@@ -20260,7 +20260,7 @@
                     </params>
                     <params xsi:type="textParam">
                         <name>Window</name>
-                        <uuid>7225de0a-d5e4-4564-9fc9-841bab712ae4</uuid>
+                        <uuid>12ed66f6-3169-47d0-89a3-f3192be3778d</uuid>
                         <value>Hamming</value>
                         <defaultValue>None</defaultValue>
                         <description>The apodisation window</description>
@@ -20274,7 +20274,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Ramp slope</name>
-                        <uuid>2ebee47e-67bc-48ba-8993-589da2100288</uuid>
+                        <uuid>1af3f89d-7ac5-4685-98a7-d101427f2a58</uuid>
                         <value>-0.0</value>
                         <defaultValue>0.1</defaultValue>
                         <description>Slope of the ramp</description>
@@ -20600,7 +20600,7 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>0.0</list>
+                <list>5.0</list>
             </value>
         </Entry>
         <Entry>
@@ -21101,7 +21101,7 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>19.0</list>
+                <list>5.0</list>
             </value>
         </Entry>
         <Entry>
@@ -21191,7 +21191,7 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>19.0</list>
+                <list>0.0</list>
             </value>
         </Entry>
         <Entry>
@@ -24943,7 +24943,7 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>2</address>
-                <list>73.29857365315284</list>
+                <list>43.68286606965371</list>
             </value>
         </Entry>
         <Entry>
@@ -24961,7 +24961,7 @@
                     <name>Gaussian</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
-                        <uuid>b535d863-0d85-4ec4-af73-c438ced782b3</uuid>
+                        <uuid>d878ae43-faf9-4fb2-bacc-32c588e19df8</uuid>
                         <value>128</value>
                         <defaultValue>64</defaultValue>
                         <description>Number of points</description>
@@ -24975,7 +24975,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Width</name>
-                        <uuid>ebf86e60-6f34-436c-97ec-ea20dcd16ca2</uuid>
+                        <uuid>a8f01514-4018-4c7c-8bb8-a36ea523a7a2</uuid>
                         <value>0.25</value>
                         <defaultValue>0.25</defaultValue>
                         <description>Width of the gaussian</description>
@@ -24989,7 +24989,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
-                        <uuid>f4f3d663-9467-4013-8cb3-83646db20be1</uuid>
+                        <uuid>89e54e67-837f-4f35-a0ac-b055ef6fb16c</uuid>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
                         <description>Amplitude of the gaussian</description>
@@ -25003,7 +25003,7 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <uuid>fcf387f0-c0f8-476b-820c-4b84f754424b</uuid>
+                        <uuid>9677bfad-926e-4db5-a4ce-855d10f7d3c3</uuid>
                         <value>false</value>
                         <defaultValue>false</defaultValue>
                         <description>Absolute value</description>
@@ -25755,7 +25755,7 @@
                     <name>Gaussian</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
-                        <uuid>47c71fcb-b966-4831-84af-da9ca0a61b8e</uuid>
+                        <uuid>19b51bb5-5fb5-48ff-be8f-877384402c5b</uuid>
                         <value>128</value>
                         <defaultValue>64</defaultValue>
                         <description>Number of points</description>
@@ -25769,7 +25769,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Width</name>
-                        <uuid>01e97363-8bf0-40aa-b5f3-132dd1e7faa9</uuid>
+                        <uuid>9f8073e9-943a-4ca5-924e-bdab18899f53</uuid>
                         <value>0.25</value>
                         <defaultValue>0.25</defaultValue>
                         <description>Width of the gaussian</description>
@@ -25783,7 +25783,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
-                        <uuid>d6bfb478-dd7e-4c71-bc88-77d96d76789e</uuid>
+                        <uuid>692885a2-6c84-45e2-a069-a546711ab9f1</uuid>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
                         <description>Amplitude of the gaussian</description>
@@ -25797,7 +25797,7 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <uuid>b45bcdec-0524-49ed-aa71-27275894d410</uuid>
+                        <uuid>8b3671e5-a6d2-49ad-b496-8ba5a5bea856</uuid>
                         <value>false</value>
                         <defaultValue>false</defaultValue>
                         <description>Absolute value</description>

@@ -145,10 +145,14 @@ public class TOF extends KernelGE {
 
         if (getBoolean(TOF3D_MT_INDIV) ) {
             set(Loop_xd, Opcode.CodeEnum.GotoWhile);
-            if (models.get(FatSat.class).isEnabled())
+            Log.info(getClass(),"satband enabled TOF3D_MT_INDIV = "+ models.get(SatBand.class).isEnabled());
+            if (models.get(SatBand.class).isEnabled()) {
+                set(Loop_xd_start, Events.LoopSatBandStart.ID);
+            } else if (models.get(FatSat.class).isEnabled())  {
                 set(Loop_xd_start, Events.FatSatPulse.ID - 1);
-            else
+            } else {
                 set(Loop_xd_start, Events.P90.ID - 1);
+            }
         } else {
             set(Loop_xd, Opcode.CodeEnum.GotoFirstWhile);
             set(Loop_xd_start, 0);

@@ -3302,7 +3302,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Nb_2d</name>
                 <uuid>31d37b43-23f4-421d-9f07-19551b4ab731</uuid>
-                <value>160</value>
+                <value>80</value>
                 <defaultValue>1</defaultValue>
                 <displayedName>Nb 2D</displayedName>
                 <locked>false</locked>
@@ -3492,7 +3492,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Nb_4d</name>
                 <uuid>46fa9e9e-b329-483a-b780-2fd8dac540ec</uuid>
-                <value>6</value>
+                <value>4</value>
                 <defaultValue>1</defaultValue>
                 <displayedName>Nb 4D</displayedName>
                 <locked>false</locked>
@@ -4067,7 +4067,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Spectral_width</name>
                 <uuid>b2c7c51f-9b84-47cd-8fcc-2e4758ccb1b2</uuid>
-                <value>64036.88524590164</value>
+                <value>20011.52663934426</value>
                 <defaultValue>12500.0</defaultValue>
                 <displayedName>SW0</displayedName>
                 <locked>false</locked>
@@ -7556,7 +7556,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Nb_point</name>
                 <uuid>ce44608e-bcc8-45b3-8292-28a9938600a7</uuid>
-                <value>256</value>
+                <value>80</value>
                 <defaultValue>128</defaultValue>
                 <displayedName>Nb Point</displayedName>
                 <locked>false</locked>
@@ -15795,7 +15795,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>Loop_xd_start</name>
                 <uuid>b56223f2-f27d-4413-90be-c2a76c50d996</uuid>
-                <value>25</value>
+                <value>11</value>
                 <defaultValue>0</defaultValue>
                 <displayedName>Loop_xd_start</displayedName>
                 <locked>false</locked>
@@ -19604,7 +19604,7 @@
                     <name>SincRampPhase</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
-                        <uuid>e2c58bb5-edee-4890-a5cc-dfc6293c051f</uuid>
+                        <uuid>6bca9f08-65a6-42d2-8be2-cbd98c60f9cd</uuid>
                         <value>128</value>
                         <defaultValue>64</defaultValue>
                         <description>Number of points</description>
@@ -19618,7 +19618,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Nb lobe</name>
-                        <uuid>6d4f2a3d-9f07-42b7-b201-3c7df4a53cb9</uuid>
+                        <uuid>a8b0b6d9-7052-4da5-a7aa-ff82b78c8b83</uuid>
                         <value>3</value>
                         <defaultValue>3</defaultValue>
                         <description>Number of lobe of the sinus cardinal (ramp)</description>
@@ -19632,7 +19632,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
-                        <uuid>8e632488-8f0b-48d9-bdab-c4158a2d048d</uuid>
+                        <uuid>a7f58f06-4e70-413e-a9b1-9a222ca1dbb4</uuid>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
                         <description>Amplitude of the sinus cardinal(ramp)</description>
@@ -19646,7 +19646,7 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <uuid>50978422-a620-4e0f-b2e3-f9635b43f363</uuid>
+                        <uuid>1f1c5f44-c782-4b9b-aaf8-28998d2d3f8b</uuid>
                         <value>true</value>
                         <defaultValue>false</defaultValue>
                         <description>Absolue value</description>
@@ -19656,7 +19656,7 @@
                     </params>
                     <params xsi:type="textParam">
                         <name>Window</name>
-                        <uuid>f66b33d3-1038-4407-8344-e694a56a1b3c</uuid>
+                        <uuid>7ac44080-3854-4c23-a41d-48ccad5bddec</uuid>
                         <value>Hamming</value>
                         <defaultValue>None</defaultValue>
                         <description>The apodisation window</description>
@@ -19670,7 +19670,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Ramp slope</name>
-                        <uuid>0edc1868-57b3-4b76-9b4e-82bff6699d03</uuid>
+                        <uuid>3ae46bfd-2231-49e6-940e-eaa236f032a5</uuid>
                         <value>-0.2</value>
                         <defaultValue>0.1</defaultValue>
                         <description>Slope of the ramp</description>
@@ -20053,12 +20053,10 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>6</address>
-                <list>6640.625000000001</list>
-                <list>3984.3750000000005</list>
-                <list>1328.125</list>
-                <list>-1328.125000000001</list>
-                <list>-3984.375000000001</list>
-                <list>-6640.625000000003</list>
+                <list>3984.375000000001</list>
+                <list>1328.1250000000005</list>
+                <list>-1328.125</list>
+                <list>-3984.375000000002</list>
             </value>
         </Entry>
         <Entry>
@@ -20213,7 +20211,7 @@
                     <name>SincRamp</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
-                        <uuid>75396e74-5074-449a-9af9-8017b0281baf</uuid>
+                        <uuid>570aa148-140d-4df6-9ddc-ec605188162e</uuid>
                         <value>128</value>
                         <defaultValue>64</defaultValue>
                         <description>Number of points</description>
@@ -20227,7 +20225,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Nb lobe</name>
-                        <uuid>1a6c6096-0668-41e5-8cdb-9f4279780845</uuid>
+                        <uuid>71796cfb-811f-47dd-9a1a-a6b9719e653c</uuid>
                         <value>3</value>
                         <defaultValue>3</defaultValue>
                         <description>Number of lobe of the sinus cardinal (ramp)</description>
@@ -20241,7 +20239,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
-                        <uuid>6dc9f73f-70e5-4aad-b8ca-bf150c9bb66b</uuid>
+                        <uuid>27d8b266-2aeb-4ad6-a193-ebe4c1ab439a</uuid>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
                         <description>Amplitude of the sinus cardinal(ramp)</description>
@@ -20255,7 +20253,7 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <uuid>e0dd7cbe-cefe-459c-a088-4b439c674196</uuid>
+                        <uuid>646c707f-80b9-4a34-9216-480dd87602d7</uuid>
                         <value>true</value>
                         <defaultValue>false</defaultValue>
                         <description>Absolue value</description>
@@ -20265,7 +20263,7 @@
                     </params>
                     <params xsi:type="textParam">
                         <name>Window</name>
-                        <uuid>e9c2f473-5194-4949-89e4-f33704763fc2</uuid>
+                        <uuid>90c2179f-aa0f-4a1f-bd6a-c0986b757dce</uuid>
                         <value>Hamming</value>
                         <defaultValue>None</defaultValue>
                         <description>The apodisation window</description>
@@ -20279,7 +20277,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Ramp slope</name>
-                        <uuid>9a38d466-91cc-4f37-8406-75fb82495908</uuid>
+                        <uuid>e7c7d2d4-4a4d-4583-a99e-f67bb704d156</uuid>
                         <value>-0.2</value>
                         <defaultValue>0.1</defaultValue>
                         <description>Slope of the ramp</description>
@@ -20433,7 +20431,7 @@
                 <group>Reception</group>
                 <locked>false</locked>
                 <address>11</address>
-                <list>1829.6252927400471</list>
+                <list>571.7579039812646</list>
             </value>
         </Entry>
         <Entry>
@@ -20591,7 +20589,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>5</address>
-                <list>5.141519999999995E-4</list>
+                <list>1.4151999999999915E-5</list>
             </value>
         </Entry>
         <Entry>
@@ -20673,7 +20671,7 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>0</address>
-                <list>4.7853142560681565</list>
+                <list>7.975523760113595</list>
             </value>
         </Entry>
         <Entry>
@@ -21043,30 +21041,30 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>1</address>
-                <list>-17.254891724866027</list>
-                <list>-16.124697199851774</list>
-                <list>-14.994502674837522</list>
-                <list>-13.86430814982327</list>
-                <list>-12.734113624809018</list>
-                <list>-11.603919099794766</list>
-                <list>-10.473724574780514</list>
-                <list>-9.343530049766262</list>
-                <list>-8.21333552475201</list>
-                <list>-7.083140999737758</list>
-                <list>-5.952946474723504</list>
-                <list>-4.822751949709254</list>
-                <list>-3.6925574246950017</list>
-                <list>-2.5623628996807497</list>
-                <list>-1.432168374666496</list>
-                <list>-0.30197384965224394</list>
-                <list>0.8282206753620063</list>
-                <list>1.95841520037626</list>
-                <list>3.0886097253905103</list>
-                <list>4.218804250404764</list>
-                <list>5.348998775419018</list>
-                <list>6.4791933004332645</list>
-                <list>7.609387825447518</list>
-                <list>8.739582350461772</list>
+                <list>-28.75815287477671</list>
+                <list>-26.87449533308629</list>
+                <list>-24.99083779139587</list>
+                <list>-23.107180249705447</list>
+                <list>-21.22352270801503</list>
+                <list>-19.33986516632461</list>
+                <list>-17.45620762463419</list>
+                <list>-15.57255008294377</list>
+                <list>-13.688892541253349</list>
+                <list>-11.805234999562927</list>
+                <list>-9.921577457872509</list>
+                <list>-8.037919916182087</list>
+                <list>-6.154262374491666</list>
+                <list>-4.270604832801248</list>
+                <list>-2.38694729111083</list>
+                <list>-0.503289749420408</list>
+                <list>1.3803677922700102</list>
+                <list>3.2640253339604284</list>
+                <list>5.147682875650854</list>
+                <list>7.031340417341272</list>
+                <list>8.914997959031691</list>
+                <list>10.798655500722116</list>
+                <list>12.682313042412535</list>
+                <list>14.565970584102953</list>
             </value>
         </Entry>
         <Entry>
@@ -21210,7 +21208,7 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>0</address>
-                <list>-43.710835705363124</list>
+                <list>-13.659636157925974</list>
             </value>
         </Entry>
         <Entry>
@@ -21367,46 +21365,6 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>0</address>
-                <list>-25.833017714611472</list>
-                <list>-25.510104993178828</list>
-                <list>-25.187192271746184</list>
-                <list>-24.86427955031354</list>
-                <list>-24.5413668288809</list>
-                <list>-24.218454107448256</list>
-                <list>-23.895541386015612</list>
-                <list>-23.572628664582968</list>
-                <list>-23.249715943150324</list>
-                <list>-22.92680322171768</list>
-                <list>-22.60389050028504</list>
-                <list>-22.280977778852396</list>
-                <list>-21.958065057419752</list>
-                <list>-21.635152335987108</list>
-                <list>-21.312239614554464</list>
-                <list>-20.98932689312182</list>
-                <list>-20.666414171689176</list>
-                <list>-20.343501450256536</list>
-                <list>-20.020588728823892</list>
-                <list>-19.697676007391248</list>
-                <list>-19.374763285958604</list>
-                <list>-19.05185056452596</list>
-                <list>-18.728937843093316</list>
-                <list>-18.406025121660676</list>
-                <list>-18.083112400228032</list>
-                <list>-17.760199678795388</list>
-                <list>-17.437286957362744</list>
-                <list>-17.1143742359301</list>
-                <list>-16.791461514497456</list>
-                <list>-16.468548793064812</list>
-                <list>-16.14563607163217</list>
-                <list>-15.822723350199528</list>
-                <list>-15.499810628766884</list>
-                <list>-15.17689790733424</list>
-                <list>-14.853985185901598</list>
-                <list>-14.531072464468954</list>
-                <list>-14.20815974303631</list>
-                <list>-13.885247021603668</list>
-                <list>-13.562334300171024</list>
-                <list>-13.23942157873838</list>
                 <list>-12.916508857305736</list>
                 <list>-12.593596135873092</list>
                 <list>-12.27068341444045</list>
@@ -21415,51 +21373,51 @@
                 <list>-11.30194525014252</list>
                 <list>-10.979032528709876</list>
                 <list>-10.656119807277232</list>
-                <list>-10.33320708584459</list>
+                <list>-10.333207085844588</list>
                 <list>-10.010294364411946</list>
-                <list>-9.687381642979304</list>
+                <list>-9.687381642979302</list>
                 <list>-9.36446892154666</list>
                 <list>-9.041556200114016</list>
                 <list>-8.718643478681372</list>
                 <list>-8.395730757248728</list>
-                <list>-8.072818035816088</list>
-                <list>-7.749905314383444</list>
-                <list>-7.4269925929508</list>
-                <list>-7.104079871518156</list>
+                <list>-8.072818035816086</list>
+                <list>-7.749905314383442</list>
+                <list>-7.426992592950798</list>
+                <list>-7.104079871518155</list>
                 <list>-6.781167150085512</list>
                 <list>-6.458254428652868</list>
-                <list>-6.135341707220228</list>
-                <list>-5.812428985787584</list>
-                <list>-5.48951626435494</list>
-                <list>-5.166603542922296</list>
-                <list>-4.843690821489652</list>
-                <list>-4.520778100057008</list>
+                <list>-6.135341707220224</list>
+                <list>-5.812428985787582</list>
+                <list>-5.489516264354938</list>
+                <list>-5.166603542922295</list>
+                <list>-4.84369082148965</list>
+                <list>-4.520778100057006</list>
                 <list>-4.197865378624364</list>
-                <list>-3.8749526571917237</list>
-                <list>-3.5520399357590797</list>
+                <list>-3.874952657191722</list>
+                <list>-3.552039935759078</list>
                 <list>-3.229127214326436</list>
                 <list>-2.906214492893792</list>
                 <list>-2.583301771461148</list>
                 <list>-2.260389050028504</list>
-                <list>-1.9374763285958636</list>
-                <list>-1.6145636071632197</list>
-                <list>-1.2916508857305757</list>
-                <list>-0.9687381642979318</list>
+                <list>-1.93747632859586</list>
+                <list>-1.614563607163218</list>
+                <list>-1.291650885730574</list>
+                <list>-0.96873816429793</list>
                 <list>-0.6458254428652879</list>
                 <list>-0.32291272143264393</list>
                 <list>0.0</list>
-                <list>0.3229127214326404</list>
+                <list>0.32291272143264393</list>
                 <list>0.6458254428652879</list>
-                <list>0.9687381642979283</list>
+                <list>0.9687381642979318</list>
                 <list>1.2916508857305722</list>
                 <list>1.6145636071632161</list>
                 <list>1.93747632859586</list>
                 <list>2.260389050028504</list>
-                <list>2.583301771461148</list>
-                <list>2.906214492893792</list>
-                <list>3.2291272143264322</list>
-                <list>3.552039935759076</list>
-                <list>3.87495265719172</list>
+                <list>2.583301771461146</list>
+                <list>2.90621449289379</list>
+                <list>3.229127214326436</list>
+                <list>3.5520399357590797</list>
+                <list>3.8749526571917237</list>
                 <list>4.197865378624364</list>
                 <list>4.520778100057008</list>
                 <list>4.843690821489652</list>
@@ -21468,7 +21426,7 @@
                 <list>5.81242898578758</list>
                 <list>6.135341707220224</list>
                 <list>6.4582544286528645</list>
-                <list>6.7811671500855155</list>
+                <list>6.781167150085508</list>
                 <list>7.104079871518152</list>
                 <list>7.426992592950796</list>
                 <list>7.74990531438344</list>
@@ -21476,57 +21434,17 @@
                 <list>8.395730757248728</list>
                 <list>8.718643478681372</list>
                 <list>9.041556200114016</list>
-                <list>9.36446892154666</list>
-                <list>9.687381642979297</list>
-                <list>10.010294364411948</list>
-                <list>10.333207085844585</list>
-                <list>10.656119807277236</list>
-                <list>10.979032528709872</list>
-                <list>11.301945250142523</list>
+                <list>9.364468921546656</list>
+                <list>9.6873816429793</list>
+                <list>10.010294364411944</list>
+                <list>10.333207085844588</list>
+                <list>10.656119807277232</list>
+                <list>10.979032528709876</list>
+                <list>11.30194525014252</list>
                 <list>11.62485797157516</list>
                 <list>11.947770693007804</list>
                 <list>12.270683414440448</list>
                 <list>12.593596135873092</list>
-                <list>12.916508857305736</list>
-                <list>13.23942157873838</list>
-                <list>13.562334300171017</list>
-                <list>13.885247021603668</list>
-                <list>14.208159743036305</list>
-                <list>14.531072464468956</list>
-                <list>14.853985185901593</list>
-                <list>15.176897907334244</list>
-                <list>15.49981062876688</list>
-                <list>15.822723350199524</list>
-                <list>16.14563607163217</list>
-                <list>16.468548793064812</list>
-                <list>16.791461514497456</list>
-                <list>17.1143742359301</list>
-                <list>17.437286957362744</list>
-                <list>17.760199678795388</list>
-                <list>18.083112400228025</list>
-                <list>18.406025121660676</list>
-                <list>18.728937843093313</list>
-                <list>19.051850564525964</list>
-                <list>19.3747632859586</list>
-                <list>19.697676007391244</list>
-                <list>20.02058872882389</list>
-                <list>20.343501450256532</list>
-                <list>20.666414171689176</list>
-                <list>20.98932689312182</list>
-                <list>21.312239614554464</list>
-                <list>21.635152335987108</list>
-                <list>21.958065057419745</list>
-                <list>22.280977778852396</list>
-                <list>22.603890500285033</list>
-                <list>22.926803221717684</list>
-                <list>23.24971594315032</list>
-                <list>23.57262866458297</list>
-                <list>23.89554138601561</list>
-                <list>24.218454107448252</list>
-                <list>24.541366828880896</list>
-                <list>24.86427955031354</list>
-                <list>25.187192271746184</list>
-                <list>25.510104993178828</list>
             </value>
         </Entry>
         <Entry>
@@ -21553,7 +21471,7 @@
                 <group>Reception</group>
                 <locked>false</locked>
                 <address>10</address>
-                <list>-15591.334894613772</list>
+                <list>-54872.29215456674</list>
             </value>
         </Entry>
         <Entry>
@@ -21684,7 +21602,7 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>1</address>
-                <list>16.48062493479872</list>
+                <list>5.150195292124599</list>
             </value>
         </Entry>
         <Entry>
@@ -21790,12 +21708,10 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>2</address>
-                <list>-1392.6630434782628</list>
-                <list>-4313.858695652175</list>
-                <list>-2887.228260869565</list>
-                <list>2887.228260869567</list>
-                <list>4313.858695652176</list>
-                <list>1392.6630434782667</list>
+                <list>-4313.858695652176</list>
+                <list>-2887.228260869566</list>
+                <list>2887.228260869565</list>
+                <list>4313.858695652178</list>
             </value>
         </Entry>
         <Entry>
@@ -21999,7 +21915,7 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>0</address>
-                <list>-3.710835705363124</list>
+                <list>26.340363842074026</list>
             </value>
         </Entry>
         <Entry>
@@ -22162,46 +22078,6 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>256</address>
-                <list>65.83301771461147</list>
-                <list>65.51010499317883</list>
-                <list>65.18719227174618</list>
-                <list>64.86427955031354</list>
-                <list>64.5413668288809</list>
-                <list>64.21845410744825</list>
-                <list>63.89554138601561</list>
-                <list>63.572628664582965</list>
-                <list>63.24971594315032</list>
-                <list>62.92680322171768</list>
-                <list>62.60389050028504</list>
-                <list>62.280977778852396</list>
-                <list>61.95806505741975</list>
-                <list>61.63515233598711</list>
-                <list>61.312239614554464</list>
-                <list>60.98932689312182</list>
-                <list>60.666414171689176</list>
-                <list>60.34350145025654</list>
-                <list>60.020588728823896</list>
-                <list>59.69767600739125</list>
-                <list>59.37476328595861</list>
-                <list>59.051850564525964</list>
-                <list>58.72893784309332</list>
-                <list>58.406025121660676</list>
-                <list>58.08311240022803</list>
-                <list>57.76019967879539</list>
-                <list>57.437286957362744</list>
-                <list>57.1143742359301</list>
-                <list>56.791461514497456</list>
-                <list>56.46854879306481</list>
-                <list>56.14563607163217</list>
-                <list>55.822723350199524</list>
-                <list>55.49981062876688</list>
-                <list>55.17689790733424</list>
-                <list>54.8539851859016</list>
-                <list>54.531072464468956</list>
-                <list>54.20815974303631</list>
-                <list>53.88524702160367</list>
-                <list>53.562334300171024</list>
-                <list>53.23942157873838</list>
                 <list>52.916508857305736</list>
                 <list>52.59359613587309</list>
                 <list>52.27068341444045</list>
@@ -22218,20 +22094,20 @@
                 <list>48.71864347868137</list>
                 <list>48.39573075724873</list>
                 <list>48.072818035816084</list>
-                <list>47.74990531438345</list>
+                <list>47.74990531438344</list>
                 <list>47.426992592950796</list>
                 <list>47.10407987151815</list>
                 <list>46.78116715008551</list>
                 <list>46.458254428652864</list>
-                <list>46.13534170722023</list>
+                <list>46.13534170722022</list>
                 <list>45.812428985787584</list>
                 <list>45.48951626435494</list>
                 <list>45.166603542922296</list>
                 <list>44.84369082148965</list>
                 <list>44.52077810005701</list>
                 <list>44.197865378624364</list>
-                <list>43.87495265719173</list>
-                <list>43.55203993575908</list>
+                <list>43.87495265719172</list>
+                <list>43.552039935759076</list>
                 <list>43.22912721432644</list>
                 <list>42.906214492893795</list>
                 <list>42.58330177146115</list>
@@ -22250,11 +22126,11 @@
                 <list>38.38543639283678</list>
                 <list>38.062523671404136</list>
                 <list>37.73961094997149</list>
-                <list>37.41669822853885</list>
-                <list>37.093785507106205</list>
-                <list>36.77087278567357</list>
-                <list>36.447960064240924</list>
-                <list>36.12504734280828</list>
+                <list>37.416698228538856</list>
+                <list>37.09378550710621</list>
+                <list>36.77087278567356</list>
+                <list>36.44796006424092</list>
+                <list>36.12504734280827</list>
                 <list>35.802134621375636</list>
                 <list>35.47922189994299</list>
                 <list>35.15630917851035</list>
@@ -22263,7 +22139,7 @@
                 <list>34.18757101421242</list>
                 <list>33.86465829277978</list>
                 <list>33.541745571347136</list>
-                <list>33.218832849914484</list>
+                <list>33.21883284991449</list>
                 <list>32.89592012848185</list>
                 <list>32.573007407049204</list>
                 <list>32.25009468561656</list>
@@ -22271,57 +22147,17 @@
                 <list>31.604269242751272</list>
                 <list>31.281356521318628</list>
                 <list>30.958443799885984</list>
-                <list>30.63553107845334</list>
-                <list>30.312618357020703</list>
-                <list>29.989705635588052</list>
-                <list>29.666792914155415</list>
-                <list>29.343880192722764</list>
-                <list>29.020967471290128</list>
-                <list>28.698054749857477</list>
+                <list>30.635531078453344</list>
+                <list>30.3126183570207</list>
+                <list>29.989705635588056</list>
+                <list>29.666792914155412</list>
+                <list>29.343880192722768</list>
+                <list>29.020967471290124</list>
+                <list>28.69805474985748</list>
                 <list>28.37514202842484</list>
                 <list>28.052229306992196</list>
                 <list>27.729316585559552</list>
                 <list>27.406403864126908</list>
-                <list>27.083491142694264</list>
-                <list>26.76057842126162</list>
-                <list>26.437665699828983</list>
-                <list>26.114752978396332</list>
-                <list>25.791840256963695</list>
-                <list>25.468927535531044</list>
-                <list>25.146014814098407</list>
-                <list>24.823102092665756</list>
-                <list>24.50018937123312</list>
-                <list>24.177276649800476</list>
-                <list>23.85436392836783</list>
-                <list>23.531451206935188</list>
-                <list>23.208538485502544</list>
-                <list>22.8856257640699</list>
-                <list>22.562713042637256</list>
-                <list>22.239800321204612</list>
-                <list>21.916887599771975</list>
-                <list>21.593974878339324</list>
-                <list>21.271062156906687</list>
-                <list>20.948149435474036</list>
-                <list>20.6252367140414</list>
-                <list>20.302323992608756</list>
-                <list>19.97941127117611</list>
-                <list>19.656498549743468</list>
-                <list>19.333585828310824</list>
-                <list>19.01067310687818</list>
-                <list>18.687760385445536</list>
-                <list>18.364847664012892</list>
-                <list>18.041934942580255</list>
-                <list>17.719022221147604</list>
-                <list>17.396109499714967</list>
-                <list>17.073196778282316</list>
-                <list>16.75028405684968</list>
-                <list>16.427371335417025</list>
-                <list>16.10445861398439</list>
-                <list>15.781545892551748</list>
-                <list>15.458633171119104</list>
-                <list>15.13572044968646</list>
-                <list>14.812807728253816</list>
-                <list>14.489895006821172</list>
             </value>
         </Entry>
         <Entry>
@@ -22469,30 +22305,30 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>1</address>
-                <list>49.86977687547602</list>
-                <list>48.73958235046177</list>
-                <list>47.60938782544751</list>
-                <list>46.479193300433266</list>
-                <list>45.34899877541901</list>
-                <list>44.21880425040476</list>
-                <list>43.08860972539051</list>
-                <list>41.95841520037626</list>
-                <list>40.828220675362004</list>
-                <list>39.69802615034775</list>
-                <list>38.5678316253335</list>
-                <list>37.43763710031925</list>
-                <list>36.307442575305</list>
-                <list>35.17724805029074</list>
-                <list>34.04705352527649</list>
-                <list>32.916859000262235</list>
-                <list>31.78666447524799</list>
-                <list>30.656469950233735</list>
-                <list>29.526275425219485</list>
-                <list>28.39608090020523</list>
-                <list>27.265886375190977</list>
-                <list>26.13569185017673</list>
-                <list>25.005497325162477</list>
-                <list>23.87530280014822</list>
+                <list>56.44962812579337</list>
+                <list>54.56597058410295</list>
+                <list>52.68231304241253</list>
+                <list>50.798655500722106</list>
+                <list>48.91499795903169</list>
+                <list>47.03134041734127</list>
+                <list>45.147682875650844</list>
+                <list>43.264025333960426</list>
+                <list>41.38036779227001</list>
+                <list>39.49671025057958</list>
+                <list>37.61305270888917</list>
+                <list>35.729395167198746</list>
+                <list>33.84573762550832</list>
+                <list>31.962080083817906</list>
+                <list>30.078422542127488</list>
+                <list>28.194765000437066</list>
+                <list>26.311107458746648</list>
+                <list>24.42744991705623</list>
+                <list>22.543792375365804</list>
+                <list>20.660134833675386</list>
+                <list>18.776477291984968</list>
+                <list>16.892819750294542</list>
+                <list>15.009162208604124</list>
+                <list>13.125504666913706</list>
             </value>
         </Entry>
         <Entry>
@@ -22520,12 +22356,10 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>2</address>
-                <list>-1392.6630434782628</list>
-                <list>-4313.858695652175</list>
-                <list>-2887.228260869565</list>
-                <list>2887.228260869567</list>
-                <list>4313.858695652176</list>
-                <list>1392.6630434782667</list>
+                <list>-4313.858695652176</list>
+                <list>-2887.228260869566</list>
+                <list>2887.228260869565</list>
+                <list>4313.858695652178</list>
             </value>
         </Entry>
         <Entry>
@@ -22660,7 +22494,7 @@
                 <group>Delay</group>
                 <locked>false</locked>
                 <address>8</address>
-                <list>0.011979152</list>
+                <list>0.001479152000000001</list>
             </value>
         </Entry>
         <Entry>
@@ -22714,7 +22548,7 @@
                 <group>Reception</group>
                 <locked>false</locked>
                 <address>10</address>
-                <list>-17420.96018735388</list>
+                <list>-55444.050058547975</list>
             </value>
         </Entry>
         <Entry>
@@ -25136,7 +24970,7 @@
                     <name>Gaussian</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
-                        <uuid>869cc972-4e8c-49e5-b416-d0af1199a3e9</uuid>
+                        <uuid>8cf7254f-d622-4512-9e11-7be2d4a2f1c9</uuid>
                         <value>128</value>
                         <defaultValue>64</defaultValue>
                         <description>Number of points</description>
@@ -25150,7 +24984,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Width</name>
-                        <uuid>788f5808-1f67-4e1b-a4c8-077d186ec371</uuid>
+                        <uuid>679ce2f3-6bf1-4e26-8b67-04f7c5ea8541</uuid>
                         <value>0.25</value>
                         <defaultValue>0.25</defaultValue>
                         <description>Width of the gaussian</description>
@@ -25164,7 +24998,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
-                        <uuid>6bb98b85-f974-4416-bc9c-d7189b08cfa7</uuid>
+                        <uuid>25c77f53-d2a6-4c03-8f4a-3b78c23362f0</uuid>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
                         <description>Amplitude of the gaussian</description>
@@ -25178,7 +25012,7 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <uuid>854a763e-b2e2-4dfe-9664-b4b9bb6104fb</uuid>
+                        <uuid>6acbd787-908a-414f-84e4-aed8ed777332</uuid>
                         <value>false</value>
                         <defaultValue>false</defaultValue>
                         <description>Absolute value</description>
@@ -25871,7 +25705,7 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>-6074.999999999999</list>
+                <list>-3375.0000000000005</list>
             </value>
         </Entry>
         <Entry>
@@ -25930,7 +25764,7 @@
                     <name>Gaussian</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
-                        <uuid>a33246f2-d919-4072-85fa-5d3e932125df</uuid>
+                        <uuid>3310f173-4672-4948-bd1a-2372e482305b</uuid>
                         <value>128</value>
                         <defaultValue>64</defaultValue>
                         <description>Number of points</description>
@@ -25944,7 +25778,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Width</name>
-                        <uuid>f63bf7d7-fbd2-4717-82a7-baffc19f0bd7</uuid>
+                        <uuid>1453510c-492a-47f2-b59c-e42f1159d74f</uuid>
                         <value>0.25</value>
                         <defaultValue>0.25</defaultValue>
                         <description>Width of the gaussian</description>
@@ -25958,7 +25792,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
-                        <uuid>3bb582b2-504d-4ce3-9795-e0468add075b</uuid>
+                        <uuid>c53486f0-b13c-46be-af3d-9fda49db494d</uuid>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
                         <description>Amplitude of the gaussian</description>
@@ -25972,7 +25806,7 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <uuid>ad933adb-a8f7-4dab-abb9-924f391a4649</uuid>
+                        <uuid>9a0d8af9-4207-455c-bc97-a355318aa574</uuid>
                         <value>false</value>
                         <defaultValue>false</defaultValue>
                         <description>Absolute value</description>
@@ -26189,7 +26023,7 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>163.04347826086803</list>
+                <list>2989.1304347826094</list>
             </value>
         </Entry>
         <Entry>
@@ -26295,7 +26129,7 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>163.04347826086803</list>
+                <list>2989.1304347826094</list>
             </value>
         </Entry>
         <Entry>

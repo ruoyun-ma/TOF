@@ -339,7 +339,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_MATRIX_DIMENSION_1D</name>
                     <uuid>9aa51594-63f2-4b8a-8fd7-f87ac140067d</uuid>
-                    <value>256</value>
+                    <value>80</value>
                     <defaultValue>128</defaultValue>
                     <description>Info: Size of the initial dataset (raw data) in first dimension</description>
                     <displayedName>Acquisition Matrix 1D</displayedName>
@@ -358,7 +358,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_MATRIX_DIMENSION_2D</name>
                     <uuid>ba7d6f05-ce1d-442e-a7d3-660f49d83b8f</uuid>
-                    <value>160</value>
+                    <value>80</value>
                     <defaultValue>128</defaultValue>
                     <description>Info: Size of the initial dataset (raw data) in second dimension</description>
                     <displayedName>Acquisition Matrix 2D</displayedName>
@@ -396,7 +396,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_MATRIX_DIMENSION_4D</name>
                     <uuid>c95d9ac9-4a59-4344-aff5-bcaccaed5e8f</uuid>
-                    <value>6</value>
+                    <value>4</value>
                     <defaultValue>1</defaultValue>
                     <description>Info: Size of the initial dataset (raw data) in fourth dimension</description>
                     <displayedName>Acquisition Matrix 4D</displayedName>
@@ -677,7 +677,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>DWELL_TIME</name>
                     <uuid>6a63b9dd-a532-46cd-a462-8db10811ea9e</uuid>
-                    <value>1.56E-5</value>
+                    <value>5.0E-5</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Reception dwell time</description>
                     <displayedName>DW</displayedName>
@@ -783,7 +783,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ECHO_TIME</name>
                     <uuid>bf36975c-8ef8-4fa7-a9bc-ca2796d0333f</uuid>
-                    <value>0.00452</value>
+                    <value>0.00402</value>
                     <defaultValue>0.005</defaultValue>
                     <description>Echo Time</description>
                     <displayedName>TE</displayedName>
@@ -1029,7 +1029,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FIELD_OF_VIEW_3D</name>
                     <uuid>0a888a27-0fd3-4c90-a9cf-47b947469ba7</uuid>
-                    <value>0.02</value>
+                    <value>0.012</value>
                     <defaultValue>0.0</defaultValue>
                     <description> Field Of View coverage along the direction orthogonal to the phase and frequency encoding directions</description>
                     <displayedName>FOV Slice/3D</displayedName>
@@ -1134,7 +1134,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FOV_MULTISLAB</name>
                     <uuid>e11b07de-e67e-4af0-aeba-35ec49e7a288</uuid>
-                    <value>0.07</value>
+                    <value>0.030000000000000002</value>
                     <defaultValue>0.0</defaultValue>
                     <description>FOV in slab direction for multislab acquisition</description>
                     <displayedName>FOV - MultiSlab</displayedName>
@@ -1474,7 +1474,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>KSPACE_FILLING</name>
                     <uuid>af80d304-c30e-4983-a07d-aa68994fa821</uuid>
-                    <value>Linear</value>
+                    <value>3DElliptic</value>
                     <defaultValue>Linear</defaultValue>
                     <description>Choose the way to fill the k-space i.e. the order of line acquisition</description>
                     <displayedName>k-space Filling</displayedName>
@@ -2296,7 +2296,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>NUMBER_OF_SLAB</name>
                     <uuid>c3b60ab8-60af-4c36-a8e9-ec78cd3b7ade</uuid>
-                    <value>6</value>
+                    <value>4</value>
                     <defaultValue>1</defaultValue>
                     <description>Number of slabs </description>
                     <displayedName>No. Slabs</displayedName>
@@ -2903,7 +2903,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>REPETITION_TIME</name>
                     <uuid>f4c1958e-1832-45db-bbd1-ce2cd666885c</uuid>
-                    <value>0.023</value>
+                    <value>0.012</value>
                     <defaultValue>0.2</defaultValue>
                     <description>Repetition Time</description>
                     <displayedName>TR</displayedName>
@@ -2922,7 +2922,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>RESOLUTION_FREQUENCY</name>
                     <uuid>6f4ec98b-f6e6-4ef2-bf15-581f57381566</uuid>
-                    <value>2.734375E-4</value>
+                    <value>8.750000000000001E-4</value>
                     <defaultValue>5.0E-4</defaultValue>
                     <description>Info: True voxel size in the frequency encoding direction (FOV/acquisition_matrix_dimension_1D) </description>
                     <displayedName>Voxel Size Read</displayedName>
@@ -2941,7 +2941,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>RESOLUTION_PHASE</name>
                     <uuid>6efd41b4-1f4c-44a1-a5bd-f33769f92abd</uuid>
-                    <value>4.3750000000000006E-4</value>
+                    <value>8.750000000000001E-4</value>
                     <defaultValue>5.0E-4</defaultValue>
                     <description>Info:True voxel in the phase encoding direction (FOV/acquisition_matrix_dimension_2D) </description>
                     <displayedName>Voxel Size Phase</displayedName>
@@ -2960,7 +2960,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>RESOLUTION_SLICE</name>
                     <uuid>8f842b7e-89f2-4ec9-b33c-1fe66ea14607</uuid>
-                    <value>8.333333333333334E-4</value>
+                    <value>5.0E-4</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: True voxel size in the third direction</description>
                     <displayedName>Voxel Size Slice/3D</displayedName>
@@ -3205,7 +3205,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SEQUENCE_TIME</name>
                     <uuid>26665c25-c3d2-481e-ad83-4dc57f63bf5b</uuid>
-                    <value>530.274</value>
+                    <value>92.38725000000001</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: Total acquisition time</description>
                     <displayedName>Sequence Version</displayedName>
@@ -3240,7 +3240,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
                     <uuid>4724b61e-deb1-4d18-8993-1bba2dd1a640</uuid>
-                    <value>GE_3D_AXI_256x160x24x6_MT_SATBAND</value>
+                    <value>GE_3D_AXI_80x80x24x4_SATBAND_MT</value>
                     <defaultValue></defaultValue>
                     <description>Info: Description of the sequence</description>
                     <displayedName>Sequence Description</displayedName>
@@ -3307,7 +3307,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SLICE_THICKNESS</name>
                     <uuid>e8102e24-af07-4080-bbe1-7c1a403b4ab0</uuid>
-                    <value>8.333333333333334E-4</value>
+                    <value>5.0E-4</value>
                     <defaultValue>0.005</defaultValue>
                     <description>Slice Thickness</description>
                     <displayedName>Slice Thickness</displayedName>
@@ -3342,7 +3342,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SPACING_BETWEEN_SLAB</name>
                     <uuid>4f8d2519-6c90-4248-a0c3-53755a84d9c1</uuid>
-                    <value>-0.01</value>
+                    <value>-0.006</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: Space between slabs</description>
                     <displayedName>Slab Spacing</displayedName>
@@ -3379,7 +3379,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SPECTRAL_WIDTH</name>
                     <uuid>0d5bfd40-d42b-460e-9bba-f35049ae79bb</uuid>
-                    <value>64036.88524590164</value>
+                    <value>20011.52663934426</value>
                     <defaultValue>12500.0</defaultValue>
                     <description>Receiver bandwidth (SW, BW, bandwidth )</description>
                     <displayedName>BW</displayedName>
@@ -10732,7 +10732,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>USER_MATRIX_DIMENSION_1D</name>
                     <uuid>0c39cd10-8c2b-4df3-ae75-025ab7e6a807</uuid>
-                    <value>256</value>
+                    <value>80</value>
                     <defaultValue>1</defaultValue>
                     <description>Image size in readout direction (user matrix dimension 1D)</description>
                     <displayedName>Matrix 1D Read</displayedName>
@@ -10751,7 +10751,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>USER_MATRIX_DIMENSION_2D</name>
                     <uuid>8ef6d0ad-6cae-448f-af79-cb2ca03126df</uuid>
-                    <value>160</value>
+                    <value>80</value>
                     <defaultValue>1</defaultValue>
                     <description>Image size in phase encoding direction  (user matrix dimension 2D)</description>
                     <displayedName>Matrix 2D Phase</displayedName>
@@ -10789,7 +10789,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>USER_MATRIX_DIMENSION_4D</name>
                     <uuid>5bf4eb84-6d3d-4c54-a575-b17b9c78940a</uuid>
-                    <value>6</value>
+                    <value>4</value>
                     <defaultValue>1</defaultValue>
                     <description>Info: Number of image data set (user maxtrix 4D)</description>
                     <displayedName>No. Data Sets</displayedName>

@@ -71,7 +71,7 @@ public class TOF extends KernelGE {
     @Override
     public void initUserParam() throws ConfigurationException {
         super.initUserParam();
-        super.isDebugMode = true;
+        super.isDebugMode = getBoolean(DEBUG_MODE);
         getParam(SEQUENCE_VERSION).setValue(sequenceVersion);
 
         if (isMultiplanar) {
@@ -240,7 +240,7 @@ public class TOF extends KernelGE {
 
         gradSlice.applyAmplitude();
         // ------------------------------------------------------------------
-        //calculate TX FREQUENCY offsets tables for slice positionning
+        //calculate TX FREQUENCY offsets tables for slice positioning
         // ------------------------------------------------------------------
 
         if (isMultiplanar && isEnableSlice) {
@@ -277,9 +277,11 @@ public class TOF extends KernelGE {
             models.get(SatBand.class).setMultiSab(true);
             models.get(SatBand.class).setFovMultiSlab(fovMultiSlab);
             getParam(FOV_MULTISLAB).setValue(fovMultiSlab);
-            Log.info(getClass(), "fovMultiSlab = " + fovMultiSlab);
-            Log.info(getClass(), "fov3D = " + fov3d);
-            Log.info(getClass(), "satband = " + models.get(SatBand.class).gradSatBandSlice.getAmplitude());
+            if (isDebugMode) {
+                Log.info(getClass(), "---DEBUG INFO---: fovMultiSlab = " + fovMultiSlab);
+                Log.info(getClass(), "---DEBUG INFO---: fov3D = " + fov3d);
+                Log.info(getClass(), "---DEBUG INFO---: satband = " + models.get(SatBand.class).gradSatBandSlice.getAmplitude());
+            }
         }
     }
 
@@ -428,8 +430,7 @@ public class TOF extends KernelGE {
         double delay_before_multi_planar_loop;
         double delay_sat_band = models.get(SatBand.class).getDuration();
         double delay_before_echo_loop;
-        Log.info(getClass()," delay_sat_band = " +  delay_sat_band);
-        Log.info(getClass()," ext trigger duration = " +  models.get(ExtTrig.class).getDuration());
+
 
         if (models.get(TofSat.class).isEnabled() && !isMultiplanar) {
             Log.info(getClass(),"multislab tof");
@@ -439,9 +440,14 @@ public class TOF extends KernelGE {
                     + delay_sat_band
                     + models.get(TofSat.class).getDuration()
                     + TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopSatBandEnd.ID + 1, Events.LoopMultiPlanarStartShort.ID - 1);
-            Log.info(getClass(), "delay_before_multi_planar_loop = " + delay_before_multi_planar_loop);
+
             delay_before_echo_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.LoopMultiPlanarStartShort.ID, Events.Delay1.ID);
-            Log.info(getClass(), "delay_before_echo_loop = " + delay_before_echo_loop);
+            if (isDebugMode) {
+                Log.info(getClass(),"---DEBUG INFO---: delay_sat_band = " +  delay_sat_band);
+                Log.info(getClass(),"---DEBUG INFO---: ext trigger duration = " +  models.get(ExtTrig.class).getDuration());
+                Log.info(getClass(), "---DEBUG INFO---: delay_before_multi_planar_loop = " + delay_before_multi_planar_loop);
+                Log.info(getClass(), "---DEBUG INFO---: delay_before_echo_loop = " + delay_before_echo_loop);
+            }
         } else {
             delay_before_multi_planar_loop = TimeEvents.getTimeBetweenEvents(getSequence(), Events.Start.ID, Events.TriggerDelay.ID - 1)
                     + TimeEvents.getTimeBetweenEvents(getSequence(), Events.TriggerDelay.ID + 1, Events.LoopMultiPlanarStart.ID - 1)
@@ -537,19 +543,19 @@ public class TOF extends KernelGE {
     protected void printForDebug() throws Exception {
         
         if (getBoolean(DEBUG_MODE)) {
-            Log.info(getClass(), "satband rf = " + models.get(SatBand.class).pulseTXSatBand.getFrequencyOffset(0));
-            Log.info(getClass(), "satband grad slice = " + models.get(SatBand.class).gradSatBandSlice.getAmplitude_mTpm());
-            Log.info(getClass(), "gmax = " + Math.abs(GradientMath.getMaxGradientStrength()));
-            Log.info(getClass(), "tofsat enabled = " +models.get(TofSat.class).isEnabled());
-            Log.info(getClass(), "nb_slices_acquired_in_single_scan = " + nb_slices_acquired_in_single_scan);
-            Log.info(getClass(), "nb_interleaved_slice = " + nb_interleaved_slice);
+            Log.info(getClass(), "---DEBUG INFO---: satband rf = " + models.get(SatBand.class).pulseTXSatBand.getFrequencyOffset(0));
+            Log.info(getClass(), "---DEBUG INFO---: satband grad slice = " + models.get(SatBand.class).gradSatBandSlice.getAmplitude_mTpm());
+            Log.info(getClass(), "---DEBUG INFO---: gmax = " + Math.abs(GradientMath.getMaxGradientStrength()));
+            Log.info(getClass(), "---DEBUG INFO---: tofsat enabled = " +models.get(TofSat.class).isEnabled());
+            Log.info(getClass(), "---DEBUG INFO---: nb_slices_acquired_in_single_scan = " + nb_slices_acquired_in_single_scan);
+            Log.info(getClass(), "---DEBUG INFO---: nb_interleaved_slice = " + nb_interleaved_slice);
             if (models.get(TofSat.class).isEnabled()) {
-                Log.info(getClass(), "tofsat rf gamma b1 calculated = " + models.get(TofSat.class).pulseTXTofSat.getPowerGammaB1());
-                Log.info(getClass(), "TOFSAT duration = " + models.get(TofSat.class).getDuration());
-                Log.info(getClass(), "SATBAND duration = " + models.get(SatBand.class).getDuration());
+                Log.info(getClass(), "---DEBUG INFO---: tofsat rf gamma b1 calculated = " + models.get(TofSat.class).pulseTXTofSat.getPowerGammaB1());
+                Log.info(getClass(), "---DEBUG INFO---: TOFSAT duration = " + models.get(TofSat.class).getDuration());
+                Log.info(getClass(), "---DEBUG INFO---: SATBAND duration = " + models.get(SatBand.class).getDuration());
             }
             if (models.get(SatBand.class).isEnabled()) {
-                Log.info(getClass(), "SATband flip angle = " + models.get(SatBand.class).pulseTXSatBand.getFlipAngle());
+                Log.info(getClass(), "---DEBUG INFO---: SATband flip angle = " + models.get(SatBand.class).pulseTXSatBand.getFlipAngle());
             }
         }
     }

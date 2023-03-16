@@ -1029,7 +1029,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FIELD_OF_VIEW_3D</name>
                     <uuid>0a888a27-0fd3-4c90-a9cf-47b947469ba7</uuid>
-                    <value>0.01</value>
+                    <value>0.02</value>
                     <defaultValue>0.0</defaultValue>
                     <description> Field Of View coverage along the direction orthogonal to the phase and frequency encoding directions</description>
                     <displayedName>FOV Slice/3D</displayedName>
@@ -1134,7 +1134,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FOV_MULTISLAB</name>
                     <uuid>e11b07de-e67e-4af0-aeba-35ec49e7a288</uuid>
-                    <value>0.035</value>
+                    <value>0.07</value>
                     <defaultValue>0.0</defaultValue>
                     <description>FOV in slab direction for multislab acquisition</description>
                     <displayedName>FOV - MultiSlab</displayedName>
@@ -2960,7 +2960,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>RESOLUTION_SLICE</name>
                     <uuid>8f842b7e-89f2-4ec9-b33c-1fe66ea14607</uuid>
-                    <value>4.166666666666667E-4</value>
+                    <value>8.333333333333334E-4</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: True voxel size in the third direction</description>
                     <displayedName>Voxel Size Slice/3D</displayedName>
@@ -3307,7 +3307,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SLICE_THICKNESS</name>
                     <uuid>e8102e24-af07-4080-bbe1-7c1a403b4ab0</uuid>
-                    <value>4.166666666666667E-4</value>
+                    <value>8.333333333333334E-4</value>
                     <defaultValue>0.005</defaultValue>
                     <description>Slice Thickness</description>
                     <displayedName>Slice Thickness</displayedName>
@@ -3342,7 +3342,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SPACING_BETWEEN_SLAB</name>
                     <uuid>4f8d2519-6c90-4248-a0c3-53755a84d9c1</uuid>
-                    <value>-0.005</value>
+                    <value>-0.01</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: Space between slabs</description>
                     <displayedName>Slab Spacing</displayedName>
@@ -10546,7 +10546,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_AMP</name>
                     <uuid>6d533b2b-46db-468e-81d9-e86ffe3b2e90</uuid>
-                    <value>78.97087861607963</value>
+                    <value>68.76250301438368</value>
                     <defaultValue>40.0</defaultValue>
                     <description>Amplitude of the excitation RF pulse </description>
                     <displayedName>TX Amplitude</displayedName>
@@ -10709,7 +10709,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>TX_SHAPE</name>
                     <uuid>b5f2a190-a8eb-4d22-9905-df295f4c368f</uuid>
-                    <value>GAUSSIAN</value>
+                    <value>RAMP</value>
                     <defaultValue>GAUSSIAN</defaultValue>
                     <description>RF Pulse shape</description>
                     <displayedName>TX Shape</displayedName>

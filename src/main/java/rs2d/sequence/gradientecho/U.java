@@ -40,7 +40,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(65536);
-            param.setValue(256);
+            param.setValue(80);
             param.setDefaultValue(128);
             return param;
         }
@@ -58,7 +58,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(65536);
-            param.setValue(160);
+            param.setValue(80);
             param.setDefaultValue(128);
             return param;
         }
@@ -120,11 +120,12 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("ACQUISITION_NB_ECHO_TRAIN");
-            param.setDisplayedName("Nb. Echo Train");
+            param.setDisplayedName("ACQUISITION_NB_ECHO_TRAIN");
             param.setDescription("Info: Number of echo trains in each slab ");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Scan);
             param.setCategory(Category.Acquisition);
-            param.setUuid("87a6abf6-aafb-4490-bd32-b88221ef37a4");
+            param.setUuid("ba9107b3-dec8-44fa-b280-534b3cc512e1");
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(2147483647);
@@ -138,11 +139,12 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("ACQUISITION_NB_VIEW");
-            param.setDisplayedName("Nb. View");
+            param.setDisplayedName("ACQUISITION_NB_VIEW");
             param.setDescription("Info: Number of sampling points in 2D-3D plane");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Scan);
             param.setCategory(Category.Acquisition);
-            param.setUuid("8f5bdf76-0c42-4c4e-82ab-3c85306d7112");
+            param.setUuid("313e37e2-7961-4f3a-8436-edbe8b3ac560");
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(0);
             param.setMaxValue(2147483647);
@@ -279,6 +281,20 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
+    DEBUG_MODE("DEBUG_MODE") {
+        public Param build() {
+            BooleanParam param = new BooleanParam();
+            param.setName("DEBUG_MODE");
+            param.setDisplayedName("DEBUG_MODE");
+            param.setDescription("Switch on debug mode to print out parameters in the Log window");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("486e2531-3a4e-4739-a253-65d9e7d6bb17");
+            param.setValue(true);
+            param.setDefaultValue(false);
+            return param;
+        }
+    },
+
     DIGITAL_FILTER_REMOVED("DIGITAL_FILTER_REMOVED") {
         public Param build() {
             BooleanParam param = new BooleanParam();
@@ -308,8 +324,8 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Integer);
             param.setMinValue(-2147483648);
             param.setMaxValue(2147483647);
-            param.setValue(20);
-            param.setDefaultValue(20);
+            param.setValue(19);
+            param.setDefaultValue(19);
             return param;
         }
     },
@@ -344,7 +360,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.0);
+            param.setValue(5.0E-5);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -649,22 +665,6 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
-    FAT_WATER_SEP_2DMRSI("FAT_WATER_SEP_2DMRSI") {
-        public Param build() {
-            BooleanParam param = new BooleanParam();
-            param.setName("FAT_WATER_SEP_2DMRSI");
-            param.setDisplayedName("FAT_WATER_SEP_2DMRSI");
-            param.setDescription("Checkbox parameter for running fat-water separation plugin");
-            param.setLocked(true);
-            param.setGroup(EnumGroup.Miscellaneous);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("e77d85ce-14a3-4b6f-8acd-50b02b80e873");
-            param.setValue(false);
-            param.setDefaultValue(false);
-            return param;
-        }
-    },
-
     FIELD_OF_VIEW("FIELD_OF_VIEW") {
         public Param build() {
             NumberParam param = new NumberParam();
@@ -695,7 +695,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Length);
             param.setMinValue(0.0);
             param.setMaxValue(1.0);
-            param.setValue(0.018383999999999998);
+            param.setValue(0.012);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -784,13 +784,29 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
+    FOV_MULTISLAB("FOV_MULTISLAB") {
+        public Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("FOV_MULTISLAB");
+            param.setDisplayedName("FOV - MultiSlab");
+            param.setDescription("Info: FOV in slab direction for multislab acquisition");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("b90f0851-983b-4b5e-8045-4f57ab05094b");
+            param.setNumberEnum(NumberEnum.Length);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.7976931348623157E308);
+            param.setValue(0.012);
+            param.setDefaultValue(0.0);
+            return param;
+        }
+    },
+
     FOV_RATIO_PHASE("FOV_RATIO_PHASE") {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("FOV_RATIO_PHASE");
             param.setDisplayedName("Phase FOV");
             param.setDescription("The fov ratio in the phase direction (2D/1D)");
-            param.setLocked(true);
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
             param.setUuid("561c6f27-d9b2-4fd1-929c-034b0a304864");
@@ -824,6 +840,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("GRADIENT_ENABLE_PHASE");
             param.setDisplayedName("Gradient Phase-2D");
             param.setDescription("Enable 2D phase encoding gradient");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setUuid("35530cb2-7fe1-4780-9e93-43a106415c41");
@@ -839,6 +856,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("GRADIENT_ENABLE_PHASE_3D");
             param.setDisplayedName("Gradient Phase-3D");
             param.setDescription("Enable 3D phase encoding gradient");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setUuid("e52704e0-b6fa-4db3-9bc3-e564190dafb3");
@@ -854,6 +872,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("GRADIENT_ENABLE_READ");
             param.setDisplayedName("Gradient Read");
             param.setDescription("Enable  frequency encoding gradient");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setUuid("e8b5622e-c7d7-41ae-ab7a-eb40879cf61e");
@@ -869,6 +888,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("GRADIENT_ENABLE_REWINDING");
             param.setDisplayedName("Gradient Rewinding");
             param.setDescription("Enable to do gradient rewind instead of spoiling");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setUuid("0913979f-af29-474c-bf6e-3d6e8e40b965");
@@ -884,6 +904,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("GRADIENT_ENABLE_SLICE");
             param.setDisplayedName("Gradient Slice");
             param.setDescription("Enable the slice selection gradient");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setUuid("a44a45b4-05e8-4f5a-a8d4-431a1f7048e1");
@@ -899,6 +920,7 @@ public enum U implements GeneratorParamEnum {
             param.setName("GRADIENT_ENABLE_SPOILER");
             param.setDisplayedName("Gradient Spoiling");
             param.setDescription("Enable gradient spoiler in the three directions");
+            param.setLocked(true);
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
             param.setUuid("b1537257-7249-42af-a110-224dcde7af48");
@@ -975,107 +997,6 @@ public enum U implements GeneratorParamEnum {
             param.setMaxValue(100.0);
             param.setNumberEnum(NumberEnum.PERCENT);
             param.setValue(asListNumber(40.0, 40.0, 40.0));
-            return param;
-        }
-    },
-
-    HARDWARE_A0("HARDWARE_A0") {
-        public Param build() {
-            ListNumberParam param = new ListNumberParam();
-            param.setName("HARDWARE_A0");
-            param.setDisplayedName("HARDWARE_A0");
-            param.setDescription("");
-            param.setCategory(Category.Acquisition);
-            param.setUuid("779b6b39-0a3c-49c4-b165-9dd8b3a68ddd");
-            param.setMinValue(-2.147483648E9);
-            param.setMaxValue(2.147483647E9);
-            param.setNumberEnum(NumberEnum.PERCENT);
-            param.setValue(asListNumber(27.69, 28.58, 22.43));
-            return param;
-        }
-    },
-
-    HARDWARE_DC("HARDWARE_DC") {
-        public Param build() {
-            ListNumberParam param = new ListNumberParam();
-            param.setName("HARDWARE_DC");
-            param.setDisplayedName("HARDWARE_DC");
-            param.setDescription("");
-            param.setLocked(true);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("cd4356bb-543c-4cd0-883e-4ca2284967b3");
-            param.setMinValue(-2.147483648E9);
-            param.setMaxValue(2.147483647E9);
-            param.setNumberEnum(NumberEnum.PERCENT);
-            param.setValue(asListNumber(-0.174, 0.2686, -0.1862, 0.0));
-            return param;
-        }
-    },
-
-    HARDWARE_PREEMPHASIS_A("HARDWARE_PREEMPHASIS_A") {
-        public Param build() {
-            ListNumberParam param = new ListNumberParam();
-            param.setName("HARDWARE_PREEMPHASIS_A");
-            param.setDisplayedName("HARDWARE_PREEMPHASIS_A");
-            param.setDescription("");
-            param.setLocked(true);
-            param.setGroup(EnumGroup.Emission);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("2f4595fe-bd43-4ac2-b738-a625c807ef0b");
-            param.setMinValue(-2.147483648E9);
-            param.setMaxValue(2.147483647E9);
-            param.setNumberEnum(NumberEnum.PERCENT);
-            param.setValue(asListNumber(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0));
-            return param;
-        }
-    },
-
-    HARDWARE_PREEMPHASIS_T("HARDWARE_PREEMPHASIS_T") {
-        public Param build() {
-            ListNumberParam param = new ListNumberParam();
-            param.setName("HARDWARE_PREEMPHASIS_T");
-            param.setDisplayedName("HARDWARE_PREEMPHASIS_T");
-            param.setDescription("");
-            param.setLocked(true);
-            param.setGroup(EnumGroup.Emission);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("31d01f2f-5821-4837-a854-3a3384e1d677");
-            param.setMinValue(0.0);
-            param.setMaxValue(1.0E9);
-            param.setNumberEnum(NumberEnum.Time);
-            param.setValue(asListNumber(0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.0));
-            return param;
-        }
-    },
-
-    HARDWARE_SHIM("HARDWARE_SHIM") {
-        public Param build() {
-            ListNumberParam param = new ListNumberParam();
-            param.setName("HARDWARE_SHIM");
-            param.setDisplayedName("HARDWARE_SHIM");
-            param.setDescription("");
-            param.setLocked(true);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("5b52caa2-2dd6-4f77-9026-65fe0d63e4e4");
-            param.setMinValue(-2.147483648E9);
-            param.setMaxValue(2.147483647E9);
-            param.setNumberEnum(NumberEnum.PERCENT);
-            param.setValue(asListNumber(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0));
-            return param;
-        }
-    },
-
-    HARDWARE_SHIM_LABEL("HARDWARE_SHIM_LABEL") {
-        public Param build() {
-            TextParam param = new TextParam();
-            param.setName("HARDWARE_SHIM_LABEL");
-            param.setDisplayedName("HARDWARE_SHIM_LABEL");
-            param.setDescription("");
-            param.setLocked(true);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("0ede3b51-0811-4286-8835-bfd70092a242");
-            param.setValue("YZ XY XZ X2-Y2 Z0 Z2 X Y Z");
-            param.setDefaultValue("");
             return param;
         }
     },
@@ -1200,7 +1121,7 @@ public enum U implements GeneratorParamEnum {
             param.setUuid("af80d304-c30e-4983-a07d-aa68994fa821");
             param.setValue("Linear");
             param.setDefaultValue("Linear");
-            param.setSuggestedValues(asList("Linear", "3DElliptic"));
+            param.setSuggestedValues(asList("Linear"));
             return param;
         }
     },
@@ -1379,7 +1300,7 @@ public enum U implements GeneratorParamEnum {
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
             param.setUuid("0d103275-f00c-459a-9a8f-20da22a63830");
-            param.setValue(true);
+            param.setValue(false);
             param.setDefaultValue(true);
             return param;
         }
@@ -1898,7 +1819,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Prephasing reading gradient ratio");
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
-            param.setUuid("1d7e4745-c357-4735-9198-1491d251bfa7");
+            param.setUuid("ec36a947-d208-4422-ba34-2dabb0db7fd7");
             param.setNumberEnum(NumberEnum.Double);
             param.setMinValue(-1.7976931348623157E308);
             param.setMaxValue(1.7976931348623157E308);
@@ -1986,7 +1907,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(0.015);
+            param.setValue(0.018000000000000002);
             param.setDefaultValue(0.2);
             return param;
         }
@@ -2004,7 +1925,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Length);
             param.setMinValue(0.0);
             param.setMaxValue(0.01);
-            param.setValue(2.734375E-4);
+            param.setValue(8.750000000000001E-4);
             param.setDefaultValue(5.0E-4);
             return param;
         }
@@ -2022,7 +1943,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Length);
             param.setMinValue(0.0);
             param.setMaxValue(0.01);
-            param.setValue(4.3750000000000006E-4);
+            param.setValue(8.750000000000001E-4);
             param.setDefaultValue(5.0E-4);
             return param;
         }
@@ -2040,7 +1961,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Length);
             param.setMinValue(0.0);
             param.setMaxValue(0.1);
-            param.setValue(7.66E-4);
+            param.setValue(5.0E-4);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2069,7 +1990,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Distance of the Saturation Band from the FOV ");
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
-            param.setUuid("644a65ff-80c5-406e-9c3c-aafd37b67b88");
+            param.setUuid("78bbfc95-ce06-416e-ad83-d2d1bd19dbe7");
             param.setNumberEnum(NumberEnum.Location);
             param.setMinValue(-0.1);
             param.setMaxValue(0.1);
@@ -2083,12 +2004,12 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("SATBAND_ENABLED");
-            param.setDisplayedName("Saturation Band");
+            param.setDisplayedName("Satband - Enable");
             param.setDescription("Enable Saturation Band");
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
-            param.setUuid("8413d4ac-247a-4915-ad7c-54e4ce92dce7");
-            param.setValue(false);
+            param.setUuid("624634ab-51e9-4ed1-ae64-b840c43d5629");
+            param.setValue(true);
             param.setDefaultValue(false);
             return param;
         }
@@ -2098,13 +2019,13 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("SATBAND_GRAD_AMP_SPOILER");
-            param.setDisplayedName("SatBand - Gradient Amplitude");
+            param.setDisplayedName("SatBand - Spoiler Grad Amp");
             param.setDescription("Amplitude of the spoiler gradient following the saturation pulse. ");
             param.setGroup(EnumGroup.Gradient);
             param.setCategory(Category.Acquisition);
-            param.setUuid("8ae036ae-2542-46ea-835c-a35ca094fa8a");
+            param.setUuid("a8fda4b1-6054-4b76-9c0b-957dc41c9633");
             param.setNumberEnum(NumberEnum.PERCENT);
-            param.setMinValue(30.0);
+            param.setMinValue(0.0);
             param.setMaxValue(100.0);
             param.setValue(40.0);
             param.setDefaultValue(40.0);
@@ -2120,10 +2041,27 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Orientation of the Saturation Band");
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
-            param.setUuid("c115e3f5-9882-4be8-8320-876f0e01a6b1");
-            param.setValue("ALL");
+            param.setUuid("8c421bc6-815c-4486-8ea7-fef9abdb01a7");
+            param.setValue("CRANIAL");
             param.setDefaultValue("CRANIAL");
             param.setSuggestedValues(asList("CRANIAL", "CAUDAL", "CRANIAL AND CAUDAL", "ANTERIOR", "POSTERIOR", "ANTERIOR AND POSTERIOR", "RIGHT", "LEFT", "RIGHT AND LEFT", "ALL"));
+            return param;
+        }
+    },
+
+    SATBAND_SPOILER_LENGTH("SATBAND_SPOILER_LENGTH") {
+        public Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("SATBAND_SPOILER_LENGTH");
+            param.setDisplayedName("Satband - Spoiler Plateau Duration");
+            param.setDescription("Duration of spoiler gradient after saturation pulse");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("90d301c6-e1ba-4786-8925-56c3ba6bb868");
+            param.setNumberEnum(NumberEnum.Time);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.0E9);
+            param.setValue(5.0E-4);
+            param.setDefaultValue(0.0);
             return param;
         }
     },
@@ -2136,7 +2074,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("T1 of the saturated tissue : the longitudinal magnetization will be nulled when the excitation pulse is applied.");
             param.setGroup(EnumGroup.Miscellaneous);
             param.setCategory(Category.Acquisition);
-            param.setUuid("a50e07f4-c0fc-45b2-9a42-b38d0307abf1");
+            param.setUuid("e88e4660-d3ee-42d2-b116-81df859b1673");
             param.setNumberEnum(NumberEnum.Millis);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
@@ -2154,7 +2092,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Thickness of the Saturation Band");
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
-            param.setUuid("d5542533-f1c5-4bef-b4b8-9a0c367cca62");
+            param.setUuid("acaf4257-1214-431a-a5e9-b90b72635980");
             param.setNumberEnum(NumberEnum.Length);
             param.setMinValue(0.001);
             param.setMaxValue(0.1);
@@ -2172,11 +2110,28 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Info: Saturation Band Pulse amplitude");
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
-            param.setUuid("ce650681-d777-4ff2-b848-33c8e27f92fe");
+            param.setUuid("53dfdf72-f766-4670-809c-b409c33116ad");
             param.setNumberEnum(NumberEnum.TxAmp);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
             param.setValue(75.32704525411751);
+            param.setDefaultValue(0.0);
+            return param;
+        }
+    },
+
+    SATBAND_TX_LENGTH("SATBAND_TX_LENGTH") {
+        public Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("SATBAND_TX_LENGTH");
+            param.setDisplayedName("Satband - Tx Duration");
+            param.setDescription("");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("8d918b0c-1cf5-4f2e-80ec-fe65cf3651fd");
+            param.setNumberEnum(NumberEnum.Time);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.0E9);
+            param.setValue(0.001);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2190,8 +2145,8 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Saturation Band Pulse shape");
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
-            param.setUuid("41495edb-f903-4407-998a-e52a92ebc7df");
-            param.setValue("SINC3");
+            param.setUuid("c30582b5-6bf7-4e3c-b0a0-fda6d360600d");
+            param.setValue("GAUSSIAN");
             param.setDefaultValue("HARD");
             param.setSuggestedValues(asList("HARD", "GAUSSIAN", "SINC3", "SINC5", "SLR_8_5152", "SLR_4_2576", "RAMP"));
             param.setRestrictedToSuggested(true);
@@ -2227,7 +2182,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
-            param.setValue(57.751);
+            param.setValue(34.741);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2242,7 +2197,7 @@ public enum U implements GeneratorParamEnum {
             param.setGroup(EnumGroup.User);
             param.setCategory(Category.Acquisition);
             param.setUuid("00fc2c3e-168b-438a-be54-2e1369a6d45c");
-            param.setValue("Version x1.7");
+            param.setValue("Version 2.1");
             param.setDefaultValue("");
             return param;
         }
@@ -2256,7 +2211,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Info: Description of the sequence");
             param.setCategory(Category.Acquisition);
             param.setUuid("4724b61e-deb1-4d18-8993-1bba2dd1a640");
-            param.setValue("GE_2D_AXI_256x160x24_TOFSAT");
+            param.setValue("GE_3D_AXI_80x80x24_SATBAND_MT");
             param.setDefaultValue("");
             return param;
         }
@@ -2316,15 +2271,15 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("SLICE_THICKNESS");
-            param.setDisplayedName("Slice Thickness");
-            param.setDescription("Slice Thickness");
+            param.setDisplayedName("SLICE_THICKNESS_INTERMEDIATE");
+            param.setDescription("Intermediate Slice Thickness, value changes after slab concatenation");
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
-            param.setUuid("e8102e24-af07-4080-bbe1-7c1a403b4ab0");
+            param.setUuid("a2d9eaae-f305-4921-971d-bd4b0ed56552");
             param.setNumberEnum(NumberEnum.Length);
-            param.setMinValue(5.0E-5);
+            param.setMinValue(0.0);
             param.setMaxValue(1.7976931348623157E308);
-            param.setValue(7.66E-4);
+            param.setValue(5.0E-4);
             param.setDefaultValue(0.005);
             return param;
         }
@@ -2356,7 +2311,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.LengthOffset);
             param.setMinValue(-1.7976931348623157E308);
             param.setMaxValue(1.7976931348623157E308);
-            param.setValue(-0.006);
+            param.setValue(0.0);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2392,7 +2347,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.SW);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E8);
-            param.setValue(64036.88524590164);
+            param.setValue(20011.52663934426);
             param.setDefaultValue(12500.0);
             return param;
         }
@@ -2557,42 +2512,6 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
-    TOF2D_SB_DISTANCE_FROM_SLICE("TOF2D_SB_DISTANCE_FROM_SLICE") {
-        public Param build() {
-            NumberParam param = new NumberParam();
-            param.setName("TOF2D_SB_DISTANCE_FROM_SLICE");
-            param.setDisplayedName("TOF 2D Satband - Distance From Slice");
-            param.setDescription("Distance of the TOF satband from the active imaging slice in 2D acquisition");
-            param.setGroup(EnumGroup.Dimension);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("262e64d3-a1d5-4e54-903f-59306ca7c721");
-            param.setNumberEnum(NumberEnum.Location);
-            param.setMinValue(-1.7976931348623157E308);
-            param.setMaxValue(1.7976931348623157E308);
-            param.setValue(0.005);
-            param.setDefaultValue(0.002);
-            return param;
-        }
-    },
-
-    TOF2D_SB_GRAMP_SP("TOF2D_SB_GRAMP_SP") {
-        public Param build() {
-            NumberParam param = new NumberParam();
-            param.setName("TOF2D_SB_GRAMP_SP");
-            param.setDisplayedName("TOF Sat - Spoiler Grad Amp");
-            param.setDescription("Amplitude of the spoiler gradient following the TOF satband RF pulse. ");
-            param.setGroup(EnumGroup.Gradient);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("90e37746-8973-447c-bfb2-19d4eade397a");
-            param.setNumberEnum(NumberEnum.PERCENT);
-            param.setMinValue(0.0);
-            param.setMaxValue(100.0);
-            param.setValue(40.0);
-            param.setDefaultValue(40.0);
-            return param;
-        }
-    },
-
     TOF2D_SB_POSITION("TOF2D_SB_POSITION") {
         public Param build() {
             TextParam param = new TextParam();
@@ -2601,28 +2520,10 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("TOF Satband position relative to imaging slices in 2D acquisition");
             param.setGroup(EnumGroup.Dimension);
             param.setCategory(Category.Acquisition);
-            param.setUuid("68054820-7dfa-4c4b-9d8c-63dc204e3563");
+            param.setUuid("4dff2c7a-30c8-47f3-9fc9-f4e3f6a157d3");
             param.setValue("ABOVE THE SLICE");
             param.setDefaultValue("BELOW THE SLICE");
             param.setSuggestedValues(asList("ABOVE THE SLICE", "BELOW THE SLICE"));
-            return param;
-        }
-    },
-
-    TOF2D_SB_THICKNESS("TOF2D_SB_THICKNESS") {
-        public Param build() {
-            NumberParam param = new NumberParam();
-            param.setName("TOF2D_SB_THICKNESS");
-            param.setDisplayedName("TOF 2D SatBand - Thickness");
-            param.setDescription("Thickness of the TOF saturation band in 2D acquisition");
-            param.setGroup(EnumGroup.Dimension);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("6ef04f0f-b963-4f13-9ecc-0f6335a1583d");
-            param.setNumberEnum(NumberEnum.Length);
-            param.setMinValue(0.0);
-            param.setMaxValue(1.7976931348623157E308);
-            param.setValue(0.01);
-            param.setDefaultValue(0.01);
             return param;
         }
     },
@@ -2644,14 +2545,32 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
+    TOF3D_MP_SPOILER_AMP("TOF3D_MP_SPOILER_AMP") {
+        public Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("TOF3D_MP_SPOILER_AMP");
+            param.setDisplayedName("TOF 3D - Spoiler Grad Amp");
+            param.setDescription("Amplitude of the spoiler gradient following the TOF satband RF pulse. ");
+            param.setGroup(EnumGroup.Gradient);
+            param.setCategory(Category.Acquisition);
+            param.setUuid("f114c612-594b-4a03-9386-335046d39dc4");
+            param.setNumberEnum(NumberEnum.PERCENT);
+            param.setMinValue(0.0);
+            param.setMaxValue(100.0);
+            param.setValue(40.0);
+            param.setDefaultValue(40.0);
+            return param;
+        }
+    },
+
     TOF3D_MT_BANDWIDTH("TOF3D_MT_BANDWIDTH") {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("TOF3D_MT_BANDWIDTH");
-            param.setDisplayedName("TOF 3D MT Sat - Bandwidth");
+            param.setDisplayedName("TOF 3D - MT Sat Bandwidth");
             param.setDescription("Bandwidth of TOF MT saturation pulse");
             param.setCategory(Category.Acquisition);
-            param.setUuid("5f2132d0-0e73-428b-badd-d884650c4423");
+            param.setUuid("22c03ddf-ee72-45f3-a16e-bae03c512dcc");
             param.setNumberEnum(NumberEnum.Frequency);
             param.setMinValue(0.0);
             param.setMaxValue(3.0E9);
@@ -2665,15 +2584,14 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("TOF3D_MT_FLIP_ANGLE");
-            param.setDisplayedName("TOF3D_MT_FLIP_ANGLE");
-            param.setDescription("Info: nominal flip angle of TOF 3D MT saturation pulse");
-            param.setLocked(true);
+            param.setDisplayedName("TOF 3D - MT Flip Angle");
+            param.setDescription("Nnominal flip angle of TOF 3D MT saturation pulse");
             param.setCategory(Category.Acquisition);
-            param.setUuid("ec20c38d-fe28-4364-a3cc-18f4023b9609");
+            param.setUuid("4bde5818-ccea-473e-81b2-4492a2262c1d");
             param.setNumberEnum(NumberEnum.RotationAngle);
             param.setMinValue(4.9E-324);
             param.setMaxValue(1.7976931348623157E308);
-            param.setValue(1152.0000000000002);
+            param.setValue(500.0);
             param.setDefaultValue(360.0);
             return param;
         }
@@ -2683,14 +2601,14 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("TOF3D_MT_GAMMA_B1");
-            param.setDisplayedName("TOF 3D MT Sat - Gamma B1");
-            param.setDescription("Gamma B1 value of TOF 3D MT saturation pulse");
+            param.setDisplayedName("TOF 3D - MT Gamma B1");
+            param.setDescription("Info: Gamma B1 value of TOF 3D MT saturation pulse");
             param.setCategory(Category.Acquisition);
-            param.setUuid("efc5e67d-b16d-4db7-a54b-0b2e324830c1");
+            param.setUuid("31453ed8-0afb-4feb-8842-b8a0bd8f5500");
             param.setNumberEnum(NumberEnum.Frequency);
             param.setMinValue(0.0);
             param.setMaxValue(3.0E9);
-            param.setValue(500.0);
+            param.setValue(492.0529052365598);
             param.setDefaultValue(50.0);
             return param;
         }
@@ -2700,11 +2618,11 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             BooleanParam param = new BooleanParam();
             param.setName("TOF3D_MT_INDIV");
-            param.setDisplayedName("TOF 3D MT Sat - One Sat Per Slab");
+            param.setDisplayedName("TOF 3D - One MT Sat Per Slab");
             param.setDescription("True if running only one saturation pulse per slab");
             param.setCategory(Category.Acquisition);
-            param.setUuid("4ab0cc71-9238-470a-8860-763359f33303");
-            param.setValue(true);
+            param.setUuid("a7570ba7-238d-4f5f-bf88-f51888ded74f");
+            param.setValue(false);
             param.setDefaultValue(false);
             return param;
         }
@@ -2714,15 +2632,32 @@ public enum U implements GeneratorParamEnum {
         public Param build() {
             NumberParam param = new NumberParam();
             param.setName("TOF3D_MT_TX_LENGTH");
-            param.setDisplayedName("TOF 3D MT Sat - Tx Length");
+            param.setDisplayedName("TOF 3D - MT Tx Length");
             param.setDescription("Info :uration of TOF 3D MT saturation pulse");
             param.setCategory(Category.Acquisition);
-            param.setUuid("0cf66f7b-3430-4138-b2e5-df6f5b6bf1e2");
+            param.setUuid("134c5884-b71d-4fa0-9111-0438d8b019fe");
             param.setNumberEnum(NumberEnum.Time);
             param.setMinValue(0.0);
             param.setMaxValue(1.0E9);
             param.setValue(0.0064);
             param.setDefaultValue(0.0);
+            return param;
+        }
+    },
+
+    TOF3D_SPOILER_LENGTH("TOF3D_SPOILER_LENGTH") {
+        public Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("TOF3D_SPOILER_LENGTH");
+            param.setDisplayedName("TOF 3D - Spoiler Grad Plateau Duration");
+            param.setDescription("Duration of spoiler gradient after MT saturation pulse");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("5eadc718-c95b-46a8-b402-f79d466ec5eb");
+            param.setNumberEnum(NumberEnum.Time);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.0E9);
+            param.setValue(5.0E-4);
+            param.setDefaultValue(5.0E-4);
             return param;
         }
     },
@@ -2738,7 +2673,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Double);
             param.setMinValue(-1.7976931348623157E308);
             param.setMaxValue(1.7976931348623157E308);
-            param.setValue(-0.2);
+            param.setValue(-0.0);
             param.setDefaultValue(0.0);
             return param;
         }
@@ -2759,36 +2694,38 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
+    TOF_MT_TX_SHAPE("TOF_MT_TX_SHAPE") {
+        public Param build() {
+            TextParam param = new TextParam();
+            param.setName("TOF_MT_TX_SHAPE");
+            param.setDisplayedName("TOF 3D - MT TX Shape");
+            param.setDescription("Tx shape of MT pulse in TOF 3D");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("b9658485-d02d-453d-a1b0-f04a94a12b11");
+            param.setValue("GAUSSIAN");
+            param.setDefaultValue("HARD");
+            param.setSuggestedValues(asList("HARD", "GAUSSIAN", "SINC3", "SINC5", "SLR_8_5152", "SLR_4_2576"));
+            return param;
+        }
+    },
+
     TOF_SB_OFFSET("TOF_SB_OFFSET") {
         public Param build() {
-            NumberParam param = new NumberParam();
+            HzPpmNumberParam param = new HzPpmNumberParam();
             param.setName("TOF_SB_OFFSET");
-            param.setDisplayedName("TOF Sat - Offset Frequency");
+            param.setDisplayedName("TOF 3D - MT Offset Frequency");
             param.setDescription("Additional global requency offset applied to all TOF satband RF pulses");
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
-            param.setUuid("f67c4343-e279-448e-b9c3-6835feaaa37d");
+            param.setUuid("105e9d00-5476-434c-9a21-7bf8d733f9e5");
             param.setNumberEnum(NumberEnum.FrequencyOffset);
             param.setMinValue(-1.5E9);
             param.setMaxValue(1.5E9);
             param.setValue(1000.0);
             param.setDefaultValue(0.0);
             param.setSuggestedValues(asListNumber(-1500.0, -1250.0, -1000.0, -750.0, -500.0, 0.0, 500.0, 750.0, 1000.0, 1250.0, 1500.0));
-            return param;
-        }
-    },
-
-    TOF_SB_TX_SHAPE("TOF_SB_TX_SHAPE") {
-        public Param build() {
-            TextParam param = new TextParam();
-            param.setName("TOF_SB_TX_SHAPE");
-            param.setDisplayedName("TOF Sat - TX Shape");
-            param.setDescription("TOF satband RF pulse shape");
-            param.setCategory(Category.Acquisition);
-            param.setUuid("aebf11b7-67a5-4121-8b37-b2a2a4aa388f");
-            param.setValue("GAUSSIAN");
-            param.setDefaultValue("HARD");
-            param.setSuggestedValues(asList("HARD", "GAUSSIAN", "SINC3", "SINC5", "SLR_8_5152", "SLR_4_2576", "RAMP"));
+            param.setInitialNumberEnum(NumberEnum.FrequencyOffset);
+            param.setUuidBaseFrequency("3f45d8fb-3979-4c93-8eb6-995eac09198e");
             return param;
         }
     },
@@ -2840,7 +2777,7 @@ public enum U implements GeneratorParamEnum {
             param.setUuid("f8cdf9da-2f6b-48b1-8ba1-2cd1d5da2e1d");
             param.setValue("Sequential4D");
             param.setDefaultValue("Sequential4D");
-            param.setSuggestedValues(asList("Sequential4D", "Elliptical3D", "Sequential4D_TOF"));
+            param.setSuggestedValues(asList("Sequential4D"));
             return param;
         }
     },
@@ -2966,45 +2903,8 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.PERCENT);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(77.47537494100442);
+            param.setValue(77.4319513446612);
             param.setDefaultValue(40.0);
-            return param;
-        }
-    },
-
-    TX_AMP_180("TX_AMP_180") {
-        public Param build() {
-            NumberParam param = new NumberParam();
-            param.setName("TX_AMP_180");
-            param.setDisplayedName("TX_AMP_180");
-            param.setDescription("The magnitude of the RF pulse 180");
-            param.setLocked(true);
-            param.setGroup(EnumGroup.Emission);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("cb183c2a-1c8a-4386-ad09-555c0730b3f9");
-            param.setNumberEnum(NumberEnum.TxAmp);
-            param.setMinValue(0.0);
-            param.setMaxValue(100.0);
-            param.setValue(100.0);
-            param.setDefaultValue(0.0);
-            return param;
-        }
-    },
-
-    TX_AMP_90("TX_AMP_90") {
-        public Param build() {
-            NumberParam param = new NumberParam();
-            param.setName("TX_AMP_90");
-            param.setDisplayedName("TX_AMP_90");
-            param.setDescription("Amplitude of the transmitter");
-            param.setLocked(true);
-            param.setCategory(Category.Acquisition);
-            param.setUuid("14c88b3e-61fb-4e22-b010-fdc486555725");
-            param.setNumberEnum(NumberEnum.TxAmp);
-            param.setMinValue(0.0);
-            param.setMaxValue(100.0);
-            param.setValue(100.0);
-            param.setDefaultValue(0.0);
             return param;
         }
     },
@@ -3036,7 +2936,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAtt);
             param.setMinValue(0);
             param.setMaxValue(63);
-            param.setValue(0);
+            param.setValue(10);
             param.setDefaultValue(36);
             return param;
         }
@@ -3054,7 +2954,7 @@ public enum U implements GeneratorParamEnum {
             param.setMinValue(-1.7976931348623157E308);
             param.setMaxValue(1.7976931348623157E308);
             param.setNumberEnum(NumberEnum.Double);
-            param.setValue(asListNumber(0.95, 1.35, 2.55, 4.25, 0.0, 0.0, 4.25));
+            param.setValue(asListNumber(0.9500000000000001, 1.35, 2.55, 4.25, 0.0, 0.0, 4.25));
             param.setDefaultValue(asListNumber(0.95, 1.35, 2.55, 4.25, 0.0, 0.0, 4.25));
             return param;
         }
@@ -3113,6 +3013,20 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
+    TX_SELECTION_PULSE("TX_SELECTION_PULSE") {
+        public Param build() {
+            BooleanParam param = new BooleanParam();
+            param.setName("TX_SELECTION_PULSE");
+            param.setDisplayedName("Tx Selection Pulse");
+            param.setDescription("True: use TX_BANDWIDTH_FACTOR for slab selection, False: use TX_BANDWIDTH_FACTOR_3D for slab selection");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("b3755568-2dd4-415b-babb-64bb9ee18ce7");
+            param.setValue(true);
+            param.setDefaultValue(false);
+            return param;
+        }
+    },
+
     TX_SHAPE("TX_SHAPE") {
         public Param build() {
             TextParam param = new TextParam();
@@ -3121,7 +3035,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("RF Pulse shape");
             param.setGroup(EnumGroup.Emission);
             param.setCategory(Category.Acquisition);
-            param.setUuid("74cc532c-6424-43ea-8054-7da39bb8e59a");
+            param.setUuid("b5f2a190-a8eb-4d22-9905-df295f4c368f");
             param.setValue("RAMP");
             param.setDefaultValue("GAUSSIAN");
             param.setSuggestedValues(asList("HARD", "GAUSSIAN", "SINC3", "SINC5", "SLR_8_5152", "SLR_4_2576", "RAMP"));
@@ -3141,7 +3055,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(1);
             param.setMaxValue(65536);
-            param.setValue(256);
+            param.setValue(80);
             param.setDefaultValue(1);
             return param;
         }
@@ -3159,7 +3073,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Scan);
             param.setMinValue(1);
             param.setMaxValue(65536);
-            param.setValue(160);
+            param.setValue(80);
             param.setDefaultValue(1);
             return param;
         }
@@ -3233,6 +3147,23 @@ public enum U implements GeneratorParamEnum {
             param.setMaxValue(100.0);
             param.setValue(100.0);
             param.setDefaultValue(100.0);
+            return param;
+        }
+    },
+
+    USER_SLICE_THICKNESS("USER_SLICE_THICKNESS") {
+        public Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("USER_SLICE_THICKNESS");
+            param.setDisplayedName("Slice Thickness");
+            param.setDescription("Nominal Slice Thickness (value does not change after SlabConcatenation)");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("568f039a-a64a-4d5c-9af6-614aa5e6d9a7");
+            param.setNumberEnum(NumberEnum.Length);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.7976931348623157E308);
+            param.setValue(5.0E-4);
+            param.setDefaultValue(0.0);
             return param;
         }
     },

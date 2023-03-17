@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <application>
-    <name>TOF_V1.8_spinlab_2022.06.3</name>
+    <name>TOF_V2.1_spinlab_2022.06.3</name>
     <description></description>
     <usage></usage>
     <generatorName>seqdev-temp</generatorName>
@@ -11,10 +11,13 @@
     <processQueue>
         <enabled>true</enabled>
         <commands>
+            <name>Off Center FOV</name>
+        </commands>
+        <commands>
             <name>BCImage</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>Noise location</name>
-                <uuid>a7708ac6-4963-4822-8404-e5a51ac097d4</uuid>
+                <uuid>2df2ce88-6562-4245-8262-56d101daeeda</uuid>
                 <value>End</value>
                 <defaultValue>End</defaultValue>
                 <description>The noise location : End=the last 1/4 points ; Start=the first 1/4 points ;  Both=the first and last 1/8 points</description>
@@ -28,63 +31,68 @@
             </parameters>
         </commands>
         <commands>
-            <name>SignAlternation</name>
+            <name>Fourier shift</name>
         </commands>
         <commands>
-            <name>Off Center Multi FOV</name>
-        </commands>
-        <commands>
-            <name>ZF</name>
+            <name>Zero-filling</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_1D</name>
-                <uuid>77aa2d7d-07d7-4673-ad64-a8d83c79fdc3</uuid>
-                <value>256</value>
-                <defaultValue>1</defaultValue>
-                <description></description>
-                <displayedName>USER_MATRIX_DIMENSION_1D</displayedName>
+                <uuid>69b94ea5-772a-4d87-b5dd-257034f9036e</uuid>
+                <value>80</value>
+                <defaultValue>128</defaultValue>
+                <description>The matrix size of the first dimension</description>
+                <displayedName>Matrix 1D</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Scan</numberEnum>
-                <minValue>1</minValue>
+                <minValue>0</minValue>
                 <maxValue>65536</maxValue>
-                <group>User</group>
+                <group>Scan</group>
                 <category>Acquisition</category>
             </parameters>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Symmetric</name>
-                <uuid>db4b92c5-d7cb-4a04-b882-cb16435a6d75</uuid>
+                <uuid>6c6339e2-bba3-43fc-b35f-be60195d3c64</uuid>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
-                <description>Data are zero-filled symmetrically</description>
+                <description>If check, the rows will be filled with zeros symmetrically around the center; otherwise they will be filled with zeros at the end.</description>
                 <displayedName>Symmetric</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </parameters>
         </commands>
         <commands>
-            <name>ZIP</name>
+            <name>Zero-filling power of 2</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>ZIP</name>
-                <uuid>82320b62-8bd0-4afe-ad4b-24761294a966</uuid>
+                <name>Second next power of 2</name>
+                <uuid>39658375-fb8e-46f3-9459-0260b26e4cfc</uuid>
                 <value>false</value>
                 <defaultValue>true</defaultValue>
-                <description>Mutiply the matrix dimensions by 2</description>
-                <displayedName>ZIP</displayedName>
+                <description>Set the reconstruction size to the second next power of 2.</description>
+                <displayedName>Second next power of 2</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
-                <group>Dimension</group>
-                <category>Process</category>
+            </parameters>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>Symmetric</name>
+                <uuid>d8ec5d10-98fa-4654-9a1d-b50fda34c853</uuid>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>If check, the rows will be filled with zeros symmetrically around the center; otherwise they will be filled with zeros at the end.</description>
+                <displayedName>Symmetric</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
             </parameters>
         </commands>
         <commands>
-            <name>IFFT</name>
+            <name>Inverse fast Fourier transform</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>Phase Correction</name>
-                <uuid>122e19da-3d8f-4520-9cff-2864b1658f43</uuid>
-                <value>true</value>
+                <name>Phase correction</name>
+                <uuid>2647e889-41c0-4ee8-ac7b-2c52462a1519</uuid>
+                <value>false</value>
                 <defaultValue>true</defaultValue>
-                <description>Applied order 1 phase correction</description>
+                <description>Apply a first-order phase correction in spectral domain to account for the zero-time delay in the data.</description>
                 <displayedName>Phase Correction</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -93,11 +101,11 @@
         <commands>
             <name>Transpose</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>Transpose Order</name>
-                <uuid>4d537912-d7ee-410a-b42c-85234eed28fa</uuid>
+                <name>Transpose order</name>
+                <uuid>7be96e81-418e-4d5c-9cfa-72630404a94c</uuid>
                 <value>Direct</value>
                 <defaultValue>Direct</defaultValue>
-                <description>The order of the transposition</description>
+                <description>The order of transposition; 'Direct' for descending order ((N+1)D becomes ND); 'Indirect' for ascending order ((N-1)D becomes N).</description>
                 <displayedName>Transpose Order</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -107,57 +115,65 @@
             </parameters>
         </commands>
         <commands>
-            <name>ZF</name>
+            <name>Zero-filling</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_2D</name>
-                <uuid>d149b0b2-f47d-430e-a289-ba8c8bc3d99d</uuid>
-                <value>256</value>
-                <defaultValue>1</defaultValue>
-                <description></description>
-                <displayedName>USER_MATRIX_DIMENSION_2D</displayedName>
-                <locked>false</locked>
+                <uuid>9e87324b-fdd5-4106-a55a-b6e48f4d9251</uuid>
+                <value>80</value>
+                <defaultValue>128</defaultValue>
+                <description>Info: Image size in phase encoding direction  (user matrix dimension 2D)</description>
+                <displayedName>Matrix 2D</displayedName>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Scan</numberEnum>
-                <minValue>1</minValue>
+                <minValue>0</minValue>
                 <maxValue>65536</maxValue>
-                <group>User</group>
+                <group>Scan</group>
                 <category>Acquisition</category>
             </parameters>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Symmetric</name>
-                <uuid>028b82d7-7f41-4423-ac22-f7ee12464101</uuid>
+                <uuid>2ad66c06-787f-47eb-bf85-d3bb42d77994</uuid>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
-                <description>Data are zero-filled symmetrically</description>
+                <description>If check, the rows will be filled with zeros symmetrically around the center; otherwise they will be filled with zeros at the end.</description>
                 <displayedName>Symmetric</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </parameters>
         </commands>
         <commands>
-            <name>ZIP</name>
+            <name>Zero-filling power of 2</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>ZIP</name>
-                <uuid>41f6f210-506f-462e-952c-a437b333e069</uuid>
+                <name>Second next power of 2</name>
+                <uuid>39658375-fb8e-46f3-9459-0260b26e4cfc</uuid>
                 <value>false</value>
                 <defaultValue>true</defaultValue>
-                <description>Mutiply the matrix dimensions by 2</description>
-                <displayedName>ZIP</displayedName>
+                <description>Set the reconstruction size to the second next power of 2.</description>
+                <displayedName>Second next power of 2</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
-                <group>Dimension</group>
-                <category>Process</category>
+            </parameters>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>Symmetric</name>
+                <uuid>d8ec5d10-98fa-4654-9a1d-b50fda34c853</uuid>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>If check, the rows will be filled with zeros symmetrically around the center; otherwise they will be filled with zeros at the end.</description>
+                <displayedName>Symmetric</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
             </parameters>
         </commands>
         <commands>
-            <name>IFFT</name>
+            <name>Inverse fast Fourier transform</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>Phase Correction</name>
-                <uuid>73ed2bcd-5b46-4f8d-ad30-c0fd1bf93800</uuid>
+                <name>Phase correction</name>
+                <uuid>1e869571-4d30-4750-b081-e46a4895e3c8</uuid>
                 <value>true</value>
                 <defaultValue>true</defaultValue>
-                <description>Applied order 1 phase correction</description>
+                <description>Apply a first-order phase correction in spectral domain to account for the zero-time delay in the data.</description>
                 <displayedName>Phase Correction</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -166,11 +182,11 @@
         <commands>
             <name>Transpose</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>Transpose Order</name>
-                <uuid>59f8549f-df88-43d1-b8b3-8e2031ab371f</uuid>
+                <name>Transpose order</name>
+                <uuid>c1506ab7-f5c3-4925-b549-e9dc7ab28411</uuid>
                 <value>Direct</value>
                 <defaultValue>Direct</defaultValue>
-                <description>The order of the transposition</description>
+                <description>The order of transposition; 'Direct' for descending order ((N+1)D becomes ND); 'Indirect' for ascending order ((N-1)D becomes N).</description>
                 <displayedName>Transpose Order</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -180,57 +196,65 @@
             </parameters>
         </commands>
         <commands>
-            <name>ZF</name>
+            <name>Zero-filling</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                 <name>USER_MATRIX_DIMENSION_3D</name>
-                <uuid>87ccb11c-1ad5-4e1a-8ce7-fc12079d693f</uuid>
-                <value>1</value>
+                <uuid>8dd0a7c7-e15b-4b81-ab85-c12e0997c7e7</uuid>
+                <value>80</value>
                 <defaultValue>1</defaultValue>
-                <description></description>
+                <description>Info: Image size in the third dimension: slice or 3D PE  (user matrix dimension 3D)</description>
                 <displayedName>Matrix 3D</displayedName>
-                <locked>false</locked>
+                <locked>true</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
                 <numberEnum>Scan</numberEnum>
-                <minValue>1</minValue>
+                <minValue>0</minValue>
                 <maxValue>65536</maxValue>
-                <group>User</group>
+                <group>Scan</group>
                 <category>Acquisition</category>
             </parameters>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>Symmetric</name>
-                <uuid>715127b6-a7b8-437e-8559-d45ed193d8a9</uuid>
+                <uuid>66527ea1-0975-4b29-8520-8f7a78b73734</uuid>
                 <value>true</value>
                 <defaultValue>false</defaultValue>
-                <description>Data are zero-filled symmetrically</description>
+                <description>If check, the rows will be filled with zeros symmetrically around the center; otherwise they will be filled with zeros at the end.</description>
                 <displayedName>Symmetric</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </parameters>
         </commands>
         <commands>
-            <name>ZIP</name>
+            <name>Zero-filling power of 2</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>ZIP</name>
-                <uuid>30fc6f3e-b3cc-4310-8398-8245020b20db</uuid>
+                <name>Second next power of 2</name>
+                <uuid>39658375-fb8e-46f3-9459-0260b26e4cfc</uuid>
                 <value>false</value>
                 <defaultValue>true</defaultValue>
-                <description>Mutiply the matrix dimensions by 2</description>
-                <displayedName>ZIP</displayedName>
+                <description>Set the reconstruction size to the second next power of 2.</description>
+                <displayedName>Second next power of 2</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
-                <group>Dimension</group>
-                <category>Process</category>
+            </parameters>
+            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                <name>Symmetric</name>
+                <uuid>d8ec5d10-98fa-4654-9a1d-b50fda34c853</uuid>
+                <value>true</value>
+                <defaultValue>true</defaultValue>
+                <description>If check, the rows will be filled with zeros symmetrically around the center; otherwise they will be filled with zeros at the end.</description>
+                <displayedName>Symmetric</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
             </parameters>
         </commands>
         <commands>
-            <name>IFFT</name>
+            <name>Inverse fast Fourier transform</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>Phase Correction</name>
-                <uuid>296b3eb7-0f7c-4730-a1cb-209bc8541da8</uuid>
+                <name>Phase correction</name>
+                <uuid>2589f3b2-5e31-43b7-9e80-ab67c052a39e</uuid>
                 <value>true</value>
                 <defaultValue>true</defaultValue>
-                <description>Applied order 1 phase correction</description>
+                <description>Apply a first-order phase correction in spectral domain to account for the zero-time delay in the data.</description>
                 <displayedName>Phase Correction</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -239,11 +263,11 @@
         <commands>
             <name>Transpose</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>Transpose Order</name>
-                <uuid>a734790f-62ee-42e8-b0a4-d2685a5e48d1</uuid>
+                <name>Transpose order</name>
+                <uuid>7209809c-73d0-4229-a705-15057803c5ac</uuid>
                 <value>Direct</value>
                 <defaultValue>Direct</defaultValue>
-                <description>The order of the transposition</description>
+                <description>The order of transposition; 'Direct' for descending order ((N+1)D becomes ND); 'Indirect' for ascending order ((N-1)D becomes N).</description>
                 <displayedName>Transpose Order</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
@@ -253,55 +277,26 @@
             </parameters>
         </commands>
         <commands>
-            <name>SignAlternation</name>
+            <name>Fourier shift</name>
         </commands>
         <commands>
-            <name>Amplitude</name>
+            <name>Magnitude</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                <name>Sum Of Square</name>
-                <uuid>d5a801a4-3b1b-478f-b4fe-8a75e021747b</uuid>
+                <name>Combine receivers</name>
+                <uuid>582bf518-8e8e-4db4-966e-60305035a41d</uuid>
                 <value>true</value>
                 <defaultValue>true</defaultValue>
-                <description>Do the sum of sqare of the different recievers</description>
+                <description>Combine the data from all the receivers using the sum of square method.</description>
                 <displayedName>Sum Of Square</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </parameters>
         </commands>
         <commands>
-            <name>SlabConcatenate</name>
-            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>OverlappedSlabMethod</name>
-                <uuid>d9b1b879-1e49-4715-bd0d-ddfaadca9c5d</uuid>
-                <value>Discard</value>
-                <defaultValue>Discard</defaultValue>
-                <description>Method to treat the overlapped slabs.</description>
-                <displayedName>OverlappedSlabMethod</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>true</restrictedToSuggested>
-                <suggestedValues>Discard</suggestedValues>
-                <suggestedValues>Average</suggestedValues>
-            </parameters>
-            <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                <name>EdgeSlabMethod</name>
-                <uuid>ea8356fc-6985-4f1a-8b4e-1ec4f09bce00</uuid>
-                <value>Discard</value>
-                <defaultValue>Discard</defaultValue>
-                <description>Method to treat two border slabs.</description>
-                <displayedName>EdgeSlabMethod</displayedName>
-                <locked>false</locked>
-                <lockedToDefault>false</lockedToDefault>
-                <restrictedToSuggested>true</restrictedToSuggested>
-                <suggestedValues>Discard</suggestedValues>
-                <suggestedValues>Keep</suggestedValues>
-            </parameters>
-        </commands>
-        <commands>
             <name>MIP</name>
             <parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>ORIENTATION</name>
-                <uuid>486962ae-9c38-4f5f-b549-7e5a641b1c57</uuid>
+                <uuid>dd413b91-bbbb-4eab-bd1b-b4acb83a119d</uuid>
                 <value>AXIAL</value>
                 <defaultValue>AXIAL</defaultValue>
                 <description>Field of view orientation</description>
@@ -344,7 +339,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_MATRIX_DIMENSION_1D</name>
                     <uuid>9aa51594-63f2-4b8a-8fd7-f87ac140067d</uuid>
-                    <value>256</value>
+                    <value>80</value>
                     <defaultValue>128</defaultValue>
                     <description>Info: Size of the initial dataset (raw data) in first dimension</description>
                     <displayedName>Acquisition Matrix 1D</displayedName>
@@ -363,7 +358,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_MATRIX_DIMENSION_2D</name>
                     <uuid>ba7d6f05-ce1d-442e-a7d3-660f49d83b8f</uuid>
-                    <value>160</value>
+                    <value>80</value>
                     <defaultValue>128</defaultValue>
                     <description>Info: Size of the initial dataset (raw data) in second dimension</description>
                     <displayedName>Acquisition Matrix 2D</displayedName>
@@ -441,12 +436,12 @@
                 <key>ACQUISITION_NB_ECHO_TRAIN</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_NB_ECHO_TRAIN</name>
-                    <uuid>87a6abf6-aafb-4490-bd32-b88221ef37a4</uuid>
+                    <uuid>ba9107b3-dec8-44fa-b280-534b3cc512e1</uuid>
                     <value>2848</value>
                     <defaultValue>0</defaultValue>
                     <description>Info: Number of echo trains in each slab </description>
-                    <displayedName>Nb. Echo Train</displayedName>
-                    <locked>false</locked>
+                    <displayedName>ACQUISITION_NB_ECHO_TRAIN</displayedName>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>Scan</numberEnum>
@@ -460,12 +455,12 @@
                 <key>ACQUISITION_NB_VIEW</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_NB_VIEW</name>
-                    <uuid>8f5bdf76-0c42-4c4e-82ab-3c85306d7112</uuid>
+                    <uuid>313e37e2-7961-4f3a-8436-edbe8b3ac560</uuid>
                     <value>2848</value>
                     <defaultValue>0</defaultValue>
                     <description>Info: Number of sampling points in 2D-3D plane</description>
-                    <displayedName>Nb. View</displayedName>
-                    <locked>false</locked>
+                    <displayedName>ACQUISITION_NB_VIEW</displayedName>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>Scan</numberEnum>
@@ -611,6 +606,20 @@
                 </value>
             </entry>
             <entry>
+                <key>DEBUG_MODE</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                    <name>DEBUG_MODE</name>
+                    <uuid>486e2531-3a4e-4739-a253-65d9e7d6bb17</uuid>
+                    <value>true</value>
+                    <defaultValue>false</defaultValue>
+                    <description>Switch on debug mode to print out parameters in the Log window</description>
+                    <displayedName>DEBUG_MODE</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
                 <key>DIGITAL_FILTER_REMOVED</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>DIGITAL_FILTER_REMOVED</name>
@@ -630,8 +639,8 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>DIGITAL_FILTER_SHIFT</name>
                     <uuid>9769e871-df83-42c2-a7cf-5fa87dae1116</uuid>
-                    <value>20</value>
-                    <defaultValue>20</defaultValue>
+                    <value>19</value>
+                    <defaultValue>19</defaultValue>
                     <description>Data shift due to the digital filter</description>
                     <displayedName>DIGITAL_FILTER_SHIFT</displayedName>
                     <locked>false</locked>
@@ -668,7 +677,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>DWELL_TIME</name>
                     <uuid>6a63b9dd-a532-46cd-a462-8db10811ea9e</uuid>
-                    <value>0.0</value>
+                    <value>5.0E-5</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Reception dwell time</description>
                     <displayedName>DW</displayedName>
@@ -997,21 +1006,6 @@
                 </value>
             </entry>
             <entry>
-                <key>FAT_WATER_SEP_2DMRSI</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
-                    <name>FAT_WATER_SEP_2DMRSI</name>
-                    <uuid>e77d85ce-14a3-4b6f-8acd-50b02b80e873</uuid>
-                    <value>false</value>
-                    <defaultValue>false</defaultValue>
-                    <description>Checkbox parameter for running fat-water separation plugin</description>
-                    <displayedName>FAT_WATER_SEP_2DMRSI</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <group>Miscellaneous</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
                 <key>FIELD_OF_VIEW</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FIELD_OF_VIEW</name>
@@ -1035,7 +1029,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FIELD_OF_VIEW_3D</name>
                     <uuid>0a888a27-0fd3-4c90-a9cf-47b947469ba7</uuid>
-                    <value>0.018383999999999998</value>
+                    <value>0.012</value>
                     <defaultValue>0.0</defaultValue>
                     <description> Field Of View coverage along the direction orthogonal to the phase and frequency encoding directions</description>
                     <displayedName>FOV Slice/3D</displayedName>
@@ -1136,6 +1130,24 @@
                 </value>
             </entry>
             <entry>
+                <key>FOV_MULTISLAB</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>FOV_MULTISLAB</name>
+                    <uuid>b90f0851-983b-4b5e-8045-4f57ab05094b</uuid>
+                    <value>0.012</value>
+                    <defaultValue>0.0</defaultValue>
+                    <description>Info: FOV in slab direction for multislab acquisition</description>
+                    <displayedName>FOV - MultiSlab</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <numberEnum>Length</numberEnum>
+                    <minValue>0.0</minValue>
+                    <maxValue>1.7976931348623157E308</maxValue>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
                 <key>FOV_RATIO_PHASE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FOV_RATIO_PHASE</name>
@@ -1144,7 +1156,7 @@
                     <defaultValue>100.0</defaultValue>
                     <description>The fov ratio in the phase direction (2D/1D)</description>
                     <displayedName>Phase FOV</displayedName>
-                    <locked>true</locked>
+                    <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>PERCENT</numberEnum>
@@ -1178,7 +1190,7 @@
                     <defaultValue>false</defaultValue>
                     <description>Enable 2D phase encoding gradient</description>
                     <displayedName>Gradient Phase-2D</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <group>Gradient</group>
                     <category>Acquisition</category>
@@ -1193,7 +1205,7 @@
                     <defaultValue>true</defaultValue>
                     <description>Enable 3D phase encoding gradient</description>
                     <displayedName>Gradient Phase-3D</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <group>Gradient</group>
                     <category>Acquisition</category>
@@ -1208,7 +1220,7 @@
                     <defaultValue>false</defaultValue>
                     <description>Enable  frequency encoding gradient</description>
                     <displayedName>Gradient Read</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <group>Gradient</group>
                     <category>Acquisition</category>
@@ -1223,7 +1235,7 @@
                     <defaultValue>false</defaultValue>
                     <description>Enable to do gradient rewind instead of spoiling</description>
                     <displayedName>Gradient Rewinding</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <group>Gradient</group>
                     <category>Acquisition</category>
@@ -1238,7 +1250,7 @@
                     <defaultValue>false</defaultValue>
                     <description>Enable the slice selection gradient</description>
                     <displayedName>Gradient Slice</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <group>Gradient</group>
                     <category>Acquisition</category>
@@ -1253,7 +1265,7 @@
                     <defaultValue>false</defaultValue>
                     <description>Enable gradient spoiler in the three directions</description>
                     <displayedName>Gradient Spoiling</displayedName>
-                    <locked>false</locked>
+                    <locked>true</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <group>Gradient</group>
                     <category>Acquisition</category>
@@ -1332,150 +1344,6 @@
                     <minValue>0.0</minValue>
                     <maxValue>100.0</maxValue>
                     <group>Gradient</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_A0</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>HARDWARE_A0</name>
-                    <uuid>779b6b39-0a3c-49c4-b165-9dd8b3a68ddd</uuid>
-                    <value>27.69</value>
-                    <value>28.58</value>
-                    <value>22.43</value>
-                    <description></description>
-                    <displayedName>HARDWARE_A0</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>PERCENT</numberEnum>
-                    <minValue>-2.147483648E9</minValue>
-                    <maxValue>2.147483647E9</maxValue>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_DC</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>HARDWARE_DC</name>
-                    <uuid>cd4356bb-543c-4cd0-883e-4ca2284967b3</uuid>
-                    <value>-0.174</value>
-                    <value>0.2686</value>
-                    <value>-0.1862</value>
-                    <value>0.0</value>
-                    <description></description>
-                    <displayedName>HARDWARE_DC</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>PERCENT</numberEnum>
-                    <minValue>-2.147483648E9</minValue>
-                    <maxValue>2.147483647E9</maxValue>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_PREEMPHASIS_A</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>HARDWARE_PREEMPHASIS_A</name>
-                    <uuid>2f4595fe-bd43-4ac2-b738-a625c807ef0b</uuid>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <description></description>
-                    <displayedName>HARDWARE_PREEMPHASIS_A</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>PERCENT</numberEnum>
-                    <minValue>-2.147483648E9</minValue>
-                    <maxValue>2.147483647E9</maxValue>
-                    <group>Emission</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_PREEMPHASIS_T</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>HARDWARE_PREEMPHASIS_T</name>
-                    <uuid>31d01f2f-5821-4837-a854-3a3384e1d677</uuid>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.02</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <description></description>
-                    <displayedName>HARDWARE_PREEMPHASIS_T</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>Time</numberEnum>
-                    <minValue>0.0</minValue>
-                    <maxValue>1.0E9</maxValue>
-                    <group>Emission</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_SHIM</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
-                    <name>HARDWARE_SHIM</name>
-                    <uuid>5b52caa2-2dd6-4f77-9026-65fe0d63e4e4</uuid>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
-                    <description></description>
-                    <displayedName>HARDWARE_SHIM</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <numberEnum>PERCENT</numberEnum>
-                    <minValue>-2.147483648E9</minValue>
-                    <maxValue>2.147483647E9</maxValue>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>HARDWARE_SHIM_LABEL</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                    <name>HARDWARE_SHIM_LABEL</name>
-                    <uuid>0ede3b51-0811-4286-8835-bfd70092a242</uuid>
-                    <value>YZ XY XZ X2-Y2 Z0 Z2 X Y Z</value>
-                    <defaultValue></defaultValue>
-                    <description></description>
-                    <displayedName>HARDWARE_SHIM_LABEL</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
                     <category>Acquisition</category>
                 </value>
             </entry>
@@ -1614,7 +1482,6 @@
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <suggestedValues>Linear</suggestedValues>
-                    <suggestedValues>3DElliptic</suggestedValues>
                     <category>Acquisition</category>
                 </value>
             </entry>
@@ -1800,7 +1667,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>MULTI_PLANAR_EXCITATION</name>
                     <uuid>0d103275-f00c-459a-9a8f-20da22a63830</uuid>
-                    <value>true</value>
+                    <value>false</value>
                     <defaultValue>true</defaultValue>
                     <description>Switch between 2D multislice (enable) or 3D acquisition (disable)</description>
                     <displayedName>2D-Imaging</displayedName>
@@ -2946,7 +2813,7 @@
                 <key>PREPHASING_READ_GRADIENT_RATIO</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>PREPHASING_READ_GRADIENT_RATIO</name>
-                    <uuid>1d7e4745-c357-4735-9198-1491d251bfa7</uuid>
+                    <uuid>ec36a947-d208-4422-ba34-2dabb0db7fd7</uuid>
                     <value>0.5</value>
                     <defaultValue>0.5</defaultValue>
                     <description>Prephasing reading gradient ratio</description>
@@ -3035,7 +2902,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>REPETITION_TIME</name>
                     <uuid>f4c1958e-1832-45db-bbd1-ce2cd666885c</uuid>
-                    <value>0.015</value>
+                    <value>0.018000000000000002</value>
                     <defaultValue>0.2</defaultValue>
                     <description>Repetition Time</description>
                     <displayedName>TR</displayedName>
@@ -3054,7 +2921,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>RESOLUTION_FREQUENCY</name>
                     <uuid>6f4ec98b-f6e6-4ef2-bf15-581f57381566</uuid>
-                    <value>2.734375E-4</value>
+                    <value>8.750000000000001E-4</value>
                     <defaultValue>5.0E-4</defaultValue>
                     <description>Info: True voxel size in the frequency encoding direction (FOV/acquisition_matrix_dimension_1D) </description>
                     <displayedName>Voxel Size Read</displayedName>
@@ -3073,7 +2940,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>RESOLUTION_PHASE</name>
                     <uuid>6efd41b4-1f4c-44a1-a5bd-f33769f92abd</uuid>
-                    <value>4.3750000000000006E-4</value>
+                    <value>8.750000000000001E-4</value>
                     <defaultValue>5.0E-4</defaultValue>
                     <description>Info:True voxel in the phase encoding direction (FOV/acquisition_matrix_dimension_2D) </description>
                     <displayedName>Voxel Size Phase</displayedName>
@@ -3092,7 +2959,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>RESOLUTION_SLICE</name>
                     <uuid>8f842b7e-89f2-4ec9-b33c-1fe66ea14607</uuid>
-                    <value>7.66E-4</value>
+                    <value>5.0E-4</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: True voxel size in the third direction</description>
                     <displayedName>Voxel Size Slice/3D</displayedName>
@@ -3125,7 +2992,7 @@
                 <key>SATBAND_DISTANCE_FROM_FOV</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SATBAND_DISTANCE_FROM_FOV</name>
-                    <uuid>644a65ff-80c5-406e-9c3c-aafd37b67b88</uuid>
+                    <uuid>78bbfc95-ce06-416e-ad83-d2d1bd19dbe7</uuid>
                     <value>0.005</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Distance of the Saturation Band from the FOV </description>
@@ -3144,11 +3011,11 @@
                 <key>SATBAND_ENABLED</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>SATBAND_ENABLED</name>
-                    <uuid>8413d4ac-247a-4915-ad7c-54e4ce92dce7</uuid>
-                    <value>false</value>
+                    <uuid>624634ab-51e9-4ed1-ae64-b840c43d5629</uuid>
+                    <value>true</value>
                     <defaultValue>false</defaultValue>
                     <description>Enable Saturation Band</description>
-                    <displayedName>Saturation Band</displayedName>
+                    <displayedName>Satband - Enable</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <group>Miscellaneous</group>
@@ -3159,16 +3026,16 @@
                 <key>SATBAND_GRAD_AMP_SPOILER</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SATBAND_GRAD_AMP_SPOILER</name>
-                    <uuid>8ae036ae-2542-46ea-835c-a35ca094fa8a</uuid>
+                    <uuid>a8fda4b1-6054-4b76-9c0b-957dc41c9633</uuid>
                     <value>40.0</value>
                     <defaultValue>40.0</defaultValue>
                     <description>Amplitude of the spoiler gradient following the saturation pulse. </description>
-                    <displayedName>SatBand - Gradient Amplitude</displayedName>
+                    <displayedName>SatBand - Spoiler Grad Amp</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>PERCENT</numberEnum>
-                    <minValue>30.0</minValue>
+                    <minValue>0.0</minValue>
                     <maxValue>100.0</maxValue>
                     <group>Gradient</group>
                     <category>Acquisition</category>
@@ -3178,8 +3045,8 @@
                 <key>SATBAND_ORIENTATION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SATBAND_ORIENTATION</name>
-                    <uuid>c115e3f5-9882-4be8-8320-876f0e01a6b1</uuid>
-                    <value>ALL</value>
+                    <uuid>8c421bc6-815c-4486-8ea7-fef9abdb01a7</uuid>
+                    <value>CRANIAL</value>
                     <defaultValue>CRANIAL</defaultValue>
                     <description>Orientation of the Saturation Band</description>
                     <displayedName>SatBand - Orientation</displayedName>
@@ -3201,10 +3068,28 @@
                 </value>
             </entry>
             <entry>
+                <key>SATBAND_SPOILER_LENGTH</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>SATBAND_SPOILER_LENGTH</name>
+                    <uuid>90d301c6-e1ba-4786-8925-56c3ba6bb868</uuid>
+                    <value>5.0E-4</value>
+                    <defaultValue>0.0</defaultValue>
+                    <description>Duration of spoiler gradient after saturation pulse</description>
+                    <displayedName>Satband - Spoiler Plateau Duration</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <numberEnum>Time</numberEnum>
+                    <minValue>0.0</minValue>
+                    <maxValue>1.0E9</maxValue>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
                 <key>SATBAND_T1</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SATBAND_T1</name>
-                    <uuid>a50e07f4-c0fc-45b2-9a42-b38d0307abf1</uuid>
+                    <uuid>e88e4660-d3ee-42d2-b116-81df859b1673</uuid>
                     <value>500.0</value>
                     <defaultValue>500.0</defaultValue>
                     <description>T1 of the saturated tissue : the longitudinal magnetization will be nulled when the excitation pulse is applied.</description>
@@ -3223,7 +3108,7 @@
                 <key>SATBAND_THICKNESS</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SATBAND_THICKNESS</name>
-                    <uuid>d5542533-f1c5-4bef-b4b8-9a0c367cca62</uuid>
+                    <uuid>acaf4257-1214-431a-a5e9-b90b72635980</uuid>
                     <value>0.01</value>
                     <defaultValue>0.01</defaultValue>
                     <description>Thickness of the Saturation Band</description>
@@ -3242,7 +3127,7 @@
                 <key>SATBAND_TX_AMP</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SATBAND_TX_AMP</name>
-                    <uuid>ce650681-d777-4ff2-b848-33c8e27f92fe</uuid>
+                    <uuid>53dfdf72-f766-4670-809c-b409c33116ad</uuid>
                     <value>75.32704525411751</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: Saturation Band Pulse amplitude</description>
@@ -3258,11 +3143,29 @@
                 </value>
             </entry>
             <entry>
+                <key>SATBAND_TX_LENGTH</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>SATBAND_TX_LENGTH</name>
+                    <uuid>8d918b0c-1cf5-4f2e-80ec-fe65cf3651fd</uuid>
+                    <value>0.001</value>
+                    <defaultValue>0.0</defaultValue>
+                    <description></description>
+                    <displayedName>Satband - Tx Duration</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <numberEnum>Time</numberEnum>
+                    <minValue>0.0</minValue>
+                    <maxValue>1.0E9</maxValue>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
                 <key>SATBAND_TX_SHAPE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SATBAND_TX_SHAPE</name>
-                    <uuid>41495edb-f903-4407-998a-e52a92ebc7df</uuid>
-                    <value>SINC3</value>
+                    <uuid>c30582b5-6bf7-4e3c-b0a0-fda6d360600d</uuid>
+                    <value>GAUSSIAN</value>
                     <defaultValue>HARD</defaultValue>
                     <description>Saturation Band Pulse shape</description>
                     <displayedName>SatBand - TX Shape</displayedName>
@@ -3301,7 +3204,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SEQUENCE_TIME</name>
                     <uuid>26665c25-c3d2-481e-ad83-4dc57f63bf5b</uuid>
-                    <value>57.751</value>
+                    <value>34.741</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: Total acquisition time</description>
                     <displayedName>Sequence Version</displayedName>
@@ -3320,7 +3223,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQUENCE_VERSION</name>
                     <uuid>00fc2c3e-168b-438a-be54-2e1369a6d45c</uuid>
-                    <value>Version x1.7</value>
+                    <value>Version 2.1</value>
                     <defaultValue></defaultValue>
                     <description>Info: Name of the sequence</description>
                     <displayedName>Sequence Version</displayedName>
@@ -3336,7 +3239,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
                     <uuid>4724b61e-deb1-4d18-8993-1bba2dd1a640</uuid>
-                    <value>GE_2D_AXI_256x160x24_TOFSAT</value>
+                    <value>GE_3D_AXI_80x80x24_SATBAND_MT</value>
                     <defaultValue></defaultValue>
                     <description>Info: Description of the sequence</description>
                     <displayedName>Sequence Description</displayedName>
@@ -3402,16 +3305,16 @@
                 <key>SLICE_THICKNESS</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SLICE_THICKNESS</name>
-                    <uuid>e8102e24-af07-4080-bbe1-7c1a403b4ab0</uuid>
-                    <value>7.66E-4</value>
+                    <uuid>a2d9eaae-f305-4921-971d-bd4b0ed56552</uuid>
+                    <value>5.0E-4</value>
                     <defaultValue>0.005</defaultValue>
-                    <description>Slice Thickness</description>
-                    <displayedName>Slice Thickness</displayedName>
+                    <description>Intermediate Slice Thickness, value changes after slab concatenation</description>
+                    <displayedName>SLICE_THICKNESS_INTERMEDIATE</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>Length</numberEnum>
-                    <minValue>5.0E-5</minValue>
+                    <minValue>0.0</minValue>
                     <maxValue>1.7976931348623157E308</maxValue>
                     <group>Dimension</group>
                     <category>Acquisition</category>
@@ -3438,7 +3341,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SPACING_BETWEEN_SLAB</name>
                     <uuid>4f8d2519-6c90-4248-a0c3-53755a84d9c1</uuid>
-                    <value>-0.006</value>
+                    <value>0.0</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: Space between slabs</description>
                     <displayedName>Slab Spacing</displayedName>
@@ -3475,7 +3378,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SPECTRAL_WIDTH</name>
                     <uuid>0d5bfd40-d42b-460e-9bba-f35049ae79bb</uuid>
-                    <value>64036.88524590164</value>
+                    <value>20011.52663934426</value>
                     <defaultValue>12500.0</defaultValue>
                     <description>Receiver bandwidth (SW, BW, bandwidth )</description>
                     <displayedName>BW</displayedName>
@@ -3655,48 +3558,10 @@
                 </value>
             </entry>
             <entry>
-                <key>TOF2D_SB_DISTANCE_FROM_SLICE</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                    <name>TOF2D_SB_DISTANCE_FROM_SLICE</name>
-                    <uuid>262e64d3-a1d5-4e54-903f-59306ca7c721</uuid>
-                    <value>0.005</value>
-                    <defaultValue>0.002</defaultValue>
-                    <description>Distance of the TOF satband from the active imaging slice in 2D acquisition</description>
-                    <displayedName>TOF 2D Satband - Distance From Slice</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <numberEnum>Location</numberEnum>
-                    <minValue>-1.7976931348623157E308</minValue>
-                    <maxValue>1.7976931348623157E308</maxValue>
-                    <group>Dimension</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>TOF2D_SB_GRAMP_SP</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                    <name>TOF2D_SB_GRAMP_SP</name>
-                    <uuid>90e37746-8973-447c-bfb2-19d4eade397a</uuid>
-                    <value>40.0</value>
-                    <defaultValue>40.0</defaultValue>
-                    <description>Amplitude of the spoiler gradient following the TOF satband RF pulse. </description>
-                    <displayedName>TOF Sat - Spoiler Grad Amp</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <numberEnum>PERCENT</numberEnum>
-                    <minValue>0.0</minValue>
-                    <maxValue>100.0</maxValue>
-                    <group>Gradient</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
                 <key>TOF2D_SB_POSITION</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>TOF2D_SB_POSITION</name>
-                    <uuid>68054820-7dfa-4c4b-9d8c-63dc204e3563</uuid>
+                    <uuid>4dff2c7a-30c8-47f3-9fc9-f4e3f6a157d3</uuid>
                     <value>ABOVE THE SLICE</value>
                     <defaultValue>BELOW THE SLICE</defaultValue>
                     <description>TOF Satband position relative to imaging slices in 2D acquisition</description>
@@ -3706,25 +3571,6 @@
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <suggestedValues>ABOVE THE SLICE</suggestedValues>
                     <suggestedValues>BELOW THE SLICE</suggestedValues>
-                    <group>Dimension</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>TOF2D_SB_THICKNESS</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                    <name>TOF2D_SB_THICKNESS</name>
-                    <uuid>6ef04f0f-b963-4f13-9ecc-0f6335a1583d</uuid>
-                    <value>0.01</value>
-                    <defaultValue>0.01</defaultValue>
-                    <description>Thickness of the TOF saturation band in 2D acquisition</description>
-                    <displayedName>TOF 2D SatBand - Thickness</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <numberEnum>Length</numberEnum>
-                    <minValue>0.0</minValue>
-                    <maxValue>1.7976931348623157E308</maxValue>
                     <group>Dimension</group>
                     <category>Acquisition</category>
                 </value>
@@ -3748,14 +3594,33 @@
                 </value>
             </entry>
             <entry>
+                <key>TOF3D_MP_SPOILER_AMP</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>TOF3D_MP_SPOILER_AMP</name>
+                    <uuid>f114c612-594b-4a03-9386-335046d39dc4</uuid>
+                    <value>40.0</value>
+                    <defaultValue>40.0</defaultValue>
+                    <description>Amplitude of the spoiler gradient following the TOF satband RF pulse. </description>
+                    <displayedName>TOF 3D - Spoiler Grad Amp</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <numberEnum>PERCENT</numberEnum>
+                    <minValue>0.0</minValue>
+                    <maxValue>100.0</maxValue>
+                    <group>Gradient</group>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
                 <key>TOF3D_MT_BANDWIDTH</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TOF3D_MT_BANDWIDTH</name>
-                    <uuid>5f2132d0-0e73-428b-badd-d884650c4423</uuid>
+                    <uuid>22c03ddf-ee72-45f3-a16e-bae03c512dcc</uuid>
                     <value>500.0</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Bandwidth of TOF MT saturation pulse</description>
-                    <displayedName>TOF 3D MT Sat - Bandwidth</displayedName>
+                    <displayedName>TOF 3D - MT Sat Bandwidth</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -3769,12 +3634,12 @@
                 <key>TOF3D_MT_FLIP_ANGLE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TOF3D_MT_FLIP_ANGLE</name>
-                    <uuid>ec20c38d-fe28-4364-a3cc-18f4023b9609</uuid>
-                    <value>1152.0000000000002</value>
+                    <uuid>4bde5818-ccea-473e-81b2-4492a2262c1d</uuid>
+                    <value>500.0</value>
                     <defaultValue>360.0</defaultValue>
-                    <description>Info: nominal flip angle of TOF 3D MT saturation pulse</description>
-                    <displayedName>TOF3D_MT_FLIP_ANGLE</displayedName>
-                    <locked>true</locked>
+                    <description>Nnominal flip angle of TOF 3D MT saturation pulse</description>
+                    <displayedName>TOF 3D - MT Flip Angle</displayedName>
+                    <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <numberEnum>RotationAngle</numberEnum>
@@ -3787,11 +3652,11 @@
                 <key>TOF3D_MT_GAMMA_B1</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TOF3D_MT_GAMMA_B1</name>
-                    <uuid>efc5e67d-b16d-4db7-a54b-0b2e324830c1</uuid>
-                    <value>500.0</value>
+                    <uuid>31453ed8-0afb-4feb-8842-b8a0bd8f5500</uuid>
+                    <value>492.0529052365598</value>
                     <defaultValue>50.0</defaultValue>
-                    <description>Gamma B1 value of TOF 3D MT saturation pulse</description>
-                    <displayedName>TOF 3D MT Sat - Gamma B1</displayedName>
+                    <description>Info: Gamma B1 value of TOF 3D MT saturation pulse</description>
+                    <displayedName>TOF 3D - MT Gamma B1</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -3805,11 +3670,11 @@
                 <key>TOF3D_MT_INDIV</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>TOF3D_MT_INDIV</name>
-                    <uuid>4ab0cc71-9238-470a-8860-763359f33303</uuid>
-                    <value>true</value>
+                    <uuid>a7570ba7-238d-4f5f-bf88-f51888ded74f</uuid>
+                    <value>false</value>
                     <defaultValue>false</defaultValue>
                     <description>True if running only one saturation pulse per slab</description>
-                    <displayedName>TOF 3D MT Sat - One Sat Per Slab</displayedName>
+                    <displayedName>TOF 3D - One MT Sat Per Slab</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <category>Acquisition</category>
@@ -3819,11 +3684,29 @@
                 <key>TOF3D_MT_TX_LENGTH</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TOF3D_MT_TX_LENGTH</name>
-                    <uuid>0cf66f7b-3430-4138-b2e5-df6f5b6bf1e2</uuid>
+                    <uuid>134c5884-b71d-4fa0-9111-0438d8b019fe</uuid>
                     <value>0.0064</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info :uration of TOF 3D MT saturation pulse</description>
-                    <displayedName>TOF 3D MT Sat - Tx Length</displayedName>
+                    <displayedName>TOF 3D - MT Tx Length</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <numberEnum>Time</numberEnum>
+                    <minValue>0.0</minValue>
+                    <maxValue>1.0E9</maxValue>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
+                <key>TOF3D_SPOILER_LENGTH</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>TOF3D_SPOILER_LENGTH</name>
+                    <uuid>5eadc718-c95b-46a8-b402-f79d466ec5eb</uuid>
+                    <value>5.0E-4</value>
+                    <defaultValue>5.0E-4</defaultValue>
+                    <description>Duration of spoiler gradient after MT saturation pulse</description>
+                    <displayedName>TOF 3D - Spoiler Grad Plateau Duration</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -3838,7 +3721,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TOF3D_TX_RAMP_SLOPE</name>
                     <uuid>12323d21-0fd5-4bfb-8a13-d7144a4ca30f</uuid>
-                    <value>-0.2</value>
+                    <value>-0.0</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Ramp slope of TONE pulse used in TOF</description>
                     <displayedName>TOF TX Ramp Slope</displayedName>
@@ -3867,14 +3750,35 @@
                 </value>
             </entry>
             <entry>
+                <key>TOF_MT_TX_SHAPE</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                    <name>TOF_MT_TX_SHAPE</name>
+                    <uuid>b9658485-d02d-453d-a1b0-f04a94a12b11</uuid>
+                    <value>GAUSSIAN</value>
+                    <defaultValue>HARD</defaultValue>
+                    <description>Tx shape of MT pulse in TOF 3D</description>
+                    <displayedName>TOF 3D - MT TX Shape</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <suggestedValues>HARD</suggestedValues>
+                    <suggestedValues>GAUSSIAN</suggestedValues>
+                    <suggestedValues>SINC3</suggestedValues>
+                    <suggestedValues>SINC5</suggestedValues>
+                    <suggestedValues>SLR_8_5152</suggestedValues>
+                    <suggestedValues>SLR_4_2576</suggestedValues>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
                 <key>TOF_SB_OFFSET</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="hzPpmNumberParam">
                     <name>TOF_SB_OFFSET</name>
-                    <uuid>f67c4343-e279-448e-b9c3-6835feaaa37d</uuid>
+                    <uuid>105e9d00-5476-434c-9a21-7bf8d733f9e5</uuid>
                     <value>1000.0</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Additional global requency offset applied to all TOF satband RF pulses</description>
-                    <displayedName>TOF Sat - Offset Frequency</displayedName>
+                    <displayedName>TOF 3D - MT Offset Frequency</displayedName>
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
@@ -3894,28 +3798,8 @@
                     <maxValue>1.5E9</maxValue>
                     <group>Emission</group>
                     <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>TOF_SB_TX_SHAPE</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
-                    <name>TOF_SB_TX_SHAPE</name>
-                    <uuid>aebf11b7-67a5-4121-8b37-b2a2a4aa388f</uuid>
-                    <value>GAUSSIAN</value>
-                    <defaultValue>HARD</defaultValue>
-                    <description>TOF satband RF pulse shape</description>
-                    <displayedName>TOF Sat - TX Shape</displayedName>
-                    <locked>false</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <suggestedValues>HARD</suggestedValues>
-                    <suggestedValues>GAUSSIAN</suggestedValues>
-                    <suggestedValues>SINC3</suggestedValues>
-                    <suggestedValues>SINC5</suggestedValues>
-                    <suggestedValues>SLR_8_5152</suggestedValues>
-                    <suggestedValues>SLR_4_2576</suggestedValues>
-                    <suggestedValues>RAMP</suggestedValues>
-                    <category>Acquisition</category>
+                    <uuidBaseFrequency>3f45d8fb-3979-4c93-8eb6-995eac09198e</uuidBaseFrequency>
+                    <initialNumberEnum>FrequencyOffset</initialNumberEnum>
                 </value>
             </entry>
             <entry>
@@ -10503,8 +10387,6 @@
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <suggestedValues>Sequential4D</suggestedValues>
-                    <suggestedValues>Elliptical3D</suggestedValues>
-                    <suggestedValues>Sequential4D_TOF</suggestedValues>
                     <group>Scan</group>
                     <category>Acquisition</category>
                 </value>
@@ -10625,7 +10507,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_AMP</name>
                     <uuid>6d533b2b-46db-468e-81d9-e86ffe3b2e90</uuid>
-                    <value>77.47537494100442</value>
+                    <value>77.4319513446612</value>
                     <defaultValue>40.0</defaultValue>
                     <description>Amplitude of the excitation RF pulse </description>
                     <displayedName>TX Amplitude</displayedName>
@@ -10636,43 +10518,6 @@
                     <minValue>0.0</minValue>
                     <maxValue>100.0</maxValue>
                     <group>Emission</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>TX_AMP_180</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                    <name>TX_AMP_180</name>
-                    <uuid>cb183c2a-1c8a-4386-ad09-555c0730b3f9</uuid>
-                    <value>100.0</value>
-                    <defaultValue>0.0</defaultValue>
-                    <description>The magnitude of the RF pulse 180</description>
-                    <displayedName>TX_AMP_180</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <numberEnum>TxAmp</numberEnum>
-                    <minValue>0.0</minValue>
-                    <maxValue>100.0</maxValue>
-                    <group>Emission</group>
-                    <category>Acquisition</category>
-                </value>
-            </entry>
-            <entry>
-                <key>TX_AMP_90</key>
-                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
-                    <name>TX_AMP_90</name>
-                    <uuid>14c88b3e-61fb-4e22-b010-fdc486555725</uuid>
-                    <value>100.0</value>
-                    <defaultValue>0.0</defaultValue>
-                    <description>Amplitude of the transmitter</description>
-                    <displayedName>TX_AMP_90</displayedName>
-                    <locked>true</locked>
-                    <lockedToDefault>false</lockedToDefault>
-                    <restrictedToSuggested>false</restrictedToSuggested>
-                    <numberEnum>TxAmp</numberEnum>
-                    <minValue>0.0</minValue>
-                    <maxValue>100.0</maxValue>
                     <category>Acquisition</category>
                 </value>
             </entry>
@@ -10696,7 +10541,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_ATT</name>
                     <uuid>13a8651e-9ec7-4485-8162-a7726c6194bb</uuid>
-                    <value>0</value>
+                    <value>10</value>
                     <defaultValue>36</defaultValue>
                     <description>RF pulse attenuation</description>
                     <displayedName>TX Attenuation</displayedName>
@@ -10715,7 +10560,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="listNumberParam">
                     <name>TX_BANDWIDTH_FACTOR</name>
                     <uuid>b9b88155-f184-4470-afe8-9488b7a4130b</uuid>
-                    <value>0.95</value>
+                    <value>0.9500000000000001</value>
                     <value>1.35</value>
                     <value>2.55</value>
                     <value>4.25</value>
@@ -10807,10 +10652,24 @@
                 </value>
             </entry>
             <entry>
+                <key>TX_SELECTION_PULSE</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                    <name>TX_SELECTION_PULSE</name>
+                    <uuid>b3755568-2dd4-415b-babb-64bb9ee18ce7</uuid>
+                    <value>true</value>
+                    <defaultValue>false</defaultValue>
+                    <description>True: use TX_BANDWIDTH_FACTOR for slab selection, False: use TX_BANDWIDTH_FACTOR_3D for slab selection</description>
+                    <displayedName>Tx Selection Pulse</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
                 <key>TX_SHAPE</key>
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>TX_SHAPE</name>
-                    <uuid>74cc532c-6424-43ea-8054-7da39bb8e59a</uuid>
+                    <uuid>b5f2a190-a8eb-4d22-9905-df295f4c368f</uuid>
                     <value>RAMP</value>
                     <defaultValue>GAUSSIAN</defaultValue>
                     <description>RF Pulse shape</description>
@@ -10834,7 +10693,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>USER_MATRIX_DIMENSION_1D</name>
                     <uuid>0c39cd10-8c2b-4df3-ae75-025ab7e6a807</uuid>
-                    <value>256</value>
+                    <value>80</value>
                     <defaultValue>1</defaultValue>
                     <description>Image size in readout direction (user matrix dimension 1D)</description>
                     <displayedName>Matrix 1D Read</displayedName>
@@ -10853,7 +10712,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>USER_MATRIX_DIMENSION_2D</name>
                     <uuid>8ef6d0ad-6cae-448f-af79-cb2ca03126df</uuid>
-                    <value>160</value>
+                    <value>80</value>
                     <defaultValue>1</defaultValue>
                     <description>Image size in phase encoding direction  (user matrix dimension 2D)</description>
                     <displayedName>Matrix 2D Phase</displayedName>
@@ -10940,6 +10799,24 @@
                     <minValue>0.0</minValue>
                     <maxValue>100.0</maxValue>
                     <group>Dimension</group>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
+                <key>USER_SLICE_THICKNESS</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>USER_SLICE_THICKNESS</name>
+                    <uuid>568f039a-a64a-4d5c-9af6-614aa5e6d9a7</uuid>
+                    <value>5.0E-4</value>
+                    <defaultValue>0.0</defaultValue>
+                    <description>Nominal Slice Thickness (value does not change after SlabConcatenation)</description>
+                    <displayedName>Slice Thickness</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <numberEnum>Length</numberEnum>
+                    <minValue>0.0</minValue>
+                    <maxValue>1.7976931348623157E308</maxValue>
                     <category>Acquisition</category>
                 </value>
             </entry>

@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>rs2d-sequence</groupId>
   <artifactId>tof</artifactId>
-  <version>V2.1_spinlab_2022.06.3</version>
+  <version>V2.2_spinlab_2022.12</version>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -17,12 +17,12 @@
     <dependency>
       <groupId>rs2d</groupId>
       <artifactId>spinlab</artifactId>
-      <version>2022.06.3</version>
+      <version>2022.12</version>
     </dependency>
     <dependency>
       <groupId>rs2d</groupId>
       <artifactId>rs2d-commons</artifactId>
-      <version>2022.06.3</version>
+      <version>2022.12</version>
     </dependency>
     <dependency>
       <groupId>rs2d-sequence</groupId>
@@ -41,8 +41,8 @@
               <RS2D-Sequence-Name>TOF</RS2D-Sequence-Name>
               <RS2D-Sequence-File>Tof.sxml</RS2D-Sequence-File>
               <RS2D-Sequence-Generator>rs2d.sequence.gradientecho.TOF</RS2D-Sequence-Generator>
-              <RS2D-Spinlab-Version>2022.06.3</RS2D-Spinlab-Version>
-              <RS2D-Compiler-Version>1711-2022.06.3</RS2D-Compiler-Version>
+              <RS2D-Spinlab-Version>2022.12</RS2D-Spinlab-Version>
+              <RS2D-Compiler-Version>2022.12</RS2D-Compiler-Version>
               <RS2D-Java-Version>17.0.2+8-LTS (OpenJDK Runtime Environment)</RS2D-Java-Version>
             </manifestEntries>
           </archive>

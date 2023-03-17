@@ -967,7 +967,7 @@
         <Entry>
             <count>1</count>
             <key>key42</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key9" phaseKey="key10" ampKey="key11" shapeKey="key12" shapePhaseKey="key0" attKey="table20" phaseModKey="table59" shapeNameKey="param180" nameKey="key172" enabledKey="key173"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key9" phaseKey="key10" ampKey="key11" shapeKey="key12" shapePhaseKey="key0" attKey="table20" phaseModKey="table59" pulseAlignmentModeKey="param266" shapeNameKey="param180" nameKey="key172" enabledKey="key173"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -1217,7 +1217,7 @@
         <Entry>
             <count>1</count>
             <key>key74</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key5" phaseKey="key18" ampKey="key25" shapeKey="key31" shapePhaseKey="key33" attKey="key124" phaseModKey="table48" shapeNameKey="param116" nameKey="key43" enabledKey="key271"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key5" phaseKey="key18" ampKey="key25" shapeKey="key31" shapePhaseKey="key33" attKey="key124" phaseModKey="table48" pulseAlignmentModeKey="param254" shapeNameKey="param116" nameKey="key43" enabledKey="key271"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -1613,7 +1613,7 @@
         <Entry>
             <count>1</count>
             <key>elem111</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="table287" phaseKey="table263" ampKey="table264" shapeKey="table265" shapePhaseKey="table260" attKey="table266" phaseModKey="table267" shapeNameKey="param448" nameKey="param446" enabledKey="param447"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="table287" phaseKey="table263" ampKey="table264" shapeKey="table265" shapePhaseKey="table260" attKey="table266" phaseModKey="table267" pulseAlignmentModeKey="param259" shapeNameKey="param448" nameKey="param446" enabledKey="param447"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -1623,12 +1623,12 @@
         <Entry>
             <count>1</count>
             <key>elem112</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="table271" phaseKey="table272" ampKey="table273" shapeKey="table274" shapePhaseKey="table269" attKey="table275" phaseModKey="table276" shapeNameKey="param451" nameKey="param449" enabledKey="param423"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="table271" phaseKey="table272" ampKey="table273" shapeKey="table274" shapePhaseKey="table269" attKey="table275" phaseModKey="table276" pulseAlignmentModeKey="param260" shapeNameKey="param451" nameKey="param449" enabledKey="param423"/>
         </Entry>
         <Entry>
             <count>1</count>
             <key>elem113</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="table280" phaseKey="table281" ampKey="table282" shapeKey="table283" shapePhaseKey="table278" attKey="table284" phaseModKey="table285" shapeNameKey="param454" nameKey="param452" enabledKey="param453"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="table280" phaseKey="table281" ampKey="table282" shapeKey="table283" shapePhaseKey="table278" attKey="table284" phaseModKey="table285" pulseAlignmentModeKey="param261" shapeNameKey="param454" nameKey="param452" enabledKey="param453"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -1816,22 +1816,22 @@
         <Entry>
             <count>1</count>
             <key>key140</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key46" phaseKey="key91" ampKey="key92" shapeKey="key93" shapePhaseKey="key94" attKey="key129" phaseModKey="table61" shapeNameKey="param182" nameKey="key293" enabledKey="key295"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key46" phaseKey="key91" ampKey="key92" shapeKey="key93" shapePhaseKey="key94" attKey="key129" phaseModKey="table61" pulseAlignmentModeKey="param268" shapeNameKey="param182" nameKey="key293" enabledKey="key295"/>
         </Entry>
         <Entry>
             <count>1</count>
             <key>key141</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key42" phaseKey="key96" ampKey="key97" shapeKey="key98" shapePhaseKey="key99" attKey="key130" phaseModKey="table62" shapeNameKey="param183" nameKey="key299" enabledKey="key301"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key42" phaseKey="key96" ampKey="key97" shapeKey="key98" shapePhaseKey="key99" attKey="key130" phaseModKey="table62" pulseAlignmentModeKey="param269" shapeNameKey="param183" nameKey="key299" enabledKey="key301"/>
         </Entry>
         <Entry>
             <count>4</count>
             <key>key142</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key13" phaseKey="key101" ampKey="key102" shapeKey="key103" shapePhaseKey="key104" attKey="key131" phaseModKey="table63" shapeNameKey="param184" nameKey="key305" enabledKey="key307"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key13" phaseKey="key101" ampKey="key102" shapeKey="key103" shapePhaseKey="key104" attKey="key131" phaseModKey="table63" pulseAlignmentModeKey="param270" shapeNameKey="param184" nameKey="key305" enabledKey="key307"/>
         </Entry>
         <Entry>
             <count>1</count>
             <key>key143</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key79" phaseKey="key106" ampKey="key107" shapeKey="key108" shapePhaseKey="key109" attKey="key132" phaseModKey="table64" shapeNameKey="param185" nameKey="key311" enabledKey="key313"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key79" phaseKey="key106" ampKey="key107" shapeKey="key108" shapePhaseKey="key109" attKey="key132" phaseModKey="table64" pulseAlignmentModeKey="param271" shapeNameKey="param185" nameKey="key311" enabledKey="key313"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -1896,7 +1896,7 @@
         <Entry>
             <count>1</count>
             <key>key159</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key82" phaseKey="key111" ampKey="key112" shapeKey="key113" shapePhaseKey="key114" attKey="key133" phaseModKey="table65" shapeNameKey="param186" nameKey="key315" enabledKey="key317"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key82" phaseKey="key111" ampKey="key112" shapeKey="key113" shapePhaseKey="key114" attKey="key133" phaseModKey="table65" pulseAlignmentModeKey="param281" shapeNameKey="param186" nameKey="key315" enabledKey="key317"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -1936,12 +1936,12 @@
         <Entry>
             <count>1</count>
             <key>key173</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key51" phaseKey="key52" ampKey="key56" shapeKey="key57" shapePhaseKey="key58" attKey="key128" phaseModKey="table60" shapeNameKey="param181" nameKey="key534" enabledKey="key535"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key51" phaseKey="key52" ampKey="key56" shapeKey="key57" shapePhaseKey="key58" attKey="key128" phaseModKey="table60" pulseAlignmentModeKey="param267" shapeNameKey="param181" nameKey="key534" enabledKey="key535"/>
         </Entry>
         <Entry>
             <count>1</count>
             <key>key174</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key60" phaseKey="key61" ampKey="key63" shapeKey="key64" shapePhaseKey="key66" attKey="key125" phaseModKey="table51" shapeNameKey="param155" nameKey="key536" enabledKey="key537"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key60" phaseKey="key61" ampKey="key63" shapeKey="key64" shapePhaseKey="key66" attKey="key125" phaseModKey="table51" pulseAlignmentModeKey="param255" shapeNameKey="param155" nameKey="key536" enabledKey="key537"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -1951,7 +1951,7 @@
         <Entry>
             <count>1</count>
             <key>key176</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key72" phaseKey="key73" ampKey="key75" shapeKey="key76" shapePhaseKey="key78" attKey="key126" phaseModKey="table58" shapeNameKey="param179" nameKey="key540" enabledKey="key541"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key72" phaseKey="key73" ampKey="key75" shapeKey="key76" shapePhaseKey="key78" attKey="key126" phaseModKey="table58" pulseAlignmentModeKey="param265" shapeNameKey="param179" nameKey="key540" enabledKey="key541"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -2096,17 +2096,17 @@
         <Entry>
             <count>1</count>
             <key>key243</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key188" phaseKey="key149" ampKey="key150" shapeKey="key151" shapePhaseKey="key152" attKey="key153" phaseModKey="table55" shapeNameKey="param176" nameKey="key788" enabledKey="key789"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key188" phaseKey="key149" ampKey="key150" shapeKey="key151" shapePhaseKey="key152" attKey="key153" phaseModKey="table55" pulseAlignmentModeKey="param262" shapeNameKey="param176" nameKey="key788" enabledKey="key789"/>
         </Entry>
         <Entry>
             <count>1</count>
             <key>key244</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key191" phaseKey="key155" ampKey="key156" shapeKey="key157" shapePhaseKey="key158" attKey="table30" phaseModKey="table56" shapeNameKey="param177" nameKey="key790" enabledKey="key797"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key191" phaseKey="key155" ampKey="key156" shapeKey="key157" shapePhaseKey="key158" attKey="table30" phaseModKey="table56" pulseAlignmentModeKey="param263" shapeNameKey="param177" nameKey="key790" enabledKey="key797"/>
         </Entry>
         <Entry>
             <count>1</count>
             <key>key245</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key160" phaseKey="key161" ampKey="key162" shapeKey="key163" shapePhaseKey="key164" attKey="key165" phaseModKey="table57" shapeNameKey="param178" nameKey="key792" enabledKey="key793"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key160" phaseKey="key161" ampKey="key162" shapeKey="key163" shapePhaseKey="key164" attKey="key165" phaseModKey="table57" pulseAlignmentModeKey="param264" shapeNameKey="param178" nameKey="key792" enabledKey="key793"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -2254,17 +2254,17 @@
         <Entry>
             <count>1</count>
             <key>key309</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key289" phaseKey="key224" ampKey="key225" shapeKey="key226" shapePhaseKey="key227" attKey="key228" phaseModKey="table52" shapeNameKey="param173" nameKey="key927" enabledKey="key928"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key289" phaseKey="key224" ampKey="key225" shapeKey="key226" shapePhaseKey="key227" attKey="key228" phaseModKey="table52" pulseAlignmentModeKey="param256" shapeNameKey="param173" nameKey="key927" enabledKey="key928"/>
         </Entry>
         <Entry>
             <count>1</count>
             <key>key310</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key229" phaseKey="key230" ampKey="key231" shapeKey="key232" shapePhaseKey="key233" attKey="table34" phaseModKey="table53" shapeNameKey="param174" nameKey="key929" enabledKey="key1023"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key229" phaseKey="key230" ampKey="key231" shapeKey="key232" shapePhaseKey="key233" attKey="table34" phaseModKey="table53" pulseAlignmentModeKey="param257" shapeNameKey="param174" nameKey="key929" enabledKey="key1023"/>
         </Entry>
         <Entry>
             <count>1</count>
             <key>key311</key>
-            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key235" phaseKey="key236" ampKey="key237" shapeKey="key238" shapePhaseKey="key239" attKey="key240" phaseModKey="table54" shapeNameKey="param175" nameKey="key931" enabledKey="key932"/>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="txElement" offsetKey="key235" phaseKey="key236" ampKey="key237" shapeKey="key238" shapePhaseKey="key239" attKey="key240" phaseModKey="table54" pulseAlignmentModeKey="param258" shapeNameKey="param175" nameKey="key931" enabledKey="key932"/>
         </Entry>
         <Entry>
             <count>1</count>
@@ -7632,7 +7632,7 @@
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>Tx_shape_name10</name>
                 <uuid>03300c31-859f-4560-a2bf-2392799c0654</uuid>
-                <value>RAMP0</value>
+                <value>Custom</value>
                 <defaultValue>Custom</defaultValue>
                 <description>Name of the shape, also the name of the shape file.</description>
                 <displayedName>Shape name</displayedName>
@@ -9521,6 +9521,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param254</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode</name>
+                <uuid>aa7d2a02-ed87-4626-803f-99beddd777e6</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key255</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>name68</name>
@@ -9532,6 +9546,20 @@
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
                 <restrictedToSuggested>false</restrictedToSuggested>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param255</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode2</name>
+                <uuid>b1662fdf-d8a5-4b1e-bb0b-b7a9129c8f4d</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
             </value>
         </Entry>
         <Entry>
@@ -9550,6 +9578,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param256</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode3</name>
+                <uuid>5dbafa0e-f747-4641-a3bb-405243f081b6</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key257</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>state39</name>
@@ -9558,6 +9600,20 @@
                 <defaultValue>false</defaultValue>
                 <description>State of the element</description>
                 <displayedName>state39</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param257</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode4</name>
+                <uuid>8f947b35-64ed-4906-8994-8c1f31433b88</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -9579,6 +9635,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param258</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode5</name>
+                <uuid>4ea3c9ed-6ba4-4ec5-967d-77beaa3c3deb</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key259</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>enabled69</name>
@@ -9593,6 +9663,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param259</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode6</name>
+                <uuid>5c455221-f796-4962-9846-40199c533a1d</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key260</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>state40</name>
@@ -9601,6 +9685,20 @@
                 <defaultValue>false</defaultValue>
                 <description>State of the element</description>
                 <displayedName>state40</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param260</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode7</name>
+                <uuid>a2539a03-4e09-4436-b9b0-fcd2856ea833</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -9622,6 +9720,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param261</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode8</name>
+                <uuid>f6b99ab6-dc1a-44b5-8c1f-e17b0ec27731</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key262</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>enabled70</name>
@@ -9636,6 +9748,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param262</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode9</name>
+                <uuid>f8ab7f59-9c7a-45d0-b547-3e112fed4f3e</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key263</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
                 <name>CodeEnum12</name>
@@ -9643,6 +9769,20 @@
                 <value xsi:type="codeEnum">Continu</value>
                 <defaultValue xsi:type="codeEnum">Continu</defaultValue>
                 <displayedName>CodeEnum12</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param263</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode10</name>
+                <uuid>8fb1d728-af6b-4d2d-b7f9-d4ce66dd2314</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -9666,6 +9806,62 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param264</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode11</name>
+                <uuid>41062161-d0f4-4d60-b97b-93fea256bdb1</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param265</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode12</name>
+                <uuid>9ffd0494-be52-4592-a0d7-870fc5921b14</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param266</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode13</name>
+                <uuid>5490d7bc-953b-439f-8c9b-7405237566db</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param267</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode14</name>
+                <uuid>442beae8-26db-4f0f-85b5-6523781ecea1</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key268</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                 <name>name1111</name>
@@ -9681,6 +9877,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param268</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode15</name>
+                <uuid>ee383569-74b0-458c-904b-cc22dde579db</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key269</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>enabled1111</name>
@@ -9689,6 +9899,20 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>enabled1111</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param269</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode16</name>
+                <uuid>96829375-f0fc-4098-b8ff-c8323ebcc0be</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -9708,6 +9932,20 @@
         </Entry>
         <Entry>
             <count>1</count>
+            <key>param270</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode17</name>
+                <uuid>954c293a-3ac1-4c8f-9cc3-649a8b9ce4c5</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
             <key>key271</key>
             <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                 <name>enabled1110</name>
@@ -9716,6 +9954,20 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>enabled1110</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param271</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode18</name>
+                <uuid>973ffeaa-41a2-4c6e-a7fd-430ecf8b2150</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -9988,6 +10240,20 @@
                 <defaultValue>true</defaultValue>
                 <description>The state of the element</description>
                 <displayedName>enabled11116</displayedName>
+                <locked>false</locked>
+                <lockedToDefault>false</lockedToDefault>
+            </value>
+        </Entry>
+        <Entry>
+            <count>1</count>
+            <key>param281</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="enumParam">
+                <name>Pulse_alignment_mode19</name>
+                <uuid>109d478c-29d3-412f-b5da-1cfcd7a1dd77</uuid>
+                <value xsi:type="pulseAlignmentMode">CENTER</value>
+                <defaultValue xsi:type="pulseAlignmentMode">CENTER</defaultValue>
+                <description>The way alignment should be done if several pulses are on the same instructions.</description>
+                <displayedName>Pulse Alignment Mode</displayedName>
                 <locked>false</locked>
                 <lockedToDefault>false</lockedToDefault>
             </value>
@@ -19604,7 +19870,7 @@
                     <name>SincRampPhase</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
-                        <uuid>acf291bf-b9aa-4d55-9d13-49c731d62d79</uuid>
+                        <uuid>e7b003ca-6dce-409e-902a-dc8b867203c1</uuid>
                         <value>128</value>
                         <defaultValue>64</defaultValue>
                         <description>Number of points</description>
@@ -19618,7 +19884,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Nb lobe</name>
-                        <uuid>5ce81cbb-52f3-469d-8e08-72caf1ad0ae3</uuid>
+                        <uuid>02af7e52-8b9f-4244-ae54-cecd64266908</uuid>
                         <value>3</value>
                         <defaultValue>3</defaultValue>
                         <description>Number of lobe of the sinus cardinal (ramp)</description>
@@ -19632,7 +19898,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
-                        <uuid>bf3aa0f9-8918-4797-aa19-31d6cee2577f</uuid>
+                        <uuid>277e405f-6baf-4df2-9f85-7088faab1fd0</uuid>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
                         <description>Amplitude of the sinus cardinal(ramp)</description>
@@ -19646,7 +19912,7 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <uuid>6431a4d9-2f1d-4af9-8bd3-a1c6713f459e</uuid>
+                        <uuid>d96e38de-0d72-4479-8c42-28c96600a55c</uuid>
                         <value>true</value>
                         <defaultValue>false</defaultValue>
                         <description>Absolue value</description>
@@ -19656,7 +19922,7 @@
                     </params>
                     <params xsi:type="textParam">
                         <name>Window</name>
-                        <uuid>546ce23e-afd9-4db8-8939-b5830ea47936</uuid>
+                        <uuid>cfabf473-a75a-41a9-a6b9-2c1e87e57002</uuid>
                         <value>Hamming</value>
                         <defaultValue>None</defaultValue>
                         <description>The apodisation window</description>
@@ -19670,7 +19936,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Ramp slope</name>
-                        <uuid>8f52cb83-43ee-4d23-8516-38f0573b7935</uuid>
+                        <uuid>2091706c-bb7c-44fd-b2ce-707a91d1001f</uuid>
                         <value>-0.0</value>
                         <defaultValue>0.1</defaultValue>
                         <description>Slope of the ramp</description>
@@ -20176,7 +20442,7 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>2</address>
-                <list>77.4319513446612</list>
+                <list>77.24672080558213</list>
             </value>
         </Entry>
         <Entry>
@@ -20208,7 +20474,7 @@
                     <name>SincRamp</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
-                        <uuid>6ce1dc0a-f7db-4ab5-9e48-a0ff6bf8dc9f</uuid>
+                        <uuid>c6e7825a-c8c8-4714-9987-03e5da3689b1</uuid>
                         <value>128</value>
                         <defaultValue>64</defaultValue>
                         <description>Number of points</description>
@@ -20222,7 +20488,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Nb lobe</name>
-                        <uuid>3f8b3009-b197-41bb-809d-118e023f3edc</uuid>
+                        <uuid>6f7c7a0d-12ae-466d-b067-0211b8e29955</uuid>
                         <value>3</value>
                         <defaultValue>3</defaultValue>
                         <description>Number of lobe of the sinus cardinal (ramp)</description>
@@ -20236,7 +20502,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
-                        <uuid>0485d6b1-7ed2-43a4-a9da-df6125252e1f</uuid>
+                        <uuid>2fa52c24-d96c-45af-8775-dc4e1da5f26e</uuid>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
                         <description>Amplitude of the sinus cardinal(ramp)</description>
@@ -20250,7 +20516,7 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <uuid>3d0f47c8-624d-4b1f-b253-6628593d2817</uuid>
+                        <uuid>35480fd1-6287-40cf-b660-f30a11613ae2</uuid>
                         <value>true</value>
                         <defaultValue>false</defaultValue>
                         <description>Absolue value</description>
@@ -20260,7 +20526,7 @@
                     </params>
                     <params xsi:type="textParam">
                         <name>Window</name>
-                        <uuid>12ed66f6-3169-47d0-89a3-f3192be3778d</uuid>
+                        <uuid>96107993-574e-4db6-b13a-2bc10ee28a7e</uuid>
                         <value>Hamming</value>
                         <defaultValue>None</defaultValue>
                         <description>The apodisation window</description>
@@ -20274,7 +20540,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Ramp slope</name>
-                        <uuid>1af3f89d-7ac5-4685-98a7-d101427f2a58</uuid>
+                        <uuid>3176992b-734e-469f-b9b2-f895acb4260c</uuid>
                         <value>-0.0</value>
                         <defaultValue>0.1</defaultValue>
                         <description>Slope of the ramp</description>
@@ -20668,7 +20934,7 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>0</address>
-                <list>7.975523760113595</list>
+                <list>8.04063413358088</list>
             </value>
         </Entry>
         <Entry>
@@ -21038,30 +21304,30 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>1</address>
-                <list>-28.75815287477671</list>
-                <list>-26.87449533308629</list>
-                <list>-24.99083779139587</list>
-                <list>-23.107180249705447</list>
-                <list>-21.22352270801503</list>
-                <list>-19.33986516632461</list>
-                <list>-17.45620762463419</list>
-                <list>-15.57255008294377</list>
-                <list>-13.688892541253349</list>
-                <list>-11.805234999562927</list>
-                <list>-9.921577457872509</list>
-                <list>-8.037919916182087</list>
-                <list>-6.154262374491666</list>
-                <list>-4.270604832801248</list>
-                <list>-2.38694729111083</list>
-                <list>-0.503289749420408</list>
-                <list>1.3803677922700102</list>
-                <list>3.2640253339604284</list>
-                <list>5.147682875650854</list>
-                <list>7.031340417341272</list>
-                <list>8.914997959031691</list>
-                <list>10.798655500722116</list>
-                <list>12.682313042412535</list>
-                <list>14.565970584102953</list>
+                <list>-28.992927935352707</list>
+                <list>-27.09389263920843</list>
+                <list>-25.194857343064154</list>
+                <list>-23.295822046919877</list>
+                <list>-21.3967867507756</list>
+                <list>-19.49775145463132</list>
+                <list>-17.598716158487044</list>
+                <list>-15.699680862342767</list>
+                <list>-13.80064556619849</list>
+                <list>-11.901610270054213</list>
+                <list>-10.002574973909937</list>
+                <list>-8.10353967776566</list>
+                <list>-6.2045043816213825</list>
+                <list>-4.305469085477106</list>
+                <list>-2.4064337893328256</list>
+                <list>-0.5073984931885525</list>
+                <list>1.3916368029557242</list>
+                <list>3.2906720991000045</list>
+                <list>5.189707395244281</list>
+                <list>7.088742691388558</list>
+                <list>8.987777987532834</list>
+                <list>10.88681328367711</list>
+                <list>12.785848579821387</list>
+                <list>14.684883875965664</list>
             </value>
         </Entry>
         <Entry>
@@ -21205,7 +21471,7 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>0</address>
-                <list>-13.659636157925974</list>
+                <list>-13.771150340369728</list>
             </value>
         </Entry>
         <Entry>
@@ -21362,86 +21628,86 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>0</address>
-                <list>-12.916508857305736</list>
-                <list>-12.593596135873092</list>
-                <list>-12.27068341444045</list>
-                <list>-11.947770693007806</list>
-                <list>-11.624857971575162</list>
-                <list>-11.30194525014252</list>
-                <list>-10.979032528709876</list>
-                <list>-10.656119807277232</list>
-                <list>-10.333207085844588</list>
-                <list>-10.010294364411946</list>
-                <list>-9.687381642979302</list>
-                <list>-9.36446892154666</list>
-                <list>-9.041556200114016</list>
-                <list>-8.718643478681372</list>
-                <list>-8.395730757248728</list>
-                <list>-8.072818035816086</list>
-                <list>-7.749905314383442</list>
-                <list>-7.426992592950798</list>
-                <list>-7.104079871518155</list>
-                <list>-6.781167150085512</list>
-                <list>-6.458254428652868</list>
-                <list>-6.135341707220224</list>
-                <list>-5.812428985787582</list>
-                <list>-5.489516264354938</list>
-                <list>-5.166603542922295</list>
-                <list>-4.84369082148965</list>
-                <list>-4.520778100057006</list>
-                <list>-4.197865378624364</list>
-                <list>-3.874952657191722</list>
-                <list>-3.552039935759078</list>
-                <list>-3.229127214326436</list>
-                <list>-2.906214492893792</list>
-                <list>-2.583301771461148</list>
-                <list>-2.260389050028504</list>
-                <list>-1.93747632859586</list>
-                <list>-1.614563607163218</list>
-                <list>-1.291650885730574</list>
-                <list>-0.96873816429793</list>
-                <list>-0.6458254428652879</list>
-                <list>-0.32291272143264393</list>
-                <list>0.0</list>
-                <list>0.32291272143264393</list>
-                <list>0.6458254428652879</list>
-                <list>0.9687381642979318</list>
-                <list>1.2916508857305722</list>
-                <list>1.6145636071632161</list>
-                <list>1.93747632859586</list>
-                <list>2.260389050028504</list>
-                <list>2.583301771461146</list>
-                <list>2.90621449289379</list>
-                <list>3.229127214326436</list>
-                <list>3.5520399357590797</list>
-                <list>3.8749526571917237</list>
-                <list>4.197865378624364</list>
-                <list>4.520778100057008</list>
-                <list>4.843690821489652</list>
-                <list>5.166603542922292</list>
-                <list>5.489516264354936</list>
-                <list>5.81242898578758</list>
-                <list>6.135341707220224</list>
-                <list>6.4582544286528645</list>
-                <list>6.781167150085508</list>
-                <list>7.104079871518152</list>
-                <list>7.426992592950796</list>
-                <list>7.74990531438344</list>
-                <list>8.072818035816084</list>
-                <list>8.395730757248728</list>
-                <list>8.718643478681372</list>
-                <list>9.041556200114016</list>
-                <list>9.364468921546656</list>
-                <list>9.6873816429793</list>
-                <list>10.010294364411944</list>
-                <list>10.333207085844588</list>
-                <list>10.656119807277232</list>
-                <list>10.979032528709876</list>
-                <list>11.30194525014252</list>
-                <list>11.62485797157516</list>
-                <list>11.947770693007804</list>
-                <list>12.270683414440448</list>
-                <list>12.593596135873092</list>
+                <list>-13.0219563164179</list>
+                <list>-12.696407408507453</list>
+                <list>-12.370858500597004</list>
+                <list>-12.045309592686557</list>
+                <list>-11.719760684776109</list>
+                <list>-11.394211776865662</list>
+                <list>-11.068662868955215</list>
+                <list>-10.743113961044767</list>
+                <list>-10.41756505313432</list>
+                <list>-10.092016145223873</list>
+                <list>-9.766467237313424</list>
+                <list>-9.440918329402976</list>
+                <list>-9.115369421492531</list>
+                <list>-8.789820513582082</list>
+                <list>-8.464271605671634</list>
+                <list>-8.138722697761187</list>
+                <list>-7.813173789850739</list>
+                <list>-7.487624881940293</list>
+                <list>-7.162075974029845</list>
+                <list>-6.836527066119397</list>
+                <list>-6.5109781582089505</list>
+                <list>-6.185429250298502</list>
+                <list>-5.859880342388054</list>
+                <list>-5.534331434477608</list>
+                <list>-5.208782526567161</list>
+                <list>-4.883233618656714</list>
+                <list>-4.5576847107462655</list>
+                <list>-4.232135802835817</list>
+                <list>-3.90658689492537</list>
+                <list>-3.5810379870149234</list>
+                <list>-3.255489079104475</list>
+                <list>-2.929940171194028</list>
+                <list>-2.6043912632835795</list>
+                <list>-2.2788423553731327</list>
+                <list>-1.953293447462686</list>
+                <list>-1.6277445395522374</list>
+                <list>-1.3021956316417906</list>
+                <list>-0.9766467237313439</list>
+                <list>-0.6510978158208953</list>
+                <list>-0.32554890791044677</list>
+                <list>-1.7763568394002505E-15</list>
+                <list>0.32554890791044677</list>
+                <list>0.6510978158208953</list>
+                <list>0.9766467237313421</list>
+                <list>1.3021956316417906</list>
+                <list>1.6277445395522356</list>
+                <list>1.9532934474626842</list>
+                <list>2.2788423553731327</list>
+                <list>2.6043912632835777</list>
+                <list>2.9299401711940263</list>
+                <list>3.2554890791044713</list>
+                <list>3.58103798701492</list>
+                <list>3.9065868949253684</list>
+                <list>4.232135802835817</list>
+                <list>4.5576847107462655</list>
+                <list>4.883233618656714</list>
+                <list>5.208782526567159</list>
+                <list>5.534331434477608</list>
+                <list>5.8598803423880526</list>
+                <list>6.185429250298501</list>
+                <list>6.51097815820895</list>
+                <list>6.836527066119395</list>
+                <list>7.162075974029843</list>
+                <list>7.487624881940292</list>
+                <list>7.81317378985074</list>
+                <list>8.138722697761189</list>
+                <list>8.464271605671634</list>
+                <list>8.789820513582082</list>
+                <list>9.115369421492527</list>
+                <list>9.440918329402976</list>
+                <list>9.766467237313424</list>
+                <list>10.09201614522387</list>
+                <list>10.417565053134318</list>
+                <list>10.743113961044763</list>
+                <list>11.068662868955212</list>
+                <list>11.39421177686566</list>
+                <list>11.719760684776109</list>
+                <list>12.045309592686557</list>
+                <list>12.370858500597006</list>
+                <list>12.69640740850745</list>
             </value>
         </Entry>
         <Entry>
@@ -21599,7 +21865,7 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>1</address>
-                <list>5.150195292124599</list>
+                <list>5.192240322518304</list>
             </value>
         </Entry>
         <Entry>
@@ -21909,7 +22175,7 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>0</address>
-                <list>26.340363842074026</list>
+                <list>26.22884965963027</list>
             </value>
         </Entry>
         <Entry>
@@ -22072,86 +22338,86 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>256</address>
-                <list>52.916508857305736</list>
-                <list>52.59359613587309</list>
-                <list>52.27068341444045</list>
-                <list>51.947770693007804</list>
-                <list>51.62485797157516</list>
-                <list>51.30194525014252</list>
-                <list>50.97903252870988</list>
-                <list>50.656119807277236</list>
-                <list>50.33320708584459</list>
-                <list>50.01029436441195</list>
-                <list>49.687381642979304</list>
-                <list>49.36446892154666</list>
-                <list>49.041556200114016</list>
-                <list>48.71864347868137</list>
-                <list>48.39573075724873</list>
-                <list>48.072818035816084</list>
-                <list>47.74990531438344</list>
-                <list>47.426992592950796</list>
-                <list>47.10407987151815</list>
-                <list>46.78116715008551</list>
-                <list>46.458254428652864</list>
-                <list>46.13534170722022</list>
-                <list>45.812428985787584</list>
-                <list>45.48951626435494</list>
-                <list>45.166603542922296</list>
-                <list>44.84369082148965</list>
-                <list>44.52077810005701</list>
-                <list>44.197865378624364</list>
-                <list>43.87495265719172</list>
-                <list>43.552039935759076</list>
-                <list>43.22912721432644</list>
-                <list>42.906214492893795</list>
-                <list>42.58330177146115</list>
-                <list>42.26038905002851</list>
-                <list>41.937476328595864</list>
-                <list>41.61456360716322</list>
-                <list>41.291650885730576</list>
-                <list>40.96873816429793</list>
-                <list>40.64582544286529</list>
-                <list>40.322912721432644</list>
+                <list>53.0219563164179</list>
+                <list>52.696407408507454</list>
+                <list>52.370858500597</list>
+                <list>52.04530959268656</list>
+                <list>51.719760684776105</list>
+                <list>51.39421177686566</list>
+                <list>51.068662868955215</list>
+                <list>50.74311396104477</list>
+                <list>50.41756505313432</list>
+                <list>50.09201614522387</list>
+                <list>49.76646723731342</list>
+                <list>49.440918329402976</list>
+                <list>49.11536942149253</list>
+                <list>48.789820513582086</list>
+                <list>48.464271605671634</list>
+                <list>48.13872269776119</list>
+                <list>47.81317378985074</list>
+                <list>47.48762488194029</list>
+                <list>47.16207597402985</list>
+                <list>46.836527066119395</list>
+                <list>46.51097815820895</list>
+                <list>46.185429250298505</list>
+                <list>45.85988034238805</list>
+                <list>45.53433143447761</list>
+                <list>45.20878252656716</list>
+                <list>44.88323361865672</list>
+                <list>44.557684710746265</list>
+                <list>44.23213580283581</list>
+                <list>43.90658689492537</list>
+                <list>43.58103798701492</list>
+                <list>43.25548907910448</list>
+                <list>42.929940171194026</list>
+                <list>42.60439126328358</list>
+                <list>42.27884235537313</list>
+                <list>41.953293447462684</list>
+                <list>41.62774453955224</list>
+                <list>41.302195631641794</list>
+                <list>40.97664672373134</list>
+                <list>40.6510978158209</list>
+                <list>40.325548907910445</list>
                 <list>40.0</list>
-                <list>39.677087278567356</list>
-                <list>39.35417455713471</list>
-                <list>39.03126183570207</list>
-                <list>38.708349114269424</list>
-                <list>38.38543639283678</list>
-                <list>38.062523671404136</list>
-                <list>37.73961094997149</list>
-                <list>37.416698228538856</list>
-                <list>37.09378550710621</list>
-                <list>36.77087278567356</list>
-                <list>36.44796006424092</list>
-                <list>36.12504734280827</list>
-                <list>35.802134621375636</list>
-                <list>35.47922189994299</list>
-                <list>35.15630917851035</list>
-                <list>34.83339645707771</list>
-                <list>34.51048373564507</list>
-                <list>34.18757101421242</list>
-                <list>33.86465829277978</list>
-                <list>33.541745571347136</list>
-                <list>33.21883284991449</list>
-                <list>32.89592012848185</list>
-                <list>32.573007407049204</list>
-                <list>32.25009468561656</list>
-                <list>31.927181964183916</list>
-                <list>31.604269242751272</list>
-                <list>31.281356521318628</list>
-                <list>30.958443799885984</list>
-                <list>30.635531078453344</list>
-                <list>30.3126183570207</list>
-                <list>29.989705635588056</list>
-                <list>29.666792914155412</list>
-                <list>29.343880192722768</list>
-                <list>29.020967471290124</list>
-                <list>28.69805474985748</list>
-                <list>28.37514202842484</list>
-                <list>28.052229306992196</list>
-                <list>27.729316585559552</list>
-                <list>27.406403864126908</list>
+                <list>39.674451092089555</list>
+                <list>39.3489021841791</list>
+                <list>39.02335327626866</list>
+                <list>38.697804368358206</list>
+                <list>38.37225546044776</list>
+                <list>38.046706552537316</list>
+                <list>37.72115764462687</list>
+                <list>37.395608736716426</list>
+                <list>37.070059828805974</list>
+                <list>36.74451092089553</list>
+                <list>36.41896201298508</list>
+                <list>36.09341310507463</list>
+                <list>35.76786419716419</list>
+                <list>35.442315289253735</list>
+                <list>35.11676638134328</list>
+                <list>34.79121747343284</list>
+                <list>34.46566856552239</list>
+                <list>34.14011965761195</list>
+                <list>33.8145707497015</list>
+                <list>33.48902184179105</list>
+                <list>33.163472933880605</list>
+                <list>32.83792402597015</list>
+                <list>32.51237511805971</list>
+                <list>32.18682621014926</list>
+                <list>31.86127730223881</list>
+                <list>31.535728394328366</list>
+                <list>31.210179486417918</list>
+                <list>30.884630578507473</list>
+                <list>30.559081670597024</list>
+                <list>30.233532762686576</list>
+                <list>29.90798385477613</list>
+                <list>29.582434946865682</list>
+                <list>29.256886038955237</list>
+                <list>28.93133713104479</list>
+                <list>28.60578822313434</list>
+                <list>28.28023931522389</list>
+                <list>27.954690407313443</list>
+                <list>27.629141499402994</list>
+                <list>27.303592591492553</list>
             </value>
         </Entry>
         <Entry>
@@ -22299,30 +22565,30 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>1</address>
-                <list>56.44962812579337</list>
-                <list>54.56597058410295</list>
-                <list>52.68231304241253</list>
-                <list>50.798655500722106</list>
-                <list>48.91499795903169</list>
-                <list>47.03134041734127</list>
-                <list>45.147682875650844</list>
-                <list>43.264025333960426</list>
-                <list>41.38036779227001</list>
-                <list>39.49671025057958</list>
-                <list>37.61305270888917</list>
-                <list>35.729395167198746</list>
-                <list>33.84573762550832</list>
-                <list>31.962080083817906</list>
-                <list>30.078422542127488</list>
-                <list>28.194765000437066</list>
-                <list>26.311107458746648</list>
-                <list>24.42744991705623</list>
-                <list>22.543792375365804</list>
-                <list>20.660134833675386</list>
-                <list>18.776477291984968</list>
-                <list>16.892819750294542</list>
-                <list>15.009162208604124</list>
-                <list>13.125504666913706</list>
+                <list>56.583919172109944</list>
+                <list>54.68488387596567</list>
+                <list>52.78584857982139</list>
+                <list>50.886813283677114</list>
+                <list>48.98777798753284</list>
+                <list>47.08874269138855</list>
+                <list>45.18970739524428</list>
+                <list>43.2906720991</list>
+                <list>41.39163680295572</list>
+                <list>39.49260150681145</list>
+                <list>37.59356621066717</list>
+                <list>35.69453091452289</list>
+                <list>33.79549561837862</list>
+                <list>31.89646032223434</list>
+                <list>29.99742502609006</list>
+                <list>28.098389729945787</list>
+                <list>26.19935443380151</list>
+                <list>24.30031913765723</list>
+                <list>22.401283841512953</list>
+                <list>20.502248545368676</list>
+                <list>18.6032132492244</list>
+                <list>16.704177953080123</list>
+                <list>14.805142656935846</list>
+                <list>12.90610736079157</list>
             </value>
         </Entry>
         <Entry>
@@ -24402,7 +24668,7 @@
                 <group>Gradient</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>2.432065598378169</list>
+                <list>2.451920432263722</list>
             </value>
         </Entry>
         <Entry>
@@ -24943,7 +25209,7 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>2</address>
-                <list>43.68286606965371</list>
+                <list>43.599344465405736</list>
             </value>
         </Entry>
         <Entry>
@@ -24961,7 +25227,7 @@
                     <name>Gaussian</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
-                        <uuid>d878ae43-faf9-4fb2-bacc-32c588e19df8</uuid>
+                        <uuid>3befda19-5dd7-492f-95d1-18029e8ad7ba</uuid>
                         <value>128</value>
                         <defaultValue>64</defaultValue>
                         <description>Number of points</description>
@@ -24975,7 +25241,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Width</name>
-                        <uuid>a8f01514-4018-4c7c-8bb8-a36ea523a7a2</uuid>
+                        <uuid>0321c1d4-f7bb-43f7-9e1f-4d01b37bc9d8</uuid>
                         <value>0.25</value>
                         <defaultValue>0.25</defaultValue>
                         <description>Width of the gaussian</description>
@@ -24989,7 +25255,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
-                        <uuid>89e54e67-837f-4f35-a0ac-b055ef6fb16c</uuid>
+                        <uuid>8eac7743-80b0-40b9-ab7f-de38aefc4ea8</uuid>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
                         <description>Amplitude of the gaussian</description>
@@ -25003,7 +25269,7 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <uuid>9677bfad-926e-4db5-a4ce-855d10f7d3c3</uuid>
+                        <uuid>7834cab6-fca7-4f63-8264-064a0e89df3f</uuid>
                         <value>false</value>
                         <defaultValue>false</defaultValue>
                         <description>Absolute value</description>
@@ -25724,7 +25990,7 @@
                 <group>Emission</group>
                 <locked>false</locked>
                 <address>-1</address>
-                <list>75.32704525411751</list>
+                <list>74.46107909242104</list>
             </value>
         </Entry>
         <Entry>
@@ -25755,7 +26021,7 @@
                     <name>Gaussian</name>
                     <params xsi:type="numberParam">
                         <name>Nb points</name>
-                        <uuid>19b51bb5-5fb5-48ff-be8f-877384402c5b</uuid>
+                        <uuid>64d674b2-a65c-4b01-ab3b-087fdabb3651</uuid>
                         <value>128</value>
                         <defaultValue>64</defaultValue>
                         <description>Number of points</description>
@@ -25769,7 +26035,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Width</name>
-                        <uuid>9f8073e9-943a-4ca5-924e-bdab18899f53</uuid>
+                        <uuid>af148e32-320d-4d26-85c0-a1e14c40d560</uuid>
                         <value>0.25</value>
                         <defaultValue>0.25</defaultValue>
                         <description>Width of the gaussian</description>
@@ -25783,7 +26049,7 @@
                     </params>
                     <params xsi:type="numberParam">
                         <name>Amplitude</name>
-                        <uuid>692885a2-6c84-45e2-a069-a546711ab9f1</uuid>
+                        <uuid>370f95e6-e0fa-4d49-810c-4513f2e8cfb4</uuid>
                         <value>100.0</value>
                         <defaultValue>100.0</defaultValue>
                         <description>Amplitude of the gaussian</description>
@@ -25797,7 +26063,7 @@
                     </params>
                     <params xsi:type="booleanParam">
                         <name>Abs</name>
-                        <uuid>8b3671e5-a6d2-49ad-b496-8ba5a5bea856</uuid>
+                        <uuid>f2a3356a-734b-4c44-91fb-eae302a5a94f</uuid>
                         <value>false</value>
                         <defaultValue>false</defaultValue>
                         <description>Absolute value</description>

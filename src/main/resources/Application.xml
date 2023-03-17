@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <application>
-    <name>TOF_V2.1_spinlab_2022.06.3</name>
+    <name>TOF_V2.2_spinlab_2022.12</name>
     <description></description>
     <usage></usage>
     <generatorName>seqdev-temp</generatorName>
@@ -639,8 +639,8 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>DIGITAL_FILTER_SHIFT</name>
                     <uuid>9769e871-df83-42c2-a7cf-5fa87dae1116</uuid>
-                    <value>19</value>
-                    <defaultValue>19</defaultValue>
+                    <value>20</value>
+                    <defaultValue>20</defaultValue>
                     <description>Data shift due to the digital filter</description>
                     <displayedName>DIGITAL_FILTER_SHIFT</displayedName>
                     <locked>false</locked>
@@ -1544,7 +1544,7 @@
                     <name>MAGNETIC_FIELD_STRENGTH</name>
                     <uuid>f81ab596-5d6d-4fe2-97b0-b6ac1e0956ab</uuid>
                     <value>3.0</value>
-                    <defaultValue>3.0</defaultValue>
+                    <defaultValue>3.001881551174367</defaultValue>
                     <description>Info: Magnetic field stength from the hardware</description>
                     <displayedName>B0 Strength</displayedName>
                     <locked>false</locked>
@@ -3239,7 +3239,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
                     <uuid>4724b61e-deb1-4d18-8993-1bba2dd1a640</uuid>
-                    <value>GE_3D_AXI_80x80x24_SATBAND_MT</value>
+                    <value>GE_3D_AXI_80x80x24_MT_SATBAND</value>
                     <defaultValue></defaultValue>
                     <description>Info: Description of the sequence</description>
                     <displayedName>Sequence Description</displayedName>
@@ -10507,7 +10507,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_AMP</name>
                     <uuid>6d533b2b-46db-468e-81d9-e86ffe3b2e90</uuid>
-                    <value>77.4319513446612</value>
+                    <value>77.24672080558213</value>
                     <defaultValue>40.0</defaultValue>
                     <description>Amplitude of the excitation RF pulse </description>
                     <displayedName>TX Amplitude</displayedName>

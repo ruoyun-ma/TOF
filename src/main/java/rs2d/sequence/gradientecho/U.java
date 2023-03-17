@@ -324,8 +324,8 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.Integer);
             param.setMinValue(-2147483648);
             param.setMaxValue(2147483647);
-            param.setValue(19);
-            param.setDefaultValue(19);
+            param.setValue(20);
+            param.setDefaultValue(20);
             return param;
         }
     },
@@ -1188,7 +1188,7 @@ public enum U implements GeneratorParamEnum {
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
             param.setValue(3.0);
-            param.setDefaultValue(3.0);
+            param.setDefaultValue(3.001881551174367);
             return param;
         }
     },
@@ -2211,7 +2211,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Info: Description of the sequence");
             param.setCategory(Category.Acquisition);
             param.setUuid("4724b61e-deb1-4d18-8993-1bba2dd1a640");
-            param.setValue("GE_3D_AXI_80x80x24_SATBAND_MT");
+            param.setValue("GE_3D_AXI_80x80x24_MT_SATBAND");
             param.setDefaultValue("");
             return param;
         }
@@ -2903,7 +2903,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.PERCENT);
             param.setMinValue(0.0);
             param.setMaxValue(100.0);
-            param.setValue(77.4319513446612);
+            param.setValue(77.24672080558213);
             param.setDefaultValue(40.0);
             return param;
         }

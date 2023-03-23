@@ -396,7 +396,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_MATRIX_DIMENSION_4D</name>
                     <uuid>c95d9ac9-4a59-4344-aff5-bcaccaed5e8f</uuid>
-                    <value>1</value>
+                    <value>4</value>
                     <defaultValue>1</defaultValue>
                     <description>Info: Size of the initial dataset (raw data) in fourth dimension</description>
                     <displayedName>Acquisition Matrix 4D</displayedName>
@@ -437,7 +437,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_NB_ECHO_TRAIN</name>
                     <uuid>ba9107b3-dec8-44fa-b280-534b3cc512e1</uuid>
-                    <value>2848</value>
+                    <value>1416</value>
                     <defaultValue>0</defaultValue>
                     <description>Info: Number of echo trains in each slab </description>
                     <displayedName>ACQUISITION_NB_ECHO_TRAIN</displayedName>
@@ -456,7 +456,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>ACQUISITION_NB_VIEW</name>
                     <uuid>313e37e2-7961-4f3a-8436-edbe8b3ac560</uuid>
-                    <value>2848</value>
+                    <value>1416</value>
                     <defaultValue>0</defaultValue>
                     <description>Info: Number of sampling points in 2D-3D plane</description>
                     <displayedName>ACQUISITION_NB_VIEW</displayedName>
@@ -1134,7 +1134,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>FOV_MULTISLAB</name>
                     <uuid>b90f0851-983b-4b5e-8045-4f57ab05094b</uuid>
-                    <value>0.012</value>
+                    <value>0.030000000000000002</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: FOV in slab direction for multislab acquisition</description>
                     <displayedName>FOV - MultiSlab</displayedName>
@@ -1474,7 +1474,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>KSPACE_FILLING</name>
                     <uuid>af80d304-c30e-4983-a07d-aa68994fa821</uuid>
-                    <value>Linear</value>
+                    <value>3DElliptic</value>
                     <defaultValue>Linear</defaultValue>
                     <description>Choose the way to fill the k-space i.e. the order of line acquisition</description>
                     <displayedName>k-space Filling</displayedName>
@@ -1482,6 +1482,7 @@
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <suggestedValues>Linear</suggestedValues>
+                    <suggestedValues>3DElliptic</suggestedValues>
                     <category>Acquisition</category>
                 </value>
             </entry>
@@ -1490,7 +1491,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
                     <name>KS_CENTERED</name>
                     <uuid>76fb8195-3f12-4563-a53b-c23b2b7cf3e4</uuid>
-                    <value>false</value>
+                    <value>true</value>
                     <defaultValue>false</defaultValue>
                     <description>Center the k-space around k0 (Checked) or go through k0 (Unchecked)</description>
                     <displayedName>k-space Centered</displayedName>
@@ -2295,7 +2296,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>NUMBER_OF_SLAB</name>
                     <uuid>c3b60ab8-60af-4c36-a8e9-ec78cd3b7ade</uuid>
-                    <value>1</value>
+                    <value>4</value>
                     <defaultValue>1</defaultValue>
                     <description>Number of slabs </description>
                     <displayedName>No. Slabs</displayedName>
@@ -3204,7 +3205,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SEQUENCE_TIME</name>
                     <uuid>26665c25-c3d2-481e-ad83-4dc57f63bf5b</uuid>
-                    <value>34.741</value>
+                    <value>102.13600000000001</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: Total acquisition time</description>
                     <displayedName>Sequence Version</displayedName>
@@ -3239,7 +3240,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
                     <uuid>4724b61e-deb1-4d18-8993-1bba2dd1a640</uuid>
-                    <value>GE_3D_AXI_80x80x24_MT_SATBAND</value>
+                    <value>GE_3D_AXI_80x80x24x4_MT_SATBAND</value>
                     <defaultValue></defaultValue>
                     <description>Info: Description of the sequence</description>
                     <displayedName>Sequence Description</displayedName>
@@ -3341,7 +3342,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>SPACING_BETWEEN_SLAB</name>
                     <uuid>4f8d2519-6c90-4248-a0c3-53755a84d9c1</uuid>
-                    <value>0.0</value>
+                    <value>-0.006</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Info: Space between slabs</description>
                     <displayedName>Slab Spacing</displayedName>
@@ -3721,7 +3722,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TOF3D_TX_RAMP_SLOPE</name>
                     <uuid>12323d21-0fd5-4bfb-8a13-d7144a4ca30f</uuid>
-                    <value>-0.0</value>
+                    <value>-0.4</value>
                     <defaultValue>0.0</defaultValue>
                     <description>Ramp slope of TONE pulse used in TOF</description>
                     <displayedName>TOF TX Ramp Slope</displayedName>
@@ -10379,7 +10380,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>TRANSFORM_PLUGIN</name>
                     <uuid>f8cdf9da-2f6b-48b1-8ba1-2cd1d5da2e1d</uuid>
-                    <value>Sequential4D</value>
+                    <value>Elliptical3D</value>
                     <defaultValue>Sequential4D</defaultValue>
                     <description>Info :Transform the acquisition space to the k-space. </description>
                     <displayedName>Transform Plugin</displayedName>
@@ -10387,6 +10388,8 @@
                     <lockedToDefault>false</lockedToDefault>
                     <restrictedToSuggested>false</restrictedToSuggested>
                     <suggestedValues>Sequential4D</suggestedValues>
+                    <suggestedValues>Elliptical3D</suggestedValues>
+                    <suggestedValues>Sequential4D_TOF</suggestedValues>
                     <group>Scan</group>
                     <category>Acquisition</category>
                 </value>
@@ -10507,7 +10510,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_AMP</name>
                     <uuid>6d533b2b-46db-468e-81d9-e86ffe3b2e90</uuid>
-                    <value>77.24672080558213</value>
+                    <value>77.41447359086754</value>
                     <defaultValue>40.0</defaultValue>
                     <description>Amplitude of the excitation RF pulse </description>
                     <displayedName>TX Amplitude</displayedName>
@@ -10564,8 +10567,8 @@
                     <value>1.35</value>
                     <value>2.55</value>
                     <value>4.25</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
+                    <value>8.5152</value>
+                    <value>4.2576</value>
                     <value>4.25</value>
                     <defaultValue>0.95</defaultValue>
                     <defaultValue>1.35</defaultValue>
@@ -10594,8 +10597,8 @@
                     <value>3.2</value>
                     <value>5.0</value>
                     <value>7.3</value>
-                    <value>0.0</value>
-                    <value>0.0</value>
+                    <value>8.5152</value>
+                    <value>4.2576</value>
                     <value>7.3</value>
                     <defaultValue>1.1</defaultValue>
                     <defaultValue>3.2</defaultValue>
@@ -10750,7 +10753,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>USER_MATRIX_DIMENSION_4D</name>
                     <uuid>5bf4eb84-6d3d-4c54-a575-b17b9c78940a</uuid>
-                    <value>1</value>
+                    <value>4</value>
                     <defaultValue>1</defaultValue>
                     <description>Info: Number of image data set (user maxtrix 4D)</description>
                     <displayedName>No. Data Sets</displayedName>

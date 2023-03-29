@@ -2015,6 +2015,37 @@ public enum U implements GeneratorParamEnum {
         }
     },
 
+    SATBAND_FLIP_ANGLE("SATBAND_FLIP_ANGLE") {
+        public Param build() {
+            NumberParam param = new NumberParam();
+            param.setName("SATBAND_FLIP_ANGLE");
+            param.setDisplayedName("SatBand - Flip Angle");
+            param.setDescription("User defined FA for satband RF pulse (if SatBand - Auto Flip Angle is OFF)");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("771bca78-b020-43f6-8fc0-db618dd56fb8");
+            param.setNumberEnum(NumberEnum.PulseAngle);
+            param.setMinValue(0.0);
+            param.setMaxValue(1.7976931348623157E308);
+            param.setValue(90.0);
+            param.setDefaultValue(0.0);
+            return param;
+        }
+    },
+
+    SATBAND_FLIP_ANGLE_AUTO("SATBAND_FLIP_ANGLE_AUTO") {
+        public Param build() {
+            BooleanParam param = new BooleanParam();
+            param.setName("SATBAND_FLIP_ANGLE_AUTO");
+            param.setDisplayedName("SatBand - Auto Flip Angle");
+            param.setDescription("True if FA of Satband is determined by sequence, False if FA of Satband is determined by user");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("f110c266-276e-4d79-90bc-c0d55c4f0b12");
+            param.setValue(false);
+            param.setDefaultValue(true);
+            return param;
+        }
+    },
+
     SATBAND_GRAD_AMP_SPOILER("SATBAND_GRAD_AMP_SPOILER") {
         public Param build() {
             NumberParam param = new NumberParam();
@@ -2936,7 +2967,7 @@ public enum U implements GeneratorParamEnum {
             param.setNumberEnum(NumberEnum.TxAtt);
             param.setMinValue(0);
             param.setMaxValue(63);
-            param.setValue(10);
+            param.setValue(14);
             param.setDefaultValue(36);
             return param;
         }

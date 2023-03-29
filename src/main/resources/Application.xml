@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <application>
-    <name>TOF_V2.2_spinlab_2022.12</name>
+    <name>TOF_V2.3_spinlab_2022.12</name>
     <description></description>
     <usage></usage>
     <generatorName>seqdev-temp</generatorName>
@@ -3020,6 +3020,38 @@
                     <locked>false</locked>
                     <lockedToDefault>false</lockedToDefault>
                     <group>Miscellaneous</group>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
+                <key>SATBAND_FLIP_ANGLE</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
+                    <name>SATBAND_FLIP_ANGLE</name>
+                    <uuid>771bca78-b020-43f6-8fc0-db618dd56fb8</uuid>
+                    <value>90.0</value>
+                    <defaultValue>0.0</defaultValue>
+                    <description>User defined FA for satband RF pulse (if SatBand - Auto Flip Angle is OFF)</description>
+                    <displayedName>SatBand - Flip Angle</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <restrictedToSuggested>false</restrictedToSuggested>
+                    <numberEnum>PulseAngle</numberEnum>
+                    <minValue>0.0</minValue>
+                    <maxValue>1.7976931348623157E308</maxValue>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
+                <key>SATBAND_FLIP_ANGLE_AUTO</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="booleanParam">
+                    <name>SATBAND_FLIP_ANGLE_AUTO</name>
+                    <uuid>f110c266-276e-4d79-90bc-c0d55c4f0b12</uuid>
+                    <value>false</value>
+                    <defaultValue>true</defaultValue>
+                    <description>True if FA of Satband is determined by sequence, False if FA of Satband is determined by user</description>
+                    <displayedName>SatBand - Auto Flip Angle</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
                     <category>Acquisition</category>
                 </value>
             </entry>
@@ -10544,7 +10576,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="numberParam">
                     <name>TX_ATT</name>
                     <uuid>13a8651e-9ec7-4485-8162-a7726c6194bb</uuid>
-                    <value>10</value>
+                    <value>14</value>
                     <defaultValue>36</defaultValue>
                     <description>RF pulse attenuation</description>
                     <displayedName>TX Attenuation</displayedName>

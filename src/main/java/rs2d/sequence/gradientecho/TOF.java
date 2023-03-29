@@ -57,16 +57,13 @@ public class TOF extends KernelGE {
         //sliceThickness = getDouble(USER_SLICE_THICKNESS);
         //TRANSFORM PLUGIN
         TextParam transformPlugin = getParam(TRANSFORM_PLUGIN);
-        //transformPlugin.setSuggestedValues(asList("Sequential4D", "Elliptical3D", "Sequential4D_TOF"));
-        transformPlugin.setSuggestedValues(asList("Sequential4D"));
-        // TOF V2.1 : remove Elliptical3D and Sequential4D_TOF because they don't work for spinlab 2022.06, need to implement them in future (at least Ellipitcal
-        transformPlugin.setRestrictedToSuggested(true);
+        transformPlugin.setSuggestedValues(asList("Sequential4D", "Elliptical3D", "Sequential4D_TOF"));
+          transformPlugin.setRestrictedToSuggested(true);
 
         // KSPACE_FILLING
         TextParam ksFilling = getParam(KSPACE_FILLING);
-        //ksFilling.setSuggestedValues(asList("Linear", "3DElliptic"));
-        ksFilling.setSuggestedValues(asList("Linear"));
-        ksFilling.setRestrictedToSuggested(true);
+        ksFilling.setSuggestedValues(asList("Linear", "3DElliptic"));
+         ksFilling.setRestrictedToSuggested(true);
     }
 
     // ==============================
@@ -90,8 +87,10 @@ public class TOF extends KernelGE {
         }
 
         isElliptical = kspace_filling.equalsIgnoreCase("3DElliptic") && !isMultiplanar;
-        if (isElliptical)
+        if (isElliptical) {
             getParam(USER_PARTIAL_SLICE).setValue(100);
+            getParam(KS_CENTERED).setValue(true);
+        }
     }
 
     //--------------------------------------------------------------------------------------
@@ -556,6 +555,7 @@ public class TOF extends KernelGE {
     protected void printForDebug() throws Exception {
         
         if (getBoolean(DEBUG_MODE)) {
+        	  Log.info(getClass(), "---DEBUG INFO---: compiler version = " + Hardware.getCompilerVersion());
             Log.info(getClass(), "---DEBUG INFO---: satband rf = " + models.get(SatBand.class).pulseTXSatBand.getFrequencyOffset(0));
             Log.info(getClass(), "---DEBUG INFO---: satband grad slice = " + models.get(SatBand.class).gradSatBandSlice.getAmplitude_mTpm());
             Log.info(getClass(), "---DEBUG INFO---: gmax = " + Math.abs(GradientMath.getMaxGradientStrength()));
@@ -594,7 +594,7 @@ public class TOF extends KernelGE {
     }
 
     public String getVersion() {
-        return "V2.1_spinlab_2022.06.3";
+        return "V2.2_spinlab_2022.12";
     }
     //</editor-fold>
 }

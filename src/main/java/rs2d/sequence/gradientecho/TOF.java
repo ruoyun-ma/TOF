@@ -40,7 +40,7 @@ import static rs2d.sequence.gradientecho.U.*;
 // * < V2.1 TOF 3D with MT sat, TOF 2D with travelling bands, simultaneous use of TofSat and SatBand not possible
 //        * V2.1: separate TofSat and Satband, 3D TOF with saturation bands
 public class TOF extends KernelGE {
-    private String sequenceVersion = "Version 2.1";
+    private String sequenceVersion = "Version 2.3";
     private boolean isElliptical;
     private double slice_thickness_excitation;
     private boolean isMultiSlab;
@@ -234,6 +234,7 @@ public class TOF extends KernelGE {
         gradSlice = Gradient.createGradient(getSequence(), Grad_amp_slice, Time_tx, Grad_shape_rise_up, Grad_shape_rise_down, Time_grad_ramp, nucleus);
 
         if (hasParam(TOF3D_EXT_SHIRNK_FACTOR) && !isMultiplanar) {
+            System.out.println("tx_bandwidth_90 excitation = " + tx_bandwidth_90);
             if (isEnableSlice && !gradSlice.prepareSliceSelection(tx_bandwidth_90, slice_thickness_excitation * (100 - getDouble(TOF3D_EXT_SHIRNK_FACTOR)) / 100)) {
                 notifyOutOfRangeParam(FIELD_OF_VIEW_3D, fov3d, ((NumberParam) getParam(FIELD_OF_VIEW_3D)).getMaxValue(), "Pulse length too short to reach this fov3d");
             }
@@ -594,7 +595,7 @@ public class TOF extends KernelGE {
     }
 
     public String getVersion() {
-        return "V2.2_spinlab_2022.12";
+        return "V2.3_spinlab_2022.12";
     }
     //</editor-fold>
 }

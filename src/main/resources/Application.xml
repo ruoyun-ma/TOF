@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <application>
-    <name>TOF_V2.3_spinlab_2022.12</name>
+    <name>TOF_v2.4_spinlab_2022.12</name>
     <description></description>
     <usage></usage>
     <generatorName>seqdev-temp</generatorName>
@@ -3256,7 +3256,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQUENCE_VERSION</name>
                     <uuid>00fc2c3e-168b-438a-be54-2e1369a6d45c</uuid>
-                    <value>Version 2.3</value>
+                    <value>Version 2.4</value>
                     <defaultValue></defaultValue>
                     <description>Info: Name of the sequence</description>
                     <displayedName>Sequence Version</displayedName>
@@ -3272,7 +3272,7 @@
                 <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
                     <name>SEQ_DESCRIPTION</name>
                     <uuid>4724b61e-deb1-4d18-8993-1bba2dd1a640</uuid>
-                    <value>GE_3D_AXI_500x500x24x4_MT_SATBAND</value>
+                    <value>GE_3D_AXI_500x500x24x4_SATBAND_MT</value>
                     <defaultValue></defaultValue>
                     <description>Info: Description of the sequence</description>
                     <displayedName>Sequence Description</displayedName>
@@ -3728,6 +3728,23 @@
                     <numberEnum>Time</numberEnum>
                     <minValue>0.0</minValue>
                     <maxValue>1.0E9</maxValue>
+                    <category>Acquisition</category>
+                </value>
+            </entry>
+            <entry>
+                <key>TOF3D_MULTISLAB_ORDER</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textParam">
+                    <name>TOF3D_MULTISLAB_ORDER</name>
+                    <uuid>0725fda0-1649-4229-a667-4a25835874f4</uuid>
+                    <value>Ascending</value>
+                    <defaultValue>Ascending</defaultValue>
+                    <description>Excitation order of slab in 3D MultiSlab acquisitions</description>
+                    <displayedName>TOF3D MultiSlab Order</displayedName>
+                    <locked>false</locked>
+                    <lockedToDefault>false</lockedToDefault>
+                    <restrictedToSuggested>true</restrictedToSuggested>
+                    <suggestedValues>Ascending</suggestedValues>
+                    <suggestedValues>Descending</suggestedValues>
                     <category>Acquisition</category>
                 </value>
             </entry>

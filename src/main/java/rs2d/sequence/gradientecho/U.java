@@ -2228,7 +2228,7 @@ public enum U implements GeneratorParamEnum {
             param.setGroup(EnumGroup.User);
             param.setCategory(Category.Acquisition);
             param.setUuid("00fc2c3e-168b-438a-be54-2e1369a6d45c");
-            param.setValue("Version 2.3");
+            param.setValue("Version 2.4");
             param.setDefaultValue("");
             return param;
         }
@@ -2242,7 +2242,7 @@ public enum U implements GeneratorParamEnum {
             param.setDescription("Info: Description of the sequence");
             param.setCategory(Category.Acquisition);
             param.setUuid("4724b61e-deb1-4d18-8993-1bba2dd1a640");
-            param.setValue("GE_3D_AXI_500x500x24x4_MT_SATBAND");
+            param.setValue("GE_3D_AXI_500x500x24x4_SATBAND_MT");
             param.setDefaultValue("");
             return param;
         }
@@ -2672,6 +2672,22 @@ public enum U implements GeneratorParamEnum {
             param.setMaxValue(1.0E9);
             param.setValue(0.0064);
             param.setDefaultValue(0.0);
+            return param;
+        }
+    },
+
+    TOF3D_MULTISLAB_ORDER("TOF3D_MULTISLAB_ORDER") {
+        public Param build() {
+            TextParam param = new TextParam();
+            param.setName("TOF3D_MULTISLAB_ORDER");
+            param.setDisplayedName("TOF3D MultiSlab Order");
+            param.setDescription("Excitation order of slab in 3D MultiSlab acquisitions");
+            param.setCategory(Category.Acquisition);
+            param.setUuid("0725fda0-1649-4229-a667-4a25835874f4");
+            param.setValue("Ascending");
+            param.setDefaultValue("Ascending");
+            param.setSuggestedValues(asList("Ascending", "Descending"));
+            param.setRestrictedToSuggested(true);
             return param;
         }
     },

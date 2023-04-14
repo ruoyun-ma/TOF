@@ -40,7 +40,7 @@ import static rs2d.sequence.gradientecho.U.*;
 // * < V2.1 TOF 3D with MT sat, TOF 2D with travelling bands, simultaneous use of TofSat and SatBand not possible
 //        * V2.1: separate TofSat and Satband, 3D TOF with saturation bands
 public class TOF extends KernelGE {
-    private String sequenceVersion = "Version 2.3";
+    private String sequenceVersion = "Version 2.4";
     private boolean isElliptical;
     private double slice_thickness_excitation;
     private boolean isMultiSlab;
@@ -260,6 +260,14 @@ public class TOF extends KernelGE {
         } else {
             pulseTX.prepareOffsetFreqMultiSlice(gradSlice, getInt(NUMBER_OF_SLAB), getDouble(SPACING_BETWEEN_SLAB) + (slice_thickness_excitation - gradSlice.getSliceThickness()), off_center_distance_3D);
             pulseTX.reoderOffsetFreq(nb_interleaved_slice);
+            if (getText(TOF3D_MULTISLAB_ORDER).equalsIgnoreCase("descending")){
+                double[] oldOffset = new double[getInt(NUMBER_OF_SLAB)];
+                for (int i = 0; i < getInt(NUMBER_OF_SLAB); i++){
+                    oldOffset[i] = pulseTX.getFrequencyOffset(i);
+                }
+                double[] newOffset = reverseOrder(oldOffset);
+                pulseTX.setFrequencyOffset(newOffset);
+            }
             if (nb_interleaved_slice > 1) {
                 pulseTX.setFrequencyOffset(Order.FourLoop);
             } else {
@@ -270,7 +278,7 @@ public class TOF extends KernelGE {
         // ------------------------------------------------------------------
         // calculate TX FREQUENCY offsets compensation
         // ------------------------------------------------------------------
-        double grad_ratio_slice_refoc = isEnableSlice ? getDouble(SLICE_REFOCUSING_GRADIENT_RATIO) : 0.0;   // get slice refocussing ratio
+        double grad_ratio_slice_refoc = isEnableSlice ? getDouble(SLICE_REFOCUSING_GRADIENT_RATIO) : 0.0;   // get slice refocusing ratio
 
         RFPulse pulseTXPrep = RFPulse.createRFPulse(getSequence(), Time_grad_ramp, FreqOffset_tx_prep, nucleus);
         pulseTXPrep.setCompensationFrequencyOffset(pulseTX, grad_ratio_slice_refoc);
@@ -585,6 +593,15 @@ public class TOF extends KernelGE {
         }
     }
 
+    protected double[] reverseOrder(double[] offsetArray){
+        int arraySize = offsetArray.length;
+        double[] newArray = new double[arraySize];
+        for (int i = 0; i < arraySize; i++){
+            newArray[i] = offsetArray[arraySize - i - 1];
+        }
+        return newArray ;
+    }
+
     //<editor-fold defaultstate="collapsed" desc="Generated Code (RS2D)">
     protected void addUserParams() {
         addMissingUserParams(U.values());
@@ -595,7 +612,7 @@ public class TOF extends KernelGE {
     }
 
     public String getVersion() {
-        return "V2.3_spinlab_2022.12";
+        return "v2.4_spinlab_2022.12";
     }
     //</editor-fold>
 }
